@@ -7988,106 +7988,6 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level transition order available"
- Guid="7cc3a1d4-5397-46fd-b656-d5b84b928e94"
->
-<ReqRef
- Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="03236951-52f5-449f-976f-3b0a9f5016c1"
->
-</ReqRef><Comment>Handles reception of level transition orders received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Level transition order available"
- Guid="1ef92a16-cc7b-4664-9d2b-b735ff9588a4"
->
-<PreConditions>
-<PreCondition
- Guid="77ad28b3-e1f4-46b8-b1bc-d32e603da92c"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="48dbeb01-ed9a-488f-9c37-1df78daff92f"
->Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Session management available"
- Guid="8ad12600-a556-4799-9fac-e2046bd24f25"
->
-<ReqRef
- Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="60138c61-9928-4a2e-8baa-0f31947c0fea"
->
-</ReqRef><ReqRef
- Id="ff45f18e-7a7b-412e-8847-569b6605d632"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8313af48-55a8-4bd6-88c6-a7b6c2534cc5"
->
-</ReqRef><Comment>Handles reception of session management received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Session management available"
- Guid="6abe06d6-af4e-4e14-890c-086b61321719"
->
-<PreConditions>
-<PreCondition
- Guid="35f50585-8b45-4d82-b3a2-42514806c6aa"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7b01bf6b-5aaa-4c43-9da2-5e2212b1886c"
->TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Radio Network registration available"
- Guid="96b96609-5d4c-4603-a2e3-29ec0bcb9cdd"
->
-<ReqRef
- Id="031d12f5-b1df-4716-9eda-a3495861e160"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="315467c8-d88a-4ab6-85ef-78b9b47ae330"
->
-</ReqRef><ReqRef
- Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6b0d3032-81c0-4e4c-9422-b71f50d6cb2a"
->
-</ReqRef><ReqRef
- Id="6476afb5-0645-4298-926a-e67147752ddf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="efb5419f-ac91-49f7-b965-88678009460f"
->
-</ReqRef><Comment>Handles reception of radio network registration orders received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Radio Network registration available"
- Guid="0e2ca957-6839-4b3f-afce-aa28d95dbfbd"
->
-<PreConditions>
-<PreCondition
- Guid="efefa7ba-fa7c-487d-999b-161436ccdd38"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3f635080-161d-4765-998e-7bc79357fae7"
->RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="List of balises for SH area available"
  Guid="fcf5520f-ce3c-4f17-b984-02a819e47adb"
 >
@@ -8121,278 +8021,26 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Movement authority request parameters available"
- Guid="3d1f686f-75f0-4710-aaa9-ae0e283a9daa"
+ Name="Handle common packets"
+ Guid="9d2b2f55-0898-4428-9183-70002729d631"
 >
-<ReqRef
- Id="0207a978-352d-4243-81cd-c58fb8228dc2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e7dfac47-3a3b-4618-9a1e-a71506fc36dc"
->
-</ReqRef><Comment>Handles reception of the movement authority request parameters received with the MA.</Comment>
+<Comment>Handle common packets (as described in Subset-026 Paragraph 8.4.4.4.1.1) received with a movement authority message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Movement authority request parameters available"
- Guid="b9ad65a0-8474-457d-90b1-c6906f945fe7"
+ Name="Handle common packets"
+ Guid="06cf69bd-44fb-415c-b4de-0e8df36c62c1"
 >
 <PreConditions>
-<PreCondition
- Guid="19fbe0f5-f665-469b-8ecf-20c4453d8aaf"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="e4a09d49-6bab-4250-9fae-0359a274682c"
->MARequestParametersReceived( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS ) ).MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="6952e078-ee86-43d6-84ef-44a7987c6f51"
->
-<ReqRef
- Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="34d33893-3280-45dc-9cda-903fabe88e9a"
->
-</ReqRef><Comment>Handles reception of report parameters received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="b3006b05-322a-4ec3-adaf-f31c462e909a"
->
-<ReqRef
- Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="83cda4d2-8fed-4ae3-bb4e-fccc5f09ca44"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="4e66790e-11e3-42ae-9f8a-5c70586ffac3"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
- Guid="ce0a957f-db4d-48fe-abd1-16ae231136fe"
->aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE == EMPTY</PreCondition><PreCondition
- Guid="b72cbd16-8ee3-43c1-8931-f3202d3cec34"
->aMessage.GENERAL_MESSAGE == EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="aea31b9a-b403-4674-ba05-b2e0e573cd40"
->PositionReport.UpdatePositionReportParameters(
-  (FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1  | Available(X.POSITION_REPORT_PARAMETERS)).POSITION_REPORT_PARAMETERS
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="e83a4b79-7e77-45ec-b306-cc4f23787f6e"
->
-<ReqRef
- Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ee9775d6-15df-469d-9f57-45db9fb68014"
->
-</ReqRef><Comment>Handles reception of the route suitability data received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="6d8f8b6c-44de-46a3-ad4e-fe9a3f8bd878"
->
-<PreConditions>
-<PreCondition
- Guid="d17863ff-43e3-41a3-8676-e178880f8608"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6408d9ba-f07f-4dc0-8df8-e66f89eca5d8"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="89d84dcf-76a4-4660-9ae6-86e007676a7c"
->
-<ReqRef
- Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fbdbfb9d-de07-49fd-9a29-0cf30112d00c"
->
-</ReqRef><Comment>Handles reception of geographical position information received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="d0a87e59-f7df-4033-b433-0d5a6ec17190"
->
-<PreConditions>
-<PreCondition
- Guid="9d29e221-3a66-4295-b739-4d6d72194693"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="788a1112-ba99-4044-8655-aa41ca935678"
->Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="RBC transition order available"
- Guid="0fb335bd-44e1-47e2-bd89-4c942a224204"
->
-<ReqRef
- Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a8ee6670-f850-4b69-9ac9-1de24bf53d57"
->
-</ReqRef><ReqRef
- Id="fb5cdb2c-826a-4be7-babf-d16c11e9720c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5aad4947-1766-4499-8e39-d9a83f8428c0"
->
-</ReqRef><Comment>Handles reception of RBC transition orders received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="RBC transition order available"
- Guid="db797869-4bf5-44a7-b3cf-5e84cb162cde"
->
-<PreConditions>
-<PreCondition
- Guid="a5973c27-9a81-4636-8455-18ae68e3355c"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d9dcdaf4-23f3-4f1d-84c9-b114fd1fb949"
->RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Reversing area information received"
- Guid="fdcd9485-afad-4a31-be39-570d9d7e20e4"
->
-<ReqRef
- Id="690dfc40-042d-4c8d-9e60-17b85d455fd3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="18d9ee6e-0662-44cf-adb1-3a99427cc5a4"
->
-</ReqRef><ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="64a59513-0075-494d-a938-07ddba56a48c"
->
-</ReqRef><ReqRef
- Id="f32ad7de-67d9-4075-bb38-75a13996ad98"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2a389595-6d7f-461b-a006-578e4ec4cd87"
->
-</ReqRef><ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1e655817-3e22-4028-af9e-773549e2af03"
->
-</ReqRef><Comment>Handles reception of reversing area information received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Reversing area information received"
- Guid="3add805d-16f9-4c58-844e-8268deb08969"
->
-<PreConditions>
-<PreCondition
- Guid="3cfbaa2e-aead-4c62-87c7-dc0a0e2307b5"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.REVERSING_AREA_INFORMATION)</PreCondition><PreCondition
- Guid="660f4149-1743-44df-81e3-9d06c31ec070"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="c74651c6-f7b1-4041-aa6b-c49679a122ff"
->Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
+ Guid="534b7962-8df0-4881-a75a-7e88ce4d1d85"
+>HandleCommonPackets
 (
-    RVAreaPacket =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
-    RVSupervisionPacket =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="bb38b62d-8393-4c0c-8583-a2328cdf4a99"
->
-<ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5b12f8d4-fa42-4a76-8cb3-332637d44d4b"
->
-</ReqRef><ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="be3a49b5-e92f-4002-92ee-65bb016ffafd"
->
-</ReqRef><Comment>Handles reception of reversing supervision information received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="a7becc3f-aaae-4ad1-892a-e83089dfbd83"
->
-<PreConditions>
-<PreCondition
- Guid="703fe00a-713a-4063-961f-bcc9d8b2e820"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="389ce891-2d4b-4139-be13-958c71407137"
->Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="LSSMA display toggle order available"
- Guid="1cd12ff4-6000-43dc-adbd-d711a9b70e64"
->
-<ReqRef
- Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6d1d363f-720f-445b-8dba-f08284ce1dab"
->
-</ReqRef><ReqRef
- Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1f0d954d-f4d7-4718-8df3-50357ada5fb7"
->
-</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the MA.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="LSSMA display toggle order received"
- Guid="2c196828-b55b-4c96-9dd8-d88466c7bdc0"
->
-<PreConditions>
-<PreCondition
- Guid="d929b47a-52a6-44ae-84ea-b3b125dcd969"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7495227e-d962-4677-8d3d-055a79d7376d"
->Kernel.LimitedSupervision.LSSMAToggleReceived(
-    Packet =&gt; (FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
-    Timestamp =&gt; AddToDate(
-        StartDate =&gt; Kernel.DateAndTime.StartDate,
-        Increment =&gt; Default.MessageTypes.TimeResolution(aMessage.MOVEMENT_AUTHORITY.T_TRAIN)
-    )
+    Packets =&gt; aMessage.MOVEMENT_AUTHORITY.Sequence1,
+    Time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -8855,375 +8503,26 @@ Default.MessageTypes.QScaleDistance(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level transition order available"
- Guid="36e96b58-9f40-4919-9b4e-07c2b3fbed30"
+ Name="Handle common packets"
+ Guid="d6787fe0-61a4-40b6-9064-f92350a24b90"
 >
-<ReqRef
- Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fae9450d-113e-4c25-8362-ca7a7290c307"
->
-</ReqRef><Comment>Handles reception of level transition orders received with the general message.</Comment>
+<Comment>Handle common packets (as described in Subset-026 Paragraph 8.4.4.4.1.1) received with a general message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Level transition order available"
- Guid="492fa7fb-64bb-408c-99de-c1b404915089"
+ Name="Handle common packets"
+ Guid="fa65ce4c-abac-4895-b238-60fcd690e7b8"
 >
 <PreConditions>
-<PreCondition
- Guid="aff2ca99-df87-4fce-af4a-c5d94d2935f5"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="176f516e-fef3-4f21-b17f-0556e8216f5d"
->Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Session management available"
- Guid="617c0d85-e001-4ba2-9a2e-7ed40b53d7d6"
->
-<ReqRef
- Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d1a78d9c-b705-485a-827e-46159c8a4b78"
->
-</ReqRef><ReqRef
- Id="ff45f18e-7a7b-412e-8847-569b6605d632"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1f2a0132-4a38-4a8a-9ee9-47bc7b5a6e6f"
->
-</ReqRef><Comment>Handles reception of session management received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Session management available"
- Guid="1535de84-4fd0-4408-a56b-3b0d008655c4"
->
-<PreConditions>
-<PreCondition
- Guid="baf54c0d-8b2c-45d1-9b37-f44d09c72b31"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="864aed8d-656b-44ab-97d1-b019cba9aeef"
->TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Radio Network registration available"
- Guid="ed7d1e6a-a0a3-49c9-8fd4-be819eba3a56"
->
-<ReqRef
- Id="031d12f5-b1df-4716-9eda-a3495861e160"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e91e2170-ac05-410c-94da-1aaa6ead98d4"
->
-</ReqRef><ReqRef
- Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1df085a5-8517-41ca-9675-668ec9da5395"
->
-</ReqRef><ReqRef
- Id="6476afb5-0645-4298-926a-e67147752ddf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a70cd81c-1509-4100-9065-62c294fe5476"
->
-</ReqRef><Comment>Handles reception of radio network registration orders received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Radio Network registration available"
- Guid="e4a85e4e-5316-41c0-ab53-2952ce6faafd"
->
-<PreConditions>
-<PreCondition
- Guid="0832c897-e755-49da-b609-cfa0c2859a59"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f7218da0-0535-4404-9004-e803bf961c91"
->RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Movement authority request parameters available"
- Guid="d246069e-15d2-49e9-b02f-d74d788b9fd2"
->
-<ReqRef
- Id="0207a978-352d-4243-81cd-c58fb8228dc2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3d8034b0-46d6-45ae-8ba2-96929eae8835"
->
-</ReqRef><Comment>Handles reception of the movement authority request parameters received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Movement authority request parameters available"
- Guid="f690f045-757e-4168-850f-58888f04d1ab"
->
-<PreConditions>
-<PreCondition
- Guid="fb216486-6cdc-4b68-90d3-5e7377703f26"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="abe81056-9b8c-4250-9bda-c30cafef8c82"
->MARequestParametersReceived( Packet =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS ) ).MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="935df013-36d5-46e2-8fd1-1c22e87f3dfc"
->
-<ReqRef
- Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3e5938e1-3ca7-41d6-ae46-5f9bca5e096f"
->
-</ReqRef><Comment>Handles reception of report parameters received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="8f6b94f8-5ebc-4d66-9acf-ddf51ba1d957"
->
-<ReqRef
- Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="68ef5d9c-449c-40de-beea-e8affff46386"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="e736f8f8-7e25-47b8-95d9-3641a99d39cb"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="066e716a-07aa-4d5a-a10b-7fc517f0f0b2"
->PositionReport.UpdatePositionReportParameters
+ Guid="30b31d73-66f4-4e11-a0ae-a3bf2c3166c3"
+>HandleCommonPackets
 (
-  ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="4aa1a01f-4254-4958-b0e8-99b5cb30cc20"
->
-<ReqRef
- Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="052af9bd-f74a-4e5a-b527-5d0041e154b5"
->
-</ReqRef><Comment>Handles reception of the route suitability data received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="c0c990ba-89d9-47e6-b458-c64d95c8112c"
->
-<PreConditions>
-<PreCondition
- Guid="446284a7-38bb-4883-9c06-40ea15d59a53"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="1835b379-689c-41b7-82bd-bafdaa9df3c9"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="c6392e10-ecba-405d-a76b-2510ba3260e4"
->
-<ReqRef
- Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="494e6f3a-b888-4d5e-87b9-b170d26f9c28"
->
-</ReqRef><Comment>Handles reception of geographical position information received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="61fbd0fd-4497-4000-98e8-49e1aeafeb65"
->
-<PreConditions>
-<PreCondition
- Guid="7e563bd6-c9f0-489a-a42f-b6e64a89d11b"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="93c1c20e-ed7d-474e-aa0b-b56128d38ef9"
->Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="RBC transition order available"
- Guid="bbd085cd-6114-4a8e-9372-7befdce23b2b"
->
-<ReqRef
- Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7371c655-70ff-4786-8af1-47e54b325fbc"
->
-</ReqRef><ReqRef
- Id="fb5cdb2c-826a-4be7-babf-d16c11e9720c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c743c8f0-396e-4f62-90ff-46a86510ce47"
->
-</ReqRef><Comment>Handles reception of RBC transition orders received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="RBC transition order available"
- Guid="53418cea-2cd8-4707-94b4-ccdc60514170"
->
-<PreConditions>
-<PreCondition
- Guid="e93e740d-2bf8-41d0-ab39-9fb5c7ea7fe3"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="9465d11b-3c0d-4be2-a91e-883e806e5d57"
->RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Reversing area information received"
- Guid="d991fd29-3448-414c-b173-d33dc950f456"
->
-<ReqRef
- Id="690dfc40-042d-4c8d-9e60-17b85d455fd3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="695cbd0a-2d60-4273-9207-4f12b4517f07"
->
-</ReqRef><ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8a0a0e4a-59f6-4ba6-8a44-24afc8156a17"
->
-</ReqRef><ReqRef
- Id="f32ad7de-67d9-4075-bb38-75a13996ad98"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b472d4e9-95b2-4baf-9db7-ee6c4fc212ff"
->
-</ReqRef><ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="089b9fba-2bb7-463a-8dda-057dea445026"
->
-</ReqRef><Comment>Handles reception of reversing area information received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Reversing area information received"
- Guid="8a00d353-62fa-4dcf-986c-2ccf3f3da7bf"
->
-<PreConditions>
-<PreCondition
- Guid="2060598f-0aa3-4dff-9cfc-d591ff131003"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_AREA_INFORMATION)</PreCondition><PreCondition
- Guid="dd515f89-a7ca-4ad5-8028-653e08841979"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="80535626-724a-4983-90b1-d0fe24394982"
->Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
-(
-    RVAreaPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
-    RVSupervisionPacket =&gt; ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="28f5a732-ce0a-4051-bbf4-03e0557c4a7b"
->
-<ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b0c86519-5005-4a55-ba21-787201b11562"
->
-</ReqRef><ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="005e242c-9fab-496a-8cc4-ba3c58514f36"
->
-</ReqRef><Comment>Handles reception of reversing supervision information received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="af2c5570-7a4d-4054-82ad-57ef1d45427e"
->
-<PreConditions>
-<PreCondition
- Guid="193d11a0-6c10-4e95-88ed-a9e108627cb4"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="44c794a5-cbc0-4338-8222-edf600f1a426"
->Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="LSSMA display toggle order available"
- Guid="cf3b6a56-0f48-4763-a9f3-26f5e0f6b0db"
->
-<ReqRef
- Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="09fa92ee-7cd7-489c-9efc-7a8080c44a86"
->
-</ReqRef><ReqRef
- Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="be72b01c-5106-49a0-8a60-afd1ebd352bc"
->
-</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the general message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="LSSMA display toggle order received"
- Guid="9a4a5819-03c2-4b8c-8d54-3e3ae43d3089"
->
-<PreConditions>
-<PreCondition
- Guid="20b8a664-9aa0-43cf-806f-77575b6c9d8b"
->THERE_IS X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="de78be94-0ff2-487f-b42a-b5d3406df13c"
->Kernel.LimitedSupervision.LSSMAToggleReceived(
-    Packet =&gt; (FIRST X IN aMessage.GENERAL_MESSAGE.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
-    Timestamp =&gt; AddToDate(
-        StartDate =&gt; Kernel.DateAndTime.StartDate,
-        Increment =&gt; Default.MessageTypes.TimeResolution(aMessage.GENERAL_MESSAGE.T_TRAIN)
-    )
+    Packets =&gt; aMessage.GENERAL_MESSAGE.Sequence1,
+    Time =&gt; aMessage.GENERAL_MESSAGE.T_TRAIN
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -9346,228 +8645,6 @@ Default.MessageTypes.QScaleDistance(
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Level transition order available"
- Guid="2daa150e-f714-4954-9c73-3b6086131c5a"
->
-<ReqRef
- Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1c4b3755-e382-4628-927b-306506e1ae03"
->
-</ReqRef><Comment>Handles receptino of level transition orders with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Level transition order available"
- Guid="8a7303b3-edcf-4f4a-a210-3b5a94aa69a9"
->
-<PreConditions>
-<PreCondition
- Guid="47f09839-0138-4c3c-892e-6c8aab01dcd1"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2a39f497-93ab-442c-bd1a-1f87053a30c5"
->Kernel.LevelTransition.LTOReceived ( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.LEVEL_TRANSITION_ORDER )).LEVEL_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Session management available"
- Guid="06578948-29db-4a5a-9791-be18d6e3069e"
->
-<ReqRef
- Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4ad0147f-15d4-4238-8de0-2ececa983061"
->
-</ReqRef><ReqRef
- Id="ff45f18e-7a7b-412e-8847-569b6605d632"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="95d9a572-5238-4503-a82c-fe8c0775545b"
->
-</ReqRef><Comment>Handles reception of session management received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Session management available"
- Guid="705b0473-0854-424b-b540-bd89e9a8fd20"
->
-<PreConditions>
-<PreCondition
- Guid="64594881-f511-44f7-b03e-67a2c19c357e"
->THERE_IS X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7a4b291e-cb8d-40bf-9dc9-423cd269c364"
->TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST X IN aMessage.MOVEMENT_AUTHORITY.Sequence1 | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Radio Network registration available"
- Guid="1c416e5c-9d36-4cc6-92dd-ca8df880cd0a"
->
-<ReqRef
- Id="031d12f5-b1df-4716-9eda-a3495861e160"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dc289318-0099-4bf3-8b38-4c1ca8028708"
->
-</ReqRef><ReqRef
- Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a47c17c8-3ee6-4d2a-978b-3bf7d3f268e5"
->
-</ReqRef><ReqRef
- Id="6476afb5-0645-4298-926a-e67147752ddf"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3aaf0c56-8636-4293-9ed7-18ef7d85dcc4"
->
-</ReqRef><Comment>Handles reception of radio network registration orders received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Radio Network registration available"
- Guid="51fe263c-fe6c-4016-8b7b-47def8f0e4f3"
->
-<PreConditions>
-<PreCondition
- Guid="d544c340-ceb7-48e8-8446-f88615d47da1"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="bdb60228-bfad-43d2-ac1e-e6bbbac30872"
->RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Movement authority request parameters available"
- Guid="75a93497-d4cf-428d-86f1-0aca8e2813f1"
->
-<ReqRef
- Id="0207a978-352d-4243-81cd-c58fb8228dc2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f6e30fa3-7b45-4e7a-93e1-b37a6f57d3d8"
->
-</ReqRef><Comment>Handles reception of the movement authority request parameters received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Movement authority request parameters available"
- Guid="9c804d15-d78a-436a-8dd2-2dcd96b6bd1f"
->
-<PreConditions>
-<PreCondition
- Guid="cdd8c0a8-2f12-41a6-8112-4431c79abb8f"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="72d50021-9d55-4610-88d0-eae7c9ce20a5"
->MARequestParametersReceived( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS ) ).MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="UpdateINTERNAL"
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="41514341-5275-4457-b6e1-3d0cdf73210d"
->
-<ReqRef
- Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="75394fb1-b13d-4ea8-b0ae-b8da4e554e2c"
->
-</ReqRef><Comment>Handles reception of report parameters received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Report parameters available"
- Guid="a072a522-be55-470d-ac59-e4904cf1245c"
->
-<ReqRef
- Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fbc7c1b8-fb9d-4785-b3a8-b910c732edb4"
->
-</ReqRef><PreConditions>
-<PreCondition
- Guid="5b8975b0-260d-4631-8a07-a597c7067649"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition><PreCondition
- Guid="29c7550e-0318-4ea1-be60-556bb6f76b25"
->aMessage.GENERAL_MESSAGE == EMPTY</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d4dd1adc-2417-418e-9af1-28d490582186"
->PositionReport.UpdatePositionReportParameters
-(
-   ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="d1763cf0-854a-43b9-890b-65362093d1e5"
->
-<ReqRef
- Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2551bc7c-0bcd-40d7-97b3-da8a51f1f3eb"
->
-</ReqRef><Comment>Handles reception of the route suitability data received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Route suitability data available"
- Guid="05c6c904-72ce-4e9f-b546-00d44c02eb79"
->
-<PreConditions>
-<PreCondition
- Guid="785ad9f3-d16d-4ca7-a789-7e6ec4432c28"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="249aeb3c-974b-4193-96c5-9a76aafc8946"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1  | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="caeeb936-cf39-41ac-87ea-75ca757c5a2b"
->
-<ReqRef
- Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="324cb001-39a7-4c4f-8532-6a05d0e57281"
->
-</ReqRef><Comment>Handles reception of geographical position information received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Geographical position available"
- Guid="d71bf398-9b0a-4a76-ae90-ffeb1d8936ef"
->
-<PreConditions>
-<PreCondition
- Guid="9bd54d58-f186-4c4a-a7bb-89b66047e5e6"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="8a2191ee-9998-4d69-8379-189c5901fad7"
->Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
  Name="Mode profile available"
  Guid="d438dc8b-7936-4bcf-8833-97af765a4527"
 >
@@ -9604,155 +8681,26 @@ Default.MessageTypes.QScaleDistance(
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="RBC transition order available"
- Guid="a8af2694-8a1a-4a7b-bcdf-1b0a2fc65759"
+ Name="Handle common packets"
+ Guid="869557a0-0507-4938-a986-1cd81407d126"
 >
-<ReqRef
- Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="20491a0d-e1d0-4c4c-a1d7-8521af2fb735"
->
-</ReqRef><ReqRef
- Id="fb5cdb2c-826a-4be7-babf-d16c11e9720c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="1065faf8-5897-4daa-8cc4-d357acd537b9"
->
-</ReqRef><Comment>Handles reception of RBC transition orders received with MA with shifted location reference message.</Comment>
+<Comment>Handle common packets (as described in Subset-026 Paragraph 8.4.4.4.1.1) received with a MA with shifted location reference message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="RBC transition order available"
- Guid="e55e6bdc-afac-476b-a86e-1249de5ea4d2"
+ Name="Handle common packets"
+ Guid="b190dcf2-d2fd-42bb-a13b-1f32d317ef08"
 >
 <PreConditions>
-<PreCondition
- Guid="8723be7a-426d-477a-a43a-230a0faa8ca3"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
+</PreConditions>
 <Actions>
 <Action
- Guid="fe627e78-cc1a-46c9-b978-a68996f61e55"
->RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Reversing area information received"
- Guid="5fa0cf49-a89a-40a2-89ef-208552c8cd41"
->
-<ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="675febca-aac6-4952-92e8-71e94b07197f"
->
-</ReqRef><ReqRef
- Id="690dfc40-042d-4c8d-9e60-17b85d455fd3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bfe02d07-7e16-4e5f-a2d4-92aa2c71f04d"
->
-</ReqRef><ReqRef
- Id="f32ad7de-67d9-4075-bb38-75a13996ad98"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d385ae54-7961-422f-9cce-09968706a841"
->
-</ReqRef><ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f7fea26d-2b01-4850-9105-493b0eb9cb04"
->
-</ReqRef><Comment>Handles reception of reversing area information received with the MA message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Reversing area information received"
- Guid="329fce04-6965-44b9-9443-07b14c6864f3"
->
-<PreConditions>
-<PreCondition
- Guid="7c3dda02-5f70-4935-a8bb-3e7142b5a436"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_AREA_INFORMATION)</PreCondition><PreCondition
- Guid="c2bb5cf8-a873-439c-b8bf-5ee87b780afe"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="62cf574b-ea96-48c5-8621-6c6e0c6b62ac"
->Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
+ Guid="c7f0a384-3a4a-444b-b3e3-fdb95fb71bd0"
+>HandleCommonPackets
 (
-    RVAreaPacket =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
-    RVSupervisionPacket =&gt; ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
-)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="0e37d4b1-e6f0-4c40-946d-2440c15b6c3d"
->
-<ReqRef
- Id="c93e250c-fc42-406f-9706-6ec7488b8982"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2df957a8-7b34-4b00-b67c-e2f40bc49fc1"
->
-</ReqRef><ReqRef
- Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="002437a3-173c-4b37-90ab-d72d47d3ff93"
->
-</ReqRef><Comment>Handles reception of reversing supervision information received with MA with shifted location reference message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Reversing supervision information received"
- Guid="530d4fa3-09f2-48f4-b5c9-2f77bc42c524"
->
-<PreConditions>
-<PreCondition
- Guid="e13745ef-2428-495d-8e94-d1900f3d0b06"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="6c9233fc-46fd-477b-b385-92185e9c87f8"
->Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt;  ( FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="LSSMA display toggle order available"
- Guid="ee57379c-f490-44bb-98e4-338041668edb"
->
-<ReqRef
- Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="721176da-770e-409b-ab05-aab36f5c94cc"
->
-</ReqRef><ReqRef
- Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="107ec775-9ae1-4048-8464-caef8de3bf4b"
->
-</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order received with the MA message.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="LSSMA display toggle order received"
- Guid="3b9a00bd-48fc-450d-b098-c457a12ff7ae"
->
-<PreConditions>
-<PreCondition
- Guid="01d6ea61-7ad0-4ad2-8c18-71d5fc673f75"
->THERE_IS X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d2621da4-99cc-4cb9-97a0-92bf06ae5cb7"
->Kernel.LimitedSupervision.LSSMAToggleReceived(
-    Packet =&gt; (FIRST X IN aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1 | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
-    Timestamp =&gt; AddToDate(
-        StartDate =&gt; Kernel.DateAndTime.StartDate,
-        Increment =&gt; Default.MessageTypes.TimeResolution(aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.T_TRAIN)
-    )
+    Packets =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.Sequence1,
+    Time =&gt; aMessage.GENERAL_MESSAGE.T_TRAIN
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -10850,6 +9798,443 @@ But at the end of the cycle the conditions required for sending of position repo
 <Action
  Guid="90d2fcd9-38c9-4dc2-8519-b67f724b95ae"
 >Kernel.MA.MARequest.MARequestParameters.HandleRepetitions &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Width="100"
+ Height="50"
+ Name="HandleCommonPackets"
+ Guid="267eb360-7542-46af-9267-a8a6f93e5227"
+>
+<ReqRef
+ Id="4f1c87c4-e4ca-4713-8aab-10813b7b539c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6eb0a20b-ef7b-40ba-a230-8a2e905ce544"
+>
+</ReqRef><ReqRef
+ Id="34124e11-dd20-40b4-8914-44b6b7397ff1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a71ac132-e540-4096-b373-cd291488e77b"
+>
+</ReqRef><ReqRef
+ Id="4dea631e-f3ef-4f67-8232-6d867ebc7c34"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5f86f1f1-7ce6-4373-86d9-cc83bce123e4"
+>
+</ReqRef><ReqRef
+ Id="17ca4691-52af-4571-83b8-d4e345bcc557"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="06805ccb-d5d2-4c46-a67a-b35f59a88410"
+>
+</ReqRef><Comment>Handles reception of common packets as described in Subset-026 Paragraph 8.4.4.4.1.1.</Comment>
+<Parameters>
+<Parameter
+ Type="Messages.MESSAGE.COMMON_PACKETS_COL"
+ Name="Packets"
+ Guid="bda35355-3c76-4016-a9da-f08035e0829f"
+>
+</Parameter><Parameter
+ Type="MessageTypes.Time"
+ Name="Time"
+ Guid="3c06eb6f-b270-4cdc-ba27-ac3485ff984f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle common packets"
+ Guid="7bd1ae1e-434d-46fd-91b9-9d13b3b06186"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle common packets"
+ Guid="b16f352e-ddaf-4af2-89d7-0a6dc176492a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition order available"
+ Guid="36e96b58-9f40-4919-9b4e-07c2b3fbed30"
+>
+<ReqRef
+ Id="7e7c641f-fe52-42ac-9aa8-12e5c7dfd6b2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fae9450d-113e-4c25-8362-ca7a7290c307"
+>
+</ReqRef><Comment>Handles reception of level transition orders.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Level transition order available"
+ Guid="492fa7fb-64bb-408c-99de-c1b404915089"
+>
+<PreConditions>
+<PreCondition
+ Guid="aff2ca99-df87-4fce-af4a-c5d94d2935f5"
+>THERE_IS X IN Packets | Available ( X.LEVEL_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="176f516e-fef3-4f21-b17f-0556e8216f5d"
+>Kernel.LevelTransition.LTOReceived ( Packet =&gt;  ( FIRST X IN Packets | Available ( X.LEVEL_TRANSITION_ORDER ) ).LEVEL_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Session management available"
+ Guid="617c0d85-e001-4ba2-9a2e-7ed40b53d7d6"
+>
+<ReqRef
+ Id="18318a83-420a-41a7-b3eb-e4e67f1e3f97"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d1a78d9c-b705-485a-827e-46159c8a4b78"
+>
+</ReqRef><ReqRef
+ Id="ff45f18e-7a7b-412e-8847-569b6605d632"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1f2a0132-4a38-4a8a-9ee9-47bc7b5a6e6f"
+>
+</ReqRef><Comment>Handles reception of session management.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Session management available"
+ Guid="1535de84-4fd0-4408-a56b-3b0d008655c4"
+>
+<PreConditions>
+<PreCondition
+ Guid="baf54c0d-8b2c-45d1-9b37-f44d09c72b31"
+>THERE_IS X IN Packets | Available ( X.SESSION_MANAGEMENT )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="864aed8d-656b-44ab-97d1-b019cba9aeef"
+>TracksideOrderedSessionReceived ( Packet =&gt; ( FIRST X IN Packets | Available ( X.SESSION_MANAGEMENT )).SESSION_MANAGEMENT )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Radio Network registration available"
+ Guid="ed7d1e6a-a0a3-49c9-8fd4-be819eba3a56"
+>
+<ReqRef
+ Id="031d12f5-b1df-4716-9eda-a3495861e160"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e91e2170-ac05-410c-94da-1aaa6ead98d4"
+>
+</ReqRef><ReqRef
+ Id="da86aaf7-6b30-4a15-b59d-37e639bcdfc8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1df085a5-8517-41ca-9675-668ec9da5395"
+>
+</ReqRef><ReqRef
+ Id="6476afb5-0645-4298-926a-e67147752ddf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a70cd81c-1509-4100-9065-62c294fe5476"
+>
+</ReqRef><Comment>Handles reception of radio network registration orders.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Radio Network registration available"
+ Guid="e4a85e4e-5316-41c0-ab53-2952ce6faafd"
+>
+<PreConditions>
+<PreCondition
+ Guid="0832c897-e755-49da-b609-cfa0c2859a59"
+>THERE_IS X IN Packets | Available ( X.RADIO_NETWORK_REGISTRATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="f7218da0-0535-4404-9004-e803bf961c91"
+>RadioNetworkRegistrationReceived ( aPacket =&gt; ( FIRST X IN Packets | Available ( X.RADIO_NETWORK_REGISTRATION )).RADIO_NETWORK_REGISTRATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Movement authority request parameters available"
+ Guid="d246069e-15d2-49e9-b02f-d74d788b9fd2"
+>
+<ReqRef
+ Id="0207a978-352d-4243-81cd-c58fb8228dc2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d8034b0-46d6-45ae-8ba2-96929eae8835"
+>
+</ReqRef><Comment>Handles reception of the movement authority request parameters.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Movement authority request parameters available"
+ Guid="f690f045-757e-4168-850f-58888f04d1ab"
+>
+<PreConditions>
+<PreCondition
+ Guid="fb216486-6cdc-4b68-90d3-5e7377703f26"
+>THERE_IS X IN Packets | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="abe81056-9b8c-4250-9bda-c30cafef8c82"
+>MARequestParametersReceived( Packet =&gt; ( FIRST X IN Packets | Available ( X.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS ) ).MOVEMENT_AUTHORITY_REQUEST_PARAMETERS )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="UpdateINTERNAL"
+ Implemented="TRUE"
+ Name="Position report parameters available"
+ Guid="935df013-36d5-46e2-8fd1-1c22e87f3dfc"
+>
+<ReqRef
+ Id="e832ef89-d8d7-4e89-86eb-ba4c29d6d5fe"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3e5938e1-3ca7-41d6-ae46-5f9bca5e096f"
+>
+</ReqRef><Comment>Handles reception of report parameters.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Position report parameters available"
+ Guid="8f6b94f8-5ebc-4d66-9acf-ddf51ba1d957"
+>
+<ReqRef
+ Id="8e46d1f9-ece2-43e9-9a45-e2978111a3dc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68ef5d9c-449c-40de-beea-e8affff46386"
+>
+</ReqRef><PreConditions>
+<PreCondition
+ Guid="e736f8f8-7e25-47b8-95d9-3641a99d39cb"
+>THERE_IS X IN Packets | Available ( X.POSITION_REPORT_PARAMETERS )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="066e716a-07aa-4d5a-a10b-7fc517f0f0b2"
+>PositionReport.UpdatePositionReportParameters
+(
+  ( FIRST X IN Packets | Available ( X.POSITION_REPORT_PARAMETERS ) ).POSITION_REPORT_PARAMETERS
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Route suitability data available"
+ Guid="4aa1a01f-4254-4958-b0e8-99b5cb30cc20"
+>
+<ReqRef
+ Id="3eae43ab-6f26-4908-9360-5a8ce0bec069"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="052af9bd-f74a-4e5a-b527-5d0041e154b5"
+>
+</ReqRef><Comment>Handles reception of the route suitability data.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Route suitability data available"
+ Guid="c0c990ba-89d9-47e6-b458-c64d95c8112c"
+>
+<PreConditions>
+<PreCondition
+ Guid="446284a7-38bb-4883-9c06-40ea15d59a53"
+>THERE_IS X IN Packets | Available ( X.ROUTE_SUITABILITY_DATA )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1835b379-689c-41b7-82bd-bafdaa9df3c9"
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityReceived ( Packet =&gt; ( FIRST X IN Packets | Available ( X.ROUTE_SUITABILITY_DATA ) ).ROUTE_SUITABILITY_DATA )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="c6392e10-ecba-405d-a76b-2510ba3260e4"
+>
+<ReqRef
+ Id="bfb92914-1319-4a13-bb8f-c623e5f7e53a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="494e6f3a-b888-4d5e-87b9-b170d26f9c28"
+>
+</ReqRef><Comment>Handles reception of geographical position information.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Geographical position available"
+ Guid="61fbd0fd-4497-4000-98e8-49e1aeafeb65"
+>
+<PreConditions>
+<PreCondition
+ Guid="7e563bd6-c9f0-489a-a42f-b6e64a89d11b"
+>THERE_IS X IN Packets | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="93c1c20e-ed7d-474e-aa0b-b56128d38ef9"
+>Kernel.GeographicalPosition.GeographicalPositionReceived( aPacket=&gt; (FIRST X IN Packets | Available ( X.GEOGRAPHICAL_POSITION_INFORMATION)).GEOGRAPHICAL_POSITION_INFORMATION )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="bbd085cd-6114-4a8e-9372-7befdce23b2b"
+>
+<ReqRef
+ Id="277de94f-c4cd-4612-97ca-ead1fdd29073"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7371c655-70ff-4786-8af1-47e54b325fbc"
+>
+</ReqRef><ReqRef
+ Id="fb5cdb2c-826a-4be7-babf-d16c11e9720c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c743c8f0-396e-4f62-90ff-46a86510ce47"
+>
+</ReqRef><Comment>Handles reception of RBC transition orders.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="RBC transition order available"
+ Guid="53418cea-2cd8-4707-94b4-ccdc60514170"
+>
+<PreConditions>
+<PreCondition
+ Guid="e93e740d-2bf8-41d0-ab39-9fb5c7ea7fe3"
+>THERE_IS X IN Packets | Available ( X.RBC_TRANSITION_ORDER )</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9465d11b-3c0d-4be2-a91e-883e806e5d57"
+>RBCTransitionOrderReceived ( aPacket =&gt; ( FIRST X IN Packets | Available ( X.RBC_TRANSITION_ORDER )).RBC_TRANSITION_ORDER )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="d991fd29-3448-414c-b173-d33dc950f456"
+>
+<ReqRef
+ Id="690dfc40-042d-4c8d-9e60-17b85d455fd3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="695cbd0a-2d60-4273-9207-4f12b4517f07"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8a0a0e4a-59f6-4ba6-8a44-24afc8156a17"
+>
+</ReqRef><ReqRef
+ Id="f32ad7de-67d9-4075-bb38-75a13996ad98"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b472d4e9-95b2-4baf-9db7-ee6c4fc212ff"
+>
+</ReqRef><ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="089b9fba-2bb7-463a-8dda-057dea445026"
+>
+</ReqRef><Comment>Handles reception of reversing area information.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing area information received"
+ Guid="8a00d353-62fa-4dcf-986c-2ccf3f3da7bf"
+>
+<PreConditions>
+<PreCondition
+ Guid="2060598f-0aa3-4dff-9cfc-d591ff131003"
+>THERE_IS X IN Packets | Available ( X.REVERSING_AREA_INFORMATION)</PreCondition><PreCondition
+ Guid="dd515f89-a7ca-4ad5-8028-653e08841979"
+>THERE_IS X IN Packets | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="80535626-724a-4983-90b1-d0fe24394982"
+>Kernel.TrackDescription.ReversingArea.ReversingAreaInformationReceived
+(
+    RVAreaPacket =&gt; ( FIRST X IN Packets | Available (X.REVERSING_AREA_INFORMATION)).REVERSING_AREA_INFORMATION,
+    RVSupervisionPacket =&gt; ( FIRST X IN Packets | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="28f5a732-ce0a-4051-bbf4-03e0557c4a7b"
+>
+<ReqRef
+ Id="c93e250c-fc42-406f-9706-6ec7488b8982"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0c86519-5005-4a55-ba21-787201b11562"
+>
+</ReqRef><ReqRef
+ Id="f08e576d-1c61-4c2b-b742-29f729a5728f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="005e242c-9fab-496a-8cc4-ba3c58514f36"
+>
+</ReqRef><Comment>Handles reception of reversing supervision information.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing supervision information received"
+ Guid="af2c5570-7a4d-4054-82ad-57ef1d45427e"
+>
+<PreConditions>
+<PreCondition
+ Guid="193d11a0-6c10-4e95-88ed-a9e108627cb4"
+>THERE_IS X IN Packets | Available ( X.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="44c794a5-cbc0-4338-8222-edf600f1a426"
+>Kernel.TrackDescription.ReversingArea.ReversingSupervisionInformationReceived(RVSupervisionPacket =&gt; ( FIRST X IN Packets | Available (X.REVERSING_SUPERVISION_INFORMATION)).REVERSING_SUPERVISION_INFORMATION)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="LSSMA display toggle order available"
+ Guid="cf3b6a56-0f48-4763-a9f3-26f5e0f6b0db"
+>
+<ReqRef
+ Id="5ab8592b-d34d-449a-b9b4-a49404c758ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="09fa92ee-7cd7-489c-9efc-7a8080c44a86"
+>
+</ReqRef><ReqRef
+ Id="569567b3-3681-4d80-9bed-9a1376f4cd6f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="be72b01c-5106-49a0-8a60-afd1ebd352bc"
+>
+</ReqRef><Comment>Handles reception of an LSSMA diplay toggle order.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LSSMA display toggle order received"
+ Guid="9a4a5819-03c2-4b8c-8d54-3e3ae43d3089"
+>
+<PreConditions>
+<PreCondition
+ Guid="20b8a664-9aa0-43cf-806f-77575b6c9d8b"
+>THERE_IS X IN Packets | Available (X.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="de78be94-0ff2-487f-b42a-b5d3406df13c"
+>Kernel.LimitedSupervision.LSSMAToggleReceived(
+    Packet =&gt;
+(FIRST X IN Packets | Available(X.LSSMA_DISPLAY_TOGGLE_ORDER)).LSSMA_DISPLAY_TOGGLE_ORDER,
+    Timestamp =&gt; AddToDate
+    (
+        StartDate =&gt; Kernel.DateAndTime.StartDate,
+        Increment =&gt; Default.MessageTypes.TimeResolution(Time)
+    )
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
