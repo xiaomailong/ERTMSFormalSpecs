@@ -174,9 +174,6 @@
 <Function
  Type="Boolean"
  Default=""
- Y="60"
- Width="100"
- Height="50"
  Name="MessageValuesCorrect"
  Guid="9cdc751e-5642-4943-b2d9-07c029b94d3b"
 >
@@ -276,7 +273,7 @@
 <PreCondition
  Guid="2626a51f-5362-438f-8fb3-518c2a009648"
 >struct.NID_RADIO == &apos;&apos;
-  OR  
+ OR
 NOT CheckNumber(struct.NID_RADIO)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case

@@ -183,6 +183,14 @@
  Guid="a8aa0e5c-9db2-4f0a-8957-90a0bd85d724"
 >
 </ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION"
+ Guid="053cda4e-9c8d-4e41-b812-787f4efe4bfb"
+>
+</StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.Message"
  Default="EMPTY"
  Mode="InOut"
@@ -222,6 +230,14 @@
  Guid="eeea20db-550f-4a30-b205-133472416b41"
 >
 </ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM"
+ Guid="bfc151c6-0c7f-42e0-8130-c31bf1c6b80b"
+>
+</StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.Message"
  Default="EMPTY"
  Mode="InOut"
@@ -235,6 +251,14 @@
  Guid="0fc4239c-5380-4f13-8ae4-88a867f9e1ab"
 >
 </ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="PERMITTED_BRAKING_DISTANCE_INFORMATION"
+ Guid="c1cca9de-0121-46f9-bd0c-5eebd9b54633"
+>
+</StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.Message"
  Default="EMPTY"
  Mode="InOut"
@@ -261,6 +285,14 @@
  Guid="da585e7f-f62e-4c6e-b6c8-76970ffb13de"
 >
 </ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3"
+ Guid="3af1d34c-aa99-46ac-937e-63e711170eec"
+>
+</StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.Message"
  Default="EMPTY"
  Mode="InOut"
@@ -300,6 +332,14 @@
  Guid="680725e8-0177-4b7b-ad36-7a9afa6d1039"
 >
 </ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="TRACK_CONDITION_STATION_PLATFORMS"
+ Guid="203afbc4-f67c-4b7f-a697-0affa503e824"
+>
+</StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.Message"
  Default="EMPTY"
  Mode="InOut"
@@ -365,6 +405,14 @@
  Guid="a8f124da-baa1-44eb-8229-40dd752a6674"
 >
 </ReqRef></StructureElement><StructureElement
+ TypeName="PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.Message"
+ Default="EMPTY"
+ Mode="InOut"
+ Implemented="TRUE"
+ Name="LEVEL_CROSSING_INFORMATION"
+ Guid="425bea83-7057-4984-91c8-2ec94cf8863b"
+>
+</StructureElement><StructureElement
  TypeName="PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.Message"
  Default="EMPTY"
  Mode="InOut"
@@ -424,7 +472,13 @@
  Name="LSSMA_DISPLAY_TOGGLE_ORDER"
  Guid="83369bfb-9e82-4a3a-b122-dbec9ac4f2d7"
 >
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="COMMON_PACKETS_STRUCT"
+ Guid="ef5bcbd5-49a4-49a1-9e85-8a7b862e8b1a"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="SubStructure1"
@@ -613,179 +667,233 @@
 >NOT Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM.MessageValuesCorrect(struct.TRACK_CONDITION_CHANGE_OF_TRACTION_SYSTEM)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="AXLE_LOAD_SPEED_PROFILE invalid"
+ Name="TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION invalid"
  Guid="3d966341-4c4f-4a23-9ebc-a1d997aa6021"
 >
 <PreConditions>
 <PreCondition
  Guid="0f47df0a-8d23-4bad-88e6-04e29ce91293"
->NOT Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.MessageValuesCorrect(struct.AXLE_LOAD_SPEED_PROFILE)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION.MessageValuesCorrect(struct.TRACK_CONDITION_CHANGE_OF_ALLOWED_CURRENT_CONSUMPTION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="LEVEL_TRANSITION_ORDER invalid"
+ Name="AXLE_LOAD_SPEED_PROFILE invalid"
  Guid="edcf40a6-b9cf-4cb5-b636-f063850ba265"
 >
 <PreConditions>
 <PreCondition
  Guid="789a330f-5e6c-4bc2-af73-2d651d863df9"
->NOT Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.MessageValuesCorrect(struct.LEVEL_TRANSITION_ORDER)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.AXLE_LOAD_SPEED_PROFILE.MessageValuesCorrect(struct.AXLE_LOAD_SPEED_PROFILE)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="SESSION_MANAGEMENT invalid"
+ Name="LEVEL_TRANSITION_ORDER invalid"
  Guid="d902576c-f269-49db-a631-d18b505217dd"
 >
 <PreConditions>
 <PreCondition
  Guid="4c26af44-7941-4772-973f-5b67cef19462"
->NOT Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.MessageValuesCorrect(struct.SESSION_MANAGEMENT)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.LEVEL_TRANSITION_ORDER.MessageValuesCorrect(struct.LEVEL_TRANSITION_ORDER)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="RADIO_NETWORK_REGISTRATION invalid"
+ Name="SESSION_MANAGEMENT invalid"
  Guid="bf13c1e8-ab94-45a4-ad9f-a76b0d396f41"
 >
 <PreConditions>
 <PreCondition
  Guid="7f92759a-8cb1-4685-9982-02a372fe038f"
->NOT Messages.PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.MessageValuesCorrect(struct.RADIO_NETWORK_REGISTRATION)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.SESSION_MANAGEMENT.MessageValuesCorrect(struct.SESSION_MANAGEMENT)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS invalid"
+ Name="DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM invalid"
  Guid="b888d709-7e8f-4f61-b5e0-a67207bf05f1"
 >
 <PreConditions>
 <PreCondition
  Guid="b37bdeaa-6896-4f5b-ac58-c80f7d3414f7"
->NOT Messages.PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.MessageValuesCorrect(struct.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM.MessageValuesCorrect(struct.DATA_USED_BY_APPLICATIONS_OUTSIDE_THE_ERTMS_ETCS_SYSTEM)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="POSITION_REPORT_PARAMETERS invalid"
+ Name="RADIO_NETWORK_REGISTRATION invalid"
  Guid="9a1d77ef-a806-42bc-bf41-2e496832f867"
 >
 <PreConditions>
 <PreCondition
  Guid="0125375e-d838-4106-9219-758c9bb98e3b"
->NOT Messages.PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.MessageValuesCorrect(struct.POSITION_REPORT_PARAMETERS)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.RADIO_NETWORK_REGISTRATION.MessageValuesCorrect(struct.RADIO_NETWORK_REGISTRATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="TEMPORARY_SPEED_RESTRICTION invalid"
+ Name="PERMITTED_BRAKING_DISTANCE_INFORMATION invalid"
  Guid="ca879895-a5fc-4f61-b905-c4cb012ee1f2"
 >
 <PreConditions>
 <PreCondition
  Guid="0140ea4d-1d77-4648-bd17-5d465e6f3f74"
->NOT Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.MessageValuesCorrect(struct.TEMPORARY_SPEED_RESTRICTION)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.PERMITTED_BRAKING_DISTANCE_INFORMATION.MessageValuesCorrect(struct.PERMITTED_BRAKING_DISTANCE_INFORMATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="TEMPORARY_SPEED_RESTRICTION_REVOCATION invalid"
+ Name="MOVEMENT_AUTHORITY_REQUEST_PARAMETERS invalid"
  Guid="dadaf547-04fb-4427-9143-805d9c644dd2"
 >
 <PreConditions>
 <PreCondition
  Guid="773c0ab0-06ba-4341-9763-3db96ffa8c78"
->NOT Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.MessageValuesCorrect(struct.TEMPORARY_SPEED_RESTRICTION_REVOCATION)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS.MessageValuesCorrect(struct.MOVEMENT_AUTHORITY_REQUEST_PARAMETERS)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="TRACK_CONDITION invalid"
+ Name="POSITION_REPORT_PARAMETERS invalid"
  Guid="b6afecc5-b050-402f-9dee-dae245e00b54"
 >
 <PreConditions>
 <PreCondition
  Guid="6446a198-0cc1-4140-b38d-de8e60c4545d"
->NOT Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.MessageValuesCorrect(struct.TRACK_CONDITION)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.POSITION_REPORT_PARAMETERS.MessageValuesCorrect(struct.POSITION_REPORT_PARAMETERS)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="ROUTE_SUITABILITY_DATA invalid"
+ Name="INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3 invalid"
  Guid="1177a58c-ae34-448a-ab51-ac72dc0a065e"
 >
 <PreConditions>
 <PreCondition
  Guid="99e4a246-5724-44b8-b6b9-0b9c9272fba0"
->NOT Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.MessageValuesCorrect(struct.ROUTE_SUITABILITY_DATA)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3.MessageValuesCorrect(struct.INHIBITION_OF_REVOCABLE_TSRS_FROM_BALISES_IN_L2_3)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="ADHESION_FACTOR invalid"
+ Name="TEMPORARY_SPEED_RESTRICTION invalid"
  Guid="08ab5e17-8630-429a-a37e-94ac07f6a7ec"
 >
 <PreConditions>
 <PreCondition
  Guid="75b46d9f-1e6a-481d-8438-c471b47ccee4"
->NOT Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.MessageValuesCorrect(struct.ADHESION_FACTOR)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION.MessageValuesCorrect(struct.TEMPORARY_SPEED_RESTRICTION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES invalid"
+ Name="TEMPORARY_SPEED_RESTRICTION_REVOCATION invalid"
  Guid="1693b831-0604-48f0-877b-ab16076df956"
 >
 <PreConditions>
 <PreCondition
  Guid="26a780f9-7b44-4a0e-866d-8360123919d0"
->NOT Messages.PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.MessageValuesCorrect(struct.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.TEMPORARY_SPEED_RESTRICTION_REVOCATION.MessageValuesCorrect(struct.TEMPORARY_SPEED_RESTRICTION_REVOCATION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES invalid"
+ Name="TRACK_CONDITION invalid"
  Guid="0675821c-0fc6-4ea8-a0ce-1b1a884ceb9f"
 >
 <PreConditions>
 <PreCondition
  Guid="681327dd-3f90-4286-86f1-522d94cc6358"
->NOT Messages.PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES.MessageValuesCorrect(struct.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION.MessageValuesCorrect(struct.TRACK_CONDITION)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="GEOGRAPHICAL_POSITION_INFORMATION invalid"
+ Name="TRACK_CONDITION_STATION_PLATFORMS invalid"
  Guid="98586957-6996-4971-ac26-8a4b4cbd4287"
 >
 <PreConditions>
 <PreCondition
  Guid="d7e9ace2-faaf-48b6-85fb-d13e030dbbc3"
->NOT Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.MessageValuesCorrect(struct.GEOGRAPHICAL_POSITION_INFORMATION)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.TRACK_CONDITION_STATION_PLATFORMS.MessageValuesCorrect(struct.TRACK_CONDITION_STATION_PLATFORMS)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="RBC_TRANSITION_ORDER invalid"
+ Name="ROUTE_SUITABILITY_DATA invalid"
  Guid="bd351ae8-390a-44cc-a437-3356112301cb"
 >
 <PreConditions>
 <PreCondition
  Guid="3ab8a1b3-3dc6-47fe-8b4d-8ba98e8dc289"
->NOT Messages.PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.MessageValuesCorrect(struct.RBC_TRANSITION_ORDER)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.ROUTE_SUITABILITY_DATA.MessageValuesCorrect(struct.ROUTE_SUITABILITY_DATA)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="REVERSING_AREA_INFORMATION invalid"
+ Name="ADHESION_FACTOR invalid"
  Guid="05109887-f116-4333-875b-fb8a3d51c759"
 >
 <PreConditions>
 <PreCondition
  Guid="c3a9c931-ec74-4ef2-b170-a91987d35ea4"
->NOT Messages.PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.MessageValuesCorrect(struct.REVERSING_AREA_INFORMATION)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.ADHESION_FACTOR.MessageValuesCorrect(struct.ADHESION_FACTOR)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="REVERSING_SUPERVISION_INFORMATION invalid"
+ Name="PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES invalid"
  Guid="37d1a68f-96ce-49a8-b993-b41d850cd86d"
 >
 <PreConditions>
 <PreCondition
  Guid="e7ec49b1-10cf-4825-bd89-4ec96a79d081"
->NOT Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.MessageValuesCorrect(struct.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES.MessageValuesCorrect(struct.PACKET_FOR_SENDING_PLAIN_TEXT_MESSAGES)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="TRAIN_RUNNING_NUMBER_FROM_RBC invalid"
+ Name="PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES invalid"
  Guid="8e9026a0-3c77-428a-8131-fbf46b098bec"
 >
 <PreConditions>
 <PreCondition
  Guid="16a7e5df-3ec0-4437-919f-e72f6296baad"
->NOT Messages.PACKET.TRACK_TO_TRAIN.TRAIN_RUNNING_NUMBER_FROM_RBC.MessageValuesCorrect(struct.TRAIN_RUNNING_NUMBER_FROM_RBC)</PreCondition></PreConditions>
+>NOT Messages.PACKET.TRACK_TO_TRAIN.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES.MessageValuesCorrect(struct.PACKET_FOR_SENDING_FIXED_TEXT_MESSAGES)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="LSSMA_DISPLAY_TOGGLE_ORDER invalid"
+ Name="GEOGRAPHICAL_POSITION_INFORMATION invalid"
  Guid="8f81487e-66f8-4ab6-b0a4-d44a54013333"
 >
 <PreConditions>
 <PreCondition
  Guid="e2e04087-01b6-41ff-9461-9f00b733890c"
+>NOT Messages.PACKET.TRACK_TO_TRAIN.GEOGRAPHICAL_POSITION_INFORMATION.MessageValuesCorrect(struct.GEOGRAPHICAL_POSITION_INFORMATION)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LEVEL_CROSSING_INFORMATION invalid"
+ Guid="7c624157-f204-4674-86b0-37101316f5bf"
+>
+<PreConditions>
+<PreCondition
+ Guid="9d63a664-b54d-4bdd-bd4f-57f156870ce3"
+>NOT Messages.PACKET.TRACK_TO_TRAIN.LEVEL_CROSSING_INFORMATION.MessageValuesCorrect(struct.LEVEL_CROSSING_INFORMATION)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="RBC_TRANSITION_ORDER invalid"
+ Guid="54c710d7-0274-4141-8773-a6bd09ee2847"
+>
+<PreConditions>
+<PreCondition
+ Guid="59fca34e-fbb6-40b1-818e-4bc41c9fcb20"
+>NOT Messages.PACKET.TRACK_TO_TRAIN.RBC_TRANSITION_ORDER.MessageValuesCorrect(struct.RBC_TRANSITION_ORDER)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="REVERSING_AREA_INFORMATION invalid"
+ Guid="cc8c47bc-b011-4618-9354-ea0137b58192"
+>
+<PreConditions>
+<PreCondition
+ Guid="ca180681-c5d7-44cb-b763-a32cfd402d75"
+>NOT Messages.PACKET.TRACK_TO_TRAIN.REVERSING_AREA_INFORMATION.MessageValuesCorrect(struct.REVERSING_AREA_INFORMATION)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="REVERSING_SUPERVISION_INFORMATION invalid"
+ Guid="57751f3b-c54a-4522-8cb0-d3c833a54928"
+>
+<PreConditions>
+<PreCondition
+ Guid="140d3dea-e74a-4c14-96a3-514ae2f75aed"
+>NOT Messages.PACKET.TRACK_TO_TRAIN.REVERSING_SUPERVISION_INFORMATION.MessageValuesCorrect(struct.REVERSING_SUPERVISION_INFORMATION)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="TRAIN_RUNNING_NUMBER_FROM_RBC invalid"
+ Guid="ed968fbb-346a-427a-bdeb-e1ea199f934d"
+>
+<PreConditions>
+<PreCondition
+ Guid="9357b1db-b3a6-4251-9ff7-854ca4c70519"
+>NOT Messages.PACKET.TRACK_TO_TRAIN.TRAIN_RUNNING_NUMBER_FROM_RBC.MessageValuesCorrect(struct.TRAIN_RUNNING_NUMBER_FROM_RBC)</PreCondition></PreConditions>
+<Expression>False</Expression>
+</Case><Case
+ Name="LSSMA_DISPLAY_TOGGLE_ORDER invalid"
+ Guid="2b442967-7fc8-4f4a-9eee-139a44bbc745"
+>
+<PreConditions>
+<PreCondition
+ Guid="978a82f0-0769-4d2b-b4e9-e9fff716b77a"
 >NOT Messages.PACKET.TRACK_TO_TRAIN.LSSMA_DISPLAY_TOGGLE_ORDER.MessageValuesCorrect(struct.LSSMA_DISPLAY_TOGGLE_ORDER)</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
- Guid="7c624157-f204-4674-86b0-37101316f5bf"
+ Guid="eeb480bf-dd1e-44e9-abb2-5e8a53494e7a"
 >
 <Expression>True</Expression>
 </Case></Cases>
