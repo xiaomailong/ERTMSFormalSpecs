@@ -464,7 +464,7 @@ namespace DataDictionary
             /// </summary>
             /// <param name="basePath"></param>
             /// <param name="lockFiles"></param>
-            /// <param name="allowErrors"></param>
+            /// <param name="errors"></param>
             public LoadDepends(string basePath, bool lockFiles, List<ElementLog> errors)
             {
                 BasePath = basePath;
@@ -723,7 +723,7 @@ namespace DataDictionary
         /// <param name="efsSystem">The system for which this dictionary is loaded</param>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <param name="allowErrors">Provides the list used to hold errors during the load. null indicates that no errors are tolerated during load</param>
-        /// <param name="errors">Stores that errors found during load of the file. If null, no error is accepter</param>
+        /// <param name="errors">Stores that errors found during load of the file. If null, no error is accepted</param>
         /// <param name="UpdateGuid">Indicates that the loader should ensure that Guid are set in all elements of the model</param>
         /// <returns></returns>
         public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors, bool updateGuid)
@@ -785,12 +785,6 @@ namespace DataDictionary
             finally
             {
                 factory.AutomaticallyGenerateGuid = true;
-            }
-
-            if (retVal != null && efsSystem != null)
-            {
-                efsSystem.ShouldRebuild = true;
-                retVal.CheckRules();
             }
 
             return retVal;

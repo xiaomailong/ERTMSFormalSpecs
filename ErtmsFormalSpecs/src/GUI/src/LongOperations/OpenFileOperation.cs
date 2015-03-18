@@ -95,6 +95,11 @@ namespace GUI.LongOperations
         public override void ExecuteWork()
         {
             Dictionary = Util.load(FileName, System, PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
+            if (ErrorsDuringLoad != null && Dictionary != null && System != null)
+            {
+                System.ShouldRebuild = true;
+                Dictionary.CheckRules();
+            }
         }
 
         /// <summary>
