@@ -37,6 +37,13 @@ BEGIN
 
 `    public static class Comparer 
 `    {
+`
+`        /// <summary>
+`        /// Indicates that the GUID update should be performed only when not set (when false)
+`        /// or also when the name matches (when true)
+`        /// </summary>
+`        public static bool GuidByName = false;
+`
   });
 
   -- 
@@ -259,7 +266,7 @@ BEGIN
 `
 `            if ( obj.Guid != other.getGuid() )
 `            { 
-`                if ( string.IsNullOrEmpty(other.getGuid()) )
+`                if ( string.IsNullOrEmpty(other.getGuid()) || GuidByName && (obj.Name == other.Name) )
 `                {
 `                    // These are matching elements, copy the guid from  obj
 `                    other.setGuid ( obj.Guid );
@@ -556,10 +563,11 @@ BEGIN
   RESULT := FALSE;
   current := Element;
   WHILE ( current <> VOID ) AND NOT RESULT DO
---    OUT.WriteLn (' -- ' & current.NAME &' '& current!BASECLASS &' =?= '& BaseElement &' -> '& RESULT);
+    -- OUT.WriteLn (' -- ' & current.NAME &' '& current!BASECLASS &' =?= '& BaseElement &' -> '& RESULT);
     RESULT := current!BASECLASS == BaseElement;
     current := current!BaseElement;
   END;
+  -- OUT.WriteLn (' -- ' & Element &' =?= '& BaseElement &' -> '& RESULT);
 END;
 
 PROCEDURE TERMINATE;

@@ -104,7 +104,7 @@ namespace DataDictionary
             get
             {
                 ObjectFactory factory = (ObjectFactory) acceptor.getFactory();
-                if (string.IsNullOrEmpty(getGuid()))
+                if (string.IsNullOrEmpty(getGuid()) )
                 {
                     EnsureGuid();
                 }

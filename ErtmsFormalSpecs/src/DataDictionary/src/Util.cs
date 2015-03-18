@@ -50,7 +50,7 @@ namespace DataDictionary
         /// <summary>
         /// Updates the dictionary contents
         /// </summary>
-        private class Updater : Cleaner
+        public class Updater : Cleaner
         {
             /// <summary>
             /// Indicates that GUID should be updated
