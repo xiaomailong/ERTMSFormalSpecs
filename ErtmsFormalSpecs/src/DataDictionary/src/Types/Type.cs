@@ -484,30 +484,14 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public virtual bool Match(Type otherType)
         {
-            bool result = false;
-
             if (otherType is AnyType)
             {
-                result = true;
+                return true;
             }
             else
             {
-                Structure structure = otherType as Structure;
-                if (structure != null)
-                {
-                    Structure currentStructure = this as Structure;
-                    if (currentStructure != null)
-                    {
-                        result = structure.ImplementedStructures.Contains(currentStructure);
-                    }
-                }
-                else
-                {
-                    result = this == otherType;
-                }
+                return this == otherType;
             }
-
-            return result;
         }
 
         /// <summary>

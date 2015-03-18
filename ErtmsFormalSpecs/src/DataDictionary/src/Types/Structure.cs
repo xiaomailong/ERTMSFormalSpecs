@@ -269,6 +269,27 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates that the other type can be placed in variables of this type
+        /// </summary>
+        /// <param name="otherType"></param>
+        /// <returns></returns>
+        public override bool Match(Type otherType)
+        {
+            bool result = base.Match(otherType);
+
+            if (!result)
+            {
+                Structure structure = otherType as Structure;
+                if (structure != null)
+                {
+                    result = structure.ImplementedStructures.Contains(this);
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Indicates that binary operation is valid for this type and the other type 
         /// </summary>
         /// <param name="otherType"></param>

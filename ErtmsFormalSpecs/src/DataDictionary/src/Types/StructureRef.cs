@@ -74,10 +74,10 @@ namespace DataDictionary.Types
             get
             {
                 List<Structure> result = new List<Structure>();
-                if (structure != null)
+                if (ReferencedStructure != null)
                 {
-                    result.Add(structure);
-                    foreach (Structure aStructure in structure.Interfaces)
+                    result.Add(ReferencedStructure);
+                    foreach (Structure aStructure in ReferencedStructure.Interfaces)
                     {
                         result.AddRange(aStructure.ImplementedStructures);
                     }
