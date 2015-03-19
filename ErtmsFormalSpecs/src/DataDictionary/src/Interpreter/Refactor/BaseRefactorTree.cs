@@ -34,11 +34,6 @@ namespace DataDictionary.Interpreter.Refactor
         private int Delta { get; set; }
 
         /// <summary>
-        /// The tree on which the replacement should occur
-        /// </summary>
-        private InterpreterTreeNode Tree { get; set; }
-
-        /// <summary>
         /// Replace the text, between locations start and end with the replacement value
         /// Update Delta according to this replacement
         /// </summary>
@@ -64,8 +59,6 @@ namespace DataDictionary.Interpreter.Refactor
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="tree"></param>
-        /// <param name="text"></param>
         public BaseRefactorTree()
         {
             Delta = 0;
@@ -92,7 +85,10 @@ namespace DataDictionary.Interpreter.Refactor
                         else
                         {
                             ModelElement model = expressionable as ModelElement;
-                            model.AddError("Refactoring aborded for expression " + expressionable.ExpressionText);
+                            if (model != null)
+                            {
+                                model.AddError("Refactoring aborded for expression " + expressionable.ExpressionText);
+                            }
                         }
                     }
                 }

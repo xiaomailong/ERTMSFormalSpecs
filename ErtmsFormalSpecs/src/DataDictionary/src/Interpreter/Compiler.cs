@@ -649,7 +649,7 @@ namespace DataDictionary.Interpreter
             /// <summary>
             /// Constructor
             /// </summary>
-            /// <param name="dictionary"></param>
+            /// <param name="nameSpace"></param>
             public NameSpaceRefactorer(NameSpace nameSpace)
             {
                 NameSpace = nameSpace;
