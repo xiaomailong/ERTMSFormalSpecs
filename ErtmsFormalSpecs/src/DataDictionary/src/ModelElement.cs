@@ -143,60 +143,40 @@ namespace DataDictionary
         /// <returns></returns>
         public virtual string ReferenceName(ModelElement modelElement)
         {
-            string retVal = FullName;
+            string retVal = Name;
 
-            if (modelElement != null)
+            if (this != modelElement)
             {
-                string prefix = "";
-
-                Structure structure1 = EnclosingFinder<Structure>.find(this, true);
-                Structure structure2 = EnclosingFinder<Structure>.find(modelElement, true);
-                if (structure1 != null)
+                ModelElement enclosing = Enclosing as ModelElement;
+                while (enclosing != null && !(enclosing is Dictionary) && enclosing != modelElement)
                 {
-                    if (structure2 != null)
+                    StateMachine enclosingStateMachine = enclosing as StateMachine;
+                    ;
+                    if (enclosingStateMachine != null && enclosingStateMachine.EnclosingStateMachine != null)
                     {
-                        prefix = CommonPrefix(structure1.FullName + ".", structure2.FullName + ".");
+                        // Ignore state machines because they have the same name as their enclosing state
+                        // This is not true for the first state machine in the chain
                     }
                     else
                     {
-                        if (!(this is Structure))
+                        bool sharePrefix = false;
+                        ModelElement current = modelElement;
+                        while (!sharePrefix && current != null)
                         {
-                            retVal = Name;
-                            prefix = "";
+                            sharePrefix = enclosing == current;
+                            current = current.Enclosing as ModelElement;
+                        }
+
+                        if (sharePrefix)
+                        {
+                            enclosing = null;
                         }
                         else
                         {
-                            retVal = FullName;
+                            retVal = enclosing.Name + "." + retVal;
+                            enclosing = enclosing.Enclosing as ModelElement;
                         }
                     }
-                }
-                else
-                {
-                    StateMachine stateMachine1 = EnclosingFinder<StateMachine>.find(this, true);
-                    StateMachine stateMachine2 = EnclosingFinder<StateMachine>.find(modelElement, true);
-                    if (stateMachine1 != null && stateMachine2 != null)
-                    {
-                        prefix = CommonPrefix(stateMachine1.FullName + ".", stateMachine2.FullName + ".");
-                    }
-                    else
-                    {
-                        NameSpace nameSpace1 = EnclosingFinder<NameSpace>.find(this, true);
-                        NameSpace nameSpace2 = EnclosingFinder<NameSpace>.find(modelElement, true);
-
-                        if (nameSpace1 != null && nameSpace2 != null)
-                        {
-                            prefix = CommonPrefix(nameSpace1.FullName + ".", nameSpace2.FullName + ".");
-                        }
-                    }
-                }
-
-                if (prefix.Length < retVal.Length)
-                {
-                    retVal = retVal.Substring(prefix.Length);
-                }
-                else
-                {
-                    retVal = Name;
                 }
             }
 

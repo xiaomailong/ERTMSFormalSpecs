@@ -29,65 +29,54 @@ namespace DataDictionary.Interpreter.Refactor
         private ModelElement Ref { get; set; }
 
         /// <summary>
-        /// By what should be replaced the referenced
+        /// The user of the element
         /// </summary>
-        private string ReplacementValue { get; set; }
+        private ModelElement User { get; set; }
 
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
-            bool replaced = false;
-
-            if (!(Ref is StructureElement))
+            ModelElement backup = User;
+            foreach (Expression expression in derefExpression.Arguments)
             {
-                if (derefExpression.Ref == Ref)
+                if (expression != null)
                 {
-                    int count = derefExpression.Arguments.Count;
-                    if (derefExpression.Arguments[count - 2].Ref is NameSpace)
+                    if (expression.Ref == Ref)
                     {
-                        ReplaceText(ReplacementValue, derefExpression.Start, derefExpression.End);
-                        replaced = true;
+                        string replacementValue = Ref.ReferenceName(User);
+
+                        ReplaceText(replacementValue, expression.Start, expression.End);
+                        break;
                     }
                     else
                     {
-                        string tmp = ReplacementValue;
-                        int index = ReplacementValue.LastIndexOf(".");
-                        if (index > 0)
-                        {
-                            ReplacementValue = ReplacementValue.Substring(index + 1);
-                        }
-                        VisitExpression(derefExpression.Arguments[count - 1]);
-                        ReplacementValue = tmp;
-                        replaced = true;
+                        User = backup;
+                        VisitExpression(expression);
+                        User = expression.GetExpressionType();
                     }
-                }
-                else
-                {
-                    foreach (Expression expression in derefExpression.Arguments)
-                    {
-                        if (expression != null)
-                        {
-                            if (expression.Ref == Ref)
-                            {
-                                ReplaceText(ReplacementValue, derefExpression.Start, expression.End);
-                                replaced = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
 
-            if (!replaced)
-            {
-                base.VisitDerefExpression(derefExpression);
+                    if (expression.Ref != null)
+                    {
+                        ITypedElement typedElement = expression.Ref as ITypedElement;
+                        if (typedElement != null && typedElement.Type != null)
+                        {
+                            User = typedElement.Type;
+                        }
+                        else
+                        {
+                            User = expression.Ref as ModelElement;
+                        }
+                    }
+                }
             }
+            User = backup;
         }
 
         protected override void VisitDesignator(Designator designator)
         {
             if (designator.Ref == Ref && !designator.IsPredefined())
             {
-                ReplaceText(ReplacementValue, designator.Start, designator.End);
+                string replacementValue = Ref.ReferenceName(User);
+                ReplaceText(replacementValue, designator.Start, designator.End);
             }
         }
 
@@ -98,11 +87,10 @@ namespace DataDictionary.Interpreter.Refactor
         /// <param name="text"></param>
         /// <param name="reference"></param>
         /// <param name="replacementValue"></param>
-        public RefactorTree(ModelElement reference, string replacementValue)
-            : base()
+        public RefactorTree(ModelElement reference, ModelElement user)
         {
             Ref = reference;
-            ReplacementValue = replacementValue;
+            User = user;
         }
     }
 }

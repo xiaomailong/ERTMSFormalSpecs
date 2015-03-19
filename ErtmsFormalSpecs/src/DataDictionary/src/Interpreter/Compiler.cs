@@ -580,9 +580,8 @@ namespace DataDictionary.Interpreter
             {
                 try
                 {
-                    string name = element.ReferenceName(user as ModelElement);
-
-                    RefactorTree refactorer = new RefactorTree(element, name);
+                    NameSpace enclosingNameSpace = EnclosingFinder<NameSpace>.find(user as ModelElement, true);
+                    RefactorTree refactorer = new RefactorTree(element, enclosingNameSpace);
                     refactorer.PerformUpdate(user);
                 }
                 catch (Exception e)
@@ -601,12 +600,13 @@ namespace DataDictionary.Interpreter
         {
             if (user != null)
             {
+                ModelElement enclosing = EnclosingFinder<NameSpace>.find(user, true);
                 try
                 {
                     Function userFunction = user as Function;
                     if ((user.Type == element))
                     {
-                        string newName = element.ReferenceName(user as ModelElement);
+                        string newName = element.ReferenceName(enclosing);
                         user.TypeName = newName;
                     }
                     else if (userFunction != null && userFunction.ReturnType == element)
@@ -619,7 +619,7 @@ namespace DataDictionary.Interpreter
                         Function function = user as Function;
                         if (function != null)
                         {
-                            newName = function.ReturnType.ReferenceName(element);
+                            newName = function.ReturnType.ReferenceName(user as ModelElement);
                             user.TypeName = newName;
                         }
                         else

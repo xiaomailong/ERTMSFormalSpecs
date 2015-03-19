@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using DataDictionary.Types;
 
 namespace DataDictionary.Interpreter.Refactor
@@ -30,41 +31,41 @@ namespace DataDictionary.Interpreter.Refactor
 
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
-            bool replaced = false;
-
-            if (!(derefExpression.Ref is StructureElement))
+            ModelElement backup = BaseLocation;
+            foreach (Expression expression in derefExpression.Arguments)
             {
-                ModelElement model = derefExpression.Ref as ModelElement;
-                ModelElement enclosingModel = derefExpression.Arguments[derefExpression.Arguments.Count - 2].Ref as ModelElement;
-                if (model != null && enclosingModel != null)
+                if (expression != null)
                 {
-                    ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, derefExpression.End);
-                    replaced = true;
-                }
-                else
-                {
-                    enclosingModel = null;
-                    foreach (Expression expression in derefExpression.Arguments)
+                    ModelElement model = expression.Ref as ModelElement;
+                    if (model != null)
                     {
-                        if (expression != null)
+                        string referenceName = model.ReferenceName(BaseLocation);
+                        ReplaceText(referenceName, expression.Start, expression.End);
+                        break;
+                    }
+                    else
+                    {
+                        BaseLocation = backup;
+                        VisitExpression(expression);
+                        BaseLocation = expression.GetExpressionType();
+                    }
+
+                    if (expression.Ref != null)
+                    {
+                        ITypedElement typedElement = expression.Ref as ITypedElement;
+                        if (typedElement != null && typedElement.Type != null)
                         {
-                            model = expression.Ref as ModelElement;
-                            if (model != null && enclosingModel != null)
-                            {
-                                ReplaceText(model.ReferenceName(BaseLocation), derefExpression.Start, expression.End);
-                                replaced = true;
-                                break;
-                            }
-                            enclosingModel = model;
+                            BaseLocation = typedElement.Type;
+                        }
+                        else
+                        {
+                            BaseLocation = expression.Ref as ModelElement;
                         }
                     }
                 }
             }
 
-            if (!replaced)
-            {
-                VisitExpression(derefExpression.Arguments[0]);
-            }
+            BaseLocation = backup;
         }
 
         protected override void VisitDesignator(Designator designator)
@@ -76,15 +77,34 @@ namespace DataDictionary.Interpreter.Refactor
             }
         }
 
+        protected override void VisitStructExpression(StructExpression structExpression)
+        {
+            if (structExpression.Structure != null)
+            {
+                VisitExpression(structExpression.Structure);
+            }
+
+            ModelElement backup = BaseLocation;
+            BaseLocation = structExpression.Structure.GetExpressionType();
+            foreach (KeyValuePair<Designator, Expression> pair in structExpression.Associations)
+            {
+                if (pair.Key != null)
+                {
+                    VisitDesignator(pair.Key);
+                }
+                if (pair.Value != null)
+                {
+                    VisitExpression(pair.Value);
+                }
+            }
+            BaseLocation = backup;
+        }
+
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="interpreterTreeNode"></param>
-        /// <param name="text"></param>
-        /// <param name="reference"></param>
-        /// <param name="replacementValue"></param>
+        /// <param name="baseLocation"></param>
         public RelocateTree(ModelElement baseLocation)
-            : base()
         {
             BaseLocation = baseLocation;
         }
