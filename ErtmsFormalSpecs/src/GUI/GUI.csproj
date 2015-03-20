@@ -64,6 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="src\AboutDialogBox.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -600,14 +605,9 @@
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="src\AboutDialogBox.resx">
       <DependentUpon>AboutDialogBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -817,6 +817,8 @@
     <None Include="resources\folder_opened.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="resources\type-icon-new.png" />
+    <None Include="resources\type-icon.png" />
     <None Include="resources\unpin.png" />
     <None Include="resources\wheel.png" />
     <None Include="resources\train.png" />
@@ -835,6 +837,11 @@
     <None Include="resources\Pause.png" />
     <None Include="resources\circular arrow.png" />
     <None Include="resources\down arrow.png" />
+    <None Include="resources\parameter_icon.png" />
+    <None Include="resources\interface_icon.png" />
+    <None Include="resources\parameter-icon.png" />
+    <None Include="resources\interface-icon.png" />
+    <None Include="resources\redefines-icon.png" />
     <Content Include="resources\tools.png" />
     <None Include="resources\type_icon.png" />
     <None Include="resources\call_icon.png" />
