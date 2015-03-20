@@ -1,5 +1,6 @@
 <NameSpace
- X="170"
+ X="120"
+ Y="10"
  Width="100"
  Height="50"
  Name="AdhesionFactors"
@@ -15,7 +16,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="AdhesionFactor"
+ Name="AdhesionFactorStruct"
  Guid="dbdade40-4de6-4418-bf4e-557f8840956b"
 >
 <ReqRef
@@ -38,7 +39,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="70100128-5be8-45ca-ac85-b29150f40a0b"
 >
 </StructureElement><StructureElement
@@ -77,10 +78,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="ce82ebb8-5d0e-4aaf-8c62-6db17a9619ed"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><Interfaces>
+<StructureRef
+ Name="LocationLengthInterface"
+ Guid="d67b211b-69b4-4985-ba92-7dc9bef02ff1"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
+ TypeName="AdhesionFactorStruct"
  Default="[]"
  Y="100"
  Width="100"
@@ -113,7 +120,7 @@
 >
 </ReqRef><Parameters>
 <Parameter
- Type="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
+ Type="AdhesionFactorStruct"
  Name="anAdhesionFactor"
  Guid="b4f442a6-01ad-4aba-9157-9a924b5b0889"
 >
@@ -281,7 +288,7 @@
 <Actions>
 <Action
  Guid="97493d02-161f-4f42-9e15-655f310d7e55"
->REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE) IN AdhFactors</Action></Actions>
+>REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE) IN AdhFactors</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -324,9 +331,9 @@
 <Action
  Guid="cada790d-4718-4a92-bca2-70aae882cbc5"
 >INSERT
-    AdhesionFactor
+    AdhesionFactorStruct
     {
-        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE ),
+        Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_ADHESION, scale =&gt; Packet.Q_SCALE ),
         Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_ADHESION, scale =&gt; Packet.Q_SCALE ),
         Value =&gt; Packet.M_ADHESION
     }

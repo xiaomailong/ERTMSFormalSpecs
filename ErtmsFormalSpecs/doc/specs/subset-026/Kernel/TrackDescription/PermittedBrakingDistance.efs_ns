@@ -1,5 +1,6 @@
 <NameSpace
- X="280"
+ X="230"
+ Y="10"
  Width="100"
  Height="50"
  Name="PermittedBrakingDistance"
@@ -109,7 +110,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="89380bf4-0da8-4e2a-b952-ccb1e09ddadb"
 >
-</ReqRef></StructureElement></Structure><Structure
+</ReqRef></StructureElement><Interfaces>
+<StructureRef
+ Name="LocationLengthInterface"
+ Guid="6bb7c96f-6908-45a8-850f-9d3f0be1a63b"
+>
+</StructureRef></Interfaces>
+</Structure><Structure
  Default=""
  X="10"
  Y="110"
@@ -681,7 +688,7 @@
 </ReqRef><Comment>Provides value of A_safe for adhesion factor slippery rail with gradient 0.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
+ Type="AdhesionFactors.AdhesionFactorStruct"
  Name="anAdhFactor"
  Guid="ad9ff0e8-6784-4bcb-8310-c6ee0f1274dd"
 >
@@ -718,9 +725,9 @@
 <PreConditions>
 <PreCondition
  Guid="49182ebe-0de5-436a-bc60-ccb48241b9e0"
->d &lt; anAdhFactor.Distance + BaseTypes.LengthToDistance ( TrackDescription.AdhesionFactors.AdhFactorLength ( anAdhFactor ) )</PreCondition><PreCondition
+>d &lt; anAdhFactor.Location + BaseTypes.LengthToDistance ( TrackDescription.AdhesionFactors.AdhFactorLength ( anAdhFactor ) )</PreCondition><PreCondition
  Guid="96d93cb8-5eac-4f52-b211-9fc3b66f1670"
->anAdhFactor.Distance &lt;= d</PreCondition><PreCondition
+>anAdhFactor.Location &lt;= d</PreCondition><PreCondition
  Guid="db33952f-0acc-4003-8b05-5fcf9b2fa7c3"
 >anAdhFactor.Value == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
 <Expression>( MIN ( A_brake_safe (V), NationalValues.A_MAXREDADH () ) + A_gradient(Gradient) ) (V)</Expression>

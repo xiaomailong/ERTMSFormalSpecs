@@ -3237,8 +3237,9 @@ FORALL X IN Balise.Sequence1 |
 <Actions>
 <Action
  Guid="0db1043e-a8ac-4926-bc7b-8c94101570dc"
->Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescription.AdhesionFactors.AdhFactors USING X IN Kernel.TrackDescription.AdhesionFactors.AdhesionFactor{
-    Distance =&gt; X.Distance - DistanceFromLRBG,
+>Kernel.TrackDescription.AdhesionFactors.AdhFactors &lt;- MAP Kernel.TrackDescription.AdhesionFactors.AdhFactors USING X IN Kernel.TrackDescription.AdhesionFactors.AdhesionFactorStruct
+{
+    Location =&gt; X.Location - DistanceFromLRBG,
     Length =&gt; X.Length,
     Value =&gt; X.Value
 }</Action></Actions>
@@ -3266,10 +3267,11 @@ Kernel.TrackDescription.AxleLoad.ASP.ALs != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dbdbc531-b34a-4bb5-a79b-4fa70867c086"
->Kernel.TrackDescription.AxleLoad.ASP.ALs &lt;- MAP Kernel.TrackDescription.AxleLoad.ASP.ALs USING X IN Kernel.TrackDescription.AxleLoad.AxleLoad{
+>Kernel.TrackDescription.AxleLoad.ASP.ALs &lt;- MAP Kernel.TrackDescription.AxleLoad.ASP.ALs USING X IN Kernel.TrackDescription.AxleLoad.AxleLoadStruct
+{
     Length =&gt; X.Length,
     TrainLengthDelay =&gt; X.TrainLengthDelay,
-    Distance =&gt; X.Distance - DistanceFromLRBG,
+    Location =&gt; X.Location - DistanceFromLRBG,
     Values =&gt; X.Values
 }</Action><Action
  Guid="a4823d58-e3d0-44d3-a8cb-d3da749c766f"
@@ -3296,8 +3298,9 @@ Kernel.TrackDescription.AxleLoad.ASP.ALs != []</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8b54a180-6453-4856-bc6e-1d0e953f63a0"
->Kernel.TrackDescription.Gradient.Gradients &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X IN Kernel.TrackDescription.Gradient.GradientStruct{
-    Distance =&gt; X.Distance - DistanceFromLRBG,
+>Kernel.TrackDescription.Gradient.Gradients &lt;- MAP Kernel.TrackDescription.Gradient.Gradients USING X IN Kernel.TrackDescription.Gradient.GradientStruct
+{
+    Location =&gt; X.Location - DistanceFromLRBG,
     Gradient =&gt; X.Gradient
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -3356,7 +3359,7 @@ Kernel.TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedR
 <Actions>
 <Action
  Guid="a3d612c5-11b4-4469-9b37-1d7eb6af342f"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance - DistanceFromLRBG</Action></Actions>
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3383,9 +3386,10 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
  Guid="d6659a82-85cc-4d35-960a-16813e7c869c"
 >Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance &lt;- Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance - DistanceFromLRBG</Action><Action
  Guid="2c519ddc-d31a-4a25-a641-3e51f3099427"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem{
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem
+{
     Type =&gt; X.Type,
-    Distance =&gt; X.Distance - DistanceFromLRBG,
+    Location =&gt; X.Location - DistanceFromLRBG,
     LineGauge =&gt; X.LineGauge,
     MaxAxleLoad =&gt; X.MaxAxleLoad,
     TractionSystem =&gt; X.TractionSystem,
@@ -3413,8 +3417,9 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
 <Actions>
 <Action
  Guid="8bb2f7b7-e5ec-4f3b-8166-f68ba0fd7f42"
->Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- MAP Kernel.TrackDescription.StaticSpeedProfile.SSP USING X IN Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct{
-    Distance =&gt; X.Distance - DistanceFromLRBG,
+>Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- MAP Kernel.TrackDescription.StaticSpeedProfile.SSP USING X IN Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
+{
+    Location =&gt; X.Location - DistanceFromLRBG,
     BasicSpeed =&gt; X.BasicSpeed,
     TrainLengthDelay =&gt; X.TrainLengthDelay,
     Categories =&gt; X.Categories

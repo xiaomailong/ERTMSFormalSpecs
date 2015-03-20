@@ -1,6 +1,6 @@
 <NameSpace
- X="60"
- Y="120"
+ X="10"
+ Y="80"
  Width="100"
  Height="50"
  Name="ReversingArea"
@@ -29,7 +29,7 @@
  Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="ab39d192-5f11-4bba-bf9b-67206e5bc20f"
 >
 <ReqRef
@@ -88,7 +88,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="c577d8ea-46d9-4c98-9514-0eaefd361a8d"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><Interfaces>
+<StructureRef
+ Name="LocationLengthInterface"
+ Guid="031a2cc1-5433-4fcd-9c84-8173b171c49c"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Procedures>
 <Procedure
  Y="180"
@@ -280,7 +286,7 @@
  Guid="c9a4ad75-65e9-41d9-8526-ceb6c810d342"
 >ReversingAreaProfile &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; RVAreaPacket.D_STARTREVERSE, scale =&gt; RVAreaPacket.Q_SCALE ),
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; RVAreaPacket.D_STARTREVERSE, scale =&gt; RVAreaPacket.Q_SCALE ),
     Length =&gt; MessageTypes.QScaleLength ( length =&gt; RVAreaPacket.L_REVERSEAREA, scale =&gt; RVAreaPacket.Q_SCALE ),
     MaxDistance =&gt; MessageTypes.QScaleDistance ( distance =&gt; RVSupervisionPacket.D_REVERSE, scale =&gt; RVSupervisionPacket.Q_SCALE ),
     Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; RVSupervisionPacket.V_REVERSE, resolution =&gt; 5.0 )
@@ -339,11 +345,11 @@
  Guid="7a7f772f-391c-46ae-b299-32807d8f04a7"
 >ReversingAreaProfile != EMPTY</PreCondition><PreCondition
  Guid="ddaf9e33-1bce-41a4-8818-1ad6d5f1c885"
->ReversingAreaProfile.Distance + ReversingAreaProfile.Length &gt; aLocation</PreCondition></PreConditions>
+>ReversingAreaProfile.Location + ReversingAreaProfile.Length &gt; aLocation</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="605cb642-b824-4661-af62-7896b4c53420"
->ReversingAreaProfile.Length &lt;- BaseTypes.DistanceToLength(aLocation - ReversingAreaProfile.Distance)</Action></Actions>
+>ReversingAreaProfile.Length &lt;- BaseTypes.DistanceToLength(aLocation - ReversingAreaProfile.Location)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -435,9 +441,9 @@
  Guid="3a60ad8a-066b-4032-aad4-7f219f88137c"
 >Available ( ReversingAreaProfile )
   AND  
-ReversingAreaProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
+ReversingAreaProfile.Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )
   AND  
-TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfile.Distance + BaseTypes.LengthToDistance ( ReversingAreaProfile.Length )</PreCondition><PreCondition
+TrainPosition.FrontEndPosition ( DistanceInterval.Nom ) &lt; ReversingAreaProfile.Location + BaseTypes.LengthToDistance ( ReversingAreaProfile.Length )</PreCondition><PreCondition
  Guid="e2780f24-dfce-4f80-a1ed-40804c6f02f9"
 >Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Actions>

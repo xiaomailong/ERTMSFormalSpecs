@@ -12653,11 +12653,11 @@ When the rear end of the train passes the start of the profiles, the message is 
  Guid="e0fc7a91-fd3d-43d4-9ac5-d88d4088cf00"
 >DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="e31a3f35-e0d0-4679-bdb6-287dc5bbf9ce"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Distance</PreCondition><PreCondition
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Location</PreCondition><PreCondition
  Guid="8ef695d6-6008-457a-b954-e699a5744db5"
 >Mode in [Default.Mode.FS, Default.Mode.OS]</PreCondition><PreCondition
  Guid="f693983c-1ef2-466c-9f2a-1e388434b61c"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition></PreConditions>
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1cb44512-e85f-49fd-b1d2-d6050b977813"

@@ -3708,7 +3708,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><Comment>Provides value of A_safe for adhesion factor slippery rail.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.AdhesionFactors.AdhesionFactor"
+ Type="TrackDescription.AdhesionFactors.AdhesionFactorStruct"
  Name="anAdhFactor"
  Guid="c9752cb9-cd2a-4075-8537-66410262798a"
 >
@@ -3740,9 +3740,9 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <PreConditions>
 <PreCondition
  Guid="88c8921b-90df-41a3-a96a-a6260d334476"
->d &lt; anAdhFactor.Distance + BaseTypes.LengthToDistance ( TrackDescription.AdhesionFactors.AdhFactorLength ( anAdhFactor ) )</PreCondition><PreCondition
+>d &lt; anAdhFactor.Location + BaseTypes.LengthToDistance ( TrackDescription.AdhesionFactors.AdhFactorLength ( anAdhFactor ) )</PreCondition><PreCondition
  Guid="84a8a942-2a20-4cce-9909-ed2604e6d15c"
->anAdhFactor.Distance &lt;= d</PreCondition><PreCondition
+>anAdhFactor.Location &lt;= d</PreCondition><PreCondition
  Guid="9aa81f2f-9260-4288-a5ef-c90c6280cb6d"
 >anAdhFactor.Value == Messages.M_ADHESION.Slippery_rail</PreCondition></PreConditions>
 <Expression>( MINSURFACE ( A_brake_safe ( d =&gt; d, V =&gt; V ), NationalValues.A_MAXREDADH () ) + TrackDescription.Gradient.A_gradient ( d ) ) (d, V)</Expression>

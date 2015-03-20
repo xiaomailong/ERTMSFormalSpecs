@@ -843,7 +843,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="0f08b536-83f1-4e8f-afc9-094f88eb7965"
->(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Location == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e39e583b-87d0-476f-b422-a14c14ea85b0"
@@ -855,7 +855,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c5fbed39-6356-4c0e-b7f3-8b4bfc80ccf8"
->(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Location == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b6aaf730-08d6-4aca-9bde-2736151002b9"
@@ -871,7 +871,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="b9b55801-26ed-4880-92bd-2ce0858c4896"
->THERE_IS X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
+>THERE_IS X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Location == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step 2 - Check that inconsistencies are correctly identified"
  Guid="4341c3e5-24fb-4fca-8782-70b44b8e7ce0"
@@ -1085,7 +1085,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fceae6ba-e38c-49b9-9ac7-082b0d6b07c8"
->(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 500.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Location == 500.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="7ab8319c-55cb-412b-b544-4bf767b80f8b"
@@ -1097,7 +1097,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2f2814e1-8e85-4cb3-ae1a-0efca86b2127"
->(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Distance == 2000.0</Expectation><Expectation
+>(LAST X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items).Location == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="269c68bc-b651-4115-a295-592f591cd628"
@@ -1113,7 +1113,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="cf41088a-7a1d-49dd-b869-df70923c86ef"
->THERE_IS X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Distance == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
+>THERE_IS X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items | (X.Location == 1000.0 AND X.Type ==  Messages.Q_SUITABILITY.Max_axle_load AND X.MaxAxleLoad == Messages.M_AXLELOADCAT.D4)</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step 2 - Check that inconsistencies are correctly identified"
  Guid="49fd774d-f16e-4ba8-9523-77f6f6bddbd9"
@@ -1763,8 +1763,9 @@
  Guid="70a4be54-cfd8-4255-8bc1-375c4b9b20c0"
 >Kernel.TrackDescription.StaticSpeedProfile.SSP &lt;- 
 [
-  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct{
-    Distance =&gt; 0.0,
+  Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
+  {
+    Location =&gt; 0.0,
     BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
     TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
     Categories =&gt; []
@@ -1773,8 +1774,9 @@
  Guid="9df9ef0e-6aa3-4517-93a2-b5510394bf41"
 >Kernel.TrackDescription.Gradient.Gradients &lt;-
 [
-Kernel.TrackDescription.Gradient.GradientStruct{
-    Distance =&gt; 0.0,
+Kernel.TrackDescription.Gradient.GradientStruct
+  {
+    Location =&gt; 0.0,
     Gradient =&gt; 0.0
   }
 ]</Action></Actions>

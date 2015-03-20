@@ -289,7 +289,7 @@
 >Kernel.TrackDescription.StaticSpeedProfile.SSP != []</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0476b950-d4cd-4d2e-8921-c1089256ee65"
->(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == 2000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Location == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="0a716773-6fb1-416d-961f-ebfa112cab28"
 >Kernel.TrackDescription.StaticSpeedProfile.SSPEnd((FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP)) == 3000.0</Expectation><Expectation
@@ -473,7 +473,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="b70081bb-45f8-416b-a691-9712899477bd"
->(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Distance == 2000.0</Expectation><Expectation
+>(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP).Location == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d9223b11-6c2c-44e9-892c-ea7d7a007737"
 >Kernel.TrackDescription.StaticSpeedProfile.CantDeficiencySpeedRestriction(FIRST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP) == 30.0</Expectation><Expectation

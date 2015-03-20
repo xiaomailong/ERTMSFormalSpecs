@@ -7796,9 +7796,9 @@ PrevMode == Default.Mode.SL</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="6fbe47aa-ca2b-4420-a0b0-c8f1462ea615"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.Gradient.Gradients).Distance
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.Gradient.Gradients).Location
   OR
-TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition><PreCondition
+TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Location</PreCondition><PreCondition
  Guid="3fe81a1f-a14a-42cf-86f4-2c6b8b82bf29"
 >Mode == Default.Mode.FS</PreCondition></PreConditions>
 <Actions>
@@ -7945,9 +7945,9 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
 <PreConditions>
 <PreCondition
  Guid="bdaf3f2c-b960-43bc-a4ec-57911fd13a3e"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.Gradient.Gradients).Distance
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.Gradient.Gradients).Location
   OR
-TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Distance</PreCondition></PreConditions>
+TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &lt; (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="38bedf25-537f-4716-bcea-51905cd7ae66"

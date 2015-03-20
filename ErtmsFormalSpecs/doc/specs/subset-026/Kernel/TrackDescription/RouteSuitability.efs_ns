@@ -1,6 +1,6 @@
 <NameSpace
- X="60"
- Y="60"
+ X="340"
+ Y="10"
  Width="100"
  Height="50"
  Name="RouteSuitability"
@@ -116,7 +116,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="4648cc07-0d66-4722-9f69-d3d8b47cf360"
 >
 <ReqRef
@@ -201,7 +201,13 @@
  Guid="3b1cdd26-1229-48fc-937f-75c9a4415d11"
 >
 </ReqRef><Comment>Country identifier of the traction system.</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="1e4b0f94-e0b4-4bae-a04e-37820659316f"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
@@ -238,7 +244,7 @@
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
- Name="aDistance"
+ Name="aLocation"
  Guid="da9f7db4-8cb9-403b-a5e6-f1d32c86aba8"
 >
 </Parameter><Parameter
@@ -274,7 +280,7 @@
 >
 <Expression>RouteSuitabilityItem
 {
-    Distance =&gt; aDistance,
+    Location =&gt; aLocation,
     Type =&gt; aType,
     LineGauge =&gt; aLineGauge,
     MaxAxleLoad =&gt; aMaxAxleLoad,
@@ -354,7 +360,7 @@ NOT THERE_IS X IN
   RouteSuitabilityProfile.Items |
     X.Type == Messages.Q_SUITABILITY.Loading_gauge_profile
       AND
-    X.Distance == anItem.Distance
+    X.Location == anItem.Location
       AND
     GaugesMatch ( aLineGauge =&gt; X.LineGauge,
                              aLoadingGauge =&gt; Kernel.TrainData.TrainData.Value.LoadingGauge)</Expression>
@@ -445,7 +451,7 @@ THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
-                        USING X IN BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
+                        USING X IN BaseTypes.MinDistance ( X1 =&gt; X.Location, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
 }</Expression>
@@ -504,7 +510,7 @@ THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><
 {
     Length =&gt; BaseTypes.Length.Infinity,
     Location =&gt; REDUCE RouteSuitabilityProfile.Items | IsUnsuitable ( X )
-                        USING X IN BaseTypes.MinDistance ( X1 =&gt; X.Distance, X2 =&gt; RESULT )
+                        USING X IN BaseTypes.MinDistance ( X1 =&gt; X.Location, X2 =&gt; RESULT )
                         INITIAL_VALUE BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0
 }</Expression>
@@ -885,7 +891,7 @@ THERE_IS X IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_a
 <Action
  Guid="2ed4cfd1-9270-4adc-b1b9-1667a2e1e93f"
 >INSERT
-    CreateRouteSuitabilityItem ( aDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SUITABILITY, scale =&gt; Packet.Q_SCALE ),
+    CreateRouteSuitabilityItem ( aLocation =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SUITABILITY, scale =&gt; Packet.Q_SCALE ),
                                                  aType =&gt; Packet.Q_SUITABILITY,
                                                  aLineGauge =&gt; Packet.M_LINEGAUGE,
                                                  aMaxAxleLoad =&gt; Packet.M_AXLELOADCAT,
@@ -1002,12 +1008,13 @@ ON
 <Action
  Guid="9aa4fcd8-bf54-45ea-936d-dbd11c18ce5c"
 >INSERT
-    CreateRouteSuitabilityItem ( aDistance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; aRouteSuitability.D_SUITABILITY, scale =&gt; Scale ),
-                                                 aType =&gt; aRouteSuitability.Q_SUITABILITY,
-                                                 aLineGauge =&gt; aRouteSuitability.M_LINEGAUGE,
-                                                 aMaxAxleLoad =&gt; aRouteSuitability.M_AXLELOADCAT,
-                                                 aTractionSystem =&gt; aRouteSuitability.M_VOLTAGE,
-                                                 aNidCTraction =&gt; aRouteSuitability.NID_CTRACTION )
+  CreateRouteSuitabilityItem (
+    aLocation =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; aRouteSuitability.D_SUITABILITY, scale =&gt; Scale ),
+    aType =&gt; aRouteSuitability.Q_SUITABILITY,
+    aLineGauge =&gt; aRouteSuitability.M_LINEGAUGE,
+    aMaxAxleLoad =&gt; aRouteSuitability.M_AXLELOADCAT,
+    aTractionSystem =&gt; aRouteSuitability.M_VOLTAGE,
+    aNidCTraction =&gt; aRouteSuitability.NID_CTRACTION )
 IN
     Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items</Action></Actions>
 </RuleCondition></Conditions>
@@ -1080,7 +1087,7 @@ RouteSuitabilityProfile.Items != []
 <Actions>
 <Action
  Guid="b0e4f1d5-5500-4619-a2eb-c5d1fb22032b"
->RouteSuitabilityProfile.Items &lt;- MAP RouteSuitabilityProfile.Items | X.Distance &lt;= aLocation USING X IN X</Action><Action
+>RouteSuitabilityProfile.Items &lt;- MAP RouteSuitabilityProfile.Items | X.Location &lt;= aLocation USING X IN X</Action><Action
  Guid="32d3048c-8f49-48a5-a549-768907796364"
 >RouteSuitabilityProfile.EmptyProfileDistance &lt;- aLocation</Action><Action
  Guid="dea25859-669e-4b52-ad0b-b13698635e80"

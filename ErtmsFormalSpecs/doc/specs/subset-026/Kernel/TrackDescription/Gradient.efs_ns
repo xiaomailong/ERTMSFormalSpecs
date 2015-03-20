@@ -1,5 +1,6 @@
 <NameSpace
- X="60"
+ X="10"
+ Y="10"
  Width="100"
  Height="50"
  Name="Gradient"
@@ -49,7 +50,7 @@
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Distance"
+ Name="Location"
  Guid="4ff6c768-f6e6-48fe-af50-7daee9cd0441"
 >
 </StructureElement><StructureElement
@@ -61,7 +62,13 @@
  Name="Gradient"
  Guid="039d5a8a-f499-4018-b8f3-7d61e4b2f82e"
 >
-</StructureElement></Structure><Structure
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="b340b0c5-2bb9-4513-8b4a-476b3d94ce7d"
+>
+</StructureRef></Interfaces>
+</Structure><Structure
  Default=""
  X="110"
  Y="120"
@@ -273,7 +280,7 @@
 <PreCondition
  Guid="da74bd49-2f10-460d-a4d8-380b084c76bb"
 >Current.Gradient == 255.0</PreCondition></PreConditions>
-<Expression>Current.Distance</Expression>
+<Expression>Current.Location</Expression>
 </Case><Case
  Name="No gradient information stop, current is furthest element of gradient profile"
  Guid="fdd83a84-7b76-49a4-bde4-0ca68dbb7580"
@@ -282,16 +289,16 @@
 <PreConditions>
 <PreCondition
  Guid="04a0d169-1137-49ef-8f92-efde68fdeca0"
->NOT THERE_IS X IN Gradients | X.Distance &gt; Current.Distance</PreCondition></PreConditions>
+>NOT THERE_IS X IN Gradients | X.Location &gt; Current.Location</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="57b006b4-2aa4-4cf0-bdb7-fadb3a1a0a54"
 >
 <Expression>REDUCE
-    Gradients | X.Distance &gt; Current.Distance
+    Gradients | X.Location &gt; Current.Location
 USING X IN
-    Default.BaseTypes.MinDistance ( X.Distance, RESULT )
+    Default.BaseTypes.MinDistance ( X.Location, RESULT )
 INITIAL_VALUE
     Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
@@ -343,7 +350,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <PreConditions>
 <PreCondition
  Guid="0930875a-81dd-4ccc-808a-26c9c0e50ca2"
->Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
+>Distance &lt; GradientInfo.Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="After gradient info"
@@ -774,7 +781,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <PreConditions>
 <PreCondition
  Guid="ca9e35b1-2f6b-4fd0-875a-486e22599f02"
->Distance &lt; GradientInfo.Distance</PreCondition></PreConditions>
+>Distance &lt; GradientInfo.Location</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="After gradient info"
@@ -1076,8 +1083,9 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Value"
  Guid="6d7ed6e7-c960-4fcd-8285-ba5f72e50a28"
 >
-<Expression>Kernel.TrackDescription.Gradient.GradientStruct{
-    Distance =&gt; aGradient.Distance - TrainPosition.FrontEndPosition(DistanceInterval.Nom),
+<Expression>Kernel.TrackDescription.Gradient.GradientStruct
+{
+    Location =&gt; aGradient.Location - TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     Gradient =&gt; aGradient.Gradient
 }</Expression>
 </Case></Cases>
@@ -1111,7 +1119,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>REDUCE Gradients
  USING X IN 
   BaseTypes.MinDistance(
-    X1 =&gt; X.Distance,
+    X1 =&gt; X.Location,
     X2 =&gt; RESULT
   )
  INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
@@ -1185,7 +1193,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Actions>
 <Action
  Guid="879d940c-79ed-4325-8e15-cfe834f37953"
->REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
+>REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1209,9 +1217,11 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Actions>
 <Action
  Guid="7036cebd-f595-4bb8-be2e-2bb5ce2840bc"
->StoreSingleProfileInfo ( 
-  Kernel.TrackDescription.Gradient.GradientStruct {
-    Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE ),
+>StoreSingleProfileInfo
+( 
+  Kernel.TrackDescription.Gradient.GradientStruct
+  {
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE ),
     Gradient =&gt; CreateGradient ( Q_GDIR =&gt; Packet.Q_GDIR, G_A =&gt; Packet.G_A )
   }
 )</Action></Actions>
@@ -1243,7 +1253,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
   ( 
     Kernel.TrackDescription.Gradient.GradientStruct
     {
-      Distance =&gt; AbsoluteDistance ( Gradients =&gt; Packet.Sequence1, Gradient =&gt; X, Scale =&gt; Packet.Q_SCALE ) + MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT,  scale =&gt; Packet.Q_SCALE ),
+      Location =&gt; AbsoluteDistance ( Gradients =&gt; Packet.Sequence1, Gradient =&gt; X, Scale =&gt; Packet.Q_SCALE ) + MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT,  scale =&gt; Packet.Q_SCALE ),
       Gradient =&gt; CreateGradient ( Q_GDIR =&gt; X.Q_GDIR, G_A =&gt; X.G_A )
     }
   )
@@ -1404,7 +1414,7 @@ ON Packet.Sequence1</Action></Actions>
  Guid="6c1c6ff8-f1ae-44e3-92d2-5667386d9132"
 >Gradients != []
   AND
-(LAST X IN Gradients).Distance &gt; aLocation</PreCondition></PreConditions>
+(LAST X IN Gradients).Location &gt; aLocation</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1427,7 +1437,7 @@ ON Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="a45aa091-11f4-4232-acc7-4d23db35c4bb"
->Gradients &lt;- MAP Gradients | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+>Gradients &lt;- MAP Gradients | X.Location &lt;= aLocation USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1451,7 +1461,7 @@ ON Packet.Sequence1</Action></Actions>
 >INSERT
   GradientStruct
   {
-    Distance =&gt; aLocation,
+    Location =&gt; aLocation,
     Gradient =&gt; BaseTypes.Gradient.GradientEnd
   }
 IN

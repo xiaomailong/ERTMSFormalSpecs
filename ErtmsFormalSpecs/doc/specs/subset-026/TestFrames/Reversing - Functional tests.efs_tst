@@ -54,8 +54,9 @@
  Guid="cf9c73cf-fba6-4013-ae53-0c73d888c161"
 >Testing.SetRVMode()</Action><Action
  Guid="93a5c600-9053-4fb0-9ff7-c267c03bd5b2"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaStruct{
-    Distance =&gt; 2000.0,
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile &lt;- Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
+{
+    Location =&gt; 2000.0,
     Length =&gt; 400.0,
     MaxDistance =&gt; 500.0,
     Speed =&gt; 30.0
@@ -115,7 +116,7 @@
  Guid="d3dab160-e275-4577-9cef-8d1cffead892"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; 2000.0,
+    Location =&gt; 2000.0,
     Length =&gt; 400.0,
     MaxDistance =&gt; 780.0,
     Speed =&gt; 25.0
@@ -181,7 +182,7 @@
  Guid="d3de18b7-79c8-48c2-a6e0-f687804acd25"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; 1500.0,
+    Location =&gt; 1500.0,
     Length =&gt; 750.0,
     MaxDistance =&gt; 1000.0,
     Speed =&gt; 40.0
@@ -378,7 +379,7 @@
  Guid="0367df3d-8937-493e-950d-d1bfc367c29d"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; 1500.0,
+    Location =&gt; 1500.0,
     Length =&gt; 350.0,
     MaxDistance =&gt; 500.0,
     Speed =&gt; 30.0
@@ -444,7 +445,7 @@
  Guid="fa9689c5-a160-4bf9-ac63-e41596394ae5"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; 1800.0,
+    Location =&gt; 1800.0,
     Length =&gt; 500.0,
     MaxDistance =&gt; 630.0,
     Speed =&gt; 40.0
@@ -529,7 +530,7 @@
  Guid="a96dee9d-9c0a-438f-b66b-c02a024032ba"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; 1700.0,
+    Location =&gt; 1700.0,
     Length =&gt; 500.0,
     MaxDistance =&gt; 630.0,
     Speed =&gt; 40.0
@@ -573,7 +574,7 @@
  Guid="7062d687-4c66-47ba-abd9-514cc8550063"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; 1700.0,
+    Location =&gt; 1700.0,
     Length =&gt; 500.0,
     MaxDistance =&gt; 630.0,
     Speed =&gt; 40.0
@@ -646,7 +647,7 @@
  Guid="ebd96b51-d51f-458c-b70f-a03df6ff3768"
 >Kernel.TrackDescription.ReversingArea.ReversingAreaProfile == Kernel.TrackDescription.ReversingArea.ReversingAreaStruct
 {
-    Distance =&gt; 1700.0,
+    Location =&gt; 1700.0,
     Length =&gt; 500.0,
     MaxDistance =&gt; 580.0,
     Speed =&gt; 25.0
@@ -696,11 +697,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="74f847d5-b1b3-4833-a2b3-eee702e66307"
->Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance</Expectation><Expectation
+>Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="be0981fb-9610-4eb7-bbd7-12f016404a86"
->Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance</Expectation><Expectation
+>Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f38059ab-0201-4211-b48b-66d1bc54b00c"
@@ -708,11 +709,11 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="59e33ba2-0798-4a34-8b3f-bdf80d68b6ee"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1700.0</Expectation><Expectation
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location == 1700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e1f0fd5e-637f-4c8a-aceb-26498844e934"
->(BTM.LRBG.Position.Position + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance) == 1850.0</Expectation></Expectations>
+>(BTM.LRBG.Position.Position + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location) == 1850.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2 - Estimated front end passes start"
  Guid="9ebcf0e0-30c3-4fd9-9cc6-0c2e528c0a9b"
@@ -730,11 +731,11 @@
  Kind="Instantaneous"
  DeadLine="0.3"
  Guid="92720950-7bdf-49ab-9bab-6ad2cad24600"
->Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Min) &lt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance</Expectation><Expectation
+>Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Min) &lt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="084582dc-5a06-4899-8fe9-e5d1d9f06fc9"
->Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance</Expectation></Expectations>
+>Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -819,7 +820,7 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d9f9e45d-b757-4ccd-ac4d-eea8d0db7efa"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1700.0</Expectation></Expectations>
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location == 1700.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2 - Driver tries reversing"
  Guid="32a1a9bc-a5c6-47c0-a142-4536a5fa2ac0"
@@ -867,11 +868,11 @@ DMI.MasterDMI().Out_ReversingAllowed.OutputInformation.DoNotDisplay()</Action></
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e1da8f4e-d2bf-4e27-b6cd-b07097d37728"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance == 1700.0</Expectation><Expectation
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location == 1700.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5047b596-4e75-45eb-a526-edd0bfa23f65"
->Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Distance + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Length == 2200.0</Expectation></Expectations>
+>Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Length == 2200.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2 - Driver tries reversing"
  Guid="7bc2e46c-1ec7-4918-9985-b41ce2dc0d06"

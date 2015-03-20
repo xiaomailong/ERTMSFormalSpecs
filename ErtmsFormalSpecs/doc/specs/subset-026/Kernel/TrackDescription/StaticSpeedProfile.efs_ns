@@ -1,6 +1,6 @@
 <NameSpace
- X="170"
- Y="60"
+ X="340"
+ Y="80"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -46,7 +46,7 @@
  Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="4bb03621-7f97-4a52-8e8f-29fb58de949f"
 >
 <ReqRef
@@ -99,7 +99,13 @@
  Name="Categories"
  Guid="2edb5adf-a12c-4bf7-86e9-cfe64fda040a"
 >
-</StructureElement></Structure><Structure
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="ed0c65f2-8fb8-4608-b620-132604a83015"
+>
+</StructureRef></Interfaces>
+</Structure><Structure
  Default=""
  X="440"
  Y="10"
@@ -262,12 +268,12 @@
 <PreCondition
  Guid="7f6dc22b-756b-4bbd-a279-def78e406e66"
 >aSSP.TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
-<Expression>SSPEnd(aSSP) - aSSP.Distance + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
+<Expression>SSPEnd(aSSP) - aSSP.Location + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
 </Case><Case
  Name="NoTrainLengthDelay"
  Guid="e5943792-4cfa-46ac-befd-3c30fe17d42b"
 >
-<Expression>SSPEnd(aSSP) - aSSP.Distance</Expression>
+<Expression>SSPEnd(aSSP) - aSSP.Location</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.NC_CDDIFF"
@@ -450,7 +456,7 @@ INITIAL_VALUE
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
- Name="Distance"
+ Name="Location"
  Guid="1751ecc8-361f-4acc-bb57-3ea694d3e77c"
 >
 </Parameter><Parameter
@@ -476,7 +482,7 @@ INITIAL_VALUE
 >
 <Expression>Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
 {
-    Distance =&gt; Distance,
+    Location =&gt; Location,
     BasicSpeed =&gt; BasicSpeed,
     TrainLengthDelay =&gt; TrainLengthDelay,
     Categories =&gt; MAP Categories USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( X.V_DIFF, 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
@@ -675,9 +681,9 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreConditions>
 <PreCondition
  Guid="15221f58-b9e6-4991-9f91-ce91e073c79b"
->aSSP.Distance &lt;= Distance</PreCondition><PreCondition
+>aSSP.Location &lt;= Distance</PreCondition><PreCondition
  Guid="a3494ca1-2ab4-45f5-9d76-b4fec8b96902"
->Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Distance, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
+>Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Location, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
 <Expression>SSPSpeed ( aSSP )</Expression>
 </Case><Case
  Name="Outside SSP"
@@ -724,15 +730,15 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <PreCondition
  Guid="cec64693-6bb4-4a7e-9ce8-96d1779abf66"
 >Current.BasicSpeed == BaseTypes.Speed.Infinity</PreCondition></PreConditions>
-<Expression>Current.Distance</Expression>
+<Expression>Current.Location</Expression>
 </Case><Case
  Name="Always"
  Guid="0501d6cc-b928-4ac2-9c0d-339b2d643872"
 >
 <Expression>REDUCE
-    SSP | X.Distance &gt; Current.Distance
+    SSP | X.Location &gt; Current.Location
 USING X IN
-    BaseTypes.MinDistance( X.Distance, RESULT )
+    BaseTypes.MinDistance( X.Location, RESULT )
 INITIAL_VALUE
     BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
@@ -934,7 +940,7 @@ INITIAL_VALUE
 <Expression>REDUCE SSP
  USING X IN 
   BaseTypes.MinDistance(
-    X1 =&gt; X.Distance,
+    X1 =&gt; X.Location,
     X2 =&gt; RESULT
   )
  INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
@@ -1010,7 +1016,7 @@ INITIAL_VALUE
 <Action
  Guid="cc434071-3c30-4ef5-ac05-dfbaaf5a9c9c"
 >REMOVE ALL
-    X.Distance &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE)
+    X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE)
 IN
     SSP</Action></Actions>
 </RuleCondition></Conditions>
@@ -1054,7 +1060,7 @@ IN
 <Action
  Guid="e59b778c-47ac-4e37-94a0-45b10846d56a"
 >INSERT
-    CreateFirstSSP ( Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
+    CreateFirstSSP ( Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
                                BasicSpeed =&gt;BaseTypes.Speed.Infinity,
                                TrainLengthDelay =&gt; Packet.Q_FRONT,
                                Categories =&gt; Packet.Sequence1 )
@@ -1087,7 +1093,7 @@ IN
 <Action
  Guid="2ec09015-103d-44f3-b420-26001a56aa72"
 >INSERT
-    CreateFirstSSP ( Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
+    CreateFirstSSP ( Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
                                BasicSpeed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_STATIC, resolution =&gt; 5.0),
                                TrainLengthDelay =&gt; Packet.Q_FRONT,
                                Categories =&gt; Packet.Sequence1 )
@@ -1118,7 +1124,7 @@ IN
  Guid="1353f5e7-b5ab-4b5e-9b25-07b8c3448625"
 >APPLY
     AddSSP ( aSSP =&gt; X,
-                    Distance =&gt; AbsoluteDistance ( SSRs =&gt; Packet.Sequence3, aSSR =&gt; X, Scale =&gt; Packet.Q_SCALE ) + Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ) )
+                    Location =&gt; AbsoluteDistance ( SSRs =&gt; Packet.Sequence3, aSSR =&gt; X, Scale =&gt; Packet.Q_SCALE ) + Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ) )
 ON
     Packet.Sequence3</Action></Actions>
 </RuleCondition></Conditions>
@@ -1172,7 +1178,7 @@ ON
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
- Name="Distance"
+ Name="Location"
  Guid="8100d5b7-efb3-43e4-8d23-620ad52782bc"
 >
 </Parameter></Parameters>
@@ -1202,7 +1208,7 @@ ON
 >INSERT
     Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
-        Distance =&gt; Distance,
+        Location =&gt; Location,
         BasicSpeed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; aSSP.V_STATIC, resolution =&gt; 5.0 ),
         TrainLengthDelay =&gt; aSSP.Q_FRONT,
         Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
@@ -1227,7 +1233,7 @@ IN
 >INSERT
     Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
-        Distance =&gt; Distance,
+        Location =&gt; Location,
         BasicSpeed =&gt; BaseTypes.Speed.Infinity,
         TrainLengthDelay =&gt; aSSP.Q_FRONT,
         Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
@@ -1287,7 +1293,7 @@ IN
  Guid="d5f64758-35a8-4aef-bdd9-15409a0ae309"
 >SSP != []
   AND
-(LAST X IN SSP).Distance &gt; aLocation</PreCondition></PreConditions>
+(LAST X IN SSP).Location &gt; aLocation</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -1310,7 +1316,7 @@ IN
 <Actions>
 <Action
  Guid="cc46a7b4-f4fe-4c91-ba39-baf6f39aa177"
->SSP &lt;- MAP SSP | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+>SSP &lt;- MAP SSP | X.Location &lt;= aLocation USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1334,7 +1340,7 @@ IN
 >INSERT
   StaticSpeedRestrictionStruct
   {
-    Distance =&gt; aLocation,
+    Location =&gt; aLocation,
     BasicSpeed =&gt; BaseTypes.Speed.Infinity
   }
 IN
