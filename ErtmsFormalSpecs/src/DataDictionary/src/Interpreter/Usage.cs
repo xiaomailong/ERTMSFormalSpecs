@@ -45,7 +45,9 @@ namespace DataDictionary.Interpreter
             ReadAndWrite,
             Call,
             Type,
-            Parameter
+            Parameter,
+            Interface,
+            Redefines
         };
 
         /// <summary>
@@ -85,7 +87,8 @@ namespace DataDictionary.Interpreter
                     current is Function ||
                     current is Procedure ||
                     current is Type ||
-                    current is TestCase)
+                    current is TestCase ||
+                    current is StructureElement)
                 {
                     retVal = current.Name;
                 }

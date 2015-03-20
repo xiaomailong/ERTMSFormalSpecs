@@ -82,6 +82,18 @@ namespace GUI.DataDictionaryView.UsageTreeView
                     case Usage.ModeEnum.Type:
                         ChangeImageIndex(BaseTreeView.TypeImageIndex);
                         break;
+
+                    case Usage.ModeEnum.Parameter:
+                        ChangeImageIndex(BaseTreeView.ParameterImageIndex);
+                        break;
+
+                    case Usage.ModeEnum.Interface:
+                        ChangeImageIndex(BaseTreeView.InterfaceImageIndex);
+                        break;
+
+                    case Usage.ModeEnum.Redefines:
+                        ChangeImageIndex(BaseTreeView.RedefinesImageIndex);
+                        break;
                 }
             }
             else if (Text.CompareTo("Test") == 0)

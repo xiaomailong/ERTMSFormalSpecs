@@ -56,6 +56,9 @@ namespace GUI
         public static int WriteAccessImageIndex;
         public static int CallImageIndex;
         public static int TypeImageIndex;
+        public static int ParameterImageIndex;
+        public static int InterfaceImageIndex;
+        public static int RedefinesImageIndex;
 
 
         /// <summary>
@@ -189,6 +192,9 @@ namespace GUI
             ImageList.Images.Add(Resources.write_icon);
             ImageList.Images.Add(Resources.call_icon);
             ImageList.Images.Add(Resources.type_icon);
+            ImageList.Images.Add(Resources.parameter_icon);
+            ImageList.Images.Add(Resources.interface_icon);
+            ImageList.Images.Add(Resources.redefines_icon);
 
             ImageIndex = 0;
             FileImageIndex = 0;
@@ -201,6 +207,9 @@ namespace GUI
             WriteAccessImageIndex = 7;
             CallImageIndex = 8;
             TypeImageIndex = 9;
+            ParameterImageIndex = 10;
+            InterfaceImageIndex = 11;
+            RedefinesImageIndex = 12;
 
             NodeColorSynchronizer = new ColorSynchronizer(this, 300);
             NodeNameSynchronizer = new NameSynchronizer(this, 300);

@@ -1220,6 +1220,38 @@ namespace DataDictionary
                     }
                 }
 
+                /* searching for the implementation of interfaces */
+                Types.Structure structure = obj as Types.Structure;
+                Types.Structure modelStructure = Model as Types.Structure;
+                if (structure != null && modelStructure != null && structure != modelStructure)
+                {
+                    if (modelStructure.IsAbstract && structure.ImplementedStructures.Contains(modelStructure))
+                    {
+                        Usages.Add(new Usage(Model, structure, Usage.ModeEnum.Interface));
+                    }
+                }
+
+                /* searching for the redefinition of structure elements */
+                Types.StructureElement currentStructureElement = Model as Types.StructureElement;
+                Types.StructureElement parameterStructureElement = obj as Types.StructureElement;
+                if (currentStructureElement != null && parameterStructureElement != null)
+                {
+                    Types.Structure enclosingStructure = currentStructureElement.Enclosing as Types.Structure;
+                    Types.Structure enclosingParameterStructure = parameterStructureElement.Enclosing as Types.Structure;
+                    if(enclosingStructure != null &&
+                       enclosingParameterStructure != null &&
+                       enclosingParameterStructure.IsAbstract &&
+                       enclosingStructure.StructureElementIsInherited(currentStructureElement) &&
+                       enclosingStructure.InterfaceIsInherited(enclosingParameterStructure))
+                    {
+                        if (currentStructureElement.Name == parameterStructureElement.Name &&
+                            parameterStructureElement.Type == parameterStructureElement.Type)
+                        {
+                            Usages.Add(new Usage(currentStructureElement, parameterStructureElement, Usage.ModeEnum.Redefines));
+                        }
+                    }
+                }
+
                 base.visit(obj, visitSubNodes);
             }
         }
