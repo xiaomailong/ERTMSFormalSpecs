@@ -62,6 +62,15 @@ namespace GUI.Options
                 get { return Settings.Default.CacheFunctions; }
                 set { Settings.Default.CacheFunctions = value; }
             }
+
+            [Category("Behaviour")]
+            [DisplayName("Allow refactor")]
+            [Description("Allow refactoring when moving/renaming elements")]
+            public bool AllowRefactor
+            {
+                get { return Settings.Default.AllowRefactor; }
+                set { Settings.Default.AllowRefactor = value; }
+            }
         }
 
         public Options()

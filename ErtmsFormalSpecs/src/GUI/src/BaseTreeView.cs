@@ -347,7 +347,7 @@ namespace GUI
 
                         compiler.Compile_Synchronous(false, true);
                         destinationNode.AcceptDrop(sourceNode);
-                        if (Refactor)
+                        if (Refactor && Settings.Default.AllowRefactor )
                         {
                             compiler.RefactorAndRelocate(sourceNode.Model as DataDictionary.ModelElement);
                         }

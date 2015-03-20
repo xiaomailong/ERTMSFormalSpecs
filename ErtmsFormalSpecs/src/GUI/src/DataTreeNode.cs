@@ -26,6 +26,7 @@ using DataDictionary;
 using DataDictionary.Generated;
 using DataDictionary.Types;
 using GUI.Converters;
+using GUI.Properties;
 using Utils;
 using XmlBooster;
 using Chapter = DataDictionary.Specification.Chapter;
@@ -959,13 +960,20 @@ namespace GUI
         /// </summary>
         public void HandleLabelEdit(string newLabel)
         {
-            if (newLabel != null && newLabel != "")
+            if (!string.IsNullOrEmpty(newLabel))
             {
                 if (Model.Name != newLabel)
                 {
-                    EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
-                    Model.Name = newLabel;
-                    EFSSystem.INSTANCE.Compiler.Refactor(Model as ModelElement);
+                    if (Settings.Default.AllowRefactor)
+                    {
+                        EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
+                        Model.Name = newLabel;
+                        EFSSystem.INSTANCE.Compiler.Refactor(Model as ModelElement);
+                    }
+                    else
+                    {
+                        Model.Name = newLabel;
+                    }
                 }
             }
         }
