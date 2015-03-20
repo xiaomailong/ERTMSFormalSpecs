@@ -48,7 +48,7 @@ namespace GUI.DataDictionaryView
         /// <summary>
         /// Builds the subnodes of this node
         /// </summary>
-        /// <param name="buildSubNodes">Indicates that subnodes of the nodes built should also </param>
+        /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
         {
             Nodes.Clear();
