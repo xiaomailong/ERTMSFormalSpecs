@@ -42,6 +42,7 @@ namespace GUI.DataDictionaryView
 
 
         public StructureElementsTreeNode Elements;
+        public StructureInterfacesTreeNode Interfaces;
 
 
         /// <summary>
@@ -73,7 +74,9 @@ namespace GUI.DataDictionaryView
             base.BuildSubNodes(buildSubNodes);
 
             Elements = new StructureElementsTreeNode(Item, buildSubNodes);
+            Interfaces = new StructureInterfacesTreeNode(Item, buildSubNodes);
 
+            Nodes.Add(Interfaces);
             Nodes.Add(Elements);
         }
 
@@ -94,6 +97,14 @@ namespace GUI.DataDictionaryView
             }
         }
 
+        public void AddInterfaceHandler(object sender, EventArgs args)
+        {
+            if (Interfaces != null)
+            {
+                Interfaces.AddHandler(sender, args);
+            }
+        }
+
         /// <summary>
         /// The menu items for this tree node
         /// </summary>
@@ -105,6 +116,7 @@ namespace GUI.DataDictionaryView
             if (Item.IsAbstract) // this is an interface, otherwise it is a structure
             {
                 retVal.Add(new MenuItem("Add an element", new EventHandler(AddStructureElementHandler)));
+                retVal.Add(new MenuItem("Add an interface", new EventHandler(AddInterfaceHandler)));
             }
 
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
@@ -121,7 +133,6 @@ namespace GUI.DataDictionaryView
             get { return Parent.Parent as NameSpaceTreeNode; }
         }
 
-        private StructureInterfacesTreeNode interfaces;
         private StructureProceduresTreeNode procedures;
         private StructureStateMachinesTreeNode stateMachines;
         private RulesTreeNode rules;
@@ -155,25 +166,15 @@ namespace GUI.DataDictionaryView
         {
             base.BuildSubNodes(buildSubNodes);
 
-            interfaces = new StructureInterfacesTreeNode(Item, buildSubNodes);
             procedures = new StructureProceduresTreeNode(Item, buildSubNodes);
             stateMachines = new StructureStateMachinesTreeNode(Item, buildSubNodes);
             rules = new RulesTreeNode(Item, buildSubNodes);
             
-            Nodes.Add(interfaces);
             Nodes.Add(procedures);
             Nodes.Add(stateMachines);
             Nodes.Add(rules);
         }
 
-
-        private void AddInterfaceHandler(object sender, EventArgs args)
-        {
-            if (interfaces != null)
-            {
-                interfaces.AddHandler(sender, args);
-            }
-        }
 
         private void AddProcedureHandler(object sender, EventArgs args)
         {
@@ -194,8 +195,8 @@ namespace GUI.DataDictionaryView
         private void GenerateInheritedFieldsHandler(object sender, EventArgs args)
         {
             Item.GenerateInheritedFields();
-            interfaces.Nodes.Clear();
-            interfaces.BuildSubNodes(false);
+            Interfaces.Nodes.Clear();
+            Interfaces.BuildSubNodes(false);
         }
 
         /// <summary>

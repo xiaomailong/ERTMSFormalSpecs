@@ -100,7 +100,23 @@ namespace GUI.DataDictionaryView
             Structure structure = (Structure)acceptor.getFactory().createStructure();
             structure.Name = "<Interface" + (GetNodeCount(false) + 1) + ">";
             structure.IsAbstract = true;
-            AddStructure(structure);
+            AddInterface(structure);
+        }
+
+        /// <summary>
+        /// Adds an interface in this collection of interfaces
+        /// </summary>
+        /// <param name="structure"></param>
+        /// <returns></returns>
+        public InterfaceTreeNode AddInterface(Structure structure)
+        {
+            Item.appendStructures(structure);
+
+            InterfaceTreeNode retVal = new InterfaceTreeNode(structure, true);
+            Nodes.Add(retVal);
+            SortSubNodes();
+
+            return retVal;
         }
 
         /// <summary>
