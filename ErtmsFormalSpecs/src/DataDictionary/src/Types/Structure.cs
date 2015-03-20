@@ -479,6 +479,21 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        /// Indicates if the structure implements the interface provided as parameter
+        /// </summary>
+        /// <param name="anInterface"></param>
+        /// <returns></returns>
+        public bool InterfaceIsInherited(Structure anInterface)
+        {
+            bool retVal = false;
+            if (anInterface.IsAbstract && anInterface != this)
+            {
+                retVal = ImplementedStructures.Contains(anInterface);
+            }
+            return retVal;
+        }
+
+        /// <summary>
         /// Indicates if the given structure element is inherited from an interface or not
         /// </summary>
         /// <param name="anElement"></param>
