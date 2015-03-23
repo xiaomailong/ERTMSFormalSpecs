@@ -787,6 +787,11 @@ namespace DataDictionary
                 factory.AutomaticallyGenerateGuid = true;
             }
 
+            if (efsSystem != null)
+            {
+                efsSystem.ShouldRebuild = true;
+            }
+
             return retVal;
         }
 

@@ -97,7 +97,6 @@ namespace GUI.LongOperations
             Dictionary = Util.load(FileName, System, PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
             if (ErrorsDuringLoad != null && Dictionary != null && System != null)
             {
-                System.ShouldRebuild = true;
                 Dictionary.CheckRules();
             }
         }
