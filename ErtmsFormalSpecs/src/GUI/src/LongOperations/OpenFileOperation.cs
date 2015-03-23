@@ -17,10 +17,8 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
-using DataDictionary.Generated;
 using Utils;
 using Dictionary = DataDictionary.Dictionary;
-using ModelElement = DataDictionary.ModelElement;
 
 namespace GUI.LongOperations
 {
@@ -50,6 +48,11 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
+        /// Indicates that errors are allowed during load. 
+        /// </summary>
+        public bool AllowErrors { get { return ErrorsDuringLoad != null; } }
+
+        /// <summary>
         /// The errors encountered during load of the file. 
         /// null indicates that no errors are tolerated
         /// </summary>
@@ -76,6 +79,7 @@ namespace GUI.LongOperations
         {
             FileName = fileName;
             System = system;
+
             if (allowErrors)
             {
                 ErrorsDuringLoad = new List<ElementLog>();
@@ -91,41 +95,12 @@ namespace GUI.LongOperations
         /// <summary>
         /// Performs the job as a background task
         /// </summary>
-        /// <param name="arg"></param>
         public override void ExecuteWork()
         {
             Dictionary = Util.load(FileName, System, PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
-            if (ErrorsDuringLoad != null && Dictionary != null && System != null)
+            if (Dictionary != null && System != null && !AllowErrors)
             {
                 Dictionary.CheckRules();
-            }
-        }
-
-        /// <summary>
-        /// Gather errors during load
-        /// </summary>
-        private class ErrorGathered : Visitor
-        {
-            /// <summary>
-            /// The logs during load
-            /// </summary>
-            public List<ElementLog> Logs { get; private set; }
-
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            public ErrorGathered()
-            {
-                Logs = new List<ElementLog>();
-            }
-
-            public override void visit(BaseModelElement obj, bool visitSubNodes)
-            {
-                ModelElement element = (ModelElement) obj;
-
-                Logs.AddRange(element.Messages);
-
-                base.visit(obj, visitSubNodes);
             }
         }
 
