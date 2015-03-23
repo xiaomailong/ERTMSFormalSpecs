@@ -571,7 +571,7 @@
 >Odometry.NominalDistance &lt;-
 (FIRST X IN Kernel.TSR.TSRs).Location
   +
-BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST X IN Kernel.TSR.TSRs))
+BaseTypes.LengthToDistance ((FIRST X IN Kernel.TSR.TSRs).Length)
   +
 BTM.LRBG.Position.Position
   +
@@ -626,7 +626,7 @@ Kernel.TrainPosition.RearEndPosition ( PointOfInterest=&gt;DistanceInterval.Min 
 >Odometry.NominalDistance &lt;-
 (FIRST X IN Kernel.TSR.TSRs).Location
   +
-BaseTypes.LengthToDistance (Kernel.TSR.TSRLength(FIRST X IN Kernel.TSR.TSRs))
+BaseTypes.LengthToDistance ((FIRST X IN Kernel.TSR.TSRs).Length)
   +
 BTM.LRBG.Position.Position
   +

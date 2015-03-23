@@ -1,9 +1,8 @@
 <NameSpace
- X="270"
- Y="720"
+ X="230"
+ Y="770"
  Width="100"
  Height="50"
- Pinned="TRUE"
  Name="TSR"
  Guid="ddbb76e4-1952-4bfd-99d6-732ca3bbe208"
 >
@@ -108,30 +107,6 @@
  Guid="ab8590c6-22a4-48b2-838a-22ecbaf732ed"
 >
 </ReqRef><Comment>Represents the identity number of a temporary speed restriction. If id == 255 the temporary speed restriction in not revocable.</Comment>
-</StructureElement><StructureElement
- TypeName="Messages.Q_FRONT"
- Default="Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element"
- Mode="Internal"
- Implemented="TRUE"
- Name="TrainLengthDelay"
- Guid="8a3af3f9-bc47-4f3a-960d-9a779e9536ce"
->
-<ReqRef
- Id="3dd078b7-9ad0-407d-a57a-510c8a7213ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="03952a47-dbb7-43cc-b3e8-fac317832fa1"
->
-</ReqRef><ReqRef
- Id="49595724-3359-4536-a90e-542bc90ffc8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c4311166-5b6f-4c69-bdba-92cbb2199306"
->
-</ReqRef><ReqRef
- Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3e7092a5-d2d4-40ef-9c8e-24e19617f628"
->
-</ReqRef><Comment>Indicates if a speed limit given for a profile element is to be applied until the front end of the train or the end of the train has left the element.</Comment>
 </StructureElement><Interfaces>
 <StructureRef
  Name="LocationLengthInterface"
@@ -185,12 +160,22 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="74ee6341-28e7-49c9-9cbc-51a2584af1d0"
 >
+</ReqRef><ReqRef
+ Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35cbaf09-605a-40ab-b17c-ff4b29b60415"
+>
 </ReqRef><Comment>Provides the length of the TSR together with the train length, if needed.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TSR.TemporarySpeedRestriction"
- Name="aTSR"
+ Type="BaseTypes.Length"
+ Name="Length"
  Guid="097815c3-cfa6-425d-ab38-d890087e4e4a"
+>
+</Parameter><Parameter
+ Type="Messages.Q_FRONT"
+ Name="TrainLengthDelay"
+ Guid="4978a1d0-1aa0-4e6d-b57b-9254489c4871"
 >
 </Parameter></Parameters>
 <Cases>
@@ -201,13 +186,13 @@
 <PreConditions>
 <PreCondition
  Guid="6b703005-5e73-40d0-9244-69bcfd64d6e1"
->aTSR.TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
-<Expression>aTSR.Length + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
+>TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
+<Expression>Length + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
 </Case><Case
  Name="NoTrainLengthDelay"
  Guid="0dfc10c1-6c15-4e27-beb3-738ad1c6438f"
 >
-<Expression>aTSR.Length</Expression>
+<Expression>Length</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -244,7 +229,7 @@
  Guid="b7a253b5-8d72-419d-b004-0e91ee5b211b"
 >aTSR.Location &lt;= Distance</PreCondition><PreCondition
  Guid="7945a00b-4cbe-4c32-a198-307485b22c6d"
->Distance &lt; aTSR.Location + Default.BaseTypes.LengthToDistance(TSRLength (aTSR))</PreCondition></PreConditions>
+>Distance &lt; aTSR.Location + Default.BaseTypes.LengthToDistance ( Length =&gt; aTSR.Length )</PreCondition></PreConditions>
 <Expression>aTSR.Speed</Expression>
 </Case><Case
  Name="Outside TSR"
@@ -486,10 +471,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
-    Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
+    Length =&gt; TSRLength
+    (
+        Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
+        TrainLengthDelay =&gt; Packet.Q_FRONT
+    ),
     Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
-    Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 ),
-    TrainLengthDelay =&gt; Packet.Q_FRONT
+    Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 )
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -515,10 +503,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >INSERT TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
-    Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
+    Length =&gt; TSRLength
+    (
+        Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
+        TrainLengthDelay =&gt; Packet.Q_FRONT
+    ),
     Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
-    Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 ),
-    TrainLengthDelay =&gt; Packet.Q_FRONT
+    Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 )
 }
 IN TSRs</Action></Actions>
 </RuleCondition></Conditions>
@@ -554,47 +545,4 @@ IN TSRs</Action></Actions>
 >
 </ReqRef><Comment>Represents the temporary speed restrictions received from the trackside.</Comment>
 </Variable></Variables>
-<Rules>
-<Rule
- Priority="CleanUp"
- X="20"
- Y="260"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="RevokeTSR"
- Guid="4341d3f8-e3a8-4c10-8526-83870ab6daec"
->
-<ReqRef
- Id="2c3a1b3f-8686-4dc8-b3cb-bf0f5c7a0f03"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="0b3a8a24-a6d4-4a69-b73d-e917c55f355f"
->
-</ReqRef><ReqRef
- Id="ae963d74-ee48-4c49-819e-a34cf532f1f5"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e630722a-9223-487c-b459-d6815c58ccaf"
->
-</ReqRef><Comment>Revokes TSRs that have been passed by the train.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="RevokeTSR"
- Guid="dfdab89f-e5d8-4c7d-bf15-649d47078a07"
->
-<PreConditions>
-<PreCondition
- Guid="8e101bfa-646f-443f-983c-1f79b9e26a10"
->THERE_IS X IN TSRs | X.Location + BaseTypes.LengthToDistance (TSRLength (X)) + DistanceToKeepInfoInTheRear &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="eee5f16e-cc8f-4f90-b380-617bf6f96f00"
->REMOVE ALL
-  X.Location + BaseTypes.LengthToDistance (TSRLength (X)) + DistanceToKeepInfoInTheRear &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )
-IN
-  TSRs</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </NameSpace>

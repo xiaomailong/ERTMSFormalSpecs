@@ -107,8 +107,8 @@
 <Enumerations>
 <Enum
  Default="SupervisionStatus.Normal"
- X="600"
- Y="270"
+ X="530"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -156,8 +156,8 @@
 </EnumValue></Values>
 </Enum><Enum
  Default="BrakeReason.DriverAckTimeOut"
- X="970"
- Y="90"
+ X="410"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -227,8 +227,8 @@
 <Structures>
 <Structure
  Default=""
- X="970"
- Y="360"
+ X="480"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -267,8 +267,8 @@
 </ReqRef><Comment>The data state of the driver id.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="600"
- Y="210"
+ X="200"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -316,8 +316,8 @@
 </ReqRef><Comment>The data state of the current ERTMS/ETCS level.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="970"
- Y="300"
+ X="480"
+ Y="240"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -363,8 +363,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </ReqRef><Comment>Data state of the train running number.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="800"
- Y="90"
+ X="360"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -423,8 +423,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </StructureElement></Structure><Structure
  Default=""
- X="600"
- Y="150"
+ X="200"
+ Y="240"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -460,8 +460,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Comment>Value of the ERTMS/ETCS operated system.</Comment>
 </StructureElement></Structure><Structure
  Default=""
- X="970"
- Y="20"
+ X="790"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -505,8 +505,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </StructureElement></Structure><Structure
  Default=""
- X="970"
- Y="570"
+ X="330"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -549,8 +549,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </StructureElement></Structure><Structure
  Default=""
- X="970"
- Y="240"
+ X="480"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -632,8 +632,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </StructureElement></Structure><Structure
  IsAbstract="TRUE"
  Default=""
- X="1110"
- Y="20"
+ X="10"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -655,8 +655,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </StructureElement></Structure><Structure
  IsAbstract="TRUE"
  Default=""
- X="1110"
- Y="180"
+ X="200"
+ Y="10"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -696,8 +696,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <Collection
  TypeName="Kernel.EmergencyStopStruct"
  Default="[]"
- X="600"
- Y="90"
+ X="200"
+ Y="180"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -725,8 +725,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  TypeName="Kernel.BaliseGroup"
  MaxSize="20"
  Default="[]"
- X="800"
- Y="20"
+ X="650"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -742,8 +742,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </ReqRef></Collection><Collection
  TypeName="Kernel.SafetyCriticalFaultStruct"
  Default="[]"
- X="970"
- Y="480"
+ X="480"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -764,8 +764,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Collection><Collection
  TypeName="BrakeReason"
  Default="[]"
- X="970"
- Y="180"
+ X="480"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -776,6 +776,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Collection><Collection
  TypeName="LocationInterface"
  Default="[]"
+ X="10"
+ Y="90"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LocationElementsCol"
@@ -785,6 +789,10 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Collection><Collection
  TypeName="LocationLengthInterface"
  Default="[]"
+ X="200"
+ Y="90"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="LocationLengthElementsCol"
@@ -795,8 +803,8 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 <StateMachines>
 <StateMachine
  Default="HandleModeChangeSM.NoProcedure"
- X="970"
- Y="420"
+ X="480"
+ Y="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10659,8 +10667,8 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 <Function
  Type="Kernel.EmergencyStopStruct"
  Default=""
- X="270"
- Y="90"
+ X="230"
+ Y="530"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10707,8 +10715,8 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 </Function><Function
  Type="Kernel.EmergencyStopStruct"
  Default=""
- X="270"
- Y="150"
+ X="450"
+ Y="530"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10744,8 +10752,8 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 </Function><Function
  Type="Kernel.EmergencyStopStruct"
  Default=""
- X="270"
- Y="210"
+ X="340"
+ Y="530"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -10786,8 +10794,8 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 </Function><Function
  Type="Boolean"
  Default=""
- X="270"
- Y="30"
+ X="120"
+ Y="530"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10841,8 +10849,8 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 </Function><Function
  Type="Kernel.OverrideStruct"
  Default=""
- X="270"
- Y="270"
+ X="10"
+ Y="530"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -10955,11 +10963,36 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
     FormerSRDistance =&gt; Default.BaseTypes.Distance.Infinity
 }</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ Name="RemoveLengthLocationBasedElement"
+ Guid="5355dfd3-5ce2-4015-8b03-2c355de7b873"
+>
+<Parameters>
+<Parameter
+ Type="LocationLengthInterface"
+ Name="anElement"
+ Guid="9b053e48-7d17-4dc9-8668-fba83515bc52"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Distance"
+ Name="anAdditionalDistance"
+ Guid="89778873-c3aa-422e-91e6-cc64e4937f87"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ef744c91-b135-4f4f-9dd1-010c04baff94"
+>
+<Expression>anElement.Location + anElement.Length + anAdditionalDistance &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="30"
- Y="210"
+ X="10"
+ Y="610"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11412,8 +11445,8 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="30"
- Y="90"
+ X="670"
+ Y="610"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11525,8 +11558,8 @@ EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="30"
- Y="150"
+ X="780"
+ Y="610"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -11594,8 +11627,8 @@ EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="30"
- Y="330"
+ X="890"
+ Y="610"
  Width="100"
  Height="50"
  Name="DeleteStoredInformation"
@@ -11605,6 +11638,11 @@ EmergencyStops</Action></Actions>
  Id="a0239fb6-709c-4818-9907-463b7c24e661"
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="be7eb453-55cd-4ead-8b6a-83453154e125"
+>
+</ReqRef><ReqRef
+ Id="2c3a1b3f-8686-4dc8-b3cb-bf0f5c7a0f03"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9f1c3f07-4209-42d2-a8dc-722faef76eeb"
 >
 </ReqRef><Comment>Deletes the stored information that is no more used.</Comment>
 <Rules>
@@ -11637,10 +11675,22 @@ EmergencyStops</Action></Actions>
  Guid="3894649c-63e1-4532-8ff1-3296378668a2"
 >
 </ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Exceptions"
+ Guid="44fbeaef-1851-44e4-802c-1d3e63b831d8"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="be1ac2d0-355a-4164-b5c6-7a172db6956d"
+>TSR.TSRs &lt;- MAP TSR.TSRs | NOT RemoveLengthLocationBasedElement ( anElement =&gt; X, anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear ) USING X IN X</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="30"
- Y="270"
+ X="120"
+ Y="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11735,8 +11785,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="30"
- Y="30"
+ X="1110"
+ Y="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11845,8 +11895,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="140"
- Y="90"
+ X="450"
+ Y="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11886,8 +11936,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="140"
- Y="150"
+ X="560"
+ Y="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11928,8 +11978,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="140"
- Y="210"
+ X="230"
+ Y="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -11998,8 +12048,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="140"
- Y="270"
+ X="340"
+ Y="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12033,8 +12083,8 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="140"
- Y="30"
+ X="1220"
+ Y="610"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12109,48 +12159,14 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >EURORADIO.CurrentRBCConnection().OnboardReference_MessageTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
-</Procedure><Procedure
- Name="RemoveLocationBasedElements"
- Guid="3e339306-6749-4ddc-bfa3-84dd15b77ae5"
->
-<Parameters>
-<Parameter
- Type="LocationElementsCol"
- Name="Elements"
- Guid="2f4bff3d-f434-4bd5-8f30-e65b78fde05e"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Name="Remove previous location based elements"
- Guid="044dba47-df51-4dc8-8c1a-648df3b8725f"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Name="Remove previous location based elements"
- Guid="d47210eb-cc0b-4c91-8c3d-871192e90089"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="70ac2797-e382-4d13-b882-319298e94a72"
->REMOVE ALL
-  X.Location &gt; Truc
-IN
-  Elements</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 </Procedure></Procedures>
 <Variables>
 <Variable
  Type="Kernel.DriverId"
  DefaultValue=""
  VariableMode="Internal"
- X="800"
- Y="360"
+ X="630"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12173,8 +12189,8 @@ IN
  Type="Kernel.LevelData"
  DefaultValue=""
  VariableMode="Internal"
- X="420"
- Y="210"
+ X="10"
+ Y="300"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12197,8 +12213,8 @@ IN
  Type="Default.Mode"
  DefaultValue="Default.Mode.NP"
  VariableMode="Internal"
- X="440"
- Y="340"
+ X="790"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12215,8 +12231,8 @@ IN
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="330"
- Y="340"
+ X="900"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12234,8 +12250,8 @@ IN
  Type="Kernel.TrainRunningNumber"
  DefaultValue=""
  VariableMode="Internal"
- X="800"
- Y="300"
+ X="630"
+ Y="240"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12262,8 +12278,8 @@ IN
  Type="EmergencyStopsCol"
  DefaultValue=""
  VariableMode="Internal"
- X="420"
- Y="90"
+ X="10"
+ Y="180"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12297,8 +12313,8 @@ IN
  Type="Default.BaseTypes.Distance"
  DefaultValue=""
  VariableMode="Internal"
- X="260"
- Y="470"
+ X="900"
+ Y="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12321,8 +12337,8 @@ IN
  Type="Kernel.NationalValues.NationalDefaultDataStruct"
  DefaultValue=""
  VariableMode="Internal"
- X="40"
- Y="470"
+ X="900"
+ Y="240"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12348,8 +12364,8 @@ IN
     Value =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0
 }"
  VariableMode="InOut"
- X="420"
- Y="150"
+ X="10"
+ Y="240"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12367,8 +12383,8 @@ IN
  Type="Boolean"
  DefaultValue="Boolean.False"
  VariableMode="Internal"
- X="220"
- Y="340"
+ X="1010"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12421,8 +12437,8 @@ IN
  Type="Default.BaseTypes.Time"
  DefaultValue="0.34"
  VariableMode="Internal"
- X="370"
- Y="470"
+ X="790"
+ Y="240"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12436,8 +12452,8 @@ IN
  Type="Messages.NID_ENGINE"
  DefaultValue="0"
  VariableMode="Internal"
- X="550"
- Y="340"
+ X="1120"
+ Y="120"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12451,8 +12467,8 @@ IN
  Type="HandleModeChangeSM"
  DefaultValue=""
  VariableMode="Internal"
- X="800"
- Y="420"
+ X="630"
+ Y="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12465,8 +12481,8 @@ IN
  Type="Boolean"
  DefaultValue="False"
  VariableMode="Internal"
- X="150"
- Y="470"
+ X="1010"
+ Y="240"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12484,8 +12500,8 @@ IN
  Type="Default.BaseTypes.Distance"
  DefaultValue="300.0"
  VariableMode="Constant"
- X="480"
- Y="470"
+ X="790"
+ Y="360"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12502,8 +12518,8 @@ IN
  Type="Boolean"
  DefaultValue=""
  VariableMode="Internal"
- X="660"
- Y="340"
+ X="1010"
+ Y="360"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12520,8 +12536,8 @@ IN
  Type="SafetyCriticalFaultsCol"
  DefaultValue=""
  VariableMode="Internal"
- X="800"
- Y="480"
+ X="630"
+ Y="420"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12553,8 +12569,8 @@ IN
  Type="ServiceBrakesCol"
  DefaultValue="[]"
  VariableMode="Internal"
- X="800"
- Y="180"
+ X="630"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12567,8 +12583,8 @@ IN
  Type="Kernel.OverrideStruct"
  DefaultValue=""
  VariableMode="Internal"
- X="800"
- Y="240"
+ X="630"
+ Y="180"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12605,8 +12621,8 @@ IN
 <Rules>
 <Rule
  Priority="UpdateINTERNAL"
- X="50"
- Y="790"
+ X="10"
+ Y="690"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12631,8 +12647,8 @@ IN
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="380"
- Y="790"
+ X="450"
+ Y="690"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -12659,8 +12675,8 @@ IN
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="CleanUp"
- X="490"
- Y="790"
+ X="780"
+ Y="690"
  Width="100"
  Height="50"
  Name="Clean Up"
@@ -12687,8 +12703,8 @@ IN
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="UpdateOUT"
- X="160"
- Y="790"
+ X="120"
+ Y="690"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12714,8 +12730,8 @@ IN
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="600"
- Y="790"
+ X="560"
+ Y="690"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12746,8 +12762,8 @@ IN
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="270"
- Y="790"
+ X="340"
+ Y="690"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12790,8 +12806,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="710"
- Y="790"
+ X="670"
+ Y="690"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -12826,8 +12842,8 @@ When the rear end of the train passes the start of the profiles, the message is 
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="820"
- Y="790"
+ X="230"
+ Y="690"
  Width="100"
  Height="50"
  Implemented="TRUE"
