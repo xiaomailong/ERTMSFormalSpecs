@@ -773,6 +773,24 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Name="ServiceBrakesCol"
  Guid="6669d59f-32a9-4f72-a752-3f117d072ea4"
 >
+</Collection><Collection
+ TypeName="LocationInterface"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LocationElementsCol"
+ Guid="490540ef-06f8-4e5c-bbe0-83ad09f3c8eb"
+>
+<Comment>Represents a collection of elements that contain a &quot;Location&quot; field.</Comment>
+</Collection><Collection
+ TypeName="LocationLengthInterface"
+ Default="[]"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="LocationLengthElementsCol"
+ Guid="e7b95d93-561d-4c78-84ed-a0d4b63a92e4"
+>
+<Comment>Represents a collection of elements that contain &quot;Location&quot; and &quot;Length&quot; fields.</Comment>
 </Collection></Collections>
 <StateMachines>
 <StateMachine
@@ -11608,6 +11626,17 @@ EmergencyStops</Action></Actions>
  Guid="c1dbce32-b039-4ab7-afd7-fa7c1061d3bd"
 >TrackDescription.TrackConditions.TCMonitor()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Exceptions"
+ Guid="89824c60-fba8-49fb-94ff-319edc18b6e4"
+>
+<ReqRef
+ Id="ae963d74-ee48-4c49-819e-a34cf532f1f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3894649c-63e1-4532-8ff1-3296378668a2"
+>
+</ReqRef><SubRules></SubRules>
 </Rule></Rules>
 </Procedure><Procedure
  X="30"
@@ -12078,6 +12107,40 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Action
  Guid="402e6d77-6da8-4bb4-8707-384237982f18"
 >EURORADIO.CurrentRBCConnection().OnboardReference_MessageTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="RemoveLocationBasedElements"
+ Guid="3e339306-6749-4ddc-bfa3-84dd15b77ae5"
+>
+<Parameters>
+<Parameter
+ Type="LocationElementsCol"
+ Name="Elements"
+ Guid="2f4bff3d-f434-4bd5-8f30-e65b78fde05e"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Remove previous location based elements"
+ Guid="044dba47-df51-4dc8-8c1a-648df3b8725f"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Remove previous location based elements"
+ Guid="d47210eb-cc0b-4c91-8c3d-871192e90089"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="70ac2797-e382-4d13-b882-319298e94a72"
+>REMOVE ALL
+  X.Location &gt; Truc
+IN
+  Elements</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
