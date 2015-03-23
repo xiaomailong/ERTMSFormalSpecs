@@ -132,7 +132,13 @@
  Guid="3e7092a5-d2d4-40ef-9c8e-24e19617f628"
 >
 </ReqRef><Comment>Indicates if a speed limit given for a profile element is to be applied until the front end of the train or the end of the train has left the element.</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationLengthInterface"
+ Guid="864b6b2a-24a0-4830-9ebf-73091e5fca11"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TSR.TemporarySpeedRestriction"
