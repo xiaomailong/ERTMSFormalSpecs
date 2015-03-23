@@ -54,7 +54,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="36c65e77-0f18-467f-9cfc-98a7ebe2511e"
 >
 <ReqRef
@@ -63,7 +63,13 @@
  Guid="9c4d43c7-329c-4b17-888d-c3a9150b96b9"
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="de73dd07-ee6f-4c38-a5e5-bedbd732239d"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformationStruct"
@@ -108,9 +114,9 @@
  Guid="0d925f86-4a0c-406b-9e9e-b11f22e1f1ad"
 >
 <Comment>Returns the element in TCCurrentConsumption with the largest distance that is less than or equal to the parameter</Comment>
-<Expression>REDUCE TCCurrentConsumption | (X.Distance &lt;= Distance)
+<Expression>REDUCE TCCurrentConsumption | (X.Location &lt;= Distance)
     USING X IN Default.BaseTypes.MaxDistance(
-        X1=&gt;X.Distance,
+        X1=&gt;X.Location,
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
@@ -152,8 +158,8 @@
 <PreConditions>
 <PreCondition
  Guid="fe703eb9-0bfa-4767-ad0c-4c1a9a1884d0"
->THERE_IS X IN TCCurrentConsumption | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
-<Expression>REDUCE TCCurrentConsumption | (X.Distance == CCProfileStartLocation(Distance=&gt;Distance) )
+>THERE_IS X IN TCCurrentConsumption | (X.Location &lt;= Distance)</PreCondition></PreConditions>
+<Expression>REDUCE TCCurrentConsumption | (X.Location == CCProfileStartLocation(Distance=&gt;Distance) )
     USING X IN X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
@@ -232,12 +238,14 @@
 <Actions>
 <Action
  Guid="23fc9e26-c1cc-4080-9e64-18004abd3b5f"
->INSERT Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformationStruct{
-    Distance=&gt;Default.MessageTypes.QScaleDistance(
-        distance=&gt;Packet.D_CURRENT,
-        scale=&gt;Packet.Q_SCALE
+>INSERT Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformationStruct
+{
+    Location =&gt; Default.MessageTypes.QScaleDistance
+    (
+        distance =&gt; Packet.D_CURRENT,
+        scale =&gt; Packet.Q_SCALE
     ),
-    Value=&gt;Packet.M_CURRENT
+    Value =&gt; Packet.M_CURRENT
 }
 IN
     TCCurrentConsumption</Action></Actions>
@@ -321,7 +329,7 @@ IN
 <Actions>
 <Action
  Guid="315bfd5f-6949-41b8-a30d-7c128dcd887e"
->TCCurrentConsumption &lt;- MAP TCCurrentConsumption | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+>TCCurrentConsumption &lt;- MAP TCCurrentConsumption | X.Location &lt;= aLocation USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -347,7 +355,7 @@ IN
 >INSERT
   CurrentConsumptionInformationStruct
   {
-    Distance =&gt; aLocation,
+    Location =&gt; aLocation,
     Value =&gt; Messages.M_CURRENT.No_restriction_for_current_consumption
   }
 IN

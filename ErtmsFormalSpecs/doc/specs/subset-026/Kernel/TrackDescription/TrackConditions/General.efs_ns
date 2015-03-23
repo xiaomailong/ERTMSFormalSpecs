@@ -213,7 +213,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="01907eb8-5281-475e-99e9-b01b9ff48ab3"
 >
 <ReqRef
@@ -236,7 +236,13 @@
  Guid="cb0a3a0e-53ac-46c5-8da4-fd9b78778a80"
 >
 </ReqRef><Comment>Which track conditions are in effect</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="7181115f-3bac-40d9-bbf1-aefc93ea2da5"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
@@ -362,22 +368,21 @@
 <Comment>Reset all but NonStoppingArea, TunnelStoppingArea and SoundHorn</Comment>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct
 {
-    Distance =&gt; TCPacket.Distance,
+    Location =&gt; TCPacket.Location,
     Value =&gt; Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct
-{ 
-    NonStoppingArea =&gt; TCPacket.Value.NonStoppingArea ,
-    TunnelStoppingArea =&gt; TCPacket.Value.TunnelStoppingArea ,
-    SoundHorn =&gt; TCPacket.Value.SoundHorn ,
-    PowerlessSection_LowerPantograph =&gt; False,
-    RadioHole =&gt; False,
-    AirTightness =&gt; False,
-    SwitchOffRegenerativeBrake =&gt; False,
-    SwitchOffEddyCurrentBrakeForSB =&gt; False,
-    SwitchOffMagneticShoeBrake =&gt; False,
-    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; False,
-    SwitchOffEddyCurrentBrakeForEB =&gt; False
-}
-
+    { 
+        NonStoppingArea =&gt; TCPacket.Value.NonStoppingArea ,
+        TunnelStoppingArea =&gt; TCPacket.Value.TunnelStoppingArea ,
+        SoundHorn =&gt; TCPacket.Value.SoundHorn ,
+        PowerlessSection_LowerPantograph =&gt; False,
+        RadioHole =&gt; False,
+        AirTightness =&gt; False,
+        SwitchOffRegenerativeBrake =&gt; False,
+        SwitchOffEddyCurrentBrakeForSB =&gt; False,
+        SwitchOffMagneticShoeBrake =&gt; False,
+        PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; False,
+        SwitchOffEddyCurrentBrakeForEB =&gt; False
+    }
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -412,22 +417,21 @@
 <Comment>Reset NonStoppingArea, TunnelStoppingArea and SoundHorn</Comment>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct
 {
-    Distance =&gt; TCPacket.Distance,
+    Location =&gt; TCPacket.Location,
     Value =&gt; Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct
-{ 
-    NonStoppingArea =&gt; False,
-    TunnelStoppingArea =&gt; False,
-    SoundHorn =&gt; False,
-    PowerlessSection_LowerPantograph =&gt; TCPacket.Value.PowerlessSection_LowerPantograph,
-    RadioHole =&gt;TCPacket.Value.RadioHole ,
-    AirTightness =&gt; TCPacket.Value.AirTightness ,
-    SwitchOffRegenerativeBrake =&gt;TCPacket.Value.SwitchOffRegenerativeBrake ,
-    SwitchOffEddyCurrentBrakeForSB =&gt; TCPacket.Value.SwitchOffEddyCurrentBrakeForSB ,
-    SwitchOffMagneticShoeBrake =&gt; TCPacket.Value.SwitchOffMagneticShoeBrake ,
-    PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; TCPacket.Value.PowerlessSection_SwitchOffTheMainPowerSwitch,
-    SwitchOffEddyCurrentBrakeForEB =&gt; TCPacket.Value.SwitchOffEddyCurrentBrakeForSB
-}
-
+    { 
+        NonStoppingArea =&gt; False,
+        TunnelStoppingArea =&gt; False,
+        SoundHorn =&gt; False,
+        PowerlessSection_LowerPantograph =&gt; TCPacket.Value.PowerlessSection_LowerPantograph,
+        RadioHole =&gt;TCPacket.Value.RadioHole ,
+        AirTightness =&gt; TCPacket.Value.AirTightness ,
+        SwitchOffRegenerativeBrake =&gt;TCPacket.Value.SwitchOffRegenerativeBrake ,
+        SwitchOffEddyCurrentBrakeForSB =&gt; TCPacket.Value.SwitchOffEddyCurrentBrakeForSB ,
+        SwitchOffMagneticShoeBrake =&gt; TCPacket.Value.SwitchOffMagneticShoeBrake ,
+        PowerlessSection_SwitchOffTheMainPowerSwitch =&gt; TCPacket.Value.PowerlessSection_SwitchOffTheMainPowerSwitch,
+        SwitchOffEddyCurrentBrakeForEB =&gt; TCPacket.Value.SwitchOffEddyCurrentBrakeForSB
+    }
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -644,8 +648,8 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
 <PreConditions>
 <PreCondition
  Guid="52fe1d2c-2078-4728-828e-aae8e72d359f"
->THERE_IS X IN TCProfile | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
-<Expression>REDUCE TCProfile| (X.Distance == ProfileStartLocation(Distance=&gt;Distance) )
+>THERE_IS X IN TCProfile | (X.Location &lt;= Distance)</PreCondition></PreConditions>
+<Expression>REDUCE TCProfile| (X.Location == ProfileStartLocation(Distance=&gt;Distance) )
     USING X IN X.Value
   INITIAL_VALUE Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct
 {
@@ -694,9 +698,9 @@ When the train passes over a profile point, it doesn&apos;t know if that point m
  Guid="075984f4-a690-4a84-8ced-fd83b88786b7"
 >
 <Comment>Returns the element in TCProfile with the largest distance that is less than or equal to the parameter</Comment>
-<Expression>REDUCE TCProfile| (X.Distance &lt;= Distance)
+<Expression>REDUCE TCProfile| (X.Location &lt;= Distance)
     USING X IN Default.BaseTypes.MaxDistance(
-        X1=&gt;X.Distance,
+        X1=&gt;X.Location,
         X2=&gt;RESULT)
   INITIAL_VALUE 0.0</Expression>
 </Case></Cases>
@@ -767,7 +771,7 @@ The use of profile points and the functions in this namespace can be found in Er
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
- Name="Distance"
+ Name="Location"
  Guid="49845eb0-ef22-4286-90b0-35ff896faf06"
 >
 </Parameter><Parameter
@@ -787,8 +791,8 @@ The use of profile points and the functions in this namespace can be found in Er
 >EndOfSection</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct
 {
-    Distance =&gt; Distance,
-    Value =&gt; ProfileAtDistance(Distance=&gt; Distance)
+    Location =&gt; Location,
+    Value =&gt; ProfileAtDistance(Distance=&gt; Location)
 }</Expression>
 </Case><Case
  Name="AirTightness"
@@ -799,9 +803,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="158d39b3-532d-4194-ade2-b55879fde745"
 >TCType == Messages.M_TRACKCOND.Air_tightness__Initial_state__no_request_for_air_tightness</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{AirTightness=&gt;True} 
     )
 }</Expression>
@@ -814,9 +819,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="e0e6c996-6144-43d4-a85f-0dbfd3f32b7d"
 >TCType == Messages.M_TRACKCOND.Non_stopping_area___tunnel__Initial_state__stopping_permitted</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{NonStoppingArea=&gt;True} 
     )
 }</Expression>
@@ -829,9 +835,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="144ceff9-9e3e-46b6-8e89-ef91a389cd51"
 >TCType == Messages.M_TRACKCOND.Powerless_section___lower_pantograph__Initial_state__not_powerless_section</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{PowerlessSection_LowerPantograph=&gt;True} 
     )
 }</Expression>
@@ -844,9 +851,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="dde20f85-6d5d-4e69-a9a5-b7e93ff39437"
 >TCType == Messages.M_TRACKCOND.Powerless_section___switch_off_the_main_power_switch__Initial_state__not_powerless_section</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{PowerlessSection_SwitchOffTheMainPowerSwitch=&gt;True} 
     )
 }</Expression>
@@ -859,9 +867,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="8fc8792d-fc48-4bd4-8936-90484c256055"
 >TCType == Messages.M_TRACKCOND.Radio_hole__stop_supervising_T_NVCONTACT___Initial_state__supervise_T_NVCONTACT</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{RadioHole=&gt;True} 
     )
 }</Expression>
@@ -874,9 +883,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="9fcd2282-2e72-4499-af37-7b619e32e280"
 >TCType == Messages.M_TRACKCOND.Sound_horn__Initial_state__no_request_for_sound_horn</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{SoundHorn=&gt;True} 
     )
 }</Expression>
@@ -889,9 +899,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="d7f70660-d556-4cdc-80b8-c7216f02f496"
 >TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_emergency_brake__Initial_state__eddy_current_brake_for_emergency_brake_on</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{SwitchOffEddyCurrentBrakeForEB=&gt;True} 
     )
 }</Expression>
@@ -904,9 +915,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="2cef8605-475c-4208-8ff7-23b85212d584"
 >TCType == Messages.M_TRACKCOND.Switch_off_eddy_current_brake_for_service_brake__Initial_state__eddy_current_brake_for_service_brake_on</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{SwitchOffEddyCurrentBrakeForSB=&gt;True} 
     )
 }</Expression>
@@ -919,9 +931,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="381a52ec-a69d-42a9-ad0d-c1dd0156bfc0"
 >TCType == Messages.M_TRACKCOND.Switch_off_magnetic_shoe_brake__Initial_state__magnetic_shoe_brake_on</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{SwitchOffMagneticShoeBrake=&gt;True} 
     )
 }</Expression>
@@ -934,9 +947,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="a69c371f-bec7-428e-b998-08bf43054fff"
 >TCType == Messages.M_TRACKCOND.Switch_off_regenerative_brake__Initial_state__regenerative_brake_on</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{SwitchOffRegenerativeBrake=&gt;True} 
     )
 }</Expression>
@@ -949,9 +963,10 @@ The use of profile points and the functions in this namespace can be found in Er
  Guid="8447cc3f-c1b7-4388-9540-0b4c613ef5a8"
 >TCType == Messages.M_TRACKCOND.Tunnel_stopping_area__Initial_state__no_tunnel_stopping_area</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; CombineConditions(
-        Profile1=&gt; ProfileAtDistance(Distance=&gt;Distance),
+    Location =&gt; Location,
+    Value =&gt; CombineConditions
+    (
+        Profile1=&gt; ProfileAtDistance(Distance=&gt;Location),
         Profile2=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{TunnelStoppingArea=&gt;True} 
     )
 }</Expression>
@@ -977,7 +992,7 @@ The use of profile points and the functions in this namespace can be found in Er
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
- Name="Distance"
+ Name="Location"
  Guid="e53c813a-a0df-4125-8e67-99aa76bf25e8"
 >
 </Parameter><Parameter
@@ -1000,22 +1015,24 @@ The use of profile points and the functions in this namespace can be found in Er
 <PreConditions>
 <PreCondition
  Guid="1fa5ac73-cb6b-439b-b27c-59259d113e7d"
->Profile.Distance &gt;= Distance</PreCondition><PreCondition
+>Profile.Location &gt;= Location</PreCondition><PreCondition
  Guid="13ab1164-7246-493c-b844-37fd7b218a61"
->Profile.Distance &lt; EndSectionDistance(
+>Profile.Location &lt; EndSectionDistance(
     TCType=&gt;TCType,
-    Distance=&gt;Distance,
+    Distance=&gt;Location,
     Length=&gt;Length
 )</PreCondition></PreConditions>
 <Expression>Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct
 {
-    Distance =&gt; Profile.Distance,
-    Value =&gt; CombineConditions(
+    Location =&gt; Profile.Location,
+    Value =&gt; CombineConditions
+    (
         Profile1 =&gt; Profile.Value,
-        Profile2 =&gt; MakeTCProfilePoint(
-            TCType=&gt;TCType,
-            Distance=&gt;Distance,
-            EndOfSection=&gt;False
+        Profile2 =&gt; MakeTCProfilePoint
+        (
+            TCType =&gt; TCType,
+            Location =&gt; Location,
+            EndOfSection =&gt; False
         ).Value
     )
 }</Expression>
@@ -1089,7 +1106,7 @@ If there is already at a point at the end location, the values will not be chang
 <PreConditions>
 <PreCondition
  Guid="5c2fd295-1fa0-4273-8634-53b3ce87e09e"
->NOT (THERE_IS X IN TCProfile| X.Distance == EndSectionDistance(
+>NOT (THERE_IS X IN TCProfile| X.Location == EndSectionDistance(
     TCType=&gt;TCType,
     Distance=&gt;Distance,
     Length=&gt;Length
@@ -1101,7 +1118,7 @@ If there is already at a point at the end location, the values will not be chang
 ><Comment>EndSectionDistance provides the end location (in terms of the front end of the train) of the section</Comment>
 INSERT MakeTCProfilePoint(
 TCType=&gt;TCType,
-Distance=&gt;EndSectionDistance(
+Location=&gt;EndSectionDistance(
     TCType=&gt;TCType,
     Distance=&gt;Distance,
     Length=&gt;Length
@@ -1130,13 +1147,13 @@ If there is already a point at the start of the section, its conditions will be 
 <PreConditions>
 <PreCondition
  Guid="e75ca188-658d-4763-a32d-985d6154454c"
->NOT (THERE_IS X IN TCProfile| X.Distance == Distance)</PreCondition></PreConditions>
+>NOT (THERE_IS X IN TCProfile| X.Location == Distance)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="be8dab85-6e95-4b9e-b7b4-0a9c8968a606"
 >INSERT MakeTCProfilePoint(
     TCType=&gt;TCType,
-    Distance=&gt;Distance,
+    Location=&gt;Distance,
     EndOfSection=&gt;False
     )
 IN
@@ -1163,7 +1180,7 @@ IN
  Guid="0c73a213-20bf-4acb-9a85-b05e04dcdd19"
 >TCProfile&lt;- MAP TCProfile USING X IN UpdatedTCProfile(
     Profile=&gt;X,
-    Distance=&gt;Distance,
+    Location=&gt;Distance,
     Length=&gt;Length,
     TCType=&gt;TCType
 )</Action></Actions>
@@ -1280,7 +1297,7 @@ The handling of track conditions is decribed in  ErtmsFormalSpecs/doc/specs/Mode
 <Actions>
 <Action
  Guid="e442a836-0892-422d-9982-9577731091f3"
->REMOVE ALL X.Distance &gt;= NewInfoStartLocation(Packet) 
+>REMOVE ALL X.Location &gt;= NewInfoStartLocation(Packet) 
     IN TCProfile</Action><Action
  Guid="ad4e2691-c733-4e4d-8db1-ff6fd0667df6"
 >REMOVE ALL X.Distance &gt;= TCDisplay.AnnouncementLocation(TrackCondition=&gt;Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{}, Distance =&gt; NewInfoStartLocation(Packet))
@@ -1464,18 +1481,20 @@ ON
 <Actions>
 <Action
  Guid="cc227c70-643c-452b-b941-13c9a55589e2"
->REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance(
+>REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance(
     distance=&gt;Packet.D_TRACKINIT,
     scale=&gt;Packet.Q_SCALE
     )
 IN
     TCProfile</Action><Action
  Guid="b5b87575-a081-4006-956f-527bfabc9dfd"
->INSERT Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct{
-    Distance =&gt; Default.MessageTypes.QScaleDistance(
-        distance=&gt;Packet.D_TRACKINIT,
-        scale=&gt;Packet.Q_SCALE
-        )
+>INSERT Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct
+{
+    Location =&gt; Default.MessageTypes.QScaleDistance
+    (
+        distance =&gt; Packet.D_TRACKINIT,
+        scale =&gt; Packet.Q_SCALE
+    )
 }
 IN
     TCProfile</Action></Actions>
@@ -1574,7 +1593,7 @@ IN
 <Actions>
 <Action
  Guid="a5ae5f84-8f75-40c8-a285-7509f42ad9f6"
->TCProfile &lt;- MAP TCProfile | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+>TCProfile &lt;- MAP TCProfile | X.Location &lt;= aLocation USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1600,7 +1619,7 @@ IN
 >INSERT
   TrackConditionInformationStruct
   {
-    Distance =&gt; aLocation,
+    Location =&gt; aLocation,
     Value =&gt; TrackConditionStruct{}
   }
 IN

@@ -3514,7 +3514,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="08a1d375-0436-4d6f-a892-d6dc21a15a89"
 >d &lt; TrackDescription.TrackConditions.BrakingConditionLength(aTrackCondition)</PreCondition><PreCondition
  Guid="79804f23-ad2c-4ddc-9597-42c34545125c"
->aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
+>aTrackCondition.Location &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBrakingModel
@@ -3878,7 +3878,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="358ef9c4-e1a3-4cba-b203-8a64fe3681cd"
 >d &lt; TrackDescription.TrackConditions.BrakingConditionLength(aTrackCondition)</PreCondition><PreCondition
  Guid="7b2f1e2f-c31a-4f00-8dbb-0e4112c5823f"
->aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
+>aTrackCondition.Location &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBNSBrakingModel_TrackCondition ( aTrackCondition =&gt; aTrackCondition ),
@@ -4463,7 +4463,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="898e92ea-c148-4e98-acdf-c9c3bcda7754"
 >d &lt; TrackDescription.TrackConditions.BrakingConditionLength(aTrackCondition)</PreCondition><PreCondition
  Guid="4a2c514c-e06b-42ec-b04a-517b1baabdfd"
->aTrackCondition.Distance &lt;= d</PreCondition></PreConditions>
+>aTrackCondition.Location &lt;= d</PreCondition></PreConditions>
 <Expression>BrakingModelFunction
 (
     BrakingModel =&gt; SelectBrakingModel

@@ -97,7 +97,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="b5758143-ed13-41b3-adce-808e924cc584"
 >
 <ReqRef
@@ -130,7 +130,13 @@
  Guid="9d574fbd-276f-4eac-8186-a40a08f7ed5c"
 >
 </ReqRef><Comment>Information about the track conditions over the rails starting at Distance</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="1b24af63-2ed8-4419-91fd-54c154dca272"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct"
@@ -171,7 +177,7 @@
 >
 </Parameter><Parameter
  Type="Default.BaseTypes.Distance"
- Name="Distance"
+ Name="Location"
  Guid="c90c2ef8-7100-4159-ad3d-dcdc0b08e105"
 >
 </Parameter><Parameter
@@ -194,17 +200,20 @@
 <PreCondition
  Guid="7d07a912-fc3b-43b2-8ea2-e825af1ec19b"
 >EndOfSection</PreCondition></PreConditions>
-<Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt;  SPAtDistance(Distance)
+<Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct
+{
+    Location =&gt; Location,
+    Value =&gt;  SPAtDistance(Location)
 }</Expression>
 </Case><Case
  Name="Start of section"
  Guid="6d2b0839-738c-46ee-8f64-861bc5226af8"
 >
-<Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct{
-    Distance =&gt; Distance,
-    Value =&gt; Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct{
+<Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct
+{
+    Location =&gt; Location,
+    Value =&gt; Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct
+    {
         Side =&gt; Side,
         Height =&gt; Height,
         Enabled =&gt; True
@@ -291,8 +300,8 @@
 <PreConditions>
 <PreCondition
  Guid="e92f1a3d-f7dc-457f-8125-b090db9ad12b"
->THERE_IS X IN TCStationPlatforms | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
-<Expression>REDUCE TCStationPlatforms | (X.Distance == SPProfileStartLocation(Distance) )
+>THERE_IS X IN TCStationPlatforms | (X.Location &lt;= Distance)</PreCondition></PreConditions>
+<Expression>REDUCE TCStationPlatforms | (X.Location == SPProfileStartLocation(Distance) )
     USING X IN X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
@@ -363,9 +372,9 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
  Guid="0d720338-4d37-4041-ae4b-aca9d358dd48"
 >
 <Comment>Returns the element in TCStationPlatform with the largest distance that is less than or equal to the parameter</Comment>
-<Expression>REDUCE TCStationPlatforms | (X.Distance &lt;= Distance)
+<Expression>REDUCE TCStationPlatforms | (X.Location &lt;= Distance)
     USING X IN Default.BaseTypes.MaxDistance(
-        X1=&gt;X.Distance,
+        X1=&gt;X.Location,
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
@@ -433,19 +442,22 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 <Actions>
 <Action
  Guid="af7c9459-722c-4c14-8b2c-79e47721c1d1"
->REMOVE ALL X.Distance &gt;= Default.MessageTypes.QScaleDistance(
+>REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance(
     distance=&gt;Packet.D_TRACKINIT,
     scale=&gt;Packet.Q_SCALE
     )
 IN
     TCStationPlatforms</Action><Action
  Guid="b803cea3-2661-496d-8f0e-61206f6bed58"
->INSERT Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct{
-    Distance =&gt; Default.MessageTypes.QScaleDistance(
-        distance=&gt;Packet.D_TRACKINIT,
-        scale=&gt;Packet.Q_SCALE
-        ),
-    Value =&gt; Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct{
+>INSERT Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct
+{
+    Location =&gt; Default.MessageTypes.QScaleDistance
+    (
+        distance =&gt; Packet.D_TRACKINIT,
+        scale =&gt; Packet.Q_SCALE
+    ),
+    Value =&gt; Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct
+    {
         Enabled =&gt; Boolean.False
     }
 }
@@ -641,7 +653,7 @@ ON
 INSERT MakeSPProfilePoint(
     Side=&gt;Side,
     Height=&gt;Height,
-    Distance=&gt;SPSectionEnd(
+    Location=&gt;SPSectionEnd(
         Distance=&gt;Distance,
         Length=&gt;Length
     ),
@@ -673,7 +685,7 @@ IN
 >INSERT MakeSPProfilePoint(
     Side=&gt;Side,
     Height=&gt;Height,
-    Distance=&gt;Distance,
+    Location=&gt;Distance,
     EndOfSection=&gt;False
     )
 IN
@@ -758,7 +770,7 @@ IN
 <Actions>
 <Action
  Guid="56b7217d-8752-45d7-94fa-d4a60d6c20d8"
->TCStationPlatforms &lt;- MAP TCStationPlatforms | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+>TCStationPlatforms &lt;- MAP TCStationPlatforms | X.Location &lt;= aLocation USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -784,7 +796,7 @@ IN
 >INSERT
   StationPlatformInformationStruct
   {
-    Distance =&gt; aLocation,
+    Location =&gt; aLocation,
     Value =&gt; StationPlatformStruct
     {
       Enabled =&gt; Boolean.False

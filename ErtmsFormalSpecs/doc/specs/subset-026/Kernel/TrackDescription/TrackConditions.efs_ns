@@ -134,7 +134,7 @@
 <PreCondition
  Guid="63f5b8e4-1c3f-4267-a7e6-bfb62588b3c1"
 >TrackConditionType == ConditionType.Conditions</PreCondition></PreConditions>
-<Expression>THERE_IS X IN General.TCProfile| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt;= TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS X IN General.TCProfile| (X.Location &gt; ProfilePointDistance) AND (X.Location &lt;= TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Metal masses are passed"
  Guid="b3adf906-b3aa-4a78-a2ef-cbfeae7a1c8e"
@@ -143,7 +143,7 @@
 <PreCondition
  Guid="29415c07-8788-4a5d-b02d-9c1b80bec23e"
 >TrackConditionType == ConditionType.BigMetalMasses</PreCondition></PreConditions>
-<Expression>THERE_IS X IN BigMetalMasses.TCBigMetalMasses| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS X IN BigMetalMasses.TCBigMetalMasses| (X.Location &gt; ProfilePointDistance) AND (X.Location &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Station platforms changed"
  Guid="64950d25-0e2f-4ada-b68d-1237ec3a3bd5"
@@ -152,7 +152,7 @@
 <PreCondition
  Guid="4a9c1660-1830-44a0-a016-13570282c74e"
 >TrackConditionType == ConditionType.StationPlatform</PreCondition></PreConditions>
-<Expression>THERE_IS X IN StationPlatform.TCStationPlatforms| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS X IN StationPlatform.TCStationPlatforms| (X.Location &gt; ProfilePointDistance) AND (X.Location &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Newer traction system condition has been applied"
  Guid="6a9633c8-ab71-4b77-8b00-d8fe637fc740"
@@ -162,7 +162,7 @@
 <PreCondition
  Guid="e9ab2926-47c5-4c27-b9f2-5f48fe6f086b"
 >TrackConditionType == ConditionType.TractionSystem</PreCondition></PreConditions>
-<Expression>THERE_IS X IN TractionSystems.TCTractionSystems| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
+<Expression>THERE_IS X IN TractionSystems.TCTractionSystems| (X.Location &gt; ProfilePointDistance) AND (X.Location &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
 </Case><Case
  Name="New current consumption limit has been applied"
  Guid="2c584425-c82e-48bc-a4ff-a445749fa10b"
@@ -172,7 +172,7 @@
 <PreCondition
  Guid="ec6f1c48-d0e2-40b6-98ef-5b4bc7e36db6"
 >TrackConditionType == ConditionType.CurrentConsumption</PreCondition></PreConditions>
-<Expression>THERE_IS X IN CurrentConsumption.TCCurrentConsumption| (X.Distance &gt; ProfilePointDistance) AND (X.Distance &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
+<Expression>THERE_IS X IN CurrentConsumption.TCCurrentConsumption| (X.Location &gt; ProfilePointDistance) AND (X.Location &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Max))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -203,12 +203,12 @@
 a) a distance greater than StartPoint
 b) a different combination of enabled braking systems</Comment>
 <Expression>REDUCE General.TCProfile| (
-                   X.Distance &gt; StartPoint.Distance AND (
+                   X.Location &gt; StartPoint.Location AND (
                     X.Value.SwitchOffRegenerativeBrake != StartPoint.Value.SwitchOffRegenerativeBrake OR 
                     X.Value.SwitchOffMagneticShoeBrake != StartPoint.Value.SwitchOffMagneticShoeBrake OR 
                     X.Value.SwitchOffEddyCurrentBrakeForEB != StartPoint.Value.SwitchOffEddyCurrentBrakeForEB ) )
     USING X IN Default.BaseTypes.MinDistance(
-        X1=&gt;X.Distance
+        X1=&gt;X.Location
         X2=&gt;RESULT
     )
     INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
@@ -255,7 +255,7 @@ b) a different combination of enabled braking systems</Comment>
 <Actions>
 <Action
  Guid="effae0ff-821f-49a4-b156-ec9f0cd7cc5b"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Location, TrackConditionType=&gt;ConditionType.Conditions) IN General.TCProfile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -281,7 +281,7 @@ b) a different combination of enabled braking systems</Comment>
 <Actions>
 <Action
  Guid="eb5b3a2f-282d-4717-8657-32e14c2946e1"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.BigMetalMasses) IN BigMetalMasses.TCBigMetalMasses</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Location, TrackConditionType=&gt;ConditionType.BigMetalMasses) IN BigMetalMasses.TCBigMetalMasses</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -307,7 +307,7 @@ b) a different combination of enabled braking systems</Comment>
 <Actions>
 <Action
  Guid="f91f5ae0-fd2c-40a7-94db-e97d81beb4b3"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.StationPlatform) IN StationPlatform.TCStationPlatforms</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Location, TrackConditionType=&gt;ConditionType.StationPlatform) IN StationPlatform.TCStationPlatforms</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -333,7 +333,7 @@ b) a different combination of enabled braking systems</Comment>
 <Actions>
 <Action
  Guid="feca3a28-9d9e-429e-85f6-3b5ea48dfbab"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.TractionSystem) IN TractionSystems.TCTractionSystems</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Location, TrackConditionType=&gt;ConditionType.TractionSystem) IN TractionSystems.TCTractionSystems</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -359,7 +359,7 @@ b) a different combination of enabled braking systems</Comment>
 <Actions>
 <Action
  Guid="fd3b7fa2-96f7-45bd-807b-e499d62319bb"
->REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Distance, TrackConditionType=&gt;ConditionType.CurrentConsumption) IN CurrentConsumption.TCCurrentConsumption</Action></Actions>
+>REMOVE ALL ConditionExitsApplicability(ProfilePointDistance=&gt;X.Location, TrackConditionType=&gt;ConditionType.CurrentConsumption) IN CurrentConsumption.TCCurrentConsumption</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

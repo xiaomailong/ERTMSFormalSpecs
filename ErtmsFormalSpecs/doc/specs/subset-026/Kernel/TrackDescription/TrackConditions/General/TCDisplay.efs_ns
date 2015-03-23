@@ -749,11 +749,11 @@ Returns the time required by the driver to performs the necessary tasks before a
  Guid="5476e3dc-171a-41f6-829f-107d66d9e964"
 >
 <Expression>TCStructWithSoundHorn{
-    TractionSystem =&gt; TractionSystems.TSAtDistance(TCPoint.Distance),
+    TractionSystem =&gt; TractionSystems.TSAtDistance(TCPoint.Location),
     SoundHorn =&gt; TCPoint.Value.SoundHorn,
     TunnelStoppingArea =&gt; TCPoint.Value.TunnelStoppingArea,
     NonStoppingArea =&gt; TCPoint.Value.NonStoppingArea,
-    Distance =&gt; TCPoint.Distance
+    Distance =&gt; TCPoint.Location
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -790,7 +790,7 @@ Returns the time required by the driver to performs the necessary tasks before a
     SwitchOffEddyCurrentBrakeForSB =&gt; TCPoint.Value.SwitchOffEddyCurrentBrakeForSB,
     SwitchOffMagneticShoeBrake =&gt; TCPoint.Value.SwitchOffMagneticShoeBrake,
     SwitchOffRegenerativeBrake =&gt; TCPoint.Value.SwitchOffRegenerativeBrake,
-    Distance =&gt; TCPoint.Distance
+    Distance =&gt; TCPoint.Location
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -1445,7 +1445,7 @@ Condition.Type == TCTypeEnum.SoundHorn</PreCondition></PreConditions>
 >TCType == TCTypeEnum.NonStoppingArea</PreCondition></PreConditions>
 <Expression>REDUCE TCProfile | (NOT X.Value.NonStoppingArea)
 USING X IN Default.BaseTypes.MinDistance(
-    X1=&gt;X.Distance,
+    X1=&gt;X.Location,
     X2=&gt;RESULT
 )
 INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
@@ -1459,7 +1459,7 @@ INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 >TCType == TCTypeEnum.TunnelStoppingArea</PreCondition></PreConditions>
 <Expression>REDUCE TCProfile | (NOT X.Value.TunnelStoppingArea)
 USING X IN Default.BaseTypes.MinDistance(
-    X1=&gt;X.Distance,
+    X1=&gt;X.Location,
     X2=&gt;RESULT
 )
 INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>

@@ -102,7 +102,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="7561ac50-931c-4ce9-9cad-892f57077bf7"
 >
 <ReqRef
@@ -111,7 +111,13 @@
  Guid="562cbf26-1e70-4dfe-be28-3f4d35fefb16"
 >
 </ReqRef><Comment>Start location of the track condition</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="93923de0-56f3-4984-808c-6048fe64aee6"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct"
@@ -201,8 +207,8 @@
 <PreConditions>
 <PreCondition
  Guid="eb420e4a-b35e-4d9b-8ab6-a8f9e8ba7043"
->THERE_IS X IN TCTractionSystems | (X.Distance &lt;= Distance)</PreCondition></PreConditions>
-<Expression>REDUCE TCTractionSystems | (X.Distance == TSProfileStartLocation(Distance=&gt;Distance) )
+>THERE_IS X IN TCTractionSystems | (X.Location &lt;= Distance)</PreCondition></PreConditions>
+<Expression>REDUCE TCTractionSystems | (X.Location == TSProfileStartLocation(Distance=&gt;Distance) )
     USING X IN X.Value
   INITIAL_VALUE EMPTY</Expression>
 </Case><Case
@@ -241,9 +247,9 @@
  Guid="593ec303-1a01-4e61-97f4-2e672f836a18"
 >
 <Comment>Returns the element in TCTractionSystems with the largest distance that is less than or equal to the parameter</Comment>
-<Expression>REDUCE TCTractionSystems | (X.Distance &lt;= Distance)
+<Expression>REDUCE TCTractionSystems | (X.Location &lt;= Distance)
     USING X IN Default.BaseTypes.MaxDistance(
-        X1=&gt;X.Distance,
+        X1=&gt;X.Location,
         X2=&gt;RESULT)
   INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
@@ -348,10 +354,10 @@
  Guid="1d32a1d4-af2e-4812-b39b-e0999d2d11d3"
 >
 <Expression>General.TCDisplay.TCStructWithSoundHorn{
-    SoundHorn =&gt; General.ProfileAtDistance(TractionSystem.Distance).SoundHorn,
-    TunnelStoppingArea =&gt; General.ProfileAtDistance(TractionSystem.Distance).TunnelStoppingArea,
-    NonStoppingArea =&gt; General.ProfileAtDistance(TractionSystem.Distance).NonStoppingArea,
-    Distance =&gt; TractionSystem.Distance,
+    SoundHorn =&gt; General.ProfileAtDistance(TractionSystem.Location).SoundHorn,
+    TunnelStoppingArea =&gt; General.ProfileAtDistance(TractionSystem.Location).TunnelStoppingArea,
+    NonStoppingArea =&gt; General.ProfileAtDistance(TractionSystem.Location).NonStoppingArea,
+    Distance =&gt; TractionSystem.Location,
     TractionSystem =&gt; TractionSystem.Value
 }</Expression>
 </Case></Cases>
@@ -444,12 +450,15 @@
 <Actions>
 <Action
  Guid="999301d6-e625-436c-b54d-0a413831fb96"
->INSERT Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct{
-    Distance =&gt; Default.MessageTypes.QScaleDistance(
+>INSERT Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct
+{
+    Location =&gt; Default.MessageTypes.QScaleDistance
+    (
         distance=&gt;Packet.D_TRACTION,
         scale=&gt;Packet.Q_SCALE
     ),
-    Value =&gt; Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct{
+    Value =&gt; Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct
+    {
         CountryIdentifier =&gt; Packet.NID_CTRACTION,
         SystemType =&gt; Packet.M_VOLTAGE
     }
@@ -643,7 +652,7 @@ IN General.TCDisplay.Announcements</Action></Actions>
 <Actions>
 <Action
  Guid="39035454-d8da-40aa-bec8-ff4986512bbc"
->TCTractionSystems &lt;- MAP TCTractionSystems | X.Distance &lt;= aLocation USING X IN X</Action></Actions>
+>TCTractionSystems &lt;- MAP TCTractionSystems | X.Location &lt;= aLocation USING X IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -669,7 +678,7 @@ IN General.TCDisplay.Announcements</Action></Actions>
 >INSERT
   TractionSystemInformationStruct
   {
-    Distance =&gt; aLocation,
+    Location =&gt; aLocation,
     Value =&gt; TractionSystemStruct
     {
       SystemType =&gt; Messages.M_VOLTAGE.Line_not_fitted_with_any_traction_system
