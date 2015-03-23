@@ -43,8 +43,26 @@ namespace DataDictionary.test
             RuleCondition rc1 = CreateRuleAndCondition(s2, "Rule1");
             Action action = CreateAction(rc1, "E2.E1 <- False");
 
+            Variable variable = CreateVariable(n1, "A", "S1");
+            Action action2 = CreateAction(rc1, "A <- S1 { E1 -> False }");
+
             Refactor(el1, "NewE1");
             Assert.AreEqual("E2.NewE1 <- False", action.ExpressionText);
+        }
+
+        [TestMethod]
+        public void TestRefactorElementStructureName2()
+        {
+            Dictionary test = CreateDictionary("Test");
+            NameSpace n1 = CreateNameSpace(test, "N1");
+            Structure s1 = CreateStructure(n1, "S1");
+            StructureElement el1 = CreateStructureElement(s1, "E1", "Boolean");
+            Variable variable = CreateVariable(n1, "A", "S1");
+            RuleCondition rc1 = CreateRuleAndCondition(n1, "Rule1");
+            Action action = CreateAction(rc1, "A <- S1 { E1 => False }");
+
+            Refactor(el1, "NewE1");
+            Assert.AreEqual("A <- S1 { NewE1 => False }", action.ExpressionText);
         }
 
         [TestMethod]
@@ -129,6 +147,5 @@ namespace DataDictionary.test
             Refactor(n2, "NewN2");
             Assert.AreEqual("StateMachine", el1.TypeName);
         }
-
     }
 }

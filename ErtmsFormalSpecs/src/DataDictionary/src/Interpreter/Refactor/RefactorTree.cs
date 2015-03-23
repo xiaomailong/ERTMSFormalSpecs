@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using DataDictionary.Types;
 
 namespace DataDictionary.Interpreter.Refactor
@@ -80,6 +81,34 @@ namespace DataDictionary.Interpreter.Refactor
             }
         }
 
+        /// <summary>
+        /// Visits a struct expression
+        /// </summary>
+        /// <param name="structExpression"></param>
+        protected override void VisitStructExpression(StructExpression structExpression)
+        {
+            ModelElement backup = User;
+            Structure structure = null;
+            if (structExpression.Structure != null)
+            {
+                VisitExpression(structExpression.Structure);
+                structure = structExpression.Structure.GetExpressionType() as Structure;
+            }
+
+            foreach (KeyValuePair<Designator, Expression> pair in structExpression.Associations)
+            {
+                if (pair.Key != null)
+                {
+                    User = structure;
+                    VisitDesignator(pair.Key);
+                    User = backup;
+                }
+                if (pair.Value != null)
+                {
+                    VisitExpression(pair.Value);
+                }
+            }
+        }
         /// <summary>
         /// Constructor
         /// </summary>
