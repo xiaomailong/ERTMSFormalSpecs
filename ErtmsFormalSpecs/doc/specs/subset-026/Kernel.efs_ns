@@ -10992,6 +10992,35 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 >
 <Expression>anElement.Location + anElement.Length + anAdditionalDistance &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="670"
+ Y="530"
+ Width="100"
+ Height="50"
+ Name="RemoveLocationBasedElement"
+ Guid="1a8a4efc-38b8-4257-95e4-3a275b0c97ac"
+>
+<Parameters>
+<Parameter
+ Type="LocationInterface"
+ Name="anElement"
+ Guid="8673483e-16de-43eb-a5cc-8c8cab50a60c"
+>
+</Parameter><Parameter
+ Type="BaseTypes.Distance"
+ Name="anAdditionalDistance"
+ Guid="c788ee6c-0003-47e9-bc04-de9421ec50ea"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="20e537bb-f801-45a2-b96c-04115487d06e"
+>
+<Expression>anElement.Location + anAdditionalDistance &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -11748,6 +11777,34 @@ EmergencyStops</Action></Actions>
     )
   USING X
   IN X</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Staff responsible"
+ Guid="00d58b40-1ddf-429f-85de-6418fd9f7a4d"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Staff responsible"
+ Guid="f108914a-5156-47b5-a923-7ab501c63ad6"
+>
+<PreConditions>
+<PreCondition
+ Guid="4b27285d-46e9-40ee-a1b5-4f89ac94a4a6"
+>StaffResponsible.SRAuthorisation != EMPTY</PreCondition><PreCondition
+ Guid="2a7793d4-7e79-4bec-b77d-bf9f16cc2346"
+>RemoveLocationBasedElement
+(
+    anElement =&gt; StaffResponsible.SRAuthorisation,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="37dd3208-f812-482a-882e-4591232608e4"
+>StaffResponsible.SRAuthorisation &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

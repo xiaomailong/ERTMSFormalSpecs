@@ -66,11 +66,17 @@
  Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="365f5bcd-a90a-4173-8202-def82f01b37b"
 >
 <Comment>The permitted distance to run in SR.</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="2d3b09ef-dfa9-4533-97c4-d8230e0c099b"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Functions>
 <Function
  Type="Kernel.BaliseGroups"
@@ -168,7 +174,7 @@
 >
 <Expression>Available ( SRAuthorisation )
   AND
-SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
+SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -262,7 +268,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 >Available(SRAuthorisation)</PreCondition><PreCondition
  Guid="5af6ee90-8c46-4ec6-a4d6-06ccf8474ed5"
 >HandleModeChange not in HandleModeChangeSM.Override</PreCondition></PreConditions>
-<Expression>SRAuthorisation.Distance</Expression>
+<Expression>SRAuthorisation.Location</Expression>
 </Case><Case
  Name="Use national value"
  Guid="b0da0439-c627-4c3f-890d-4367da277940"
@@ -367,7 +373,7 @@ SRAuthorisation.Distance &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Guid="342b18cc-bb34-4c17-8157-1bebc9fb9941"
 >SRAuthorisation &lt;- Kernel.StaffResponsible.SRStruct
 {
-    Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
+    Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
     BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 ),
     BGListReceived =&gt; (Packet.Sequence1 == [])
 }</Action></Actions>
