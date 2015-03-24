@@ -381,8 +381,11 @@ namespace DataDictionary.Types
             retVal += TextualExplainUtilities.Comment("-------------------", indentLevel + 2);
             foreach (Structure structure in Interfaces)
             {
-                retVal += structure.Name + "\\par ";
-                retVal += "\\par ";
+                if (structure != null)
+                {
+                    retVal += structure.Name + "\\par ";
+                    retVal += "\\par ";
+                }
             }
 
             if (!IsAbstract)
@@ -504,12 +507,15 @@ namespace DataDictionary.Types
 
             foreach(Structure inheritedStructure in Interfaces)
             {
-                foreach(StructureElement inheritedElement in inheritedStructure.Elements)
+                if (inheritedStructure != null)
                 {
-                    if(anElement.Name.Equals(inheritedElement.Name))
+                    foreach (StructureElement inheritedElement in inheritedStructure.Elements)
                     {
-                        retVal = true;
-                        break;
+                        if (anElement.Name.Equals(inheritedElement.Name))
+                        {
+                            retVal = true;
+                            break;
+                        }
                     }
                 }
             }
