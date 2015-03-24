@@ -1060,10 +1060,13 @@ IN
 <Action
  Guid="e59b778c-47ac-4e37-94a0-45b10846d56a"
 >INSERT
-    CreateFirstSSP ( Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
-                               BasicSpeed =&gt;BaseTypes.Speed.Infinity,
-                               TrainLengthDelay =&gt; Packet.Q_FRONT,
-                               Categories =&gt; Packet.Sequence1 )
+  CreateFirstSSP
+  (
+    Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
+    BasicSpeed =&gt;BaseTypes.Speed.Infinity,
+    TrainLengthDelay =&gt; Packet.Q_FRONT,
+    Categories =&gt; Packet.Sequence1
+  )
 IN
     SSP</Action></Actions>
 </RuleCondition><RuleCondition

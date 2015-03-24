@@ -11004,8 +11004,8 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 >
 <Parameters>
 <Parameter
- Type="LocationInterface"
- Name="anElement"
+ Type="BaseTypes.Distance"
+ Name="aLocation"
  Guid="8673483e-16de-43eb-a5cc-8c8cab50a60c"
 >
 </Parameter><Parameter
@@ -11019,7 +11019,7 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
  Name="Value"
  Guid="20e537bb-f801-45a2-b96c-04115487d06e"
 >
-<Expression>anElement.Location + anAdditionalDistance &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</Expression>
+<Expression>aLocation + anAdditionalDistance &lt;= TrainPosition.RearEndPosition ( DistanceInterval.Min )</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -11664,6 +11664,7 @@ EmergencyStops</Action></Actions>
  Y="610"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="DeleteStoredInformation"
  Guid="61a66ca5-ccb7-4bee-9247-0cfc049ea418"
 >
@@ -11681,12 +11682,14 @@ EmergencyStops</Action></Actions>
 <Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="TrackConditions"
  Guid="05eabbf7-6301-4b6e-93cb-01d43c28c50c"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="TrackConditions"
  Guid="1d6a001d-3d50-49a2-aa24-9436f3d1660f"
 >
@@ -11699,6 +11702,7 @@ EmergencyStops</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Exceptions"
  Guid="89824c60-fba8-49fb-94ff-319edc18b6e4"
 >
@@ -11710,6 +11714,7 @@ EmergencyStops</Action></Actions>
 </ReqRef><SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Exceptions"
  Guid="44fbeaef-1851-44e4-802c-1d3e63b831d8"
 >
@@ -11776,16 +11781,38 @@ EmergencyStops</Action></Actions>
       anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
     )
   USING X
+  IN X</Action><Action
+ Guid="d954cd07-2c11-4b4b-a832-ba56930dada2"
+>TrackDescription.Gradient.Gradients &lt;-
+  MAP TrackDescription.Gradient.Gradients |
+    NOT RemoveLocationBasedElement
+    (
+      aLocation =&gt; TrackDescription.Gradient.GradientEnd( Current =&gt; X ) + TrainData.TrainData.Value.TrainLength,
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
+  IN X</Action><Action
+ Guid="806f482d-a2d3-4f39-ba5b-2928cc49d7c0"
+>TrackDescription.StaticSpeedProfile.SSP &lt;-
+  MAP TrackDescription.StaticSpeedProfile.SSP |
+    NOT RemoveLocationBasedElement
+    (
+      aLocation =&gt; TrackDescription.StaticSpeedProfile.SSPLength( aSSP =&gt; X ),
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
   IN X</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Staff responsible"
  Guid="00d58b40-1ddf-429f-85de-6418fd9f7a4d"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Staff responsible"
  Guid="f108914a-5156-47b5-a923-7ab501c63ad6"
 >
@@ -11796,7 +11823,7 @@ EmergencyStops</Action></Actions>
  Guid="2a7793d4-7e79-4bec-b77d-bf9f16cc2346"
 >RemoveLocationBasedElement
 (
-    anElement =&gt; StaffResponsible.SRAuthorisation,
+    aLocation =&gt; StaffResponsible.SRAuthorisation.Location,
     anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
 )</PreCondition></PreConditions>
 <Actions>

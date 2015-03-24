@@ -758,11 +758,6 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Name="Distance"
  Guid="76e2a551-6c3d-4446-9b20-da46a88fa9a7"
 >
-</Parameter><Parameter
- Type="Default.BaseTypes.Length"
- Name="TrainLength"
- Guid="3fb1a45c-f136-4f18-9b4f-31295787adc0"
->
 </Parameter></Parameters>
 <Cases>
 <Case
@@ -790,7 +785,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <PreConditions>
 <PreCondition
  Guid="55d1dd43-8bdd-4519-b0f6-3ff74b3c4c3c"
->Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainLength )</PreCondition></PreConditions>
+>Distance &gt;= GradientEnd ( GradientInfo ) + BaseTypes.LengthToDistance ( TrainData.TrainData.Value.TrainLength )</PreCondition></PreConditions>
 <Expression>BaseTypes.Gradient.Indefinite</Expression>
 </Case><Case
  Name="Within gradient info"
@@ -828,7 +823,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
  Guid="0690ccc9-34ff-4b71-8628-e586415e8cbd"
 >
 <Expression>(REDUCE Gradients 
-    USING X IN  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d, TrainLength =&gt; TrainData.TrainData.Value.TrainLength ) )
+    USING X IN  MIN ( RESULT, FUNCTION d : BaseTypes.Distance =&gt; GradientInfoProfile( GradientInfo =&gt; X, Distance =&gt; d ) )
   INITIAL_VALUE BaseTypes.IndefiniteGradientFunction) (Distance)</Expression>
 </Case></Cases>
 </Function><Function
