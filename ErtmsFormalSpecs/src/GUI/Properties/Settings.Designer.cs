@@ -106,5 +106,17 @@ namespace GUI.Properties {
                 this["AllowRefactor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ConvertObsoleteVersionOfModelFile {
+            get {
+                return ((bool)(this["ConvertObsoleteVersionOfModelFile"]));
+            }
+            set {
+                this["ConvertObsoleteVersionOfModelFile"] = value;
+            }
+        }
     }
 }

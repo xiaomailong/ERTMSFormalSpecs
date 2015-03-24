@@ -36,6 +36,15 @@ namespace GUI.Options
                 set { Settings.Default.LockOpenedFiles = value; }
             }
 
+            [Category("Files")]
+            [DisplayName("Convert obsote version of model file")]
+            [Description("When set to true, indicates that EFS should convert the format of obsolete version of EFS files. For instance, it will replace USING X with USING X IN Coll in all expressions.")]
+            public bool ConvertObsoleteFiles
+            {
+                get { return Settings.Default.ConvertObsoleteVersionOfModelFile; }
+                set { Settings.Default.ConvertObsoleteVersionOfModelFile = value; }
+            }
+
             [Category("Display")]
             [DisplayName("Display all variables in structure editor")]
             [Description("When set to true, indicates that all the variables should be displayed in the structure editor, even those which are empty")]

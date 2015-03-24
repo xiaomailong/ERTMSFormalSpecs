@@ -17,6 +17,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary;
+using GUI.Properties;
 using Utils;
 using Dictionary = DataDictionary.Dictionary;
 
@@ -97,7 +98,13 @@ namespace GUI.LongOperations
         /// </summary>
         public override void ExecuteWork()
         {
-            Dictionary = Util.load(FileName, System, PleaseLockFiles, ErrorsDuringLoad, UpdateGuid);
+            Dictionary = Util.load(System, new Util.LoadParams(FileName)
+            {
+                LockFiles = PleaseLockFiles,
+                Errors = ErrorsDuringLoad,
+                UpdateGuid = UpdateGuid,
+                ConvertObsolete = Settings.Default.ConvertObsoleteVersionOfModelFile
+            });
             if (Dictionary != null && System != null && !AllowErrors)
             {
                 Dictionary.CheckRules();

@@ -58,12 +58,19 @@ namespace DataDictionary
             private bool UpdateGuid { get; set; }
 
             /// <summary>
+            /// Indicates obsolete versions of model files should be updated
+            /// </summary>
+            private bool ConvertObsoleteFile{ get; set; }
+
+            /// <summary>
             /// Constructor
             /// </summary>
             /// <param name="updateGuid"></param>
-            public Updater(bool updateGuid)
+            /// <param name="convertObsoleteFile"></param>
+            public Updater(bool updateGuid, bool convertObsoleteFile)
             {
                 UpdateGuid = updateGuid;
+                ConvertObsoleteFile = convertObsoleteFile;
             }
 
             /// <summary>
@@ -82,7 +89,7 @@ namespace DataDictionary
                 }
 
                 IExpressionable expressionable = obj as IExpressionable;
-                if (expressionable != null)
+                if (expressionable != null && ConvertObsoleteFile)
                 {
                     UpdateExpressionable(expressionable);
                 }
@@ -143,7 +150,7 @@ namespace DataDictionary
             /// </summary>
             /// <param name="expressionable"></param>
             private void UpdateExpressionable(IExpressionable expressionable)
-            {
+            {                
                 string expression = expressionable.ExpressionText;
 
                 expression = Replace(expression, "USING", "USING X IN");
@@ -717,16 +724,60 @@ namespace DataDictionary
         }
 
         /// <summary>
+        /// Parameters to be used when loading a file
+        /// </summary>
+        public class LoadParams
+        {
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            /// <param name="filePath"></param>
+            public LoadParams(string filePath)
+            {
+                FilePath = filePath;
+            }
+
+            /// <summary>
+            /// The file path to load
+            /// </summary>
+            public String FilePath { get; private set; }
+
+            /// <summary>
+            /// Indicates that the files should be locked
+            /// </summary>
+            public bool LockFiles { get; set; }
+
+            /// <summary>
+            /// The location where errors should be stored
+            /// </summary>
+            public List<ElementLog> Errors { get; set; } 
+
+            /// <summary>
+            /// Indicates that errors can be raised when loading the file
+            /// </summary>
+            public bool AllowErrors 
+            {
+                get { return Errors != null; }
+            }
+
+            /// <summary>
+            /// Indicates that the empty GUID of the elements should be setup to a real GUID
+            /// </summary>
+            public bool UpdateGuid { get; set; }
+
+            /// <summary>
+            /// Indicates that obsolete files should be updated 
+            /// </summary>
+            public bool ConvertObsolete { get; set; }
+        }
+
+        /// <summary>
         /// Loads a dictionary and lock the file
         /// </summary>
-        /// <param name="filePath">The path of the file which holds the dictionary data</param>
         /// <param name="efsSystem">The system for which this dictionary is loaded</param>
-        /// <param name="lockFiles">Indicates that the files should be locked</param>
-        /// <param name="allowErrors">Provides the list used to hold errors during the load. null indicates that no errors are tolerated during load</param>
-        /// <param name="errors">Stores that errors found during load of the file. If null, no error is accepted</param>
-        /// <param name="UpdateGuid">Indicates that the loader should ensure that Guid are set in all elements of the model</param>
+        /// <param name="loadParams">The parameters used to load the file</param>
         /// <returns></returns>
-        public static Dictionary load(String filePath, EFSSystem efsSystem, bool lockFiles, List<ElementLog> errors, bool updateGuid)
+        public static Dictionary load(EFSSystem efsSystem, LoadParams loadParams)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
             Dictionary retVal = null;
@@ -735,10 +786,10 @@ namespace DataDictionary
             try
             {
                 factory.AutomaticallyGenerateGuid = false;
-                retVal = DocumentLoader<Dictionary>.loadFile(filePath, null, lockFiles);
+                retVal = DocumentLoader<Dictionary>.loadFile(loadParams.FilePath, null, loadParams.LockFiles);
                 if (retVal != null)
                 {
-                    retVal.FilePath = filePath;
+                    retVal.FilePath = loadParams.FilePath;
                     if (efsSystem != null)
                     {
                         efsSystem.AddDictionary(retVal);
@@ -748,7 +799,7 @@ namespace DataDictionary
                     try
                     {
                         ControllersManager.DesactivateAllNotifications();
-                        LoadDepends loadDepends = new LoadDepends(retVal.BasePath, lockFiles, errors);
+                        LoadDepends loadDepends = new LoadDepends(retVal.BasePath, loadParams.LockFiles, loadParams.Errors);
                         loadDepends.visit(retVal);
                     }
                     catch (Exception e)
@@ -769,7 +820,7 @@ namespace DataDictionary
                     {
                         ControllersManager.DesactivateAllNotifications();
 
-                        Updater updater = new Updater(updateGuid);
+                        Updater updater = new Updater(loadParams.UpdateGuid, loadParams.ConvertObsolete);
                         updater.visit(retVal);
                     }
                     catch (Exception e)

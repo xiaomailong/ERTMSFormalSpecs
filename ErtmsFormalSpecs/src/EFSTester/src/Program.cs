@@ -44,8 +44,14 @@ namespace EFSTester
                 foreach (string arg in args)
                 {
                     Console.Out.WriteLine("Loading dictionary " + arg);
-                    bool lockFiles = false;
-                    Dictionary dictionary = Util.load(arg, efsSystem, lockFiles, null, false);
+
+                    Dictionary dictionary = Util.load(efsSystem, new Util.LoadParams(arg)
+                    {
+                        LockFiles = false,
+                        Errors = null,
+                        UpdateGuid = false,
+                        ConvertObsolete = false
+                    });
                     if (dictionary == null)
                     {
                         Console.Out.WriteLine("Cannot load dictionary " + arg);
