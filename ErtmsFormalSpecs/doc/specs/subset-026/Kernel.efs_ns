@@ -11707,6 +11707,46 @@ EmergencyStops</Action></Actions>
       anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
     )
   USING X
+  IN X</Action><Action
+ Guid="75e417ac-536c-409a-add7-9945520c9b6a"
+>LX.MRSPLevelCrossings &lt;-
+  MAP LX.MRSPLevelCrossings |
+    NOT RemoveLengthLocationBasedElement
+    (
+      anElement =&gt; X,
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
+  IN X</Action><Action
+ Guid="42f35ad6-3552-44c8-81fe-80755d44da72"
+>LX.SupervisedLevelCrossings &lt;-
+  MAP LX.SupervisedLevelCrossings |
+    NOT RemoveLengthLocationBasedElement
+    (
+      anElement =&gt; X,
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
+  IN X</Action><Action
+ Guid="3c3e0302-bced-4a14-aef0-9552ee018b3c"
+>TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;-
+  MAP TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions |
+    NOT RemoveLengthLocationBasedElement
+    (
+      anElement =&gt; X,
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
+  IN X</Action><Action
+ Guid="ac31f9f2-5410-46f4-be14-3c9857988e41"
+>TrackDescription.AdhesionFactors.AdhFactors &lt;-
+  MAP TrackDescription.AdhesionFactors.AdhFactors |
+    NOT RemoveLengthLocationBasedElement
+    (
+      anElement =&gt; X,
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
   IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
