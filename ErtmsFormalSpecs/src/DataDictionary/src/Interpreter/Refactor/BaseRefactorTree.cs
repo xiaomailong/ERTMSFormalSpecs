@@ -14,6 +14,8 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
+
 namespace DataDictionary.Interpreter.Refactor
 {
     /// <summary>
@@ -67,30 +69,37 @@ namespace DataDictionary.Interpreter.Refactor
         /// <summary>
         /// Executes the update and changes the corresponding Text field
         /// </summary>
+        /// <returns>true if update was OK (either no change or successful change)</returns>
         public void PerformUpdate(IExpressionable expressionable)
         {
             if (expressionable != null)
             {
                 Text = expressionable.ExpressionText;
 
-                if (expressionable.Tree != null)
+                bool previous = ModelElement.BeSilent;
+                try
                 {
-                    VisitInterpreterTreeNode(expressionable.Tree);
-                    if (Text != expressionable.ExpressionText)
+                    ModelElement.BeSilent = true;
+
+                    if (expressionable.Tree != null)
                     {
-                        if (expressionable.checkValidExpression(Text))
+                        VisitInterpreterTreeNode(expressionable.Tree);
+                        if (Text != expressionable.ExpressionText)
                         {
-                            expressionable.ExpressionText = Text;
-                        }
-                        else
-                        {
-                            ModelElement model = expressionable as ModelElement;
-                            if (model != null)
+                            if (expressionable.checkValidExpression(Text))
                             {
-                                model.AddError("Refactoring aborded for expression " + expressionable.ExpressionText);
+                                expressionable.ExpressionText = Text;
+                            }
+                            else
+                            {
+                                throw new Exception("Cannot refactor expression " + expressionable.ExpressionText);
                             }
                         }
                     }
+                }
+                finally
+                {
+                    ModelElement.BeSilent = previous;
                 }
             }
         }

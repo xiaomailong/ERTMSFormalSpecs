@@ -713,8 +713,15 @@ namespace DataDictionary.Interpreter
                 IExpressionable expressionable = obj as IExpressionable;
                 if (expressionable != null)
                 {
-                    RelocateTree refactorer = new RelocateTree(BaseLocation);
-                    refactorer.PerformUpdate(expressionable);
+                    try
+                    {
+                        RelocateTree refactorer = new RelocateTree(BaseLocation);
+                        refactorer.PerformUpdate(expressionable);
+                    }
+                    catch (Exception e)
+                    {
+                        obj.AddWarning("Cannot refactor this element, reason = " + e.Message);
+                    }
                 }
 
                 base.visit(obj, visitSubNodes);
