@@ -140,61 +140,6 @@
 </ReqRef></Collection></Collections>
 <Functions>
 <Function
- Type="Default.BaseTypes.Length"
- Default=""
- X="20"
- Y="120"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="TSRLength"
- Guid="e1f7e134-d7fc-432e-a021-fead8af82896"
->
-<ReqRef
- Id="3dd078b7-9ad0-407d-a57a-510c8a7213ad"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a8b15bae-f666-4a24-be03-98a162b77703"
->
-</ReqRef><ReqRef
- Id="49595724-3359-4536-a90e-542bc90ffc8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="74ee6341-28e7-49c9-9cbc-51a2584af1d0"
->
-</ReqRef><ReqRef
- Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="35cbaf09-605a-40ab-b17c-ff4b29b60415"
->
-</ReqRef><Comment>Provides the length of the TSR together with the train length, if needed.</Comment>
-<Parameters>
-<Parameter
- Type="BaseTypes.Length"
- Name="Length"
- Guid="097815c3-cfa6-425d-ab38-d890087e4e4a"
->
-</Parameter><Parameter
- Type="Messages.Q_FRONT"
- Name="TrainLengthDelay"
- Guid="4978a1d0-1aa0-4e6d-b57b-9254489c4871"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="TrainLengthDelay"
- Guid="70ff0285-9521-467e-8240-5fb456163dd1"
->
-<PreConditions>
-<PreCondition
- Guid="6b703005-5e73-40d0-9244-69bcfd64d6e1"
->TrainLengthDelay == Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
-<Expression>Length + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
-</Case><Case
- Name="NoTrainLengthDelay"
- Guid="0dfc10c1-6c15-4e27-beb3-738ad1c6438f"
->
-<Expression>Length</Expression>
-</Case></Cases>
-</Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
  X="130"
@@ -240,8 +185,8 @@
 </Function><Function
  Type="Default.BaseTypes.Speed"
  Default=""
- X="130"
- Y="180"
+ X="20"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -295,8 +240,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function><Function
  Type="Boolean"
  Default=""
- X="20"
- Y="180"
+ X="240"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -320,8 +265,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </Function></Functions>
 <Procedures>
 <Procedure
- X="390"
- Y="180"
+ X="130"
+ Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -382,8 +327,8 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="390"
- Y="120"
+ X="20"
+ Y="220"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -471,7 +416,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
-    Length =&gt; TSRLength
+    Length =&gt; Default.MessageTypes.SpeedRestrictionLength
     (
         Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
         TrainLengthDelay =&gt; Packet.Q_FRONT
@@ -503,7 +448,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >INSERT TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
-    Length =&gt; TSRLength
+    Length =&gt; Default.MessageTypes.SpeedRestrictionLength
     (
         Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
         TrainLengthDelay =&gt; Packet.Q_FRONT

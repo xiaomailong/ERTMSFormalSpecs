@@ -3270,7 +3270,6 @@ Kernel.TrackDescription.AxleLoad.ASP.ALs != []</PreCondition></PreConditions>
 >Kernel.TrackDescription.AxleLoad.ASP.ALs &lt;- MAP Kernel.TrackDescription.AxleLoad.ASP.ALs USING X IN Kernel.TrackDescription.AxleLoad.AxleLoadStruct
 {
     Length =&gt; X.Length,
-    TrainLengthDelay =&gt; X.TrainLengthDelay,
     Location =&gt; X.Location - DistanceFromLRBG,
     Values =&gt; X.Values
 }</Action><Action

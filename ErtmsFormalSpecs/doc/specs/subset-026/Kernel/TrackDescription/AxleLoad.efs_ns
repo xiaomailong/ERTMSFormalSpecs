@@ -150,30 +150,6 @@
 >
 </ReqRef><Comment>The length of the axle load speed profile.</Comment>
 </StructureElement><StructureElement
- TypeName="Messages.Q_FRONT"
- Default="Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element"
- Mode="Internal"
- Implemented="TRUE"
- Name="TrainLengthDelay"
- Guid="8801d11a-5d87-4174-9e73-1fe2a2a221d6"
->
-<ReqRef
- Id="4721d317-67ec-4171-b836-61c80b2d2d4c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="60ca8baf-a529-4af5-8170-0a94c6469eb0"
->
-</ReqRef><ReqRef
- Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fa63c332-bec5-4bec-927f-9985104dfd2a"
->
-</ReqRef><ReqRef
- Id="49595724-3359-4536-a90e-542bc90ffc8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fb53858f-a63d-4966-8afe-3752780c84bc"
->
-</ReqRef><Comment>Indicates if the train length has to be considered for the computation of the speed restrictions due to axle load profile.</Comment>
-</StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
  Default=""
  Mode="Internal"
@@ -374,13 +350,16 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >
 <Expression>AxleLoadStruct
 {
-    Location =&gt; aLocation,
+  Location =&gt; aLocation,
+  Length =&gt; Default.MessageTypes.SpeedRestrictionLength
+  (
     Length =&gt; Default.MessageTypes.QScaleLength (anAxleLoad.L_AXLELOAD, Scale),
-    TrainLengthDelay =&gt; anAxleLoad.Q_FRONT,
-    Values =&gt; MAP anAxleLoad.Sequence2 
-                     USING X IN CreateAxleLoadValue(
-                                Category =&gt; X.M_AXLELOADCAT, 
-                                Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
+    TrainLengthDelay =&gt; anAxleLoad.Q_FRONT
+  ),
+  Values =&gt; MAP anAxleLoad.Sequence2 
+              USING X IN CreateAxleLoadValue(
+                Category =&gt; X.M_AXLELOADCAT, 
+                Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -461,19 +440,22 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >
 <Expression>AxleLoadStruct
 {
-    Location =&gt; NextLocation,
+  Location =&gt; NextLocation,
+  Length =&gt; Default.MessageTypes.SpeedRestrictionLength
+  (
     Length =&gt; AxleLoadLength,
-    TrainLengthDelay =&gt; TrainLengthDelay,
-    Values =&gt; MAP AxleLoadValues 
-                     USING X IN CreateAxleLoadValue(
-                           Category =&gt; X.M_AXLELOADCAT, 
-                           Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
+    TrainLengthDelay =&gt; TrainLengthDelay
+  ),
+  Values =&gt; MAP AxleLoadValues 
+              USING X IN CreateAxleLoadValue(
+                Category =&gt; X.M_AXLELOADCAT, 
+                Speed =&gt; Default.MessageTypes.SpeedResolution (X.V_AXLELOAD, 5.0))
 }</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
  Default=""
- X="220"
+ X="110"
  Y="240"
  Width="100"
  Height="50"
@@ -563,7 +545,7 @@ USING X IN
 <PreConditions>
 <PreCondition
  Guid="7870a6b7-4187-4e74-8037-45e7738a1837"
->Distance &lt; anAxleLoad.Location + Default.BaseTypes.LengthToDistance (AxleLoadLength (anAxleLoad) )</PreCondition><PreCondition
+>Distance &lt; anAxleLoad.Location + Default.BaseTypes.LengthToDistance (anAxleLoad.Length)</PreCondition><PreCondition
  Guid="c2336483-6933-444a-a639-460c167fcd61"
 >anAxleLoad.Location  &lt;= Distance</PreCondition></PreConditions>
 <Expression>REDUCE
@@ -579,53 +561,8 @@ USING X IN
 <PreConditions>
 <PreCondition
  Guid="eb19e581-3a05-4969-8bff-889395eff194"
->anAxleLoad.Location + Default.BaseTypes.LengthToDistance (AxleLoadLength (anAxleLoad) ) &lt;= Distance</PreCondition></PreConditions>
+>anAxleLoad.Location + Default.BaseTypes.LengthToDistance (anAxleLoad.Length) &lt;= Distance</PreCondition></PreConditions>
 <Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
-</Case></Cases>
-</Function><Function
- Type="Default.BaseTypes.Length"
- Default=""
- X="110"
- Y="240"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="AxleLoadLength"
- Guid="28c9866a-7388-4e77-86f7-c371daab904c"
->
-<ReqRef
- Id="ba5abe5a-c0c5-477f-9ab9-52ce07011bb1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d0c19ffa-a7fa-472f-bf2e-ad8403eca91a"
->
-</ReqRef><ReqRef
- Id="49595724-3359-4536-a90e-542bc90ffc8e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b6141a27-51ad-4c76-9250-ff3143f8309a"
->
-</ReqRef><Comment>Provides the length of an axle load together with the train&apos;s length, if needed.</Comment>
-<Parameters>
-<Parameter
- Type="AxleLoadStruct"
- Name="anAxleLoad"
- Guid="06832e68-67d5-4537-877e-c2f9d8149056"
->
-</Parameter></Parameters>
-<Cases>
-<Case
- Name="TrainLengthDelay"
- Guid="43494234-386c-4b36-a59b-7050266ce0d3"
->
-<PreConditions>
-<PreCondition
- Guid="6ec59e8b-09e1-4985-b403-8239785f4450"
->anAxleLoad.TrainLengthDelay== Messages.Q_FRONT.Train_length_delay_on_validity_end_point_of_profile_element</PreCondition></PreConditions>
-<Expression>anAxleLoad.Length + Kernel.TrainData.TrainData.Value.TrainLength</Expression>
-</Case><Case
- Name="NoTrainLengthDelay"
- Guid="46518444-78d6-4a08-8282-027c42ca0db1"
->
-<Expression>anAxleLoad.Length</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -768,11 +705,16 @@ USING X IN
 <Action
  Guid="49c843ec-c06e-4db9-a610-785d3f858172"
 >INSERT
-    CreateAxleLoad(anAxleLoad =&gt; anAxleLoad,
-                              aLocation =&gt; Distance
-                              Scale =&gt; Scale)
+  CreateAxleLoad
+  (
+    anAxleLoad =&gt; anAxleLoad,
+    aLocation =&gt; Distance
+    Scale =&gt; Scale
+  )
 IN
-    ASP.ALs</Action></Actions>
+  ASP.ALs
+
+</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -867,12 +809,15 @@ IN
 <Action
  Guid="c4047e4a-5dea-46ec-bca0-126325fe2069"
 >INSERT
-    CreateFirstAxleLoad ( NextLocation =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_AXLELOAD, scale =&gt; Packet.Q_SCALE ),
-                                      AxleLoadLength =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_AXLELOAD, scale =&gt; Packet.Q_SCALE ),
-                                      TrainLengthDelay =&gt; Packet.Q_FRONT,
-                                       AxleLoadValues =&gt; Packet.Sequence1 )
+  CreateFirstAxleLoad
+  (
+    NextLocation =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_AXLELOAD, scale =&gt; Packet.Q_SCALE ),
+    AxleLoadLength =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_AXLELOAD, scale =&gt; Packet.Q_SCALE ),
+    TrainLengthDelay =&gt; Packet.Q_FRONT,
+    AxleLoadValues =&gt; Packet.Sequence1
+  )
 IN
-    ASP.ALs</Action><Action
+  ASP.ALs</Action><Action
  Guid="6056605f-6bd9-4a23-8286-ee6154e1da22"
 >ASP.InitialState &lt;- Packet.Q_TRACKINIT</Action></Actions>
 </RuleCondition></Conditions>
