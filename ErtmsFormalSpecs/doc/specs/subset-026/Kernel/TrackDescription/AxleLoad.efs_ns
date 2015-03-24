@@ -625,7 +625,8 @@ USING X IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="4ce9aa8b-492e-401d-abd8-e15219cdf935"
 >
-</ReqRef><PreConditions>
+</ReqRef><Comment>If the initial states have to be resumed, this information is stored.</Comment>
+<PreConditions>
 <PreCondition
  Guid="5d71078b-ef97-4758-aac1-4ba5b2f40779"
 >Packet.Q_TRACKINIT == Messages.Q_TRACKINIT.Empty_profile__initial_states_to_be_resumed</PreCondition><PreCondition
@@ -643,6 +644,7 @@ USING X IN
  Name="NoInitialStatesToBeResumed"
  Guid="06102f57-e117-480c-9129-ab152587cb29"
 >
+<Comment>Otherwise, the received axle load information is handled.</Comment>
 <PreConditions>
 <PreCondition
  Guid="ccf11f0a-f6de-4d68-a793-4eeae4640d18"
@@ -753,7 +755,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="9957e268-3673-4890-a314-802d8cfa9da8"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>First, the previously stored information, which will be replaced by the new information, is removed.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -775,6 +778,7 @@ IN
  Name="Insert first axle load"
  Guid="dafbc0d5-6a4d-44f9-9e44-3c9dba40a004"
 >
+<Comment>Then, the first element is inserted.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -833,7 +837,8 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="5aadd5de-2c1d-442e-8528-d01ebebbb00c"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Finally, the following elements are inserted.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"

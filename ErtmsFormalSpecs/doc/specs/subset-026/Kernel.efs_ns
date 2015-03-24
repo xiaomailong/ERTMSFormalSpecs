@@ -11689,7 +11689,25 @@ EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="be1ac2d0-355a-4164-b5c6-7a172db6956d"
->TSR.TSRs &lt;- MAP TSR.TSRs | NOT RemoveLengthLocationBasedElement ( anElement =&gt; X, anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear ) USING X IN X</Action></Actions>
+>TSR.TSRs &lt;-
+  MAP TSR.TSRs |
+    NOT RemoveLengthLocationBasedElement
+    (
+      anElement =&gt; X,
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
+  IN X</Action><Action
+ Guid="3e635ae3-a11f-43b3-9de0-30bc373ee9b7"
+>TrackDescription.AxleLoad.ASP.ALs &lt;-
+  MAP TrackDescription.AxleLoad.ASP.ALs |
+    NOT RemoveLengthLocationBasedElement
+    (
+      anElement =&gt; X,
+      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+    )
+  USING X
+  IN X</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
