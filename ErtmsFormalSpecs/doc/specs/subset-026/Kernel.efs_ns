@@ -11581,22 +11581,196 @@ EmergencyStops</Action></Actions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="TrackConditions"
- Guid="05eabbf7-6301-4b6e-93cb-01d43c28c50c"
+ Name="Delete stored information"
+ Guid="f710d52f-43fd-44b6-85e5-db5b4ac7a082"
 >
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="TrackConditions"
- Guid="1d6a001d-3d50-49a2-aa24-9436f3d1660f"
+ Name="Delete stored information"
+ Guid="ae1d39ba-9392-4397-ae7f-70e574f6bfb6"
+>
+<PreConditions>
+<PreCondition
+ Guid="5ed9dedc-20d5-4105-9c2a-1f82bd4655d8"
+>TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection == TrainPosition.Position.DirectionalPositionInformation.TrainOrientation</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Standard case"
+ Guid="8ba82f05-9b34-48da-8d8d-80d7f286c995"
+>
+<ReqRef
+ Id="a0239fb6-709c-4818-9907-463b7c24e661"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="970145bd-9c18-4190-9854-bc0d9af7aa3b"
+>
+</ReqRef><Comment>Deletes the stored information that can be deleted immediately after the moment the train passed its location.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Standard case"
+ Guid="3d5875e5-55b0-489e-b8fc-a5c406133633"
 >
 <PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="c1dbce32-b039-4ab7-afd7-fa7c1061d3bd"
->TrackDescription.TrackConditions.TCMonitor()</Action></Actions>
+ Guid="2c71eac1-630f-48fd-a4b3-99f57fca20c1"
+>REMOVE ALL
+  RemoveLocationBasedElement
+  (
+    aLocation =&gt; X.Location,
+    anAdditionalDistance =&gt; 0.0
+  )
+IN GeographicalPosition.GeographicalPositionInformation</Action><Action
+ Guid="be32f8de-1052-414f-b7e3-30384843a095"
+>REMOVE ALL
+  RemoveLocationBasedElement
+  (
+    aLocation =&gt; X.Location + TrackDescription.RouteSuitability.RouteSuitabilityEnd( Current =&gt; X),
+    anAdditionalDistance =&gt; 0.0
+  )
+IN TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items</Action><Action
+ Guid="de7ddf6a-1fbf-4bcb-a79d-9744a7e44281"
+>REMOVE ALL
+  RemoveLengthLocationBasedElement
+  (
+    anElement =&gt; X,
+    anAdditionalDistance =&gt; 0.0
+  )
+IN
+  MA.ModeProfile.Profile</Action><Action
+ Guid="effae0ff-821f-49a4-b156-ec9f0cd7cc5b"
+>REMOVE ALL
+  TrackDescription.TrackConditions.ConditionExitsApplicability
+  (
+    ProfilePointDistance =&gt; X.Location,
+    TrackConditionType =&gt; TrackDescription.TrackConditions.ConditionType.Conditions
+  )
+IN
+  TrackDescription.TrackConditions.General.TCProfile</Action><Action
+ Guid="f91f5ae0-fd2c-40a7-94db-e97d81beb4b3"
+>REMOVE ALL
+  TrackDescription.TrackConditions.ConditionExitsApplicability
+  (
+    ProfilePointDistance =&gt; X.Location, 
+    TrackConditionType =&gt; TrackDescription.TrackConditions.ConditionType.StationPlatform
+  )
+IN
+  TrackDescription.TrackConditions.StationPlatform.TCStationPlatforms</Action><Action
+ Guid="feca3a28-9d9e-429e-85f6-3b5ea48dfbab"
+>REMOVE ALL
+  TrackDescription.TrackConditions.ConditionExitsApplicability
+  (
+    ProfilePointDistance =&gt; X.Location,
+    TrackConditionType =&gt; TrackDescription.TrackConditions.ConditionType.TractionSystem
+  )
+IN
+  TrackDescription.TrackConditions.TractionSystems.TCTractionSystems</Action><Action
+ Guid="fd3b7fa2-96f7-45bd-807b-e499d62319bb"
+>REMOVE ALL
+  TrackDescription.TrackConditions.ConditionExitsApplicability
+  (
+    ProfilePointDistance =&gt; X.Location,
+    TrackConditionType =&gt; TrackDescription.TrackConditions.ConditionType.CurrentConsumption
+  )
+IN
+  TrackDescription.TrackConditions.CurrentConsumption.TCCurrentConsumption</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Reversing area"
+ Guid="db4dac3f-f6b8-4221-ae95-2fbf1e951572"
+>
+<Comment>Deletes the reversing area information, if any.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Reversing area"
+ Guid="a39ef212-c59d-4fa7-b293-31c52ffa8d2e"
+>
+<PreConditions>
+<PreCondition
+ Guid="eee70398-c0df-404b-8f8c-beb0ec134286"
+>TrackDescription.ReversingArea.ReversingAreaProfile != EMPTY</PreCondition><PreCondition
+ Guid="6d71600a-1ec5-4dda-b1ac-690d55dd63e6"
+>RemoveLengthLocationBasedElement
+(
+    anElement =&gt; TrackDescription.ReversingArea.ReversingAreaProfile,
+    anAdditionalDistance =&gt; 0.0
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="69f887ee-2db1-47fc-bddd-f9a53611840b"
+>TrackDescription.ReversingArea.ReversingAreaProfile &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Level transition"
+ Guid="500996ba-36bd-4177-9cfd-4ac308561d31"
+>
+<Comment>Deletes the level transition information, if any.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Level transition"
+ Guid="7e94e312-908d-4b48-b4dc-e154069835df"
+>
+<PreConditions>
+<PreCondition
+ Guid="a8507763-0885-4f30-83a8-fb4e86c6248a"
+>LevelTransition.LevelTransitionOrder != EMPTY</PreCondition><PreCondition
+ Guid="14ee64d7-7faf-4a46-8c54-5a6a1f60c4f7"
+>RemoveLocationBasedElement
+(
+    aLocation =&gt; LevelTransition.LevelTransitionOrder.Location,
+    anAdditionalDistance =&gt; 0.0
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="84515d87-05ed-4d42-884b-72680e5bfa64"
+>LevelTransition.LevelTransitionOrder &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Track ahead free"
+ Guid="d1734c0e-4af8-4a55-8932-16af69489b0c"
+>
+<Comment>Deletes the track ahead free information, if any.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Track ahead free"
+ Guid="38ca9041-090e-44f3-ab89-757af6273074"
+>
+<PreConditions>
+<PreCondition
+ Guid="214ba963-0a41-4e1f-8261-5dfb817152ed"
+>TrackAheadFree.TrackAheadFreeRequest != EMPTY</PreCondition><PreCondition
+ Guid="fad86333-5283-4758-bda0-7987b029c290"
+>RemoveLocationBasedElement
+(
+    aLocation =&gt; TrackAheadFree.TrackAheadFreeRequest.StopDisplayLocation,
+    anAdditionalDistance =&gt; 0.0
+)</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c7b4fcac-eba1-48f5-959f-c42e12fd94da"
+>TrackAheadFree.TrackAheadFreeRequest &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -11609,7 +11783,8 @@ EmergencyStops</Action></Actions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3894649c-63e1-4532-8ff1-3296378668a2"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>Deletes the information that has to be kept during a distance determined by a fixed value.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -11684,7 +11859,16 @@ IN TrackDescription.Gradient.Gradients</Action><Action
     aLocation =&gt; X.Location + TrackDescription.StaticSpeedProfile.SSPLength( aSSP =&gt; X ),
     anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
   )
-IN TrackDescription.StaticSpeedProfile.SSP</Action></Actions>
+IN TrackDescription.StaticSpeedProfile.SSP</Action><Action
+ Guid="eb5b3a2f-282d-4717-8657-32e14c2946e1"
+>REMOVE ALL
+  TrackDescription.TrackConditions.ConditionExitsApplicability
+  (
+    ProfilePointDistance =&gt; X.Location,
+    TrackConditionType =&gt; TrackDescription.TrackConditions.ConditionType.BigMetalMasses
+  )
+IN
+  TrackDescription.TrackConditions.BigMetalMasses.TCBigMetalMasses</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -11692,6 +11876,7 @@ IN TrackDescription.StaticSpeedProfile.SSP</Action></Actions>
  Name="Staff responsible"
  Guid="00d58b40-1ddf-429f-85de-6418fd9f7a4d"
 >
+<Comment>Deletes the staff responsible information, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -11713,6 +11898,8 @@ IN TrackDescription.StaticSpeedProfile.SSP</Action></Actions>
 <Action
  Guid="37dd3208-f812-482a-882e-4591232608e4"
 >StaffResponsible.SRAuthorisation &lt;- EMPTY</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -12708,6 +12895,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Y="690"
  Width="100"
  Height="50"
+ Implemented="TRUE"
  Name="Clean Up"
  Guid="5ede8ba9-0011-4a3b-878f-702096c02b6a"
 >
@@ -12720,6 +12908,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Clean Up"
  Guid="6a50ba6d-d851-464b-b12e-3e85b0608b73"
 >

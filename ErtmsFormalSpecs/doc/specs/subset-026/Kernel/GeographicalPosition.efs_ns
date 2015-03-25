@@ -78,7 +78,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Position"
+ Name="Location"
  Guid="a17eb432-f213-4c3f-a2ef-7b5490c9566e"
 >
 <ReqRef
@@ -115,7 +115,13 @@
  Guid="5d9f002f-4933-4259-ae01-378dfb1ea246"
 >
 </ReqRef><Comment>The country for which applies this item.</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="206d2705-527f-42fd-aab0-d254020e53d4"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
@@ -204,7 +210,7 @@
     ),
     ReferenceBG =&gt; aReferenceBG,
     Direction =&gt; aDirection,
-    Position =&gt; Default.MessageTypes.QScaleDistance
+    Location =&gt; Default.MessageTypes.QScaleDistance
     (
         distance =&gt; aPosition,
         scale =&gt; aScale
@@ -288,7 +294,7 @@
 <PreCondition
  Guid="1e9fd2b4-c19b-4e5c-97cb-ccbdf771a701"
 >ApplicableItem != EMPTY</PreCondition></PreConditions>
-<Expression>ApplicableItem.Position +
+<Expression>ApplicableItem.Location +
 BTM.TravelledDistanceFromBG( aBG =&gt; ApplicableItem.ReferenceBG ) - ApplicableItem.Offset</Expression>
 </Case><Case
  Name="Otherwise"

@@ -17,7 +17,7 @@
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RouteSuitabilityInformation"
+ Name="RouteSuitabilityInformationStruct"
  Guid="a4c26c78-a7bc-4e60-aab5-66bbca14ba5e"
 >
 <ReqRef
@@ -73,7 +73,7 @@
  Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="RouteSuitabilityItem"
+ Name="RouteSuitabilityItemStruct"
  Guid="193772c0-fe69-43ed-8d0e-986f0aaa4465"
 >
 <ReqRef
@@ -210,7 +210,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
+ TypeName="RouteSuitabilityItemStruct"
  Default="[]"
  X="180"
  Y="10"
@@ -225,7 +225,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
+ Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItemStruct"
  Default=""
  X="20"
  Y="180"
@@ -278,7 +278,7 @@
  Name="Value"
  Guid="709fac9d-e5a9-4941-8d72-bdf48a9c8f4d"
 >
-<Expression>RouteSuitabilityItem
+<Expression>RouteSuitabilityItemStruct
 {
     Location =&gt; aLocation,
     Type =&gt; aType,
@@ -327,7 +327,7 @@
 </ReqRef><Comment>Indicates if the provided route suitability item is unsuitable.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem"
+ Type="RouteSuitabilityItemStruct"
  Name="anItem"
  Guid="07d449f2-ab67-42d7-a03a-9e03d1bda9fb"
 >
@@ -597,6 +597,58 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 >
 <Expression>False</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="110"
+ Y="300"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="RouteSuitabilityEnd"
+ Guid="87c2c3f6-8127-4368-9e84-566427d478ed"
+>
+<ReqRef
+ Id="1a3c2b61-54c8-49b4-b142-4128f826e0d9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d8264585-3fac-448a-869c-1397b01a84e0"
+>
+</ReqRef><ReqRef
+ Id="79afcf7b-52b5-4eff-a6f8-5b6af8d6c1bc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="53d79143-0cd0-443e-8040-cbb39e4b9cab"
+>
+</ReqRef><Comment>Provides the end of the current route suitability element.</Comment>
+<Parameters>
+<Parameter
+ Type="RouteSuitabilityItemStruct"
+ Name="Current"
+ Guid="e1bd721a-eb44-474e-aff5-53d2638ed83d"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Current item is the last item"
+ Guid="dd0c5411-3ac8-48cf-a9cf-cc35c7226e8c"
+>
+<Comment>If there is no &quot;End of gradient information&quot; gradient, assume the last element continues to infinity</Comment>
+<PreConditions>
+<PreCondition
+ Guid="34b1fac3-1e95-4548-b881-9c08afa3737d"
+>NOT THERE_IS X IN RouteSuitabilityProfile.Items | X.Location &gt; Current.Location</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="b6072910-e47e-458b-bf7e-e54b0183d6f5"
+>
+<Expression>REDUCE
+    RouteSuitabilityProfile.Items | X.Location &gt; Current.Location
+USING X IN
+    Default.BaseTypes.MinDistance ( X.Location, RESULT )
+INITIAL_VALUE
+    Default.BaseTypes.Distance.Infinity</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
@@ -842,7 +894,7 @@ THERE_IS X IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_a
 <Actions>
 <Action
  Guid="473b1205-1429-4bbd-ab83-a5909aecd1bd"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile &lt;-Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile &lt;-Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformationStruct
  {
     InitialState =&gt; 1,
     EmptyProfileDistance =&gt; 0.0,
@@ -1097,7 +1149,7 @@ RouteSuitabilityProfile.Items != []
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityInformation"
+ Type="RouteSuitabilityInformationStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="20"

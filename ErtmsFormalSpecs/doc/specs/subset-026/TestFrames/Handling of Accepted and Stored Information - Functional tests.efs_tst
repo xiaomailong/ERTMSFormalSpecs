@@ -6954,9 +6954,9 @@
  Guid="16881335-c0c2-4191-a863-e7ab9ce9db7a"
 >Testing.SetSBMode()</Action><Action
  Guid="39d9115e-7fa8-486c-9b11-783a77e16689"
->Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition {
+>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPositionStruct {
   DataState =&gt; DataState.Valid,
-  DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation {
+  DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformationStruct {
     TrainFrontEndPosition =&gt; Orientation.Nominal,
     TrainOrientation =&gt; Orientation.Nominal,
     TrainRunningDirection =&gt; Orientation.Reverse
@@ -6986,10 +6986,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="aed44e3f-a1d4-4ef9-99e9-039ac9adf9ba"
->Kernel.TrainPosition.Position == Kernel.TrainPosition.TrainPosition
+>Kernel.TrainPosition.Position == Kernel.TrainPosition.TrainPositionStruct
 {
   DataState =&gt; DataState.Valid,
-  DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
+  DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformationStruct
   {
     TrainFrontEndPosition =&gt; Orientation.Nominal,
     TrainOrientation =&gt; Orientation.Nominal,

@@ -3120,7 +3120,7 @@ FORALL X IN Balise.Sequence1 |
 <Actions>
 <Action
  Guid="2d236efe-6978-4ec0-880b-fa0d4befa336"
->Kernel.LevelTransition.LevelTransitionOrder.Distance &lt;- Kernel.LevelTransition.LevelTransitionOrder.Distance - DistanceFromLRBG</Action></Actions>
+>Kernel.LevelTransition.LevelTransitionOrder.Location &lt;- Kernel.LevelTransition.LevelTransitionOrder.Location - DistanceFromLRBG</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -3208,7 +3208,7 @@ FORALL X IN Balise.Sequence1 |
 <Action
  Guid="15547961-832e-4dd5-84bb-b39085614a1e"
 >Kernel.MA.ModeProfile.Profile &lt;- MAP Kernel.MA.ModeProfile.Profile USING X IN Kernel.MA.ModeProfile.ModeProfileStruct{
-    Distance =&gt; X.Distance - DistanceFromLRBG,
+    Location =&gt; X.Location - DistanceFromLRBG,
     Mode =&gt; X.Mode,
     Speed =&gt; X.Speed,
     Length =&gt; X.Length,
@@ -3385,7 +3385,7 @@ Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items != []</Pr
  Guid="d6659a82-85cc-4d35-960a-16813e7c869c"
 >Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance &lt;- Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.EmptyProfileDistance - DistanceFromLRBG</Action><Action
  Guid="2c519ddc-d31a-4a25-a641-3e51f3099427"
->Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItem
+>Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items &lt;- MAP Kernel.TrackDescription.RouteSuitability.RouteSuitabilityProfile.Items USING X IN Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItemStruct
 {
     Type =&gt; X.Type,
     Location =&gt; X.Location - DistanceFromLRBG,

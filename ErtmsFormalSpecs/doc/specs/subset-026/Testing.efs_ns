@@ -88,9 +88,9 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
     Orientation =&gt; Default.Orientation.Nominal
 }</Action><Action
  Guid="278b2665-4f56-474f-a4b7-b6cbc08f01a6"
->Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPositionStruct
 {
-    DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
+    DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformationStruct
     {
         TrainFrontEndPosition =&gt; Default.Orientation.Nominal,
         TrainOrientation =&gt; Default.Orientation.Nominal,
@@ -792,7 +792,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
-    Distance =&gt; 0.0,
+    Location =&gt; 0.0,
     Mode =&gt; Default.Mode.ModeProfile.LS,
     Speed =&gt; Default.BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
@@ -1236,7 +1236,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
-    Distance =&gt; 0.0,
+    Location =&gt; 0.0,
     Mode =&gt; Default.Mode.ModeProfile.OS,
     Speed =&gt; Default.BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
@@ -1467,7 +1467,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
-    Distance =&gt; 0.0,
+    Location =&gt; 0.0,
     Mode =&gt; Default.Mode.ModeProfile.SH,
     Speed =&gt; Default.BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
@@ -1843,7 +1843,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 >Kernel.MA.ModeProfile.Profile &lt;- 
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
-    Distance =&gt; 0.0,
+    Location =&gt; 0.0,
     Mode =&gt; Default.Mode.ModeProfile.SH,
     Speed =&gt; Default.BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,

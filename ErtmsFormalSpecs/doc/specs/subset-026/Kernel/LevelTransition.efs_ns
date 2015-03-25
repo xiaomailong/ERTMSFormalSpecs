@@ -106,7 +106,7 @@
  Default=""
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="4f40beb6-ff3b-4761-822e-d73684fc10ce"
 >
 <ReqRef
@@ -175,7 +175,13 @@
  Guid="ea02c2cd-1626-40b1-ae74-3f7b97f2f42c"
 >
 </ReqRef><Comment>Stores whether the position report to be sent after leaving a level 2/3 area has been sent to the RBC.</Comment>
-</StructureElement></Structure></Structures>
+</StructureElement><Interfaces>
+<StructureRef
+ Name="LocationInterface"
+ Guid="d75fc4c2-7084-4ac4-afa0-3e3631d190b2"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.LevelTransition.LevelTransitionStruct"
@@ -688,7 +694,7 @@ Packet.D_LEVELTR == 32767</PreCondition></PreConditions>
 {
   CurrentLevel =&gt; Level.Value,
   PositionReportSent =&gt; False,
-  Distance =&gt; ComputeLTODistance ( aDistance =&gt; Packet.D_LEVELTR, aScale =&gt; Packet.Q_SCALE ),
+  Location =&gt; ComputeLTODistance ( aDistance =&gt; Packet.D_LEVELTR, aScale =&gt; Packet.Q_SCALE ),
   LevelAndLength =&gt; 
   [ 
       Kernel.LevelTransition.LevelTransitionStruct { 
@@ -832,7 +838,7 @@ Packet.Sequence1</Action></Actions>
 {
    CurrentLevel =&gt; Level.Value,
    PositionReportSent =&gt; False,
-   Distance =&gt; Default.BaseTypes.Distance.Unknown,
+   Location =&gt; Default.BaseTypes.Distance.Unknown,
    LevelAndLength =&gt; [ 
       Kernel.LevelTransition.LevelTransitionStruct { 
          AcknLength =&gt; Default.BaseTypes.Length.NA, 
@@ -1262,7 +1268,7 @@ Packet.Sequence1</Action></Actions>
  Guid="32291f91-c8f4-4551-9efb-1784c4b3c42b"
 >Available(LevelTransitionOrder)
   AND  
-LevelTransitionOrder.Distance &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
+LevelTransitionOrder.Location &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
  Guid="a793711a-f9af-4251-b86a-906d92f0b23f"
 >Available(LevelTransitionToProcess)
   AND  
@@ -1332,7 +1338,7 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
  Guid="70792393-b2da-4f9c-b343-ffd26b6ede9b"
 >Kernel.Mode not in [Mode.NL, Mode.SH, Mode.PS]</PreCondition><PreCondition
  Guid="0f38d48a-8431-4fc2-8a57-2fed7286c19c"
->TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) &gt; LevelTransitionOrder.Distance - BaseTypes.LengthToDistance(LevelTransitionToProcess.AcknLength)</PreCondition><PreCondition
+>TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) &gt; LevelTransitionOrder.Location - BaseTypes.LengthToDistance(LevelTransitionToProcess.AcknLength)</PreCondition><PreCondition
  Guid="d1c2a625-f343-46d3-aff8-a4ac69558533"
 >AcknowledgementTime == BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
@@ -1458,7 +1464,7 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
 <PreConditions>
 <PreCondition
  Guid="aa213c6b-c619-4e1c-87bc-a74f4d1b8bad"
->TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt;= LevelTransitionOrder.Distance</PreCondition><PreCondition
+>TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt;= LevelTransitionOrder.Location</PreCondition><PreCondition
  Guid="841d9164-6f90-4cca-a388-fef4340c3077"
 >LevelTransitionOrder.CurrentLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
  Guid="f0dd9be7-1b5b-410c-ab51-e00ed28c2052"
@@ -1484,7 +1490,7 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
  Guid="571a7181-1b87-401e-962a-92df42e17bc8"
 >(FIRST Transition IN LevelTransitionOrder.LevelAndLength | AvailableForUse(Transition.TRLevel) ).TRLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
  Guid="5d86c07e-19a2-43cd-b727-6618f6a65fff"
->TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= LevelTransitionOrder.Distance</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= LevelTransitionOrder.Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="80001d59-a4e1-4935-a8ca-2772d5ccab14"

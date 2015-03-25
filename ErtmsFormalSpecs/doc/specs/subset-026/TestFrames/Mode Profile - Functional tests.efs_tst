@@ -453,7 +453,7 @@ NID_BG =&gt; 1313
  Guid="55bd8c19-ed35-4fb4-9e01-bc860219e290"
 >INSERT Kernel.MA.ModeProfile.ModeProfileStruct 
 { 
-    Distance=&gt;130.0,
+    Location=&gt;130.0,
     Length=&gt;200.0,
     Speed=&gt;100.0,
     Mode=&gt;Default.Mode.ModeProfile.LS  
@@ -853,7 +853,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Kind="Instantaneous"
  DeadLine="1"
  Guid="a999aee5-abd2-4bff-9f63-4098e0f263de"
->(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Location == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5a1d6e40-a375-468f-a52b-80e05bc93205"
@@ -1012,7 +1012,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6c939f76-b9fc-4a76-90a5-5dbf1290319c"
->(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 50.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Location == 50.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="d12eb96d-7078-45e1-8757-0af5ccbbc3ed"
@@ -1242,7 +1242,7 @@ Kernel.TrainPosition.FrontEndPosition(
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6f67534b-0b35-4531-92ef-8dbb48dbae0d"
->(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance ==  50.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Location ==  50.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1360,9 +1360,9 @@ BTM.BaliseGroupStruct {
         }
 }</Action><Action
  Guid="87c811c7-5485-4669-b07a-f2ffb9316510"
->Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPosition
+>Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPositionStruct
 {
-    DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformation
+    DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformationStruct
 {
         TrainFrontEndPosition =&gt; Orientation.Nominal,
         TrainOrientation =&gt; Orientation.Nominal,
@@ -1375,7 +1375,7 @@ BTM.BaliseGroupStruct {
  Guid="56d776c9-14d5-4d55-95c5-6f709f9e6b73"
 >INSERT Kernel.MA.ModeProfile.ModeProfileStruct
 { 
-    Distance=&gt;100.0,
+    Location=&gt;100.0,
     Length=&gt;1000.0,
     Mode=&gt;Default.Mode.ModeProfile.OS
 }
@@ -1395,7 +1395,7 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="48ef5462-ea55-4b9e-bce1-4f7a1abc2e40"
->(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Location == 100.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1558,11 +1558,11 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ef460206-db53-4646-a4ef-216ae970ca2b"
->(FIRST X IN Kernel.MA.ModeProfile.Profile).Distance == 100.0</Expectation><Expectation
+>(FIRST X IN Kernel.MA.ModeProfile.Profile).Location == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="91e0099c-03bd-4c7c-89f8-6f80016345f0"
->(FIRST X IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Distance == 750.0</Expectation></Expectations>
+>(FIRST X IN Kernel.MA.ModeProfile.Profile | X.Mode == Mode.ModeProfile.LS).Location == 750.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

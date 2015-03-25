@@ -17,7 +17,7 @@
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="TrainPosition"
+ Name="TrainPositionStruct"
  Guid="607a75d0-3d30-4e13-9431-91746926f303"
 >
 <ReqRef
@@ -35,7 +35,7 @@
 The estimated train front end can be computed using Kernel.FrontEndPosition function.
 The confidence interval can be computed using Kernel.ConfidenceInterval.ConfidenceInterval function.</Comment>
 <StructureElement
- TypeName="DirectionalTrainPositionInformation"
+ TypeName="DirectionalTrainPositionInformationStruct"
  Default=""
  Mode="Internal"
  Implemented="TRUE"
@@ -71,7 +71,7 @@ The confidence interval can be computed using Kernel.ConfidenceInterval.Confiden
  Width="100"
  Height="50"
  Implemented="TRUE"
- Name="DirectionalTrainPositionInformation"
+ Name="DirectionalTrainPositionInformationStruct"
  Guid="ed65a176-3ac0-42bf-94aa-77bfa166d800"
 >
 <ReqRef
@@ -497,7 +497,7 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.TrainPosition.TrainPosition"
+ Type="TrainPositionStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="70"

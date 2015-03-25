@@ -31,7 +31,7 @@
  Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
- Name="Distance"
+ Name="Location"
  Guid="0cc7a6c9-2aae-483f-bd2a-e9a3e55ea2be"
 >
 <ReqRef
@@ -114,7 +114,13 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="77353074-200c-4e38-b3c7-2e2f47bf4e8d"
 >
-</ReqRef></StructureElement></Structure></Structures>
+</ReqRef></StructureElement><Interfaces>
+<StructureRef
+ Name="LocationLengthInterface"
+ Guid="95d9b23c-7d10-4c96-b42a-7330e5d9a148"
+>
+</StructureRef></Interfaces>
+</Structure></Structures>
 <Collections>
 <Collection
  TypeName="Kernel.MA.ModeProfile.ModeProfileStruct"
@@ -201,7 +207,7 @@
 <PreCondition
  Guid="6114dc4d-7678-4510-95a8-2144c9f43f82"
 >aModeProfile.Mode == Mode.ModeProfile.SH</PreCondition></PreConditions>
-<Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
+<Expression>aModeProfile.Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
 </Case><Case
  Name="OS"
  Guid="1f7deadc-8146-439c-97b2-3edcf63db2a9"
@@ -210,18 +216,18 @@
 <PreCondition
  Guid="46a20481-6c6f-4178-9b7a-b6bfe09b0264"
 >aModeProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
-<Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
+<Expression>aModeProfile.Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
   AND
-TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distance + BaseTypes.LengthToDistance ( aModeProfile.Length )
+TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Location + BaseTypes.LengthToDistance ( aModeProfile.Length )
   AND
 Kernel.Level.Value.Value in [Level.L1, Level.L2, Level.L3]</Expression>
 </Case><Case
  Name="LS"
  Guid="8c23abbf-e779-492b-8354-f7f9276a904a"
 >
-<Expression>aModeProfile.Distance &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
+<Expression>aModeProfile.Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )
   AND
-TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distance + BaseTypes.LengthToDistance ( aModeProfile.Length )</Expression>
+TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Location + BaseTypes.LengthToDistance ( aModeProfile.Length )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -321,7 +327,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <PreCondition
  Guid="287768f9-ea4e-48fe-a272-30d38aff9d61"
 >aProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
-<Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &gt;= aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length )</Expression>
+<Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &gt;= aProfile.Location + BaseTypes.LengthToDistance ( aProfile.Length )</Expression>
 </Case><Case
  Name="SH"
  Guid="df9e81c4-d70f-4918-b476-41109e9e77a5"
@@ -369,7 +375,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <PreConditions>
 <PreCondition
  Guid="24609d85-64ee-4f58-81e9-da0bd36e1703"
->aProfile.Distance + BaseTypes.LengthToDistance ( aProfile.Length ) &lt;= aLocation</PreCondition></PreConditions>
+>aProfile.Location + BaseTypes.LengthToDistance ( aProfile.Length ) &lt;= aLocation</PreCondition></PreConditions>
 <Expression>aProfile</Expression>
 </Case><Case
  Name="Infill location after profile"
@@ -378,7 +384,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <PreConditions>
 <PreCondition
  Guid="11207bb5-7d97-4421-baaa-83868e35318a"
->aLocation &lt;= aProfile.Distance</PreCondition></PreConditions>
+>aLocation &lt;= aProfile.Location</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Infill location inside profile"
@@ -387,8 +393,8 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 <Expression>ModeProfileStruct
 {
     AcknLength =&gt; aProfile.AcknLength,
-    Distance =&gt; aProfile.Distance,
-    Length =&gt; aLocation - aProfile.Distance,
+    Location =&gt; aProfile.Location,
+    Length =&gt; aLocation - aProfile.Location,
     Mode =&gt; aProfile.Mode,
     Speed =&gt; aProfile.Speed,
     SupervisionQualifier =&gt; aProfile.SupervisionQualifier
@@ -484,7 +490,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
  Name="Value"
  Guid="cd6ddbc2-9759-49af-bd95-8f4a684555e3"
 >
-<Expression>aProfile.Distance - BaseTypes.LengthToDistance ( aProfile.AcknLength ) &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
+<Expression>aProfile.Location - BaseTypes.LengthToDistance ( aProfile.AcknLength ) &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
@@ -529,7 +535,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 >FirstNonApplicableModeProfile() != EMPTY</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
-    Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
+    Location =&gt; ( FirstNonApplicableModeProfile() ).Location,
     Speed =&gt; 0.0,
     Length =&gt; ( FirstNonApplicableModeProfile() ).Length
 }</Expression>
@@ -584,7 +590,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Distan
 >Available ( MA.MA )</PreCondition></PreConditions>
 <Expression>SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
 {
-    Location =&gt; ( FirstNonApplicableModeProfile() ).Distance,
+    Location =&gt; ( FirstNonApplicableModeProfile() ).Location,
     Speed =&gt; 0.0,
     Length =&gt; ( FirstNonApplicableModeProfile() ).Length
 }</Expression>
@@ -993,7 +999,7 @@ ON
     ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
-        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
+        Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
         Length =&gt; BaseTypes.Length.NA,
         Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
         Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; V_MAMODE, resolution =&gt; 5.0 ),
@@ -1018,7 +1024,7 @@ IN
     ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
-        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
+        Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
         Length =&gt; BaseTypes.Length.NA,
         Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
         Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; V_MAMODE, resolution =&gt; 5.0 ),
@@ -1049,7 +1055,7 @@ IN
     ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
-        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
+        Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ) + BTM.Linking.DistanceToBaliseGroup ( Kernel.Infill.Data.NID_BG ),
         Length =&gt; MessageTypes.QScaleLength ( length =&gt; L_MAMODE, scale =&gt; Q_SCALE ),
         Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
         Speed =&gt; GetSpeedResolution(V_MAMODE),
@@ -1102,7 +1108,7 @@ IN
     ModeProfileStruct
     {
         AcknLength =&gt; MessageTypes.QScaleLength ( length =&gt; L_ACKMAMODE, scale =&gt; Q_SCALE ),
-        Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
+        Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_MAMODE, scale =&gt; Q_SCALE ),
         Length =&gt; MessageTypes.QScaleLength ( length =&gt; L_MAMODE, scale =&gt; Q_SCALE ),
         Mode =&gt; ERTMS_To_EFS_Mode ( M_MAMODE ),
         Speed =&gt; GetSpeedResolution(V_MAMODE),
