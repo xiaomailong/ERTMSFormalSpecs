@@ -253,6 +253,30 @@
 >
 <Actions>
 <Action
+ Guid="f4957525-c0c9-452f-ba9e-2548e6703d33"
+>Odometry.NominalDistance &lt;- 3050.0</Action><Action
+ Guid="cb4b3be3-9143-4bed-b71e-40eefc5936ef"
+>BTM.LRBG&lt;- BTM.BaliseGroupStruct
+{
+    NID=&gt;9616,
+    Orientation=&gt;Orientation.Nominal,
+    Position=&gt;BTM.Position
+    {
+        OverReadingAmountOdo=&gt;2.0,
+        Position=&gt;3000.0,
+        UnderReadingAmountOdo=&gt;3.0
+    }
+}</Action><Action
+ Guid="517d102c-26a3-4d2d-b342-ab37058d917f"
+>Kernel.TSR.TSRs &lt;- []</Action><Action
+ Guid="ea643973-5af9-4967-bd6a-28a0e8870e81"
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="40dfb864-c4bc-4fad-ac41-615077662e91"
+>
+<Actions>
+<Action
  Guid="8758b5ab-c78d-415d-8107-23e8f297b08b"
 >BTM.Message &lt;- Messages.EUROBALISE.Message
 {
@@ -260,7 +284,7 @@
     M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 0,
-    N_TOTAL =&gt; 0,
+    N_TOTAL =&gt; 1,
     M_DUP =&gt; Messages.M_DUP.No_duplicates,
     M_MCOUNT =&gt; 4,
     NID_C =&gt; 140,
@@ -287,25 +311,32 @@
             }
         }
     ]
-}</Action><Action
- Guid="f4957525-c0c9-452f-ba9e-2548e6703d33"
->Odometry.NominalDistance &lt;- 3050.0</Action><Action
- Guid="cb4b3be3-9143-4bed-b71e-40eefc5936ef"
->BTM.LRBG&lt;- BTM.BaliseGroupStruct
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step3"
+ Guid="77401987-725e-4092-b444-dd5bf3426331"
+>
+<Actions>
+<Action
+ Guid="8d734e46-ac47-4962-b06a-a53080702fac"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
 {
-    NID=&gt;9616,
-    Orientation=&gt;Orientation.Nominal,
-    Position=&gt;BTM.Position
-    {
-        OverReadingAmountOdo=&gt;2.0,
-        Position=&gt;3000.0,
-        UnderReadingAmountOdo=&gt;3.0
-    }
-}</Action><Action
- Guid="517d102c-26a3-4d2d-b342-ab37058d917f"
->Kernel.TSR.TSRs &lt;- []</Action><Action
- Guid="ea643973-5af9-4967-bd6a-28a0e8870e81"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 32,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; 1,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        
+    ],
+    BitField =&gt; &apos;&apos;
+}</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -365,7 +396,7 @@
     M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 0,
-    N_TOTAL =&gt; 0,
+    N_TOTAL =&gt; 1,
     M_DUP =&gt; Messages.M_DUP.No_duplicates,
     M_MCOUNT =&gt; 4,
     NID_C =&gt; 140,
@@ -392,6 +423,31 @@
             }
         }
     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="205c94f7-1f88-4c15-b307-f47f1c84191b"
+>
+<Actions>
+<Action
+ Guid="9727e87d-36c8-4ac7-add4-2fd9154d15c3"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 32,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; 1,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        
+    ],
+    BitField =&gt; &apos;&apos;
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
@@ -473,7 +529,7 @@
     M_VERSION =&gt; Messages.M_VERSION.Version_2_0__introduced_in_SRS_3_0_0,
     Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
     N_PIG =&gt; 0,
-    N_TOTAL =&gt; 0,
+    N_TOTAL =&gt; 1,
     M_DUP =&gt; Messages.M_DUP.No_duplicates,
     M_MCOUNT =&gt; 4,
     NID_C =&gt; 140,
@@ -495,6 +551,31 @@
             }
         }
     ]
+}</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="c8afc3c8-8d4c-4738-9242-9f063afacb1e"
+>
+<Actions>
+<Action
+ Guid="248e4063-d21a-4ff8-9e09-d84603ab2881"
+>BTM.Message &lt;- Messages.EUROBALISE.Message
+{
+    Q_UPDOWN =&gt; Messages.Q_UPDOWN.Up_link_telegram,
+    M_VERSION =&gt; 32,
+    Q_MEDIA =&gt; Messages.Q_MEDIA.Balise,
+    N_PIG =&gt; 1,
+    N_TOTAL =&gt; 1,
+    M_DUP =&gt; Messages.M_DUP.No_duplicates,
+    M_MCOUNT =&gt; 4,
+    NID_C =&gt; 140,
+    NID_BG =&gt; 2124,
+    Q_LINK =&gt; Messages.Q_LINK.Unlinked,
+    Sequence1 =&gt; 
+    [
+        
+    ],
+    BitField =&gt; &apos;&apos;
 }</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
