@@ -111,6 +111,16 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="d6bd2952-809e-427a-977a-aac6d694728a"
 >
+</ReqRef><ReqRef
+ Id="4c5f4cba-117a-459e-910f-0f3e4816806f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e605efa0-492c-4a6e-9a10-b016eec9c891"
+>
+</ReqRef><ReqRef
+ Id="ae963d74-ee48-4c49-819e-a34cf532f1f5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0cf97c44-6e10-471c-a2f3-371a3bf26ae8"
+>
 </ReqRef><Comment>Returns True if the TCProfile point is no longer applicable, ie. if there is a more recent profile point that is applied</Comment>
 <Parameters>
 <Parameter
@@ -143,7 +153,7 @@
 <PreCondition
  Guid="29415c07-8788-4a5d-b02d-9c1b80bec23e"
 >TrackConditionType == ConditionType.BigMetalMasses</PreCondition></PreConditions>
-<Expression>THERE_IS X IN BigMetalMasses.TCBigMetalMasses| (X.Location &gt; ProfilePointDistance) AND (X.Location &lt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
+<Expression>THERE_IS X IN BigMetalMasses.TCBigMetalMasses| (X.Location &gt; ProfilePointDistance) AND (X.Location + DistanceToKeepInfoInTheRear &lt;= TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Min))</Expression>
 </Case><Case
  Name="Station platforms changed"
  Guid="64950d25-0e2f-4ada-b68d-1237ec3a3bd5"

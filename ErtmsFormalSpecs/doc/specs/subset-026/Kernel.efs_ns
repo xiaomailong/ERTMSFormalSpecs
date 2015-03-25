@@ -11621,85 +11621,70 @@ EmergencyStops</Action></Actions>
 <Actions>
 <Action
  Guid="be1ac2d0-355a-4164-b5c6-7a172db6956d"
->TSR.TSRs &lt;-
-  MAP TSR.TSRs |
-    NOT RemoveLengthLocationBasedElement
-    (
-      anElement =&gt; X,
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action><Action
+>REMOVE ALL
+  RemoveLengthLocationBasedElement
+  (
+    anElement =&gt; X,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN
+  TSR.TSRs</Action><Action
  Guid="3e635ae3-a11f-43b3-9de0-30bc373ee9b7"
->TrackDescription.AxleLoad.ASP.ALs &lt;-
-  MAP TrackDescription.AxleLoad.ASP.ALs |
-    NOT RemoveLengthLocationBasedElement
-    (
-      anElement =&gt; X,
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action><Action
+>REMOVE ALL
+  RemoveLengthLocationBasedElement
+  (
+    anElement =&gt; X,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN TrackDescription.AxleLoad.ASP.ALs</Action><Action
  Guid="75e417ac-536c-409a-add7-9945520c9b6a"
->LX.MRSPLevelCrossings &lt;-
-  MAP LX.MRSPLevelCrossings |
-    NOT RemoveLengthLocationBasedElement
-    (
-      anElement =&gt; X,
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action><Action
+>REMOVE ALL
+  RemoveLengthLocationBasedElement
+  (
+    anElement =&gt; X,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN LX.MRSPLevelCrossings</Action><Action
  Guid="42f35ad6-3552-44c8-81fe-80755d44da72"
->LX.SupervisedLevelCrossings &lt;-
-  MAP LX.SupervisedLevelCrossings |
-    NOT RemoveLengthLocationBasedElement
-    (
-      anElement =&gt; X,
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action><Action
+>REMOVE ALL
+  RemoveLengthLocationBasedElement
+  (
+    anElement =&gt; X,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN LX.SupervisedLevelCrossings</Action><Action
  Guid="3c3e0302-bced-4a14-aef0-9552ee018b3c"
->TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions &lt;-
-  MAP TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions |
-    NOT RemoveLengthLocationBasedElement
-    (
-      anElement =&gt; X,
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action><Action
+>REMOVE ALL
+  RemoveLengthLocationBasedElement
+  (
+    anElement =&gt; X,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN TrackDescription.PermittedBrakingDistance.SpeedRestrictionsProfile.SpeedRestrictions</Action><Action
  Guid="ac31f9f2-5410-46f4-be14-3c9857988e41"
->TrackDescription.AdhesionFactors.AdhFactors &lt;-
-  MAP TrackDescription.AdhesionFactors.AdhFactors |
-    NOT RemoveLengthLocationBasedElement
-    (
-      anElement =&gt; X,
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action><Action
+>REMOVE ALL
+  RemoveLengthLocationBasedElement
+  (
+    anElement =&gt; X,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN TrackDescription.AdhesionFactors.AdhFactors</Action><Action
  Guid="d954cd07-2c11-4b4b-a832-ba56930dada2"
->TrackDescription.Gradient.Gradients &lt;-
-  MAP TrackDescription.Gradient.Gradients |
-    NOT RemoveLocationBasedElement
-    (
-      aLocation =&gt; TrackDescription.Gradient.GradientEnd( Current =&gt; X ) + TrainData.TrainData.Value.TrainLength,
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action><Action
+>REMOVE ALL
+  RemoveLocationBasedElement
+  (
+    aLocation =&gt; TrackDescription.Gradient.GradientEnd( Current =&gt; X ) + TrainData.TrainData.Value.TrainLength,
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN TrackDescription.Gradient.Gradients</Action><Action
  Guid="3c978c3b-d612-4bbc-85e5-db40d8249501"
->TrackDescription.StaticSpeedProfile.SSP &lt;-
-  MAP TrackDescription.StaticSpeedProfile.SSP |
-    NOT RemoveLocationBasedElement
-    (
-      aLocation =&gt; X.Location + TrackDescription.StaticSpeedProfile.SSPLength( aSSP =&gt; X ),
-      anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
-    )
-  USING X
-  IN X</Action></Actions>
+>REMOVE ALL
+  RemoveLocationBasedElement
+  (
+    aLocation =&gt; X.Location + TrackDescription.StaticSpeedProfile.SSPLength( aSSP =&gt; X ),
+    anAdditionalDistance =&gt; DistanceToKeepInfoInTheRear
+  )
+IN TrackDescription.StaticSpeedProfile.SSP</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
