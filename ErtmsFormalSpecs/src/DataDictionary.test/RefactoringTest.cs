@@ -147,5 +147,36 @@ namespace DataDictionary.test
             Refactor(n2, "NewN2");
             Assert.AreEqual("StateMachine", el1.TypeName);
         }
+
+        [TestMethod]
+        public void TestRefactorInterfaceName()
+        {
+            Dictionary test = CreateDictionary("Test");
+            NameSpace n0 = CreateNameSpace(test, "N0");
+            Structure i1 = CreateStructure(n0, "I1");
+            i1.setIsAbstract(true);
+            Structure s1 = CreateStructure(n0, "S1");
+            StructureRef sr = CreateStructureRef(s1, "I1");
+
+            Refactor(i1, "NewI1");
+            Assert.AreEqual("NewI1", sr.ExpressionText);
+        }
+
+        [TestMethod]
+        public void TestRefactorInterfaceField()
+        {
+            Dictionary test = CreateDictionary("Test");
+            NameSpace n0 = CreateNameSpace(test, "N0");
+            Structure i1 = CreateStructure(n0, "I1");
+            i1.setIsAbstract(true);
+            StructureElement el1 = CreateStructureElement(i1, "E1", "Boolean");
+            Structure s1 = CreateStructure(n0, "S1");
+            StructureRef sr = CreateStructureRef(s1, "I1");
+            StructureElement el2 = CreateStructureElement(s1, "E1", "Boolean");
+
+            Refactor(el1, "NewE1");
+            Assert.AreEqual("NewE1", el2.Name);
+        }
+
     }
 }

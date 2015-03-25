@@ -24,6 +24,7 @@ using Utils;
 using XmlBooster;
 using Function = DataDictionary.Functions.Function;
 using NameSpace = DataDictionary.Types.NameSpace;
+using Structure = DataDictionary.Types.Structure;
 using StructureElement = DataDictionary.Types.StructureElement;
 using Type = DataDictionary.Types.Type;
 using Variable = DataDictionary.Variables.Variable;
@@ -668,17 +669,41 @@ namespace DataDictionary.Interpreter
         /// Modifies the system according to the new element definition
         /// </summary>
         /// <param name="element">The element that has been modified, and for which refactoring is done</param>
-        public void Refactor(ModelElement element)
+        /// <param name="newName">The new element name</param>
+        public void Refactor(ModelElement element, string newName)
         {
             if (element != null)
             {
-                // Cleans fullname cache
-                FullNameCleaner cleaner = new FullNameCleaner();
-                foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
-                {
-                    cleaner.visit(dictionary);
-                }
+                string originalName = element.Name;
+                element.Name = newName;
+                RefactorNameSpaceNames();
+                RefactorElement(element, originalName, newName);
+            }
+        }
 
+        /// <summary>
+        /// Follow the namespace names
+        /// </summary>
+        private void RefactorNameSpaceNames()
+        {
+            // Cleans fullname cache
+            FullNameCleaner cleaner = new FullNameCleaner();
+            foreach (Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+            {
+                cleaner.visit(dictionary);
+            }
+        }
+
+        /// <summary>
+        /// Refactors a single element
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="originalName">The original element's name</param>
+        /// <param name="newName">The new element's name</param>
+        private void RefactorElement(ModelElement element, string originalName, string newName)
+        {
+            if (element != null)
+            {
                 NameSpace nameSpace = element as NameSpace;
                 if (nameSpace != null)
                 {
@@ -691,11 +716,36 @@ namespace DataDictionary.Interpreter
                 else
                 {
                     // the system keeps track where the element is used
-                    List<Usage> usages = element.EFSSystem.FindReferences(element);
+                    List<Usage> usages = EFSSystem.INSTANCE.FindReferences(element);
                     foreach (Usage usage in usages)
                     {
                         RefactorIExpressionable(element, usage.User as IExpressionable);
                         RefactorTypedElement(element, usage.User as ITypedElement);
+                    }
+
+                    if (element is StructureElement)
+                    {
+                        Structure structure = element.Enclosing as Structure;
+                        if (structure != null && structure.IsAbstract)
+                        {
+                            usages = EFSSystem.INSTANCE.FindReferences(structure);
+                            foreach (Usage usage in usages)
+                            {
+                                if (usage.Mode == Usage.ModeEnum.Interface)
+                                {
+                                    Structure redefiningStructure = usage.User as Structure;
+                                    if (redefiningStructure != null)
+                                    {
+                                        ModelElement el = redefiningStructure.FindStructureElement(originalName);
+                                        if (el != null)
+                                        {
+                                            el.Name = newName;
+                                            RefactorElement(el, originalName, newName);
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -748,11 +798,12 @@ namespace DataDictionary.Interpreter
         /// Performs a refactoring of the model then ensure that the namespaces in its inner elements are correct
         /// </summary>
         /// <param name="model"></param>
+        /// <param name="newName"></param>
         public void RefactorAndRelocate(ModelElement model)
         {
             if (model != null)
             {
-                Refactor(model);
+                Refactor(model, model.Name);
 
                 RelocateVisitor relocator = new RelocateVisitor(model);
                 relocator.visit(model);

@@ -967,8 +967,7 @@ namespace GUI
                     if (Settings.Default.AllowRefactor)
                     {
                         EFSSystem.INSTANCE.Compiler.Compile_Synchronous(false, true);
-                        Model.Name = newLabel;
-                        EFSSystem.INSTANCE.Compiler.Refactor(Model as ModelElement);
+                        EFSSystem.INSTANCE.Compiler.Refactor(Model as ModelElement, newLabel);
                     }
                     else
                     {

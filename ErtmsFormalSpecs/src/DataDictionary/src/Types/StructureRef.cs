@@ -13,27 +13,14 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
-using System.IO;
 using System.Collections.Generic;
-using Utils;
+using DataDictionary.Interpreter;
+using DataDictionary.Interpreter.Filter;
 
 namespace DataDictionary.Types
 {
-    public class StructureRef : Generated.StructureRef
+    public class StructureRef : Generated.StructureRef, IExpressionable
     {
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public StructureRef()
-            : base()
-        {
-        }
-
-        /// <summary>
-        /// The structure referenced by this StructureRef
-        /// </summary>
-        private Structure structure;
-
         /// <summary>
         /// The type associated to this StructureRef
         /// </summary>
@@ -41,27 +28,15 @@ namespace DataDictionary.Types
         {
             get
             {
-                if (structure == null)
+                Structure retVal = null;
+
+                Compile();
+                if (ReferencedStructureExpression != null)
                 {
-                    Structure enclosingStructure = Enclosing as Structure;
-                    if (enclosingStructure != null)
-                    {
-                        structure = EFSSystem.findType(enclosingStructure.NameSpace, getName()) as Structure;
-                    }
+                    retVal = ReferencedStructureExpression.Ref as Structure;
                 }
-                return structure;
-            }
-            set
-            {
-                if (value != null)
-                {
-                    setName(value.getName());
-                }
-                else
-                {
-                    setName(null);
-                }
-                structure = value;
+
+                return retVal;
             }
         }
 
@@ -84,6 +59,78 @@ namespace DataDictionary.Types
                 }
                 return result;
             }
+        }
+
+        /// <summary>
+        /// The expression text for this expressionable
+        /// </summary>
+        public override string ExpressionText
+        {
+            get { return getName(); } 
+            set { setName(value);}
+        }
+
+        /// <summary>
+        /// The expression which references the structure
+        /// </summary>
+        private Expression ReferencedStructureExpression { get; set; }
+
+        /// <summary>
+        /// The tree which corresponds to the expression text
+        /// </summary>
+        public InterpreterTreeNode Tree
+        {
+            get
+            {
+                Compile();
+                return ReferencedStructureExpression;
+            }
+        }
+
+        /// <summary>
+        /// Indicates that the expression is valid for this IExpressionable
+        /// </summary>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        public bool checkValidExpression(string expression)
+        {
+            bool retVal = true;
+
+            if (ReferencedStructure == null)
+            {
+                AddError("Does not references to a structure");
+                retVal = false;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Clears the expression tree to ensure new compilation
+        /// </summary>
+        public void CleanCompilation()
+        {
+            ReferencedStructureExpression = null;
+        }
+
+        /// <summary>
+        /// Creates the tree according to the expression text
+        /// </summary>
+        public InterpreterTreeNode Compile()
+        {
+            if (ReferencedStructureExpression == null)
+            {
+                ReferencedStructureExpression = EFSSystem.Parser.Expression(this, ExpressionText, IsType.INSTANCE);
+                if (ReferencedStructureExpression != null)
+                {
+                    foreach (Usage usage in ReferencedStructureExpression.StaticUsage.AllUsages)
+                    {
+                        usage.Mode = Usage.ModeEnum.Interface;
+                    }
+                }
+            }
+
+            return ReferencedStructureExpression;
         }
     }
 }

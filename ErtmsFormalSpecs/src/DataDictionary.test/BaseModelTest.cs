@@ -60,8 +60,7 @@ namespace DataDictionary.test
         protected void Refactor(Utils.INamable namable, string newName)
         {
             Compiler.Compile_Synchronous(true);
-            namable.Name = newName;
-            Compiler.Refactor(namable as ModelElement);
+            Compiler.Refactor(namable as ModelElement, newName);
         }
 
         /// <summary>
@@ -147,6 +146,22 @@ namespace DataDictionary.test
             Structure retVal = (Structure) Factory.createStructure();
 
             enclosing.appendStructures(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates a structure in the namespace provided
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected StructureRef CreateStructureRef(Structure enclosing, string name)
+        {
+            StructureRef retVal = (StructureRef)Factory.createStructureRef();
+
+            enclosing.appendInterfaces(retVal);
             retVal.Name = name;
 
             return retVal;
