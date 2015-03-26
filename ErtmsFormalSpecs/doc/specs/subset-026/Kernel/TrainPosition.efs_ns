@@ -580,4 +580,49 @@ BTM.LRBG.NID != Messages.NID_LRBG.Unknown</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Determines whether the train has been moved while in NP mode.</Comment>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Determine train orientation"
+ Guid="342a3783-c702-47c4-a147-6ad4490e6b53"
+>
+<ReqRef
+ Id="df7b5f6a-299e-410d-ac09-c0baf1903753"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="35f4480f-a62e-4ad9-bc07-ac4ffc026ac7"
+>
+</ReqRef><Comment>Determines the orientation of the train according to the status of the cabs.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Cab A is active =&gt; nominal orientation"
+ Guid="3d4c8809-afd8-4d02-9044-21dccbd7326e"
+>
+<Comment>If the Cab A is active, the orientation of the train is considered to be nominal.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="8ef0a458-8454-4306-8e46-2d5be28ca190"
+>TIU.CabA.Desk1IsActive</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4162fe54-0360-4c74-9828-3d6a02e65b26"
+>Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Cab B is active =&gt; reverse orientation"
+ Guid="da62cf88-4cf8-419a-8407-1a57dcc99883"
+>
+<Comment>If the Cab B is active, the orientation of the train is considered to be reverse.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5e60262b-316b-41e8-a24c-4701b6e2618d"
+>TIU.CabB.Desk1IsActive</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="d3addb62-ff53-4f5c-90cb-c14436fd26bd"
+>Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Reverse</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>
