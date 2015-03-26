@@ -9,7 +9,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GUI</RootNamespace>
-    <AssemblyName>GUI</AssemblyName>
+    <AssemblyName>ERTMSFormalSpecs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -42,6 +42,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>EFS.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL" />
@@ -842,6 +845,7 @@
     <None Include="resources\parameter-icon.png" />
     <None Include="resources\interface-icon.png" />
     <None Include="resources\redefines-icon.png" />
+    <Content Include="EFS.ico" />
     <Content Include="resources\tools.png" />
     <None Include="resources\type_icon.png" />
     <None Include="resources\call_icon.png" />
