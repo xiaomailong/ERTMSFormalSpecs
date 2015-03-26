@@ -29,7 +29,7 @@ namespace Reports.Specs
         public bool addNotReviewed { set; get; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public FindingsReportHandler(Dictionary dictionary)
@@ -72,7 +72,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Add an Issues, Comments and Questions section to the report, as requested
+        ///     Add an Issues, Comments and Questions section to the report, as requested
         /// </summary>
         /// <param name="report"></param>
         private void BuildSections(FindingsReport report)

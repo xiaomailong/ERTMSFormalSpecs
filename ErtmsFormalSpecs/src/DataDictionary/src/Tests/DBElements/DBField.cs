@@ -19,7 +19,7 @@ namespace DataDictionary.Tests.DBElements
     public class DBField : Generated.DBField
     {
         /// <summary>
-        /// The variable to be updated
+        ///     The variable to be updated
         /// </summary>
         public string Variable
         {
@@ -28,7 +28,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// The value of the variable
+        ///     The value of the variable
         /// </summary>
         public string Value
         {
@@ -37,7 +37,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Merges two fields
+        ///     Merges two fields
         /// </summary>
         /// <param name="p"></param>
         public void Merge(DBField other)

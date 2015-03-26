@@ -26,22 +26,22 @@ using ErtmsSolutions.SiUnits;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Creates a new function which describes the maximum value of two functions
+    ///     Creates a new function which describes the maximum value of two functions
     /// </summary>
     public class DecelerationProfile : FunctionOnGraph
     {
         /// <summary>
-        /// The MRSP 
+        ///     The MRSP
         /// </summary>
         public Parameter SpeedRestrictions { get; private set; }
 
         /// <summary>
-        /// The deceleration factor
+        ///     The deceleration factor
         /// </summary>
         public Parameter DecelerationFactor { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="name">the name of the cast function</param>
@@ -62,19 +62,20 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context,
+            Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[SpeedRestrictions.Name], 1);
             CheckFunctionalParameter(root, context, actualParameters[DecelerationFactor.Name], 2);
         }
 
         /// <summary>
-        /// Provides the graph of this function if it has been statically defined
+        ///     Provides the graph of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
         /// <param name="parameter"></param>
@@ -105,7 +106,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     if (DecelerationSurface != null)
                     {
                         FlatSpeedDistanceCurve MRSPCurve = MRSPGraph.FlatSpeedDistanceCurve(MRSPGraph.ExpectedEndX());
-                        AccelerationSpeedDistanceSurface accelerationSurface = DecelerationSurface.createAccelerationSpeedDistanceSurface(double.MaxValue, double.MaxValue);
+                        AccelerationSpeedDistanceSurface accelerationSurface =
+                            DecelerationSurface.createAccelerationSpeedDistanceSurface(double.MaxValue, double.MaxValue);
                         QuadraticSpeedDistanceCurve BrakingCurve = null;
                         try
                         {
@@ -143,7 +145,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
                                     newSegment = new Graph.Segment(
                                         segment.X.X0.ToUnits(),
                                         segment.X.X1.ToUnits(),
-                                        new Graph.Segment.Curve(0.0, segment.V0.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour), 0.0));
+                                        new Graph.Segment.Curve(0.0,
+                                            segment.V0.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour), 0.0));
                                 }
                                 else
                                 {
@@ -180,13 +183,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 
@@ -194,7 +198,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
             AssignParameters(context, actuals);
 
             Function function = (Function) acceptor.getFactory().createFunction();
-            function.Name = "DecelerationProfile ( SpeedRestrictions => " + getName(SpeedRestrictions) + ", DecelerationFactor => " + getName(DecelerationFactor) + ")";
+            function.Name = "DecelerationProfile ( SpeedRestrictions => " + getName(SpeedRestrictions) +
+                            ", DecelerationFactor => " + getName(DecelerationFactor) + ")";
             function.Enclosing = EFSSystem;
             Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
             parameter.Name = "X";

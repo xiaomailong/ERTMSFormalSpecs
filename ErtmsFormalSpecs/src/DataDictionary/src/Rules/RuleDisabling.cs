@@ -23,7 +23,7 @@ namespace DataDictionary.Rules
     public class RuleDisabling : Generated.RuleDisabling
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RuleDisabling()
         {
@@ -31,7 +31,7 @@ namespace DataDictionary.Rules
 
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -40,7 +40,7 @@ namespace DataDictionary.Rules
 
 
         /// <summary>
-        /// Provides the enclosing collection for this rule disabling
+        ///     Provides the enclosing collection for this rule disabling
         /// </summary>
         public override ArrayList EnclosingCollection
         {

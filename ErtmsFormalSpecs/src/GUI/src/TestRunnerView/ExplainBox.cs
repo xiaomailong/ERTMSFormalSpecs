@@ -14,7 +14,8 @@
 // --
 // ------------------------------------------------------------------------------
 
-using System.Drawing;
+using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary.Interpreter;
 using DataDictionary.Rules;
@@ -22,24 +23,23 @@ using DataDictionary.Variables;
 using GUI.DataDictionaryView;
 using Utils;
 using WeifenLuo.WinFormsUI.Docking;
-using System.Collections.Generic;
 
 namespace GUI.TestRunnerView
 {
     public partial class ExplainBox : DockContent
     {
         /// <summary>
-        /// A node of the tree
+        ///     A node of the tree
         /// </summary>
         private class ExplainTreeNode : TreeNode
         {
             /// <summary>
-            /// The explanation which corresponds to this node
+            ///     The explanation which corresponds to this node
             /// </summary>
             public ExplanationPart Explanation { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="explanation"></param>
             public ExplainTreeNode(ExplanationPart explanation)
@@ -48,18 +48,15 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Provides the explain box in which this node lies
+            ///     Provides the explain box in which this node lies
             /// </summary>
             private ExplainBox ExplainBox
             {
-                get
-                {
-                    return GUIUtils.EnclosingFinder<ExplainBox>.find(TreeView);
-                }
+                get { return GUIUtils.EnclosingFinder<ExplainBox>.find(TreeView); }
             }
 
             /// <summary>
-            /// Selects the corresponding model element
+            ///     Selects the corresponding model element
             /// </summary>
             public void SelectModel(bool selectModel)
             {
@@ -75,7 +72,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Updates the node text according to the explanation
+            ///     Updates the node text according to the explanation
             /// </summary>
             public void UpdateText()
             {
@@ -86,7 +83,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Expands the tree nodes which correspond to the path provided
+            ///     Expands the tree nodes which correspond to the path provided
             /// </summary>
             /// <param name="path"></param>
             /// <param name="index">The current position in the path</param>
@@ -112,12 +109,12 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The explanation displayed in the explain box
+        ///     The explanation displayed in the explain box
         /// </summary>
         private ExplanationPart Explanation { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ExplainBox()
         {
@@ -130,7 +127,7 @@ namespace GUI.TestRunnerView
             searchTextBox.KeyPress += searchTextBox_KeyPress;
         }
 
-        void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == '\r')
             {
@@ -138,12 +135,12 @@ namespace GUI.TestRunnerView
             }
         }
 
-        void explainTreeView_DragEnter(object sender, DragEventArgs e)
+        private void explainTreeView_DragEnter(object sender, DragEventArgs e)
         {
             e.Effect = DragDropEffects.Move;
         }
 
-        void explainTreeView_DragDrop(object sender, DragEventArgs e)
+        private void explainTreeView_DragDrop(object sender, DragEventArgs e)
         {
             if (e.Data.GetDataPresent("WindowsForms10PersistentObject", false))
             {
@@ -157,28 +154,28 @@ namespace GUI.TestRunnerView
                         ExpandAndShowVariable(new VariableSelector(variableTreeNode.Item));
                     }
                 }
-            } 
+            }
         }
 
         private class VariableSelector
         {
             /// <summary>
-            /// Part of the variable name
+            ///     Part of the variable name
             /// </summary>
             private string VariablePartName { get; set; }
 
             /// <summary>
-            /// Performs a case sensitive search 
+            ///     Performs a case sensitive search
             /// </summary>
             private bool CaseSensitive { get; set; }
 
             /// <summary>
-            /// The variable to find
+            ///     The variable to find
             /// </summary>
             private IVariable Variable { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="variable"></param>
             public VariableSelector(IVariable variable)
@@ -188,7 +185,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="variablePartName"></param>
             /// <param name="caseSensitive"></param>
@@ -197,14 +194,14 @@ namespace GUI.TestRunnerView
                 Variable = null;
                 VariablePartName = variablePartName;
                 CaseSensitive = caseSensitive;
-                if ( !CaseSensitive )
+                if (!CaseSensitive)
                 {
                     VariablePartName = VariablePartName.ToUpper();
                 }
             }
 
             /// <summary>
-            /// Indicates whether the string matches using the parameters provided in this VariableSelector
+            ///     Indicates whether the string matches using the parameters provided in this VariableSelector
             /// </summary>
             /// <param name="text"></param>
             /// <returns></returns>
@@ -212,7 +209,7 @@ namespace GUI.TestRunnerView
             {
                 bool retVal = false;
 
-                if ( !CaseSensitive )
+                if (!CaseSensitive)
                 {
                     text = text.ToUpper();
                 }
@@ -223,11 +220,11 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Indicates whether the explanation part is related to the variable
+            ///     Indicates whether the explanation part is related to the variable
             /// </summary>
             /// <param name="explanationPart"></param>
             /// <returns></returns>
-            public bool Match (ExplanationPart explanationPart)
+            public bool Match(ExplanationPart explanationPart)
             {
                 bool retVal = false;
 
@@ -245,9 +242,9 @@ namespace GUI.TestRunnerView
                 }
 
                 Expression expression = explanationPart.Expression;
-                if ( expression != null )
+                if (expression != null)
                 {
-                    if ( VariablePartName != null )
+                    if (VariablePartName != null)
                     {
                         retVal = retVal || MatchName(expression.FullName);
                     }
@@ -268,12 +265,13 @@ namespace GUI.TestRunnerView
 
 
         /// <summary>
-        /// Inner primitive to expand nodes, based on a tree node
+        ///     Inner primitive to expand nodes, based on a tree node
         /// </summary>
         /// <param name="explanation"></param>
         /// <param name="variableSelector"></param>
         /// <param name="path"></param>
-        private void InnerExpandAndShowVariable(ExplanationPart explanation, VariableSelector variableSelector, List<ExplanationPart> path)
+        private void InnerExpandAndShowVariable(ExplanationPart explanation, VariableSelector variableSelector,
+            List<ExplanationPart> path)
         {
             path.Add(explanation);
             if (variableSelector.Match(explanation))
@@ -292,7 +290,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Expands all pathes which lead to the selected variable
+        ///     Expands all pathes which lead to the selected variable
         /// </summary>
         /// <param name="variableSelector"></param>
         private void ExpandAndShowVariable(VariableSelector variableSelector)
@@ -323,7 +321,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Sets the node, and its subnode according to the content of the explanation
+        ///     Sets the node, and its subnode according to the content of the explanation
         /// </summary>
         /// <param name="part"></param>
         /// <param name="node"></param>
@@ -351,7 +349,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Sets the explanation for this explain box
+        ///     Sets the explanation for this explain box
         /// </summary>
         /// <param name="explanation"></param>
         public void setExplanation(ExplanationPart explanation)
@@ -369,7 +367,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles the selection of an element of the treeview
+        ///     Handles the selection of an element of the treeview
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -382,7 +380,7 @@ namespace GUI.TestRunnerView
             }
         }
 
-        private void button1_Click(object sender, System.EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             ExpandAndShowVariable(new VariableSelector(searchTextBox.Text, caseSensitiveCheckBox.Checked));
         }

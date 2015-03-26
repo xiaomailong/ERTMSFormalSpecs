@@ -21,7 +21,7 @@ using GUI.IPCInterface.Values;
 namespace GUI.IPCInterface
 {
     /// <summary>
-    /// The cycle priority to execute
+    ///     The cycle priority to execute
     /// </summary>
     public enum Step
     {
@@ -33,25 +33,25 @@ namespace GUI.IPCInterface
     };
 
     /// <summary>
-    /// A fault occured while executing a service function
+    ///     A fault occured while executing a service function
     /// </summary>
     [DataContract]
     public class EFSServiceFault
     {
         /// <summary>
-        /// The fault message
+        ///     The fault message
         /// </summary>
         [DataMember]
         public string Message { get; private set; }
 
         /// <summary>
-        /// Provides the inner reason for this exception
+        ///     Provides the inner reason for this exception
         /// </summary>
         [DataMember]
         public EFSServiceFault InnerReason { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="message"></param>
         public EFSServiceFault(string message)
@@ -61,7 +61,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="message"></param>
         /// <param name="innerReason"></param>
@@ -76,7 +76,7 @@ namespace GUI.IPCInterface
     public interface IEFSService
     {
         /// <summary>
-        /// Connects to the service using the default parameters
+        ///     Connects to the service using the default parameters
         /// </summary>
         /// <param name="listener">Indicates that the client is a listener</param>
         /// <returns>The client identifier</returns>
@@ -85,7 +85,7 @@ namespace GUI.IPCInterface
         int ConnectUsingDefaultValues(bool listener);
 
         /// <summary>
-        /// Connects to the service 
+        ///     Connects to the service
         /// </summary>
         /// <param name="listener">Indicates that the client is a listener</param>
         /// <param name="explain">Indicates that the explain view should be updated according to the scenario execution</param>
@@ -98,7 +98,7 @@ namespace GUI.IPCInterface
         int Connect(bool listener, bool explain, bool logEvents, int cycleDuration, int keepEventCount);
 
         /// <summary>
-        /// Provides the value of a specific variable
+        ///     Provides the value of a specific variable
         /// </summary>
         /// <param name="variableName"></param>
         /// <returns></returns>
@@ -106,7 +106,7 @@ namespace GUI.IPCInterface
         Value GetVariableValue(string variableName);
 
         /// <summary>
-        /// Provides the value of an expression
+        ///     Provides the value of an expression
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -114,7 +114,7 @@ namespace GUI.IPCInterface
         Value GetExpressionValue(string expression);
 
         /// <summary>
-        /// Sets the value of a specific variable
+        ///     Sets the value of a specific variable
         /// </summary>
         /// <param name="variableName"></param>
         /// <param name="value"></param>
@@ -123,7 +123,7 @@ namespace GUI.IPCInterface
         void SetVariableValue(string variableName, Value value);
 
         /// <summary>
-        /// Applies a specific statement on the model
+        ///     Applies a specific statement on the model
         /// </summary>
         /// <param name="variableName"></param>
         /// <param name="value"></param>
@@ -132,7 +132,7 @@ namespace GUI.IPCInterface
         void ApplyStatement(string statement);
 
         /// <summary>
-        /// Activates the execution of a single cycle, as the given priority level
+        ///     Activates the execution of a single cycle, as the given priority level
         /// </summary>
         /// <param name="clientId">The id of the client</param>
         /// <param name="step">The cycle step to execute</param>
@@ -142,7 +142,7 @@ namespace GUI.IPCInterface
         bool Cycle(int clientId, Step step);
 
         /// <summary>
-        /// Restarts the engine with default values
+        ///     Restarts the engine with default values
         /// </summary>
         [OperationContract]
         void Restart();

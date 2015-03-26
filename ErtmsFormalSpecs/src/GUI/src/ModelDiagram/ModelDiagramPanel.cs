@@ -38,14 +38,14 @@ using Variable = DataDictionary.Variables.Variable;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The panel used to display model elements (types, variables, rules, ...)
+    ///     The panel used to display model elements (types, variables, rules, ...)
     /// </summary>
     public class ModelDiagramPanel : BoxArrowPanel<IGraphicalDisplay, ModelArrow>
     {
         private ToolStripMenuItem addRangeMenuItem;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ModelDiagramPanel()
             : base()
@@ -53,7 +53,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Adds the menu items related to this model element
+        ///     Adds the menu items related to this model element
         /// </summary>
         public override void InitializeStartMenu()
         {
@@ -69,7 +69,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Adds a new range
+        ///     Adds a new range
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -82,7 +82,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The namespace for which this panel is built
+        ///     The namespace for which this panel is built
         /// </summary>
         public NameSpace NameSpace
         {
@@ -91,7 +91,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The dictionary for which this panel is built
+        ///     The dictionary for which this panel is built
         /// </summary>
         public Dictionary Dictionary
         {
@@ -100,7 +100,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Method used to create a box
+        ///     Method used to create a box
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -179,7 +179,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Method used to create an arrow
+        ///     Method used to create an arrow
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -191,7 +191,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Provides the boxes representing the models displayed in this panel
+        ///     Provides the boxes representing the models displayed in this panel
         /// </summary>
         /// <returns></returns>
         public override List<IGraphicalDisplay> getBoxes()
@@ -243,7 +243,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Provides the arrows between the models displayed in this panel
+        ///     Provides the arrows between the models displayed in this panel
         /// </summary>
         /// <returns></returns>
         public override List<ModelArrow> getArrows()
@@ -279,9 +279,9 @@ namespace GUI.ModelDiagram
                         }
                     }
 
-                    foreach(Structure inheritedStructure in structure.Interfaces)
+                    foreach (Structure inheritedStructure in structure.Interfaces)
                     {
-                        if(boxes.Contains(inheritedStructure))
+                        if (boxes.Contains(inheritedStructure))
                         {
                             retVal.Add(new ModelArrow(structure, inheritedStructure, "implements", inheritedStructure));
                         }
@@ -293,12 +293,12 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The last model for wich a displayed position has been computed
+        ///     The last model for wich a displayed position has been computed
         /// </summary>
         private IGraphicalDisplay LastComputedPositionModel = null;
 
         /// <summary>
-        /// Reinitialises the automatic position handling
+        ///     Reinitialises the automatic position handling
         /// </summary>
         protected override void InitPositionHandling()
         {
@@ -307,8 +307,8 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Provides the next control position.
-        /// Align controls according to their type
+        ///     Provides the next control position.
+        ///     Align controls according to their type
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

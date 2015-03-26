@@ -27,7 +27,7 @@ namespace GUI.Converters
         private Type _enumType;
 
         /// <summary>
-        /// Provides the translation between a enum and its textual representation
+        ///     Provides the translation between a enum and its textual representation
         /// </summary>
         protected struct Converter
         {
@@ -42,12 +42,12 @@ namespace GUI.Converters
         }
 
         /// <summary>
-        /// Holds the convertion rules
+        ///     Holds the convertion rules
         /// </summary>
         protected List<Converter> converters = new List<Converter>();
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public GenericEnumConverter(Type type)
@@ -61,7 +61,8 @@ namespace GUI.Converters
             return destType == typeof (string);
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+            Type destType)
         {
             string retVal = converters[0].display;
 
@@ -121,7 +122,8 @@ namespace GUI.Converters
             converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NA, "Not implemented"));
             converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented, "Implemented"));
             converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable, "Not implementable"));
-            converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable, "New revision available"));
+            converters.Add(new Converter(acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NewRevisionAvailable,
+                "New revision available"));
         }
     }
 

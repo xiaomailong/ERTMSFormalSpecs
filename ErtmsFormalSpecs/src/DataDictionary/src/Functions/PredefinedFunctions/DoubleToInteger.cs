@@ -25,17 +25,17 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Creates a new function which converts a double to an integer
+    ///     Creates a new function which converts a double to an integer
     /// </summary>
     public class DoubleToInteger : PredefinedFunction
     {
         /// <summary>
-        /// The value to be rounded
+        ///     The value to be rounded
         /// </summary>
         public Parameter Value { get; private set; }
 
         /// <summary>
-        /// The return type of the function
+        ///     The return type of the function
         /// </summary>
         public override Type ReturnType
         {
@@ -43,7 +43,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         public DoubleToInteger(EFSSystem efsSystem)
@@ -57,13 +57,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 

@@ -21,7 +21,7 @@ namespace GUI
     public class MyPropertyGrid : PropertyGrid
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public MyPropertyGrid()
         {
@@ -30,7 +30,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the enclosing IBaseForm
+        ///     Provides the enclosing IBaseForm
         /// </summary>
         public IBaseForm EnclosingForm
         {
@@ -38,7 +38,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called when the drop operation is performed on this text box
+        ///     Called when the drop operation is performed on this text box
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

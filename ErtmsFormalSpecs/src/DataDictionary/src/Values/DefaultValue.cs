@@ -19,7 +19,7 @@ using DataDictionary.Variables;
 namespace DataDictionary.Values
 {
     /// <summary>
-    /// A place holder for a default value, not available through the EFS interface
+    ///     A place holder for a default value, not available through the EFS interface
     /// </summary>
     public class DefaultValue : Value
     {
@@ -31,7 +31,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public DefaultValue(Variable variable)

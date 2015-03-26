@@ -62,7 +62,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public UsageTreeView()
             : base()
@@ -97,7 +97,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Indicates that the element is a model element (as opposed to a test)
+        ///     Indicates that the element is a model element (as opposed to a test)
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
@@ -116,7 +116,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Indicates that the element belongs to a test 
+        ///     Indicates that the element belongs to a test
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>

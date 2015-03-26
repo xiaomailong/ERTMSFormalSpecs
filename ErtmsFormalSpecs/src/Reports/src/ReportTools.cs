@@ -20,37 +20,37 @@ using MigraDoc.DocumentObjectModel.Tables;
 namespace Reports
 {
     /// <summary>
-    /// Proposes the tools needed for a report creation
+    ///     Proposes the tools needed for a report creation
     /// </summary>
     public class ReportTools
     {
         /// <summary>
-        /// The current document
+        ///     The current document
         /// </summary>
         protected Document document { get; set; }
 
         /// <summary>
-        /// The current section
+        ///     The current section
         /// </summary>
         protected Section section { get; set; }
 
         /// <summary>
-        /// The table currently being built
+        ///     The table currently being built
         /// </summary>
         protected Table table { get; set; }
 
         /// <summary>
-        /// The last row built in the table
+        ///     The last row built in the table
         /// </summary>
         protected Row lastRow { get; set; }
 
         /// <summary>
-        /// The current paragraph level
+        ///     The current paragraph level
         /// </summary>
         private int level = 1;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="doc"></param>
         public ReportTools(Document doc)
@@ -62,7 +62,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Defines the styles used in the document.
+        ///     Defines the styles used in the document.
         /// </summary>
         public static void DefineStyles(Document document)
         {
@@ -118,7 +118,7 @@ namespace Reports
 
 
         /// <summary>
-        /// Adds a new subsection in the document
+        ///     Adds a new subsection in the document
         /// </summary>
         /// <param name="name"></param>
         public void AddSubParagraph(string name)
@@ -129,7 +129,7 @@ namespace Reports
 
 
         /// <summary>
-        /// Closes the subsection in the document
+        ///     Closes the subsection in the document
         /// </summary>
         public void CloseSubParagraph()
         {
@@ -137,7 +137,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Adds a paragraph in a section
+        ///     Adds a paragraph in a section
         /// </summary>
         /// <param name="text"></param>
         public void AddParagraph(string text)
@@ -149,7 +149,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Adds a list item in a section
+        ///     Adds a list item in a section
         /// </summary>
         /// <param name="text"></param>
         public void AddListItem(string text)
@@ -162,7 +162,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Adds code in a section
+        ///     Adds code in a section
         /// </summary>
         /// <param name="text"></param>
         public void AddCode(string text)
@@ -171,12 +171,12 @@ namespace Reports
         }
 
         /// <summary>
-        /// The maximum size of a table
+        ///     The maximum size of a table
         /// </summary>
         private static Unit TABLE_WIDTH = new Unit(170, UnitType.Millimeter);
 
         /// <summary>
-        /// Creates a new table with the given number of column + column width
+        ///     Creates a new table with the given number of column + column width
         /// </summary>
         /// <param name="columnNames"></param>
         /// <param name="columnWidth"></param>
@@ -218,7 +218,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Adds a row to the table currently being built
+        ///     Adds a row to the table currently being built
         /// </summary>
         /// <param name="rowData"></param>
         public Row AddRow(params string[] rowData)
@@ -262,7 +262,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Adds a row to the table currently being built
+        ///     Adds a row to the table currently being built
         /// </summary>
         /// <param name="rowData"></param>
         public Row AppendToRow(params string[] rowData)
@@ -279,7 +279,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Provides the name for table columns
+        ///     Provides the name for table columns
         /// </summary>
         /// <param name="columnNumber"></param>
         /// <returns></returns>

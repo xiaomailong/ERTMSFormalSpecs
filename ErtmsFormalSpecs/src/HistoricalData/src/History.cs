@@ -21,17 +21,17 @@ using HistoricalData.Generated;
 namespace HistoricalData
 {
     /// <summary>
-    /// The complete history
+    ///     The complete history
     /// </summary>
     public class History : Generated.History
     {
         /// <summary>
-        /// The file name of the history file
+        ///     The file name of the history file
         /// </summary>
         public const string HISTORY_FILE_NAME = "HistoryCache.hst";
 
         /// <summary>
-        /// All the commits in this history
+        ///     All the commits in this history
         /// </summary>
         public ArrayList Commits
         {
@@ -46,7 +46,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public History()
             : base()
@@ -55,19 +55,19 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Traces back all changes related to each single element
+        ///     Traces back all changes related to each single element
         /// </summary>
         protected Dictionary<string, SortedSet<Change>> Blame { get; private set; }
 
         private class BlameVisitor : Visitor
         {
             /// <summary>
-            /// The blame cache to update
+            ///     The blame cache to update
             /// </summary>
             private Dictionary<string, SortedSet<Change>> Blame = new Dictionary<string, SortedSet<Change>>();
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="blame"></param>
             public BlameVisitor(Dictionary<string, SortedSet<Change>> blame)
@@ -76,7 +76,7 @@ namespace HistoricalData
             }
 
             /// <summary>
-            /// Updates the Blame dictionary with the current change
+            ///     Updates the Blame dictionary with the current change
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -103,7 +103,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Indicates that the corresponding commit already exists in the history
+        ///     Indicates that the corresponding commit already exists in the history
         /// </summary>
         /// <param name="sha"></param>
         /// <returns>True if the commit has been found</returns>
@@ -124,8 +124,8 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Appends a new commit in the history.
-        /// IF the commit is already present, it replaces that commit instead
+        ///     Appends a new commit in the history.
+        ///     IF the commit is already present, it replaces that commit instead
         /// </summary>
         /// <param name="commit"></param>
         public void AppendOrReplaceCommit(Commit commit)
@@ -151,7 +151,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Provides the commit which corresponds to the Sha provided
+        ///     Provides the commit which corresponds to the Sha provided
         /// </summary>
         /// <param name="sha">The commit Sha to find</param>
         /// <returns>null if no Commit correspond to the Sha</returns>
@@ -172,7 +172,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Provides the ordered changes on a given model element
+        ///     Provides the ordered changes on a given model element
         /// </summary>
         /// <param name="guid">The guid of the object where changes should be found</param>
         /// <returns></returns>

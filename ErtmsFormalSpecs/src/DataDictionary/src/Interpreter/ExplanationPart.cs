@@ -23,12 +23,12 @@ using Utils;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
-    /// Part of the explanation of an evaluation
+    ///     Part of the explanation of an evaluation
     /// </summary>
     public class ExplanationPart
     {
         /// <summary>
-        /// The explanation message
+        ///     The explanation message
         /// </summary>
         private string _message;
 
@@ -70,32 +70,32 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The list of sub explanations
+        ///     The list of sub explanations
         /// </summary>
         public List<ExplanationPart> SubExplanations { get; private set; }
 
         /// <summary>
-        /// The model element for which the explanation is created
+        ///     The model element for which the explanation is created
         /// </summary>
         public ModelElement Element { get; private set; }
 
         /// <summary>
-        /// The (optional) change for which this explanation part is created
+        ///     The (optional) change for which this explanation part is created
         /// </summary>
         public Change Change { get; private set; }
 
         /// <summary>
-        /// The (optional) expression for which this explanation part is created
+        ///     The (optional) expression for which this explanation part is created
         /// </summary>
         public Expression Expression { get; set; }
 
         /// <summary>
-        /// The (optional) value for which this explanation part is created
+        ///     The (optional) value for which this explanation part is created
         /// </summary>
         public INamable Namable { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
         public ExplanationPart(ModelElement element, string message, INamable namable = null)
@@ -107,7 +107,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor for an explanation, based on a change
+        ///     Constructor for an explanation, based on a change
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
         /// <param name="change">The change performed</param>
@@ -119,7 +119,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
         public ExplanationPart(ModelElement element, Expression expression)
@@ -131,7 +131,7 @@ namespace DataDictionary.Interpreter
 
 
         /// <summary>
-        /// Provides the textual representation of the namable provided
+        ///     Provides the textual representation of the namable provided
         /// </summary>
         /// <param name="namable"></param>
         /// <returns></returns>
@@ -169,7 +169,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds a sub explanation for the explain provided as parameter
+        ///     Adds a sub explanation for the explain provided as parameter
         /// </summary>
         /// <param name="explain"></param>
         /// <param name="subExplain"></param>
@@ -182,7 +182,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates a sub explanation for the explain provided as parameter
+        ///     Creates a sub explanation for the explain provided as parameter
         /// </summary>
         /// <param name="explain"></param>
         /// <param name="subExpression"></param>
@@ -201,7 +201,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates a sub explanation for the explain provided as parameter
+        ///     Creates a sub explanation for the explain provided as parameter
         /// </summary>
         /// <param name="explain"></param>
         /// <param name="change"></param>
@@ -220,7 +220,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates a sub explanation for the explain provided as parameter
+        ///     Creates a sub explanation for the explain provided as parameter
         /// </summary>
         /// <param name="explain"></param>
         /// <param name="name"></param>
@@ -240,7 +240,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Sets the value associated to the explanation
+        ///     Sets the value associated to the explanation
         /// </summary>
         /// <param name="explain"></param>
         /// <param name="namable"></param>

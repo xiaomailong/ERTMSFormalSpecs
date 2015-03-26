@@ -28,27 +28,27 @@ namespace DataDictionary.Interpreter.ListOperators
     public class SumExpression : ExpressionBasedListExpression, ISubDeclarator
     {
         /// <summary>
-        /// The operator for this expression
+        ///     The operator for this expression
         /// </summary>
         public static string OPERATOR = "SUM";
 
         /// <summary>
-        /// The accumulator variable
+        ///     The accumulator variable
         /// </summary>
         public Variable AccumulatorVariable { get; private set; }
 
         /// <summary>
-        /// The accumulation expression, as defined in the statement
+        ///     The accumulation expression, as defined in the statement
         /// </summary>
         private Expression DefinedAccumulator { get; set; }
 
         /// <summary>
-        /// The accumulator expression to be used for evaluation 
+        ///     The accumulator expression to be used for evaluation
         /// </summary>
         public Expression Accumulator { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="listExpression"></param>
         /// <param name="condition"></param>
@@ -57,7 +57,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public SumExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, Expression expression, int start, int end)
+        public SumExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName,
+            Expression condition, Expression expression, int start, int end)
             : base(root, log, listExpression, iteratorVariableName, condition, expression, start, end)
         {
             AccumulatorVariable = (Variable) acceptor.getFactory().createVariable();
@@ -68,12 +69,14 @@ namespace DataDictionary.Interpreter.ListOperators
             DefinedAccumulator = expression;
             DefinedAccumulator.Enclosing = this;
 
-            Accumulator = new BinaryExpression(Root, RootLog, DefinedAccumulator, BinaryExpression.OPERATOR.ADD, new UnaryExpression(Root, RootLog, new Term(Root, RootLog, new Designator(Root, RootLog, "RESULT", -1, -1), -1, -1), -1, -1), -1, -1);
+            Accumulator = new BinaryExpression(Root, RootLog, DefinedAccumulator, BinaryExpression.OPERATOR.ADD,
+                new UnaryExpression(Root, RootLog,
+                    new Term(Root, RootLog, new Designator(Root, RootLog, "RESULT", -1, -1), -1, -1), -1, -1), -1, -1);
             Accumulator.Enclosing = this;
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -97,7 +100,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -107,7 +110,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -150,7 +153,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -169,7 +172,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
         {

@@ -27,7 +27,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : CommentableEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -50,7 +50,7 @@ namespace GUI.DataDictionaryView
         private bool isDirectory = false;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
@@ -60,7 +60,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -93,7 +93,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
@@ -104,7 +104,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -169,7 +169,7 @@ namespace GUI.DataDictionaryView
 
 
         /// <summary>
-        /// Adds a namespace in the corresponding namespace
+        ///     Adds a namespace in the corresponding namespace
         /// </summary>
         /// <param name="nameSpace"></param>
         public NameSpaceTreeNode AddNameSpace(NameSpace nameSpace)
@@ -178,7 +178,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Shows the functional view
+        ///     Shows the functional view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -191,7 +191,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -220,7 +220,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Accepts a drop event
+        ///     Accepts a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -256,7 +256,8 @@ namespace GUI.DataDictionaryView
                 }
                 else if (SourceNode is NameSpaceTreeNode)
                 {
-                    DialogResult result = MessageBox.Show("This will move the namespace, are you sure ? ", "Confirm moving the namespace", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    DialogResult result = MessageBox.Show("This will move the namespace, are you sure ? ",
+                        "Confirm moving the namespace", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK)
                     {
                         NameSpaceTreeNode nameSpaceTreeNode = SourceNode as NameSpaceTreeNode;
@@ -271,7 +272,7 @@ namespace GUI.DataDictionaryView
 
 
         /// <summary>
-        /// Update counts according to the selected namespace
+        ///     Update counts according to the selected namespace
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
@@ -292,7 +293,7 @@ namespace GUI.DataDictionaryView
 
 
         /// <summary>
-        /// Creates the stat message according to the list of namespaces provided
+        ///     Creates the stat message according to the list of namespaces provided
         /// </summary>
         /// <param name="paragraphs"></param>
         /// <returns></returns>
@@ -333,10 +334,12 @@ namespace GUI.DataDictionaryView
             }
             else
             {
-                result += namespaces.Count + (namespaces.Count > 1 ? " namespaces " : " namespace ") + "selected, containing ";
+                result += namespaces.Count + (namespaces.Count > 1 ? " namespaces " : " namespace ") +
+                          "selected, containing ";
             }
 
-            result += (allNamespaces.Count - namespaces.Count) + (allNamespaces.Count - namespaces.Count > 1 ? " sub-namespaces, " : " sub-namespace, ") +
+            result += (allNamespaces.Count - namespaces.Count) +
+                      (allNamespaces.Count - namespaces.Count > 1 ? " sub-namespaces, " : " sub-namespace, ") +
                       ranges + (ranges > 1 ? " ranges, " : " range, ") +
                       enumerations + (enumerations > 1 ? " enumerations, " : " enumeration, ") +
                       structures + (structures > 1 ? " structures, " : " structure, ") +

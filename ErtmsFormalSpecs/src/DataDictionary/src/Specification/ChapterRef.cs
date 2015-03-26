@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.IO;
 using Utils;
@@ -22,7 +23,7 @@ namespace DataDictionary.Specification
     public class ChapterRef : Generated.ChapterRef
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ChapterRef()
             : base()
@@ -30,7 +31,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The file name which corresponds to this chapter ref
+        ///     The file name which corresponds to this chapter ref
         /// </summary>
         public string FileName
         {
@@ -44,14 +45,15 @@ namespace DataDictionary.Specification
                     current = current.Enclosing as IModelElement;
                 }
 
-                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + Util.validFilePath(retVal);
+                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" +
+                         Path.DirectorySeparatorChar + Util.validFilePath(retVal);
 
                 return retVal;
             }
         }
 
         /// <summary>
-        /// The file name which corresponds to this chapter ref
+        ///     The file name which corresponds to this chapter ref
         /// </summary>
         public string PreviousFileName
         {
@@ -65,14 +67,15 @@ namespace DataDictionary.Specification
                     current = current.Enclosing as IModelElement;
                 }
 
-                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" + Path.DirectorySeparatorChar + retVal;
+                retVal = Dictionary.BasePath + Path.DirectorySeparatorChar + "Specifications" +
+                         Path.DirectorySeparatorChar + retVal;
 
                 return retVal;
             }
         }
 
         /// <summary>
-        /// Saves the chapter provided associated to this chapter ref
+        ///     Saves the chapter provided associated to this chapter ref
         /// </summary>
         /// <param name="chapter"></param>
         public void SaveChapter(Chapter chapter)
@@ -85,7 +88,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Loads the frame which corresponds to this frame ref
+        ///     Loads the frame which corresponds to this frame ref
         /// </summary>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <param name="allowErrors">Indicates that errors are tolerated during load</param>
@@ -108,7 +111,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Removes the temporary file associated to that item
+        ///     Removes the temporary file associated to that item
         /// </summary>
         public void ClearTempFile()
         {

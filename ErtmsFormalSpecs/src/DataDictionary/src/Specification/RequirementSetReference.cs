@@ -20,7 +20,7 @@ using DataDictionary.Generated;
 namespace DataDictionary.Specification
 {
     /// <summary>
-    /// Represents a reference to a requirement set
+    ///     Represents a reference to a requirement set
     /// </summary>
     public class RequirementSetReference : Generated.RequirementSetReference
     {
@@ -51,7 +51,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the requirement set referenced by this requirement set reference
+        ///     Provides the requirement set referenced by this requirement set reference
         /// </summary>
         public RequirementSet Ref
         {
@@ -59,7 +59,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// This visitor can be used to recursively remove all requirement set references
+        ///     This visitor can be used to recursively remove all requirement set references
         /// </summary>
         public class RemoveReferencesVisitor : Visitor
         {

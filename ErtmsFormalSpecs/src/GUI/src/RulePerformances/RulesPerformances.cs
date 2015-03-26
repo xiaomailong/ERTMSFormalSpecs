@@ -27,12 +27,12 @@ namespace GUI.RulePerformances
     public partial class RulesPerformances : DockContent
     {
         /// <summary>
-        /// The EFS System for which this view is built
+        ///     The EFS System for which this view is built
         /// </summary>
         private EFSSystem EFSSystem { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RulesPerformances()
         {
@@ -42,7 +42,7 @@ namespace GUI.RulePerformances
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         public RulesPerformances(EFSSystem efsSystem)
@@ -53,12 +53,12 @@ namespace GUI.RulePerformances
         }
 
         /// <summary>
-        /// Provides the rules that consumed most of the time
+        ///     Provides the rules that consumed most of the time
         /// </summary>
         private class GetSlowest : Visitor
         {
             /// <summary>
-            /// The list of rules
+            ///     The list of rules
             /// </summary>
             private List<Rule> Rules { get; set; }
 
@@ -93,7 +93,7 @@ namespace GUI.RulePerformances
             }
 
             /// <summary>
-            /// Provides the rules associated with their descending execution time
+            ///     Provides the rules associated with their descending execution time
             /// </summary>
             /// <returns></returns>
             public List<Rule> getRulesDesc()

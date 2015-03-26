@@ -22,22 +22,22 @@ using DataDictionary.Variables;
 namespace DataDictionary.Functions
 {
     /// <summary>
-    /// An association between a value and its explanation
+    ///     An association between a value and its explanation
     /// </summary>
     public class ExplainedValue
     {
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public IValue Value { get; private set; }
 
         /// <summary>
-        /// The value's computation explanation
+        ///     The value's computation explanation
         /// </summary>
         public ExplanationPart Explanation { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="value"></param>
         /// <param name="explanation"></param>
@@ -49,27 +49,27 @@ namespace DataDictionary.Functions
     }
 
     /// <summary>
-    /// Caches the result of a function in a Curry-like fashion 
+    ///     Caches the result of a function in a Curry-like fashion
     /// </summary>
     public class CurryCache
     {
         /// <summary>
-        /// The function for which this cache is built
+        ///     The function for which this cache is built
         /// </summary>
         private Function Function { get; set; }
 
         /// <summary>
-        /// A curried cache 
+        ///     A curried cache
         /// </summary>
         private class FunctionCache : Dictionary<IValue, FunctionCache>
         {
             /// <summary>
-            /// The value associated to the last parameter of the function
+            ///     The value associated to the last parameter of the function
             /// </summary>
             public ExplainedValue Value { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public FunctionCache() : base()
             {
@@ -77,12 +77,12 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the value 
+        ///     Provides the value
         /// </summary>
         private FunctionCache Curry { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public CurryCache(Function function)
         {
@@ -92,7 +92,7 @@ namespace DataDictionary.Functions
 
 
         /// <summary>
-        /// Gets the value of this curry cache according to the parameter association
+        ///     Gets the value of this curry cache according to the parameter association
         /// </summary>
         /// <param name="association"></param>
         /// <returns></returns>
@@ -124,7 +124,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Sets the value according to the parameter association
+        ///     Sets the value according to the parameter association
         /// </summary>
         /// <param name="association"></param>
         /// <param name="value"></param>
@@ -146,7 +146,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the parameter values ordered by the formal parameter they are associated with
+        ///     Provides the parameter values ordered by the formal parameter they are associated with
         /// </summary>
         /// <param name="association"></param>
         /// <returns></returns>
@@ -170,7 +170,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Clears the cache
+        ///     Clears the cache
         /// </summary>
         public void Clear()
         {

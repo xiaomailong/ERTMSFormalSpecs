@@ -23,7 +23,7 @@ namespace GUI.RequirementSetDiagram
     public partial class RequirementSetDependancyControl : ArrowControl<RequirementSet, RequirementSetDependancy>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RequirementSetDependancyControl()
             : base()
@@ -31,7 +31,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public RequirementSetDependancyControl(IContainer container)

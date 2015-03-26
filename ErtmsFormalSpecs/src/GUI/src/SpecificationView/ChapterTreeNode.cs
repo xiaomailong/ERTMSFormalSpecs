@@ -29,12 +29,12 @@ namespace GUI.SpecificationView
     public class ChapterTreeNode : ModelElementTreeNode<Chapter>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : Editor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -60,7 +60,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ChapterTreeNode(Chapter item, bool buildSubNodes)
@@ -69,7 +69,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -83,7 +83,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -92,7 +92,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Adds a new paragraph to this chapter
+        ///     Adds a new paragraph to this chapter
         /// </summary>
         /// <param name="paragraph"></param>
         public void AddParagraph(Paragraph paragraph)
@@ -130,14 +130,16 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Handles a drop event
+        ///     Handles a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             if (SourceNode is ParagraphTreeNode)
             {
-                if (MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (
+                    MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode) SourceNode;
 
@@ -149,18 +151,19 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Recursively marks all model elements as verified
+        ///     Recursively marks all model elements as verified
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void RemoveRequirementSets(object sender, EventArgs e)
         {
-            RequirementSetReference.RemoveReferencesVisitor remover = new RequirementSetReference.RemoveReferencesVisitor();
+            RequirementSetReference.RemoveReferencesVisitor remover =
+                new RequirementSetReference.RemoveReferencesVisitor();
             remover.visit(Item);
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -177,14 +180,15 @@ namespace GUI.SpecificationView
             if (recursiveActions != null)
             {
                 recursiveActions.MenuItems.Add(new MenuItem("-"));
-                recursiveActions.MenuItems.Add(new MenuItem("Remove requirement sets", new EventHandler(RemoveRequirementSets)));
+                recursiveActions.MenuItems.Add(new MenuItem("Remove requirement sets",
+                    new EventHandler(RemoveRequirementSets)));
             }
 
             return retVal;
         }
 
         /// <summary>
-        /// Update counts according to the selected chapter
+        ///     Update counts according to the selected chapter
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)

@@ -19,12 +19,12 @@ using Utils;
 namespace DataDictionary.Interpreter.Filter
 {
     /// <summary>
-    /// Predicate which indicates that all namables match
+    ///     Predicate which indicates that all namables match
     /// </summary>
     public class AllMatches : BaseFilter
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected AllMatches()
             : base()
@@ -32,7 +32,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
+        ///     Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -42,7 +42,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate, so that the code can be reused
+        ///     Predicate, so that the code can be reused
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -52,7 +52,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Singleton
+        ///     Singleton
         /// </summary>
         public static AllMatches INSTANCE = new AllMatches();
     }

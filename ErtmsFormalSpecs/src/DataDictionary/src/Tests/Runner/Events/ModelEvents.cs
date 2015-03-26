@@ -24,12 +24,12 @@ namespace DataDictionary.Tests.Runner.Events
     public abstract class ModelEvent : TextualExplain
     {
         /// <summary>
-        /// The event Id
+        ///     The event Id
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// The message associated to this event
+        ///     The message associated to this event
         /// </summary>
         private string _message = null;
 
@@ -50,37 +50,37 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The explanation about this model event
+        ///     The explanation about this model event
         /// </summary>
         public ExplanationPart Explanation { get; set; }
 
         /// <summary>
-        /// The event time
+        ///     The event time
         /// </summary>
         public double Time { get; set; }
 
         /// <summary>
-        /// The time line in which the model event sits
+        ///     The time line in which the model event sits
         /// </summary>
         public EventTimeLine TimeLine { get; set; }
 
         /// <summary>
-        /// The instance on which this event occured
+        ///     The instance on which this event occured
         /// </summary>
         public INamable Instance { get; private set; }
 
         /// <summary>
-        /// The namespace associated to this event
+        ///     The namespace associated to this event
         /// </summary>
         public abstract NameSpace NameSpace { get; }
 
         /// <summary>
-        /// The priority when the event occurs
+        ///     The priority when the event occurs
         /// </summary>
         public acceptor.RulePriority? Priority { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="id"></param>
         /// <param name="instance"></param>
@@ -94,7 +94,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="id"></param>
         /// <param name="message"></param>
@@ -106,12 +106,12 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Indicates that the changes have been computed
+        ///     Indicates that the changes have been computed
         /// </summary>
         private bool changesComputed = false;
 
         /// <summary>
-        /// Computes the changes related to this event
+        ///     Computes the changes related to this event
         /// </summary>
         /// <param name="apply">Indicates that the changes should be applied directly</param>
         /// <param name="runner"></param>
@@ -126,7 +126,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Applies the changes related to this event
+        ///     Applies the changes related to this event
         /// </summary>
         /// <param name="runner"></param>
         public virtual void Apply(Runner runner)
@@ -138,7 +138,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rollsback the changes performed during this event
+        ///     Rollsback the changes performed during this event
         /// </summary>
         public virtual void RollBack()
         {
@@ -146,7 +146,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Displays informations related to this model event
+        ///     Displays informations related to this model event
         /// </summary>
         public override string ToString()
         {
@@ -154,7 +154,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The explanation of the element
+        ///     The explanation of the element
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>

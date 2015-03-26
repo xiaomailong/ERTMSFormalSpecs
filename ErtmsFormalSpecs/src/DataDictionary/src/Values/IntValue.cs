@@ -27,7 +27,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public IntValue(Type type, Decimal val)

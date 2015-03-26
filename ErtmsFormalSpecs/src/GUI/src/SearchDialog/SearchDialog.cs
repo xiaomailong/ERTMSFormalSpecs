@@ -25,12 +25,12 @@ namespace GUI.SearchDialog
     public partial class SearchDialog : Form
     {
         /// <summary>
-        /// The system for which this dialog is built
+        ///     The system for which this dialog is built
         /// </summary>
         public EFSSystem EFSSystem { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public SearchDialog()
         {
@@ -38,7 +38,7 @@ namespace GUI.SearchDialog
         }
 
         /// <summary>
-        /// Initialises the dialog
+        ///     Initialises the dialog
         /// </summary>
         /// <param name="efsSystem"></param>
         public void Initialise(EFSSystem efsSystem)
@@ -49,7 +49,7 @@ namespace GUI.SearchDialog
         }
 
         /// <summary>
-        /// Handles specific key actions
+        ///     Handles specific key actions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -65,7 +65,7 @@ namespace GUI.SearchDialog
         }
 
         /// <summary>
-        /// Search Medor, search....
+        ///     Search Medor, search....
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -75,7 +75,7 @@ namespace GUI.SearchDialog
         }
 
         /// <summary>
-        /// Searches for all occurences of the search string
+        ///     Searches for all occurences of the search string
         /// </summary>
         /// <param name="searchString"></param>
         private void searchOccurences(string searchString)
@@ -99,13 +99,14 @@ namespace GUI.SearchDialog
 
             if (occurences.Count == 0)
             {
-                MessageBox.Show("Cannot find " + searchString, "Search complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cannot find " + searchString, "Search complete", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
             Close();
         }
 
         /// <summary>
-        /// Launch search by pressing Enter key
+        ///     Launch search by pressing Enter key
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

@@ -26,7 +26,7 @@ namespace GUI.StateDiagram
     public partial class StateControl : BoxControl<State, Transition>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public StateControl()
             : base()
@@ -35,7 +35,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public StateControl(IContainer container)
@@ -45,7 +45,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Indicates that the box should be displayed in the ACTIVE color
+        ///     Indicates that the box should be displayed in the ACTIVE color
         /// </summary>
         /// <returns></returns>
         public override bool IsActive()
@@ -66,7 +66,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Handles a double click event on the control
+        ///     Handles a double click event on the control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

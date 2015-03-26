@@ -50,7 +50,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -58,7 +58,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The parameter namespace
+            ///     The parameter namespace
             /// </summary>
             private string namSpace;
 
@@ -96,7 +96,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The parameter type
+            ///     The parameter type
             /// </summary>
             [Category("Description")]
             [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
@@ -113,7 +113,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ParameterTreeNode(Parameter parameter, bool buildSubNodes, string name = null)
@@ -122,7 +122,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -131,7 +131,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

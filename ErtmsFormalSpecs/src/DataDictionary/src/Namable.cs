@@ -20,17 +20,17 @@ using Utils;
 namespace DataDictionary
 {
     /// <summary>
-    /// Something that has a name
+    ///     Something that has a name
     /// </summary>
     public abstract class Namable : Generated.Namable, INamable, IComparable<Namable>, IComparable
     {
         /// <summary>
-        /// The name separator
+        ///     The name separator
         /// </summary>
         public static string Separator = ".";
 
         /// <summary>
-        /// The name
+        ///     The name
         /// </summary>
         public override string Name
         {
@@ -50,7 +50,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Stored version of the full name
+        ///     Stored version of the full name
         /// </summary>
         private string __fullName = null;
 
@@ -60,7 +60,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the full name path to this element in the model structure
+        ///     Provides the full name path to this element in the model structure
         /// </summary>
         public override string FullName
         {
@@ -89,7 +89,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The comparer
+        ///     The comparer
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -99,7 +99,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The comparer
+        ///     The comparer
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>

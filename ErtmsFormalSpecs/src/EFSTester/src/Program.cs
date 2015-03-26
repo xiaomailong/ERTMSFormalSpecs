@@ -26,7 +26,7 @@ namespace EFSTester
     internal class Program
     {
         /// <summary>
-        /// Perform all functional tests defined in the .EFS file provided
+        ///     Perform all functional tests defined in the .EFS file provided
         /// </summary>
         /// <param name="args"></param>
         /// <returns>the error code of the program</returns>
@@ -100,7 +100,8 @@ namespace EFSTester
                                     }
                                     else
                                     {
-                                        ModelInterpretationFailure modelInterpretationFailure = evt as ModelInterpretationFailure;
+                                        ModelInterpretationFailure modelInterpretationFailure =
+                                            evt as ModelInterpretationFailure;
                                         if (modelInterpretationFailure != null)
                                         {
                                             Console.Out.WriteLine(" failed : " + modelInterpretationFailure.Message);

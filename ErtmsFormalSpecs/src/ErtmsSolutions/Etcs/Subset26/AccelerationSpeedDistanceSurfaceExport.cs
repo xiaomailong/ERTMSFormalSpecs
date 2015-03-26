@@ -82,7 +82,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                 Tripples.Add(new SurfaceTripple(A_V_D.Tiles[i].D.X.X0, A_V_D.Tiles[i].V.X.X0, A_V_D.Tiles[i].D.Y));
                 Tripples.Add(new SurfaceTripple(A_V_D.Tiles[i].D.X.X0, A_V_D.Tiles[i].V.X.X1 - dv, A_V_D.Tiles[i].D.Y));
                 Tripples.Add(new SurfaceTripple(A_V_D.Tiles[i].D.X.X1 - dx, A_V_D.Tiles[i].V.X.X0, A_V_D.Tiles[i].D.Y));
-                Tripples.Add(new SurfaceTripple(A_V_D.Tiles[i].D.X.X1 - dx, A_V_D.Tiles[i].V.X.X1 - dv, A_V_D.Tiles[i].D.Y));
+                Tripples.Add(new SurfaceTripple(A_V_D.Tiles[i].D.X.X1 - dx, A_V_D.Tiles[i].V.X.X1 - dv,
+                    A_V_D.Tiles[i].D.Y));
             }
 
             Tripples.Sort(SurfaceTripple.CompareTripple);

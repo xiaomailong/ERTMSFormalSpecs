@@ -26,30 +26,31 @@ namespace DataDictionary.Tests.Runner.Events
     public class EventTimeLine
     {
         /// <summary>
-        /// The current time
+        ///     The current time
         /// </summary>
         public double CurrentTime { get; set; }
 
         /// <summary>
-        /// The list of events handled by this time line
+        ///     The list of events handled by this time line
         /// </summary>
         public List<ModelEvent> Events { get; set; }
 
         /// <summary>
-        /// Provides the maximum number of events that are stored in the time-line.
-        /// Expectations do not count in this number
+        ///     Provides the maximum number of events that are stored in the time-line.
+        ///     Expectations do not count in this number
         /// </summary>
         public int MaxNumberOfEvents { get; set; }
 
         /// <summary>
-        /// Indicates that the content has changed since last check
+        ///     Indicates that the content has changed since last check
         /// </summary>
         public bool Changed { get; set; }
 
         /// <summary>
-        /// Keeps track of step activation
+        ///     Keeps track of step activation
         /// </summary>
-        private Dictionary<SubStep, SubStepActivated> subStepActivationCache = new Dictionary<SubStep, SubStepActivated>();
+        private Dictionary<SubStep, SubStepActivated> subStepActivationCache =
+            new Dictionary<SubStep, SubStepActivated>();
 
         internal Dictionary<SubStep, SubStepActivated> SubStepActivationCache
         {
@@ -57,7 +58,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The expectations currently active
+        ///     The expectations currently active
         /// </summary>
         private HashSet<Expect> activeExpectations = new HashSet<Expect>();
 
@@ -67,7 +68,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public EventTimeLine()
         {
@@ -78,7 +79,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Adds a new event in the list of events
+        ///     Adds a new event in the list of events
         /// </summary>
         /// <param name="modelEvent"></param>
         /// <param name="runner"></param>
@@ -96,7 +97,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Provides the still active and blocking expectations
+        ///     Provides the still active and blocking expectations
         /// </summary>
         /// <returns></returns>
         public HashSet<Expect> ActiveBlockingExpectations()
@@ -116,7 +117,7 @@ namespace DataDictionary.Tests.Runner.Events
 
 
         /// <summary>
-        /// Provides the failed expectations
+        ///     Provides the failed expectations
         /// </summary>
         /// <returns></returns>
         public HashSet<ModelEvent> FailedExpectations()
@@ -141,7 +142,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Provides all the events between two time bounds
+        ///     Provides all the events between two time bounds
         /// </summary>
         /// <param name="fromTime">the initial time bound</param>
         /// <param name="toTime">the final time bound</param>
@@ -162,7 +163,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Steps one step backward
+        ///     Steps one step backward
         /// </summary>
         /// <param name="time">the time to step back</param>
         public void StepBack(double time)
@@ -190,7 +191,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Indicates whether the time line holds the specific model event
+        ///     Indicates whether the time line holds the specific model event
         /// </summary>
         /// <param name="modelEvent"></param>
         /// <returns></returns>
@@ -200,7 +201,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Indicates whether the corresponding step has been activated
+        ///     Indicates whether the corresponding step has been activated
         /// </summary>
         /// <param name="step"></param>
         /// <returns></returns>
@@ -221,7 +222,7 @@ namespace DataDictionary.Tests.Runner.Events
 
 
         /// <summary>
-        /// Indicates whether the corresponding step has been activated
+        ///     Indicates whether the corresponding step has been activated
         /// </summary>
         /// <param name="subStep"></param>
         /// <returns></returns>
@@ -238,7 +239,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Gives the time of activation of a sub-step
+        ///     Gives the time of activation of a sub-step
         /// </summary>
         /// <param name="subStep"></param>
         /// <returns>True if the provided rule has been activated</returns>
@@ -259,7 +260,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Gives the time of activation of a sub-step
+        ///     Gives the time of activation of a sub-step
         /// </summary>
         /// <param name="rule"></param>
         /// <param name="time"></param>
@@ -298,7 +299,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Gets the set of activated rules
+        ///     Gets the set of activated rules
         /// </summary>
         /// <param name="rule"></param>
         /// <param name="time"></param>
@@ -320,7 +321,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Gets the list of activated rules within the interval [start, end]
+        ///     Gets the list of activated rules within the interval [start, end]
         /// </summary>
         /// <param name="rule"></param>
         /// <param name="time"></param>
@@ -342,7 +343,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Indicates whether a rule condition has been activated at the time provided
+        ///     Indicates whether a rule condition has been activated at the time provided
         /// </summary>
         /// <param name="ruleCondition">The rule condition that should be activated</param>
         /// <param name="time">the time when the rule condition should be activated</param>
@@ -376,7 +377,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Indicates whether a step holds active expectations
+        ///     Indicates whether a step holds active expectations
         /// </summary>
         /// <returns></returns>
         public bool StepActive(Step step)
@@ -396,7 +397,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Indicates whether we need to keep this event during garbage collection
+        ///     Indicates whether we need to keep this event during garbage collection
         /// </summary>
         /// <param name="evt"></param>
         /// <returns></returns>
@@ -417,8 +418,8 @@ namespace DataDictionary.Tests.Runner.Events
 
 
         /// <summary>
-        /// Cleans up the time line by removing the events exceeding the maximum number of events in the time line, 
-        /// not counting the Expects.
+        ///     Cleans up the time line by removing the events exceeding the maximum number of events in the time line,
+        ///     not counting the Expects.
         /// </summary>
         public void GarbageCollect()
         {

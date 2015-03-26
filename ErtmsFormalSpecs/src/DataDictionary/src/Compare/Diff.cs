@@ -21,12 +21,12 @@ using Commit = HistoricalData.Commit;
 namespace DataDictionary.Compare
 {
     /// <summary>
-    /// Stores a difference between two versions of a dictionary
+    ///     Stores a difference between two versions of a dictionary
     /// </summary>
     public class Diff : Change
     {
         /// <summary>
-        /// The element affected by that change
+        ///     The element affected by that change
         /// </summary>
         public ModelElement Model
         {
@@ -34,16 +34,17 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="action"></param>
-        public Diff(ModelElement model, acceptor.ChangeOperationEnum action, string field = "", string before = "", string after = "") :
-            base(model.Guid, action, field, before, after)
+        public Diff(ModelElement model, acceptor.ChangeOperationEnum action, string field = "", string before = "",
+            string after = "") :
+                base(model.Guid, action, field, before, after)
         {
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Diff()
             : base()
@@ -51,7 +52,7 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Marks the model according to this diff
+        ///     Marks the model according to this diff
         /// </summary>
         public void markModel()
         {
@@ -75,7 +76,7 @@ namespace DataDictionary.Compare
     public class VersionDiff : Commit
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public VersionDiff()
             : base()
@@ -83,7 +84,7 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Marks the model according to the version changes
+        ///     Marks the model according to the version changes
         /// </summary>
         public void markVersionChanges(Dictionary dictionary)
         {

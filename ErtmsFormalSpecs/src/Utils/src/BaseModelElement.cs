@@ -24,7 +24,7 @@ using XmlBooster;
 namespace Utils
 {
     /// <summary>
-    /// Indicates if the element holds messages, or is part of a path to a message 
+    ///     Indicates if the element holds messages, or is part of a path to a message
     /// </summary>
     public enum MessagePathInfoEnum
     {
@@ -41,67 +41,67 @@ namespace Utils
     public interface IEnclosed
     {
         /// <summary>
-        /// The enclosing model element
+        ///     The enclosing model element
         /// </summary>
         object Enclosing { get; set; }
     }
 
     /// <summary>
-    /// Deletes this element from its enclosing node
+    ///     Deletes this element from its enclosing node
     /// </summary>
     public interface IModelElement : IEnclosed, INamable, IComparable<IModelElement>
     {
         /// <summary>
-        /// The sub elements of this model element
+        ///     The sub elements of this model element
         /// </summary>
         ArrayList SubElements { get; }
 
         /// <summary>
-        /// Provides the collection which holds this instance
+        ///     Provides the collection which holds this instance
         /// </summary>
         ArrayList EnclosingCollection { get; }
 
         /// <summary>
-        /// Deletes the element from its enclosing node
+        ///     Deletes the element from its enclosing node
         /// </summary>
         void Delete();
 
         /// <summary>
-        /// The expression text data of this model element
+        ///     The expression text data of this model element
         /// </summary>
         /// <param name="text"></param>
         string ExpressionText { get; set; }
 
         /// <summary>
-        /// The messages logged on the model element
+        ///     The messages logged on the model element
         /// </summary>
         List<ElementLog> Messages { get; }
 
         /// <summary>
-        /// Clears the messages associated to this model element
+        ///     Clears the messages associated to this model element
         /// </summary>
         void ClearMessages();
 
         /// <summary>
-        /// Indicates if the element holds messages, or is part of a path to a message 
+        ///     Indicates if the element holds messages, or is part of a path to a message
         /// </summary>
         MessagePathInfoEnum MessagePathInfo { get; }
 
         /// <summary>
-        /// Indicates that at least one message of type levelEnum is attached to the element
+        ///     Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>
         /// <returns></returns>
         bool HasMessage(ElementLog.LevelEnum levelEnum);
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         void AddModelElement(IModelElement element);
 
         /// <summary>
-        /// Provides an RTF explanation of the model element
+        ///     Provides an RTF explanation of the model element
         /// </summary>
         /// <returns></returns>
         string getExplain();
@@ -110,12 +110,12 @@ namespace Utils
     public abstract class ModelElement : XmlBBase, IModelElement
     {
         /// <summary>
-        /// The Logger
+        ///     The Logger
         /// </summary>
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// The model element name
+        ///     The model element name
         /// </summary>
         public virtual string Name { get; set; }
 
@@ -125,7 +125,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The enclosing model element
+        ///     The enclosing model element
         /// </summary>
         private object enclosing;
 
@@ -154,7 +154,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The sub elements of this model element
+        ///     The sub elements of this model element
         /// </summary>
         public ArrayList SubElements
         {
@@ -169,7 +169,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The comparer
+        ///     The comparer
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -190,7 +190,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The collection in which this model element lies
+        ///     The collection in which this model element lies
         /// </summary>
         public virtual ArrayList EnclosingCollection
         {
@@ -198,7 +198,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Deletes this model element from its enclosing collection
+        ///     Deletes this model element from its enclosing collection
         /// </summary>
         public virtual void Delete()
         {
@@ -210,7 +210,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Inserts this element after the element provided as parameter
+        ///     Inserts this element after the element provided as parameter
         /// </summary>
         /// <param name="other">The element after which this element should be inserted</param>
         public virtual void InsertAfter(ModelElement other)
@@ -231,7 +231,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The editable expression
+        ///     The editable expression
         /// </summary>
         public virtual string ExpressionText
         {
@@ -240,7 +240,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Logs associated to this model element
+        ///     Logs associated to this model element
         /// </summary>
         private List<ElementLog> messages = new List<ElementLog>();
 
@@ -254,7 +254,7 @@ namespace Utils
         public static int LogCount = 0;
 
         /// <summary>
-        /// Clears the messages associated to this model element
+        ///     Clears the messages associated to this model element
         /// </summary>
         public virtual void ClearMessages()
         {
@@ -267,7 +267,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Adds a new element log attached to this model element
+        ///     Adds a new element log attached to this model element
         /// </summary>
         /// <param name="log"></param>
         public virtual void AddElementLog(ElementLog log)
@@ -305,19 +305,20 @@ namespace Utils
         }
 
         /// <summary>
-        /// Adds an exception associated to this model element
+        ///     Adds an exception associated to this model element
         /// </summary>
         /// <param name="exception"></param>
         /// <returns></returns>
         public ElementLog AddException(Exception exception)
         {
-            ElementLog retVal = new ElementLog(ElementLog.LevelEnum.Error, "Exception raised : " + exception.Message + "\n\n" + exception.StackTrace);
+            ElementLog retVal = new ElementLog(ElementLog.LevelEnum.Error,
+                "Exception raised : " + exception.Message + "\n\n" + exception.StackTrace);
             AddElementLog(retVal);
             return retVal;
         }
 
         /// <summary>
-        /// Adds an error associated to this model element
+        ///     Adds an error associated to this model element
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
@@ -330,7 +331,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Adds a warning associated to this model element
+        ///     Adds a warning associated to this model element
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
@@ -342,7 +343,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Adds an informative message associated to this model element
+        ///     Adds an informative message associated to this model element
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
@@ -354,7 +355,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Removes a log associated to a model element
+        ///     Removes a log associated to a model element
         /// </summary>
         /// <param name="log"></param>
         public void RemoveLog(ElementLog log)
@@ -366,7 +367,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Indicates that at least one message of type levelEnum is attached to the element
+        ///     Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>
         /// <returns></returns>
@@ -387,12 +388,12 @@ namespace Utils
         }
 
         /// <summary>
-        /// Indicates if the element holds messages, or is part of a path to a message 
+        ///     Indicates if the element holds messages, or is part of a path to a message
         /// </summary>
         public MessagePathInfoEnum MessagePathInfo { get; set; }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public virtual void AddModelElement(IModelElement element)
@@ -400,12 +401,13 @@ namespace Utils
         }
 
         /// <summary>
-        /// Keeps track of the errors raised during the last cycle
+        ///     Keeps track of the errors raised during the last cycle
         /// </summary>
-        public static Dictionary<ModelElement, List<ElementLog>> Errors = new Dictionary<ModelElement, List<ElementLog>>();
+        public static Dictionary<ModelElement, List<ElementLog>> Errors =
+            new Dictionary<ModelElement, List<ElementLog>>();
 
         /// <summary>
-        /// Provides an RTF explanation of the model element
+        ///     Provides an RTF explanation of the model element
         /// </summary>
         /// <returns></returns>
         public virtual string getExplain()
@@ -414,13 +416,13 @@ namespace Utils
         }
 
         /// <summary>
-        /// The reverse cache dependancy. 
-        /// All model elements beloging to the cache dependancy need be recomputed when this model element changes
+        ///     The reverse cache dependancy.
+        ///     All model elements beloging to the cache dependancy need be recomputed when this model element changes
         /// </summary>
         public HashSet<ModelElement> CacheDependancy { get; set; }
 
         /// <summary>
-        /// Adds an element whose value is dependant to this one
+        ///     Adds an element whose value is dependant to this one
         /// </summary>
         /// <param name="dependant"></param>
         /// <returns>True if the dependancy has been added</returns>
@@ -441,7 +443,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Provides the names of the elements in the cache dependancy
+        ///     Provides the names of the elements in the cache dependancy
         /// </summary>
         /// <returns></returns>
         public string CacheDependancyNames()
@@ -460,7 +462,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Handles a change of the model element by invalidating the cache of all element in CacheDependancy
+        ///     Handles a change of the model element by invalidating the cache of all element in CacheDependancy
         /// </summary>
         public virtual void HandleChange()
         {
@@ -474,7 +476,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Clears the cache associated to this model element
+        ///     Clears the cache associated to this model element
         /// </summary>
         public virtual void ClearCache()
         {

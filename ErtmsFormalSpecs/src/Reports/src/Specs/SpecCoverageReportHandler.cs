@@ -22,7 +22,7 @@ namespace Reports.Specs
     public class SpecCoverageReportHandler : ReportHandler
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public SpecCoverageReportHandler(Dictionary dictionary)
@@ -39,7 +39,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates a report on specs coverage, according to user's choices
+        ///     Creates a report on specs coverage, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
         public override Document BuildDocument()

@@ -20,17 +20,17 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Creates a new function which describes the minimal value of two surfaces
+    ///     Creates a new function which describes the minimal value of two surfaces
     /// </summary>
     public abstract class FunctionOnSurface : PredefinedFunction
     {
         /// <summary>
-        /// The return type of this function
+        ///     The return type of this function
         /// </summary>
         public Function Returns { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="name">the name of the function</param>
@@ -56,7 +56,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the available function
+        ///     The return type of the available function
         /// </summary>
         public override Type ReturnType
         {

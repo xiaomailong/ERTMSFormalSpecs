@@ -25,12 +25,12 @@ namespace GUI.HistoryView
     public class ChangeTreeNode : ModelElementTreeNode<Change>
     {
         /// <summary>
-        /// The editor
+        ///     The editor
         /// </summary>
         private class ChangeEditor : Editor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="model"></param>
             public ChangeEditor()
@@ -38,7 +38,7 @@ namespace GUI.HistoryView
             }
 
             /// <summary>
-            /// The commit author
+            ///     The commit author
             /// </summary>
             public string Author
             {
@@ -46,7 +46,7 @@ namespace GUI.HistoryView
             }
 
             /// <summary>
-            /// The commit message
+            ///     The commit message
             /// </summary>
             public string Message
             {
@@ -54,7 +54,7 @@ namespace GUI.HistoryView
             }
 
             /// <summary>
-            /// The commit date
+            ///     The commit date
             /// </summary>
             public DateTime Date
             {
@@ -62,7 +62,7 @@ namespace GUI.HistoryView
             }
 
             /// <summary>
-            /// The commit action
+            ///     The commit action
             /// </summary>
             [Category("Description"), TypeConverter(typeof (ChangeActionConverter))]
             public acceptor.ChangeOperationEnum Action
@@ -71,7 +71,7 @@ namespace GUI.HistoryView
             }
 
             /// <summary>
-            /// The commit field change
+            ///     The commit field change
             /// </summary>
             [Category("Description")]
             public string Field
@@ -81,7 +81,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// Instanciates the editor
+        ///     Instanciates the editor
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -90,7 +90,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ChangeTreeNode(Change item, bool buildSubNodes)
@@ -99,7 +99,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// Raised when the selection has changed
+        ///     Raised when the selection has changed
         /// </summary>
         public override void SelectionChanged(bool displayStatistics)
         {

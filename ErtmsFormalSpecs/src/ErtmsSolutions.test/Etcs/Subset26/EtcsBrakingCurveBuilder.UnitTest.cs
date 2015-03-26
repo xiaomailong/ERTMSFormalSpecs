@@ -67,7 +67,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                 ));
 
             // Compute the deceleration curve using the previous algorithm
-            QuadraticSpeedDistanceCurve deceleration = EtcsBrakingCurveBuilder_Obsolete.Build_A_Safe_Backward(acceleration, mrsp);
+            QuadraticSpeedDistanceCurve deceleration =
+                EtcsBrakingCurveBuilder_Obsolete.Build_A_Safe_Backward(acceleration, mrsp);
 
             // Compute the deceleration curve using the new algorithm
             // TODO : Implement the new algorithm and use it
@@ -127,7 +128,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             SiDistance TargetDistance = new SiDistance(2250);
 
             // Compute the deceleration curve using the previous algorithm
-            QuadraticSpeedDistanceCurve deceleration = EtcsBrakingCurveBuilder.Build_Deceleration_Curve(acceleration, TargetSpeed, TargetDistance);
+            QuadraticSpeedDistanceCurve deceleration = EtcsBrakingCurveBuilder.Build_Deceleration_Curve(acceleration,
+                TargetSpeed, TargetDistance);
 
             TestOutput = new StringBuilder();
 

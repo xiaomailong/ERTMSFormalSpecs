@@ -21,12 +21,12 @@ using DataDictionary.Types;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent a type 
+    ///     The boxes that represent a type
     /// </summary>
     public abstract class TypeModelControl : ModelControl
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public TypeModelControl(Type model)
             : base(model)
@@ -36,7 +36,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Handles a simple click event on the control
+        ///     Handles a simple click event on the control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

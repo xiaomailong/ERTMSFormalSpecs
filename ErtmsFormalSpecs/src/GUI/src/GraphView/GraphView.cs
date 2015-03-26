@@ -34,22 +34,22 @@ namespace GUI.GraphView
     public partial class GraphView : BaseForm
     {
         /// <summary>
-        /// The functions to be displayed in this graph view
+        ///     The functions to be displayed in this graph view
         /// </summary>
         public List<Function> Functions { get; set; }
 
         /// <summary>
-        /// The bitmap as proposed by gnuplot
+        ///     The bitmap as proposed by gnuplot
         /// </summary>
         private Bitmap OriginalBitmap { get; set; }
 
         /// <summary>
-        /// The bitmap sized for the picture box
+        ///     The bitmap sized for the picture box
         /// </summary>
         private Bitmap SizedBitmap { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public GraphView()
         {
@@ -96,7 +96,7 @@ namespace GUI.GraphView
         }
 
         /// <summary>
-        /// Adds a new function to this graph
+        ///     Adds a new function to this graph
         /// </summary>
         /// <param name="function"></param>
         /// <param name="explain"></param>
@@ -125,14 +125,15 @@ namespace GUI.GraphView
                     }
                     else
                     {
-                        MessageBox.Show("Cannot add this function to the display view", "Cannot display function", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cannot add this function to the display view", "Cannot display function",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Handles a change of the size of the window
+        ///     Handles a change of the size of the window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -152,7 +153,7 @@ namespace GUI.GraphView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -163,7 +164,7 @@ namespace GUI.GraphView
         }
 
         /// <summary>
-        /// Allows to refresh the view, according to the fact that the structure for the model could change
+        ///     Allows to refresh the view, according to the fact that the structure for the model could change
         /// </summary>
         public override void Refresh()
         {
@@ -181,7 +182,7 @@ namespace GUI.GraphView
         }
 
         /// <summary>
-        /// Refreshes the model
+        ///     Refreshes the model
         /// </summary>
         public override void RefreshModel()
         {
@@ -204,12 +205,12 @@ namespace GUI.GraphView
         }
 
         /// <summary>
-        /// Colors used to display functions
+        ///     Colors used to display functions
         /// </summary>
         private static string[] COLORS = {"blue", "red", "green", "orange", "black", "purple", "yellow"};
 
         /// <summary>
-        /// Creates the picture associated to this graph
+        ///     Creates the picture associated to this graph
         /// </summary>
         /// <param name="name"></param>
         /// <returns>the corresponding bitmap</returns>
@@ -305,7 +306,8 @@ namespace GUI.GraphView
 
                 if (surface != null)
                 {
-                    AccelerationSpeedDistanceSurface curve = surface.createAccelerationSpeedDistanceSurface(expectedEndX, expectedEndY);
+                    AccelerationSpeedDistanceSurface curve = surface.createAccelerationSpeedDistanceSurface(
+                        expectedEndX, expectedEndY);
                     display.AddCurve(curve, function.FullName);
                     if (name == null)
                     {
@@ -317,7 +319,8 @@ namespace GUI.GraphView
             if (name != null)
             {
                 display.GnuPlot_Home_Path = Path.GetDirectoryName(Application.ExecutablePath) + "\\gnuplot\\bin";
-                string outputDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\ERTMSFormalSpecs";
+                string outputDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) +
+                                   "\\ERTMSFormalSpecs";
                 Directory.CreateDirectory(outputDir);
                 display.Output_Path = outputDir;
                 display.Base_Name = "EFSPicture_" + name;
@@ -391,7 +394,7 @@ namespace GUI.GraphView
         }
 
         /// <summary>
-        /// Checks that the values of the check box & text box are consistent with bounds
+        ///     Checks that the values of the check box & text box are consistent with bounds
         /// </summary>
         /// <param name="checkBox">The check box to check</param>
         /// <param name="textBox">The text box to check</param>
@@ -416,7 +419,7 @@ namespace GUI.GraphView
         }
 
         /// <summary>
-        /// Checks the minimun and maximum values
+        ///     Checks the minimun and maximum values
         /// </summary>
         /// <returns></returns>
         private bool CheckMinAndMaxValues()

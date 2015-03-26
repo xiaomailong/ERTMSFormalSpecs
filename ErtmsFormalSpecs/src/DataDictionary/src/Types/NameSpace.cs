@@ -23,15 +23,16 @@ using Utils;
 
 namespace DataDictionary.Types
 {
-    public class NameSpace : Generated.NameSpace, ISubDeclarator, IFinder, IEnclosesNameSpaces, IGraphicalDisplay, ICommentable
+    public class NameSpace : Generated.NameSpace, ISubDeclarator, IFinder, IEnclosesNameSpaces, IGraphicalDisplay,
+        ICommentable
     {
         /// <summary>
-        /// Used to temporarily store the list of sub-namespaces
+        ///     Used to temporarily store the list of sub-namespaces
         /// </summary>
         private ArrayList savedNameSpaces;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public NameSpace()
             : base()
@@ -40,7 +41,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The sub namespaces
+        ///     The sub namespaces
         /// </summary>
         public ArrayList NameSpaces
         {
@@ -55,7 +56,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The ranges types
+        ///     The ranges types
         /// </summary>
         public ArrayList Ranges
         {
@@ -70,7 +71,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The enumeration types
+        ///     The enumeration types
         /// </summary>
         public ArrayList Enumerations
         {
@@ -85,7 +86,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The structure types
+        ///     The structure types
         /// </summary>
         public ArrayList Structures
         {
@@ -100,7 +101,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The collection types
+        ///     The collection types
         /// </summary>
         public ArrayList Collections
         {
@@ -115,7 +116,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The state machines types
+        ///     The state machines types
         /// </summary>
         public ArrayList StateMachines
         {
@@ -130,7 +131,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The functions declared in the namespace
+        ///     The functions declared in the namespace
         /// </summary>
         public ArrayList Functions
         {
@@ -145,7 +146,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The procedures declared in the namespace
+        ///     The procedures declared in the namespace
         /// </summary>
         public ArrayList Procedures
         {
@@ -160,7 +161,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The variables declared in the namespace
+        ///     The variables declared in the namespace
         /// </summary>
         public ArrayList Variables
         {
@@ -175,7 +176,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The rules declared in the namespace
+        ///     The rules declared in the namespace
         /// </summary>
         public ArrayList Rules
         {
@@ -190,7 +191,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Clears the caches
+        ///     Clears the caches
         /// </summary>
         public void ClearCache()
         {
@@ -200,7 +201,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Removes temporary files created for reference namespaces
+        ///     Removes temporary files created for reference namespaces
         /// </summary>
         public void ClearTempFiles()
         {
@@ -214,7 +215,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Used to store the list of sub-namespaces before saving the model
+        ///     Used to store the list of sub-namespaces before saving the model
         /// </summary>
         public void StoreInfo()
         {
@@ -227,7 +228,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Used to restore the list of sub-namespaces, after having saved the model
+        ///     Used to restore the list of sub-namespaces, after having saved the model
         /// </summary>
         public void RestoreInfo()
         {
@@ -241,7 +242,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the values available through this namespace
+        ///     Provides all the values available through this namespace
         /// </summary>
         private List<IVariable> cachedVariables;
 
@@ -264,7 +265,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the types available through this namespace
+        ///     Provides all the types available through this namespace
         /// </summary>
         private List<Type> types;
 
@@ -303,7 +304,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -336,12 +337,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -352,7 +353,7 @@ namespace DataDictionary.Types
 
 
         /// <summary>
-        /// The types defined in this namespace, an the sub namespaces
+        ///     The types defined in this namespace, an the sub namespaces
         /// </summary>
         public HashSet<Type> DefinedTypes
         {
@@ -360,7 +361,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the namespace which corresponds to the given name
+        ///     Provides the namespace which corresponds to the given name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -370,7 +371,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the type which corresponds to the given name
+        ///     Provides the type which corresponds to the given name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -380,7 +381,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the type which corresponds to the given name
+        ///     Provides the type which corresponds to the given name
         /// </summary>
         /// <param name="name">the type name to find</param>
         /// <param name="findInEnclosingNameSpaces">indicates that the search must be performed in the enclosing namespaces</param>
@@ -412,7 +413,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The enclosing dictionary
+        ///     The enclosing dictionary
         /// </summary>
         public Dictionary EnclosingDictionary
         {
@@ -420,7 +421,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The enclosing namespace
+        ///     The enclosing namespace
         /// </summary>
         public NameSpace EnclosingNameSpace
         {
@@ -428,7 +429,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The enclosing collection
+        ///     The enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -450,7 +451,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -514,7 +515,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The X position
+        ///     The X position
         /// </summary>
         public int X
         {
@@ -523,7 +524,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The Y position
+        ///     The Y position
         /// </summary>
         public int Y
         {
@@ -532,7 +533,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The width
+        ///     The width
         /// </summary>
         public int Width
         {
@@ -541,7 +542,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The height
+        ///     The height
         /// </summary>
         public int Height
         {
@@ -550,7 +551,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName
         {
@@ -558,7 +559,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates whether the namespace is hidden
+        ///     Indicates whether the namespace is hidden
         /// </summary>
         public bool Hidden
         {
@@ -567,7 +568,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the element is pinned
+        ///     Indicates that the element is pinned
         /// </summary>
         public bool Pinned
         {
@@ -576,7 +577,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the namespace
+        ///     Provides an explanation of the namespace
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -590,7 +591,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// An explanation of the namespace
+        ///     An explanation of the namespace
         /// </summary>
         /// <param name="inner"></param>
         /// <returns></returns>
@@ -602,12 +603,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The namespace ref which instanciated this namespace
+        ///     The namespace ref which instanciated this namespace
         /// </summary>
         public NameSpaceRef NameSpaceRef { get; set; }
 
         /// <summary>
-        /// The comment related to this element
+        ///     The comment related to this element
         /// </summary>
         public string Comment
         {

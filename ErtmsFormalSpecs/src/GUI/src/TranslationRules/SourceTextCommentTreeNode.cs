@@ -26,7 +26,7 @@ namespace GUI.TranslationRules
         private class ItemEditor : CommentableEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -35,7 +35,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public SourceTextCommentTreeNode(SourceTextComment item, bool buildSubNodes)
@@ -44,7 +44,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -53,7 +53,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

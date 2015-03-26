@@ -41,7 +41,7 @@ namespace DataDictionary.Tests.Translations
     public class Translation : Generated.Translation, ICommentable, TextualExplain
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Translation()
             : base()
@@ -49,7 +49,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the name of the translation
+        ///     Provides the name of the translation
         /// </summary>
         public override string Name
         {
@@ -68,7 +68,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the source texts for this dictionary
+        ///     Provides the source texts for this dictionary
         /// </summary>
         public ArrayList SourceTexts
         {
@@ -84,7 +84,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the sub-steps for this dictionary
+        ///     Provides the sub-steps for this dictionary
         /// </summary>
         public ArrayList SubSteps
         {
@@ -100,7 +100,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// The explanation of this translation, as RTF pseudo code
+        ///     The explanation of this translation, as RTF pseudo code
         /// </summary>
         /// <returns></returns>
         public override string getExplain()
@@ -144,7 +144,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// The enclosing translation dictionary
+        ///     The enclosing translation dictionary
         /// </summary>
         public TranslationDictionary TranslationDictionary
         {
@@ -152,7 +152,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the enclosing collection
+        ///     Provides the enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -178,7 +178,7 @@ namespace DataDictionary.Tests.Translations
 
 
         /// <summary>
-        /// Updates the step according to this translation
+        ///     Updates the step according to this translation
         /// </summary>
         /// <param name="step"></param>
         public void UpdateStep(Step step)
@@ -238,7 +238,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Indicates that the requirement is already present in the step
+        ///     Indicates that the requirement is already present in the step
         /// </summary>
         /// <param name="step"></param>
         /// <param name="reqRef"></param>
@@ -261,7 +261,7 @@ namespace DataDictionary.Tests.Translations
 
 
         /// <summary>
-        /// Explains the Translation with indentation
+        ///     Explains the Translation with indentation
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -270,7 +270,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Explains the Translation with indentation
+        ///     Explains the Translation with indentation
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements, int indent)
@@ -338,7 +338,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Review the expressions associated to this expectation
+        ///     Review the expressions associated to this expectation
         /// </summary>
         /// <param name="expectation"></param>
         private void Review(Expectation expectation)
@@ -347,7 +347,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Review the expressions associated to this action
+        ///     Review the expressions associated to this action
         /// </summary>
         /// <param name="action"></param>
         private void Review(Action action)
@@ -363,7 +363,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Updates an expression according to translation rules
+        ///     Updates an expression according to translation rules
         /// </summary>
         /// <param name="step">the step in which the expression occurs</param>
         /// <param name="expression"></param>
@@ -422,7 +422,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the string provided and returns the corresponding Mode enum
+        ///     Takes the string provided and returns the corresponding Mode enum
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -453,7 +453,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the enum provided and returns the corresponding Mode enum
+        ///     Takes the enum provided and returns the corresponding Mode enum
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -526,7 +526,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the message provided and returns the corresponding message value
+        ///     Takes the message provided and returns the corresponding message value
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -648,7 +648,8 @@ namespace DataDictionary.Tests.Translations
 
                     // For Balise messages, we have an extra level of information to fill, so here we define StructureVal in one of two ways
                     StructureValue structureVal;
-                    if (subStructure1.SubVariables.Count == 1 && subStructure1.SubVariables.ContainsKey("TRACK_TO_TRAIN"))
+                    if (subStructure1.SubVariables.Count == 1 &&
+                        subStructure1.SubVariables.ContainsKey("TRACK_TO_TRAIN"))
                     {
                         // For a Balise message, we have an extra level of structures for TRACK_TO_TRAIN
                         structureVal = new StructureValue(packetStructureType);
@@ -682,7 +683,7 @@ namespace DataDictionary.Tests.Translations
 
 
         /// <summary>
-        /// Finds the type of the structure corresponding to the provided NID_PACKET
+        ///     Finds the type of the structure corresponding to the provided NID_PACKET
         /// </summary>
         /// <param name="nameSpace">The namespace where the type has to be found</param>
         /// <param name="nidPacket">The id of the packet</param>
@@ -697,7 +698,8 @@ namespace DataDictionary.Tests.Translations
             {
                 foreach (NameSpace packetNameSpace in subNameSpace.NameSpaces)
                 {
-                    Structure structureType = (Structure) system.findType(packetNameSpace, packetNameSpace.FullName + ".Message");
+                    Structure structureType =
+                        (Structure) system.findType(packetNameSpace, packetNameSpace.FullName + ".Message");
                     StructureValue structureValue = new StructureValue(structureType);
 
                     foreach (KeyValuePair<string, IVariable> pair in structureValue.SubVariables)
@@ -729,13 +731,14 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Fills the given structure with the values provided from the database
+        ///     Fills the given structure with the values provided from the database
         /// </summary>
         /// <param name="aNameSpace">Namespace of the structure</param>
         /// <param name="fields">Fields to be copied into the structure</param>
         /// <param name="index">Index (of fields list) from which we have to start copying</param>
         /// <param name="aStructure">The structure to be filled</param>
-        private static void FillStructure(NameSpace aNameSpace, ArrayList fields, ref int currentIndex, StructureValue aStructure)
+        private static void FillStructure(NameSpace aNameSpace, ArrayList fields, ref int currentIndex,
+            StructureValue aStructure)
         {
             EFSSystem system = EFSSystem.INSTANCE;
 
@@ -755,7 +758,8 @@ namespace DataDictionary.Tests.Translations
                     variable = pair.Value;
                 }
 
-                if (variable.Name.StartsWith(field.Variable)) // we use StartsWith and not Equals because we can have N_ITER_1 and N_ITER
+                if (variable.Name.StartsWith(field.Variable))
+                    // we use StartsWith and not Equals because we can have N_ITER_1 and N_ITER
                 {
                     if (variable.Type is Enum)
                     {
@@ -800,7 +804,8 @@ namespace DataDictionary.Tests.Translations
                         for (int k = 0; k < value; k++)
                         {
                             currentIndex++;
-                            Structure structureType = (Structure) system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
+                            Structure structureType =
+                                (Structure) system.findType(aNameSpace, sequence.CollectionType.Type.FullName);
                             StructureValue structureValue = new StructureValue(structureType);
                             FillStructure(aNameSpace, fields, ref currentIndex, structureValue);
                             sequence.Val.Add(structureValue);
@@ -985,7 +990,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Determines whether a EFS structure corresponds to a packet
+        ///     Determines whether a EFS structure corresponds to a packet
         /// </summary>
         /// <param name="structure"></param>
         /// <returns></returns>
@@ -1010,7 +1015,7 @@ namespace DataDictionary.Tests.Translations
 
 
         /// <summary>
-        /// Takes the string provided and returns the corresponding RBC message
+        ///     Takes the string provided and returns the corresponding RBC message
         /// </summary>
         /// <param name="NID_MESSAGE"></param>
         /// <returns></returns>
@@ -1147,7 +1152,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the string provided and returns the corresponding Level enum
+        ///     Takes the string provided and returns the corresponding Level enum
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -1181,7 +1186,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the string provided and returns the corresponding Level enum
+        ///     Takes the string provided and returns the corresponding Level enum
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -1215,7 +1220,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the string provided and returns the formatted string
+        ///     Takes the string provided and returns the formatted string
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -1249,7 +1254,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the string provided and returns the corresponding decimal value
+        ///     Takes the string provided and returns the corresponding decimal value
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -1301,7 +1306,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Takes the string provided and returns the corresponding decimal value, as a string
+        ///     Takes the string provided and returns the corresponding decimal value, as a string
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -1311,7 +1316,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)

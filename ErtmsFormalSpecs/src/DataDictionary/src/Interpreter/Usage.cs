@@ -26,17 +26,17 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
-    /// Indicates where the model element is used, associated with the usage mode (read / write)
+    ///     Indicates where the model element is used, associated with the usage mode (read / write)
     /// </summary>
     public class Usage : IComparable<Usage>
     {
         /// <summary>
-        /// The used element 
+        ///     The used element
         /// </summary>
         public INamable Referenced { get; private set; }
 
         /// <summary>
-        /// The access mode to the element
+        ///     The access mode to the element
         /// </summary>
         public enum ModeEnum
         {
@@ -51,17 +51,17 @@ namespace DataDictionary.Interpreter
         };
 
         /// <summary>
-        /// Provides the usage mode for this element
+        ///     Provides the usage mode for this element
         /// </summary>
         public ModeEnum? Mode { get; set; }
 
         /// <summary>
-        /// Provides the element that uses the model
+        ///     Provides the element that uses the model
         /// </summary>
         public ModelElement User { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="referenced"></param>
         /// <param name="user"></param>
@@ -73,7 +73,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the display name of this usage
+        ///     Provides the display name of this usage
         /// </summary>
         /// <returns></returns>
         public string DisplayName()
@@ -147,17 +147,17 @@ namespace DataDictionary.Interpreter
     }
 
     /// <summary>
-    /// A collection of usages
+    ///     A collection of usages
     /// </summary>
     public class Usages
     {
         /// <summary>
-        /// The usages
+        ///     The usages
         /// </summary>
         public SortedSet<Usage> AllUsages { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Usages()
         {
@@ -165,7 +165,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds another list of usage to this list, and sets the mode if not yet set
+        ///     Adds another list of usage to this list, and sets the mode if not yet set
         /// </summary>
         /// <param name="other"></param>
         /// <param name="mode"></param>
@@ -182,7 +182,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds a new usage to the list
+        ///     Adds a new usage to the list
         /// </summary>
         /// <param name="referenced"></param>
         /// <param name="user"></param>
@@ -201,7 +201,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Finds all refernces to the model
+        ///     Finds all refernces to the model
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>

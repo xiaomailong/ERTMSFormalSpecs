@@ -37,7 +37,8 @@ namespace GUI.ExcelImport
             InitializeComponent();
             brakingCurvesImporter.TheDictionary = aDictionary;
 
-            TB_FrameName.Text = String.Format("Frame__{0}_{1}_{2}__{3}s_{4}m_{5}h", DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Second, DateTime.Now.Minute, DateTime.Now.Hour);
+            TB_FrameName.Text = String.Format("Frame__{0}_{1}_{2}__{3}s_{4}m_{5}h", DateTime.Now.Year,
+                DateTime.Now.Month, DateTime.Now.Day, DateTime.Now.Second, DateTime.Now.Minute, DateTime.Now.Hour);
 
             CBB_SpeedInterval.Items.Add("0.1");
             CBB_SpeedInterval.Items.Add("0.2");
@@ -63,8 +64,8 @@ namespace GUI.ExcelImport
 
 
         /// <summary>
-        /// Gives the list of all the controls of the form
-        /// (situated on the main form or on its group box)
+        ///     Gives the list of all the controls of the form
+        ///     (situated on the main form or on its group box)
         /// </summary>
         public ArrayList AllControls
         {
@@ -78,7 +79,7 @@ namespace GUI.ExcelImport
 
 
         /// <summary>
-        /// Allows to select the excel file
+        ///     Allows to select the excel file
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -96,14 +97,15 @@ namespace GUI.ExcelImport
 
 
         /// <summary>
-        /// Launches the command of importing excel file
+        ///     Launches the command of importing excel file
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Btn_Import_Click(object sender, EventArgs e)
         {
             Hide();
-            Double.TryParse(CBB_SpeedInterval.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out brakingCurvesImporter.SpeedInterval);
+            Double.TryParse(CBB_SpeedInterval.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture,
+                out brakingCurvesImporter.SpeedInterval);
 
             brakingCurvesImporter.FrameName = TB_FrameName.Text;
             brakingCurvesImporter.FileName = TB_FileName.Text;

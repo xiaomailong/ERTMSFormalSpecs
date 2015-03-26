@@ -15,37 +15,33 @@
 // ------------------------------------------------------------------------------
 
 using System.Collections.Generic;
-using DataDictionary.Generated;
 using DataDictionary.Interpreter.Filter;
 using DataDictionary.Types;
 using DataDictionary.Values;
-using DataDictionary.Variables;
 using Utils;
-using Structure = DataDictionary.Types.Structure;
-using Type = DataDictionary.Types.Type;
-using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Interpreter
 {
     public class StructExpression : Expression
     {
         /// <summary>
-        /// The structure instanciated by this structure expression
+        ///     The structure instanciated by this structure expression
         /// </summary>
         public Expression Structure { get; private set; }
 
         /// <summary>
-        /// The associations name <-> Expression that is used to initialize this structure
+        ///     The associations name <-> Expression that is used to initialize this structure
         /// </summary>
         public Dictionary<Designator, Expression> Associations { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public StructExpression(ModelElement root, ModelElement log, Expression structure, Dictionary<Designator, Expression> associations, int start, int end)
+        public StructExpression(ModelElement root, ModelElement log, Expression structure,
+            Dictionary<Designator, Expression> associations, int start, int end)
             : base(root, log, start, end)
         {
             Structure = structure;
@@ -57,7 +53,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -91,7 +87,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -101,7 +97,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -124,7 +120,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -137,7 +133,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -179,14 +175,14 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
         {
             Structure structureType = Structure.GetExpressionType() as Structure;
             if (structureType != null)
             {
-                if(structureType.IsAbstract)
+                if (structureType.IsAbstract)
                 {
                     AddError("Instantiation of abstract types is forbidden");
                 }
@@ -210,7 +206,9 @@ namespace DataDictionary.Interpreter
                                 {
                                     if (!element.Type.Match(type))
                                     {
-                                        AddError("Expression " + expression.ToString() + " type (" + type.FullName + ") does not match the target element " + element.Name + " type (" + element.Type.FullName + ")");
+                                        AddError("Expression " + expression.ToString() + " type (" + type.FullName +
+                                                 ") does not match the target element " + element.Name + " type (" +
+                                                 element.Type.FullName + ")");
                                     }
                                 }
                             }
@@ -219,7 +217,7 @@ namespace DataDictionary.Interpreter
                         {
                             AddError("Expression " + expression.ToString() + " type cannot be found");
                         }
-                        if(type.IsAbstract)
+                        if (type.IsAbstract)
                         {
                             AddError("Instantiation of abstract types is forbidden");
                         }

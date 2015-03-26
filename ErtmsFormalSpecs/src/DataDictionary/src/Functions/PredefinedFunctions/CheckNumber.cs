@@ -14,6 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
@@ -24,23 +25,23 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Checks the validity of a string
+    ///     Checks the validity of a string
     /// </summary>
     public class CheckNumber : PredefinedFunction
     {
         /// <summary>
-        /// The number being checked
+        ///     The number being checked
         /// </summary>
         public Parameter Number { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
-        public CheckNumber (EFSSystem efsSystem)
+        public CheckNumber(EFSSystem efsSystem)
             : base(efsSystem, "CheckNumber")
         {
-            Number = (Parameter)acceptor.getFactory().createParameter();
+            Number = (Parameter) acceptor.getFactory().createParameter();
             Number.Name = "Number";
             Number.Type = EFSSystem.AnyType;
             Number.setFather(this);
@@ -48,7 +49,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the before function
+        ///     The return type of the before function
         /// </summary>
         public override Type ReturnType
         {
@@ -56,14 +57,15 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function.
-        /// The function returns true if the string passes the check.
+        ///     Provides the value of the function.
+        ///     The function returns true if the string passes the check.
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = EFSSystem.BoolType.False;
 
@@ -84,22 +86,22 @@ namespace DataDictionary.Functions.PredefinedFunctions
                 for (int i = 0; i < tmp.Length; i++)
                 {
                     // If we encounter a letter that is not F, the value is incorrect
-                    if (System.Char.IsLetter(tmp[i]) && !tmp[i].Equals('F'))
+                    if (Char.IsLetter(tmp[i]) && !tmp[i].Equals('F'))
                     {
                         break;
                     }
 
                     // If we encounter a number after the first 'F' character, the value is incorrect
-                    if (!numberSequence && System.Char.IsDigit(tmp[i]))
+                    if (!numberSequence && Char.IsDigit(tmp[i]))
                     {
                         break;
                     }
 
-                    if (System.Char.IsLetter(tmp[i]))
+                    if (Char.IsLetter(tmp[i]))
                     {
                         numberSequence = false;
                     }
-                    
+
                     // Once the whole string has been checked without error, set the return to true
                     if (i == tmp.Length - 1)
                     {

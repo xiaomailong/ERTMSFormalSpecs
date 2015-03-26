@@ -29,12 +29,12 @@ namespace GUI.StructureValueEditor
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// The variable currently being displayed, if any
+        ///     The variable currently being displayed, if any
         /// </summary>
         private IVariable Variable { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Window()
         {
@@ -51,12 +51,15 @@ namespace GUI.StructureValueEditor
             structureTreeListView.ChildrenGetter = CustomizeTreeView.GetChildren;
 
             // Contextual menu
-            structureTreeListView.CellRightClick += new EventHandler<CellRightClickEventArgs>(CustomizeTreeView.CreateContextualMenu);
+            structureTreeListView.CellRightClick +=
+                new EventHandler<CellRightClickEventArgs>(CustomizeTreeView.CreateContextualMenu);
 
             // Edition
             structureTreeListView.CellEditStarting += new CellEditEventHandler(CustomizeTreeView.HandleCellEditStarting);
-            structureTreeListView.CellEditValidating += new CellEditEventHandler(CustomizeTreeView.HandleCellEditValidating);
-            structureTreeListView.CellEditFinishing += new CellEditEventHandler(CustomizeTreeView.HandleCellEditFinishing);
+            structureTreeListView.CellEditValidating +=
+                new CellEditEventHandler(CustomizeTreeView.HandleCellEditValidating);
+            structureTreeListView.CellEditFinishing +=
+                new CellEditEventHandler(CustomizeTreeView.HandleCellEditFinishing);
 
             structureTreeListView.ItemDrag += new ItemDragEventHandler(structureTreeListView_ItemDrag);
 
@@ -74,7 +77,7 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Sets the model for this tree view
+        ///     Sets the model for this tree view
         /// </summary>
         /// <param name="model"></param>
         public void SetModel(IValue model)
@@ -101,7 +104,7 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Sets the variable as data source for this window
+        ///     Sets the variable as data source for this window
         /// </summary>
         /// <param name="variable"></param>
         public void SetVariable(IVariable variable)
@@ -115,13 +118,14 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Refresh the window contents when the model may have changed
+        ///     Refresh the window contents when the model may have changed
         /// </summary>
         public void RefreshAfterStep()
         {
             if (Variable != null)
             {
-                Expression expression = EFSSystem.INSTANCE.Parser.Expression(EnclosingFinder<Dictionary>.find(Variable), Variable.FullName);
+                Expression expression = EFSSystem.INSTANCE.Parser.Expression(
+                    EnclosingFinder<Dictionary>.find(Variable), Variable.FullName);
                 IVariable variable = expression.GetVariable(new InterpretationContext());
                 if (variable != Variable)
                 {

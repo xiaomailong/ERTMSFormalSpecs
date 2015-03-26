@@ -16,8 +16,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Windows.Forms;
 using System.Drawing;
+using System.Windows.Forms;
 using DataDictionary.Generated;
 using GUI.SpecificationView;
 using Paragraph = DataDictionary.Specification.Paragraph;
@@ -30,7 +30,7 @@ namespace GUI.DataDictionaryView
     public class StructureElementsTreeNode : StructureTreeNode
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public StructureElementsTreeNode(Structure item, bool buildSubNodes)
@@ -39,7 +39,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -49,7 +49,7 @@ namespace GUI.DataDictionaryView
             foreach (StructureElement structureElement in Item.Elements)
             {
                 StructureElementTreeNode aNode = new StructureElementTreeNode(structureElement, buildSubNodes);
-                if(Item.StructureElementIsInherited(structureElement))
+                if (Item.StructureElementIsInherited(structureElement))
                 {
                     aNode.NodeFont = new Font("Arial", 8, FontStyle.Italic);
                 }
@@ -60,7 +60,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Adds a structure element to the model
+        ///     Adds a structure element to the model
         /// </summary>
         /// <param name="element"></param>
         public void AddElement(StructureElement element)
@@ -78,7 +78,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -91,7 +91,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Accepts drop of a tree node, in a drag & drop operation
+        ///     Accepts drop of a tree node, in a drag & drop operation
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

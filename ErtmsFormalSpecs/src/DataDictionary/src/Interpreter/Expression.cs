@@ -27,29 +27,29 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
-    /// Stores the association between a interpreter tree node and a value
+    ///     Stores the association between a interpreter tree node and a value
     /// </summary>
     public class ReturnValueElement : IComparable<ReturnValueElement>
     {
         /// <summary>
-        /// The previous return value element in the 
+        ///     The previous return value element in the
         /// </summary>
         public ReturnValueElement PreviousElement { get; set; }
 
         /// <summary>
-        /// The value
+        ///     The value
         /// </summary>
         public INamable Value { get; set; }
 
         /// <summary>
-        /// Indicates that the return value element was found as a type of its instance, instead of the instance itself. 
-        /// This allow to differenciate between a structure and  the return value of a function of type structure 
-        /// (in the latter case, the specific element cannot be statically identified in the model)
+        ///     Indicates that the return value element was found as a type of its instance, instead of the instance itself.
+        ///     This allow to differenciate between a structure and  the return value of a function of type structure
+        ///     (in the latter case, the specific element cannot be statically identified in the model)
         /// </summary>
         public bool AsType { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="value"></param>
         /// <param name="previous"></param>
@@ -116,22 +116,22 @@ namespace DataDictionary.Interpreter
     }
 
     /// <summary>
-    /// The possible return values for InnerGetValue
+    ///     The possible return values for InnerGetValue
     /// </summary>
     public class ReturnValue
     {
         /// <summary>
-        /// The interpreter tree node on which these values are linked
+        ///     The interpreter tree node on which these values are linked
         /// </summary>
         public InterpreterTreeNode Node { get; private set; }
 
         /// <summary>
-        /// The values of this return value
+        ///     The values of this return value
         /// </summary>
         public List<ReturnValueElement> Values { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ReturnValue(InterpreterTreeNode node)
         {
@@ -140,7 +140,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ReturnValue()
         {
@@ -149,7 +149,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates if there is more than one value in the result set
+        ///     Indicates if there is more than one value in the result set
         /// </summary>
         public bool IsAmbiguous
         {
@@ -157,7 +157,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates if there is only one value in the result set
+        ///     Indicates if there is only one value in the result set
         /// </summary>
         public bool IsUnique
         {
@@ -165,7 +165,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates if there is no more value in the result set
+        ///     Indicates if there is no more value in the result set
         /// </summary>
         public bool IsEmpty
         {
@@ -173,7 +173,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds a new value in the set of return values
+        ///     Adds a new value in the set of return values
         /// </summary>
         /// <param name="value">The value to add</param>
         /// <param name="previous">The previous element in the chain</param>
@@ -199,7 +199,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Merges the other return value with this one
+        ///     Merges the other return value with this one
         /// </summary>
         /// <param name="previous">The previous ReturnValueElement which lead to this ReturnValueElement</param>
         /// <param name="other">The other return value to merge with</param>
@@ -240,7 +240,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Filters out value according to predicate
+        ///     Filters out value according to predicate
         /// </summary>
         /// <param name="accept"></param>
         public void filter(BaseFilter accept)
@@ -276,7 +276,8 @@ namespace DataDictionary.Interpreter
                     ReturnValueElement current = element;
                     while (!variableFound && current != null)
                     {
-                        variableFound = IsStrictVariableOrValue.INSTANCE.AcceptableChoice(current.Value) || current.AsType;
+                        variableFound = IsStrictVariableOrValue.INSTANCE.AcceptableChoice(current.Value) ||
+                                        current.AsType;
                         onlyStructureElement = onlyStructureElement && current.Value is StructureElement;
                         current = current.PreviousElement;
                     }
@@ -331,38 +332,38 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The empty return value
+        ///     The empty return value
         /// </summary>
         public static ReturnValue Empty = new ReturnValue();
     }
 
     /// <summary>
-    /// An interpretation context 
+    ///     An interpretation context
     /// </summary>
     public class InterpretationContext
     {
         /// <summary>
-        /// The instance on which the expression is checked
+        ///     The instance on which the expression is checked
         /// </summary>
         public INamable Instance { get; set; }
 
         /// <summary>
-        /// The local scope for interpretation
+        ///     The local scope for interpretation
         /// </summary>
         public SymbolTable LocalScope { get; private set; }
 
         /// <summary>
-        /// Indicates that default values should be used when no value is specifically provided
+        ///     Indicates that default values should be used when no value is specifically provided
         /// </summary>
         public bool UseDefaultValue { get; set; }
 
         /// <summary>
-        /// Indicates that the enclosing element could cause side effects
+        ///     Indicates that the enclosing element could cause side effects
         /// </summary>
         public bool HasSideEffects { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="instance">The instance on which interpretation should be performed</param>
         public InterpretationContext()
@@ -374,7 +375,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="instance">The instance on which interpretation should be performed</param>
         public InterpretationContext(INamable instance)
@@ -386,7 +387,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="other">Copies the other interpretation context contents</param>
         public InterpretationContext(InterpretationContext other)
@@ -398,7 +399,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="other">Copies the other interpretation context contents</param>
         /// <param name="instance">The evaluation instance</param>
@@ -411,7 +412,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the list of parameters whose value is a placeholder
+        ///     Provides the list of parameters whose value is a placeholder
         /// </summary>
         /// <returns></returns>
         public List<Parameter> PlaceHolders()
@@ -420,7 +421,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the actual variable which corresponds to this parameter on the stack
+        ///     Provides the actual variable which corresponds to this parameter on the stack
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
@@ -430,7 +431,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the current stack index
+        ///     Provides the current stack index
         /// </summary>
         public int StackIndex
         {
@@ -439,12 +440,12 @@ namespace DataDictionary.Interpreter
     }
 
     /// <summary>
-    /// Allows to reference a namable
+    ///     Allows to reference a namable
     /// </summary>
     public interface IReference
     {
         /// <summary>
-        /// Provides the referenced element 
+        ///     Provides the referenced element
         /// </summary>
         INamable Ref { get; }
     }
@@ -481,7 +482,7 @@ namespace DataDictionary.Interpreter
     public abstract class Expression : InterpreterTreeNode, IReference
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">The root for which this expression should be evaluated</param>
         /// <param name="log"></param>
@@ -493,12 +494,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates whether the semantic analysis has been performed for this expression
+        ///     Indicates whether the semantic analysis has been performed for this expression
         /// </summary>
         protected bool SemanticAnalysisDone { get; private set; }
 
         /// <summary>
-        /// Provides the possible references for this expression (only available during semantic analysis)
+        ///     Provides the possible references for this expression (only available during semantic analysis)
         /// </summary>
         /// <param name="instance">the instance on which this element should be found.</param>
         /// <param name="expectation">the expectation on the element found</param>
@@ -510,7 +511,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the possible references types for this expression (used in semantic analysis)
+        ///     Provides the possible references types for this expression (used in semantic analysis)
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -528,7 +529,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -547,7 +548,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
@@ -557,7 +558,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
         /// <returns>True if semantic analysis should be continued</returns>
@@ -567,7 +568,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the INamable which is referenced by this expression, if any
+        ///     Provides the INamable which is referenced by this expression, if any
         /// </summary>
         public virtual INamable Ref
         {
@@ -576,7 +577,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the ICallable that is statically defined
+        ///     Provides the ICallable that is statically defined
         /// </summary>
         public virtual ICallable getStaticCallable()
         {
@@ -595,14 +596,14 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
         public abstract Type GetExpressionType();
 
         /// <summary>
-        /// Provides all the steps used to get the value of the expression
+        ///     Provides all the steps used to get the value of the expression
         /// </summary>
         /// <param name="context"></param>
         /// <returns></returns>
@@ -626,7 +627,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds an error message to the root element and explains it
+        ///     Adds an error message to the root element and explains it
         /// </summary>
         /// <param name="message"></param>
         public override void AddErrorAndExplain(string message, ExplanationPart explain)
@@ -639,7 +640,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the variable referenced by this expression, if any
+        ///     Provides the variable referenced by this expression, if any
         /// </summary>
         /// <param name="context">The context on which the variable must be found</param>
         /// <returns></returns>
@@ -649,7 +650,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain"></param>
@@ -660,7 +661,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the callable that is called by this expression
+        ///     Provides the callable that is called by this expression
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -671,14 +672,14 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
         public abstract void fill(List<INamable> retVal, BaseFilter filter);
 
         /// <summary>
-        /// Provides the right sides used by this expression
+        ///     Provides the right sides used by this expression
         /// </summary>
         public List<ITypedElement> GetRightSides()
         {
@@ -700,7 +701,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the variables used by this expression
+        ///     Provides the variables used by this expression
         /// </summary>
         public List<IVariable> GetVariables()
         {
@@ -722,7 +723,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the list of literals found in the expression
+        ///     Provides the list of literals found in the expression
         /// </summary>
         public List<IValue> GetLiterals()
         {
@@ -745,7 +746,7 @@ namespace DataDictionary.Interpreter
 
 
         /// <summary>
-        /// Provides the expression text
+        ///     Provides the expression text
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -754,21 +755,21 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
         public abstract string ToString(int indentLevel);
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public virtual void checkExpression()
         {
         }
 
         /// <summary>
-        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
+        ///     Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
@@ -782,14 +783,15 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the surface of this function if it has been statically defined
+        ///     Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public virtual Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public virtual Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam,
+            ExplanationPart explain)
         {
             Surface retVal = null;
 

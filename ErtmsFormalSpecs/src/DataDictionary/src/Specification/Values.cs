@@ -19,7 +19,7 @@ namespace DataDictionary.Specification
     public class Values : Generated.Values
     {
         /// <summary>
-        /// The Values content
+        ///     The Values content
         /// </summary>
         public string GetText(int depth)
         {

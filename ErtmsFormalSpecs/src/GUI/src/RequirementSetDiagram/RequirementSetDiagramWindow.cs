@@ -24,20 +24,20 @@ namespace GUI.RequirementSetDiagram
     public partial class RequirementSetDiagramWindow : BoxArrowWindow<RequirementSet, RequirementSetDependancy>
     {
         /// <summary>
-        /// The enclosing for which the requirement set diagram is built
+        ///     The enclosing for which the requirement set diagram is built
         /// </summary>
         public IHoldsRequirementSets Enclosing { get; private set; }
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///     Required method for Designer support - do not modify
+        ///     the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="system"></param>
         public RequirementSetDiagramWindow()
@@ -46,7 +46,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// The panel used to display the state diagram
+        ///     The panel used to display the state diagram
         /// </summary>
         private RequirementSetPanel Panel
         {
@@ -54,7 +54,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Sets the system for this diagram
+        ///     Sets the system for this diagram
         /// </summary>
         /// <param name="enclosing"></param>
         public void SetEnclosing(IHoldsRequirementSets enclosing)
@@ -73,12 +73,12 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// A box editor
+        ///     A box editor
         /// </summary>
         protected class RequirementSetEditor : BoxEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public RequirementSetEditor(BoxControl<RequirementSet, RequirementSetDependancy> control)
@@ -102,7 +102,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Factory for BoxEditor
+        ///     Factory for BoxEditor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
@@ -125,12 +125,12 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// An arrow editor
+        ///     An arrow editor
         /// </summary>
         protected class TransitionEditor : ArrowEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public TransitionEditor(ArrowControl<RequirementSet, RequirementSetDependancy> control)
@@ -199,7 +199,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Factory for arrow editor
+        ///     Factory for arrow editor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>

@@ -25,12 +25,12 @@ using DataDictionary.Tests.Runner.Events;
 namespace GUI.TestRunnerView.TimeLineControl
 {
     /// <summary>
-    /// The static time line according to a TimeLine
+    ///     The static time line according to a TimeLine
     /// </summary>
     public class DynamicTimeLineControl : TimeLineControl
     {
         /// <summary>
-        /// The time line handled by this window
+        ///     The time line handled by this window
         /// </summary>
         public EventTimeLine TimeLine
         {
@@ -49,7 +49,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public DynamicTimeLineControl()
             : base()
@@ -62,12 +62,12 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// The time line filtering configuration
+        ///     The time line filtering configuration
         /// </summary>
         public FilterConfiguration FilterConfiguration { get; private set; }
 
         /// <summary>
-        /// Opens the filtering dialog
+        ///     Opens the filtering dialog
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -83,7 +83,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Handles a double click event
+        ///     Handles a double click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -138,7 +138,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Refreshes the view
+        ///     Refreshes the view
         /// </summary>
         public override void Refresh()
         {
@@ -161,7 +161,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Update the information stored in the position handler according to the time line
+        ///     Update the information stored in the position handler according to the time line
         /// </summary>
         protected override void UpdatePositionHandler()
         {
@@ -179,7 +179,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Updates the size of the panel according to the number of events to handle
+        ///     Updates the size of the panel according to the number of events to handle
         /// </summary>
         protected override void UpdatePanelSize()
         {

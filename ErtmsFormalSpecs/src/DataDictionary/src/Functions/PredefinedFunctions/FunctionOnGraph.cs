@@ -20,17 +20,17 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Function defined on graphs
+    ///     Function defined on graphs
     /// </summary>
     public abstract class FunctionOnGraph : PredefinedFunction
     {
         /// <summary>
-        /// The return type of this function
+        ///     The return type of this function
         /// </summary>
         public Function Returns { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="name">the name of the function</param>
@@ -50,7 +50,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the available function
+        ///     The return type of the available function
         /// </summary>
         public override Type ReturnType
         {

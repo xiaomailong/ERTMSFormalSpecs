@@ -24,12 +24,12 @@ namespace GUI.DataDictionaryView
     public class RuleDisablingTreeNode : ReqRelatedTreeNode<RuleDisabling>
     {
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         protected class ItemEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -38,7 +38,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public RuleDisablingTreeNode(RuleDisabling item, bool buildSubNodes)
@@ -47,7 +47,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Provides the editor for rule disablings
+        ///     Provides the editor for rule disablings
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -57,7 +57,7 @@ namespace GUI.DataDictionaryView
 
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

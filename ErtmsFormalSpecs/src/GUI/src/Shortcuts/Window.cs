@@ -24,7 +24,7 @@ namespace GUI.Shortcuts
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Window()
         {
@@ -41,7 +41,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -51,7 +51,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Refreshed the model of the window
+        ///     Refreshed the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -65,7 +65,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
+        ///     Provides the model element currently selected in this IBaseForm
         /// </summary>
         public override IModelElement Selected
         {

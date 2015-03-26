@@ -23,7 +23,7 @@ namespace DataDictionary.Tests.Translations
     public class Folder : Generated.Folder, TextualExplain
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Folder()
             : base()
@@ -31,7 +31,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the folders
+        ///     Provides the folders
         /// </summary>
         public ArrayList Folders
         {
@@ -47,7 +47,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the translations for this dictionary
+        ///     Provides the translations for this dictionary
         /// </summary>
         public ArrayList Translations
         {
@@ -63,7 +63,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the number of translations of the current folder and its sub-folders
+        ///     Provides the number of translations of the current folder and its sub-folders
         /// </summary>
         public int TranslationsCount
         {
@@ -79,7 +79,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the enclosing collection
+        ///     Provides the enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -104,7 +104,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -125,7 +125,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Explains the Folder
+        ///     Explains the Folder
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)

@@ -25,14 +25,14 @@ namespace GUI.DataDictionaryView.UsageTreeView
     public class UsageTreeNode : ModelElementTreeNode<ModelElement>
     {
         /// <summary>
-        /// The usage for which this tree node is built
+        ///     The usage for which this tree node is built
         /// </summary>
         public Usage Usage { get; private set; }
 
         private class UsageEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public UsageEditor()
                 : base()
@@ -41,7 +41,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -50,7 +50,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public UsageTreeNode(Usage usage, bool buildSubNodes)
@@ -107,7 +107,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public UsageTreeNode(string name, bool buildSubNodes)
@@ -116,7 +116,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -132,7 +132,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Don't do anything when the selection changed
+        ///     Don't do anything when the selection changed
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
@@ -141,7 +141,7 @@ namespace GUI.DataDictionaryView.UsageTreeView
         }
 
         /// <summary>
-        /// Selects the elements in the GUI
+        ///     Selects the elements in the GUI
         /// </summary>
         public void SelectInGUI()
         {

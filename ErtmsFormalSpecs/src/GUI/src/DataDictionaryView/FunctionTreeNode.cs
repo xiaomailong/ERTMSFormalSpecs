@@ -45,7 +45,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : TypeEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -60,7 +60,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable type
+            ///     The variable type
             /// </summary>
             [Category("Description")]
             [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
@@ -76,7 +76,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// Indicates that the function result can be cached, from one cycle to the other
+            ///     Indicates that the function result can be cached, from one cycle to the other
             /// </summary>
             [Category("Description")]
             public bool IsCacheable
@@ -91,12 +91,12 @@ namespace GUI.DataDictionaryView
 
 
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         protected class TypeEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public TypeEditor()
                 : base()
@@ -105,7 +105,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public FunctionTreeNode(Function item, bool buildSubNodes)
@@ -114,7 +114,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -128,17 +128,18 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        public FunctionTreeNode(Function item, bool buildSubNodes, string name, bool isFolder = false, bool addRequirements = true)
+        public FunctionTreeNode(Function item, bool buildSubNodes, string name, bool isFolder = false,
+            bool addRequirements = true)
             : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -177,7 +178,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

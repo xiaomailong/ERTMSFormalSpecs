@@ -34,12 +34,12 @@ namespace Importers
     public class TestImporter
     {
         /// <summary>
-        /// The Logger
+        ///     The Logger
         /// </summary>
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// The path to the access database
+        ///     The path to the access database
         /// </summary>
         private string filePath;
 
@@ -50,7 +50,7 @@ namespace Importers
         }
 
         /// <summary>
-        /// The password used to access the database, if any
+        ///     The password used to access the database, if any
         /// </summary>
         private string password;
 
@@ -61,7 +61,7 @@ namespace Importers
         }
 
         /// <summary>
-        /// The connection to the database
+        ///     The connection to the database
         /// </summary>
         private OleDbConnection connection;
 
@@ -72,7 +72,8 @@ namespace Importers
                 if (connection == null)
                 {
                     connection = new OleDbConnection();
-                    connection.ConnectionString = "PROVIDER=Microsoft.Jet.OLEDB.4.0; Data Source=" + FilePath + ";Jet OLEDB:Database Password=" + Password + ";";
+                    connection.ConnectionString = "PROVIDER=Microsoft.Jet.OLEDB.4.0; Data Source=" + FilePath +
+                                                  ";Jet OLEDB:Database Password=" + Password + ";";
                     connection.Open();
                 }
                 return connection;
@@ -89,7 +90,7 @@ namespace Importers
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="filePath">The path to the file to import</param>
         /// <param name="password">The password used to access the database</param>
@@ -100,7 +101,7 @@ namespace Importers
         }
 
         /// <summary>
-        /// Imports the database into the corresponding frame by creating a new subsequence
+        ///     Imports the database into the corresponding frame by creating a new subsequence
         /// </summary>
         /// <param name="frame"></param>
         public void Import(Frame frame)
@@ -116,7 +117,7 @@ namespace Importers
         }
 
         /// <summary>
-        /// Imports the subsequence stored in the database
+        ///     Imports the subsequence stored in the database
         /// </summary>
         /// <param name="frame"></param>
         private void importSubSequence(Frame frame)
@@ -158,13 +159,16 @@ namespace Importers
                                     }
                                     else
                                     {
-                                        throw new Exception(newTestCase.FullName + " is found instead of " + oldTestCase.FullName + " while importing sub-sequence " + newSubSequence.FullName);
+                                        throw new Exception(newTestCase.FullName + " is found instead of " +
+                                                            oldTestCase.FullName + " while importing sub-sequence " +
+                                                            newSubSequence.FullName);
                                     }
                                 }
                             }
                             else
                             {
-                                throw new Exception("The test case " + oldTestCase.FullName + " is not present in the new data base");
+                                throw new Exception("The test case " + oldTestCase.FullName +
+                                                    " is not present in the new data base");
                             }
                             cnt++;
                         }
@@ -182,13 +186,15 @@ namespace Importers
         }
 
         /// <summary>
-        /// Imports the subsequence stored in the database
+        ///     Imports the subsequence stored in the database
         /// </summary>
         /// <param name="frame"></param>
         private void importInitialValues(SubSequence subSequence, int subSequenceID)
         {
             // Level is a reserved word...
-            string sql = "SELECT D_LRBG, TSW_TestSeqSCItl.Level, Mode, NID_LRBG, Q_DIRLRBG, Q_DIRTRAIN, Q_DLRBG, RBC_ID, RBCPhone FROM TSW_TestSeqSCItl WHERE TestSequenceID = " + subSequenceID;
+            string sql =
+                "SELECT D_LRBG, TSW_TestSeqSCItl.Level, Mode, NID_LRBG, Q_DIRLRBG, Q_DIRTRAIN, Q_DLRBG, RBC_ID, RBCPhone FROM TSW_TestSeqSCItl WHERE TestSequenceID = " +
+                subSequenceID;
 
             OleDbDataAdapter adapter = new OleDbDataAdapter(sql, Connection);
             DataSet dataSet = new DataSet();
@@ -255,12 +261,13 @@ namespace Importers
         }
 
         /// <summary>
-        /// Imports the steps in a sub sequence
+        ///     Imports the steps in a sub sequence
         /// </summary>
         /// <param name="subSequence"></param>
         private void importSteps(SubSequence subSequence)
         {
-            string sql = "SELECT TCSOrder, Distance, FT_NUMBER, TC_NUMBER, ST_STEP, ST_DESCRIPTION, UserComment, ST_IO, ST_INTERFACE, ST_COMMENTS, TestLevelIn, TestLevelOut, TestModeIn, TestModeOut FROM TSW_TCStep ORDER BY TCSOrder";
+            string sql =
+                "SELECT TCSOrder, Distance, FT_NUMBER, TC_NUMBER, ST_STEP, ST_DESCRIPTION, UserComment, ST_IO, ST_INTERFACE, ST_COMMENTS, TestLevelIn, TestLevelOut, TestModeIn, TestModeOut FROM TSW_TCStep ORDER BY TCSOrder";
 
             OleDbDataAdapter adapter = new OleDbDataAdapter(sql, Connection);
             DataSet dataSet = new DataSet();
@@ -289,7 +296,8 @@ namespace Importers
                     string testModeOut = items[13] as string;
 
                     // we do not want to import steps "Followed by" or "Preceded by"
-                    if (io != null && stepType != null && !stepType.Equals("Followed by") && !stepType.Equals("Preceded by"))
+                    if (io != null && stepType != null && !stepType.Equals("Followed by") &&
+                        !stepType.Equals("Preceded by"))
                     {
                         if (testCase != null)
                         {
@@ -309,7 +317,8 @@ namespace Importers
                             Step setupTestCaseStep = (Step) acceptor.getFactory().createStep();
                             setupTestCaseStep.Name = "Setup test case";
                             setupTestCaseStep.setDescription(setupTestCaseStep.Name);
-                            setupTestCaseStep.setComment("This step is used to setup the test case " + testCaseNr + " feature " + feature);
+                            setupTestCaseStep.setComment("This step is used to setup the test case " + testCaseNr +
+                                                         " feature " + feature);
                             setupTestCaseStep.setTranslationRequired(true);
                             testCase.appendSteps(setupTestCaseStep);
                         }
@@ -358,12 +367,13 @@ namespace Importers
 
 
         /// <summary>
-        /// Imports all the messages used by this step
+        ///     Imports all the messages used by this step
         /// </summary>
         /// <param name="aStep"></param>
         private void importStepMessages(Step aStep)
         {
-            string sql = "SELECT TCSOrder, MessageOrder, MessageType, Var_Name, Var_Value FROM TSW_MessageHeader ORDER BY MessageOrder, Var_Row";
+            string sql =
+                "SELECT TCSOrder, MessageOrder, MessageType, Var_Name, Var_Value FROM TSW_MessageHeader ORDER BY MessageOrder, Var_Row";
 
             OleDbDataAdapter adapter = new OleDbDataAdapter(sql, Connection);
             DataSet dataSet = new DataSet();
@@ -431,12 +441,13 @@ namespace Importers
 
 
         /// <summary>
-        /// Impports all the packets for a given message
+        ///     Impports all the packets for a given message
         /// </summary>
         /// <param name="aMessage"></param>
         private void importPackets(DBMessage aMessage, int TCS_order)
         {
-            string sql = "SELECT Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody WHERE (TCSOrder = " + TCS_order + ") AND (MessageOrder = " + aMessage.MessageOrder + ") ORDER BY Var_Row";
+            string sql = "SELECT Pac_ID, Var_Name, Var_Value FROM TSW_MessageBody WHERE (TCSOrder = " + TCS_order +
+                         ") AND (MessageOrder = " + aMessage.MessageOrder + ") ORDER BY Var_Row";
 
             OleDbDataAdapter adapter = new OleDbDataAdapter(sql, Connection);
             DataSet dataSet = new DataSet();

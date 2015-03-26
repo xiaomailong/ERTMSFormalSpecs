@@ -27,7 +27,7 @@ namespace DataDictionary.Interpreter.ListOperators
     public abstract class ListOperatorExpression : Expression, ISubDeclarator
     {
         /// <summary>
-        /// List operators
+        ///     List operators
         /// </summary>
         public static string[] LIST_OPERATORS =
         {
@@ -42,34 +42,35 @@ namespace DataDictionary.Interpreter.ListOperators
         };
 
         /// <summary>
-        /// The expression which evaluates to a list
+        ///     The expression which evaluates to a list
         /// </summary>
         public Expression ListExpression { get; private set; }
 
         /// <summary>
-        /// The iterator variable
+        ///     The iterator variable
         /// </summary>
         public Variable IteratorVariable { get; private set; }
 
         /// <summary>
-        /// The name of the iterator variable
+        ///     The name of the iterator variable
         /// </summary>
         public string IteratorName { get; private set; }
 
         /// <summary>
-        /// The iterator variable during the previous iteration
+        ///     The iterator variable during the previous iteration
         /// </summary>
         public Variable PreviousIteratorVariable { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="listExpression"></param>
         /// <param name="root">the root element for which this expression should be parsed</param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
         /// <param name="iteratorVariableName">The name of the iterator variable</param>
-        public ListOperatorExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, int start, int end)
+        public ListOperatorExpression(ModelElement root, ModelElement log, Expression listExpression,
+            string iteratorVariableName, int start, int end)
             : base(root, log, start, end)
         {
             ListExpression = listExpression;
@@ -87,7 +88,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -98,12 +99,12 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -113,7 +114,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -148,7 +149,7 @@ namespace DataDictionary.Interpreter.ListOperators
         protected bool MatchingElementFound = false;
 
         /// <summary>
-        /// Prepares the iteration on the context provided
+        ///     Prepares the iteration on the context provided
         /// </summary>
         /// <param name="context"></param>
         /// <returns>the token required to EndIteration</returns>
@@ -168,7 +169,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Prepares the next iteration 
+        ///     Prepares the next iteration
         /// </summary>
         protected virtual void NextIteration()
         {
@@ -176,7 +177,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Ends the iteration
+        ///     Ends the iteration
         /// </summary>
         /// <param name="context"></param>
         protected virtual void EndIteration(InterpretationContext context, ExplanationPart explain, int token)
@@ -194,7 +195,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -204,7 +205,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
         {

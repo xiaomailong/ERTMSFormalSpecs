@@ -22,12 +22,12 @@ namespace DataDictionary.Interpreter.ListOperators
     public class LastExpression : ConditionBasedListExpression
     {
         /// <summary>
-        /// The operator for this expression
+        ///     The operator for this expression
         /// </summary>
         public static string OPERATOR = "LAST";
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="listExpression"></param>
         /// <param name="condition"></param>
@@ -35,13 +35,14 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public LastExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, int start, int end)
+        public LastExpression(ModelElement root, ModelElement log, Expression listExpression,
+            string iteratorVariableName, Expression condition, int start, int end)
             : base(root, log, listExpression, iteratorVariableName, condition, start, end)
         {
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -63,7 +64,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -100,7 +101,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>

@@ -26,12 +26,12 @@ using Visitor = DataDictionary.Generated.Visitor;
 namespace DataDictionary
 {
     /// <summary>
-    /// Logs messages on the rules according to the validity of the rule
+    ///     Logs messages on the rules according to the validity of the rule
     /// </summary>
     public class UsageChecker : Visitor
     {
         /// <summary>
-        /// The dictionary used for this visit
+        ///     The dictionary used for this visit
         /// </summary>
         private Dictionary dictionary;
 
@@ -42,7 +42,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public UsageChecker(Dictionary dictionary)
@@ -59,7 +59,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Ensures that the element is used somewhere
+        ///     Ensures that the element is used somewhere
         /// </summary>
         /// <param name="model"></param>
         private void checkUsage(ModelElement model)

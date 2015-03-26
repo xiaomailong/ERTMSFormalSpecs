@@ -19,7 +19,7 @@ namespace DataDictionary.Specification
     public class TypeSpec : Generated.TypeSpec
     {
         /// <summary>
-        /// The TypeSpec content
+        ///     The TypeSpec content
         /// </summary>
         public string Text
         {

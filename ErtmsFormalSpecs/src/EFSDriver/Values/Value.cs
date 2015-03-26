@@ -21,7 +21,7 @@ namespace EFSService
     public partial class Value
     {
         /// <summary>
-        /// Provides the display value of this value
+        ///     Provides the display value of this value
         /// </summary>
         /// <returns></returns>
         public virtual string DisplayValue()

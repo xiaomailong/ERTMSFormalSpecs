@@ -19,7 +19,7 @@ namespace Utils
     public abstract class ProgressHandler
     {
         /// <summary>
-        /// Handles the start of the thread
+        ///     Handles the start of the thread
         /// </summary>
         /// <param name="arg"></param>
         public void TreadStart(object arg)
@@ -29,7 +29,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The task to be executed in background
+        ///     The task to be executed in background
         /// </summary>
         public abstract void ExecuteWork();
     }

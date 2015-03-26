@@ -27,7 +27,7 @@ namespace GUI.StateDiagram
     public partial class TransitionControl : ArrowControl<State, Transition>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public TransitionControl()
             : base()
@@ -35,7 +35,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public TransitionControl(IContainer container)
@@ -45,7 +45,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Indicates that the arrow should be displayed in the DEDUCED color
+        ///     Indicates that the arrow should be displayed in the DEDUCED color
         /// </summary>
         /// <returns></returns>
         public override bool IsDeduced()
@@ -65,7 +65,8 @@ namespace GUI.StateDiagram
                     else
                     {
                         StatePanel panel = (StatePanel) Panel;
-                        if (Model.RuleCondition != null && panel.StateMachine.Rules.Contains(Model.RuleCondition.EnclosingRule))
+                        if (Model.RuleCondition != null &&
+                            panel.StateMachine.Rules.Contains(Model.RuleCondition.EnclosingRule))
                         {
                             // A deduced case is a arrow that is defined in the rules of the state machines (not in its states)
                             retVal = true;
@@ -78,7 +79,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Indicates that the arrow should be displayed in the DEDUCED color
+        ///     Indicates that the arrow should be displayed in the DEDUCED color
         /// </summary>
         /// <returns></returns>
         public override bool IsDisabled()
@@ -100,7 +101,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Indicates that the arrow should be displayed in the ACTIVE color
+        ///     Indicates that the arrow should be displayed in the ACTIVE color
         /// </summary>
         /// <returns></returns>
         public override bool IsActive()
@@ -115,7 +116,8 @@ namespace GUI.StateDiagram
                     if (runner != null)
                     {
                         StatePanel panel = (StatePanel) Panel;
-                        if (runner.RuleActivatedAtTime(Model.RuleCondition, runner.LastActivationTime, panel.StateMachineVariable))
+                        if (runner.RuleActivatedAtTime(Model.RuleCondition, runner.LastActivationTime,
+                            panel.StateMachineVariable))
                         {
                             retVal = true;
                         }
@@ -127,7 +129,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Provides the name of the target state
+        ///     Provides the name of the target state
         /// </summary>
         /// <returns></returns>
         public override string getTargetName()

@@ -31,7 +31,7 @@ namespace GUI.TestRunnerView
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -40,7 +40,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public TestsTreeNode(Dictionary item, bool buildSubNodes)
@@ -49,7 +49,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -64,7 +64,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -73,7 +73,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new frame
+        ///     Creates a new frame
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -111,17 +111,17 @@ namespace GUI.TestRunnerView
         private class ExecuteTestsHandler : BaseLongOperation
         {
             /// <summary>
-            /// The window for which theses tests should be executed
+            ///     The window for which theses tests should be executed
             /// </summary>
             private Window Window { get; set; }
 
             /// <summary>
-            /// The subsequence which should be executed
+            ///     The subsequence which should be executed
             /// </summary>
             private Dictionary Dictionary { get; set; }
 
             /// <summary>
-            /// The EFS system 
+            ///     The EFS system
             /// </summary>
             private EFSSystem EFSSystem
             {
@@ -129,12 +129,12 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The number of failed tests
+            ///     The number of failed tests
             /// </summary>
             public int Failed { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="window"></param>
             /// <param name="dictionary"></param>
@@ -145,7 +145,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Executes the tests in the background thread
+            ///     Executes the tests in the background thread
             /// </summary>
             /// <param name="arg"></param>
             public override void ExecuteWork()
@@ -180,7 +180,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a run event on this test case
+        ///     Handles a run event on this test case
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -194,14 +194,17 @@ namespace GUI.TestRunnerView
 
             if (!executeTestsHandler.Dialog.Canceled)
             {
-                MessageBox.Show(Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed + " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) + " seconds", "Execution report");
+                MessageBox.Show(
+                    Item.Tests.Count + " test frame(s) executed, " + executeTestsHandler.Failed +
+                    " test frame(s) failed.\nTest duration : " + Math.Round(executeTestsHandler.Span.TotalSeconds) +
+                    " seconds", "Execution report");
             }
         }
 
         #endregion
 
         /// <summary>
-        /// Handles a run event on these tests and creates the associated report
+        ///     Handles a run event on these tests and creates the associated report
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -213,7 +216,7 @@ namespace GUI.TestRunnerView
 
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -222,7 +225,8 @@ namespace GUI.TestRunnerView
 
             retVal.Add(new MenuItem("Add frame", new EventHandler(AddHandler)));
             retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Import braking curves verification set", new EventHandler(ImportBrakingCurvesHandler)));
+            retVal.Add(new MenuItem("Import braking curves verification set",
+                new EventHandler(ImportBrakingCurvesHandler)));
             retVal.Add(new MenuItem("Mark as not translatable", new EventHandler(DoNotTranslateHandler)));
             retVal.Add(new MenuItem("-"));
             retVal.Add(new MenuItem("Execute", new EventHandler(RunHandler)));
@@ -233,7 +237,7 @@ namespace GUI.TestRunnerView
 
 
         /// <summary>
-        /// Indicates that the steps of this frame should not be translated
+        ///     Indicates that the steps of this frame should not be translated
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -255,7 +259,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Imports a test scenario from the ERA braking curves simulation tool
+        ///     Imports a test scenario from the ERA braking curves simulation tool
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -271,7 +275,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Display the number of frames
+        ///     Display the number of frames
         /// </summary>
         /// <param name="displayStatistics"></param>
         public override void SelectionChanged(bool displayStatistics)

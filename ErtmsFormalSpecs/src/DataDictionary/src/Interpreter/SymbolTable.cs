@@ -24,17 +24,17 @@ namespace DataDictionary.Interpreter
     public class SymbolTable
     {
         /// <summary>
-        /// The values stored in the symbol table
+        ///     The values stored in the symbol table
         /// </summary>
         private List<IVariable> Values { get; set; }
 
         /// <summary>
-        /// Handles the stack
+        ///     Handles the stack
         /// </summary>
         private List<int> StackIndex { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public SymbolTable()
         {
@@ -43,7 +43,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates a new context in the symbol table
+        ///     Creates a new context in the symbol table
         /// </summary>
         /// <returns>The token required for pop context</rereturns>
         public int PushContext()
@@ -56,7 +56,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Removes the last context from the symbol table
+        ///     Removes the last context from the symbol table
         /// </summary>
         public void PopContext(int token)
         {
@@ -69,7 +69,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Stores the variable in this symbol table
+        ///     Stores the variable in this symbol table
         /// </summary>
         /// <param name="variable"></param>
         public void setVariable(IVariable variable)
@@ -78,7 +78,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Stores the variable in this symbol table with a specific value
+        ///     Stores the variable in this symbol table with a specific value
         /// </summary>
         /// <param name="variable"></param>
         /// <param name="value"></param>
@@ -89,7 +89,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Stores the variable in this symbol table with a specific value
+        ///     Stores the variable in this symbol table with a specific value
         /// </summary>
         /// <param name="parameter"></param>
         /// <param name="value"></param>
@@ -101,7 +101,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Stores a graph parameter in this symbol table
+        ///     Stores a graph parameter in this symbol table
         /// </summary>
         /// <param name="xAxis"></param>
         public void setGraphParameter(Parameter xAxis)
@@ -110,7 +110,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Stores a surface set of parameters in this symbol table
+        ///     Stores a surface set of parameters in this symbol table
         /// </summary>
         /// <param name="xAxis"></param>
         /// <param name="yAxis"></param>
@@ -121,7 +121,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the variable assocaited to the name provided
+        ///     Provides the variable assocaited to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -143,7 +143,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the list of parameter whose value is a place holder
+        ///     Provides the list of parameter whose value is a place holder
         /// </summary>
         /// <returns></returns>
         public List<Parameter> PlaceHolders()
@@ -180,7 +180,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the actual variable which corresponds to this parameter on the stack
+        ///     Provides the actual variable which corresponds to this parameter on the stack
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
@@ -202,7 +202,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the current stack index
+        ///     Provides the current stack index
         /// </summary>
         public int Index
         {

@@ -7,14 +7,14 @@ namespace GUI.MoreInfoView
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// The element for which this message window is built
+        ///     The element for which this message window is built
         /// </summary>
         private TextualExplain Model { get; set; }
 
         private string EmptyRTF { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Window()
         {
@@ -29,7 +29,7 @@ namespace GUI.MoreInfoView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -39,7 +39,7 @@ namespace GUI.MoreInfoView
         }
 
         /// <summary>
-        /// Sets the model element for which messages should be displayed
+        ///     Sets the model element for which messages should be displayed
         /// </summary>
         /// <param name="model"></param>
         public void SetModel(TextualExplain model)
@@ -49,7 +49,7 @@ namespace GUI.MoreInfoView
         }
 
         /// <summary>
-        /// Refreshes the displayed messages according to the window model
+        ///     Refreshes the displayed messages according to the window model
         /// </summary>
         public override void RefreshModel()
         {

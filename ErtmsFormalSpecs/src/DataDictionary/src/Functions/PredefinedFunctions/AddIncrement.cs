@@ -23,22 +23,22 @@ using DataDictionary.Variables;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Adds an increment to a function
+    ///     Adds an increment to a function
     /// </summary>
     public class AddIncrement : FunctionOnGraph
     {
         /// <summary>
-        /// The function to be modified
+        ///     The function to be modified
         /// </summary>
         public Parameter Function { get; private set; }
 
         /// <summary>
-        /// The increment function to add
+        ///     The increment function to add
         /// </summary>
         public Parameter Increment { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="name">the name of the cast function</param>
@@ -59,19 +59,20 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context,
+            Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Function.Name], 1);
             CheckFunctionalParameter(root, context, actualParameters[Increment.Name], 1);
         }
 
         /// <summary>
-        /// Provides the graph of this function if it has been statically defined
+        ///     Provides the graph of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
         /// <param name="parameter"></param>
@@ -107,7 +108,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="instance">the instance on which the function is evaluated</param>
@@ -115,7 +116,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <param name="localScope">the values of local variables</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 

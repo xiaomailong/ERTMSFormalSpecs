@@ -19,7 +19,7 @@ using System.Collections.Generic;
 namespace DataDictionary.Specification
 {
     /// <summary>
-    /// Indicates that it can hold paragraphs
+    ///     Indicates that it can hold paragraphs
     /// </summary>
     public interface IHoldsParagraphs
     {

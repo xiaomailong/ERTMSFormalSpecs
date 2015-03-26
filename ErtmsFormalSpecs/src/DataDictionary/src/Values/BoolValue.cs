@@ -43,7 +43,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public BoolValue(Type type, bool val)

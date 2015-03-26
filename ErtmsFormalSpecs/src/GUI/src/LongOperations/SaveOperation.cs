@@ -20,27 +20,27 @@ using DataDictionary;
 namespace GUI.LongOperations
 {
     /// <summary>
-    /// A save file configuration
+    ///     A save file configuration
     /// </summary>
     public class SaveOperation : BaseLongOperation
     {
         /// <summary>
-        /// The form that invoked this progress handler
+        ///     The form that invoked this progress handler
         /// </summary>
         private MainWindow MainWindow { get; set; }
 
         /// <summary>
-        /// The dictionary to save
+        ///     The dictionary to save
         /// </summary>
         private Dictionary Dictionary { get; set; }
 
         /// <summary>
-        /// The system to save
+        ///     The system to save
         /// </summary>
         private EFSSystem System { get; set; }
 
         /// <summary>
-        /// Constructor used to save a single dictionary
+        ///     Constructor used to save a single dictionary
         /// </summary>
         /// <param name="mainWindow"></param>
         /// <param name="dictionary"></param>
@@ -52,7 +52,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Constructor used to save to complete system
+        ///     Constructor used to save to complete system
         /// </summary>
         /// <param name="mainWindow"></param>
         /// <param name="system"></param>
@@ -63,7 +63,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Performs the job as a background task
+        ///     Performs the job as a background task
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()

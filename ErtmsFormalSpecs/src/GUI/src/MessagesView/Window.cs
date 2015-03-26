@@ -11,12 +11,12 @@ namespace GUI.MessagesView
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// The element for which this message window is built
+        ///     The element for which this message window is built
         /// </summary>
         private IModelElement Model { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Window()
         {
@@ -29,7 +29,7 @@ namespace GUI.MessagesView
         }
 
         /// <summary>
-        /// Handles a double click event on an element of the messages data grid view
+        ///     Handles a double click event on an element of the messages data grid view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -52,7 +52,7 @@ namespace GUI.MessagesView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -63,7 +63,7 @@ namespace GUI.MessagesView
 
 
         /// <summary>
-        /// Sets the model element for which messages should be displayed
+        ///     Sets the model element for which messages should be displayed
         /// </summary>
         /// <param name="model"></param>
         public void SetModel(IModelElement model)
@@ -73,7 +73,7 @@ namespace GUI.MessagesView
         }
 
         /// <summary>
-        /// Refreshes the displayed messages according to the window model
+        ///     Refreshes the displayed messages according to the window model
         /// </summary>
         public override void RefreshModel()
         {
@@ -109,18 +109,18 @@ namespace GUI.MessagesView
         }
 
         /// <summary>
-        /// Displays a single message entry
+        ///     Displays a single message entry
         /// </summary>
         private class MessageEntry
         {
             /// <summary>
-            /// The element that is logged
+            ///     The element that is logged
             /// </summary>
             [Browsable(false)]
             public ElementLog Log { get; private set; }
 
             /// <summary>
-            /// The message level
+            ///     The message level
             /// </summary>
             public ElementLog.LevelEnum Level
             {
@@ -128,7 +128,7 @@ namespace GUI.MessagesView
             }
 
             /// <summary>
-            /// The message
+            ///     The message
             /// </summary>
             public String Message
             {
@@ -136,7 +136,7 @@ namespace GUI.MessagesView
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="elementLog"></param>
             public MessageEntry(ElementLog elementLog)

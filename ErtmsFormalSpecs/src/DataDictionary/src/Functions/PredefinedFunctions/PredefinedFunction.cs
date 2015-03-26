@@ -26,7 +26,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
     public abstract class PredefinedFunction : Function
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem">The system for which this function is created</param>
         /// <param name="name">The name of the predefined function</param>
@@ -37,7 +37,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The enclosing collection of the function
+        ///     The enclosing collection of the function
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -45,22 +45,23 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The type associated to this function
+        ///     The type associated to this function
         /// </summary>
         public abstract override Type ReturnType { get; }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="instance">the instance on which the function is evaluated</param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="localScope">the values of local variables</param>
         /// <returns>The value for the function application</returns>
-        public abstract override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain);
+        public abstract override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain);
 
 
         /// <summary>
-        /// Provides the name associated to the parameter
+        ///     Provides the name associated to the parameter
         /// </summary>
         /// <param name="param"></param>
         /// <returns></returns>
@@ -72,13 +73,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Ensures that the parameter provided corresponds to a function double->double
+        ///     Ensures that the parameter provided corresponds to a function double->double
         /// </summary>
         /// <param name="root">Element on which the errors shall be attached</param>
         /// <param name="context">The context used to evaluate the expression</param>
         /// <param name="expression">The expression which references the function</param>
         /// <param name="count">the expected number of parameters</param>
-        protected virtual void CheckFunctionalParameter(ModelElement root, InterpretationContext context, Expression expression, int count)
+        protected virtual void CheckFunctionalParameter(ModelElement root, InterpretationContext context,
+            Expression expression, int count)
         {
             Type type = expression.GetExpressionType();
 
@@ -91,7 +93,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     {
                         if (!parameter.Type.IsDouble())
                         {
-                            root.AddError(expression.ToString() + " does not takes a double for parameter " + parameter.Name);
+                            root.AddError(expression.ToString() + " does not takes a double for parameter " +
+                                          parameter.Name);
                         }
                     }
                 }
@@ -115,14 +118,15 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Creates the graph associated to the parameter provided
+        ///     Creates the graph associated to the parameter provided
         /// </summary>
         /// <param name="context"></param>
         /// <param name="value"></param>
         /// <param name="parameter"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        protected Graph createGraphForValue(InterpretationContext context, IValue value, ExplanationPart explain, Parameter parameter = null)
+        protected Graph createGraphForValue(InterpretationContext context, IValue value, ExplanationPart explain,
+            Parameter parameter = null)
         {
             Graph retVal = new Graph();
 
@@ -152,7 +156,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Creates the surface associated to the value provided
+        ///     Creates the surface associated to the value provided
         /// </summary>
         /// <param name="context"></param>
         /// <param name="value"></param>

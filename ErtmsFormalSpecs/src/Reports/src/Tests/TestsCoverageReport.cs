@@ -36,7 +36,7 @@ namespace Reports.Tests
     public class TestsCoverageReport : ReportTools
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="document"></param>
         public TestsCoverageReport(Document document)
@@ -45,7 +45,7 @@ namespace Reports.Tests
         }
 
         /// <summary>
-        /// Creates an article with informations about all the paragraphs of the specification
+        ///     Creates an article with informations about all the paragraphs of the specification
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
@@ -61,7 +61,7 @@ namespace Reports.Tests
 
 
         /// <summary>
-        /// Generates a table with specification coverage statistics
+        ///     Generates a table with specification coverage statistics
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <param name="coveredParagraphs">Number and percentage of covered paragraphs</param>
@@ -69,7 +69,8 @@ namespace Reports.Tests
         /// <param name="applicableParagraphs">Number of applicable paragraphs</param>
         /// <param name="allParagraphs">Total number of paragraphs</param>
         /// <returns></returns>
-        private void GenerateStatistics(Dictionary aDictionary, bool coveredParagraphs, bool nonCoveredParagraphs, bool applicableParagraphs, bool allParagraphs)
+        private void GenerateStatistics(Dictionary aDictionary, bool coveredParagraphs, bool nonCoveredParagraphs,
+            bool applicableParagraphs, bool allParagraphs)
         {
             AddSubParagraph("Statistics");
             AddTable(new string[] {"", "Value"}, new int[] {70, 70});
@@ -93,12 +94,14 @@ namespace Reports.Tests
 
             if (coveredParagraphs)
             {
-                AddRow("Number of covered requirements", String.Format("{0} ({1:0.##}%)", coveredParagraphsCount, coveredPercentage));
+                AddRow("Number of covered requirements",
+                    String.Format("{0} ({1:0.##}%)", coveredParagraphsCount, coveredPercentage));
             }
 
             if (nonCoveredParagraphs)
             {
-                AddRow("Number of non covered requirements", String.Format("{0} ({1:0.##}%)", nonCoveredParagraphsCount, nonCoveredPercentage));
+                AddRow("Number of non covered requirements",
+                    String.Format("{0} ({1:0.##}%)", nonCoveredParagraphsCount, nonCoveredPercentage));
             }
 
             CloseSubParagraph();
@@ -106,13 +109,14 @@ namespace Reports.Tests
 
 
         /// <summary>
-        /// Creates an article for a given frame
+        ///     Creates an article for a given frame
         /// </summary>
         /// <param name="aFrame">Frame to be displayed</param>
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRules">The list that will contain the rules activated by this frame</param>
         /// <returns></returns>
-        public void CreateFrameArticle(Frame aFrame, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRules)
+        public void CreateFrameArticle(Frame aFrame, TestsCoverageReportHandler aReportConfig,
+            HashSet<RuleCondition> activatedRules)
         {
             string title = "Frame " + aFrame.Name;
 
@@ -136,13 +140,14 @@ namespace Reports.Tests
 
 
         /// <summary>
-        /// Creates a section for a given sub-sequence
+        ///     Creates a section for a given sub-sequence
         /// </summary>
         /// <param name="aSubSequence">A sub-sequence to be displayed</param>
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRules">The list that will contain the rules activated by this sub-sequence</param>
         /// <param name="createPdf">Indicates if the information about this sub-sequence has to be added to the pdf</param>
-        public void CreateSubSequenceSection(SubSequence aSubSequence, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRules, bool createPdf)
+        public void CreateSubSequenceSection(SubSequence aSubSequence, TestsCoverageReportHandler aReportConfig,
+            HashSet<RuleCondition> activatedRules, bool createPdf)
         {
             string title = "Sub sequence " + aSubSequence.Name;
             if (createPdf)
@@ -157,7 +162,8 @@ namespace Reports.Tests
                 // SIDE EFFECT:
                 // each test case will calculate the list of rules it activates
                 // and add them to activatedRules list
-                CreateTestCaseSection(aSubSequence.EFSSystem.Runner, testCase, aReportConfig, rules, createPdf && aReportConfig.AddTestCases);
+                CreateTestCaseSection(aSubSequence.EFSSystem.Runner, testCase, aReportConfig, rules,
+                    createPdf && aReportConfig.AddTestCases);
             }
             activatedRules.UnionWith(rules);
 
@@ -175,14 +181,15 @@ namespace Reports.Tests
 
 
         /// <summary>
-        /// Creates a section for a given test case
+        ///     Creates a section for a given test case
         /// </summary>
         /// <param name="runner">The runner to be used to execute the tests</param>
         /// <param name="aTestCase">Test case to be displayed</param>
         /// <param name="aReportConfig">The report configuration containing display details</param>
         /// <param name="activatedRuleConditions">The list that will contain the rules activated by this test case</param>
         /// <param name="createPdf">Indicates if the information about this sub-sequence has to be added to the pdf</param>
-        public void CreateTestCaseSection(Runner runner, TestCase aTestCase, TestsCoverageReportHandler aReportConfig, HashSet<RuleCondition> activatedRuleConditions, bool createPdf)
+        public void CreateTestCaseSection(Runner runner, TestCase aTestCase, TestsCoverageReportHandler aReportConfig,
+            HashSet<RuleCondition> activatedRuleConditions, bool createPdf)
         {
             string title = "Test case " + aTestCase.Name;
             if (createPdf)
@@ -221,7 +228,8 @@ namespace Reports.Tests
                             SubStep lastSubStep = step.SubSteps[step.SubSteps.Count - 1] as SubStep;
                             double start = runner.EventTimeLine.GetSubStepActivationTime(firstSubStep);
                             double end = runner.EventTimeLine.GetNextSubStepActivationTime(lastSubStep);
-                            List<RuleCondition> activatedRules = runner.EventTimeLine.GetActivatedRulesInRange(start, end);
+                            List<RuleCondition> activatedRules = runner.EventTimeLine.GetActivatedRulesInRange(start,
+                                end);
 
                             CreateStepSection(step, activatedRules, aReportConfig);
                         }
@@ -240,12 +248,13 @@ namespace Reports.Tests
 
 
         /// <summary>
-        /// Creates a section for a given step
+        ///     Creates a section for a given step
         /// </summary>
         /// <param name="aStep">The step to be displayed</param>
         /// <param name="activatedRules">The list of rules activated by this step</param>
         /// <param name="aReportConfig">The report config</param>
-        private void CreateStepSection(Step aStep, List<RuleCondition> activatedRules, TestsCoverageReportHandler aReportConfig)
+        private void CreateStepSection(Step aStep, List<RuleCondition> activatedRules,
+            TestsCoverageReportHandler aReportConfig)
         {
             string title = "Step " + aStep.Name;
             AddSubParagraph(title);
@@ -260,21 +269,24 @@ namespace Reports.Tests
 
 
         /// <summary>
-        /// Adds information about the activated rules of a frame, a section, a test case or a step
+        ///     Adds information about the activated rules of a frame, a section, a test case or a step
         /// </summary>
         /// <param name="activatedRules">The list of activated rules</param>
         /// <param name="implementedRules">The list of implemented rules</param>
-        private void CreateActivatedRulesSection(string title, HashSet<RuleCondition> activatedRules, HashSet<Rule> implementedRules, bool addActivatedRules)
+        private void CreateActivatedRulesSection(string title, HashSet<RuleCondition> activatedRules,
+            HashSet<Rule> implementedRules, bool addActivatedRules)
         {
             double implementedPercentage = (double) ((double) activatedRules.Count/(double) implementedRules.Count)*100;
             string titleOfParagraph;
             if (title != "")
             {
-                titleOfParagraph = String.Format("{0}: activated rules: {1} ({2:0.##}%)", title, activatedRules.Count.ToString(), implementedPercentage);
+                titleOfParagraph = String.Format("{0}: activated rules: {1} ({2:0.##}%)", title,
+                    activatedRules.Count.ToString(), implementedPercentage);
             }
             else
             {
-                titleOfParagraph = String.Format("Activated rules: {0} ({1:0.##}%)", activatedRules.Count.ToString(), implementedPercentage);
+                titleOfParagraph = String.Format("Activated rules: {0} ({1:0.##}%)", activatedRules.Count.ToString(),
+                    implementedPercentage);
             }
 
             if (addActivatedRules)
@@ -294,7 +306,7 @@ namespace Reports.Tests
 
 
         /// <summary>
-        /// Provides the set of covered requirements by the tests
+        ///     Provides the set of covered requirements by the tests
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <returns></returns>
@@ -306,7 +318,8 @@ namespace Reports.Tests
 
             foreach (Paragraph paragraph in applicableParagraphs)
             {
-                bool implemented = paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
+                bool implemented = paragraph.getImplementationStatus() ==
+                                   acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
                 bool tested = false;
                 if (implemented)
                 {

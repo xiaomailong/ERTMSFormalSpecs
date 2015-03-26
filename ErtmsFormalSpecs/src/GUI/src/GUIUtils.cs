@@ -27,12 +27,12 @@ namespace GUI
     public class GUIUtils
     {
         /// <summary>
-        /// The main window of the application
+        ///     The main window of the application
         /// </summary>
         public static MainWindow MDIWindow { get; set; }
 
         /// <summary>
-        /// Refreshes the view according to the model element that has been changed
+        ///     Refreshes the view according to the model element that has been changed
         /// </summary>
         /// <param name="model"></param>
         public static void RefreshViewAccordingToModel(BaseModelElement model)
@@ -50,22 +50,22 @@ namespace GUI
         }
 
         /// <summary>
-        /// Access to a graphics item
+        ///     Access to a graphics item
         /// </summary>
         public static Graphics Graphics { get; set; }
 
         /// --------------------------------------------------------------------
-        ///   Enclosing finder
+        /// Enclosing finder
         /// --------------------------------------------------------------------
         /// <summary>
-        /// Finds in an enclosing element the element whose type matches T
+        ///     Finds in an enclosing element the element whose type matches T
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public class EnclosingFinder<T> : IFinder
             where T : class
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public EnclosingFinder()
             {
@@ -73,7 +73,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Finds an enclosing element whose type is T
+            ///     Finds an enclosing element whose type is T
             /// </summary>
             /// <param name="el"></param>
             /// <returns></returns>
@@ -87,7 +87,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Clears the cache
+            ///     Clears the cache
             /// </summary>
             public void ClearCache()
             {
@@ -123,7 +123,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Adjust the text size according to the display size
+        ///     Adjust the text size according to the display size
         /// </summary>
         /// <param name="text"></param>
         /// <param name="width"></param>

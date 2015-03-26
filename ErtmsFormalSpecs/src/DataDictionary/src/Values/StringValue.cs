@@ -41,7 +41,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public StringValue(StringType type, string val)

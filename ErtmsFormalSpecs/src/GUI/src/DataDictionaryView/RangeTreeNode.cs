@@ -28,12 +28,12 @@ namespace GUI.DataDictionaryView
     public class RangeTreeNode : TypeTreeNode<Range>
     {
         /// <summary>
-        /// The editor for Range types
+        ///     The editor for Range types
         /// </summary>
         private class ItemEditor : TypeEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -62,7 +62,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The range default value
+            ///     The range default value
             /// </summary>
             [Category("Description")]
             [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
@@ -81,7 +81,7 @@ namespace GUI.DataDictionaryView
         private RangeValuesTreeNode specialValues;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
@@ -91,7 +91,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
@@ -101,7 +101,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -113,7 +113,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -127,7 +127,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

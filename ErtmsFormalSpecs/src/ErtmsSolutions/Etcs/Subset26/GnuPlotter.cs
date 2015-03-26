@@ -173,7 +173,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
         /******************************************************************************************************/
 
-        protected void Emit_Constant_Segment(StreamWriter swd, ConstantCurveSegment<SiDistance, SiSpeed> aSegment, SiSpeed v_offset, SiDistance d_offset)
+        protected void Emit_Constant_Segment(StreamWriter swd, ConstantCurveSegment<SiDistance, SiSpeed> aSegment,
+            SiSpeed v_offset, SiDistance d_offset)
         {
             SiDistance d0 = aSegment.X.X0;
             SiDistance d1 = aSegment.X.X1;
@@ -198,7 +199,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
         /******************************************************************************************************/
 
-        protected void Emit_Segment(StreamWriter swd, SiDistance d0, SiDistance d1, SiSpeed v, SiSpeed v_offset, SiDistance d_offset)
+        protected void Emit_Segment(StreamWriter swd, SiDistance d0, SiDistance d1, SiSpeed v, SiSpeed v_offset,
+            SiDistance d_offset)
         {
             Emit_d_V(swd, d0 + d_offset, v + v_offset);
 
@@ -221,7 +223,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
         /******************************************************************************************************/
 
-        protected void Emit_Segment(StreamWriter swd, SiSpeed v0, SiSpeed v1, SiDistance d, SiSpeed v_offset, SiDistance d_offset)
+        protected void Emit_Segment(StreamWriter swd, SiSpeed v0, SiSpeed v1, SiDistance d, SiSpeed v_offset,
+            SiDistance d_offset)
         {
             Emit_d_V(swd, d + d_offset, v0 + v_offset);
 
@@ -245,7 +248,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
         /******************************************************************************************************/
 
-        protected void Emit_Quadratic_Segment(StreamWriter swd, QuadraticCurveSegment aSegment, SiSpeed v_offset, SiDistance d_offset)
+        protected void Emit_Quadratic_Segment(StreamWriter swd, QuadraticCurveSegment aSegment, SiSpeed v_offset,
+            SiDistance d_offset)
         {
             SiDistance d0 = aSegment.X.X0;
             SiDistance d1 = aSegment.X.X1;

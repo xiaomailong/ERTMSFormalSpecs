@@ -39,12 +39,12 @@ using Variable = DataDictionary.Variables.Variable;
 namespace GUI.StructureValueEditor
 {
     /// <summary>
-    /// Customize the tree view according to the model element to display
+    ///     Customize the tree view according to the model element to display
     /// </summary>
     public static class CustomizeTreeView
     {
         /// <summary>
-        /// Dereferences the variables
+        ///     Dereferences the variables
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -64,7 +64,7 @@ namespace GUI.StructureValueEditor
         #region Stringonizer
 
         /// <summary>
-        /// Provides the field column string value for the object provided
+        ///     Provides the field column string value for the object provided
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -109,12 +109,12 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// The default indicator
+        ///     The default indicator
         /// </summary>
         private const string DEFAULT = "<default>";
 
         /// <summary>
-        /// Provides the value column string value for the object provided
+        ///     Provides the value column string value for the object provided
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -152,7 +152,7 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Indicates whether the value provided is the default value for that variable
+        ///     Indicates whether the value provided is the default value for that variable
         /// </summary>
         /// <param name="variable"></param>
         /// <param name="value"></param>
@@ -165,7 +165,7 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Provides the string value for the description columb according to the object provided
+        ///     Provides the string value for the description columb according to the object provided
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -231,7 +231,8 @@ namespace GUI.StructureValueEditor
                     {
                         if (!(subVariable.Value is DefaultValue))
                         {
-                            if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue || Settings.Default.DisplayAllVariablesInStructureEditor)
+                            if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue ||
+                                Settings.Default.DisplayAllVariablesInStructureEditor)
                             {
                                 retVal = true;
                                 break;
@@ -256,7 +257,7 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Provides the children of a specific object
+        ///     Provides the children of a specific object
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
@@ -285,7 +286,8 @@ namespace GUI.StructureValueEditor
                     }
                     else
                     {
-                        if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue || Settings.Default.DisplayAllVariablesInStructureEditor)
+                        if (subVariable.Value != EFSSystem.INSTANCE.EmptyValue ||
+                            Settings.Default.DisplayAllVariablesInStructureEditor)
                         {
                             list.Add(subVariable);
                         }
@@ -316,7 +318,7 @@ namespace GUI.StructureValueEditor
         #region Contextual menu
 
         /// <summary>
-        /// Creates a variable according to the structure element provided
+        ///     Creates a variable according to the structure element provided
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
@@ -333,17 +335,17 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// The base toolstrip button. Handles synchronization with the object list view
+        ///     The base toolstrip button. Handles synchronization with the object list view
         /// </summary>
         private class BaseToolStripButton : ToolStripButton
         {
             /// <summary>
-            /// The arguments used to launch the tool strip
+            ///     The arguments used to launch the tool strip
             /// </summary>
             protected CellRightClickEventArgs Args { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="args"></param>
             /// <param name="text"></param>
@@ -355,7 +357,7 @@ namespace GUI.StructureValueEditor
             }
 
             /// <summary>
-            /// Synchronises the list view
+            ///     Synchronises the list view
             /// </summary>
             /// <param name="e"></param>
             protected override void OnClick(EventArgs e)
@@ -373,17 +375,17 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Adds a value in a list
+        ///     Adds a value in a list
         /// </summary>
         private class ToolStripAddValueInList : BaseToolStripButton
         {
             /// <summary>
-            /// The variable that holds the list value
+            ///     The variable that holds the list value
             /// </summary>
             private Variable Variable { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="args"></param>
             /// <param name="variable"></param>
@@ -394,7 +396,7 @@ namespace GUI.StructureValueEditor
             }
 
             /// <summary>
-            /// Executes the action requested by this tool strip button
+            ///     Executes the action requested by this tool strip button
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
@@ -433,22 +435,22 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Removes a value from a list
+        ///     Removes a value from a list
         /// </summary>
         private class ToolStripRemoveListEntry : BaseToolStripButton
         {
             /// <summary>
-            /// The value that should be updated
+            ///     The value that should be updated
             /// </summary>
             private ListValue Value { get; set; }
 
             /// <summary>
-            /// The entry to remove from the list value
+            ///     The entry to remove from the list value
             /// </summary>
             private Value Entry { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="value"></param>
             /// <param name="element"></param>
@@ -461,7 +463,7 @@ namespace GUI.StructureValueEditor
             }
 
             /// <summary>
-            /// Executes the action requested by this tool strip button
+            ///     Executes the action requested by this tool strip button
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
@@ -478,27 +480,28 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Adds an element in a structure value
+        ///     Adds an element in a structure value
         /// </summary>
         private class ToolStripAddStructureMember : BaseToolStripButton
         {
             /// <summary>
-            /// The value that should be updated
+            ///     The value that should be updated
             /// </summary>
             private StructureValue Value { get; set; }
 
             /// <summary>
-            /// The element on which the action should be performed
+            ///     The element on which the action should be performed
             /// </summary>
             private StructureElement Element { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="args"></param>
             /// <param name="value"></param>
             /// <param name="element"></param>
-            public ToolStripAddStructureMember(CellRightClickEventArgs args, StructureValue value, StructureElement element)
+            public ToolStripAddStructureMember(CellRightClickEventArgs args, StructureValue value,
+                StructureElement element)
                 : base(args, "Add " + element.Name)
             {
                 Value = value;
@@ -506,7 +509,7 @@ namespace GUI.StructureValueEditor
             }
 
             /// <summary>
-            /// Executes the action requested by this tool strip button
+            ///     Executes the action requested by this tool strip button
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
@@ -523,17 +526,17 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Removes an element from a structure value
+        ///     Removes an element from a structure value
         /// </summary>
         private class ToolStripRemoveStructureMember : BaseToolStripButton
         {
             /// <summary>
-            /// The variable to remove
+            ///     The variable to remove
             /// </summary>
             private Variable Variable { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="args"></param>
             /// <param name="variable"></param>
@@ -544,7 +547,7 @@ namespace GUI.StructureValueEditor
             }
 
             /// <summary>
-            /// Executes the action requested by this tool strip button
+            ///     Executes the action requested by this tool strip button
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
@@ -555,17 +558,17 @@ namespace GUI.StructureValueEditor
         }
 
         /// <summary>
-        /// Shows the state machine which corresponds to the variable
+        ///     Shows the state machine which corresponds to the variable
         /// </summary>
         private class ToolStripShowStateMachine : BaseToolStripButton
         {
             /// <summary>
-            /// The variable that holds the list value
+            ///     The variable that holds the list value
             /// </summary>
             private Variable Variable { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="args"></param>
             /// <param name="variable"></param>
@@ -576,7 +579,7 @@ namespace GUI.StructureValueEditor
             }
 
             /// <summary>
-            /// Executes the action requested by this tool strip button
+            ///     Executes the action requested by this tool strip button
             /// </summary>
             protected override void OnClick(EventArgs e)
             {
@@ -613,7 +616,8 @@ namespace GUI.StructureValueEditor
                             subVariable = tmp as Variable;
                         }
 
-                        if (subVariable == null || subVariable.Value == EFSSystem.INSTANCE.EmptyValue || subVariable.Value is DefaultValue)
+                        if (subVariable == null || subVariable.Value == EFSSystem.INSTANCE.EmptyValue ||
+                            subVariable.Value is DefaultValue)
                         {
                             items.Add(new ToolStripAddStructureMember(args, structureValue, element));
                         }

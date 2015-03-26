@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.IO;
 using Utils;
 
@@ -21,7 +22,7 @@ namespace DataDictionary.Tests
     public class FrameRef : Generated.FrameRef
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public FrameRef()
             : base()
@@ -29,7 +30,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The file name which corresponds to this frame ref
+        ///     The file name which corresponds to this frame ref
         /// </summary>
         public string FileName
         {
@@ -43,12 +44,13 @@ namespace DataDictionary.Tests
                     current = current.Enclosing as IModelElement;
                 }
 
-                return Dictionary.BasePath + Path.DirectorySeparatorChar + "TestFrames" + Path.DirectorySeparatorChar + Util.validFilePath(retVal);
+                return Dictionary.BasePath + Path.DirectorySeparatorChar + "TestFrames" + Path.DirectorySeparatorChar +
+                       Util.validFilePath(retVal);
             }
         }
 
         /// <summary>
-        /// Saves the frame provided associated to this frame ref
+        ///     Saves the frame provided associated to this frame ref
         /// </summary>
         /// <param name="frame"></param>
         public void SaveFrame(Frame frame)
@@ -61,7 +63,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Loads the frame which corresponds to this frame ref
+        ///     Loads the frame which corresponds to this frame ref
         /// </summary>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <param name="allowErrors">Indicates that errors are tolerated during load</param>
@@ -72,7 +74,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Removes the temporary file associated to that item
+        ///     Removes the temporary file associated to that item
         /// </summary>
         public void ClearTempFile()
         {

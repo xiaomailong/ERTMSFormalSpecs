@@ -32,12 +32,12 @@ namespace GUI.TestRunnerView
     public class TestCaseTreeNode : ReqRelatedTreeNode<TestCase>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -45,7 +45,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The item name
+            ///     The item name
             /// </summary>
             [Category("Description")]
             public override string Name
@@ -66,7 +66,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The item feature
+            ///     The item feature
             /// </summary>
             [Category("Description")]
             public int Feature
@@ -76,7 +76,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The item test case
+            ///     The item test case
             /// </summary>
             [Category("Description")]
             public int TestCase
@@ -87,12 +87,12 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The steps tree node
+        ///     The steps tree node
         /// </summary>
         private StepsTreeNode steps = null;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public TestCaseTreeNode(TestCase item, bool buildSubNodes)
@@ -101,7 +101,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -113,7 +113,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -122,7 +122,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Ensures that the runner corresponds to test sequence
+        ///     Ensures that the runner corresponds to test sequence
         /// </summary>
         private void CheckRunner()
         {
@@ -134,7 +134,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Translates the corresponding test case, according to translation rules
+        ///     Translates the corresponding test case, according to translation rules
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -150,17 +150,17 @@ namespace GUI.TestRunnerView
         private class ExecuteTestsHandler : ProgressHandler
         {
             /// <summary>
-            /// The window for which theses tests should be executed
+            ///     The window for which theses tests should be executed
             /// </summary>
             private Window Window { get; set; }
 
             /// <summary>
-            /// The subsequence which should be executed
+            ///     The subsequence which should be executed
             /// </summary>
             private TestCase TestCase { get; set; }
 
             /// <summary>
-            /// The EFS system 
+            ///     The EFS system
             /// </summary>
             private EFSSystem EFSSystem
             {
@@ -168,7 +168,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="window"></param>
             /// <param name="testCase"></param>
@@ -179,7 +179,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Executes the tests in the background thread
+            ///     Executes the tests in the background thread
             /// </summary>
             /// <param name="arg"></param>
             public override void ExecuteWork()
@@ -212,7 +212,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a run event on this test case
+        ///     Handles a run event on this test case
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -236,7 +236,7 @@ namespace GUI.TestRunnerView
         #endregion
 
         /// <summary>
-        /// Handles a run event on this test case and creates the associated report
+        ///     Handles a run event on this test case and creates the associated report
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -247,7 +247,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new step
+        ///     Creates a new step
         /// </summary>
         /// <param name="step"></param>
         public StepTreeNode createStep(Step step)
@@ -261,7 +261,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Extracts the test case in a new subsequence
+        ///     Extracts the test case in a new subsequence
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -290,7 +290,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

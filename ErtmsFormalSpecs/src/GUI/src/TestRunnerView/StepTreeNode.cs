@@ -37,12 +37,12 @@ namespace GUI.TestRunnerView
     public class StepTreeNode : ReferencesParagraphTreeNode<Step>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : ReferencesParagraphEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -50,7 +50,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step name
+            ///     The step name
             /// </summary>
             [Category("Description")]
             public override string Name
@@ -69,7 +69,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step description
+            ///     The step description
             /// </summary>
             [Category("Description")]
             public string Description
@@ -79,7 +79,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step order number
+            ///     The step order number
             /// </summary>
             [Category("Subset76")]
             public int Order
@@ -89,7 +89,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step distance
+            ///     The step distance
             /// </summary>
             [Category("Subset76")]
             public int Distance
@@ -99,7 +99,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step I/O mode
+            ///     The step I/O mode
             /// </summary>
             [Category("Subset76")]
             public acceptor.ST_IO InputOutput
@@ -109,7 +109,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step Interface
+            ///     The step Interface
             /// </summary>
             [Category("Subset76")]
             public acceptor.ST_INTERFACE Interface
@@ -119,7 +119,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step level in
+            ///     The step level in
             /// </summary>
             [Category("Subset76")]
             public acceptor.ST_LEVEL TestLevelIn
@@ -129,7 +129,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step level out
+            ///     The step level out
             /// </summary>
             [Category("Subset76")]
             public acceptor.ST_LEVEL TestLevelOut
@@ -139,7 +139,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step mode in
+            ///     The step mode in
             /// </summary>
             [Category("Subset76")]
             public acceptor.ST_MODE TestModeIn
@@ -149,7 +149,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step mode out
+            ///     The step mode out
             /// </summary>
             [Category("Subset76")]
             public acceptor.ST_MODE TestModeOut
@@ -159,7 +159,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step is translated or not
+            ///     The step is translated or not
             /// </summary>
             [Category("Subset76")]
             public bool TranslationRequired
@@ -169,7 +169,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The step is translated or not
+            ///     The step is translated or not
             /// </summary>
             [Category("Subset76")]
             public bool Translated
@@ -179,7 +179,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The item user comment
+            ///     The item user comment
             /// </summary>
             [Category("Subset76")]
             public string UserComment
@@ -190,7 +190,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public StepTreeNode(Step item, bool buildSubNodes)
@@ -199,7 +199,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -213,7 +213,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -222,7 +222,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Shows the messages associated to this step
+        ///     Shows the messages associated to this step
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -255,7 +255,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Shows the translation which should be applied on this step
+        ///     Shows the translation which should be applied on this step
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -275,7 +275,8 @@ namespace GUI.TestRunnerView
                         translationWindow = form as TranslationRules.Window;
                         if (translationWindow != null)
                         {
-                            TypedTreeView<TranslationDictionary> treeView = translationWindow.TreeView as TypedTreeView<TranslationDictionary>;
+                            TypedTreeView<TranslationDictionary> treeView =
+                                translationWindow.TreeView as TypedTreeView<TranslationDictionary>;
                             if (treeView != null && treeView.Root == translation.TranslationDictionary)
                             {
                                 break;
@@ -297,7 +298,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Translates the corresponding step, according to translation rules
+        ///     Translates the corresponding step, according to translation rules
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -309,19 +310,20 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Ensures that the runner corresponds to test case
+        ///     Ensures that the runner corresponds to test case
         /// </summary>
         private void CheckRunner()
         {
             Window window = BaseForm as Window;
-            if (window != null && window.EFSSystem.Runner != null && window.EFSSystem.Runner.SubSequence != Item.SubSequence)
+            if (window != null && window.EFSSystem.Runner != null &&
+                window.EFSSystem.Runner.SubSequence != Item.SubSequence)
             {
                 window.Clear();
             }
         }
 
         /// <summary>
-        /// Adds a step after this one
+        ///     Adds a step after this one
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -334,7 +336,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new sub-step
+        ///     Creates a new sub-step
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
@@ -351,22 +353,22 @@ namespace GUI.TestRunnerView
         private class ExecuteTestsHandler : BaseLongOperation
         {
             /// <summary>
-            /// The window for which theses tests should be executed
+            ///     The window for which theses tests should be executed
             /// </summary>
             private Window Window { get; set; }
 
             /// <summary>
-            /// The subsequence which should be executed
+            ///     The subsequence which should be executed
             /// </summary>
             private Step Step { get; set; }
 
             /// <summary>
-            /// Indicates that the engine should be run until all blocking expectations are reached
+            ///     Indicates that the engine should be run until all blocking expectations are reached
             /// </summary>
             private bool RunForExpectations { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="window"></param>
             /// <param name="step"></param>
@@ -379,7 +381,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Executes the tests in the background thread
+            ///     Executes the tests in the background thread
             /// </summary>
             public override void ExecuteWork()
             {
@@ -409,7 +411,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a run event on this step
+        ///     Handles a run event on this step
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -429,7 +431,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a run event on this step
+        ///     Handles a run event on this step
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -449,7 +451,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -466,14 +468,15 @@ namespace GUI.TestRunnerView
             retVal.Insert(index++, new MenuItem("Apply translation rules", new EventHandler(TranslateHandler)));
             retVal.Insert(index++, new MenuItem("-"));
             retVal.Insert(index++, new MenuItem("Run, not checking expectations", new EventHandler(RunHandler)));
-            retVal.Insert(index++, new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
+            retVal.Insert(index++,
+                new MenuItem("Run until expectation reached", new EventHandler(RunForExpectationsHandler)));
             retVal.Insert(index++, new MenuItem("-"));
 
             return retVal;
         }
 
         /// <summary>
-        /// Handles the drop event
+        ///     Handles the drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

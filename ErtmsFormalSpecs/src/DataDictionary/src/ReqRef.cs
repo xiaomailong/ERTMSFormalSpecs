@@ -23,7 +23,7 @@ namespace DataDictionary
     public class ReqRef : Generated.ReqRef, ICommentable
     {
         /// <summary>
-        /// The paragraph name of this trace
+        ///     The paragraph name of this trace
         /// </summary>
         public override string Name
         {
@@ -33,7 +33,8 @@ namespace DataDictionary
 
                 if (Paragraph != null)
                 {
-                    Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(Paragraph);
+                    Specification.Specification specification =
+                        EnclosingFinder<Specification.Specification>.find(Paragraph);
                     if (specification != null)
                     {
                         retVal = specification.Name + " § " + Paragraph.getId();
@@ -46,7 +47,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the comment related to this requirement reference
+        ///     Provides the comment related to this requirement reference
         /// </summary>
         public string Comment
         {
@@ -63,7 +64,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The implementation of this trace
+        ///     The implementation of this trace
         /// </summary>
         public IModelElement Model
         {
@@ -103,7 +104,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The corresponding specification paragraph
+        ///     The corresponding specification paragraph
         /// </summary>
         public Paragraph Paragraph
         {
@@ -147,9 +148,9 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// HaCK : this performes the same thing as Paragraph.ExpressionText
-        /// because when selecting a ReqRef in the req references of a paragraph, 
-        /// this updates the paragraph text box => updates the paragraph text... 
+        ///     HaCK : this performes the same thing as Paragraph.ExpressionText
+        ///     because when selecting a ReqRef in the req references of a paragraph,
+        ///     this updates the paragraph text box => updates the paragraph text...
         /// </summary>
         public override string ExpressionText
         {
@@ -165,7 +166,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -174,7 +175,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Provides the requirement description for this req ref
+        ///     Provides the requirement description for this req ref
         /// </summary>
         /// <returns></returns>
         public override string RequirementDescription()

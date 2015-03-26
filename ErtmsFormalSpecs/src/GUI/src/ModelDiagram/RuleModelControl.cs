@@ -21,12 +21,12 @@ using DataDictionary.Rules;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent a rule
+    ///     The boxes that represent a rule
     /// </summary>
     public class RuleModelControl : ModelControl
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RuleModelControl(Rule model)
             : base(model)
@@ -37,7 +37,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Handles a simple click event on the control
+        ///     Handles a simple click event on the control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -50,7 +50,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name of the kind of model
+        ///     The name of the kind of model
         /// </summary>
         public override string ModelName
         {

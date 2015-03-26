@@ -33,20 +33,20 @@ namespace GUI.IPCInterface.Values
     public abstract class Value
     {
         /// <summary>
-        /// Provides the display value of this value
+        ///     Provides the display value of this value
         /// </summary>
         /// <returns></returns>
         public abstract string DisplayValue();
 
         /// <summary>
-        /// Converts the value provided as an EFS value
+        ///     Converts the value provided as an EFS value
         /// </summary>
         /// <param name="type">the value expected type</param>
         /// <returns></returns>
         public abstract IValue convertBack(Type type);
 
         /// <summary>
-        /// Checks the return value for a conversion to EFS type
+        ///     Checks the return value for a conversion to EFS type
         /// </summary>
         /// <param name="value"></param>
         /// <param name="type"></param>
@@ -54,7 +54,8 @@ namespace GUI.IPCInterface.Values
         {
             if (value == null)
             {
-                throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot convert to EFS value " + DisplayValue() + " for type " + type.FullName));
+                throw new FaultException<EFSServiceFault>(
+                    new EFSServiceFault("Cannot convert to EFS value " + DisplayValue() + " for type " + type.FullName));
             }
         }
     }

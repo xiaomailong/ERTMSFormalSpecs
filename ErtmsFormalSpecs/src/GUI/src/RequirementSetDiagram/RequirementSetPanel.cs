@@ -40,7 +40,7 @@ namespace GUI.RequirementSetDiagram
         private ToolStripMenuItem deleteMenuItem;
 
         /// <summary>
-        /// Initializes the start menu
+        ///     Initializes the start menu
         /// </summary>
         public override void InitializeStartMenu()
         {
@@ -84,15 +84,18 @@ namespace GUI.RequirementSetDiagram
             // 
             selectRequirementsWhichDoNotBelongMenuItem.Name = "selectRequirementsWhichDoNotBelongMenuItem";
             selectRequirementsWhichDoNotBelongMenuItem.Size = new Size(161, 22);
-            selectRequirementsWhichDoNotBelongMenuItem.Text = "Select requirements which do not belong to requirement set";
-            selectRequirementsWhichDoNotBelongMenuItem.Click += new EventHandler(selectRequirementsWhichDoNotBelongMenuItem_Click);
+            selectRequirementsWhichDoNotBelongMenuItem.Text =
+                "Select requirements which do not belong to requirement set";
+            selectRequirementsWhichDoNotBelongMenuItem.Click +=
+                new EventHandler(selectRequirementsWhichDoNotBelongMenuItem_Click);
             // 
             // selectNotImplementedRequirements
             // 
             selectNotImplementedRequirementsMenuItem.Name = "selectNotImplementedRequirementsMenuItem";
             selectNotImplementedRequirementsMenuItem.Size = new Size(161, 22);
             selectNotImplementedRequirementsMenuItem.Text = "Select not implemented requirements";
-            selectNotImplementedRequirementsMenuItem.Click += new EventHandler(selectNotImplementedRequirementsMenuItem_Click);
+            selectNotImplementedRequirementsMenuItem.Click +=
+                new EventHandler(selectNotImplementedRequirementsMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
@@ -115,7 +118,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Initialises the component
+        ///     Initialises the component
         /// </summary>
         private void Init()
         {
@@ -124,7 +127,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RequirementSetPanel()
             : base()
@@ -133,7 +136,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public RequirementSetPanel(IContainer container)
@@ -145,7 +148,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Method used to create a box
+        ///     Method used to create a box
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -158,11 +161,12 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Method used to create an arrow
+        ///     Method used to create an arrow
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        public override ArrowControl<RequirementSet, RequirementSetDependancy> createArrow(RequirementSetDependancy model)
+        public override ArrowControl<RequirementSet, RequirementSetDependancy> createArrow(
+            RequirementSetDependancy model)
         {
             ArrowControl<RequirementSet, RequirementSetDependancy> retVal = new RequirementSetDependancyControl();
             retVal.Model = model;
@@ -171,12 +175,12 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// The enclosing element, which holds requirement setsEFSSystem for which this panel is built
+        ///     The enclosing element, which holds requirement setsEFSSystem for which this panel is built
         /// </summary>
         public IHoldsRequirementSets Enclosing { get; set; }
 
         /// <summary>
-        /// Provides the boxes that need be displayed
+        ///     Provides the boxes that need be displayed
         /// </summary>
         /// <returns></returns>
         public override List<RequirementSet> getBoxes()
@@ -187,7 +191,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Provides the arrows that need be displayed
+        ///     Provides the arrows that need be displayed
         /// </summary>
         /// <returns></returns>
         public override List<RequirementSetDependancy> getArrows()
@@ -236,7 +240,8 @@ namespace GUI.RequirementSetDiagram
                     target = Enclosing.RequirementSets[1];
                 }
 
-                RequirementSetDependancy dependancy = (RequirementSetDependancy) acceptor.getFactory().createRequirementSetDependancy();
+                RequirementSetDependancy dependancy =
+                    (RequirementSetDependancy) acceptor.getFactory().createRequirementSetDependancy();
                 dependancy.setTarget(target.Guid);
                 source.appendDependancies(dependancy);
 
@@ -289,7 +294,8 @@ namespace GUI.RequirementSetDiagram
             }
             else if (Selected is ArrowControl<RequirementSet, RequirementSetDependancy>)
             {
-                ArrowControl<RequirementSet, RequirementSetDependancy> control = Selected as ArrowControl<RequirementSet, RequirementSetDependancy>;
+                ArrowControl<RequirementSet, RequirementSetDependancy> control =
+                    Selected as ArrowControl<RequirementSet, RequirementSetDependancy>;
                 model = control.Model;
             }
             model.Delete();

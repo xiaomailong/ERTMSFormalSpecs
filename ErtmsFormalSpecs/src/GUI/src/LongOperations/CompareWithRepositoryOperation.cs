@@ -24,12 +24,12 @@ namespace GUI.LongOperations
     public class CompareWithRepositoryOperation : BaseCompareWithRepositoryOperation
     {
         /// <summary>
-        /// The commit to compare with
+        ///     The commit to compare with
         /// </summary>
         private Commit Commit { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary">The dictionary to be compared</param>
         /// <param name="commit">The commit to compare with</param>
@@ -40,7 +40,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        ///     Generates the file in the background thread
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()
@@ -57,7 +57,8 @@ namespace GUI.LongOperations
             }
             else
             {
-                MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information",
+                    "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

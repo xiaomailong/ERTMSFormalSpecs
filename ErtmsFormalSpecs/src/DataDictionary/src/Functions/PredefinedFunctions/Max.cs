@@ -23,22 +23,22 @@ using DataDictionary.Variables;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Creates a new function which describes the maximum value of two functions
+    ///     Creates a new function which describes the maximum value of two functions
     /// </summary>
     public class Max : FunctionOnGraph
     {
         /// <summary>
-        /// The first parameter
+        ///     The first parameter
         /// </summary>
         public Parameter First { get; private set; }
 
         /// <summary>
-        /// The second parameter
+        ///     The second parameter
         /// </summary>
         public Parameter Second { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="name">the name of the cast function</param>
@@ -59,12 +59,13 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context,
+            Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[First.Name], 1);
             CheckFunctionalParameter(root, context, actualParameters[Second.Name], 1);
@@ -85,7 +86,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     }
                 }
 
-                if (function1.ReturnType != function2.ReturnType && function1.ReturnType != EFSSystem.DoubleType && function2.ReturnType != EFSSystem.DoubleType)
+                if (function1.ReturnType != function2.ReturnType && function1.ReturnType != EFSSystem.DoubleType &&
+                    function2.ReturnType != EFSSystem.DoubleType)
                 {
                     root.AddError("The return values for the functions provided as parameter are not the same");
                 }
@@ -93,7 +95,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the graph of this function if it has been statically defined
+        ///     Provides the graph of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
         /// <param name="parameter"></param>
@@ -128,13 +130,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 

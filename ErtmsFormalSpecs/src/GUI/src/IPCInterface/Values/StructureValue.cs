@@ -30,13 +30,13 @@ namespace GUI.IPCInterface.Values
     public class StructureValue : Value
     {
         /// <summary>
-        /// The actual value
+        ///     The actual value
         /// </summary>
         [DataMember]
         public Dictionary<string, Value> Value { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="value"></param>
         public StructureValue(Dictionary<string, Value> value)
@@ -45,7 +45,7 @@ namespace GUI.IPCInterface.Values
         }
 
         /// <summary>
-        /// Provides the display value of this value
+        ///     Provides the display value of this value
         /// </summary>
         /// <returns></returns>
         public override string DisplayValue()
@@ -68,7 +68,7 @@ namespace GUI.IPCInterface.Values
         }
 
         /// <summary>
-        /// Converts the value provided as an EFS value
+        ///     Converts the value provided as an EFS value
         /// </summary>
         /// <returns></returns>
         public override IValue convertBack(Type type)
@@ -92,7 +92,9 @@ namespace GUI.IPCInterface.Values
                     }
                     else
                     {
-                        throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find element named " + element.Name + " in structure " + structureType.FullName));
+                        throw new FaultException<EFSServiceFault>(
+                            new EFSServiceFault("Cannot find element named " + element.Name + " in structure " +
+                                                structureType.FullName));
                     }
                 }
             }

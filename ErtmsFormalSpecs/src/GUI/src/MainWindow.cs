@@ -44,12 +44,12 @@ namespace GUI
     public partial class MainWindow : Form
     {
         /// <summary>
-        /// The sub forms for this window
+        ///     The sub forms for this window
         /// </summary>
         public HashSet<Form> SubForms { get; set; }
 
         /// <summary>
-        /// The sub IBaseForms handled in this MDI
+        ///     The sub IBaseForms handled in this MDI
         /// </summary>
         public HashSet<IBaseForm> SubWindows
         {
@@ -70,7 +70,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The editors opened in the MDI
+        ///     The editors opened in the MDI
         /// </summary>
         public HashSet<Window> Editors
         {
@@ -91,7 +91,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Selects the model element in all opened sub windows
+        ///     Selects the model element in all opened sub windows
         /// </summary>
         /// <param name="model"></param>
         /// <param name="getFocus">Indicates whether the focus should be given to the enclosing form</param>
@@ -119,7 +119,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles the fact that a sub window has been closed
+        ///     Handles the fact that a sub window has been closed
         /// </summary>
         /// <param name="form"></param>
         public void HandleSubWindowClosed(Form form)
@@ -134,14 +134,14 @@ namespace GUI
         }
 
         /// <summary>
-        /// Finds a  specific window in a collection of windows
+        ///     Finds a  specific window in a collection of windows
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public static class GenericWindowHandling<T>
             where T : Form, new()
         {
             /// <summary>
-            /// Finds the specified element in the collection provided
+            ///     Finds the specified element in the collection provided
             /// </summary>
             /// <param name="?"></param>
             /// <returns></returns>
@@ -162,7 +162,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Finds the specified element in the collection provided
+            ///     Finds the specified element in the collection provided
             /// </summary>
             /// <param name="subWindows"></param>
             /// <returns></returns>
@@ -183,7 +183,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Displays or shows the window, at the specified location
+            ///     Displays or shows the window, at the specified location
             /// </summary>
             /// <param name="window"></param>
             /// <param name="subWindow"></param>
@@ -204,7 +204,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a message view window
+        ///     Provides a message view window
         /// </summary>
         public MessagesView.Window MessagesWindow
         {
@@ -212,7 +212,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a more info view window
+        ///     Provides a more info view window
         /// </summary>
         public MoreInfoView.Window MoreInfoWindow
         {
@@ -220,7 +220,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a property view window
+        ///     Provides a property view window
         /// </summary>
         public PropertyView.Window PropertyWindow
         {
@@ -228,7 +228,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a requirement view window
+        ///     Provides a requirement view window
         /// </summary>
         public RequirementsView.Window RequirementsWindow
         {
@@ -236,7 +236,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a usage view window
+        ///     Provides a usage view window
         /// </summary>
         public UsageView.Window UsageWindow
         {
@@ -245,7 +245,7 @@ namespace GUI
 
 
         /// <summary>
-        /// Provides a data dictionary window
+        ///     Provides a data dictionary window
         /// </summary>
         public DataDictionaryView.Window DataDictionaryWindow
         {
@@ -253,7 +253,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a specification window
+        ///     Provides a specification window
         /// </summary>
         public SpecificationView.Window SpecificationWindow
         {
@@ -261,7 +261,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the history window
+        ///     Provides the history window
         /// </summary>
         public HistoryView.Window HistoryWindow
         {
@@ -269,7 +269,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a test runner window
+        ///     Provides a test runner window
         /// </summary>
         public TestRunnerView.Window TestWindow
         {
@@ -277,7 +277,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides a watch window
+        ///     Provides a watch window
         /// </summary>
         public TestRunnerView.Watch.Window WatchWindow
         {
@@ -285,7 +285,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The translation window
+        ///     The translation window
         /// </summary>
         public TranslationRules.Window TranslationWindow
         {
@@ -303,7 +303,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The shortcuts window
+        ///     The shortcuts window
         /// </summary>
         private Shortcuts.Window ShortcutsWindow
         {
@@ -311,7 +311,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The selection history window
+        ///     The selection history window
         /// </summary>
         private SelectionHistory.Window SelectionHistoryWindow
         {
@@ -320,7 +320,7 @@ namespace GUI
 
 
         /// <summary>
-        /// The editor window
+        ///     The editor window
         /// </summary>
         private ExpressionWindow ExpressionEditorWindow
         {
@@ -328,7 +328,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The comment window
+        ///     The comment window
         /// </summary>
         private CommentWindow CommentEditorWindow
         {
@@ -337,12 +337,12 @@ namespace GUI
 
 
         /// <summary>
-        /// The thread used to synchronize node names with their model
+        ///     The thread used to synchronize node names with their model
         /// </summary>
         private class Synchronizer : GenericSynchronizationHandler<MainWindow>
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="instance"></param>
             public Synchronizer(MainWindow instance, int cycleTime)
@@ -351,7 +351,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Synchronization
+            ///     Synchronization
             /// </summary>
             /// <param name="instance"></param>
             public override void HandleSynchronization(MainWindow instance)
@@ -371,28 +371,28 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that synchronization is required
+        ///     Indicates that synchronization is required
         /// </summary>
         private Synchronizer WindowSynchronizerTask { get; set; }
 
 
         /// <summary>
-        /// The class that is used to update the status
+        ///     The class that is used to update the status
         /// </summary>
         private class StatusSynchronizer : GenericSynchronizationHandler<MainWindow>
         {
             /// <summary>
-            /// The model element used to update the status bar
+            ///     The model element used to update the status bar
             /// </summary>
             private IHoldsParagraphs Model { get; set; }
 
             /// <summary>
-            /// Indicates that the model has changed
+            ///     Indicates that the model has changed
             /// </summary>
             private bool ModelChanged { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="window"></param>
             public StatusSynchronizer(MainWindow window)
@@ -403,7 +403,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Sets the instance to display
+            ///     Sets the instance to display
             /// </summary>
             /// <param name="model"></param>
             public void SetModel(IHoldsParagraphs model)
@@ -414,7 +414,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Synchronization
+            ///     Synchronization
             /// </summary>
             /// <param name="instance"></param>
             public override void HandleSynchronization(MainWindow instance)
@@ -439,22 +439,22 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that synchronization is required
+        ///     Indicates that synchronization is required
         /// </summary>
         private StatusSynchronizer StatusSynchronizerTask { get; set; }
 
         /// <summary>
-        /// The maximum size of the history
+        ///     The maximum size of the history
         /// </summary>
         private const int MAX_SELECTION_HISTORY = 100;
 
         /// <summary>
-        /// The selection history
+        ///     The selection history
         /// </summary>
         public List<IModelElement> SelectionHistory { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public MainWindow()
         {
@@ -473,7 +473,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles the closing of the main window
+        ///     Handles the closing of the main window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -484,7 +484,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles specific key actions
+        ///     Handles specific key actions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -503,7 +503,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Destructor
+        ///     Destructor
         /// </summary>
         ~MainWindow()
         {
@@ -519,7 +519,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Updates the title according to the windows state
+        ///     Updates the title according to the windows state
         /// </summary>
         public void UpdateTitle()
         {
@@ -541,7 +541,7 @@ namespace GUI
         private Dictionary<Form, Rectangle> InitialRectangle = new Dictionary<Form, Rectangle>();
 
         /// <summary>
-        /// Adds a child window to this parent MDI
+        ///     Adds a child window to this parent MDI
         /// </summary>
         /// <param name="window"></param>
         /// <param name="dockArea">where to place the window</param>
@@ -584,7 +584,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Ensures that a window is closed
+        ///     Ensures that a window is closed
         /// </summary>
         /// <param name="window"></param>
         /// <returns></returns>
@@ -606,7 +606,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Closes all child windows of this MDI window
+        ///     Closes all child windows of this MDI window
         /// </summary>
         private void CloseChildWindows()
         {
@@ -618,13 +618,13 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that the refresh should be performed
+        ///     Indicates that the refresh should be performed
         /// </summary>
         public bool AllowRefresh { get; set; }
 
         /// <summary>
-        /// Refreshes the content of the window based on the associated model
-        /// (changes may have occured)
+        ///     Refreshes the content of the window based on the associated model
+        ///     (changes may have occured)
         /// </summary>
         public void RefreshModel()
         {
@@ -643,8 +643,8 @@ namespace GUI
         }
 
         /// <summary>
-        /// Refreshes the display of the windows.
-        /// No structural model change occurred.
+        ///     Refreshes the display of the windows.
+        ///     No structural model change occurred.
         /// </summary>
         public override void Refresh()
         {
@@ -668,10 +668,10 @@ namespace GUI
         #region OpenFile
 
         /// ------------------------------------------------------
-        ///    OPEN OPERATIONS
+        /// OPEN OPERATIONS
         /// ------------------------------------------------------
         /// <summary>
-        /// The efs system
+        ///     The efs system
         /// </summary>
         public EFSSystem EFSSystem
         {
@@ -691,7 +691,8 @@ namespace GUI
                     bool allowErrors = false;
                     bool shouldPlace = EFSSystem.Dictionaries.Count == 0;
 
-                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem, allowErrors, true);
+                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem,
+                        allowErrors, true);
                     openFileOperation.ExecuteUsingProgressDialog("Opening file", true);
 
                     // Open the windows
@@ -711,17 +712,20 @@ namespace GUI
                         GenericWindowHandling<TestRunnerView.Window>.AddOrShow(this, TestWindow, DockAreas.Document);
 
                         TranslationRules.Window translationWindow = null;
-                        if (dictionary.TranslationDictionary != null && dictionary.TranslationDictionary.TranslationsCount > 0)
+                        if (dictionary.TranslationDictionary != null &&
+                            dictionary.TranslationDictionary.TranslationsCount > 0)
                         {
                             translationWindow = new TranslationRules.Window(dictionary.TranslationDictionary);
                             AddChildWindow(translationWindow, DockAreas.Document);
                         }
 
                         // Display the views in the left pane
-                        GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow, DockAreas.DockLeft);
+                        GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow,
+                            DockAreas.DockLeft);
 
                         // Display the views in the bottom pane
-                        GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow, DockAreas.DockBottom);
+                        GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow,
+                            DockAreas.DockBottom);
                         GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
 
                         GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
@@ -735,19 +739,22 @@ namespace GUI
                         {
                             CommentEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
                         }
-                        GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow, DockAreas.DockBottom);
+                        GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow,
+                            DockAreas.DockBottom);
                         CommentEditorWindow.Show();
 
                         // Display the views in the right pane
                         GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
-                        GenericWindowHandling<ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow, DockAreas.DockRight);
+                        GenericWindowHandling<ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow,
+                            DockAreas.DockRight);
                         if (shouldPlace)
                         {
                             ExpressionEditorWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
                         }
                         GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
                         GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
-                        GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow, DockAreas.DockRight);
+                        GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow,
+                            DockAreas.DockRight);
                         SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
                         ExpressionEditorWindow.Show();
 
@@ -766,7 +773,8 @@ namespace GUI
                     }
                     else if (!openFileOperation.Dialog.Canceled)
                     {
-                        MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information",
+                            "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 finally
@@ -784,10 +792,10 @@ namespace GUI
         #region SaveFile
 
         /// ------------------------------------------------------
-        ///    SAVE OPERATIONS
+        /// SAVE OPERATIONS
         /// ------------------------------------------------------
         /// <summary>
-        /// Provides the dictionary on which operation should be performed
+        ///     Provides the dictionary on which operation should be performed
         /// </summary>
         /// <returns></returns>
         public Dictionary GetActiveDictionary()
@@ -802,7 +810,8 @@ namespace GUI
                 }
                 else if (EFSSystem.Dictionaries.Count > 1)
                 {
-                    DictionarySelector.DictionarySelector dictionarySelector = new DictionarySelector.DictionarySelector(EFSSystem);
+                    DictionarySelector.DictionarySelector dictionarySelector =
+                        new DictionarySelector.DictionarySelector(EFSSystem);
                     dictionarySelector.ShowDialog(this);
 
                     if (dictionarySelector.Selected != null)
@@ -816,7 +825,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The tooltip associated to this form
+        ///     The tooltip associated to this form
         /// </summary>
         public ToolTip ToolTip
         {
@@ -868,7 +877,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Checks if the file should be saved before closing the window
+        ///     Checks if the file should be saved before closing the window
         /// </summary>
         /// <returns></returns>
         private bool CheckSave()
@@ -877,7 +886,9 @@ namespace GUI
 
             if (EFSSystem.ShouldSave)
             {
-                DialogResult result = MessageBox.Show("Model has been changed, do you want to save it ?", "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                DialogResult result = MessageBox.Show("Model has been changed, do you want to save it ?",
+                    "Model changed", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information,
+                    MessageBoxDefaultButton.Button1);
                 switch (result)
                 {
                     case DialogResult.Yes:
@@ -898,7 +909,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The rich text box currently selected
+        ///     The rich text box currently selected
         /// </summary>
         public EditorTextBox SelectedRichTextBox { get; set; }
 
@@ -988,7 +999,9 @@ namespace GUI
             operation.ExecuteUsingProgressDialog("Check model");
 
             MessageCounter counter = new MessageCounter(EFSSystem);
-            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info +
+                " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         #endregion
@@ -1046,7 +1059,7 @@ namespace GUI
         }
 
         /// ------------------------------------------------------
-        ///    MARKS OPERATIONS
+        /// MARKS OPERATIONS
         /// ------------------------------------------------------
         private void clearMarksToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1054,7 +1067,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Clears all marks from the model/spec/tests/...
+        ///     Clears all marks from the model/spec/tests/...
         /// </summary>
         public void ClearMarks()
         {
@@ -1206,7 +1219,7 @@ namespace GUI
         #region Import test database
 
         /// ------------------------------------------------------
-        ///    IMPORT TEST DATABASE OPERATIONS
+        /// IMPORT TEST DATABASE OPERATIONS
         /// ------------------------------------------------------
         private void importDatabaseToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1218,7 +1231,8 @@ namespace GUI
                 openFileDialog.Filter = "Access Files (*.mdb)|*.mdb";
                 if (openFileDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    ImportTestDataBaseOperation operation = new ImportTestDataBaseOperation(openFileDialog.FileName, dictionary, ImportTestDataBaseOperation.Mode.File);
+                    ImportTestDataBaseOperation operation = new ImportTestDataBaseOperation(openFileDialog.FileName,
+                        dictionary, ImportTestDataBaseOperation.Mode.File);
                     operation.ExecuteUsingProgressDialog("Import database");
 
                     // Updates the test tree view data
@@ -1239,7 +1253,9 @@ namespace GUI
                 FolderBrowserDialog selectFolderDialog = new FolderBrowserDialog();
                 if (selectFolderDialog.ShowDialog(this) == DialogResult.OK)
                 {
-                    ImportTestDataBaseOperation operation = new ImportTestDataBaseOperation(selectFolderDialog.SelectedPath, dictionary, ImportTestDataBaseOperation.Mode.Directory);
+                    ImportTestDataBaseOperation operation =
+                        new ImportTestDataBaseOperation(selectFolderDialog.SelectedPath, dictionary,
+                            ImportTestDataBaseOperation.Mode.Directory);
                     operation.ExecuteUsingProgressDialog("Import database directory");
 
                     // Updates the test tree view data
@@ -1255,7 +1271,7 @@ namespace GUI
         #endregion
 
         /// ------------------------------------------------------
-        ///    CREATE REPORT OPERATIONS
+        /// CREATE REPORT OPERATIONS
         /// ------------------------------------------------------
         private void specCoverageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1357,12 +1373,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// ReInit counters in rules
+        ///     ReInit counters in rules
         /// </summary>
         private class ResetTimeStamps : Visitor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="efsSystem"></param>
             public ResetTimeStamps(EFSSystem efsSystem)
@@ -1412,7 +1428,8 @@ namespace GUI
 
         private void showFunctionsPerformancesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FunctionsPerformances.FunctionsPerformances functionsPerformances = new FunctionsPerformances.FunctionsPerformances(EFSSystem);
+            FunctionsPerformances.FunctionsPerformances functionsPerformances =
+                new FunctionsPerformances.FunctionsPerformances(EFSSystem);
             AddChildWindow(functionsPerformances, DockAreas.Document);
         }
 
@@ -1510,7 +1527,8 @@ namespace GUI
             selector.ShowDialog();
             if (selector.Selected != null)
             {
-                CompareWithRepositoryOperation operation = new CompareWithRepositoryOperation(dictionary, selector.Selected);
+                CompareWithRepositoryOperation operation = new CompareWithRepositoryOperation(dictionary,
+                    selector.Selected);
                 operation.ExecuteUsingProgressDialog("Compare with repository version " + selector.Selected.MessageShort);
                 Refresh();
             }
@@ -1519,7 +1537,7 @@ namespace GUI
         public bool AfterStep = false;
 
         /// <summary>
-        /// Refreshes all graph views
+        ///     Refreshes all graph views
         /// </summary>
         public void RefreshAfterStep()
         {
@@ -1558,12 +1576,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that the MDI window is currently handling a selection change
+        ///     Indicates that the MDI window is currently handling a selection change
         /// </summary>
         public bool HandlingSelection { get; set; }
 
         /// <summary>
-        /// Keeps track of a new selection
+        ///     Keeps track of a new selection
         /// </summary>
         /// <param name="selected"></param>
         public void HandleSelection(BaseTreeNode selected)
@@ -1612,7 +1630,8 @@ namespace GUI
                             IExpressionable expressionable = model as IExpressionable;
                             if (expressionable != null)
                             {
-                                editorView.setChangeHandler(new ExpressionableTextChangeHandler((ModelElement) expressionable));
+                                editorView.setChangeHandler(
+                                    new ExpressionableTextChangeHandler((ModelElement) expressionable));
                             }
                             else
                             {
@@ -1633,7 +1652,8 @@ namespace GUI
                         CommentWindow commentView = CommentEditorWindow;
                         if (commentView != null)
                         {
-                            commentView.setChangeHandler(new CommentableTextChangeHandler((ModelElement) (model as ICommentable)));
+                            commentView.setChangeHandler(
+                                new CommentableTextChangeHandler((ModelElement) (model as ICommentable)));
                         }
 
                         // Uages 
@@ -1652,7 +1672,8 @@ namespace GUI
                         if (SelectionHistory.Count == 0 || SelectionHistory[0] != model)
                         {
                             SelectionHistory.Insert(0, model);
-                            SelectionHistory.Window selectionHistoryWindow = GenericWindowHandling<SelectionHistory.Window>.find(SubForms);
+                            SelectionHistory.Window selectionHistoryWindow =
+                                GenericWindowHandling<SelectionHistory.Window>.find(SubForms);
                             if (selectionHistoryWindow != null)
                             {
                                 selectionHistoryWindow.RefreshModel();
@@ -1695,7 +1716,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the selected form
+        ///     Provides the selected form
         /// </summary>
         /// <returns></returns>
         private Form SelectedForm()
@@ -1744,7 +1765,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sets the status of the window
+        ///     Sets the status of the window
         /// </summary>
         /// <param name="statusText"></param>
         public void SetStatus(string statusText)
@@ -1753,7 +1774,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sets the default status
+        ///     Sets the default status
         /// </summary>
         public void SetCoverageStatus(IHoldsParagraphs model)
         {
@@ -1772,7 +1793,8 @@ namespace GUI
             selector.Text = "Select the version up to which blame mode should be built";
             selector.ShowDialog();
 
-            UpdateBlameInformationOperation operation = new UpdateBlameInformationOperation(dictionary, selector.Selected);
+            UpdateBlameInformationOperation operation = new UpdateBlameInformationOperation(dictionary,
+                selector.Selected);
             operation.ExecuteUsingProgressDialog("Update blame information");
         }
 
@@ -1808,7 +1830,9 @@ namespace GUI
             operation.ExecuteUsingProgressDialog("Check model");
 
             MessageCounter counter = new MessageCounter(EFSSystem);
-            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info +
+                " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void checkToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1817,7 +1841,9 @@ namespace GUI
             operation.ExecuteUsingProgressDialog("Check dead model");
 
             MessageCounter counter = new MessageCounter(EFSSystem);
-            MessageBox.Show(counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info + " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(
+                counter.Error + " error(s)\n" + counter.Warning + " warning(s)\n" + counter.Info +
+                " info message(s) found", "Check result", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void showRequirementSetToolStripMenuItem_Click(object sender, EventArgs e)

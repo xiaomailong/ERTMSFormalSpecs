@@ -21,7 +21,7 @@ namespace DataDictionary.Specification
     public class Value : value
     {
         /// <summary>
-        /// The Value content
+        ///     The Value content
         /// </summary>
         public string GetText(int depth)
         {

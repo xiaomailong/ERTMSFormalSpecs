@@ -30,12 +30,12 @@ namespace GUI.TestRunnerView
     public class FrameTreeNode : ModelElementTreeNode<Frame>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : CommentableEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -43,7 +43,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The variable that identifies the time in the current system
+            ///     The variable that identifies the time in the current system
             /// </summary>
             [Category("Description")]
             public string CycleDuration
@@ -54,7 +54,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public FrameTreeNode(Frame item, bool buildSubNodes)
@@ -63,7 +63,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -78,7 +78,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -87,7 +87,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new sub sequence in the corresponding frame
+        ///     Creates a new sub sequence in the corresponding frame
         /// </summary>
         /// <param name="subSequenceName"></param>
         /// <returns></returns>
@@ -106,7 +106,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Translates the corresponding sub sequence, according to translation rules
+        ///     Translates the corresponding sub sequence, according to translation rules
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -123,12 +123,12 @@ namespace GUI.TestRunnerView
         private class ApplyRulesOperation : ProgressHandler
         {
             /// <summary>
-            /// The frams on which the rules should be applied
+            ///     The frams on which the rules should be applied
             /// </summary>
             private Frame Frame { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="frame"></param>
             public ApplyRulesOperation(Frame frame)
@@ -137,7 +137,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Perform the work as a background task
+            ///     Perform the work as a background task
             /// </summary>
             public override void ExecuteWork()
             {
@@ -168,22 +168,22 @@ namespace GUI.TestRunnerView
         private class ExecuteTestsOperation : BaseLongOperation
         {
             /// <summary>
-            /// The number of failed tests 
+            ///     The number of failed tests
             /// </summary>
             public int Failed { get; private set; }
 
             /// <summary>
-            /// The window in which the tests are executed
+            ///     The window in which the tests are executed
             /// </summary>
             private Window Window { get; set; }
 
             /// <summary>
-            /// The frame to test
+            ///     The frame to test
             /// </summary>
             private Frame Frame { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="window"></param>
             /// <param name="frame"></param>
@@ -194,7 +194,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Executes the work in the background task
+            ///     Executes the work in the background task
             /// </summary>
             /// <param name="arg"></param>
             public override void ExecuteWork()
@@ -240,7 +240,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a run event on this test case
+        ///     Handles a run event on this test case
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -261,14 +261,17 @@ namespace GUI.TestRunnerView
 
             if (!executeTestsOperation.Dialog.Canceled)
             {
-                MessageBox.Show(Item.SubSequences.Count + " sub sequence(s) executed, " + executeTestsOperation.Failed + " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestsOperation.Span.TotalSeconds) + " seconds", "Execution report");
+                MessageBox.Show(
+                    Item.SubSequences.Count + " sub sequence(s) executed, " + executeTestsOperation.Failed +
+                    " sub sequence(s) failed.\n" + runtimeErrors + "Test duration : " +
+                    Math.Round(executeTestsOperation.Span.TotalSeconds) + " seconds", "Execution report");
             }
         }
 
         #endregion
 
         /// <summary>
-        /// Handles a run event on this frame and creates the associated report
+        ///     Handles a run event on this frame and creates the associated report
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -279,7 +282,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -299,7 +302,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Finds the subsequence tree node which corresponds to the name provided
+        ///     Finds the subsequence tree node which corresponds to the name provided
         /// </summary>
         /// <param name="subSequenceName"></param>
         /// <returns></returns>
@@ -309,7 +312,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles the drop event
+        ///     Handles the drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

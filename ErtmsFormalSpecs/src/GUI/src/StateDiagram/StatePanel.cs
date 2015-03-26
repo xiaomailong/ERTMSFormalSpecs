@@ -43,7 +43,7 @@ namespace GUI.StateDiagram
         private ToolStripMenuItem deleteMenuItem;
 
         /// <summary>
-        /// Initializes the start menu
+        ///     Initializes the start menu
         /// </summary>
         public override void InitializeStartMenu()
         {
@@ -90,7 +90,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public StatePanel()
             : base()
@@ -99,7 +99,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public StatePanel(IContainer container)
@@ -111,7 +111,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Method used to create a box
+        ///     Method used to create a box
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -124,7 +124,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Method used to create an arrow
+        ///     Method used to create an arrow
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -137,7 +137,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// The state machine displayed by this panel
+        ///     The state machine displayed by this panel
         /// </summary>
         public StateMachine StateMachine
         {
@@ -146,12 +146,12 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// The expressiong required to get the state machine variable (if any) displayed by this panel
+        ///     The expressiong required to get the state machine variable (if any) displayed by this panel
         /// </summary>
         public Expression StateMachineVariableExpression { get; set; }
 
         /// <summary>
-        /// Provides the state machine variable (if any)
+        ///     Provides the state machine variable (if any)
         /// </summary>
         public IVariable StateMachineVariable
         {
@@ -169,7 +169,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Provides the boxes that need be displayed
+        ///     Provides the boxes that need be displayed
         /// </summary>
         /// <returns></returns>
         public override List<State> getBoxes()
@@ -185,7 +185,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Provides the arrows that need be displayed
+        ///     Provides the arrows that need be displayed
         /// </summary>
         /// <returns></returns>
         public override List<Transition> getArrows()
@@ -200,7 +200,8 @@ namespace GUI.StateDiagram
 
             if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
             {
-                StateMachineTreeNode node = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(StateMachine) as StateMachineTreeNode;
+                StateMachineTreeNode node =
+                    GUIUtils.MDIWindow.DataDictionaryWindow.FindNode(StateMachine) as StateMachineTreeNode;
                 if (node != null)
                 {
                     node.AddState(state);
@@ -232,7 +233,9 @@ namespace GUI.StateDiagram
 
                 if (GUIUtils.MDIWindow.DataDictionaryWindow != null)
                 {
-                    StateTreeNode stateNode = GUIUtils.MDIWindow.DataDictionaryWindow.FindNode((State) StateMachine.States[0]) as StateTreeNode;
+                    StateTreeNode stateNode =
+                        GUIUtils.MDIWindow.DataDictionaryWindow.FindNode((State) StateMachine.States[0]) as
+                            StateTreeNode;
                     if (stateNode != null)
                     {
                         if (!stateNode.SubNodesBuilt)

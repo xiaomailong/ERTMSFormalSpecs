@@ -29,24 +29,25 @@ namespace DataDictionary.Interpreter
     public class FunctionExpression : Expression, ISubDeclarator
     {
         /// <summary>
-        /// The parameters for this function expression
+        ///     The parameters for this function expression
         /// </summary>
         public List<Parameter> Parameters { get; private set; }
 
         /// <summary>
-        /// The expression associated to this function
+        ///     The expression associated to this function
         /// </summary>
         public Expression Expression { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="expression">the functional expression</param>
         /// <param name="parameters">the function parameters</param>
         /// <param name="root"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public FunctionExpression(ModelElement root, ModelElement log, List<Parameter> parameters, Expression expression, int start, int end)
+        public FunctionExpression(ModelElement root, ModelElement log, List<Parameter> parameters, Expression expression,
+            int start, int end)
             : base(root, log, start, end)
         {
             Parameters = parameters;
@@ -58,7 +59,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -72,12 +73,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -87,7 +88,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -108,7 +109,7 @@ namespace DataDictionary.Interpreter
         private ICallable __staticCallable = null;
 
         /// <summary>
-        /// Provides the ICallable that is statically defined
+        ///     Provides the ICallable that is statically defined
         /// </summary>
         public override ICallable getStaticCallable()
         {
@@ -121,7 +122,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -144,7 +145,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the callable that is called by this expression
+        ///     Provides the callable that is called by this expression
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -155,7 +156,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -205,7 +206,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -229,7 +230,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -254,7 +255,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         /// <param name="context">The interpretation context</param>
         public override void checkExpression()
@@ -265,7 +266,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
+        ///     Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
@@ -288,14 +289,15 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the surface of this function if it has been statically defined
+        ///     Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam,
+            ExplanationPart explain)
         {
             Surface retVal = base.createSurface(context, xParam, yParam, explain);
 

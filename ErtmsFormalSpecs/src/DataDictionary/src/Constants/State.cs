@@ -47,7 +47,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Adds a new element log attached to this model element
+        ///     Adds a new element log attached to this model element
         /// </summary>
         /// <param name="log"></param>
         public override void AddElementLog(ElementLog log)
@@ -69,7 +69,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// State machines are not displayed in the tree view. 
+        ///     State machines are not displayed in the tree view.
         /// </summary>
         public override List<ElementLog> Messages
         {
@@ -88,7 +88,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Clears the messages associated to this model element
+        ///     Clears the messages associated to this model element
         /// </summary>
         public override void ClearMessages()
         {
@@ -98,7 +98,7 @@ namespace DataDictionary.Constants
 
 
         /// <summary>
-        /// Provides the full name path to this element in the model structure
+        ///     Provides the full name path to this element in the model structure
         /// </summary>
         public override string FullName
         {
@@ -129,7 +129,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The states available in this state
+        ///     The states available in this state
         /// </summary>
         public HashSet<State> AllStates
         {
@@ -137,7 +137,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Finds a substate from this state
+        ///     Finds a substate from this state
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -147,7 +147,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the state whose name matches the name provided
+        ///     Provides the state whose name matches the name provided
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
@@ -172,7 +172,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The value type
+        ///     The value type
         /// </summary>
         public Type Type
         {
@@ -191,7 +191,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The sub state machine for this state
+        ///     The sub state machine for this state
         /// </summary>
         public StateMachine StateMachine
         {
@@ -210,7 +210,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The width of the rectangle representing the state
+        ///     The width of the rectangle representing the state
         /// </summary>
         public int Width
         {
@@ -219,7 +219,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The height of the rectangle representing the state
+        ///     The height of the rectangle representing the state
         /// </summary>
         public int Height
         {
@@ -228,7 +228,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The X position of the rectangle representing the state
+        ///     The X position of the rectangle representing the state
         /// </summary>
         public int X
         {
@@ -237,7 +237,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The Y position of the rectangle representing the state
+        ///     The Y position of the rectangle representing the state
         /// </summary>
         public int Y
         {
@@ -246,7 +246,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The name to be displayed on the graphical view
+        ///     The name to be displayed on the graphical view
         /// </summary>
         public string GraphicalName
         {
@@ -263,7 +263,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Indicates whether the state is hidden
+        ///     Indicates whether the state is hidden
         /// </summary>
         public bool Hidden
         {
@@ -272,7 +272,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Indicates that the element is pinned
+        ///     Indicates that the element is pinned
         /// </summary>
         public bool Pinned
         {
@@ -281,7 +281,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The enclosing state machine
+        ///     The enclosing state machine
         /// </summary>
         public StateMachine EnclosingStateMachine
         {
@@ -289,7 +289,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The enclosing state, if any
+        ///     The enclosing state, if any
         /// </summary>
         public State EnclosingState
         {
@@ -313,7 +313,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -321,7 +321,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides all the states available through this state
+        ///     Provides all the states available through this state
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements
         {
@@ -329,7 +329,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -339,7 +339,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Creates a valid right side IValue, according to the target variable (left side)
+        ///     Creates a valid right side IValue, according to the target variable (left side)
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="setEnclosing">Indicates that the new value enclosing element should be set</param>
@@ -357,7 +357,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The namespace related to the typed element
+        ///     The namespace related to the typed element
         /// </summary>
         public NameSpace NameSpace
         {
@@ -365,7 +365,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the type name of the element
+        ///     Provides the type name of the element
         /// </summary>
         public string TypeName
         {
@@ -374,7 +374,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the mode of the typed element
+        ///     Provides the mode of the typed element
         /// </summary>
         public acceptor.VariableModeEnumType Mode
         {
@@ -382,7 +382,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the default value of the typed element
+        ///     Provides the default value of the typed element
         /// </summary>
         public string Default
         {
@@ -391,7 +391,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -399,7 +399,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -408,9 +408,12 @@ namespace DataDictionary.Constants
             string retVal = "";
 
             retVal =
-                TextualExplainUtilities.Pad("{\\cf11 // " + TextualExplainUtilities.Iterate('*', 6 + Name.Length) + "}\\cf1\\par", indentLevel)
+                TextualExplainUtilities.Pad(
+                    "{\\cf11 // " + TextualExplainUtilities.Iterate('*', 6 + Name.Length) + "}\\cf1\\par", indentLevel)
                 + TextualExplainUtilities.Pad("{\\cf11 // State " + Name + "}\\cf1\\par", indentLevel)
-                + TextualExplainUtilities.Pad("{\\cf11 // " + TextualExplainUtilities.Iterate('*', 6 + Name.Length) + "}\\cf1\\par", indentLevel);
+                +
+                TextualExplainUtilities.Pad(
+                    "{\\cf11 // " + TextualExplainUtilities.Iterate('*', 6 + Name.Length) + "}\\cf1\\par", indentLevel);
 
             if (getExplain)
             {
@@ -424,7 +427,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -435,7 +438,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Duplicates this model element
+        ///     Duplicates this model element
         /// </summary>
         /// <returns></returns>
         public State duplicate()
@@ -452,8 +455,8 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Converts a structure value to its corresponding structure expression.
-        /// null entries correspond to the default value
+        ///     Converts a structure value to its corresponding structure expression.
+        ///     null entries correspond to the default value
         /// </summary>
         /// <returns></returns>
         public string ToExpressionWithDefault()

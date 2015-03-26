@@ -29,7 +29,7 @@ namespace Reports.Specs
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="document"></param>
         public SpecIssuesReport(Document document)
@@ -38,7 +38,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Counts the number of requirements where more information is needed
+        ///     Counts the number of requirements where more information is needed
         /// </summary>
         /// <param name="dictionary"></param>
         /// <returns></returns>
@@ -55,20 +55,22 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates an article with the requirements which require more information 
+        ///     Creates an article with the requirements which require more information
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
         public void CreateMoreInformationArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("More information needed");
-            AddParagraph("This report describes the requirements " + CountMoreInformationNeeded(aReportConfig.Dictionary) + " that are not sufficiently precise and require more information. ");
+            AddParagraph("This report describes the requirements " +
+                         CountMoreInformationNeeded(aReportConfig.Dictionary) +
+                         " that are not sufficiently precise and require more information. ");
             GenerateMoreInformationNeeded(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
 
         /// <summary>
-        /// Counts the number of spec issues in a dictionary
+        ///     Counts the number of spec issues in a dictionary
         /// </summary>
         /// <param name="dictionary"></param>
         /// <returns></returns>
@@ -85,20 +87,21 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates an article with informations about all the paragraphs of the specification
+        ///     Creates an article with informations about all the paragraphs of the specification
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
         public void CreateSpecIssuesArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Specification issues report");
-            AddParagraph("This report describes the specification " + CountSpecIssues(aReportConfig.Dictionary) + " issues encountered during modeling. ");
+            AddParagraph("This report describes the specification " + CountSpecIssues(aReportConfig.Dictionary) +
+                         " issues encountered during modeling. ");
             GenerateSpecIssues(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
 
         /// <summary>
-        /// Counts the number of design choices in a dictionary
+        ///     Counts the number of design choices in a dictionary
         /// </summary>
         /// <param name="dictionary"></param>
         /// <returns></returns>
@@ -115,20 +118,21 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates an article with informations about all the paragraphs of the specification
+        ///     Creates an article with informations about all the paragraphs of the specification
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
         public void CreateDesignChoicesArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Design choices report");
-            AddParagraph("This report describes the " + CountDesignChoices(aReportConfig.Dictionary) + " design choices made during modeling of " + aReportConfig.Dictionary.Name);
+            AddParagraph("This report describes the " + CountDesignChoices(aReportConfig.Dictionary) +
+                         " design choices made during modeling of " + aReportConfig.Dictionary.Name);
             GenerateDesignChoices(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
 
         /// <summary>
-        /// Counts the number of design choices in a dictionary
+        ///     Counts the number of design choices in a dictionary
         /// </summary>
         /// <param name="dictionary"></param>
         /// <returns></returns>
@@ -145,20 +149,21 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates an article with the comments on the requirements
+        ///     Creates an article with the comments on the requirements
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
         public void CreateCommentsArticle(SpecIssuesReportHandler aReportConfig)
         {
             AddSubParagraph("Comments on requirements");
-            AddParagraph("This report describes the " + CountComments(aReportConfig.Dictionary) + " comments we made on the requirements requirements.");
+            AddParagraph("This report describes the " + CountComments(aReportConfig.Dictionary) +
+                         " comments we made on the requirements requirements.");
             GenerateComments(aReportConfig.Dictionary);
             CloseSubParagraph();
         }
 
         /// <summary>
-        /// Creates a table for more information needed
+        ///     Creates a table for more information needed
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <returns></returns>
@@ -177,7 +182,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates a table for specification issues
+        ///     Creates a table for specification issues
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <returns></returns>
@@ -196,7 +201,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates a table for design choices
+        ///     Creates a table for design choices
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <returns></returns>
@@ -230,7 +235,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates a table for comments
+        ///     Creates a table for comments
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <returns></returns>

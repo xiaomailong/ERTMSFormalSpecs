@@ -37,6 +37,7 @@ using SourceTextComment = DataDictionary.Tests.Translations.SourceTextComment;
 using StateMachine = DataDictionary.Generated.StateMachine;
 using Structure = DataDictionary.Generated.Structure;
 using StructureElement = DataDictionary.Generated.StructureElement;
+using StructureRef = DataDictionary.Generated.StructureRef;
 using SubStep = DataDictionary.Tests.SubStep;
 using TestCase = DataDictionary.Tests.TestCase;
 using Translation = DataDictionary.Tests.Translations.Translation;
@@ -48,12 +49,12 @@ using Visitor = DataDictionary.Generated.Visitor;
 namespace DataDictionary
 {
     /// <summary>
-    /// Logs messages on the rules according to the validity of the rule
+    ///     Logs messages on the rules according to the validity of the rule
     /// </summary>
     public class RuleCheckerVisitor : Visitor
     {
         /// <summary>
-        /// The dictionary used for this visit
+        ///     The dictionary used for this visit
         /// </summary>
         private Dictionary dictionary;
 
@@ -64,7 +65,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public RuleCheckerVisitor(Dictionary dictionary)
@@ -75,7 +76,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Checks an expression associated to a model element
+        ///     Checks an expression associated to a model element
         /// </summary>
         /// <param name="model">The model element on which the expression is defined</param>
         /// <param name="expression">The expression to check</param>
@@ -111,7 +112,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Checks a statement associated to a model element
+        ///     Checks a statement associated to a model element
         /// </summary>
         /// <param name="model">The model element on which the expression is defined</param>
         /// <param name="expression">The expression to check</param>
@@ -192,7 +193,8 @@ namespace DataDictionary
 
                         if (step.Name.IndexOf("Setup") < 0 && step.Name.IndexOf("Initialize") < 0)
                         {
-                            step.AddWarning("First step of the first test case of a subsequence should be used to setup the system, and should hold 'Setup' or 'Initialize' in its name");
+                            step.AddWarning(
+                                "First step of the first test case of a subsequence should be used to setup the system, and should hold 'Setup' or 'Initialize' in its name");
                         }
                     }
                 }
@@ -202,7 +204,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Ensure that all step that should be automatically translated have a translation
+        ///     Ensure that all step that should be automatically translated have a translation
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
@@ -222,7 +224,8 @@ namespace DataDictionary
                 if (step.getDescription() != null)
                 {
                     // Specific checks for subset-076
-                    if ((step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
+                    if ((step.getDescription().IndexOf("balise group", StringComparison.InvariantCultureIgnoreCase) !=
+                         -1) && step.getDescription().Contains("is received"))
                     {
                         if (step.StepMessages.Count == 0)
                         {
@@ -230,7 +233,9 @@ namespace DataDictionary
                         }
                     }
 
-                    if ((step.getDescription().IndexOf("euroloop message", StringComparison.InvariantCultureIgnoreCase) != -1) && step.getDescription().Contains("is received"))
+                    if (
+                        (step.getDescription().IndexOf("euroloop message", StringComparison.InvariantCultureIgnoreCase) !=
+                         -1) && step.getDescription().Contains("is received"))
                     {
                         if (step.StepMessages.Count == 0)
                         {
@@ -253,7 +258,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Applied to all nodes of the tree
+        ///     Applied to all nodes of the tree
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
@@ -294,7 +299,8 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Indicates that the enclosed mode matches the enclosing mode, that is, that the enclosed mode is = or more restrictive than the enclosing mode
+        ///     Indicates that the enclosed mode matches the enclosing mode, that is, that the enclosed mode is = or more
+        ///     restrictive than the enclosing mode
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="enclosed"></param>
@@ -338,7 +344,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Checks that a comment is attached to this ICommentable
+        ///     Checks that a comment is attached to this ICommentable
         /// </summary>
         /// <param name="commentable"></param>
         private static void checkComment(ICommentable commentable)
@@ -409,7 +415,8 @@ namespace DataDictionary
             {
                 if (!element.DefaultValue.Type.Match(element.Type))
                 {
-                    element.AddError("Type of default value (" + element.DefaultValue.Type.FullName + ") does not match element type (" + element.Type.FullName + ")");
+                    element.AddError("Type of default value (" + element.DefaultValue.Type.FullName +
+                                     ") does not match element type (" + element.Type.FullName + ")");
                 }
             }
 
@@ -439,14 +446,16 @@ namespace DataDictionary
                             }
                         }
                     }
-                    if(variable.Type.IsAbstract)
+                    if (variable.Type.IsAbstract)
                     {
                         variable.AddError("Instantiation of abstract types is forbidden");
                     }
                 }
-                if (Utils.Utils.isEmpty(variable.Comment) && variable.Type != null && Utils.Utils.isEmpty(variable.Type.Comment))
+                if (Utils.Utils.isEmpty(variable.Comment) && variable.Type != null &&
+                    Utils.Utils.isEmpty(variable.Type.Comment))
                 {
-                    variable.AddInfo("Missing variable semantics. Update the 'Comment' associated to the variable or to the corresponding type");
+                    variable.AddInfo(
+                        "Missing variable semantics. Update the 'Comment' associated to the variable or to the corresponding type");
                 }
 
                 if (!Utils.Utils.isEmpty(variable.getDefaultValue()))
@@ -458,7 +467,8 @@ namespace DataDictionary
                 {
                     if (!variable.DefaultValue.Type.Match(variable.Type))
                     {
-                        variable.AddError("Type of default value (" + variable.DefaultValue.Type.FullName + ")does not match variable type (" + variable.Type.FullName + ")");
+                        variable.AddError("Type of default value (" + variable.DefaultValue.Type.FullName +
+                                          ")does not match variable type (" + variable.Type.FullName + ")");
                     }
                 }
             }
@@ -494,26 +504,29 @@ namespace DataDictionary
                         checkExpression(element, element.getDefault());
                     }
                 }
-                foreach(Types.Structure implementedStructure in structure.Interfaces)
+                foreach (Types.Structure implementedStructure in structure.Interfaces)
                 {
-                    foreach(Types.StructureElement implementedElement in implementedStructure.Elements)
+                    foreach (Types.StructureElement implementedElement in implementedStructure.Elements)
                     {
                         bool elementFound = false;
-                        foreach(Types.StructureElement element in structure.Elements)
+                        foreach (Types.StructureElement element in structure.Elements)
                         {
-                            if(element.Name.Equals(implementedElement.Name))
+                            if (element.Name.Equals(implementedElement.Name))
                             {
                                 elementFound = true;
-                                if(element.Type != implementedElement.Type)
+                                if (element.Type != implementedElement.Type)
                                 {
-                                    structure.AddError("The type of element " + element.Name + " (" + element.TypeName + ") does not correspond to the type of the implemented element (" + implementedElement.TypeName + ")");
+                                    structure.AddError("The type of element " + element.Name + " (" + element.TypeName +
+                                                       ") does not correspond to the type of the implemented element (" +
+                                                       implementedElement.TypeName + ")");
                                 }
                                 break;
                             }
                         }
-                        if(elementFound == false)
+                        if (elementFound == false)
                         {
-                            structure.AddError("Inherited member " + implementedElement.Name + " from interface " + implementedStructure.Name + " is not implemented");
+                            structure.AddError("Inherited member " + implementedElement.Name + " from interface " +
+                                               implementedStructure.Name + " is not implemented");
                         }
                     }
                 }
@@ -525,12 +538,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Check that all the SubElements of the structure have different names
+        ///     Check that all the SubElements of the structure have different names
         /// </summary>
         /// <param name="structure"></param>
         public void checkSubElementNames(Types.Structure structure)
         {
-            Dictionary<string, StructureElement> subElements = new Dictionary<string,StructureElement>();
+            Dictionary<string, StructureElement> subElements = new Dictionary<string, StructureElement>();
 
             string ERROR_MESSAGE = "Structure elements should have unique names.";
 
@@ -548,7 +561,7 @@ namespace DataDictionary
             }
         }
 
-        public override void visit(Generated.StructureRef obj, bool visitSubNodes)
+        public override void visit(StructureRef obj, bool visitSubNodes)
         {
             bool errorDetected = true;
 
@@ -565,7 +578,7 @@ namespace DataDictionary
                 }
             }
 
-            if(errorDetected)
+            if (errorDetected)
             {
                 obj.AddError("Referenced interface not found");
             }
@@ -641,7 +654,8 @@ namespace DataDictionary
                         if (other.getImplemented())
                         {
                             other.AddWarning("This element is set as implemented whereas one of its children is not");
-                            current.AddWarning("This element is set as not implemented whereas its parent is marked implemented");
+                            current.AddWarning(
+                                "This element is set as not implemented whereas its parent is marked implemented");
                         }
                     }
                     parent = parent.getFather() as ModelElement;
@@ -664,7 +678,8 @@ namespace DataDictionary
 
                     foreach (Rules.PreCondition preCondition in ruleCondition.PreConditions)
                     {
-                        BinaryExpression expression = checkExpression(preCondition, preCondition.ExpressionText) as BinaryExpression;
+                        BinaryExpression expression =
+                            checkExpression(preCondition, preCondition.ExpressionText) as BinaryExpression;
                         if (expression != null)
                         {
                             if (expression.IsSimpleEquality())
@@ -676,7 +691,8 @@ namespace DataDictionary
                                     {
                                         // Check that when preconditions are based on a request, 
                                         // the corresponding action affects the value Request.Disabled to the same variable
-                                        if (variable.Type.Name.Equals("Request") && expression.Right != null && expression.Right is UnaryExpression)
+                                        if (variable.Type.Name.Equals("Request") && expression.Right != null &&
+                                            expression.Right is UnaryExpression)
                                         {
                                             IValue val2 = expression.Right.Ref as IValue;
                                             if (val2 != null && "Response".CompareTo(val2.Name) == 0)
@@ -686,11 +702,13 @@ namespace DataDictionary
                                                     found = false;
                                                     foreach (Rules.Action action in ruleCondition.Actions)
                                                     {
-                                                        IVariable var = OverallVariableFinder.INSTANCE.findByName(action, preCondition.findVariable());
+                                                        IVariable var = OverallVariableFinder.INSTANCE.findByName(
+                                                            action, preCondition.findVariable());
                                                         VariableUpdateStatement update = action.Modifies(var);
                                                         if (update != null)
                                                         {
-                                                            UnaryExpression updateExpr = update.Expression as UnaryExpression;
+                                                            UnaryExpression updateExpr =
+                                                                update.Expression as UnaryExpression;
                                                             if (updateExpr != null)
                                                             {
                                                                 IValue val3 = updateExpr.Ref as IValue;
@@ -705,7 +723,8 @@ namespace DataDictionary
 
                                                     if (!found)
                                                     {
-                                                        preCondition.AddError("Rules where the Pre conditions is based on a Request type variable must assign that variable the value 'Request.Disabled'");
+                                                        preCondition.AddError(
+                                                            "Rules where the Pre conditions is based on a Request type variable must assign that variable the value 'Request.Disabled'");
                                                     }
                                                 }
                                             }
@@ -760,7 +779,8 @@ namespace DataDictionary
                             preCondition.AddError("Expression type should be Boolean");
                         }
 
-                        ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition, preCondition.findVariable());
+                        ITypedElement element = OverallTypedElementFinder.INSTANCE.findByName(preCondition,
+                            preCondition.findVariable());
                         if (element != null)
                         {
                             if (element.Type is Types.StateMachine)
@@ -900,11 +920,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The type names encountered
+        ///     The type names encountered
         /// </summary>
         private Dictionary<string, Type> declaredTypes = new Dictionary<string, Type>();
 
-        private static string TYPE_DECLARED_SEVERAL_TIMES = "Another type with the same name is declared somewhere else in the model";
+        private static string TYPE_DECLARED_SEVERAL_TIMES =
+            "Another type with the same name is declared somewhere else in the model";
 
         public override void visit(Generated.Type obj, bool visitSubNodes)
         {
@@ -934,18 +955,25 @@ namespace DataDictionary
                         if (type is Types.Range)
                         {
                             Types.Range range = type as Types.Range;
-                            if ((range.getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision && range.Default != null && range.Default.IndexOf('.') > 0)
-                                || (range.getPrecision() == acceptor.PrecisionEnum.aDoublePrecision && range.Default != null && range.Default.IndexOf('.') <= 0))
+                            if ((range.getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision &&
+                                 range.Default != null && range.Default.IndexOf('.') > 0)
+                                ||
+                                (range.getPrecision() == acceptor.PrecisionEnum.aDoublePrecision &&
+                                 range.Default != null && range.Default.IndexOf('.') <= 0))
                             {
                                 type.AddError("Default value's precision does not correspond to the type's precision");
                             }
                             foreach (Constants.EnumValue specValue in range.SpecialValues)
                             {
                                 String value = specValue.getValue();
-                                if (range.getPrecision() == acceptor.PrecisionEnum.aDoublePrecision && value.IndexOf('.') <= 0
-                                    || range.getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision && value.IndexOf('.') > 0)
+                                if (range.getPrecision() == acceptor.PrecisionEnum.aDoublePrecision &&
+                                    value.IndexOf('.') <= 0
+                                    ||
+                                    range.getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision &&
+                                    value.IndexOf('.') > 0)
                                 {
-                                    type.AddError("Precision of the special value + " + specValue.Name + " does not correspond to the type's precision");
+                                    type.AddError("Precision of the special value + " + specValue.Name +
+                                                  " does not correspond to the type's precision");
                                 }
                             }
                         }
@@ -982,7 +1010,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// The sets of defined paragraphs
+        ///     The sets of defined paragraphs
         /// </summary>
         private Dictionary<string, Paragraph> Paragraphs = new Dictionary<string, Paragraph>();
 
@@ -1008,7 +1036,8 @@ namespace DataDictionary
                     case acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented:
                         if (!paragraph.isApplicable())
                         {
-                            paragraph.AddWarning("Paragraph state does not correspond to implementation status (Implemented but not applicable)");
+                            paragraph.AddWarning(
+                                "Paragraph state does not correspond to implementation status (Implemented but not applicable)");
                         }
                         if (paragraph.getReviewed() == false)
                         {
@@ -1020,14 +1049,16 @@ namespace DataDictionary
                     case acceptor.SPEC_IMPLEMENTED_ENUM.defaultSPEC_IMPLEMENTED_ENUM:
                         if (!paragraph.isApplicable())
                         {
-                            paragraph.AddWarning("Paragraph state does not correspond to implementation status (N/A but not applicable)");
+                            paragraph.AddWarning(
+                                "Paragraph state does not correspond to implementation status (N/A but not applicable)");
                         }
                         break;
 
                     case acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable:
                         if (paragraph.isApplicable())
                         {
-                            paragraph.AddWarning("Paragraph state does not correspond to implementation status (Not implementable but applicable)");
+                            paragraph.AddWarning(
+                                "Paragraph state does not correspond to implementation status (Not implementable but applicable)");
                         }
                         break;
                 }
@@ -1039,8 +1070,10 @@ namespace DataDictionary
                         ReqRelated model = reqRef.Enclosing as ReqRelated;
                         if (!model.ImplementationCompleted)
                         {
-                            model.AddWarning("Requirement implementation is complete, while model element implementation is not");
-                            paragraph.AddWarning("Requirement implementation is complete, while model element implementation is not");
+                            model.AddWarning(
+                                "Requirement implementation is complete, while model element implementation is not");
+                            paragraph.AddWarning(
+                                "Requirement implementation is complete, while model element implementation is not");
                         }
                     }
                 }
@@ -1056,9 +1089,12 @@ namespace DataDictionary
                             scopeFound = true;
                         }
 
-                        if ((!requirementSet.getRecursiveSelection()) && (!paragraph.BelongsToRequirementSet(requirementSet)) && paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
+                        if ((!requirementSet.getRecursiveSelection()) &&
+                            (!paragraph.BelongsToRequirementSet(requirementSet)) &&
+                            paragraph.SubParagraphBelongsToRequirementSet(requirementSet))
                         {
-                            paragraph.AddWarning("Paragraph scope should be " + requirementSet.Name + ", according to its sub-paragraphs");
+                            paragraph.AddWarning("Paragraph scope should be " + requirementSet.Name +
+                                                 ", according to its sub-paragraphs");
                         }
                     }
 
@@ -1095,11 +1131,14 @@ namespace DataDictionary
                 {
                     expression.checkExpression();
                     Type expressionType = cas.Expression.GetExpressionType();
-                    if (expressionType != null && cas.EnclosingFunction != null && cas.EnclosingFunction.ReturnType != null)
+                    if (expressionType != null && cas.EnclosingFunction != null &&
+                        cas.EnclosingFunction.ReturnType != null)
                     {
                         if (!cas.EnclosingFunction.ReturnType.Match(expressionType))
                         {
-                            cas.AddError("Expression type (" + expressionType.FullName + ") does not match function return type (" + cas.EnclosingFunction.ReturnType.Name + ")");
+                            cas.AddError("Expression type (" + expressionType.FullName +
+                                         ") does not match function return type (" +
+                                         cas.EnclosingFunction.ReturnType.Name + ")");
                         }
                     }
                     else
@@ -1160,7 +1199,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Ensures that the identifier is correct
+        ///     Ensures that the identifier is correct
         /// </summary>
         /// <param name="model"></param>
         /// <param name="name"></param>

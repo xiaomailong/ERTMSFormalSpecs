@@ -26,7 +26,7 @@ namespace GUI.DataDictionaryView
     public class PreConditionsTreeNode : CaseTreeNode
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
@@ -36,7 +36,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -51,7 +51,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Create structure based on the subsystem structure
+        ///     Create structure based on the subsystem structure
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -60,7 +60,9 @@ namespace GUI.DataDictionaryView
 
             if (SourceNode is PreConditionTreeNode)
             {
-                if (MessageBox.Show("Are you sure you want to move the corresponding function ?", "Move action", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (
+                    MessageBox.Show("Are you sure you want to move the corresponding function ?", "Move action",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     PreConditionTreeNode node = SourceNode as PreConditionTreeNode;
                     PreCondition preCondition = node.Item;
@@ -78,7 +80,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Adds a preCondition to the modelized item
+        ///     Adds a preCondition to the modelized item
         /// </summary>
         /// <param name="preCondition"></param>
         public void AddPreCondition(PreCondition preCondition)
@@ -89,7 +91,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

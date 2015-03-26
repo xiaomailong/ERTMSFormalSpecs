@@ -27,7 +27,7 @@ namespace GUI.BoxArrowDiagram
         where ArrowModel : class, IGraphicalArrow<BoxModel>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public BoxArrowWindow()
         {
@@ -41,7 +41,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Method used to create a panel
+        ///     Method used to create a panel
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -53,14 +53,14 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// A box editor
+        ///     A box editor
         /// </summary>
         protected class BoxEditor
         {
             public BoxControl<BoxModel, ArrowModel> control;
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public BoxEditor(BoxControl<BoxModel, ArrowModel> control)
@@ -127,7 +127,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Factory for BoxEditor
+        ///     Factory for BoxEditor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
@@ -139,14 +139,14 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// An arrow editor
+        ///     An arrow editor
         /// </summary>
         protected class ArrowEditor
         {
             public ArrowControl<BoxModel, ArrowModel> control;
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public ArrowEditor(ArrowControl<BoxModel, ArrowModel> control)
@@ -162,7 +162,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Factory for arrow editor
+        ///     Factory for arrow editor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
@@ -174,15 +174,18 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The selected object
+        ///     The selected object
         /// </summary>
         protected object Selected { get; set; }
 
         /// <summary>
-        /// Selects a model element
+        ///     Selects a model element
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="alsoSelectInOtherWindows">Indicates that the element should also be selected in the other windows + get focus</param>
+        /// <param name="alsoSelectInOtherWindows">
+        ///     Indicates that the element should also be selected in the other windows + get
+        ///     focus
+        /// </param>
         public void Select(object model, bool alsoSelectInOtherWindows)
         {
             Selected = model;
@@ -231,7 +234,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Indicates whether the control is selected
+        ///     Indicates whether the control is selected
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>

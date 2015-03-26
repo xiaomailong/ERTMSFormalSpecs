@@ -32,12 +32,12 @@ namespace GUI.Report
         private int currentLevel; // level in filters (frame = 1, sub sequence = 2, test case = 3)
 
         /// <summary>
-        /// The EFSSystem for which this report is built
+        ///     The EFSSystem for which this report is built
         /// </summary>
         public EFSSystem EFSSystem { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem">The system for which this frame is built</param>
         public TestReport(EFSSystem efsSystem)
@@ -50,7 +50,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Constructor: creates a report for the dictionary
+        ///     Constructor: creates a report for the dictionary
         /// </summary>
         /// <param name="aDictionary"></param>
         public TestReport(Dictionary aDictionary)
@@ -67,7 +67,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Constructor: creates a report for the selected frame
+        ///     Constructor: creates a report for the selected frame
         /// </summary>
         /// <param name="aFrame"></param>
         public TestReport(Frame aFrame)
@@ -82,7 +82,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Constructor: creates a report for the selected sub sequence
+        ///     Constructor: creates a report for the selected sub sequence
         /// </summary>
         /// <param name="aSubSequence"></param>
         public TestReport(SubSequence aSubSequence)
@@ -97,7 +97,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Consctructor: creates a report for a selected test case
+        ///     Consctructor: creates a report for a selected test case
         /// </summary>
         /// <param name="aTestCase"></param>
         public TestReport(TestCase aTestCase)
@@ -112,8 +112,8 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Gives the list of all the controls of the form
-        /// (situated on the main form or on its group boxes)
+        ///     Gives the list of all the controls of the form
+        ///     (situated on the main form or on its group boxes)
         /// </summary>
         public ArrayList AllControls
         {
@@ -128,8 +128,8 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Initialize the check boxes of the form (by (un)checking 
-        /// or (de)activating them) according to user selection
+        ///     Initialize the check boxes of the form (by (un)checking
+        ///     or (de)activating them) according to user selection
         /// </summary>
         /// <param name="level"></param>
         private void InitializeCheckBoxes(int level)
@@ -150,7 +150,8 @@ namespace GUI.Report
                     {
                         cb.Enabled = false;
                     }
-                    else if (cbLevel == level || cbProperty.Equals("FILTER")) /* we select all the filters of the level >= current level
+                    else if (cbLevel == level || cbProperty.Equals("FILTER"))
+                        /* we select all the filters of the level >= current level
                                                                                * and the stats of the current level */
                     {
                         cb.Enabled = true;
@@ -166,7 +167,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Method called in case of check event of one of the check boxes
+        ///     Method called in case of check event of one of the check boxes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -192,8 +193,8 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Enables all the check boxes of the selected level
-        /// and the check box corresponding to the filter of selected level + 1
+        ///     Enables all the check boxes of the selected level
+        ///     and the check box corresponding to the filter of selected level + 1
         /// </summary>
         /// <param name="level">Level of the checked check box</param>
         private void SelectCheckBoxes(int level)
@@ -207,7 +208,8 @@ namespace GUI.Report
                     string cbProperty = tags[0];
                     int cbLevel;
                     Int32.TryParse(tags[1], out cbLevel);
-                    if ((cbLevel == level && cbProperty.Equals("STAT")) || (cbLevel == level + 1 && cbProperty.Equals("FILTER")))
+                    if ((cbLevel == level && cbProperty.Equals("STAT")) ||
+                        (cbLevel == level + 1 && cbProperty.Equals("FILTER")))
                     {
                         if ((cb.Name != "CB_ActivatedRulesInSteps" &&
                              cb.Name != "CB_Log") ||
@@ -224,7 +226,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Disables the check boxes corresponding to the statistics of the selected level
+        ///     Disables the check boxes corresponding to the statistics of the selected level
         /// </summary>
         /// <param name="level">Level of the unckecked check box</param>
         private void DeselectCheckBoxes(int level)
@@ -249,7 +251,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Creates a report config with user's choices
+        ///     Creates a report config with user's choices
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -286,7 +288,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Permits to select the name and the path of the report
+        ///     Permits to select the name and the path of the report
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

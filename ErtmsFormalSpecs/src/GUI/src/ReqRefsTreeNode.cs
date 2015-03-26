@@ -27,12 +27,12 @@ namespace GUI
     public class ReqRefsTreeNode : ModelElementTreeNode<ReferencesParagraph>
     {
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         protected class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -41,7 +41,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ReqRefsTreeNode(ReferencesParagraph item, bool buildSubNodes)
@@ -50,7 +50,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -65,7 +65,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -74,7 +74,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Creates are reference to a requirement
+        ///     Creates are reference to a requirement
         /// </summary>
         /// <param name="paragraph"></param>
         public void CreateReqRef(Paragraph paragraph)
@@ -100,12 +100,13 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Reference to paragraph " + paragraph.FullId + " has not been added because it already exists.");
+                MessageBox.Show("Reference to paragraph " + paragraph.FullId +
+                                " has not been added because it already exists.");
             }
         }
 
         /// <summary>
-        /// Handles a drop event
+        ///     Handles a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -123,7 +124,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

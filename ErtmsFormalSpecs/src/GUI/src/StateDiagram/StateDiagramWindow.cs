@@ -29,20 +29,20 @@ namespace GUI.StateDiagram
     public partial class StateDiagramWindow : BoxArrowWindow<State, Transition>
     {
         /// <summary>
-        /// The state machine currently displayed
+        ///     The state machine currently displayed
         /// </summary>
         public StateMachine StateMachine { get; private set; }
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///     Required method for Designer support - do not modify
+        ///     the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public StateDiagramWindow()
             : base()
@@ -50,7 +50,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// The panel used to display the state diagram
+        ///     The panel used to display the state diagram
         /// </summary>
         private StatePanel StatePanel
         {
@@ -58,7 +58,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Sets the state machine type
+        ///     Sets the state machine type
         /// </summary>
         /// <param name="stateMachine"></param>
         public void SetStateMachine(StateMachine stateMachine)
@@ -70,10 +70,13 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Sets the state machine variable (and type)
+        ///     Sets the state machine variable (and type)
         /// </summary>
         /// <param name="stateMachine">The state machine variable to display</param>
-        /// <param name="stateMachineType">The state machine type which should be displayed. If null, the default state machine is displayed</param>
+        /// <param name="stateMachineType">
+        ///     The state machine type which should be displayed. If null, the default state machine is
+        ///     displayed
+        /// </param>
         public void SetStateMachine(IVariable stateMachine, StateMachine stateMachineType = null)
         {
             if (stateMachineType == null)
@@ -89,7 +92,9 @@ namespace GUI.StateDiagram
             StatePanel.StateMachine = StateMachine;
             if (stateMachine != null)
             {
-                StatePanel.StateMachineVariableExpression = EFSSystem.INSTANCE.Parser.Expression(EnclosingFinder<Dictionary>.find(stateMachine), stateMachine.FullName);
+                StatePanel.StateMachineVariableExpression =
+                    EFSSystem.INSTANCE.Parser.Expression(EnclosingFinder<Dictionary>.find(stateMachine),
+                        stateMachine.FullName);
             }
             else
             {
@@ -106,12 +111,12 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// A box editor
+        ///     A box editor
         /// </summary>
         protected class StateEditor : BoxEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public StateEditor(BoxControl<State, Transition> control)
@@ -121,7 +126,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Factory for BoxEditor
+        ///     Factory for BoxEditor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
@@ -144,12 +149,12 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// An arrow editor
+        ///     An arrow editor
         /// </summary>
         protected class TransitionEditor : ArrowEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public TransitionEditor(ArrowControl<State, Transition> control)
@@ -212,7 +217,7 @@ namespace GUI.StateDiagram
         }
 
         /// <summary>
-        /// Factory for arrow editor
+        ///     Factory for arrow editor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>

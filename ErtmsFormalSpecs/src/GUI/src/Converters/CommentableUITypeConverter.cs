@@ -22,7 +22,7 @@ using DataDictionary;
 namespace GUI.Converters
 {
     /// <summary>
-    /// Converts IExpressionable to string, by getting the Expression property
+    ///     Converts IExpressionable to string, by getting the Expression property
     /// </summary>
     public class CommentableUITypeConverter : StringConverter
     {
@@ -54,7 +54,8 @@ namespace GUI.Converters
             }
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+            Type destinationType)
         {
             string retVal = "<unknown>";
             ICommentable commentable = value as ICommentable;

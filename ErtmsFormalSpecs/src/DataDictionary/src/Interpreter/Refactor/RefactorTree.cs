@@ -20,17 +20,17 @@ using DataDictionary.Types;
 namespace DataDictionary.Interpreter.Refactor
 {
     /// <summary>
-    /// This visitor is used to handle refactoring of expressions.
+    ///     This visitor is used to handle refactoring of expressions.
     /// </summary>
     public class RefactorTree : BaseRefactorTree
     {
         /// <summary>
-        /// The model element which should be refactored
+        ///     The model element which should be refactored
         /// </summary>
         private ModelElement Ref { get; set; }
 
         /// <summary>
-        /// The user of the element
+        ///     The user of the element
         /// </summary>
         private ModelElement User { get; set; }
 
@@ -82,7 +82,7 @@ namespace DataDictionary.Interpreter.Refactor
         }
 
         /// <summary>
-        /// Visits a struct expression
+        ///     Visits a struct expression
         /// </summary>
         /// <param name="structExpression"></param>
         protected override void VisitStructExpression(StructExpression structExpression)
@@ -109,8 +109,9 @@ namespace DataDictionary.Interpreter.Refactor
                 }
             }
         }
+
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="interpreterTreeNode"></param>
         /// <param name="text"></param>

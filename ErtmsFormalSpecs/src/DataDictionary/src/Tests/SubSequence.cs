@@ -27,7 +27,7 @@ namespace DataDictionary.Tests
     public class SubSequence : Generated.SubSequence, IComparable<SubSequence>, ICommentable
     {
         /// <summary>
-        /// The comparer
+        ///     The comparer
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -69,7 +69,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The enclosing frame
+        ///     The enclosing frame
         /// </summary>
         public Frame Frame
         {
@@ -77,7 +77,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Executes the test cases for this test sequence
+        ///     Executes the test cases for this test sequence
         /// </summary>
         /// <param name="runner">The runner used to execute the test case</param>
         /// <returns>the number of failed test cases</returns>
@@ -104,7 +104,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the test cases for this sub sequence
+        ///     Provides the test cases for this sub sequence
         /// </summary>
         /// <param name="testCases"></param>
         public void FillTestCases(List<TestCase> testCases)
@@ -116,7 +116,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Translates the sub sequence, according to the tanslation dictionary provided
+        ///     Translates the sub sequence, according to the tanslation dictionary provided
         /// </summary>
         /// <param name="translationDictionary"></param>
         public void Translate(TranslationDictionary translationDictionary)
@@ -128,7 +128,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -144,7 +144,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// Creates a sub sequence and sets its default value
+        ///     Creates a sub sequence and sets its default value
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -159,7 +159,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The comment related to this element
+        ///     The comment related to this element
         /// </summary>
         public string Comment
         {

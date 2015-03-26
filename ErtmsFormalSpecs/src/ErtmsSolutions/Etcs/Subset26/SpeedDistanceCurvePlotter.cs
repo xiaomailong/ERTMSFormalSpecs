@@ -200,7 +200,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                             QuadraticCurveSegment aSegment = Q_Curve[segment_idx];
 
                             string title = "notitle";
-                            string filename_dat = BuildTempFile(true, String.Format("{0}_{1:D2}_{2:D2}.dat", my_base_name, item_idx, segment_idx));
+                            string filename_dat = BuildTempFile(true,
+                                String.Format("{0}_{1:D2}_{2:D2}.dat", my_base_name, item_idx, segment_idx));
                             StreamWriter swd = new StreamWriter(filename_dat);
                             Emit_Quadratic_Segment(swd, aSegment, v_offset, d_offset);
                             swd.Close();
@@ -210,16 +211,19 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                                 string the_text = String.Format("{0}_{1}", pi.theName, segment_idx);
                                 if (aSegment.A < new SiAcceleration(0.0))
                                 {
-                                    the_text += String.Format(" A{0,6:F1}{1}", aSegment.A.ToUnits(), aSegment.A.UnitString());
+                                    the_text += String.Format(" A{0,6:F1}{1}", aSegment.A.ToUnits(),
+                                        aSegment.A.UnitString());
                                     the_text += String.Format(" V{0,6:F1}..{1,6:F1} {2}",
                                         aSegment.Get(aSegment.X.X0).ToUnits(),
                                         aSegment.Get(aSegment.X.X1).ToUnits(),
                                         aSegment.Get(aSegment.X.X0).UnitString());
                                 }
                                 else
-                                    the_text += String.Format(" V{0,6:F1}{1}", aSegment.V0.ToUnits(), aSegment.V0.UnitString());
+                                    the_text += String.Format(" V{0,6:F1}{1}", aSegment.V0.ToUnits(),
+                                        aSegment.V0.UnitString());
                                 SiDistance segment_length = aSegment.X.X1 - aSegment.X.X0;
-                                the_text += String.Format(" ({0,4:F0}{1})", segment_length.ToUnits(), segment_length.UnitString());
+                                the_text += String.Format(" ({0,4:F0}{1})", segment_length.ToUnits(),
+                                    segment_length.UnitString());
 
                                 title = String.Format("title \"{0}\" ", the_text);
                             }
@@ -235,7 +239,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     }
                     else
                     {
-                        string filename_dat = BuildTempFile(true, String.Format("{0}_{1:D2}.dat", my_base_name, item_idx));
+                        string filename_dat = BuildTempFile(true,
+                            String.Format("{0}_{1:D2}.dat", my_base_name, item_idx));
                         string title = String.Format("title \"{0}\" ", pi.theName);
                         StreamWriter swd = new StreamWriter(filename_dat);
                         for (int segment_idx = 0; segment_idx < Q_Curve.SegmentCount; segment_idx++)
@@ -245,12 +250,14 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                         }
                         swd.Close();
 
-                        GPPlot.Add(String.Format("'{0}' using 1:2 axes x1y1 {1} with lines linecolor rgb \"{2}\"", filename_dat, title, pi.theColor));
+                        GPPlot.Add(String.Format("'{0}' using 1:2 axes x1y1 {1} with lines linecolor rgb \"{2}\"",
+                            filename_dat, title, pi.theColor));
                     }
 
                     if (Add_Acceleration_Overlay)
                     {
-                        string filename_dat = BuildTempFile(true, String.Format("{0}_{1:D2}_acc.dat", my_base_name, item_idx));
+                        string filename_dat = BuildTempFile(true,
+                            String.Format("{0}_{1:D2}_acc.dat", my_base_name, item_idx));
                         string title = String.Format("title \"{0}_A(V,d)\" ", pi.theName);
                         StreamWriter swd = new StreamWriter(filename_dat);
                         for (int segment_idx = 0; segment_idx < Q_Curve.SegmentCount; segment_idx++)
@@ -271,7 +278,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                 {
                     FlatSpeedDistanceCurve F_Curve = pi.theCurve as FlatSpeedDistanceCurve;
 
-                    string filename_dat = BuildTempFile(true, String.Format("{0}_{1:D2}_speed_distance.dat", my_base_name, item_idx));
+                    string filename_dat = BuildTempFile(true,
+                        String.Format("{0}_{1:D2}_speed_distance.dat", my_base_name, item_idx));
                     StreamWriter swd = new StreamWriter(filename_dat);
                     for (int segment_idx = 0; segment_idx < F_Curve.SegmentCount; segment_idx++)
                     {
@@ -279,14 +287,18 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     }
                     swd.Close();
 
-                    GPPlot.Add(String.Format("'{0}' using 1:2 axes x1y1 title \"{1}\" with lines linewidth 3 linecolor rgb \"{2}\"", filename_dat, pi.theName, pi.theColor));
+                    GPPlot.Add(
+                        String.Format(
+                            "'{0}' using 1:2 axes x1y1 title \"{1}\" with lines linewidth 3 linecolor rgb \"{2}\"",
+                            filename_dat, pi.theName, pi.theColor));
                 }
                     /************************ Flat curve ******************************/
                 else if (pi.theCurve is AccelerationSpeedDistanceSurface)
                 {
                     AccelerationSpeedDistanceSurface AVD_Surface = pi.theCurve as AccelerationSpeedDistanceSurface;
 
-                    string filename_dat = BuildTempFile(true, String.Format("{0}_{1:D2}_asd_surface.dat", my_base_name, item_idx));
+                    string filename_dat = BuildTempFile(true,
+                        String.Format("{0}_{1:D2}_asd_surface.dat", my_base_name, item_idx));
                     {
                         StreamWriter swd = new StreamWriter(filename_dat);
                         for (int i = 0; i < AVD_Surface.Tiles.Count; i++)
@@ -309,12 +321,16 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                                     label_counter,
                                     aTile.V.Y.ToUnits().ToString("0.00", CultureInfo.InvariantCulture),
                                     cx.ToUnits().ToString(CultureInfo.InvariantCulture),
-                                    cy.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour).ToString(CultureInfo.InvariantCulture)
+                                    cy.ToSubUnits(SiSpeed_SubUnits.KiloMeter_per_Hour)
+                                        .ToString(CultureInfo.InvariantCulture)
                                     );
                             }
                         }
                         swd.Close();
-                        GPPlot.Add(String.Format("'{0}' using 1:2 axes x1y1 title \"{1}\" with points pointtype 5 pointsize 0.5 linecolor rgb \"gray\"", filename_dat, pi.theName));
+                        GPPlot.Add(
+                            String.Format(
+                                "'{0}' using 1:2 axes x1y1 title \"{1}\" with points pointtype 5 pointsize 0.5 linecolor rgb \"gray\"",
+                                filename_dat, pi.theName));
                     }
                 }
                     /************************ A single Point ****************************/
@@ -327,10 +343,12 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     Emit_d_V(swd, aPoint.X, aPoint.Y);
                     swd.Close();
 
-                    GPPlot.Add(String.Format("'{0}' axes x1y1 title \"{1}\" with points pointsize 2 pointtype 7 linecolor rgb \"{2}\" ",
-                        filename_dat,
-                        pi.theName,
-                        pi.theColor));
+                    GPPlot.Add(
+                        String.Format(
+                            "'{0}' axes x1y1 title \"{1}\" with points pointsize 2 pointtype 7 linecolor rgb \"{2}\" ",
+                            filename_dat,
+                            pi.theName,
+                            pi.theColor));
                 }
                     /************************ WTF is that ? ***************************/
                 else

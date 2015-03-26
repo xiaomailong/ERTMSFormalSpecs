@@ -29,7 +29,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : Editor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -63,7 +63,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// Sets the verified flag of the the enclosing rule 
+            ///     Sets the verified flag of the the enclosing rule
             /// </summary>
             /// <param name="val"></param>
             private void SetRuleAsVerified(bool val)
@@ -76,7 +76,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public PreConditionTreeNode(PreCondition item, bool buildSubNodes)
@@ -85,7 +85,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -94,7 +94,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

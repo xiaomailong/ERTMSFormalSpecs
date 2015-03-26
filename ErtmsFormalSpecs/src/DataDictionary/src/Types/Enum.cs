@@ -25,7 +25,7 @@ namespace DataDictionary.Types
     public class Enum : Generated.Enum, IEnumerateValues, ISubDeclarator, TextualExplain
     {
         /// <summary>
-        /// Indicates if this Enum contains implemented sub-elements
+        ///     Indicates if this Enum contains implemented sub-elements
         /// </summary>
         public override bool ImplementationPartiallyCompleted
         {
@@ -49,7 +49,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the enum values this enumeration can take
+        ///     Provides all the enum values this enumeration can take
         /// </summary>
         public ArrayList Values
         {
@@ -64,7 +64,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the sub enums this enumeration can define
+        ///     Provides all the sub enums this enumeration can define
         /// </summary>
         public ArrayList SubEnums
         {
@@ -79,7 +79,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all constant values for this type
+        ///     Provides all constant values for this type
         /// </summary>
         /// <param name="scope"></param>
         /// <param name="retVal"></param>
@@ -93,7 +93,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -110,12 +110,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the values that can be stored in this structure
+        ///     Provides all the values that can be stored in this structure
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -140,7 +140,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the enclosing enum
+        ///     Provides the enclosing enum
         /// </summary>
         public Enum EnclosingEnum
         {
@@ -148,7 +148,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the enum value which corresponds to the name provided
+        ///     Provides the enum value which corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -165,7 +165,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the values whose name matches the name provided
+        ///     Provides the values whose name matches the name provided
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
@@ -176,7 +176,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Parses the image and provides the corresponding value
+        ///     Parses the image and provides the corresponding value
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -198,7 +198,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the enclosing collection to allow deletion of this enumeration
+        ///     Provides the enclosing collection to allow deletion of this enumeration
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -220,7 +220,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the other type may be placed in this
+        ///     Indicates that the other type may be placed in this
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -243,7 +243,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -267,7 +267,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the enumeration
+        ///     Provides an explanation of the enumeration
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -286,7 +286,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the enumeration
+        ///     Provides an explanation of the enumeration
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>

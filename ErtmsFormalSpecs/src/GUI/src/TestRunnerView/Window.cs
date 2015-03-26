@@ -58,7 +58,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The data dictionary for this view
+        ///     The data dictionary for this view
         /// </summary>
         private EFSSystem efsSystem;
 
@@ -73,7 +73,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The runner
+        ///     The runner
         /// </summary>
         public Runner getRunner(SubSequence subSequence)
         {
@@ -91,7 +91,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public Window()
@@ -107,18 +107,18 @@ namespace GUI.TestRunnerView
             Refresh();
         }
 
-        void frameToolStripComboBox_DropDown(object sender, EventArgs e)
+        private void frameToolStripComboBox_DropDown(object sender, EventArgs e)
         {
             RebuildFramesComboBox();
         }
 
-        void subSequenceSelectorComboBox_DropDown(object sender, EventArgs e)
+        private void subSequenceSelectorComboBox_DropDown(object sender, EventArgs e)
         {
             RebuildSubSequencesComboBox();
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -128,12 +128,12 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Indicates that a refresh is ongoing
+        ///     Indicates that a refresh is ongoing
         /// </summary>
         private bool DoingRefresh { get; set; }
 
         /// <summary>
-        /// Sets the current frame parameters
+        ///     Sets the current frame parameters
         /// </summary>
         /// <param name="frame"></param>
         public void setFrame(Frame frame)
@@ -146,7 +146,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Sets the current sub sequence window parameters
+        ///     Sets the current sub sequence window parameters
         /// </summary>
         /// <param name="subSequence"></param>
         public void setSubSequence(SubSequence subSequence)
@@ -160,7 +160,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Refreshes the display
+        ///     Refreshes the display
         /// </summary>
         public override void Refresh()
         {
@@ -237,7 +237,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Rebuilds the contents of the frames combo box
+        ///     Rebuilds the contents of the frames combo box
         /// </summary>
         private void RebuildFramesComboBox()
         {
@@ -262,7 +262,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Rebuilds the contents of the subsequence combo box, according to the frame selected in the frames combo box
+        ///     Rebuilds the contents of the subsequence combo box, according to the frame selected in the frames combo box
         /// </summary>
         private void RebuildSubSequencesComboBox()
         {
@@ -296,7 +296,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Step once
+        ///     Step once
         /// </summary>
         public void StepOnce()
         {
@@ -346,7 +346,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Ensures that the runner is not empty
+        ///     Ensures that the runner is not empty
         /// </summary>
         private void CheckRunner()
         {
@@ -386,7 +386,8 @@ namespace GUI.TestRunnerView
         private void testCaseSelectorComboBox_SelectionChanged(object sender, EventArgs e)
         {
             Runner runner = EFSSystem.Runner;
-            if (runner != null && (runner.SubSequence == null || runner.SubSequence.Name.CompareTo(subSequenceSelectorComboBox.Text) != 0))
+            if (runner != null &&
+                (runner.SubSequence == null || runner.SubSequence.Name.CompareTo(subSequenceSelectorComboBox.Text) != 0))
             {
                 EFSSystem.Runner = null;
             }
@@ -394,7 +395,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Refreshes the model of the window
+        ///     Refreshes the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -402,7 +403,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Selects the current step by clicking on the label
+        ///     Selects the current step by clicking on the label
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -419,7 +420,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Selects the current test sequence by clicking on the label
+        ///     Selects the current test sequence by clicking on the label
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -436,7 +437,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Selects the next node where info message is available
+        ///     Selects the next node where info message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -446,7 +447,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Selects the next node where warning message is available
+        ///     Selects the next node where warning message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -456,7 +457,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Selects the next node where error message is available
+        ///     Selects the next node where error message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -466,7 +467,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The frame currently selected
+        ///     The frame currently selected
         /// </summary>
         private Frame Frame { get; set; }
 
@@ -488,7 +489,8 @@ namespace GUI.TestRunnerView
         {
             if (!EFSSystem.INSTANCE.Markings.selectPreviousMarking())
             {
-                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 
@@ -496,7 +498,8 @@ namespace GUI.TestRunnerView
         {
             if (!EFSSystem.INSTANCE.Markings.selectNextMarking())
             {
-                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 

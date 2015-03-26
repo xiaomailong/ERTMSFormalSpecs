@@ -21,12 +21,12 @@ using DataDictionary.Generated;
 namespace DataDictionary.Specification
 {
     /// <summary>
-    /// Represents a requirement set
+    ///     Represents a requirement set
     /// </summary>
     public class RequirementSet : Generated.RequirementSet, IGraphicalDisplay, IHoldsParagraphs, IHoldsRequirementSets
     {
         /// <summary>
-        /// Provides all the dependances related to this requirement set 
+        ///     Provides all the dependances related to this requirement set
         /// </summary>
         public ArrayList Dependancies
         {
@@ -42,7 +42,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides all the sub set of this requirement set 
+        ///     Provides all the sub set of this requirement set
         /// </summary>
         public ArrayList SubSets
         {
@@ -58,7 +58,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The X position
+        ///     The X position
         /// </summary>
         public int X
         {
@@ -67,7 +67,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The Y position
+        ///     The Y position
         /// </summary>
         public int Y
         {
@@ -76,7 +76,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The width
+        ///     The width
         /// </summary>
         public int Width
         {
@@ -85,7 +85,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The height
+        ///     The height
         /// </summary>
         public int Height
         {
@@ -94,7 +94,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName
         {
@@ -102,7 +102,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Indicates that the element is hiddent
+        ///     Indicates that the element is hiddent
         /// </summary>
         public bool Hidden
         {
@@ -111,7 +111,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Indicates that the element is pinned
+        ///     Indicates that the element is pinned
         /// </summary>
         public bool Pinned
         {
@@ -120,7 +120,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The explanation of the element
+        ///     The explanation of the element
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -130,7 +130,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The collection in which this model element lies
+        ///     The collection in which this model element lies
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -155,17 +155,17 @@ namespace DataDictionary.Specification
         private class ParagraphForRequirementSet : Visitor
         {
             /// <summary>
-            /// The requirement set for which the paragraphs should be found
+            ///     The requirement set for which the paragraphs should be found
             /// </summary>
             private RequirementSet RequirementSet { get; set; }
 
             /// <summary>
-            /// The list of paragraphs to be filled
+            ///     The list of paragraphs to be filled
             /// </summary>
             public List<Paragraph> Paragraphs { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="requirementSet"></param>
             public ParagraphForRequirementSet(RequirementSet requirementSet, List<Paragraph> paragraphs)
@@ -199,7 +199,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the paragraphs related to this requirement set 
+        ///     Provides the paragraphs related to this requirement set
         /// </summary>
         /// <param name="paragraphs"></param>
         public void GetParagraphs(List<Paragraph> paragraphs)
@@ -212,7 +212,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the list of requirement sets in the system
+        ///     Provides the list of requirement sets in the system
         /// </summary>
         public List<RequirementSet> RequirementSets
         {
@@ -230,7 +230,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the requirement set whose name corresponds to the name provided
+        ///     Provides the requirement set whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <param name="create">Indicates that the requirement set should be created if it does not exists</param>
@@ -259,7 +259,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Adds a new requirement set to this list of requirement sets
+        ///     Adds a new requirement set to this list of requirement sets
         /// </summary>
         /// <param name="requirementSet"></param>
         public void AddRequirementSet(RequirementSet requirementSet)
@@ -269,22 +269,22 @@ namespace DataDictionary.Specification
 
 
         /// <summary>
-        /// The name of the requireement set for scoping information
+        ///     The name of the requireement set for scoping information
         /// </summary>
         public const string ONBOARD_SCOPE_NAME = "Onboard";
 
         /// <summary>
-        /// The name of the requireement set for scoping information
+        ///     The name of the requireement set for scoping information
         /// </summary>
         public const string TRACKSIDE_SCOPE_NAME = "Trackside";
 
         /// <summary>
-        /// The name of the requireement set for scoping information
+        ///     The name of the requireement set for scoping information
         /// </summary>
         public const string ROLLING_STOCK_SCOPE_NAME = "Rolling stock";
 
         /// <summary>
-        /// Sets the default requirement sets for the paragraph
+        ///     Sets the default requirement sets for the paragraph
         /// </summary>
         /// <param name="paragraph"></param>
         public void setDefaultRequirementSets(Paragraph paragraph)

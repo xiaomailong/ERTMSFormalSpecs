@@ -29,7 +29,7 @@ namespace GUI
     public abstract class BaseTreeView : TreeView
     {
         /// <summary>
-        /// The parent form
+        ///     The parent form
         /// </summary>
         public IBaseForm ParentForm
         {
@@ -62,17 +62,17 @@ namespace GUI
 
 
         /// <summary>
-        /// The thread used to synchronize node names with their model
+        ///     The thread used to synchronize node names with their model
         /// </summary>
         private class ColorSynchronizer : GenericSynchronizationHandler<BaseTreeView>
         {
             /// <summary>
-            /// The last count of messages
+            ///     The last count of messages
             /// </summary>
             private int LastMessageCount { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="instance"></param>
             public ColorSynchronizer(BaseTreeView instance, int cycleTime)
@@ -82,7 +82,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Synchronization
+            ///     Synchronization
             /// </summary>
             /// <param name="instance"></param>
             public override void HandleSynchronization(BaseTreeView instance)
@@ -112,12 +112,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The thread used to synchronize node names with their model
+        ///     The thread used to synchronize node names with their model
         /// </summary>
         private class NameSynchronizer : GenericSynchronizationHandler<BaseTreeView>
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="instance"></param>
             public NameSynchronizer(BaseTreeView instance, int cycleTime)
@@ -126,7 +126,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Synchronization
+            ///     Synchronization
             /// </summary>
             /// <param name="instance"></param>
             public override void HandleSynchronization(BaseTreeView instance)
@@ -144,24 +144,24 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that synchronization is required
+        ///     Indicates that synchronization is required
         /// </summary>
         private ColorSynchronizer NodeColorSynchronizer { get; set; }
 
         private NameSynchronizer NodeNameSynchronizer { get; set; }
 
         /// <summary>
-        /// Indicates that selection should be taken into account while considering history
+        ///     Indicates that selection should be taken into account while considering history
         /// </summary>
         protected bool KeepTrackOfSelection { get; set; }
 
         /// <summary>
-        /// Indicates whether refactoring should occur during drag & drop
+        ///     Indicates whether refactoring should occur during drag & drop
         /// </summary>
         protected bool Refactor { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected BaseTreeView()
             : base()
@@ -236,12 +236,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that an expand all operation is currently being done
+        ///     Indicates that an expand all operation is currently being done
         /// </summary>
         private bool ExpandingAll = false;
 
         /// <summary>
-        /// Handles an expand event
+        ///     Handles an expand event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -275,7 +275,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles an collapse event
+        ///     Handles an collapse event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -294,7 +294,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a label edit event
+        ///     Handles a label edit event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -305,7 +305,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called when the drag & drop operation begins
+        ///     Called when the drag & drop operation begins
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -315,7 +315,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called to initiate a drag & drop operation
+        ///     Called to initiate a drag & drop operation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -328,7 +328,7 @@ namespace GUI
         private const int ALT = 32;
 
         /// <summary>
-        /// Called when the drop operation is performed on a node
+        ///     Called when the drop operation is performed on a node
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -356,7 +356,7 @@ namespace GUI
 
                         compiler.Compile_Synchronous(false, true);
                         destinationNode.AcceptDrop(sourceNode);
-                        if (Refactor && Settings.Default.AllowRefactor )
+                        if (Refactor && Settings.Default.AllowRefactor)
                         {
                             compiler.RefactorAndRelocate(sourceNode.Model as DataDictionary.ModelElement);
                         }
@@ -366,7 +366,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Refreshes all nodes of this tree view
+        ///     Refreshes all nodes of this tree view
         /// </summary>
         public virtual void RefreshNodes()
         {
@@ -389,7 +389,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The selected tree node
+        ///     The selected tree node
         /// </summary>
         public BaseTreeNode Selected
         {
@@ -398,12 +398,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The node that is currently selected
+        ///     The node that is currently selected
         /// </summary>
         private BaseTreeNode currentSelection;
 
         /// <summary>
-        /// Handler called before another node is selected
+        ///     Handler called before another node is selected
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -416,7 +416,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a selection event
+        ///     Handles a selection event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -435,7 +435,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a double click event
+        ///     Handles a double click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -454,7 +454,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Clears messages associated to the elements on the tree view
+        ///     Clears messages associated to the elements on the tree view
         /// </summary>
         public void ClearMessages()
         {
@@ -466,15 +466,15 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sets the root elements of the tree view (untyped)
+        ///     Sets the root elements of the tree view (untyped)
         /// </summary>
         /// <param name="Model"></param>
         public abstract void SetRoot(IModelElement Model);
 
 
         /// <summary>
-        /// Indicates whether the second argument (parent) is a parent of the first argument (element).
-        /// It also returns true then parent==element
+        ///     Indicates whether the second argument (parent) is a parent of the first argument (element).
+        ///     It also returns true then parent==element
         /// </summary>
         /// <param name="element"></param>
         /// <param name="parent"></param>
@@ -494,7 +494,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Finds the node which references the element provided
+        ///     Finds the node which references the element provided
         /// </summary>
         /// <param name="node"></param>
         /// <param name="element"></param>
@@ -533,7 +533,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the node which corresponds to the model element provided
+        ///     Provides the node which corresponds to the model element provided
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -554,12 +554,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that a programatic selection is currently occuring
+        ///     Indicates that a programatic selection is currently occuring
         /// </summary>
         private bool Selecting { get; set; }
 
         /// <summary>
-        /// Selects the node which references the element provided
+        ///     Selects the node which references the element provided
         /// </summary>
         /// <param name="element"></param>
         /// <param name="getFocus">Indicates whether the focus should be given to the enclosing form</param>
@@ -595,17 +595,17 @@ namespace GUI
         }
 
         /// <summary>
-        /// Build the model of this tree view
+        ///     Build the model of this tree view
         /// </summary>
         protected abstract void BuildModel();
 
         /// <summary>
-        /// Indicates that the node contents should be refreshed
+        ///     Indicates that the node contents should be refreshed
         /// </summary>
         public bool RefreshNodeContent { get; private set; }
 
         /// <summary>
-        /// Refreshes the model of the tree view
+        ///     Refreshes the model of the tree view
         /// </summary>
         public void RefreshModel()
         {
@@ -633,14 +633,15 @@ namespace GUI
         }
 
         /// <summary>
-        /// Selects the next node whose error level corresponds to the levelEnum provided
+        ///     Selects the next node whose error level corresponds to the levelEnum provided
         /// </summary>
         /// <param name="current">the model element that is currently displayed</param>
         /// <param name="node">the node from which the selection process must begin</param>
         /// <param name="levelEnum"></param>
         /// <param name="considerThisOne">Indicates that the current node should be considered by the search</param>
         /// <returns>the node to select</returns>
-        private BaseTreeNode RecursivelySelectNext(IModelElement current, BaseTreeNode node, ElementLog.LevelEnum levelEnum, bool considerThisOne)
+        private BaseTreeNode RecursivelySelectNext(IModelElement current, BaseTreeNode node,
+            ElementLog.LevelEnum levelEnum, bool considerThisOne)
         {
             BaseTreeNode retVal = null;
 
@@ -676,7 +677,8 @@ namespace GUI
                             node.BuildSubNodes(false);
                             node.UpdateColor();
                         }
-                        else if (levelEnum == ElementLog.LevelEnum.Info && current.MessagePathInfo != MessagePathInfoEnum.Nothing)
+                        else if (levelEnum == ElementLog.LevelEnum.Info &&
+                                 current.MessagePathInfo != MessagePathInfoEnum.Nothing)
                         {
                             node.BuildSubNodes(false);
                             node.UpdateColor();
@@ -700,7 +702,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Selects the next node whose error level corresponds to the levelEnum provided
+        ///     Selects the next node whose error level corresponds to the levelEnum provided
         /// </summary>
         /// <param name="levelEnum"></param>
         public void SelectNext(ElementLog.LevelEnum levelEnum)
@@ -746,7 +748,7 @@ namespace GUI
         where RootType : class, IModelElement
     {
         /// <summary>
-        /// The root of this tree view
+        ///     The root of this tree view
         /// </summary>
         private RootType root;
 
@@ -768,7 +770,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sets the root of this tree view
+        ///     Sets the root of this tree view
         /// </summary>
         /// <param name="Model"></param>
         public override void SetRoot(IModelElement Model)
@@ -777,7 +779,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Refreshes the tree view
+        ///     Refreshes the tree view
         /// </summary>
         public override void Refresh()
         {

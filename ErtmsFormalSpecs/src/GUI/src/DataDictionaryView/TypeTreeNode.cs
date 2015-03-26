@@ -22,12 +22,12 @@ namespace GUI.DataDictionaryView
         where T : Type
     {
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         protected class TypeEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public TypeEditor()
                 : base()
@@ -36,11 +36,12 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        protected TypeTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false, bool addRequirements = true)
+        protected TypeTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false,
+            bool addRequirements = true)
             : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }

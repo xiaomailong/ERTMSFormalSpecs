@@ -34,12 +34,12 @@ namespace ERTMSFormalSpecs
     public static class ErtmsFormalSpecGui
     {
         /// <summary>
-        /// The EFS IPC service
+        ///     The EFS IPC service
         /// </summary>
         private static ServiceHost host = null;
 
         /// <summary>
-        /// Hosts the EFS IPC service
+        ///     Hosts the EFS IPC service
         /// </summary>
         /// <returns>The hosting service</returns>
         private static void HostEFSService()
@@ -57,7 +57,7 @@ namespace ERTMSFormalSpecs
         }
 
         /// <summary>
-        /// Closes the EFS IPC host service
+        ///     Closes the EFS IPC host service
         /// </summary>
         private static void CloseEFSService()
         {
@@ -69,7 +69,7 @@ namespace ERTMSFormalSpecs
         }
 
         /// <summary>
-        /// The main entry point for the application.
+        ///     The main entry point for the application.
         /// </summary>
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 

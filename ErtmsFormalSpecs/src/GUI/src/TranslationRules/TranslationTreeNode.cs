@@ -33,7 +33,7 @@ namespace GUI.TranslationRules
         private class ItemEditor : ReferencesParagraphEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -41,7 +41,7 @@ namespace GUI.TranslationRules
             }
 
             /// <summary>
-            /// The step name
+            ///     The step name
             /// </summary>
             [Category("Description")]
             public bool Implemented
@@ -54,7 +54,7 @@ namespace GUI.TranslationRules
         private SourceTextsTreeNode sources;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public TranslationTreeNode(Translation item, bool buildSubNodes)
@@ -63,7 +63,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -80,7 +80,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -89,7 +89,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates a new source text
+        ///     Creates a new source text
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -104,7 +104,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates a new sub-step
+        ///     Creates a new sub-step
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
@@ -119,7 +119,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Adds a step after this one
+        ///     Adds a step after this one
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -132,17 +132,17 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Finds all steps that are translated using a specific translation rule
+        ///     Finds all steps that are translated using a specific translation rule
         /// </summary>
         private class MarkUsageVisitor : Visitor
         {
             /// <summary>
-            /// The translation to be found
+            ///     The translation to be found
             /// </summary>
             public Translation Translation { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="translation"></param>
             public MarkUsageVisitor(Translation translation)
@@ -154,7 +154,8 @@ namespace GUI.TranslationRules
             {
                 DataDictionary.Tests.Step step = (DataDictionary.Tests.Step) obj;
 
-                if (Translation == Translation.TranslationDictionary.findTranslation(step.getDescription(), step.Comment))
+                if (Translation ==
+                    Translation.TranslationDictionary.findTranslation(step.getDescription(), step.Comment))
                 {
                     step.AddInfo("Translation " + Translation.Name + " used");
                 }
@@ -164,7 +165,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Marks all steps that use this translation
+        ///     Marks all steps that use this translation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -179,7 +180,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -197,7 +198,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Handles drop event
+        ///     Handles drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -207,7 +208,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Accepts the drop event
+        ///     Accepts the drop event
         /// </summary>
         /// <param name="translationTreeNode"></param>
         /// <param name="SourceNode"></param>
@@ -227,7 +228,8 @@ namespace GUI.TranslationRules
 
                 if (string.IsNullOrEmpty(step.Item.getDescription()))
                 {
-                    MessageBox.Show("Step has no description and cannot be automatically translated", "No description available", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Step has no description and cannot be automatically translated",
+                        "No description available", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
@@ -237,7 +239,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Handles a selection change event
+        ///     Handles a selection change event
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)

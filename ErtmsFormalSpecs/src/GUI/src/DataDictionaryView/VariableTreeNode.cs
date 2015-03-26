@@ -60,12 +60,12 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The editor for Train data variables
+        ///     The editor for Train data variables
         /// </summary>
         private class ItemEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -80,7 +80,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable type
+            ///     The variable type
             /// </summary>
             [Category("Description")]
             [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
@@ -96,7 +96,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable default value
+            ///     The variable default value
             /// </summary>
             [Category("Description")]
             [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
@@ -112,7 +112,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable mode
+            ///     The variable mode
             /// </summary>
             [Category("Description"), TypeConverter(typeof (VariableModeConverter))]
             public acceptor.VariableModeEnumType Mode
@@ -122,7 +122,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable value
+            ///     The variable value
             /// </summary>
             [Category("Description")]
             [Editor(typeof (VariableValueUITypedEditor), typeof (UITypeEditor))]
@@ -139,7 +139,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
@@ -152,7 +152,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
@@ -165,7 +165,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -174,7 +174,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Display the associated state diagram
+        ///     Display the associated state diagram
         /// </summary>
         public void ViewDiagram()
         {
@@ -193,7 +193,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -243,7 +243,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Displays the variable value
+        ///     Displays the variable value
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>

@@ -25,12 +25,12 @@ namespace DataDictionary.Specification
     public class Specification : Generated.Specification, IFinder, IHoldsParagraphs
     {
         /// <summary>
-        /// Used to temporarily store the list of chapters
+        ///     Used to temporarily store the list of chapters
         /// </summary>
         private ArrayList savedChapters;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Specification()
             : base()
@@ -39,7 +39,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The version of the specification
+        ///     The version of the specification
         /// </summary>
         public string Version
         {
@@ -48,7 +48,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The chapters
+        ///     The chapters
         /// </summary>
         public ArrayList Chapters
         {
@@ -63,12 +63,12 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The cache
+        ///     The cache
         /// </summary>
         public Dictionary<String, Paragraph> TheCache = new Dictionary<string, Paragraph>();
 
         /// <summary>
-        /// Clears the caches
+        ///     Clears the caches
         /// </summary>
         public void ClearCache()
         {
@@ -76,7 +76,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Removes temporary files created for reference chapters
+        ///     Removes temporary files created for reference chapters
         /// </summary>
         public void ClearTempFiles()
         {
@@ -90,7 +90,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Used to store the list of chapters before saving the specification
+        ///     Used to store the list of chapters before saving the specification
         /// </summary>
         public void StoreInfo()
         {
@@ -103,7 +103,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Used to restore the list of chapters, after having saved the specification
+        ///     Used to restore the list of chapters, after having saved the specification
         /// </summary>
         public void RestoreInfo()
         {
@@ -116,19 +116,19 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The Guid cache
+        ///     The Guid cache
         /// </summary>
         private Dictionary<string, Paragraph> GuidCache = new Dictionary<string, Paragraph>();
 
         private class GuidParagraphVisitor : Visitor
         {
             /// <summary>
-            /// The cache to update
+            ///     The cache to update
             /// </summary>
             private Dictionary<string, Paragraph> GuidCache { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="guidCache">The cache to update</param>
             public GuidParagraphVisitor(Dictionary<string, Paragraph> guidCache)
@@ -137,7 +137,7 @@ namespace DataDictionary.Specification
             }
 
             /// <summary>
-            /// Updates the cache
+            ///     Updates the cache
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -152,7 +152,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Looks for the specific paragraph in the specification using its Guid for identification
+        ///     Looks for the specific paragraph in the specification using its Guid for identification
         /// </summary>
         /// <param name="guid">The guid of the paragraph to find</param>
         /// <returns></returns>
@@ -176,7 +176,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Looks for the specific paragraph in the specification
+        ///     Looks for the specific paragraph in the specification
         /// </summary>
         /// <param name="id">The id of the paragraph to find</param>
         /// <param name="create">If true, creates the paragraph tree if needed</param>
@@ -221,7 +221,7 @@ namespace DataDictionary.Specification
 
 
         /// <summary>
-        /// Looks for the specific chapter in this specification
+        ///     Looks for the specific chapter in this specification
         /// </summary>
         /// <param name="id">Id of the chapter to find</param>
         /// <returns></returns>
@@ -242,7 +242,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Looks for specific paragraphs in the specification, whose number begins with the Id provided
+        ///     Looks for specific paragraphs in the specification, whose number begins with the Id provided
         /// </summary>
         /// <param name="id"></param>
         /// <param name="retVal">the list to fill with the corresponding paragraphs</param>
@@ -255,7 +255,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the list of all paragraphs
+        ///     Provides the list of all paragraphs
         /// </summary>
         /// <returns></returns>
         public List<string> ParagraphList()
@@ -275,7 +275,7 @@ namespace DataDictionary.Specification
 
 
         /// <summary>
-        /// Provides the paragraphs that require an implementation
+        ///     Provides the paragraphs that require an implementation
         /// </summary>
         public ICollection<Paragraph> ApplicableParagraphs
         {
@@ -296,7 +296,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the paragraphs that are marked as needing more information
+        ///     Provides the paragraphs that are marked as needing more information
         /// </summary>
         public ICollection<Paragraph> MoreInformationNeeded
         {
@@ -321,7 +321,7 @@ namespace DataDictionary.Specification
 
 
         /// <summary>
-        /// Provides the paragraphs that are marked as specification issues
+        ///     Provides the paragraphs that are marked as specification issues
         /// </summary>
         public ICollection<Paragraph> SpecIssues
         {
@@ -345,7 +345,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the paragraphs from the chapter Design Choices
+        ///     Provides the paragraphs from the chapter Design Choices
         /// </summary>
         public ICollection<Paragraph> DesignChoices
         {
@@ -370,7 +370,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the paragraphs from the chapter Comments
+        ///     Provides the paragraphs from the chapter Comments
         /// </summary>
         public ICollection<Paragraph> OnlyComments
         {
@@ -412,7 +412,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Gets all paragraphs from a specification
+        ///     Gets all paragraphs from a specification
         /// </summary>
         /// <param name="paragraphs"></param>
         public void GetParagraphs(List<Paragraph> paragraphs)
@@ -439,7 +439,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Indicates which requirement has been not implemented
+        ///     Indicates which requirement has been not implemented
         /// </summary>
         public void CheckImplementation()
         {
@@ -463,7 +463,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Indicates which requirement has been not reviewed 
+        ///     Indicates which requirement has been not reviewed
         /// </summary>
         public void CheckReview()
         {
@@ -487,7 +487,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Indicates which requirement has been not reviewed 
+        ///     Indicates which requirement has been not reviewed
         /// </summary>
         public void CheckNewRevision()
         {
@@ -581,17 +581,17 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides all ReqReferences
+        ///     Provides all ReqReferences
         /// </summary>
         private class AllReferences : Visitor
         {
             /// <summary>
-            /// Provides the list of references found
+            ///     Provides the list of references found
             /// </summary>
             public List<ReqRef> References { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public AllReferences()
             {
@@ -606,12 +606,12 @@ namespace DataDictionary.Specification
             }
 
             /// <summary>
-            /// The set of paragraph which have a functional test defined
+            ///     The set of paragraph which have a functional test defined
             /// </summary>
             public HashSet<Paragraph> TestedParagraphs { get; private set; }
 
             /// <summary>
-            /// Set up the TestedParagraphs cache
+            ///     Set up the TestedParagraphs cache
             /// </summary>
             /// <param name="dictionary">Initialises this class according to the dictionary provided</param>
             public void Initialize(Dictionary dictionary)
@@ -634,17 +634,17 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the paragraph which are implemented but where no functional test is present
+        ///     Provides the paragraph which are implemented but where no functional test is present
         /// </summary>
         private class ImplementedWithNoFunctionalTestVisitor : Visitor
         {
             /// <summary>
-            /// Provides references to all functional tests
+            ///     Provides references to all functional tests
             /// </summary>
             private AllReferences FunctionalTests { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ImplementedWithNoFunctionalTestVisitor(Specification specification)
             {
@@ -672,7 +672,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Mark paragraphs that are implemented, but where there is no test to validate this implementation
+        ///     Mark paragraphs that are implemented, but where there is no test to validate this implementation
         /// </summary>
         public void CheckImplementedWithNoFunctionalTest()
         {
@@ -682,17 +682,17 @@ namespace DataDictionary.Specification
 
 
         /// <summary>
-        /// Provides the paragraph which are not set as tested but where a functional test is present
+        ///     Provides the paragraph which are not set as tested but where a functional test is present
         /// </summary>
         private class NotTestedWithFunctionalTestVisitor : Visitor
         {
             /// <summary>
-            /// Provides references to all functional tests
+            ///     Provides references to all functional tests
             /// </summary>
             private AllReferences FunctionalTests { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public NotTestedWithFunctionalTestVisitor(Specification specification)
             {
@@ -711,7 +711,8 @@ namespace DataDictionary.Specification
                 {
                     if (FunctionalTests.TestedParagraphs.Contains(paragraph))
                     {
-                        paragraph.AddInfo("Paragraph is not marked as tested, but is already associated functional test(s)");
+                        paragraph.AddInfo(
+                            "Paragraph is not marked as tested, but is already associated functional test(s)");
                     }
                 }
 
@@ -720,7 +721,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Mark paragraphs that are implemented, but where there is no test to validate this implementation
+        ///     Mark paragraphs that are implemented, but where there is no test to validate this implementation
         /// </summary>
         public void CheckNotTestedWithFunctionalTests()
         {
@@ -729,22 +730,22 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the paragraph which are not marked as implemented but where implementation exists
+        ///     Provides the paragraph which are not marked as implemented but where implementation exists
         /// </summary>
         private class NotImplementedButImplementationExistsVisitor : Visitor
         {
             /// <summary>
-            /// Provides all ReqReferences
+            ///     Provides all ReqReferences
             /// </summary>
             private class AllReferences : Visitor
             {
                 /// <summary>
-                /// Provides the list of references found
+                ///     Provides the list of references found
                 /// </summary>
                 public List<ReqRef> References { get; private set; }
 
                 /// <summary>
-                /// Constructor
+                ///     Constructor
                 /// </summary>
                 public AllReferences()
                 {
@@ -759,7 +760,7 @@ namespace DataDictionary.Specification
                 }
 
                 /// <summary>
-                /// Do not visit test frames
+                ///     Do not visit test frames
                 /// </summary>
                 /// <param name="obj"></param>
                 /// <param name="visitSubNodes"></param>
@@ -768,12 +769,12 @@ namespace DataDictionary.Specification
                 }
 
                 /// <summary>
-                /// The set of paragraph which have are implemented
+                ///     The set of paragraph which have are implemented
                 /// </summary>
                 public HashSet<Paragraph> ImplementedParagraphs { get; private set; }
 
                 /// <summary>
-                /// Set up the TestedParagraphs cache
+                ///     Set up the TestedParagraphs cache
                 /// </summary>
                 /// <param name="dictionary">Initialises this class according to the dictionary provided</param>
                 public void Initialize(Dictionary dictionary)
@@ -793,12 +794,12 @@ namespace DataDictionary.Specification
             }
 
             /// <summary>
-            /// Provides references to all implementations
+            ///     Provides references to all implementations
             /// </summary>
             private AllReferences Implementations { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public NotImplementedButImplementationExistsVisitor(Specification specification)
             {
@@ -826,7 +827,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Mark paragraphs where implementation exists, but that are not marked as implemented
+        ///     Mark paragraphs where implementation exists, but that are not marked as implemented
         /// </summary>
         public void CheckNotImplementedButImplementationExists()
         {
@@ -835,7 +836,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)

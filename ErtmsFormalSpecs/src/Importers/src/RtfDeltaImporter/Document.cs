@@ -19,22 +19,22 @@ using System.Collections.Generic;
 namespace Importers.RtfDeltaImporter
 {
     /// <summary>
-    /// A document, consisting of a set of paragraphs
+    ///     A document, consisting of a set of paragraphs
     /// </summary>
     public class Document
     {
         /// <summary>
-        /// Stores the paragraphs found in the document
+        ///     Stores the paragraphs found in the document
         /// </summary>
         public Dictionary<string, Paragraph> Paragraphs = new Dictionary<string, Paragraph>();
 
         /// <summary>
-        /// The list of errors encountered during importation
+        ///     The list of errors encountered during importation
         /// </summary>
         public List<ImportationError> Errors { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="filePath"></param>
         public Document(string filePath)
@@ -48,7 +48,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Adds a paragraph in the document
+        ///     Adds a paragraph in the document
         /// </summary>
         /// <param name="paragraph"></param>
         public void AddParagraph(Paragraph paragraph)
@@ -57,7 +57,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Updates the state of the paragraphs located in source according to the original content, located in original
+        ///     Updates the state of the paragraphs located in source according to the original content, located in original
         /// </summary>
         /// <param name="source">The source paragraphs, to be updated</param>
         /// <param name="original">The original file content</param>
@@ -159,7 +159,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Finds a paragraph whose Id corresponds to the Id provided
+        ///     Finds a paragraph whose Id corresponds to the Id provided
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -173,7 +173,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Provides the paragraph that have been added in this release
+        ///     Provides the paragraph that have been added in this release
         /// </summary>
         public List<Paragraph> NewParagraphs
         {
@@ -181,7 +181,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Provides the paragraph that have been removed in this release
+        ///     Provides the paragraph that have been removed in this release
         /// </summary>
         public List<Paragraph> RemovedParagraphs
         {
@@ -189,7 +189,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Provides the paragraph that have been changed in this release
+        ///     Provides the paragraph that have been changed in this release
         /// </summary>
         public List<Paragraph> ChangedParagraphs
         {
@@ -197,7 +197,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Provides the paragraph that have been moved in this release
+        ///     Provides the paragraph that have been moved in this release
         /// </summary>
         public List<Paragraph> MovedParagraphs
         {
@@ -205,14 +205,14 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Predicates on paragraphs
+        ///     Predicates on paragraphs
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
         private delegate bool ParagraphCondition(Paragraph p);
 
         /// <summary>
-        /// Paragraph has been inserted
+        ///     Paragraph has been inserted
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -222,7 +222,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Paragraph has been deleted
+        ///     Paragraph has been deleted
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -232,7 +232,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Paragraph contents has changed
+        ///     Paragraph contents has changed
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -242,7 +242,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Paragraph has been moved 
+        ///     Paragraph has been moved
         /// </summary>
         /// <param name="p"></param>
         /// <returns></returns>
@@ -252,7 +252,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Find all paragraphs which match the predicate condition
+        ///     Find all paragraphs which match the predicate condition
         /// </summary>
         /// <param name="condition"></param>
         /// <returns></returns>

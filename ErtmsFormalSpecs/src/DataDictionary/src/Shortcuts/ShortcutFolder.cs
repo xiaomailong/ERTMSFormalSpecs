@@ -22,7 +22,7 @@ namespace DataDictionary.Shortcuts
     public class ShortcutFolder : Generated.ShortcutFolder
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ShortcutFolder()
             : base()
@@ -30,7 +30,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Provides the folders
+        ///     Provides the folders
         /// </summary>
         public ArrayList Folders
         {
@@ -46,7 +46,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Provides the shortcuts contained in this folder
+        ///     Provides the shortcuts contained in this folder
         /// </summary>
         public ArrayList Shortcuts
         {
@@ -62,7 +62,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Provides the number of shortcuts of the currenf folder and all its sub-folders
+        ///     Provides the number of shortcuts of the currenf folder and all its sub-folders
         /// </summary>
         public int ShortcutsCount
         {
@@ -78,7 +78,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Provides the enclosing collection
+        ///     Provides the enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -103,7 +103,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)

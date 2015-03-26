@@ -27,7 +27,7 @@ namespace DataDictionary.Tests.Runner.Events
     public class SubStepActivated : ModelEvent
     {
         /// <summary>
-        /// The activated step
+        ///     The activated step
         /// </summary>
         private SubStep subStep;
 
@@ -38,16 +38,16 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// <summary>
-        /// The namespace associated to this event
-        /// </summary>
+        ///     <summary>
+        ///         The namespace associated to this event
+        ///     </summary>
         public override NameSpace NameSpace
         {
             get { return null; }
         }
 
         /// <summary>
-        /// The list of changes related to this sub step
+        ///     The list of changes related to this sub step
         /// </summary>
         public List<VariableUpdate> Updates { get; set; }
 
@@ -61,7 +61,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Computes the changes related to this event
+        ///     Computes the changes related to this event
         /// </summary>
         /// <param name="apply">Indicates that the changes should be applied directly</param>
         /// <param name="runner"></param>
@@ -90,7 +90,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Applies this step activation be registering it in the activation cache
+        ///     Applies this step activation be registering it in the activation cache
         /// </summary>
         /// <param name="runner"></param>
         public override void Apply(Runner runner)
@@ -112,7 +112,8 @@ namespace DataDictionary.Tests.Runner.Events
                 {
                     if (!String.IsNullOrEmpty(expectation.getCondition()))
                     {
-                        Expression expression = EFSSystem.INSTANCE.Parser.Expression(expectation, expectation.getCondition());
+                        Expression expression = EFSSystem.INSTANCE.Parser.Expression(expectation,
+                            expectation.getCondition());
                         BoolValue value = expression.GetValue(new InterpretationContext(expectation), null) as BoolValue;
                         if (value != null)
                         {
@@ -133,7 +134,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rolls back this step be removing it from the cache
+        ///     Rolls back this step be removing it from the cache
         /// </summary>
         public override void RollBack()
         {

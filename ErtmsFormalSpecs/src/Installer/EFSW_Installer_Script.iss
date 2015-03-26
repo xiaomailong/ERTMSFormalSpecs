@@ -77,7 +77,7 @@ Source: ..\Utils\*; DestDir: {app}\src\Utils; Excludes: "CVS,obj.cvsignore"; Fla
 Source: ..\XmlBooster\*; DestDir: {app}\src\XmlBooster; Excludes: "CVS,obj.cvsignore"; Flags: recursesubdirs
 
 [Icons]
-Name: "{group}\docs\Release Notes"; Filename: "{app}\EFSW_Release_Notes.pdf";
+;Name: "{group}\docs\Release Notes"; Filename: "{app}\EFSW_Release_Notes.pdf";
 Name: "{group}\docs\User's Manual"; Filename: "{app}\doc\EFSW_User_Guide.pdf";
 Name: "{group}\docs\Technical Design"; Filename: "{app}\doc\EFSW_Technical_Design.pdf";
 ;Name: "{group}\docs\reports\Specification Report"; Filename: "{app}\doc\SpecificationCoverageReport.pdf";

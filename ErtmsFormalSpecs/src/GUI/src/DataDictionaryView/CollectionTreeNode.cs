@@ -36,12 +36,12 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The editor for Range types
+        ///     The editor for Range types
         /// </summary>
         private class ItemEditor : TypeEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -56,7 +56,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable type
+            ///     The variable type
             /// </summary>
             [Category("Description")]
             [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
@@ -72,7 +72,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The structure element default value
+            ///     The structure element default value
             /// </summary>
             [Category("Description")]
             [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
@@ -88,7 +88,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The default value of the variable
+            ///     The default value of the variable
             /// </summary>
             [Category("Description")]
             public int MaxSize
@@ -99,7 +99,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public CollectionTreeNode(Collection item, bool buildSubNodes)
@@ -108,7 +108,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -117,7 +117,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

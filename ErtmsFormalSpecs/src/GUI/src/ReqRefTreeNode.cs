@@ -29,7 +29,7 @@ namespace GUI
     public class ReqRefTreeNode : ModelElementTreeNode<ReqRef>
     {
         /// <summary>
-        /// Indicates that this req ref can be removed from its model
+        ///     Indicates that this req ref can be removed from its model
         /// </summary>
         private bool CanBeDeleted { get; set; }
 
@@ -44,7 +44,7 @@ namespace GUI
         private class ItemEditor : Editor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -72,7 +72,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
@@ -83,7 +83,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -134,7 +134,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles the selection of the requirement
+        ///     Handles the selection of the requirement
         /// </summary>
         public void SelectHandler(object sender, EventArgs args)
         {
@@ -142,7 +142,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -162,7 +162,7 @@ namespace GUI
 
 
         /// <summary>
-        /// Accepts a drop event
+        ///     Accepts a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

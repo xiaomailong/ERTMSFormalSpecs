@@ -20,22 +20,22 @@ using Net.Sgoliver.NRtfTree.Core;
 namespace Importers.RtfDeltaImporter
 {
     /// <summary>
-    /// A simple RTF parser, which shall extract only the relevant data
+    ///     A simple RTF parser, which shall extract only the relevant data
     /// </summary>
     public class Parser : SarParser
     {
         /// <summary>
-        /// Stores the paragraphs found in the document
+        ///     Stores the paragraphs found in the document
         /// </summary>
         public Document Doc { get; private set; }
 
         /// <summary>
-        /// The stack used during analysis
+        ///     The stack used during analysis
         /// </summary>
         private ModeStack Stack { get; set; }
 
         /// <summary>
-        /// Constructor.
+        ///     Constructor.
         /// </summary>
         /// <param name="filePath"></param>
         public Parser(string filePath, Document document)
@@ -56,7 +56,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Indicates whether the prefix corresponds to a paragraph number
+        ///     Indicates whether the prefix corresponds to a paragraph number
         /// </summary>
         private enum ParagraphNumberEnum
         {
@@ -66,7 +66,7 @@ namespace Importers.RtfDeltaImporter
         };
 
         /// <summary>
-        /// Indicates whether the text should be taken into consideration
+        ///     Indicates whether the text should be taken into consideration
         /// </summary>
         private enum IgnoreTextEnum
         {
@@ -75,22 +75,22 @@ namespace Importers.RtfDeltaImporter
         };
 
         /// <summary>
-        /// The current mode
+        ///     The current mode
         /// </summary>
         private class Mode
         {
             /// <summary>
-            /// The local paragraph number mode
+            ///     The local paragraph number mode
             /// </summary>
             public ParagraphNumberEnum ParagraphNumberMode { get; set; }
 
             /// <summary>
-            /// The information whether the text should be ommitted, or not
+            ///     The information whether the text should be ommitted, or not
             /// </summary>
             public IgnoreTextEnum IgnoreTextMode { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public Mode()
             {
@@ -100,17 +100,17 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// The stack of modes
+        ///     The stack of modes
         /// </summary>
         private class ModeStack
         {
             /// <summary>
-            /// The stacked modes
+            ///     The stacked modes
             /// </summary>
             private List<Mode> Stack { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ModeStack()
             {
@@ -118,7 +118,7 @@ namespace Importers.RtfDeltaImporter
             }
 
             /// <summary>
-            /// Pushes a new frame on the stack
+            ///     Pushes a new frame on the stack
             /// </summary>
             public void PushFrame()
             {
@@ -126,7 +126,7 @@ namespace Importers.RtfDeltaImporter
             }
 
             /// <summary>
-            /// Pops the last frame from the stack
+            ///     Pops the last frame from the stack
             /// </summary>
             public void PopFrame()
             {
@@ -134,7 +134,7 @@ namespace Importers.RtfDeltaImporter
             }
 
             /// <summary>
-            /// Indicates that the text should be ignored
+            ///     Indicates that the text should be ignored
             /// </summary>
             /// <returns></returns>
             public bool IgnoreText()
@@ -154,7 +154,7 @@ namespace Importers.RtfDeltaImporter
             }
 
             /// <summary>
-            /// Provides the active frame
+            ///     Provides the active frame
             /// </summary>
             /// <returns></returns>
             public Mode CurrentFrame
@@ -163,7 +163,7 @@ namespace Importers.RtfDeltaImporter
             }
 
             /// <summary>
-            /// Indicates whether the paragraph mode corresponds to the mode provided as parameter
+            ///     Indicates whether the paragraph mode corresponds to the mode provided as parameter
             /// </summary>
             /// <param name="val"></param>
             /// <returns></returns>
@@ -190,7 +190,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// At the end of an Rtf group, reset all modes
+        ///     At the end of an Rtf group, reset all modes
         /// </summary>
         public override void EndRtfGroup()
         {
@@ -279,7 +279,7 @@ namespace Importers.RtfDeltaImporter
 
 
         /// <summary>
-        /// The paragraph currently processed
+        ///     The paragraph currently processed
         /// </summary>
         private Paragraph CurrentParagraph = null;
 
@@ -343,7 +343,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Adds some text to the current paragraph
+        ///     Adds some text to the current paragraph
         /// </summary>
         /// <param name="text"></param>
         private void addTextToCurrentParagraph(string text)

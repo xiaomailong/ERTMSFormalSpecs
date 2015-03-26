@@ -17,7 +17,7 @@
 namespace HistoricalData
 {
     /// <summary>
-    /// The object factory
+    ///     The object factory
     /// </summary>
     public class Factory : Generated.Factory
     {
@@ -43,12 +43,12 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The singleton instance
+        ///     The singleton instance
         /// </summary>
         private static Factory __instance = new Factory();
 
         /// <summary>
-        /// The singleton instance
+        ///     The singleton instance
         /// </summary>
         public static Factory INSTANCE
         {

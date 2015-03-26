@@ -22,22 +22,22 @@ using Utils;
 namespace DataDictionary
 {
     /// <summary>
-    /// Cache for Guid -> ModelElement lookup
+    ///     Cache for Guid -> ModelElement lookup
     /// </summary>
     public class GuidCache : IFinder
     {
         /// <summary>
-        /// The EFS system for this cache
+        ///     The EFS system for this cache
         /// </summary>
         private EFSSystem EFSSystem { get; set; }
 
         /// <summary>
-        /// The cache between guid and ModelElement
+        ///     The cache between guid and ModelElement
         /// </summary>
         private Dictionary<string, ModelElement> cache = new Dictionary<string, ModelElement>();
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="system"></param>
         public GuidCache(EFSSystem system)
@@ -46,7 +46,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Clears the cache
+        ///     Clears the cache
         /// </summary>
         public void ClearCache()
         {
@@ -54,17 +54,17 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Updates the cache according to the model
+        ///     Updates the cache according to the model
         /// </summary>
         private class GuidVisitor : Visitor
         {
             /// <summary>
-            /// The dictionary to update
+            ///     The dictionary to update
             /// </summary>
             private Dictionary<string, ModelElement> Dictionary;
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="dictionary"></param>
             public GuidVisitor(Dictionary<string, ModelElement> dictionary)
@@ -98,7 +98,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the model element which corresponds to the guid provided
+        ///     Provides the model element which corresponds to the guid provided
         /// </summary>
         /// <param name="guid"></param>
         /// <returns></returns>
@@ -130,12 +130,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The guid cache instance singleton
+        ///     The guid cache instance singleton
         /// </summary>
         private static GuidCache __instance;
 
         /// <summary>
-        /// The cache instance
+        ///     The cache instance
         /// </summary>
         public static GuidCache INSTANCE
         {

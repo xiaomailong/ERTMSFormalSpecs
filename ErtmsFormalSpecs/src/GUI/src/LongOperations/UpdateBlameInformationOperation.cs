@@ -30,12 +30,12 @@ namespace GUI.LongOperations
     public class UpdateBlameInformationOperation : BaseCompareWithRepositoryOperation
     {
         /// <summary>
-        /// The latest commit to compare with
+        ///     The latest commit to compare with
         /// </summary>
         private Commit LastCommit { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary">The dictionary to compare with</param>
         /// <param name="lastCommit">The last commit used to update the history information</param>
@@ -46,7 +46,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        ///     Generates the file in the background thread
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()
@@ -57,7 +57,8 @@ namespace GUI.LongOperations
                 Repository repository = getRepository();
 
                 string DictionaryDirectory = Path.GetDirectoryName(Dictionary.FilePath);
-                DictionaryDirectory = DictionaryDirectory.Substring(RepositoryPath.Length + 1, DictionaryDirectory.Length - RepositoryPath.Length - 1);
+                DictionaryDirectory = DictionaryDirectory.Substring(RepositoryPath.Length + 1,
+                    DictionaryDirectory.Length - RepositoryPath.Length - 1);
 
                 History history = Dictionary.EFSSystem.History;
                 if (history.Commit(LastCommit.Sha) == null)
@@ -138,7 +139,11 @@ namespace GUI.LongOperations
                                 }
                                 else
                                 {
-                                    DialogResult result = MessageBox.Show("Cannot open file for commit\n" + commit.MessageShort + " (" + commit.Sha + ")\nplease see log file (GUI.Log) for more information.\nPress OK to continue.", "Cannot open file", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                                    DialogResult result =
+                                        MessageBox.Show(
+                                            "Cannot open file for commit\n" + commit.MessageShort + " (" + commit.Sha +
+                                            ")\nplease see log file (GUI.Log) for more information.\nPress OK to continue.",
+                                            "Cannot open file", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                                     if (result == DialogResult.OK)
                                     {
                                         // Stick back to the previous version to continue the process
@@ -191,7 +196,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Avoid memory leak : caches hold references to dictionaries
+        ///     Avoid memory leak : caches hold references to dictionaries
         /// </summary>
         /// <param name="dictionary"></param>
         private static void CleanUpDictionary(Dictionary dictionary)

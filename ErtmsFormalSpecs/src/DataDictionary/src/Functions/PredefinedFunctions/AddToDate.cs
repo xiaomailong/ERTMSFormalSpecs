@@ -28,22 +28,22 @@ using Variable = DataDictionary.Variables.Variable;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Adds a number of milliseconds to a date, and returns a new date
+    ///     Adds a number of milliseconds to a date, and returns a new date
     /// </summary>
     public class AddToDate : PredefinedFunction
     {
         /// <summary>
-        /// The base date which is being added to
+        ///     The base date which is being added to
         /// </summary>
         public Parameter StartDate { get; private set; }
 
         /// <summary>
-        /// The time added to the date, in milliseconds
+        ///     The time added to the date, in milliseconds
         /// </summary>
         public Parameter Increment { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         public AddToDate(EFSSystem efsSystem)
@@ -63,11 +63,17 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the function
+        ///     The return type of the function
         /// </summary>
         public override Type ReturnType
         {
-            get { return EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default"), "Default.DateAndTime"); }
+            get
+            {
+                return
+                    EFSSystem.findType(
+                        OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default"),
+                        "Default.DateAndTime");
+            }
         }
 
 
@@ -83,7 +89,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the int value which corresponds to a specific field of the structure provided
+        ///     Provides the int value which corresponds to a specific field of the structure provided
         /// </summary>
         /// <param name="structure"></param>
         /// <param name="name"></param>
@@ -100,7 +106,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Converts an int to a EFS IntValue
+        ///     Converts an int to a EFS IntValue
         /// </summary>
         /// <param name="value">The int value to be converted</param>
         /// <returns></returns>
@@ -110,7 +116,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Creates a EFS DateAndTime structure from a System.DateTime
+        ///     Creates a EFS DateAndTime structure from a System.DateTime
         /// </summary>
         /// <param name="value">The values that will go into the structure</param>
         /// <param name="structureType">The structure type</param>
@@ -135,13 +141,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 

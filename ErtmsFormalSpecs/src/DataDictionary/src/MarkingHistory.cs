@@ -19,32 +19,32 @@ using System.Collections.Generic;
 namespace DataDictionary
 {
     /// <summary>
-    /// Keeps track of last MAX_MARKING markings
+    ///     Keeps track of last MAX_MARKING markings
     /// </summary>
     public class MarkingHistory
     {
         /// <summary>
-        /// The maximum number of marking to keep track of
+        ///     The maximum number of marking to keep track of
         /// </summary>
         private const int MAX_MARKING = 10;
 
         /// <summary>
-        /// The markings
+        ///     The markings
         /// </summary>
         private List<Marking> Markings { get; set; }
 
         /// <summary>
-        /// The system in which this marking history belongs
+        ///     The system in which this marking history belongs
         /// </summary>
         private EFSSystem EFSSystem { get; set; }
 
         /// <summary>
-        /// The indice of the current marking in the history
+        ///     The indice of the current marking in the history
         /// </summary>
         private Marking CurrentMarking { get; set; }
 
         /// <summary>
-        /// The marking history for a specific EFS System
+        ///     The marking history for a specific EFS System
         /// </summary>
         /// <param name="system"></param>
         public MarkingHistory(EFSSystem system)
@@ -54,7 +54,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Registers the current marking
+        ///     Registers the current marking
         /// </summary>
         public void RegisterCurrentMarking()
         {
@@ -69,7 +69,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Clears all marks
+        ///     Clears all marks
         /// </summary>
         private void ClearMarks()
         {
@@ -80,7 +80,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Selects the current marking an restores the marks
+        ///     Selects the current marking an restores the marks
         /// </summary>
         /// <param name="marking"></param>
         /// <returns>true when a marking has been selected</returns>
@@ -100,7 +100,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Selects the next marking in the history
+        ///     Selects the next marking in the history
         /// </summary>
         public bool selectNextMarking()
         {
@@ -124,7 +124,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Selects the previous marking in the history
+        ///     Selects the previous marking in the history
         /// </summary>
         public bool selectPreviousMarking()
         {

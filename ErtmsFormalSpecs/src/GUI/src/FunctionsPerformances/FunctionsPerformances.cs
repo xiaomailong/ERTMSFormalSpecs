@@ -27,12 +27,12 @@ namespace GUI.FunctionsPerformances
     public partial class FunctionsPerformances : DockContent
     {
         /// <summary>
-        /// The EFS System for which this view is built
+        ///     The EFS System for which this view is built
         /// </summary>
         private EFSSystem EFSSystem { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public FunctionsPerformances()
         {
@@ -40,7 +40,7 @@ namespace GUI.FunctionsPerformances
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         public FunctionsPerformances(EFSSystem efsSystem)
@@ -51,12 +51,12 @@ namespace GUI.FunctionsPerformances
         }
 
         /// <summary>
-        /// Provides the functions that consumed most of the time
+        ///     Provides the functions that consumed most of the time
         /// </summary>
         private class GetSlowest : Visitor
         {
             /// <summary>
-            /// The list of functions
+            ///     The list of functions
             /// </summary>
             private List<Function> Functions { get; set; }
 
@@ -91,7 +91,7 @@ namespace GUI.FunctionsPerformances
             }
 
             /// <summary>
-            /// Provides the functions associated with their descending execution time
+            ///     Provides the functions associated with their descending execution time
             /// </summary>
             /// <returns></returns>
             public List<Function> getFunctionsDesc()

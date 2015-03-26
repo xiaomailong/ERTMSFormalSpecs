@@ -21,7 +21,7 @@ namespace DataDictionary.Shortcuts
     public class Shortcut : Generated.Shortcut
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Shortcut()
             : base()
@@ -29,7 +29,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Provides the full name for the shortcut
+        ///     Provides the full name for the shortcut
         /// </summary>
         public string ShortcutName
         {
@@ -38,7 +38,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// The enclosing shortcut dictionary
+        ///     The enclosing shortcut dictionary
         /// </summary>
         public ShortcutDictionary ShortcutDictionary
         {
@@ -46,7 +46,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Provides the enclosing collection
+        ///     Provides the enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -71,7 +71,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Copies information from an element
+        ///     Copies information from an element
         /// </summary>
         /// <param name="aNamable">Element to be copied</param>
         public void CopyFrom(Namable aNamable)
@@ -81,7 +81,7 @@ namespace DataDictionary.Shortcuts
         }
 
         /// <summary>
-        /// Provides the model element referenced by this shortcut
+        ///     Provides the model element referenced by this shortcut
         /// </summary>
         /// <returns></returns>
         public Namable GetReference()

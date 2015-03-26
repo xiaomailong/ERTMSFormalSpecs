@@ -7,14 +7,14 @@ namespace XmlBooster
         private bool locked = false;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Lock()
         {
         }
 
         /// <summary>
-        /// Gets the corresponding lock
+        ///     Gets the corresponding lock
         /// </summary>
         /// <returns>false if the lock is already locked</returns>
         public bool GetLock()
@@ -30,7 +30,7 @@ namespace XmlBooster
         }
 
         /// <summary>
-        /// Unlocks the lock
+        ///     Unlocks the lock
         /// </summary>
         public void UnLock()
         {
@@ -39,20 +39,20 @@ namespace XmlBooster
     }
 
     /// <summary>
-    /// Listens to a specific event
+    ///     Listens to a specific event
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IListener<T>
         where T : class
     {
         /// <summary>
-        /// Handles the change event
+        ///     Handles the change event
         /// </summary>
         /// <param name="sender"></param>
         void HandleChangeEvent(T sender);
 
         /// <summary>
-        /// Handles a change event
+        ///     Handles a change event
         /// </summary>
         /// <param name="aLock"></param>
         /// <param name="sender"></param>
@@ -60,20 +60,20 @@ namespace XmlBooster
     }
 
     /// <summary>
-    /// Listens to a specific event
+    ///     Listens to a specific event
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class Listener<T> : IListener<T>
         where T : class
     {
         /// <summary>
-        /// Handles the change event
+        ///     Handles the change event
         /// </summary>
         /// <param name="sender"></param>
         public abstract void HandleChangeEvent(T sender);
 
         /// <summary>
-        /// Handles a change event
+        ///     Handles a change event
         /// </summary>
         /// <param name="aLock"></param>
         /// <param name="sender"></param>
@@ -83,7 +83,7 @@ namespace XmlBooster
         }
 
         /// <summary>
-        /// Handles a change event
+        ///     Handles a change event
         /// </summary>
         /// <param name="listener"></param>
         /// <param name="aLock"></param>
@@ -112,7 +112,7 @@ namespace XmlBooster
     }
 
     /// <summary>
-    /// A model element controller
+    ///     A model element controller
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="Listener"></typeparam>
@@ -121,12 +121,12 @@ namespace XmlBooster
         where Listener : IListener<T>
     {
         /// <summary>
-        /// Indicates that notifications should be sent to the listeners
+        ///     Indicates that notifications should be sent to the listeners
         /// </summary>
         private int notifyCount = 1;
 
         /// <summary>
-        /// Activates the notifications to the listeners
+        ///     Activates the notifications to the listeners
         /// </summary>
         public void ActivateNotification()
         {
@@ -134,7 +134,7 @@ namespace XmlBooster
         }
 
         /// <summary>
-        /// Deactivates the notifications to the listeners
+        ///     Deactivates the notifications to the listeners
         /// </summary>
         public void DesactivateNotification()
         {
@@ -142,7 +142,7 @@ namespace XmlBooster
         }
 
         /// <summary>
-        /// The listeners
+        ///     The listeners
         /// </summary>
         private List<IListener<T>> listeners = new List<IListener<T>>();
 
@@ -152,7 +152,7 @@ namespace XmlBooster
         }
 
         /// <summary>
-        /// Alerts all listeners that a change occured
+        ///     Alerts all listeners that a change occured
         /// </summary>
         /// <param name="aLock"></param>
         /// <param name="sender"></param>

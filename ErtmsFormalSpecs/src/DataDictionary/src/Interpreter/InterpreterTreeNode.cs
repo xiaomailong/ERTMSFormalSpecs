@@ -23,42 +23,42 @@ namespace DataDictionary.Interpreter
     public class InterpreterTreeNode : INamable
     {
         /// <summary>
-        /// Some logging facility
+        ///     Some logging facility
         /// </summary>
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// The root element for which this interpreter tree node is created and interpreted
+        ///     The root element for which this interpreter tree node is created and interpreted
         /// </summary>
         public ModelElement Root { get; private set; }
 
         /// <summary>
-        /// The root element for which errors should be raised
+        ///     The root element for which errors should be raised
         /// </summary>
         public ModelElement RootLog { get; private set; }
 
         /// <summary>
-        /// The enclosing interpreter tree node
+        ///     The enclosing interpreter tree node
         /// </summary>
         public InterpreterTreeNode Enclosing { get; set; }
 
         /// <summary>
-        /// The static usages performed by this statement
+        ///     The static usages performed by this statement
         /// </summary>
         public Usages StaticUsage { get; protected set; }
 
         /// <summary>
-        /// The start character in the string for this expression
+        ///     The start character in the string for this expression
         /// </summary>
         public int Start { get; set; }
 
         /// <summary>
-        /// The end character in the string for this expression
+        ///     The end character in the string for this expression
         /// </summary>
         public int End { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">The root element for which this interpreter tree node is created</param>
         /// <param name="enclosingNode">The enclosing expression node</param>
@@ -85,7 +85,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The EFS System for which this interpreter tree node is created
+        ///     The EFS System for which this interpreter tree node is created
         /// </summary>
         public EFSSystem EFSSystem
         {
@@ -93,7 +93,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The Dictionary for which this interpreter tree node is created
+        ///     The Dictionary for which this interpreter tree node is created
         /// </summary>
         public Dictionary Dictionary
         {
@@ -101,7 +101,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds an error message to the root element
+        ///     Adds an error message to the root element
         /// </summary>
         /// <param name="message"></param>
         public void AddError(string message)
@@ -113,7 +113,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds an error message to the root element and explains it
+        ///     Adds an error message to the root element and explains it
         /// </summary>
         /// <param name="message"></param>
         /// <param name="explain"></param>
@@ -126,7 +126,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds an error message to the root element
+        ///     Adds an error message to the root element
         /// </summary>
         /// <param name="message"></param>
         public void AddWarning(string message)

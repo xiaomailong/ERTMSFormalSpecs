@@ -23,7 +23,7 @@ using DataDictionary.Tests;
 namespace GUI.Converters
 {
     /// <summary>
-    /// Converts IExpressionable to string, by getting the Expression property
+    ///     Converts IExpressionable to string, by getting the Expression property
     /// </summary>
     public class ExpressionableUITypeConverter : StringConverter
     {
@@ -55,7 +55,8 @@ namespace GUI.Converters
             }
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+            Type destinationType)
         {
             string retVal = "<unknown>";
             IExpressionable expressionable = value as IExpressionable;
@@ -94,7 +95,7 @@ namespace GUI.Converters
 
 
     /// <summary>
-    /// Converts and expectation into a string, by getting the Condition property
+    ///     Converts and expectation into a string, by getting the Condition property
     /// </summary>
     public class ConditionUITypeConverter : StringConverter
     {
@@ -126,7 +127,8 @@ namespace GUI.Converters
             }
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+            Type destinationType)
         {
             string retVal = "<unknown>";
             Expectation expectation = value as Expectation;

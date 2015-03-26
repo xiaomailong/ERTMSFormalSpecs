@@ -26,22 +26,22 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Provides the first distance where the function reaches the speed provided
+    ///     Provides the first distance where the function reaches the speed provided
     /// </summary>
     public class DistanceForSpeed : PredefinedFunction
     {
         /// <summary>
-        /// The function speed -> distance
+        ///     The function speed -> distance
         /// </summary>
         public Parameter Function { get; private set; }
 
         /// <summary>
-        /// The speed to reach
+        ///     The speed to reach
         /// </summary>
         public Parameter Speed { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="name">the name of the cast function</param>
@@ -62,7 +62,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the function
+        ///     The return type of the function
         /// </summary>
         public override Type ReturnType
         {
@@ -70,18 +70,19 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context,
+            Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Function.Name], 1);
         }
 
         /// <summary>
-        /// Provides the graph of this function if it has been statically defined
+        ///     Provides the graph of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
         /// <returns></returns>
@@ -116,13 +117,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 

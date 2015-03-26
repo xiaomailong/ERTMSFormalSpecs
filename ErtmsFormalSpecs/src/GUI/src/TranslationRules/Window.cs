@@ -49,7 +49,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public Window()
@@ -59,7 +59,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public Window(TranslationDictionary dictionary)
@@ -75,7 +75,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -85,7 +85,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Refreshes the display
+        ///     Refreshes the display
         /// </summary>
         public override void Refresh()
         {
@@ -97,7 +97,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Clears messages for the element stored in the tree view in the window
+        ///     Clears messages for the element stored in the tree view in the window
         /// </summary>
         public void Clear()
         {
@@ -106,7 +106,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Refreshed the model of the window
+        ///     Refreshed the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -114,7 +114,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Selects the next node where error message is available
+        ///     Selects the next node where error message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -124,7 +124,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Selects the next node where warning message is available
+        ///     Selects the next node where warning message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -134,7 +134,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Selects the next node where info message is available
+        ///     Selects the next node where info message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -144,7 +144,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Selects the current translation
+        ///     Selects the current translation
         /// </summary>
         /// <param name="translation"></param>
         public void SetSelection(Translation translation)

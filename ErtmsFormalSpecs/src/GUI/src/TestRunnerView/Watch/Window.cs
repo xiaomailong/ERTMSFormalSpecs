@@ -32,7 +32,7 @@ namespace GUI.TestRunnerView.Watch
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public Window()
@@ -56,7 +56,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// The instance on which expressions should be evaluated
+        ///     The instance on which expressions should be evaluated
         /// </summary>
         private ModelElement Instance
         {
@@ -76,17 +76,17 @@ namespace GUI.TestRunnerView.Watch
         private class TextChangeHandler : EditorView.Window.HandleTextChange
         {
             /// <summary>
-            /// The expression supervised by this change handler
+            ///     The expression supervised by this change handler
             /// </summary>
             private WatchedExpression Watch { get; set; }
 
             /// <summary>
-            /// The column that is edited
+            ///     The column that is edited
             /// </summary>
             public string ColumnName { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="dictionary"></param>
             /// <param name="watch"></param>
@@ -99,7 +99,7 @@ namespace GUI.TestRunnerView.Watch
             }
 
             /// <summary>
-            /// The way text is retrieved from the instance
+            ///     The way text is retrieved from the instance
             /// </summary>
             /// <returns></returns>
             public override string GetText()
@@ -119,7 +119,7 @@ namespace GUI.TestRunnerView.Watch
             }
 
             /// <summary>
-            /// The way text is set back in the instance
+            ///     The way text is set back in the instance
             /// </summary>
             /// <returns></returns>
             public override void SetText(string text)
@@ -136,12 +136,12 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Indicates that a double click event is being handled
+        ///     Indicates that a double click event is being handled
         /// </summary>
         private bool HandlingDoubleClick { get; set; }
 
         /// <summary>
-        /// Handles a double click event
+        ///     Handles a double click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -162,7 +162,8 @@ namespace GUI.TestRunnerView.Watch
                     {
                         EditorView.Window form = new EditorView.Window();
                         form.AutoComplete = true;
-                        TextChangeHandler handler = new TextChangeHandler(Instance, selected, selectedCell.OwningColumn.Name);
+                        TextChangeHandler handler = new TextChangeHandler(Instance, selected,
+                            selectedCell.OwningColumn.Name);
                         form.setChangeHandler(handler);
                         form.ShowDialog();
 
@@ -186,7 +187,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Provides the watch expression selected by the grid view
+        ///     Provides the watch expression selected by the grid view
         /// </summary>
         private WatchedExpression SelectedWatch
         {
@@ -196,7 +197,9 @@ namespace GUI.TestRunnerView.Watch
 
                 if (watchDataGridView.SelectedCells.Count == 1)
                 {
-                    retVal = ((List<WatchedExpression>) watchDataGridView.DataSource)[watchDataGridView.SelectedCells[0].OwningRow.Index];
+                    retVal =
+                        ((List<WatchedExpression>) watchDataGridView.DataSource)[
+                            watchDataGridView.SelectedCells[0].OwningRow.Index];
                 }
 
                 return retVal;
@@ -204,7 +207,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Handles the key up event
+        ///     Handles the key up event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -228,7 +231,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Ensures that there is an empty room available in the data
+        ///     Ensures that there is an empty room available in the data
         /// </summary>
         private void EnsureEmptyRoom()
         {
@@ -253,7 +256,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Handles the end of edition event
+        ///     Handles the end of edition event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -267,7 +270,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Changes the drag & drop pointer
+        ///     Changes the drag & drop pointer
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -279,7 +282,7 @@ namespace GUI.TestRunnerView.Watch
         private const int CTRL = 8;
 
         /// <summary>
-        /// Handles a drop event
+        ///     Handles a drop event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -329,7 +332,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -339,7 +342,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Refreshed the model of the window
+        ///     Refreshed the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -347,7 +350,7 @@ namespace GUI.TestRunnerView.Watch
         }
 
         /// <summary>
-        /// Refreshes after a change in the system
+        ///     Refreshes after a change in the system
         /// </summary>
         public void RefreshAfterStep()
         {
@@ -357,18 +360,18 @@ namespace GUI.TestRunnerView.Watch
         private class WatchedExpression
         {
             /// <summary>
-            /// The instance on which expressions should be evaluated
+            ///     The instance on which expressions should be evaluated
             /// </summary>
             private ModelElement Instance { get; set; }
 
             /// <summary>
-            /// The identification of the element
+            ///     The identification of the element
             /// </summary>
             public string Expression { get; set; }
 
             /// <summary>
-            /// Provides the expression which corresponds to the Expression text.
-            /// Returns null if the expression could not be parsed
+            ///     Provides the expression which corresponds to the Expression text.
+            ///     Returns null if the expression could not be parsed
             /// </summary>
             [Browsable(false)]
             public Expression ExpressionTree
@@ -399,7 +402,7 @@ namespace GUI.TestRunnerView.Watch
             }
 
             /// <summary>
-            /// The value of the corresponding expression
+            ///     The value of the corresponding expression
             /// </summary>
             public string Value
             {
@@ -455,7 +458,7 @@ namespace GUI.TestRunnerView.Watch
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="instance"></param>
             /// <param name="expression"></param>

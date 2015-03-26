@@ -19,12 +19,12 @@ using Utils;
 namespace DataDictionary.Interpreter.Filter
 {
     /// <summary>
-    /// Indicates that the namable is a callable or a variable
+    ///     Indicates that the namable is a callable or a variable
     /// </summary>
     public class IsCallableOrIsVariable : IsVariable
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected IsCallableOrIsVariable()
             : base()
@@ -32,7 +32,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
+        ///     Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -49,7 +49,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Singleton
+        ///     Singleton
         /// </summary>
         public new static IsCallableOrIsVariable INSTANCE = new IsCallableOrIsVariable();
     }

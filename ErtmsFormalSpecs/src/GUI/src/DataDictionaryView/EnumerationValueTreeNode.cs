@@ -27,7 +27,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -35,7 +35,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The item value
+            ///     The item value
             /// </summary>
             [Category("Description")]
             public string Value
@@ -46,7 +46,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public EnumerationValueTreeNode(EnumValue item, bool buildSubNodes)
@@ -55,7 +55,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -64,7 +64,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

@@ -26,6 +26,7 @@ using Utils;
 using Collection = DataDictionary.Types.Collection;
 using Function = DataDictionary.Functions.Function;
 using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
 using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Interpreter
@@ -33,12 +34,12 @@ namespace DataDictionary.Interpreter
     public class BinaryExpression : Expression
     {
         /// <summary>
-        /// The left expression of this expression
+        ///     The left expression of this expression
         /// </summary>
         public Expression Left { get; set; }
 
         /// <summary>
-        /// The available operators
+        ///     The available operators
         /// </summary>
         public enum OPERATOR
         {
@@ -64,26 +65,38 @@ namespace DataDictionary.Interpreter
 
         public static OPERATOR[] OperatorsLevel0 = {OPERATOR.OR};
         public static OPERATOR[] OperatorsLevel1 = {OPERATOR.AND};
-        public static OPERATOR[] OperatorsLevel2 = {OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN, OPERATOR.LESS_OR_EQUAL, OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER, OPERATOR.IS, OPERATOR.AS};
+
+        public static OPERATOR[] OperatorsLevel2 =
+        {
+            OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN,
+            OPERATOR.LESS_OR_EQUAL, OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER, OPERATOR.IS, OPERATOR.AS
+        };
+
         public static OPERATOR[] OperatorsLevel3 = {OPERATOR.ADD, OPERATOR.SUB};
         public static OPERATOR[] OperatorsLevel4 = {OPERATOR.MULT, OPERATOR.DIV};
         public static OPERATOR[] OperatorsLevel5 = {OPERATOR.EXP};
-        public static OPERATOR[][] OperatorsByLevel = {OperatorsLevel0, OperatorsLevel1, OperatorsLevel2, OperatorsLevel3, OperatorsLevel4, OperatorsLevel5};
+
+        public static OPERATOR[][] OperatorsByLevel =
+        {
+            OperatorsLevel0, OperatorsLevel1, OperatorsLevel2,
+            OperatorsLevel3, OperatorsLevel4, OperatorsLevel5
+        };
 
         /// <summary>
-        /// The available operators
+        ///     The available operators
         /// </summary>
         public static OPERATOR[] Operators =
         {
             OPERATOR.OR, OPERATOR.AND,
-            OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN, OPERATOR.LESS_OR_EQUAL, OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER, OPERATOR.IS, OPERATOR.AS,
+            OPERATOR.EQUAL, OPERATOR.NOT_EQUAL, OPERATOR.IN, OPERATOR.NOT_IN, OPERATOR.LESS_OR_EQUAL,
+            OPERATOR.GREATER_OR_EQUAL, OPERATOR.LESS, OPERATOR.GREATER, OPERATOR.IS, OPERATOR.AS,
             OPERATOR.ADD, OPERATOR.SUB,
             OPERATOR.MULT, OPERATOR.DIV,
             OPERATOR.EXP
         };
 
         /// <summary>
-        /// The corresponding operator images
+        ///     The corresponding operator images
         /// </summary>
         public static string[] OperatorsImages =
         {
@@ -96,24 +109,25 @@ namespace DataDictionary.Interpreter
         };
 
         /// <summary>
-        /// The operation for this expression
+        ///     The operation for this expression
         /// </summary>
         public OPERATOR Operation { get; private set; }
 
         /// <summary>
-        /// The right expression of this expression
+        ///     The right expression of this expression
         /// </summary>
         public Expression Right { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="left"></param>
         /// <param name="op"></param>
         /// <param name="right"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public BinaryExpression(ModelElement root, ModelElement log, Expression left, OPERATOR op, Expression right, int start, int end)
+        public BinaryExpression(ModelElement root, ModelElement log, Expression left, OPERATOR op, Expression right,
+            int start, int end)
             : base(root, log, start, end)
         {
             Left = left;
@@ -125,7 +139,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -177,7 +191,8 @@ namespace DataDictionary.Interpreter
                                 Type rightType = ((Parameter) right.FormalParameters[i]).Type;
                                 if (!leftType.Equals(rightType))
                                 {
-                                    AddError("Non matching formal parameter type for parameter " + i + " " + leftType + " vs " + rightType);
+                                    AddError("Non matching formal parameter type for parameter " + i + " " + leftType +
+                                             " vs " + rightType);
                                     match = false;
                                 }
                             }
@@ -208,7 +223,8 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            AddError("Invalid number of parameters, " + Left + " and " + Right + " should have the same number of parameters");
+                            AddError("Invalid number of parameters, " + Left + " and " + Right +
+                                     " should have the same number of parameters");
                         }
                     }
                     else
@@ -223,7 +239,8 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            AddError(Left + "(" + left.ReturnType + " ) does not correspond to " + Right + "(" + rightType + ")");
+                            AddError(Left + "(" + left.ReturnType + " ) does not correspond to " + Right + "(" +
+                                     rightType + ")");
                         }
                     }
                 }
@@ -242,7 +259,8 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            AddError(Left + "(" + leftType + ") does not correspond to " + Right + "(" + right.ReturnType + ")");
+                            AddError(Left + "(" + leftType + ") does not correspond to " + Right + "(" +
+                                     right.ReturnType + ")");
                         }
                     }
                 }
@@ -252,7 +270,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <returns></returns>
         public override Type GetExpressionType()
@@ -272,7 +290,7 @@ namespace DataDictionary.Interpreter
                 }
                 else if (Operation == OPERATOR.AS)
                 {
-                    retVal = Right.Ref as Types.Structure;
+                    retVal = Right.Ref as Structure;
                 }
                 else
                 {
@@ -365,7 +383,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -403,7 +421,8 @@ namespace DataDictionary.Interpreter
                             rightValue = Right.GetValue(context, binaryExpressionExplanation);
                             if (rightValue != null)
                             {
-                                retVal = leftValue.Type.PerformArithmericOperation(context, leftValue, Operation, rightValue);
+                                retVal = leftValue.Type.PerformArithmericOperation(context, leftValue, Operation,
+                                    rightValue);
                             }
                             else
                             {
@@ -429,7 +448,8 @@ namespace DataDictionary.Interpreter
                                         }
                                         else
                                         {
-                                            AddError("Cannot apply an operator " + Operation.ToString() + " on a variable of type " + rightValue.GetType());
+                                            AddError("Cannot apply an operator " + Operation.ToString() +
+                                                     " on a variable of type " + rightValue.GetType());
                                         }
                                     }
                                     else
@@ -439,13 +459,15 @@ namespace DataDictionary.Interpreter
                                 }
                                 else
                                 {
-                                    ExplanationPart.CreateSubExplanation(binaryExpressionExplanation, "Right part not evaluated");
+                                    ExplanationPart.CreateSubExplanation(binaryExpressionExplanation,
+                                        "Right part not evaluated");
                                     retVal = lb;
                                 }
                             }
                             else
                             {
-                                AddError("Cannot apply an operator " + Operation.ToString() + " on a variable of type " + leftValue.GetType());
+                                AddError("Cannot apply an operator " + Operation.ToString() + " on a variable of type " +
+                                         leftValue.GetType());
                             }
                         }
                             break;
@@ -467,7 +489,8 @@ namespace DataDictionary.Interpreter
                                         }
                                         else
                                         {
-                                            AddError("Cannot apply an operator " + Operation.ToString() + " on a variable of type " + rightValue.GetType());
+                                            AddError("Cannot apply an operator " + Operation.ToString() +
+                                                     " on a variable of type " + rightValue.GetType());
                                         }
                                     }
                                     else
@@ -477,13 +500,15 @@ namespace DataDictionary.Interpreter
                                 }
                                 else
                                 {
-                                    ExplanationPart.CreateSubExplanation(binaryExpressionExplanation, "Right part not evaluated");
+                                    ExplanationPart.CreateSubExplanation(binaryExpressionExplanation,
+                                        "Right part not evaluated");
                                     retVal = lb;
                                 }
                             }
                             else
                             {
-                                AddError("Cannot apply an operator " + Operation.ToString() + " on a variable of type " + leftValue.GetType());
+                                AddError("Cannot apply an operator " + Operation.ToString() + " on a variable of type " +
+                                         leftValue.GetType());
                             }
                         }
                             break;
@@ -507,7 +532,9 @@ namespace DataDictionary.Interpreter
                             rightValue = Right.GetValue(context, binaryExpressionExplanation);
                             if (rightValue != null)
                             {
-                                retVal = EFSSystem.GetBoolean(leftValue.Type.CompareForEquality(leftValue, rightValue) || leftValue.Type.Less(leftValue, rightValue));
+                                retVal =
+                                    EFSSystem.GetBoolean(leftValue.Type.CompareForEquality(leftValue, rightValue) ||
+                                                         leftValue.Type.Less(leftValue, rightValue));
                             }
                             else
                             {
@@ -535,7 +562,9 @@ namespace DataDictionary.Interpreter
                             rightValue = Right.GetValue(context, binaryExpressionExplanation);
                             if (rightValue != null)
                             {
-                                retVal = EFSSystem.GetBoolean(leftValue.Type.CompareForEquality(leftValue, rightValue) || leftValue.Type.Greater(leftValue, rightValue));
+                                retVal =
+                                    EFSSystem.GetBoolean(leftValue.Type.CompareForEquality(leftValue, rightValue) ||
+                                                         leftValue.Type.Greater(leftValue, rightValue));
                             }
                             else
                             {
@@ -606,12 +635,12 @@ namespace DataDictionary.Interpreter
                             retVal = EFSSystem.GetBoolean(false);
                             if (leftValue != null)
                             {
-                                Types.Structure rightStructure = Right.Ref as Types.Structure;
+                                Structure rightStructure = Right.Ref as Structure;
                                 if (rightStructure != null)
                                 {
-                                    if (leftValue.Type is Types.Structure)
+                                    if (leftValue.Type is Structure)
                                     {
-                                        Types.Structure leftStructure = leftValue.Type as Types.Structure;
+                                        Structure leftStructure = leftValue.Type as Structure;
                                         if (rightStructure.ImplementedStructures.Contains(leftStructure))
                                         {
                                             retVal = EFSSystem.GetBoolean(true);
@@ -641,9 +670,9 @@ namespace DataDictionary.Interpreter
                         case OPERATOR.AS:
                         {
                             leftValue = Left.GetValue(context, binaryExpressionExplanation);
-                            if(leftValue != null)
-                            { 
-                                if(leftValue.Type == Right.GetExpressionType())
+                            if (leftValue != null)
+                            {
+                                if (leftValue.Type == Right.GetExpressionType())
                                 {
                                     retVal = leftValue;
                                 }
@@ -679,7 +708,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Gets the unbound parameters from the function definition and place holders
+        ///     Gets the unbound parameters from the function definition and place holders
         /// </summary>
         /// <param name="context"></param>
         /// <param name="function"></param>
@@ -708,7 +737,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Gets the unbound parameters from either the surface or the graph of the function
+        ///     Gets the unbound parameters from either the surface or the graph of the function
         /// </summary>
         /// <param name="leftFunction"></param>
         /// <returns></returns>
@@ -734,7 +763,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the callable that is called by this expression
+        ///     Provides the callable that is called by this expression
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -772,11 +801,13 @@ namespace DataDictionary.Interpreter
                     {
                         if (rightFunction.FormalParameters.Count == 1)
                         {
-                            retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
+                            retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight,
+                                explain);
                         }
                         else if (rightFunction.FormalParameters.Count == 2)
                         {
-                            retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
+                            retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight,
+                                explain);
                         }
                         else
                         {
@@ -788,11 +819,13 @@ namespace DataDictionary.Interpreter
                 {
                     if (leftFunction.FormalParameters.Count == 1)
                     {
-                        retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
+                        retVal = createGraphResult(context, leftFunction, unboundLeft, rightFunction, unboundRight,
+                            explain);
                     }
                     else if (leftFunction.FormalParameters.Count == 2)
                     {
-                        retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight, explain);
+                        retVal = createSurfaceResult(context, leftFunction, unboundLeft, rightFunction, unboundRight,
+                            explain);
                     }
                     else
                     {
@@ -826,7 +859,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the result as a surface
+        ///     Creates the result as a surface
         /// </summary>
         /// <param name="context"></param>
         /// <param name="leftFunction"></param>
@@ -835,7 +868,8 @@ namespace DataDictionary.Interpreter
         /// <param name="unboundRight"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        private ICallable createGraphResult(InterpretationContext context, Function leftFunction, List<Parameter> unboundLeft, Function rightFunction, List<Parameter> unboundRight, ExplanationPart explain)
+        private ICallable createGraphResult(InterpretationContext context, Function leftFunction,
+            List<Parameter> unboundLeft, Function rightFunction, List<Parameter> unboundRight, ExplanationPart explain)
         {
             ICallable retVal = null;
 
@@ -862,7 +896,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the result as a surface
+        ///     Creates the result as a surface
         /// </summary>
         /// <param name="context"></param>
         /// <param name="leftFunction"></param>
@@ -871,7 +905,8 @@ namespace DataDictionary.Interpreter
         /// <param name="unboundRight"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        private ICallable createSurfaceResult(InterpretationContext context, Function leftFunction, List<Parameter> unboundLeft, Function rightFunction, List<Parameter> unboundRight, ExplanationPart explain)
+        private ICallable createSurfaceResult(InterpretationContext context, Function leftFunction,
+            List<Parameter> unboundLeft, Function rightFunction, List<Parameter> unboundRight, ExplanationPart explain)
         {
             ICallable retVal = null;
 
@@ -897,7 +932,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the graph for the unbound parameters provided
+        ///     Creates the graph for the unbound parameters provided
         /// </summary>
         /// <param name="context"></param>
         /// <param name="expression"></param>
@@ -905,7 +940,8 @@ namespace DataDictionary.Interpreter
         /// <param name="unbound"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        private Graph createGraphForUnbound(InterpretationContext context, Expression expression, Function function, List<Parameter> unbound, ExplanationPart explain)
+        private Graph createGraphForUnbound(InterpretationContext context, Expression expression, Function function,
+            List<Parameter> unbound, ExplanationPart explain)
         {
             Graph retVal = null;
 
@@ -936,7 +972,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the graph for the unbount parameters provided
+        ///     Creates the graph for the unbount parameters provided
         /// </summary>
         /// <param name="context"></param>
         /// <param name="expression"></param>
@@ -944,7 +980,8 @@ namespace DataDictionary.Interpreter
         /// <param name="unbound"></param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        private Surface createSurfaceForUnbound(InterpretationContext context, Expression expression, Function function, List<Parameter> unbound, ExplanationPart explain)
+        private Surface createSurfaceForUnbound(InterpretationContext context, Expression expression, Function function,
+            List<Parameter> unbound, ExplanationPart explain)
         {
             Surface retVal = null;
 
@@ -991,7 +1028,7 @@ namespace DataDictionary.Interpreter
 
 
         /// <summary>
-        /// Combines two graphs using the operator of this binary expression
+        ///     Combines two graphs using the operator of this binary expression
         /// </summary>
         /// <param name="leftGraph"></param>
         /// <param name="rightGraph"></param>
@@ -1023,7 +1060,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Combines two surfaces using the operator of this binary expression
+        ///     Combines two surfaces using the operator of this binary expression
         /// </summary>
         /// <param name="leftSurface"></param>
         /// <param name="rightSurface"></param>
@@ -1055,7 +1092,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -1066,7 +1103,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates that the expression is an equality of the form variable == literal
+        ///     Indicates that the expression is an equality of the form variable == literal
         /// </summary>
         /// <returns></returns>
         public bool IsSimpleEquality()
@@ -1082,7 +1119,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -1098,7 +1135,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the image of a given operator
+        ///     Provides the image of a given operator
         /// </summary>
         /// <param name="op"></param>
         /// <returns></returns>
@@ -1119,7 +1156,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the image of a given operator
+        ///     Provides the image of a given operator
         /// </summary>
         /// <param name="op"></param>
         /// <returns></returns>
@@ -1136,7 +1173,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the operator, based on its image
+        ///     Provides the operator, based on its image
         /// </summary>
         /// <param name="op"></param>
         /// <returns></returns>
@@ -1157,7 +1194,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         /// <param name="context">The interpretation context</param>
         public override void checkExpression()
@@ -1172,25 +1209,27 @@ namespace DataDictionary.Interpreter
             {
                 if (Operation == OPERATOR.IS || (Operation == OPERATOR.AS))
                 {
-                    Types.Structure leftStructure = leftType as Types.Structure;
-                    if ( leftStructure != null )
+                    Structure leftStructure = leftType as Structure;
+                    if (leftStructure != null)
                     {
-                        Types.Structure rightStructure = Right.Ref as Types.Structure;
-                        if ( rightStructure != null )
+                        Structure rightStructure = Right.Ref as Structure;
+                        if (rightStructure != null)
                         {
-                            if ( !rightStructure.ImplementedStructures.Contains(leftStructure))
+                            if (!rightStructure.ImplementedStructures.Contains(leftStructure))
                             {
                                 AddError("No inheritance from " + Right + " to " + Left);
                             }
                         }
                         else
                         {
-                            AddError("Right part of "+ Operation +" operation should be a structure, found " + Right.Ref);
+                            AddError("Right part of " + Operation + " operation should be a structure, found " +
+                                     Right.Ref);
                         }
                     }
                     else
                     {
-                        AddError("Left expression type of "+ Operation +" operation should be a structure, found " + leftType);
+                        AddError("Left expression type of " + Operation + " operation should be a structure, found " +
+                                 leftType);
                     }
                 }
                 else
@@ -1201,14 +1240,16 @@ namespace DataDictionary.Interpreter
                         if (!leftType.ValidBinaryOperation(Operation, rightType)
                             && !rightType.ValidBinaryOperation(Operation, leftType))
                         {
-                            AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name + ") and " + Right + "(" + rightType.Name + ")");
+                            AddError("Cannot perform " + Operation + " operation between " + Left + "(" + leftType.Name +
+                                     ") and " + Right + "(" + rightType.Name + ")");
                         }
 
                         if (Operation == OPERATOR.EQUAL)
                         {
                             if (leftType is StateMachine && rightType is StateMachine)
                             {
-                                AddWarning("IN operator should be used instead of == between " + Left.ToString() + " and " + Right.ToString());
+                                AddWarning("IN operator should be used instead of == between " + Left.ToString() +
+                                           " and " + Right.ToString());
                             }
 
                             if (Right.Ref == EFSSystem.EmptyValue)
@@ -1225,7 +1266,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
+        ///     Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
@@ -1250,14 +1291,15 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the surface of this function if it has been statically defined
+        ///     Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam,
+            ExplanationPart explain)
         {
             Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
@@ -1278,7 +1320,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Inverses the operator provided
+        ///     Inverses the operator provided
         /// </summary>
         /// <param name="Operator"></param>
         /// <returns></returns>

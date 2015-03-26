@@ -36,53 +36,55 @@ using NameSpace = DataDictionary.Types.NameSpace;
 using Paragraph = DataDictionary.Specification.Paragraph;
 using RequirementSet = DataDictionary.Specification.RequirementSet;
 using Rule = DataDictionary.Rules.Rule;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
 using Type = DataDictionary.Types.Type;
 using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary
 {
     /// <summary>
-    /// A complete system, along with all dictionaries
+    ///     A complete system, along with all dictionaries
     /// </summary>
     public class EFSSystem : IModelElement, ISubDeclarator, IHoldsParagraphs
     {
         /// <summary>
-        /// The dictionaries used in the system
+        ///     The dictionaries used in the system
         /// </summary>
         public List<Dictionary> Dictionaries { get; private set; }
 
         /// <summary>
-        /// The runner currently set for the system
+        ///     The runner currently set for the system
         /// </summary>
         public Runner Runner { get; set; }
 
         /// <summary>
-        /// Indicates wheter the model should be recompiled (after a change or a load)
+        ///     Indicates wheter the model should be recompiled (after a change or a load)
         /// </summary>
         public bool ShouldRebuild { get; set; }
 
         /// <summary>
-        /// Indicates wheter the model should be saved (after a change)
+        ///     Indicates wheter the model should be saved (after a change)
         /// </summary>
         public bool ShouldSave { get; set; }
 
         /// <summary>
-        /// The marking history
+        ///     The marking history
         /// </summary>
         public MarkingHistory Markings { get; private set; }
 
         /// <summary>
-        /// Listener to model changes
+        ///     Listener to model changes
         /// </summary>
         public class BaseModelElementChangeListener : IListener<BaseModelElement>
         {
             /// <summary>
-            /// The system for which this listener listens
+            ///     The system for which this listener listens
             /// </summary>
             private EFSSystem System { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="system"></param>
             public BaseModelElementChangeListener(EFSSystem system)
@@ -107,17 +109,17 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The compiler used to compile the system
+        ///     The compiler used to compile the system
         /// </summary>
         public Compiler Compiler { get; private set; }
 
         /// <summary>
-        /// Provides the history
+        ///     Provides the history
         /// </summary>
         public History History { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         private EFSSystem()
         {
@@ -143,7 +145,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds a new dictionary in the system
+        ///     Adds a new dictionary in the system
         /// </summary>
         /// <param name="dictionary"></param>
         public void AddDictionary(Dictionary dictionary)
@@ -156,7 +158,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The enclosing model element
+        ///     The enclosing model element
         /// </summary>
         public object Enclosing
         {
@@ -165,7 +167,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The EFS System name
+        ///     The EFS System name
         /// </summary>
         public string Name
         {
@@ -179,7 +181,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The sub elements of this model element
+        ///     The sub elements of this model element
         /// </summary>
         public ArrayList SubElements
         {
@@ -197,7 +199,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the collection which holds this instance
+        ///     Provides the collection which holds this instance
         /// </summary>
         public ArrayList EnclosingCollection
         {
@@ -205,14 +207,14 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Deletes the element from its enclosing node
+        ///     Deletes the element from its enclosing node
         /// </summary>
         public void Delete()
         {
         }
 
         /// <summary>
-        /// The expression text data of this model element
+        ///     The expression text data of this model element
         /// </summary>
         /// <param name="text"></param>
         public string ExpressionText
@@ -222,7 +224,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The messages logged on the model element
+        ///     The messages logged on the model element
         /// </summary>
         public List<ElementLog> Messages
         {
@@ -230,7 +232,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Clears the messages associated to the system
+        ///     Clears the messages associated to the system
         /// </summary>
         public void ClearMessages()
         {
@@ -241,7 +243,6 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -256,11 +257,10 @@ namespace DataDictionary
         }
 
         /// --------------------------------------------------
-        ///   PREDEFINED ITEMS
+        /// PREDEFINED ITEMS
         /// --------------------------------------------------
-        /// 
         /// <summary>
-        /// The predefined empty value
+        ///     The predefined empty value
         /// </summary>
         private EmptyValue emptyValue;
 
@@ -277,7 +277,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined any type
+        ///     The predefined any type
         /// </summary>
         private AnyType anyType;
 
@@ -294,7 +294,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined no type
+        ///     The predefined no type
         /// </summary>
         private NoType noType;
 
@@ -311,7 +311,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined bool type
+        ///     The predefined bool type
         /// </summary>
         private BoolType boolType;
 
@@ -328,7 +328,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined integer type
+        ///     The predefined integer type
         /// </summary>
         private IntegerType integerType;
 
@@ -345,7 +345,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined double type
+        ///     The predefined double type
         /// </summary>
         private DoubleType doubleType;
 
@@ -362,7 +362,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined string type
+        ///     The predefined string type
         /// </summary>
         private StringType stringType;
 
@@ -379,7 +379,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The generic collection type
+        ///     The generic collection type
         /// </summary>
         /// <returns></returns>
         private Collection genericCollection;
@@ -398,7 +398,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined types
+        ///     The predefined types
         /// </summary>
         private Dictionary<string, Type> predefinedTypes;
 
@@ -420,7 +420,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Gets the boolean value which corresponds to the bool provided
+        ///     Gets the boolean value which corresponds to the bool provided
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
@@ -437,7 +437,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined allocate function
+        ///     The predefined allocate function
         /// </summary>
         private Allocate allocatePredefinedFunction;
 
@@ -454,7 +454,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined available function
+        ///     The predefined available function
         /// </summary>
         private Available availablePredefinedFunction;
 
@@ -471,7 +471,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined not function
+        ///     The predefined not function
         /// </summary>
         private Not notPredefinedFunction;
 
@@ -489,7 +489,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// The predefined min function
+        ///     The predefined min function
         /// </summary>
         private Min minPredefinedFunction;
 
@@ -506,7 +506,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined MinSurface function
+        ///     The predefined MinSurface function
         /// </summary>
         private MinSurface minSurfacePredefinedFunction;
 
@@ -523,7 +523,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined max function
+        ///     The predefined max function
         /// </summary>
         private Max maxPredefinedFunction;
 
@@ -540,7 +540,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined targets function
+        ///     The predefined targets function
         /// </summary>
         private Targets targetsPredefinedFunction;
 
@@ -557,7 +557,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined discontinuities function
+        ///     The predefined discontinuities function
         /// </summary>
         private Discontinuities discontPredefinedFunction;
 
@@ -574,7 +574,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined RoundToMultiple function
+        ///     The predefined RoundToMultiple function
         /// </summary>
         private RoundToMultiple roundToMultiplePredefinedFunction;
 
@@ -591,7 +591,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined DoubleToInteger function
+        ///     The predefined DoubleToInteger function
         /// </summary>
         private DoubleToInteger doubleToIntegerPredefinedFunction;
 
@@ -608,7 +608,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined deceleration profile function
+        ///     The predefined deceleration profile function
         /// </summary>
         private DecelerationProfile decelerationProfilePredefinedFunction;
 
@@ -625,7 +625,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined before function
+        ///     The predefined before function
         /// </summary>
         private Before beforePredefinedFunction;
 
@@ -642,7 +642,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined checkNumber function
+        ///     The predefined checkNumber function
         /// </summary>
         private CheckNumber checkNumberPredefinedFunction;
 
@@ -659,7 +659,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined AddIncrement function
+        ///     The predefined AddIncrement function
         /// </summary>
         private AddIncrement addIncrementPredefinedFunction;
 
@@ -676,7 +676,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined AddToDate function
+        ///     The predefined AddToDate function
         /// </summary>
         private AddToDate addToDatePredefinedFunction;
 
@@ -693,7 +693,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined override function
+        ///     The predefined override function
         /// </summary>
         private Override overridePredefinedFunction;
 
@@ -710,7 +710,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined DistanceForSpeed function
+        ///     The predefined DistanceForSpeed function
         /// </summary>
         private DistanceForSpeed distanceForSpeedPredefinedFunction;
 
@@ -727,7 +727,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined IntersectAt function
+        ///     The predefined IntersectAt function
         /// </summary>
         private IntersectAt intersectAtFunction;
 
@@ -744,7 +744,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined Full Deceleration For Target function
+        ///     The predefined Full Deceleration For Target function
         /// </summary>
         private FullDecelerationForTarget fullDecelerationForTargetPredefinedFunction;
 
@@ -761,7 +761,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The predefined functions
+        ///     The predefined functions
         /// </summary>
         private Dictionary<string, PredefinedFunction> predefinedFunctions;
 
@@ -782,7 +782,8 @@ namespace DataDictionary
                     predefinedFunctions[DiscontPredefinedFunction.Name] = DiscontPredefinedFunction;
                     predefinedFunctions[RoundToMultiplePredefinedFunction.Name] = RoundToMultiplePredefinedFunction;
                     predefinedFunctions[DoubleToIntegerPredefinedFunction.Name] = DoubleToIntegerPredefinedFunction;
-                    predefinedFunctions[DecelerationProfilePredefinedFunction.Name] = DecelerationProfilePredefinedFunction;
+                    predefinedFunctions[DecelerationProfilePredefinedFunction.Name] =
+                        DecelerationProfilePredefinedFunction;
                     predefinedFunctions[BeforePredefinedFunction.Name] = BeforePredefinedFunction;
                     predefinedFunctions[CheckNumberPredefinedFunction.Name] = CheckNumberPredefinedFunction;
                     predefinedFunctions[AddIncrementPredefinedFunction.Name] = AddIncrementPredefinedFunction;
@@ -790,7 +791,8 @@ namespace DataDictionary
                     predefinedFunctions[OverridePredefinedFunction.Name] = OverridePredefinedFunction;
                     predefinedFunctions[DistanceForSpeedPredefinedFunction.Name] = DistanceForSpeedPredefinedFunction;
                     predefinedFunctions[IntersectAtFunction.Name] = IntersectAtFunction;
-                    predefinedFunctions[FullDecelerationForTargetPredefinedFunction.Name] = FullDecelerationForTargetPredefinedFunction;
+                    predefinedFunctions[FullDecelerationForTargetPredefinedFunction.Name] =
+                        FullDecelerationForTargetPredefinedFunction;
                 }
                 return predefinedFunctions;
             }
@@ -799,7 +801,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// All predefined items in the system
+        ///     All predefined items in the system
         /// </summary>
         private Dictionary<string, INamable> predefinedItems;
 
@@ -842,7 +844,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the predefined item, based on its name
+        ///     Provides the predefined item, based on its name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -856,7 +858,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates that at least one message of type levelEnum is attached to the element
+        ///     Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>
         /// <returns></returns>
@@ -868,7 +870,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -917,12 +919,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the list of declared elements in this System
+        ///     Provides the list of declared elements in this System
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -932,7 +934,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Finds all namable which match the full name provided
+        ///     Finds all namable which match the full name provided
         /// </summary>
         /// <param name="fullname">The full name used to search the namable</param>
         public INamable findByFullName(string fullname)
@@ -953,7 +955,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the type associated to the name
+        ///     Provides the type associated to the name
         /// </summary>
         /// <param name="nameSpace"></param>
         /// <param name="name"></param>
@@ -983,7 +985,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Finds a rule according to its full name
+        ///     Finds a rule according to its full name
         /// </summary>
         /// <param name="fullName"></param>
         /// <returns></returns>
@@ -1005,7 +1007,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public void AddModelElement(IModelElement element)
@@ -1020,7 +1022,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates whether a rule is disabled
+        ///     Indicates whether a rule is disabled
         /// </summary>
         /// <param name="rule"></param>
         /// <returns></returns>
@@ -1042,7 +1044,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// The evaluator for this dictionary
+        ///     The evaluator for this dictionary
         /// </summary>
         private Parser parser;
 
@@ -1059,7 +1061,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Parses the statement provided
+        ///     Parses the statement provided
         /// </summary>
         /// <param name="root">the root element for which this statement is created</param>
         /// <param name="expression"></param>
@@ -1070,7 +1072,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The EFS System instance
+        ///     The EFS System instance
         /// </summary>
         private static EFSSystem instance = null;
 
@@ -1087,7 +1089,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides an RTF explanation of the system
+        ///     Provides an RTF explanation of the system
         /// </summary>
         /// <returns></returns>
         public string getExplain()
@@ -1096,27 +1098,27 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The visitor who shall find all references
+        ///     The visitor who shall find all references
         /// </summary>
         private class ReferenceVisitor : Visitor
         {
             /// <summary>
-            /// The references found
+            ///     The references found
             /// </summary>
             public List<Usage> Usages { get; private set; }
 
             /// <summary>
-            /// The element to be found
+            ///     The element to be found
             /// </summary>
             private ModelElement Model { get; set; }
 
             /// <summary>
-            /// The filter to apply to the selection
+            ///     The filter to apply to the selection
             /// </summary>
             private BaseFilter Filter { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="model">The model element to be found</param>
             public ReferenceVisitor(ModelElement model)
@@ -1127,7 +1129,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="filter">The filter to apply to the search</param>
             public ReferenceVisitor(BaseFilter filter)
@@ -1138,7 +1140,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Takes an interpreter tree into consideration
+            ///     Takes an interpreter tree into consideration
             /// </summary>
             /// <param name="statement"></param>
             private void ConsiderInterpreterTreeNode(InterpreterTreeNode tree)
@@ -1167,7 +1169,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Considers the type of the element provided as parameter
+            ///     Considers the type of the element provided as parameter
             /// </summary>
             /// <param name="element">The element which uses this type</param>
             private void ConsiderTypeOfElement(ITypedElement element)
@@ -1193,7 +1195,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Walk through all elements
+            ///     Walk through all elements
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -1221,8 +1223,8 @@ namespace DataDictionary
                 }
 
                 /* searching for the implementation of interfaces */
-                Types.Structure structure = obj as Types.Structure;
-                Types.Structure modelStructure = Model as Types.Structure;
+                Structure structure = obj as Structure;
+                Structure modelStructure = Model as Structure;
                 if (structure != null && modelStructure != null && structure != modelStructure)
                 {
                     if (modelStructure.IsAbstract && structure.ImplementedStructures.Contains(modelStructure))
@@ -1232,22 +1234,23 @@ namespace DataDictionary
                 }
 
                 /* searching for the redefinition of structure elements */
-                Types.StructureElement currentStructureElement = Model as Types.StructureElement;
-                Types.StructureElement parameterStructureElement = obj as Types.StructureElement;
+                StructureElement currentStructureElement = Model as StructureElement;
+                StructureElement parameterStructureElement = obj as StructureElement;
                 if (currentStructureElement != null && parameterStructureElement != null)
                 {
-                    Types.Structure enclosingStructure = currentStructureElement.Enclosing as Types.Structure;
-                    Types.Structure enclosingParameterStructure = parameterStructureElement.Enclosing as Types.Structure;
-                    if(enclosingStructure != null &&
-                       enclosingParameterStructure != null &&
-                       enclosingParameterStructure.IsAbstract &&
-                       enclosingStructure.StructureElementIsInherited(currentStructureElement) &&
-                       enclosingStructure.InterfaceIsInherited(enclosingParameterStructure))
+                    Structure enclosingStructure = currentStructureElement.Enclosing as Structure;
+                    Structure enclosingParameterStructure = parameterStructureElement.Enclosing as Structure;
+                    if (enclosingStructure != null &&
+                        enclosingParameterStructure != null &&
+                        enclosingParameterStructure.IsAbstract &&
+                        enclosingStructure.StructureElementIsInherited(currentStructureElement) &&
+                        enclosingStructure.InterfaceIsInherited(enclosingParameterStructure))
                     {
                         if (currentStructureElement.Name == parameterStructureElement.Name &&
                             parameterStructureElement.Type == parameterStructureElement.Type)
                         {
-                            Usages.Add(new Usage(currentStructureElement, parameterStructureElement, Usage.ModeEnum.Redefines));
+                            Usages.Add(new Usage(currentStructureElement, parameterStructureElement,
+                                Usage.ModeEnum.Redefines));
                         }
                     }
                 }
@@ -1257,7 +1260,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        ///  Provides the list of references of a given model element
+        ///     Provides the list of references of a given model element
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -1296,7 +1299,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        ///  Provides the list of references for a given filter
+        ///     Provides the list of references for a given filter
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
@@ -1323,27 +1326,27 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates whether enclosing messages should be displayed
+        ///     Indicates whether enclosing messages should be displayed
         /// </summary>
         public bool DisplayEnclosingMessages { get; set; }
 
         /// <summary>
-        /// Indicates that requirements should be displayed as a list of element instead of the full requirement description
+        ///     Indicates that requirements should be displayed as a list of element instead of the full requirement description
         /// </summary>
         public bool DisplayRequirementsAsList { get; set; }
 
         /// <summary>
-        /// When animating the model, verify the correctness of the 'parent' relation for each model element
+        ///     When animating the model, verify the correctness of the 'parent' relation for each model element
         /// </summary>
         public bool CheckParentRelationship { get; set; }
 
         /// <summary>
-        /// When animating the model, cache the function results
+        ///     When animating the model, cache the function results
         /// </summary>
         public bool CacheFunctions { get; set; }
 
         /// <summary>
-        /// Stops the system
+        ///     Stops the system
         /// </summary>
         public void Stop()
         {
@@ -1351,7 +1354,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Gets all paragraphs from EFS System
+        ///     Gets all paragraphs from EFS System
         /// </summary>
         /// <returns></returns>
         public void GetParagraphs(List<Paragraph> paragraphs)
@@ -1363,7 +1366,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates if the element holds messages, or is part of a path to a message 
+        ///     Indicates if the element holds messages, or is part of a path to a message
         /// </summary>
         public MessagePathInfoEnum MessagePathInfo
         {
@@ -1371,7 +1374,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the list of requirement sets in the system
+        ///     Provides the list of requirement sets in the system
         /// </summary>
         public List<RequirementSet> RequirementSets
         {
@@ -1392,32 +1395,34 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks the requirements for a specific requirement set
+        ///     Marks the requirements for a specific requirement set
         /// </summary>
         private class RequirementSetMarker : Visitor
         {
             /// <summary>
-            /// The requirement set for which marking is done
+            ///     The requirement set for which marking is done
             /// </summary>
             private RequirementSet RequirementSet { get; set; }
 
             /// <summary>
-            /// Indicates if the requirement must belong to the requirement set, or not
+            ///     Indicates if the requirement must belong to the requirement set, or not
             /// </summary>
             private bool Belonging { get; set; }
 
             /// <summary>
-            /// Indicates if only the non implemented requirements should be marked
+            ///     Indicates if only the non implemented requirements should be marked
             /// </summary>
             private bool NotImplemented { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="requirementSet"></param>
-            /// <param name="belonging">Indicates whether the paragraph should belong to the requirement set 
-            /// <param name="notImplemented">Indicates that the the elements that should be marked are the not implemented ones</param>
-            /// or whether the requirement should not belong to that requirement set</param>
+            /// <param name="belonging">
+            ///     Indicates whether the paragraph should belong to the requirement set
+            ///     <param name="notImplemented">Indicates that the the elements that should be marked are the not implemented ones</param>
+            ///     or whether the requirement should not belong to that requirement set
+            /// </param>
             public RequirementSetMarker(RequirementSet requirementSet, bool belonging, bool notImplemented)
             {
                 RequirementSet = requirementSet;
@@ -1426,7 +1431,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Marks the paragraph
+            ///     Marks the paragraph
             /// </summary>
             /// <param name="paragraph"></param>
             /// <param name="recursively">Indicates that the paragraph should be marked recursively</param>
@@ -1437,11 +1442,13 @@ namespace DataDictionary
                 {
                     paragraph.AddInfo("Requirement set" + RequirementSet.Name);
                 }
-                else if (paragraph.getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented && paragraph.getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable)
+                else if (paragraph.getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented &&
+                         paragraph.getImplementationStatus() != acceptor.SPEC_IMPLEMENTED_ENUM.Impl_NotImplementable)
                 {
                     if (paragraph.getType() == acceptor.Paragraph_type.aREQUIREMENT)
                     {
-                        paragraph.AddInfo("Belongs to Requirement set" + RequirementSet.Name + " but is not implemented");
+                        paragraph.AddInfo("Belongs to Requirement set" + RequirementSet.Name +
+                                          " but is not implemented");
                     }
                 }
 
@@ -1489,7 +1496,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks the requirements which relate to the corresponding requirement set
+        ///     Marks the requirements which relate to the corresponding requirement set
         /// </summary>
         /// <param name="requirementSet"></param>
         public void MarkRequirementsForRequirementSet(RequirementSet requirementSet)
@@ -1504,7 +1511,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks the requirements which relate to the corresponding requirement set
+        ///     Marks the requirements which relate to the corresponding requirement set
         /// </summary>
         /// <param name="requirementSet"></param>
         public void MarkRequirementsWhichDoNotBelongToRequirementSet(RequirementSet requirementSet)
@@ -1519,7 +1526,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks the requirements which relate to the corresponding requirement set
+        ///     Marks the requirements which relate to the corresponding requirement set
         /// </summary>
         /// <param name="requirementSet"></param>
         public void MarkNotImplementedRequirements(RequirementSet requirementSet)
@@ -1534,7 +1541,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the requirement set whose name corresponds to the name provided
+        ///     Provides the requirement set whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>

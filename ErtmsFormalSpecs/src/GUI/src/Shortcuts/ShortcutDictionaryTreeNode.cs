@@ -30,7 +30,7 @@ namespace GUI.Shortcuts
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -39,7 +39,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ShortcutDictionaryTreeNode(ShortcutDictionary item, bool buildSubNodes)
@@ -48,7 +48,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -68,7 +68,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -77,7 +77,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Creates a new shortcut
+        ///     Creates a new shortcut
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -94,7 +94,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Creates a new folderTreeNode
+        ///     Creates a new folderTreeNode
         /// </summary>
         /// <param name="folder"></param>
         /// <returns></returns>
@@ -118,7 +118,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -131,7 +131,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Sort the sub nodes of this node
+        ///     Sort the sub nodes of this node
         /// </summary>
         public override void SortSubNodes()
         {
@@ -165,7 +165,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Accepts a drop event
+        ///     Accepts a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

@@ -25,12 +25,12 @@ namespace DataDictionary.Tests.Runner.Events
     public class RuleFired : ModelEvent
     {
         /// <summary>
-        /// The activation that launched this rule condition
+        ///     The activation that launched this rule condition
         /// </summary>
         public Runner.Activation Activation { get; private set; }
 
         /// <summary>
-        /// The rule condition associated to this rule fired event
+        ///     The rule condition associated to this rule fired event
         /// </summary>
         public RuleCondition RuleCondition
         {
@@ -38,7 +38,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The namespace associated to this event
+        ///     The namespace associated to this event
         /// </summary>
         public override NameSpace NameSpace
         {
@@ -46,12 +46,12 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The variable updates triggered by this rule event
+        ///     The variable updates triggered by this rule event
         /// </summary>
         private List<VariableUpdate> Updates { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="id"></param>
         public RuleFired(Runner.Activation activation, acceptor.RulePriority priority)
@@ -63,7 +63,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Adds a new variable update triggered by this rule fired event
+        ///     Adds a new variable update triggered by this rule fired event
         /// </summary>
         /// <param name="variableUpdate"></param>
         public void AddVariableUpdate(VariableUpdate variableUpdate)
@@ -72,7 +72,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Indicates that the rule fired impacts the variable provided as parameter
+        ///     Indicates that the rule fired impacts the variable provided as parameter
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>

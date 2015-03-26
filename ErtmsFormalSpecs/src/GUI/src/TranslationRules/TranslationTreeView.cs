@@ -21,12 +21,12 @@ namespace GUI.TranslationRules
     public class TranslationTreeView : TypedTreeView<TranslationDictionary>
     {
         /// <summary>
-        /// The tests tree node
+        ///     The tests tree node
         /// </summary>
         private TranslationDictionaryTreeNode dictionary;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public TranslationTreeView() : base()
         {
@@ -34,7 +34,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Builds the tree model according to the root node
+        ///     Builds the tree model according to the root node
         /// </summary>
         protected override void BuildModel()
         {
@@ -44,7 +44,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates a new frame
+        ///     Creates a new frame
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>

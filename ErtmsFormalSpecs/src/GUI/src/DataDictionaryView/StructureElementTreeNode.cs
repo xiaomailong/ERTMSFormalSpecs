@@ -54,7 +54,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -69,7 +69,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The structure element type
+            ///     The structure element type
             /// </summary>
             [Category("Description")]
             [Editor(typeof (TypeUITypedEditor), typeof (UITypeEditor))]
@@ -85,7 +85,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The structure element default value
+            ///     The structure element default value
             /// </summary>
             [Category("Description")]
             [Editor(typeof (DefaultValueUITypedEditor), typeof (UITypeEditor))]
@@ -101,7 +101,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The variable mode
+            ///     The variable mode
             /// </summary>
             [Category("Description"), TypeConverter(typeof (VariableModeConverter))]
             public acceptor.VariableModeEnumType Mode
@@ -112,7 +112,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public StructureElementTreeNode(StructureElement item, bool buildSubNodes)
@@ -121,7 +121,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -130,7 +130,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

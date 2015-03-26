@@ -29,7 +29,7 @@ namespace DataDictionary
     public class Parameter : Generated.Parameter, ITypedElement
     {
         /// <summary>
-        /// Parameter namespace
+        ///     Parameter namespace
         /// </summary>
         public NameSpace NameSpace
         {
@@ -37,7 +37,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Parameter type name
+        ///     Parameter type name
         /// </summary>
         public string TypeName
         {
@@ -50,7 +50,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Parameter type
+        ///     Parameter type
         /// </summary>
         private Type type;
 
@@ -72,7 +72,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The enclosing collection of the parameter
+        ///     The enclosing collection of the parameter
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -92,7 +92,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Creates an actual parameter based on this formal parameter and the value assigned to that parameter
+        ///     Creates an actual parameter based on this formal parameter and the value assigned to that parameter
         /// </summary>
         /// <returns></returns>
         public Actual createActual()
@@ -106,7 +106,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the mode of the parameter
+        ///     Provides the mode of the parameter
         /// </summary>
         public acceptor.VariableModeEnumType Mode
         {
@@ -115,7 +115,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The default value
+        ///     The default value
         /// </summary>
         public string Default
         {
@@ -124,7 +124,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -139,7 +139,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the name of this model element when accessing it from the other model element (provided as parameter)
+        ///     Provides the name of this model element when accessing it from the other model element (provided as parameter)
         /// </summary>
         /// <param name="modelElement"></param>
         /// <returns></returns>

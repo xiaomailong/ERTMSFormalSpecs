@@ -38,10 +38,11 @@ using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary
 {
-    public class Dictionary : Generated.Dictionary, ISubDeclarator, IFinder, IEnclosesNameSpaces, IHoldsParagraphs, IHoldsRequirementSets
+    public class Dictionary : Generated.Dictionary, ISubDeclarator, IFinder, IEnclosesNameSpaces, IHoldsParagraphs,
+        IHoldsRequirementSets
     {
         /// <summary>
-        /// The file path associated to the dictionary
+        ///     The file path associated to the dictionary
         /// </summary>
         private string filePath;
 
@@ -52,32 +53,32 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Used to temporarily store the list of sub-namespaces
+        ///     Used to temporarily store the list of sub-namespaces
         /// </summary>
         private ArrayList savedNameSpaces;
 
         /// <summary>
-        /// Used to temporarily store the list of test frames
+        ///     Used to temporarily store the list of test frames
         /// </summary>
         private ArrayList savedTests;
 
         /// <summary>
-        /// Updates the dictionary contents before saving it
+        ///     Updates the dictionary contents before saving it
         /// </summary>
         private class Updater : Visitor
         {
             /// <summary>
-            /// Indicates if the update operation is performed before saving or after
+            ///     Indicates if the update operation is performed before saving or after
             /// </summary>
             private bool beforeSave;
 
             /// <summary>
-            /// The base path used to save files
+            ///     The base path used to save files
             /// </summary>
             public string BasePath { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="basePath"></param>
             /// <param name="beforeSave"></param>
@@ -224,8 +225,8 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Removes the actions and expectation from translated steps because they may cause conflicts.
-            /// Remove obsolete comments
+            ///     Removes the actions and expectation from translated steps because they may cause conflicts.
+            ///     Remove obsolete comments
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -242,7 +243,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Ensure that empty comments are not stored in the XML file
+            ///     Ensure that empty comments are not stored in the XML file
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -261,7 +262,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Remove obsolete fields from XML file
+            ///     Remove obsolete fields from XML file
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -279,7 +280,7 @@ namespace DataDictionary
 
 
             /// <summary>
-            /// Remove obsolete fields from XML file
+            ///     Remove obsolete fields from XML file
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -302,15 +303,19 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The base path for accessing files of this dictionary
+        ///     The base path for accessing files of this dictionary
         /// </summary>
         public string BasePath
         {
-            get { return Path.GetDirectoryName(FilePath) + Path.DirectorySeparatorChar + Path.GetFileNameWithoutExtension(FilePath); }
+            get
+            {
+                return Path.GetDirectoryName(FilePath) + Path.DirectorySeparatorChar +
+                       Path.GetFileNameWithoutExtension(FilePath);
+            }
         }
 
         /// <summary>
-        /// Saves the dictionary according to its filename
+        ///     Saves the dictionary according to its filename
         /// </summary>
         public void save()
         {
@@ -326,7 +331,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Used to store the list of sub-namespaces and test frames before saving the model
+        ///     Used to store the list of sub-namespaces and test frames before saving the model
         /// </summary>
         public void StoreInfo()
         {
@@ -346,7 +351,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Used to restore the list of sub-namespaces and test frames, after having saved the model
+        ///     Used to restore the list of sub-namespaces and test frames, after having saved the model
         /// </summary>
         public void RestoreInfo()
         {
@@ -367,7 +372,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The treenode name of the dictionary
+        ///     The treenode name of the dictionary
         /// </summary>
         public override string Name
         {
@@ -393,7 +398,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -406,12 +411,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the list of declared elements in this Dictionary
+        ///     Provides the list of declared elements in this Dictionary
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -421,7 +426,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Finds all namable which match the full name provided
+        ///     Finds all namable which match the full name provided
         /// </summary>
         /// <param name="fullname">The full name used to search the namable</param>
         public INamable findByFullName(string fullname)
@@ -430,7 +435,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The specifications related to this dictionary
+        ///     The specifications related to this dictionary
         /// </summary>
         public ArrayList Specifications
         {
@@ -448,7 +453,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The rule disablings related to this rule set
+        ///     The rule disablings related to this rule set
         /// </summary>
         public ArrayList RuleDisablings
         {
@@ -463,7 +468,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The test frames
+        ///     The test frames
         /// </summary>
         public ArrayList Tests
         {
@@ -478,7 +483,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Associates the types with their full name
+        ///     Associates the types with their full name
         /// </summary>
         private Dictionary<string, Type> definedTypes;
 
@@ -524,7 +529,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Associates the types with their full name
+        ///     Associates the types with their full name
         /// </summary>
         private Dictionary<Rule, RuleDisabling> cachedRuleDisablings;
 
@@ -555,7 +560,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Clears the caches of this dictionary
+        ///     Clears the caches of this dictionary
         /// </summary>
         public void ClearCache()
         {
@@ -566,7 +571,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Removes temporary files created for reference elements
+        ///     Removes temporary files created for reference elements
         /// </summary>
         public void ClearTempFiles()
         {
@@ -587,12 +592,13 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The cache for types / namespace + name
+        ///     The cache for types / namespace + name
         /// </summary>
-        private Dictionary<Types.NameSpace, Dictionary<string, Type>> cache = new Dictionary<Types.NameSpace, Dictionary<string, Type>>();
+        private Dictionary<Types.NameSpace, Dictionary<string, Type>> cache =
+            new Dictionary<Types.NameSpace, Dictionary<string, Type>>();
 
         /// <summary>
-        /// Provides the type associated to the name
+        ///     Provides the type associated to the name
         /// </summary>
         /// <param name="nameSpace">the namespace in which the name should be found</param>
         /// <param name="name"></param>
@@ -660,7 +666,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the namespace whose name matches the name provided
+        ///     Provides the namespace whose name matches the name provided
         /// </summary>
         public Types.NameSpace findNameSpace(string name)
         {
@@ -670,7 +676,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the rule according to its fullname
+        ///     Provides the rule according to its fullname
         /// </summary>
         /// <param name="fullName"></param>
         /// <returns></returns>
@@ -692,7 +698,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Dictionary()
             : base()
@@ -701,7 +707,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the namespaces defined in this dictionary
+        ///     Provides the namespaces defined in this dictionary
         /// </summary>
         public ArrayList NameSpaces
         {
@@ -717,7 +723,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Provides the set of paragraphs implemented by this set of rules
+        ///     Provides the set of paragraphs implemented by this set of rules
         /// </summary>
         /// <returns></returns>
         public HashSet<Specification.Paragraph> ImplementedParagraphs
@@ -726,7 +732,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Recursively provides the rules stored in this dictionary
+        ///     Recursively provides the rules stored in this dictionary
         /// </summary>
         /// <returns></returns>
         public HashSet<Rule> AllRules
@@ -735,7 +741,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Recursively provides the req related stored in this dictionary
+        ///     Recursively provides the req related stored in this dictionary
         /// </summary>
         /// <returns></returns>
         public HashSet<ReqRelated> AllReqRelated
@@ -744,7 +750,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Recursively provides the req related stored in this dictionary
+        ///     Recursively provides the req related stored in this dictionary
         /// </summary>
         /// <returns></returns>
         public HashSet<ReqRelated> ImplementedReqRelated
@@ -766,7 +772,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Recursively provides the rules stored in this dictionary
+        ///     Recursively provides the rules stored in this dictionary
         /// </summary>
         /// <returns></returns>
         public HashSet<Rule> ImplementedRules
@@ -788,7 +794,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Checks the rules stored in the dictionary
+        ///     Checks the rules stored in the dictionary
         /// </summary>
         public void CheckRules()
         {
@@ -813,7 +819,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Checks the model for unused element
+        ///     Checks the model for unused element
         /// </summary>
         public void CheckDeadModel()
         {
@@ -854,7 +860,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Marks all unimplemented test cases stored in the dictionary
+        ///     Marks all unimplemented test cases stored in the dictionary
         /// </summary>
         public void MarkUnimplementedTests()
         {
@@ -876,7 +882,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks all unimplemented test cases stored in the dictionary
+        ///     Marks all unimplemented test cases stored in the dictionary
         /// </summary>
         public void MarkNotTranslatedTests()
         {
@@ -898,7 +904,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks all unimplemented test cases stored in the dictionary
+        ///     Marks all unimplemented test cases stored in the dictionary
         /// </summary>
         public void MarkNotImplementedTranslations()
         {
@@ -920,7 +926,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks all unimplemented rules stored in the dictionary
+        ///     Marks all unimplemented rules stored in the dictionary
         /// </summary>
         public void MarkUnimplementedItems()
         {
@@ -946,7 +952,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Marks all not verified rules stored in the dictionary
+        ///     Marks all not verified rules stored in the dictionary
         /// </summary>
         public void MarkNotVerifiedRules()
         {
@@ -957,7 +963,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Clears all marks related to model elements
+        ///     Clears all marks related to model elements
         /// </summary>
         private class ClearMarksVisitor : Visitor
         {
@@ -975,7 +981,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Creates a dictionary with pairs paragraph - list of its implementations
+        ///     Creates a dictionary with pairs paragraph - list of its implementations
         /// </summary>
         private class ParagraphReqRefFinder : Visitor
         {
@@ -1021,7 +1027,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Clear all marks
+        ///     Clear all marks
         /// </summary>
         public new void ClearMessages()
         {
@@ -1030,7 +1036,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Executes the test cases for this test sequence
+        ///     Executes the test cases for this test sequence
         /// </summary>
         /// <param name="runner">The runner used to execute the tests</param>
         /// <returns>the number of failed test frames</returns>
@@ -1056,7 +1062,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The sub sequences of this data dictionary
+        ///     The sub sequences of this data dictionary
         /// </summary>
         public List<SubSequence> SubSequences
         {
@@ -1075,7 +1081,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Finds a test case whose name corresponds to the name provided
+        ///     Finds a test case whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -1085,7 +1091,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the frame which corresponds to the name provided
+        ///     Provides the frame which corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -1095,7 +1101,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The translation dictionary.
+        ///     The translation dictionary.
         /// </summary>
         public TranslationDictionary TranslationDictionary
         {
@@ -1111,7 +1117,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The translation dictionary.
+        ///     The translation dictionary.
         /// </summary>
         public ShortcutDictionary ShortcutsDictionary
         {
@@ -1119,7 +1125,8 @@ namespace DataDictionary
             {
                 if (getShortcutDictionary() == null)
                 {
-                    ShortcutDictionary dictionary = (ShortcutDictionary) acceptor.getFactory().createShortcutDictionary();
+                    ShortcutDictionary dictionary =
+                        (ShortcutDictionary) acceptor.getFactory().createShortcutDictionary();
                     dictionary.Name = Name;
                     setShortcutDictionary(dictionary);
                 }
@@ -1129,7 +1136,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds a new rule disabling in this dictionary
+        ///     Adds a new rule disabling in this dictionary
         /// </summary>
         /// <param name="rule"></param>
         public void AppendRuleDisabling(Rule rule)
@@ -1142,7 +1149,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates whether a rule is disabled in a dictionary
+        ///     Indicates whether a rule is disabled in a dictionary
         /// </summary>
         /// <param name="rule"></param>
         /// <returns></returns>
@@ -1154,7 +1161,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -1201,7 +1208,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Gets all paragraphs from a dictionary
+        ///     Gets all paragraphs from a dictionary
         /// </summary>
         /// <param name="paragraphs"></param>
         public void GetParagraphs(List<Specification.Paragraph> paragraphs)
@@ -1303,7 +1310,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the list of requirement sets in the system
+        ///     Provides the list of requirement sets in the system
         /// </summary>
         public List<RequirementSet> RequirementSets
         {
@@ -1324,7 +1331,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the requirement set whose name corresponds to the name provided
+        ///     Provides the requirement set whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <param name="create">Indicates that the requirement set should be created if it does not exists</param>
@@ -1353,7 +1360,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds a new requirement set to this list of requirement sets
+        ///     Adds a new requirement set to this list of requirement sets
         /// </summary>
         /// <param name="requirementSet"></param>
         public void AddRequirementSet(RequirementSet requirementSet)
@@ -1363,12 +1370,12 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// The name of the requirement set for functional blocs
+        ///     The name of the requirement set for functional blocs
         /// </summary>
         public const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";
 
         /// <summary>
-        /// The name of the requireement set for scoping information
+        ///     The name of the requireement set for scoping information
         /// </summary>
         public const string SCOPE_NAME = "Scope";
     }

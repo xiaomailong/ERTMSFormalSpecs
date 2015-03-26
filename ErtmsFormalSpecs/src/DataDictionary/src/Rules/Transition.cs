@@ -25,26 +25,26 @@ using StateMachine = DataDictionary.Types.StateMachine;
 namespace DataDictionary.Rules
 {
     /// <summary>
-    /// Transitions are translations of rules which have the following properties
-    ///   - there is an action in the rule (only direct) which modifies a state of the the state machine
-    ///   - if there is a pre condition of the rule (either direct or inherited from parent rule)
-    ///     which refers to a state S, this provvides the initial state of the transition. Otherwise, 
+    ///     Transitions are translations of rules which have the following properties
+    ///     - there is an action in the rule (only direct) which modifies a state of the the state machine
+    ///     - if there is a pre condition of the rule (either direct or inherited from parent rule)
+    ///     which refers to a state S, this provvides the initial state of the transition. Otherwise,
     ///     there is no initial state
     /// </summary>
     public class Transition : IGraphicalArrow<State>
     {
         /// <summary>
-        /// The pre condition associated to this transaction
+        ///     The pre condition associated to this transaction
         /// </summary>
         public PreCondition PreCondition { get; private set; }
 
         /// <summary>
-        /// The statment which modifies the state machine's state
+        ///     The statment which modifies the state machine's state
         /// </summary>
         public VariableUpdateStatement Update { get; private set; }
 
         /// <summary>
-        /// The action associated to this transaction
+        ///     The action associated to this transaction
         /// </summary>
         public Action Action
         {
@@ -59,7 +59,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The rule associated to this transition
+        ///     The rule associated to this transition
         /// </summary>
         public RuleCondition RuleCondition
         {
@@ -74,17 +74,17 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The initial state associated to this transition
+        ///     The initial state associated to this transition
         /// </summary>
         public State Source { get; private set; }
 
         /// <summary>
-        /// The target state associated to this transition
+        ///     The target state associated to this transition
         /// </summary>
         public State Target { get; private set; }
 
         /// <summary>
-        /// The model element which is referenced by this transition
+        ///     The model element which is referenced by this transition
         /// </summary>
         public ModelElement ReferencedModel
         {
@@ -92,14 +92,15 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="rule"></param>
         /// <param name="preCondition">The precondition which setup the initial state</param>
         /// <param name="initialState">The initial stae of this transition</param>
         /// <param name="update">The statement which set up the target state</param>
         /// <param name="targetState">The target state of this transition</param>
-        public Transition(PreCondition preCondition, State initialState, VariableUpdateStatement update, State targetState)
+        public Transition(PreCondition preCondition, State initialState, VariableUpdateStatement update,
+            State targetState)
         {
             PreCondition = preCondition;
             Source = initialState;
@@ -110,7 +111,7 @@ namespace DataDictionary.Rules
         public class CannotChangeRuleException : Exception
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="message"></param>
             public CannotChangeRuleException(string message)
@@ -120,7 +121,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Updates (if possible) the initial state for this transition
+        ///     Updates (if possible) the initial state for this transition
         /// </summary>
         /// <param name="initialState"></param>
         public void SetInitialBox(IGraphicalDisplay initialBox)
@@ -182,7 +183,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Updates (if possible) the target state of this transition
+        ///     Updates (if possible) the target state of this transition
         /// </summary>
         /// <param name="targetState"></param>
         public void SetTargetBox(IGraphicalDisplay targetBox)
@@ -197,7 +198,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the name of the target state
+        ///     Provides the name of the target state
         /// </summary>
         /// <returns></returns>
         public string getTargetStateName()
@@ -222,7 +223,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName
         {

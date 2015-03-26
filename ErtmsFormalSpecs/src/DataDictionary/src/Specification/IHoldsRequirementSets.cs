@@ -19,17 +19,17 @@ using System.Collections.Generic;
 namespace DataDictionary.Specification
 {
     /// <summary>
-    /// Holds requirement sets
+    ///     Holds requirement sets
     /// </summary>
     public interface IHoldsRequirementSets
     {
         /// <summary>
-        /// Provides the list of requirement sets in the system
+        ///     Provides the list of requirement sets in the system
         /// </summary>
         List<RequirementSet> RequirementSets { get; }
 
         /// <summary>
-        /// Provides the requirement set whose name corresponds to the name provided
+        ///     Provides the requirement set whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <param name="create">Indicates that the requirement set should be created if it does not exists</param>
@@ -37,7 +37,7 @@ namespace DataDictionary.Specification
         RequirementSet findRequirementSet(string name, bool create);
 
         /// <summary>
-        /// Adds a new requirement set to this list of requirement sets
+        ///     Adds a new requirement set to this list of requirement sets
         /// </summary>
         /// <param name="requirementSet"></param>
         void AddRequirementSet(RequirementSet requirementSet);

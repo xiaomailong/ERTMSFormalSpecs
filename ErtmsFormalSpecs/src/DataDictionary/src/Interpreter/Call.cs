@@ -29,29 +29,29 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
-    /// Something that can be called
+    ///     Something that can be called
     /// </summary>
     public interface ICallable : INamable
     {
         /// <summary>
-        /// Formal parameters of the callable
+        ///     Formal parameters of the callable
         /// </summary>
         ArrayList FormalParameters { get; }
 
         /// <summary>
-        /// Provides the formal parameter which matches the name provided
+        ///     Provides the formal parameter which matches the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
         Parameter getFormalParameter(string name);
 
         /// <summary>
-        /// Provides the return type of the called element
+        ///     Provides the return type of the called element
         /// </summary>
         Type ReturnType { get; }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
@@ -61,12 +61,12 @@ namespace DataDictionary.Interpreter
     public class Call : Expression
     {
         /// <summary>
-        /// The expression which identifies the function
+        ///     The expression which identifies the function
         /// </summary>
         public Expression Called { get; private set; }
 
         /// <summary>
-        /// The unnamed actual parameters
+        ///     The unnamed actual parameters
         /// </summary>
         private List<Expression> actualParameters;
 
@@ -84,7 +84,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The list of named actual parameters
+        ///     The list of named actual parameters
         /// </summary>
         private Dictionary<Designator, Expression> namedActualParameters;
 
@@ -102,12 +102,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the association between parameters and their corresponding expression
+        ///     Provides the association between parameters and their corresponding expression
         /// </summary>
         public Dictionary<Parameter, Expression> ParameterAssociation { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="called">The called function</param>
@@ -121,7 +121,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides all the parameters for this call (both named and unnamed)
+        ///     Provides all the parameters for this call (both named and unnamed)
         /// </summary>
         public List<Expression> AllParameters
         {
@@ -137,7 +137,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds an expression as a parameter
+        ///     Adds an expression as a parameter
         /// </summary>
         /// <param name="designator">the name of the actual parameter</param>
         /// <param name="expression">the actual parameter value</param>
@@ -172,7 +172,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the callable that is called by this expression
+        ///     Provides the callable that is called by this expression
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -208,7 +208,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The procedure which is called by this call statement
+        ///     The procedure which is called by this call statement
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -221,7 +221,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The function which is called by this call statement
+        ///     The function which is called by this call statement
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -233,7 +233,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -274,7 +274,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the association between parameter (from the called ICallable) and its associated expression
+        ///     Creates the association between parameter (from the called ICallable) and its associated expression
         /// </summary>
         /// <param name="callable"></param>
         /// <returns></returns>
@@ -311,8 +311,8 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the parameter association according to the icallable provided.
-        /// If the call is statically determined, take the cached association
+        ///     Provides the parameter association according to the icallable provided.
+        ///     If the call is statically determined, take the cached association
         /// </summary>
         /// <param name="callable"></param>
         /// <returns></returns>
@@ -329,7 +329,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the ICallable that is statically defined
+        ///     Provides the ICallable that is statically defined
         /// </summary>
         public override ICallable getStaticCallable()
         {
@@ -344,7 +344,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -366,7 +366,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -377,7 +377,8 @@ namespace DataDictionary.Interpreter
 
             Function function = getFunction(context, explain);
 
-            ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, function.Name + " (...) returned ");
+            ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
+                function.Name + " (...) returned ");
             if (function != null)
             {
                 long start = Environment.TickCount;
@@ -392,7 +393,9 @@ namespace DataDictionary.Interpreter
                         retVal = function.Evaluate(context, parameterValues, subExplanation);
                         if (retVal == null)
                         {
-                            AddErrorAndExplain("Call " + function.Name + " ( " + ParameterValues(parameterValues) + " ) returned nothing", subExplanation);
+                            AddErrorAndExplain(
+                                "Call " + function.Name + " ( " + ParameterValues(parameterValues) +
+                                " ) returned nothing", subExplanation);
                         }
                     }
                     else if (parameters.Count == 1) // graph
@@ -407,19 +410,22 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            AddError("Cannot create graph on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
+                            AddError("Cannot create graph on Call " + function.Name + " ( " +
+                                     ParameterValues(parameterValues) + " )");
                         }
                     }
                     else // surface
                     {
-                        Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1], subExplanation);
+                        Surface surface = function.createSurfaceForParameters(context, parameters[0], parameters[1],
+                            subExplanation);
                         if (surface != null)
                         {
                             retVal = surface.Function;
                         }
                         else
                         {
-                            AddError("Cannot create surface on Call " + function.Name + " ( " + ParameterValues(parameterValues) + " )");
+                            AddError("Cannot create surface on Call " + function.Name + " ( " +
+                                     ParameterValues(parameterValues) + " )");
                         }
                     }
                 }
@@ -447,7 +453,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the parameters whose value are place holders
+        ///     Provides the parameters whose value are place holders
         /// </summary>
         /// <param name="function">The function on which the call is performed</param>
         /// <param name="parameterValues">The actual parameter values</param>
@@ -476,7 +482,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the parameter's values along with their name
+        ///     Provides the parameter's values along with their name
         /// </summary>
         /// <param name="parameterValues"></param>
         /// <returns></returns>
@@ -500,14 +506,15 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the parameter value associationg according to actual parameters
+        ///     Creates the parameter value associationg according to actual parameters
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="callable">The callable</param>
         /// <param name="log">Indicates whether errors should be logged</param>
         /// <param name="explain"></param>
         /// <returns></returns>
-        public Dictionary<Actual, IValue> AssignParameterValues(InterpretationContext context, ICallable callable, bool log, ExplanationPart explain)
+        public Dictionary<Actual, IValue> AssignParameterValues(InterpretationContext context, ICallable callable,
+            bool log, ExplanationPart explain)
         {
             // Compute the unnamed actual parameter values
             Dictionary<Actual, IValue> retVal = new Dictionary<Actual, IValue>();
@@ -518,7 +525,8 @@ namespace DataDictionary.Interpreter
                 foreach (Expression expression in ActualParameters)
                 {
                     Parameter parameter = callable.FormalParameters[i] as Parameter;
-                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "parameter " + parameter.Name + " = ");
+                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
+                        "parameter " + parameter.Name + " = ");
                     IValue val = expression.GetValue(context, subExplanation);
                     if (val != null)
                     {
@@ -528,7 +536,8 @@ namespace DataDictionary.Interpreter
                     }
                     else
                     {
-                        AddError("Cannot evaluate value for parameter " + i + " (" + expression.ToString() + ") of function " + callable.Name);
+                        AddError("Cannot evaluate value for parameter " + i + " (" + expression.ToString() +
+                                 ") of function " + callable.Name);
                         throw new Exception("Evaluation of parameters failed");
                     }
                     ExplanationPart.SetNamable(subExplanation, val);
@@ -539,7 +548,8 @@ namespace DataDictionary.Interpreter
                 foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                 {
                     Parameter parameter = callable.getFormalParameter(pair.Key.Image);
-                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, "parameter " + parameter.Name + " = ");
+                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
+                        "parameter " + parameter.Name + " = ");
                     IValue val = pair.Value.GetValue(context, subExplanation);
                     if (val != null)
                     {
@@ -561,7 +571,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -579,7 +589,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -612,7 +622,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
         {
@@ -624,7 +634,8 @@ namespace DataDictionary.Interpreter
             {
                 if (called.FormalParameters.Count != AllParameters.Count)
                 {
-                    AddError("Invalid number of arguments provided for function call " + ToString() + " expected " + called.FormalParameters.Count + " actual " + AllParameters.Count);
+                    AddError("Invalid number of arguments provided for function call " + ToString() + " expected " +
+                             called.FormalParameters.Count + " actual " + AllParameters.Count);
                 }
                 else
                 {
@@ -645,7 +656,8 @@ namespace DataDictionary.Interpreter
                         Parameter parameter = called.getFormalParameter(name);
                         if (parameter == null)
                         {
-                            AddError("Parameter " + name + " is not defined as formal parameter of function " + called.FullName);
+                            AddError("Parameter " + name + " is not defined as formal parameter of function " +
+                                     called.FullName);
                         }
                         else
                         {
@@ -664,7 +676,8 @@ namespace DataDictionary.Interpreter
                     {
                         if (ActualParameters.Count > 0)
                         {
-                            AddWarning("Calls where more than two parameters are provided must be performed using named association");
+                            AddWarning(
+                                "Calls where more than two parameters are provided must be performed using named association");
                         }
                     }
 
@@ -677,7 +690,8 @@ namespace DataDictionary.Interpreter
             }
         }
 
-        private void CheckActualAgainstFormal(Dictionary<string, Expression> actuals, Expression expression, Parameter parameter)
+        private void CheckActualAgainstFormal(Dictionary<string, Expression> actuals, Expression expression,
+            Parameter parameter)
         {
             actuals[parameter.Name] = expression;
 
@@ -697,14 +711,15 @@ namespace DataDictionary.Interpreter
                 {
                     if (!parameter.Type.Match(argumentType))
                     {
-                        AddError("Invalid argument " + expression.ToString() + " type, expected " + parameter.Type.FullName + ", actual " + argumentType.FullName);
+                        AddError("Invalid argument " + expression.ToString() + " type, expected " +
+                                 parameter.Type.FullName + ", actual " + argumentType.FullName);
                     }
                 }
             }
         }
 
         /// <summary>
-        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
+        ///     Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
@@ -745,7 +760,8 @@ namespace DataDictionary.Interpreter
                     }
                     else
                     {
-                        Root.AddError("Cannot evaluate graph for function call " + ToString() + " which has more than 1 parameter used as X axis");
+                        Root.AddError("Cannot evaluate graph for function call " + ToString() +
+                                      " which has more than 1 parameter used as X axis");
                         Xaxis = null;
                         break;
                     }
@@ -768,14 +784,15 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the surface of this function if it has been statically defined
+        ///     Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam,
+            ExplanationPart explain)
         {
             Surface retVal = base.createSurface(context, xParam, yParam, explain);
 
@@ -825,7 +842,8 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Selects the X and Y axis of the surface to be created according to the function for which the surface need be created and the parameters on which the surface is created
+        ///     Selects the X and Y axis of the surface to be created according to the function for which the surface need be
+        ///     created and the parameters on which the surface is created
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="xParam">The X parameter for which the surface need be created</param>
@@ -834,7 +852,8 @@ namespace DataDictionary.Interpreter
         /// <param name="Xaxis">The resulting X axis</param>
         /// <param name="Yaxis">The resulting Y axis</param>
         /// <returns>true if the axis could be selected</returns>
-        private void SelectXandYAxis(InterpretationContext context, Parameter xParam, Parameter yParam, Function function, out Parameter Xaxis, out Parameter Yaxis)
+        private void SelectXandYAxis(InterpretationContext context, Parameter xParam, Parameter yParam,
+            Function function, out Parameter Xaxis, out Parameter Yaxis)
         {
             Xaxis = null;
             Yaxis = null;
@@ -852,7 +871,8 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            Root.AddError("Cannot evaluate surface for function call " + ToString() + " which has more than 1 X axis parameter");
+                            Root.AddError("Cannot evaluate surface for function call " + ToString() +
+                                          " which has more than 1 X axis parameter");
                             Xaxis = null;
                             break;
                         }
@@ -866,7 +886,8 @@ namespace DataDictionary.Interpreter
                         }
                         else
                         {
-                            Root.AddError("Cannot evaluate surface for function call " + ToString() + " which has more than 1 Y axis parameter");
+                            Root.AddError("Cannot evaluate surface for function call " + ToString() +
+                                          " which has more than 1 Y axis parameter");
                             Yaxis = null;
                             break;
                         }
@@ -876,7 +897,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates whether this call may read a given variable
+        ///     Indicates whether this call may read a given variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>

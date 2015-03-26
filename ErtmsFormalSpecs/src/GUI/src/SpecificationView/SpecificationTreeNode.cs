@@ -30,12 +30,12 @@ namespace GUI.SpecificationView
     public class SpecificationTreeNode : ModelElementTreeNode<Specification>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : Editor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -43,7 +43,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// The specification document name
+            ///     The specification document name
             /// </summary>
             [Category("Description")]
             public string Document
@@ -57,7 +57,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// The specification version
+            ///     The specification version
             /// </summary>
             [Category("Description")]
             public string Version
@@ -72,7 +72,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public SpecificationTreeNode(Specification item, bool buildSubNodes)
@@ -81,7 +81,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -97,7 +97,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -107,7 +107,7 @@ namespace GUI.SpecificationView
 
 
         /// <summary>
-        /// Adds a new chapter to this specification
+        ///     Adds a new chapter to this specification
         /// </summary>
         /// <param name="chapter"></param>
         public void AddChapter(Chapter chapter)
@@ -125,18 +125,19 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Recursively marks all model elements as verified
+        ///     Recursively marks all model elements as verified
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void RemoveRequirementSets(object sender, EventArgs e)
         {
-            RequirementSetReference.RemoveReferencesVisitor remover = new RequirementSetReference.RemoveReferencesVisitor();
+            RequirementSetReference.RemoveReferencesVisitor remover =
+                new RequirementSetReference.RemoveReferencesVisitor();
             remover.visit(Item);
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -145,20 +146,22 @@ namespace GUI.SpecificationView
 
             retVal.Add(new MenuItem("Add chapter", new EventHandler(AddChapterHandler)));
             retVal.Add(new MenuItem("-"));
-            retVal.Add(new MenuItem("Import new specification release", new EventHandler(ImportNewSpecificationReleaseHandler)));
+            retVal.Add(new MenuItem("Import new specification release",
+                new EventHandler(ImportNewSpecificationReleaseHandler)));
 
             MenuItem recursiveActions = retVal.Find(x => x.Text.StartsWith("Recursive"));
             if (recursiveActions != null)
             {
                 recursiveActions.MenuItems.Add(new MenuItem("-"));
-                recursiveActions.MenuItems.Add(new MenuItem("Remove requirement sets", new EventHandler(RemoveRequirementSets)));
+                recursiveActions.MenuItems.Add(new MenuItem("Remove requirement sets",
+                    new EventHandler(RemoveRequirementSets)));
             }
 
             return retVal;
         }
 
         /// <summary>
-        /// Update counts according to the selected chapter
+        ///     Update counts according to the selected chapter
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
@@ -174,7 +177,7 @@ namespace GUI.SpecificationView
 
 
         /// ------------------------------------------------------
-        ///    IMPORT SPEC OPERATIONS
+        /// IMPORT SPEC OPERATIONS
         /// ------------------------------------------------------
         private void ImportNewSpecificationReleaseHandler(object sender, EventArgs args)
         {
@@ -198,7 +201,8 @@ namespace GUI.SpecificationView
                     dialog.ShowDialog();
 
                     /// Creates the report based on the importation result
-                    DeltaImportReportHandler reportHandler = new DeltaImportReportHandler(Item.Dictionary, importer.NewDocument, baseFileName);
+                    DeltaImportReportHandler reportHandler = new DeltaImportReportHandler(Item.Dictionary,
+                        importer.NewDocument, baseFileName);
                     dialog = new ProgressDialog("Opening file", reportHandler);
                     dialog.ShowDialog();
 
@@ -208,7 +212,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Creates the base file name for the report
+        ///     Creates the base file name for the report
         /// </summary>
         /// <param name="OriginalFileName"></param>
         /// <param name="NewFileName"></param>

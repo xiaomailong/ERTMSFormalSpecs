@@ -22,33 +22,33 @@ using Utils;
 namespace GUI
 {
     /// <summary>
-    /// Performs synchronization between model and view
+    ///     Performs synchronization between model and view
     /// </summary>
     public abstract class SynchronizationHandler
     {
         /// <summary>
-        /// Indicates that synchronization is required to continue. 
-        /// This flag is used to stop the thread
+        ///     Indicates that synchronization is required to continue.
+        ///     This flag is used to stop the thread
         /// </summary>
         public bool Synchronize { get; set; }
 
         /// <summary>
-        /// Indicates that synchronization should be suspended
+        ///     Indicates that synchronization should be suspended
         /// </summary>
         public bool Suspend { get; set; }
 
         /// <summary>
-        /// The cycle time used 
+        ///     The cycle time used
         /// </summary>
         protected int CycleTime { get; private set; }
 
         /// <summary>
-        /// Performs the background job
+        ///     Performs the background job
         /// </summary>
         public abstract void DoSynchronize(object obj);
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="cycleTime"></param>
         public SynchronizationHandler(int cycleTime)
@@ -62,7 +62,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Destructor
+        ///     Destructor
         /// </summary>
         ~SynchronizationHandler()
         {
@@ -70,28 +70,28 @@ namespace GUI
         }
 
         /// <summary>
-        /// Stops the underlying task
+        ///     Stops the underlying task
         /// </summary>
         public abstract void Stop();
     }
 
     /// <summary>
-    /// Performs synchronization between model and view
+    ///     Performs synchronization between model and view
     /// </summary>
     public abstract class GenericSynchronizationHandler<T> : SynchronizationHandler
     {
         /// <summary>
-        /// The instance that is currently synchronized
+        ///     The instance that is currently synchronized
         /// </summary>
         protected T Instance { get; set; }
 
         /// <summary>
-        /// The thread handling the synchronization
+        ///     The thread handling the synchronization
         /// </summary>
         private Thread Thread { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="cycleTime"></param>
         public GenericSynchronizationHandler(T instance, int cycleTime)
@@ -103,7 +103,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Destructor
+        ///     Destructor
         /// </summary>
         ~GenericSynchronizationHandler()
         {
@@ -111,19 +111,19 @@ namespace GUI
         }
 
         /// <summary>
-        /// Performs the initialization of the task
+        ///     Performs the initialization of the task
         /// </summary>
         public virtual void Initialize(T instance)
         {
         }
 
         /// <summary>
-        /// Handles the synchronization
+        ///     Handles the synchronization
         /// </summary>
         public abstract void HandleSynchronization(T instance);
 
         /// <summary>
-        /// Performs the background job
+        ///     Performs the background job
         /// </summary>
         /// <param name="obj"></param>
         public override void DoSynchronize(object obj)
@@ -149,7 +149,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Stops the underlying task
+        ///     Stops the underlying task
         /// </summary>
         public override void Stop()
         {
@@ -165,12 +165,12 @@ namespace GUI
     public static class SynchronizerList
     {
         /// <summary>
-        /// The registered handlers
+        ///     The registered handlers
         /// </summary>
         private static List<SynchronizationHandler> Handlers = new List<SynchronizationHandler>();
 
         /// <summary>
-        /// Registers a new handler
+        ///     Registers a new handler
         /// </summary>
         /// <param name="handler"></param>
         public static void RegisterSynchronizer(SynchronizationHandler handler)
@@ -179,7 +179,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Unregisters the handler
+        ///     Unregisters the handler
         /// </summary>
         /// <param name="handler"></param>
         public static void UnregisterSynchronizer(SynchronizationHandler handler)
@@ -188,7 +188,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Suspends the synchronization for all handlers
+        ///     Suspends the synchronization for all handlers
         /// </summary>
         public static void SuspendSynchronization()
         {
@@ -199,7 +199,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Resumes the synchronization performed by the handlers
+        ///     Resumes the synchronization performed by the handlers
         /// </summary>
         public static void ResumeSynchronization()
         {
@@ -210,7 +210,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Stops all synchronization handlers
+        ///     Stops all synchronization handlers
         /// </summary>
         public static void Stop()
         {

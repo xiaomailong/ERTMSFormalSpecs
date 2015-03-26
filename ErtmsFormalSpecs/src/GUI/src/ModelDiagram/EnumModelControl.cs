@@ -19,12 +19,12 @@ using DataDictionary.Types;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent an enumeration
+    ///     The boxes that represent an enumeration
     /// </summary>
     public class EnumModelControl : TypeModelControl
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public EnumModelControl(Enum model)
             : base(model)
@@ -32,7 +32,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name of the kind of type
+        ///     The name of the kind of type
         /// </summary>
         public override string ModelName
         {

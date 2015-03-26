@@ -19,7 +19,7 @@ namespace DataDictionary.Specification
     public class MsgVariable : Generated.MsgVariable
     {
         /// <summary>
-        /// The message variable content
+        ///     The message variable content
         /// </summary>
         public string GetText(int depth)
         {

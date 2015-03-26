@@ -23,12 +23,12 @@ namespace DataDictionary.Tests.Runner.Events
     public class ModelInterpretationFailure : ModelEvent
     {
         /// <summary>
-        /// The log associated to this failure
+        ///     The log associated to this failure
         /// </summary>
         public ElementLog Log { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="id"></param>
         public ModelInterpretationFailure(ElementLog log, INamable instance, acceptor.RulePriority? priority)
@@ -38,7 +38,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Adds this expectation in the list of active expectations in the time line
+        ///     Adds this expectation in the list of active expectations in the time line
         /// </summary>
         /// <param name="runner"></param>
         public override void Apply(Runner runner)
@@ -47,7 +47,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rolls back this event
+        ///     Rolls back this event
         /// </summary>
         public override void RollBack()
         {
@@ -55,7 +55,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The namespace associated to this event
+        ///     The namespace associated to this event
         /// </summary>
         public override NameSpace NameSpace
         {

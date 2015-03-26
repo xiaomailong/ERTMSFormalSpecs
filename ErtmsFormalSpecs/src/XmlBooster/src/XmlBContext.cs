@@ -103,8 +103,10 @@ namespace XmlBooster
             checkEof();
         }
 
-        /// <summary>Is invoked in case of a failure for which
-        /// there is still hope to use error recovery.</summary>
+        /// <summary>
+        ///     Is invoked in case of a failure for which
+        ///     there is still hope to use error recovery.
+        /// </summary>
         public void recoverableFail(String msg)
             //  throws XmlBException, XmlBRecoveryException
         {
@@ -156,10 +158,12 @@ namespace XmlBooster
             fatalFail(msg);
         }
 
-        /// <summary>Aborts the entire processing, including
-        /// all nested - recursive - elements. This functions
-        /// throws an exception which is only caught
-        /// at the outermost nesting level.</summary>
+        /// <summary>
+        ///     Aborts the entire processing, including
+        ///     all nested - recursive - elements. This functions
+        ///     throws an exception which is only caught
+        ///     at the outermost nesting level.
+        /// </summary>
         public void fatalFail(String msg)
             //  throws XmlBException
         {
@@ -275,10 +279,12 @@ namespace XmlBooster
             return false;
         }
 
-        /// <summary>This method checks whether the input contains
-        /// a given string and whether the character following
-        /// it could not be part of a tag. Essentially, this
-        /// is to avoid accepting &lt;ABCDE when expecting &lt;ABC</summary>
+        /// <summary>
+        ///     This method checks whether the input contains
+        ///     a given string and whether the character following
+        ///     it could not be part of a tag. Essentially, this
+        ///     is to avoid accepting &lt;ABCDE when expecting &lt;ABC
+        /// </summary>
         public bool lookAheadOpeningTag(String str)
         {
             int ptr;
@@ -975,8 +981,10 @@ namespace XmlBooster
             return a.Replace('\n', ' ').Replace('\t', ' ').Replace('\r', ' ');
         }
 
-        /// <summary>Replaces all sequence of one or more occurrences of CR,
-        /// TABS or white space by a single white space.</summary>
+        /// <summary>
+        ///     Replaces all sequence of one or more occurrences of CR,
+        ///     TABS or white space by a single white space.
+        /// </summary>
         /// <param name="a">the character string on which the replacement must be performed</param>
         /// <returns><code>a</code> where occurrences of CR, white space and TABS are replaced by a single white space.</returns>
         public String collapse(String a)

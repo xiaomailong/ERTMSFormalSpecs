@@ -23,22 +23,22 @@ using Utils;
 namespace GUI
 {
     /// <summary>
-    /// A progress dialog, for long operations
+    ///     A progress dialog, for long operations
     /// </summary>
     public partial class ProgressDialog : Form
     {
         /// <summary>
-        /// The work to perform
+        ///     The work to perform
         /// </summary>
         private ProgressHandler Work { get; set; }
 
         /// <summary>
-        /// Indicates that the work has been canceled
+        ///     Indicates that the work has been canceled
         /// </summary>
         public bool Canceled { get; private set; }
 
         /// <summary>
-        /// Handles a cancel event
+        ///     Handles a cancel event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -72,7 +72,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="reason"></param>
         /// <param name="work"></param>
@@ -91,7 +91,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Updates the message displayed to the user
+        ///     Updates the message displayed to the user
         /// </summary>
         /// <param name="message"></param>
         public void UpdateMessage(string message)
@@ -100,7 +100,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles the escape key touch
+        ///     Handles the escape key touch
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -115,7 +115,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles the Cancel event
+        ///     Handles the Cancel event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

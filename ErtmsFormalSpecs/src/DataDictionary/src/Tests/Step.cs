@@ -64,7 +64,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// The messages associated to this step
+        ///     The messages associated to this step
         /// </summary>
         public ArrayList StepMessages
         {
@@ -79,7 +79,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The enclosing test case
+        ///     The enclosing test case
         /// </summary>
         public TestCase TestCase
         {
@@ -87,7 +87,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The collection which encloses this step
+        ///     The collection which encloses this step
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -95,7 +95,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The explanation of this step, as RTF pseudo code
+        ///     The explanation of this step, as RTF pseudo code
         /// </summary>
         /// <returns></returns>
         public override string getExplain()
@@ -111,7 +111,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the sub sequence for this step
+        ///     Provides the sub sequence for this step
         /// </summary>
         public SubSequence SubSequence
         {
@@ -119,7 +119,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Indicates if this step contains some actions or expectations
+        ///     Indicates if this step contains some actions or expectations
         /// </summary>
         /// <returns></returns>
         public bool IsEmpty()
@@ -145,8 +145,8 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Translates the current step according to the translation dictionary
-        /// Removes all preconditions, actions and expectations
+        ///     Translates the current step according to the translation dictionary
+        ///     Removes all preconditions, actions and expectations
         /// </summary>
         /// <param name="translationDictionary"></param>
         public void Translate(TranslationDictionary translationDictionary)
@@ -174,7 +174,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -188,7 +188,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// Fills the actual step with information of another test case
+        ///     Fills the actual step with information of another test case
         /// </summary>
         /// <param name="oldTestCase"></param>
         public void Merge(Step aStep)
@@ -217,7 +217,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Adds a new message
+        ///     Adds a new message
         /// </summary>
         /// <param name="message"></param>
         public void AddMessage(DBMessage message)
@@ -226,7 +226,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Creates a step and sets its default values
+        ///     Creates a step and sets its default values
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -241,7 +241,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -257,7 +257,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -271,7 +271,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Creates the source text which corresponds to this step
+        ///     Creates the source text which corresponds to this step
         /// </summary>
         /// <returns></returns>
         public SourceText createSourceText()
@@ -290,9 +290,9 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// !!! Clean HacK !!! 
-        /// Do not save the substeps when the step requires automatic translation
-        /// !!! Clean HaCk !!!
+        ///     !!! Clean HacK !!!
+        ///     Do not save the substeps when the step requires automatic translation
+        ///     !!! Clean HaCk !!!
         /// </summary>
         /// <param name="pw"></param>
         /// <param name="typeId"></param>
@@ -320,7 +320,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the previous step (if any) in the subsequence
+        ///     Provides the previous step (if any) in the subsequence
         /// </summary>
         public Step PreviousStep
         {

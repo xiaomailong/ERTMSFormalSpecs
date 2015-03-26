@@ -26,7 +26,7 @@ namespace GUI.FunctionalView
     public partial class AccessToControl : ArrowControl<NameSpace, AccessMode>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public AccessToControl()
             : base()
@@ -36,7 +36,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public AccessToControl(IContainer container)
@@ -76,7 +76,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Provides the name of the target state
+        ///     Provides the name of the target state
         /// </summary>
         /// <returns></returns>
         public override string getTargetName()

@@ -39,7 +39,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the mode of the typed element
+        ///     Provides the mode of the typed element
         /// </summary>
         public acceptor.VariableModeEnumType Mode
         {
@@ -47,7 +47,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the type name of the element
+        ///     Provides the type name of the element
         /// </summary>
         public string TypeName
         {
@@ -56,7 +56,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The type associated to this structure element
+        ///     The type associated to this structure element
         /// </summary>
         private Type type;
 
@@ -90,7 +90,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Compares two lists for equality
+        ///     Compares two lists for equality
         /// </summary>
         /// <param name="first"></param>
         /// <param name="other"></param>
@@ -167,7 +167,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates if the type is abstract
+        ///     Indicates if the type is abstract
         /// </summary>
         public override bool IsAbstract
         {
@@ -175,14 +175,14 @@ namespace DataDictionary.Types
             {
                 bool result = false;
                 Collection collection = Type as Collection;
-                if(collection != null)
+                if (collection != null)
                 {
                     result = collection.IsAbstract;
                 }
                 else
                 {
                     Structure structure = Type as Structure;
-                    if(structure != null)
+                    if (structure != null)
                     {
                         result = structure.IsAbstract;
                     }
@@ -192,7 +192,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Parses the image and provides the corresponding value
+        ///     Parses the image and provides the corresponding value
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -210,7 +210,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that this collection matches the other collections
+        ///     Indicates that this collection matches the other collections
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -245,7 +245,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -254,7 +254,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the collection
+        ///     Provides an explanation of the collection
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -268,7 +268,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the collection
+        ///     Provides an explanation of the collection
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -281,12 +281,12 @@ namespace DataDictionary.Types
     }
 
     /// <summary>
-    /// A generic collection
+    ///     A generic collection
     /// </summary>
     public class GenericCollection : Collection
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         public GenericCollection(EFSSystem efsSystem)
@@ -295,7 +295,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The type of the elements in this collection
+        ///     The type of the elements in this collection
         /// </summary>
         public override Type Type
         {

@@ -43,17 +43,17 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// A tree node that references a namable
+        ///     A tree node that references a namable
         /// </summary>
         private class NamableTreeNode : TreeNode
         {
             /// <summary>
-            /// The referenced namable
+            ///     The referenced namable
             /// </summary>
             public INamable Namable { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="namable"></param>
             public NamableTreeNode(INamable namable)
@@ -65,7 +65,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Configures the filtering dialog
+        ///     Configures the filtering dialog
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="filterConfiguration"></param>
@@ -99,7 +99,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Provides a comparator for sort method
+        ///     Provides a comparator for sort method
         /// </summary>
         /// <param name="x">First dictionary</param>
         /// <param name="y">Second discionary</param>
@@ -119,7 +119,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Fills the tree view with the namespace and enclosed namespaces
+        ///     Fills the tree view with the namespace and enclosed namespaces
         /// </summary>
         /// <param name="treeNode"></param>
         /// <param name="nameSpace"></param>
@@ -161,7 +161,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Updates the configuration according to the user selected filters
+        ///     Updates the configuration according to the user selected filters
         /// </summary>
         /// <param name="filterConfiguration"></param>
         public void UpdateConfiguration(FilterConfiguration filterConfiguration)
@@ -181,7 +181,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Updates the namespace configuration according to the provided node, and enclosed nodes
+        ///     Updates the namespace configuration according to the provided node, and enclosed nodes
         /// </summary>
         /// <param name="node"></param>
         /// <param name="filterConfiguration"></param>

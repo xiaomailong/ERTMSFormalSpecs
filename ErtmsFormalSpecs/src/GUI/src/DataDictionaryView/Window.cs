@@ -29,7 +29,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The Dictionary handled by this view
+        ///     The Dictionary handled by this view
         /// </summary>
         private Dictionary dictionary;
 
@@ -45,7 +45,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Window()
         {
@@ -54,7 +54,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public Window(Dictionary dictionary)
@@ -68,7 +68,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Perform specific initialization
+        ///     Perform specific initialization
         /// </summary>
         private void SpecificInitialization()
         {
@@ -77,7 +77,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -96,7 +96,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Refreshes the model of the window
+        ///     Refreshes the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -104,7 +104,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Finds the tree node which corresponds to the model element
+        ///     Finds the tree node which corresponds to the model element
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -114,7 +114,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Selects the next node where error message is available
+        ///     Selects the next node where error message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -124,7 +124,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Selects the next node where warning message is available
+        ///     Selects the next node where warning message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -134,7 +134,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Selects the next node where info message is available
+        ///     Selects the next node where info message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -147,7 +147,8 @@ namespace GUI.DataDictionaryView
         {
             if (!EFSSystem.INSTANCE.Markings.selectPreviousMarking())
             {
-                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 
@@ -155,7 +156,8 @@ namespace GUI.DataDictionaryView
         {
             if (!EFSSystem.INSTANCE.Markings.selectNextMarking())
             {
-                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
     }

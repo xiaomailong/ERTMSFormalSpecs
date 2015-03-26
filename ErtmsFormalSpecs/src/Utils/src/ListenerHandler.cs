@@ -21,14 +21,14 @@ namespace Utils
     public abstract class ListenerHandler
     {
         /// <summary>
-        /// A basic listener class
+        ///     A basic listener class
         /// </summary>
         public delegate void ChangeHandler();
 
         private ICollection<ChangeHandler> handlers = new HashSet<ChangeHandler>();
 
         /// <summary>
-        /// Adds a new listener to this handler
+        ///     Adds a new listener to this handler
         /// </summary>
         /// <param name="listener"></param>
         public void addListener(ChangeHandler listener)
@@ -37,7 +37,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Removes a listener from this handler
+        ///     Removes a listener from this handler
         /// </summary>
         /// <param name="listerner"></param>
         public void removeListener(ChangeHandler listerner)
@@ -46,7 +46,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Alerts all listeners that a change occured
+        ///     Alerts all listeners that a change occured
         /// </summary>
         public void alertChanges()
         {

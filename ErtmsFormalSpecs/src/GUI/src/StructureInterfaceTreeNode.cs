@@ -14,16 +14,7 @@
 // --
 // ------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing.Design;
-using System.Windows.Forms;
 using DataDictionary.Generated;
-using GUI.Converters;
-using NameSpace = DataDictionary.Types.NameSpace;
-using StructureElement = DataDictionary.Types.StructureElement;
-using Type = DataDictionary.Types.Type;
 
 namespace GUI.DataDictionaryView
 {
@@ -32,7 +23,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -41,7 +32,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public StructureInterfaceTreeNode(StructureRef item, bool buildSubNodes)
@@ -50,7 +41,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()

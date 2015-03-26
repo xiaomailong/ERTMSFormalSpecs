@@ -26,7 +26,7 @@ using WeifenLuo.WinFormsUI.Docking;
 namespace GUI.Converters
 {
     /// <summary>
-    /// TODO: Update summary.
+    ///     TODO: Update summary.
     /// </summary>
     public class ExpressionableUITypedEditor : UITypeEditor
     {
@@ -37,14 +37,16 @@ namespace GUI.Converters
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc =
+                provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
                 IExpressionable expressionable = value as IExpressionable;
                 if (expressionable != null)
                 {
                     Window form = new Window();
-                    ExpressionableTextChangeHandler handler = new ExpressionableTextChangeHandler(expressionable as ModelElement);
+                    ExpressionableTextChangeHandler handler =
+                        new ExpressionableTextChangeHandler(expressionable as ModelElement);
                     form.setChangeHandler(handler);
                     GUIUtils.MDIWindow.AddChildWindow(form, DockAreas.Float);
                 }
@@ -55,7 +57,7 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// TODO: Update summary.
+    ///     TODO: Update summary.
     /// </summary>
     public class ConditionUITypedEditor : UITypeEditor
     {
@@ -66,7 +68,8 @@ namespace GUI.Converters
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc =
+                provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
                 Expectation expectation = value as Expectation;

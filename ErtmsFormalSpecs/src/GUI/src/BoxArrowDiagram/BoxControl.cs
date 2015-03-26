@@ -28,7 +28,7 @@ namespace GUI.BoxArrowDiagram
         where ArrowModel : class, IGraphicalArrow<BoxModel>
     {
         /// <summary>
-        /// The mode of displaying boxes
+        ///     The mode of displaying boxes
         /// </summary>
         protected enum BoxModeEnum
         {
@@ -39,17 +39,17 @@ namespace GUI.BoxArrowDiagram
         };
 
         /// <summary>
-        /// The mode of displaying boxes
+        ///     The mode of displaying boxes
         /// </summary>
         protected BoxModeEnum BoxMode { get; set; }
 
         /// <summary>
-        /// The grid size used to place boxes
+        ///     The grid size used to place boxes
         /// </summary>
         public int GRID_SIZE = 10;
 
         /// <summary>
-        /// Provides the enclosing box-arrow panel
+        ///     Provides the enclosing box-arrow panel
         /// </summary>
         public BoxArrowPanel<BoxModel, ArrowModel> Panel
         {
@@ -57,7 +57,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the enclosing form
+        ///     Provides the enclosing form
         /// </summary>
         public Form EnclosingForm
         {
@@ -65,7 +65,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The model for this control
+        ///     The model for this control
         /// </summary>
         private BoxModel __model;
 
@@ -76,7 +76,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Refreshes the control according to the related model
+        ///     Refreshes the control according to the related model
         /// </summary>
         public void RefreshControl()
         {
@@ -109,7 +109,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Sets the color of the control
+        ///     Sets the color of the control
         /// </summary>
         /// <param name="color"></param>
         protected void SetColor(Color color)
@@ -129,28 +129,28 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// A normal pen
+        ///     A normal pen
         /// </summary>
         public Color NORMAL_COLOR = Color.LightGray;
 
         public Pen NORMAL_PEN = new Pen(Color.Black);
 
         /// <summary>
-        /// A normal pen
+        ///     A normal pen
         /// </summary>
         public Color HIDDEN_COLOR = Color.Transparent;
 
         public Pen HIDDEN_PEN = new Pen(Color.Gray);
 
         /// <summary>
-        /// A activated pen
+        ///     A activated pen
         /// </summary>
         public Color ACTIVATED_COLOR = Color.Blue;
 
         public Pen ACTIVATED_PEN = new Pen(Color.Black, 4);
 
         /// <summary>
-        /// Indicates that the box should be displayed in the ACTIVE color
+        ///     Indicates that the box should be displayed in the ACTIVE color
         /// </summary>
         /// <returns></returns>
         public virtual bool IsActive()
@@ -159,7 +159,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Indicates that the box should be displayed in the HIDDEN color
+        ///     Indicates that the box should be displayed in the HIDDEN color
         /// </summary>
         /// <returns></returns>
         public virtual bool IsHidden()
@@ -168,12 +168,12 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The size of a round corner
+        ///     The size of a round corner
         /// </summary>
         private int ROUND_SIZE = 10;
 
         /// <summary>
-        /// Draws the box within the box-arrow panel
+        ///     Draws the box within the box-arrow panel
         /// </summary>
         /// <param name="e"></param>
         public virtual void PaintInBoxArrowPanel(Graphics g)
@@ -225,8 +225,10 @@ namespace GUI.BoxArrowDiagram
                     };
 
                     Brush innerBrush = new SolidBrush(NORMAL_COLOR);
-                    g.FillRectangle(innerBrush, new Rectangle(points[0], new Size(points[4].X - points[0].X, points[4].Y - points[0].Y)));
-                    g.FillRectangle(innerBrush, new Rectangle(points[7], new Size(points[3].X - points[7].X, points[3].Y - points[7].Y)));
+                    g.FillRectangle(innerBrush,
+                        new Rectangle(points[0], new Size(points[4].X - points[0].X, points[4].Y - points[0].Y)));
+                    g.FillRectangle(innerBrush,
+                        new Rectangle(points[7], new Size(points[3].X - points[7].X, points[3].Y - points[7].Y)));
 
                     g.DrawLine(pen, points[0], points[1]);
                     g.DrawLine(pen, points[2], points[3]);
@@ -239,11 +241,13 @@ namespace GUI.BoxArrowDiagram
                     g.FillPie(innerBrush, rectangle, 180.0f, 90.0f);
                     g.DrawArc(pen, rectangle, 180.0f, 90.0f);
 
-                    rectangle = new Rectangle(new Point(points[2].X - 2*ROUND_SIZE, points[2].Y - ROUND_SIZE), rectangleSize);
+                    rectangle = new Rectangle(new Point(points[2].X - 2*ROUND_SIZE, points[2].Y - ROUND_SIZE),
+                        rectangleSize);
                     g.FillPie(innerBrush, rectangle, 270.0f, 90.0f);
                     g.DrawArc(pen, rectangle, 270.0f, 90.0f);
 
-                    rectangle = new Rectangle(new Point(points[4].X - ROUND_SIZE, points[4].Y - 2*ROUND_SIZE), rectangleSize);
+                    rectangle = new Rectangle(new Point(points[4].X - ROUND_SIZE, points[4].Y - 2*ROUND_SIZE),
+                        rectangleSize);
                     g.FillPie(innerBrush, rectangle, 0.0f, 90.0f);
                     g.DrawArc(pen, rectangle, 0.0f, 90.0f);
 
@@ -268,7 +272,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public BoxControl()
         {
@@ -282,7 +286,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public BoxControl(IContainer container)
@@ -298,7 +302,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Selects the current box 
+        ///     Selects the current box
         /// </summary>
         public virtual void SelectBox()
         {
@@ -306,22 +310,22 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The location where the mouse down occured
+        ///     The location where the mouse down occured
         /// </summary>
         private Point moveStartLocation;
 
         /// <summary>
-        /// The control location where the mouse down occured
+        ///     The control location where the mouse down occured
         /// </summary>
         private Point positionBeforeMove;
 
         /// <summary>
-        /// In a move operation ? 
+        ///     In a move operation ?
         /// </summary>
         private bool moving = false;
 
         /// <summary>
-        /// Handles a mouse down event
+        ///     Handles a mouse down event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -333,7 +337,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles a mouse up event
+        ///     Handles a mouse up event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -348,7 +352,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles a mouse move event, when 
+        ///     Handles a mouse move event, when
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -374,7 +378,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Sets the position of the control, according to the X & Y provided
+        ///     Sets the position of the control, according to the X & Y provided
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -393,7 +397,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the center of the box control
+        ///     Provides the center of the box control
         /// </summary>
         public Point Center
         {
@@ -409,7 +413,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles a mouse click event
+        ///     Handles a mouse click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -440,7 +444,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the span of this control, over the X axis
+        ///     Provides the span of this control, over the X axis
         /// </summary>
         public Span XSpan
         {
@@ -448,7 +452,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the span of this control, over the Y axis
+        ///     Provides the span of this control, over the Y axis
         /// </summary>
         public Span YSpan
         {
@@ -456,7 +460,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Accepts a drop event from a model element
+        ///     Accepts a drop event from a model element
         /// </summary>
         /// <param name="element"></param>
         public virtual void AcceptDrop(ModelElement element)

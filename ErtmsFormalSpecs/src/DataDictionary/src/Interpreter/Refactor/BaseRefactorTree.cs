@@ -19,25 +19,25 @@ using System;
 namespace DataDictionary.Interpreter.Refactor
 {
     /// <summary>
-    /// This visitor is used to handle refactoring of expressions.
+    ///     This visitor is used to handle refactoring of expressions.
     /// </summary>
     public class BaseRefactorTree : Visitor
     {
         /// <summary>
-        /// The textual expression to be refactored
+        ///     The textual expression to be refactored
         /// </summary>
         protected string Text { get; private set; }
 
         /// <summary>
-        /// The delta in the indexes to be applied to take care 
-        /// of the size difference between the replacement text 
-        /// and the original text
+        ///     The delta in the indexes to be applied to take care
+        ///     of the size difference between the replacement text
+        ///     and the original text
         /// </summary>
         private int Delta { get; set; }
 
         /// <summary>
-        /// Replace the text, between locations start and end with the replacement value
-        /// Update Delta according to this replacement
+        ///     Replace the text, between locations start and end with the replacement value
+        ///     Update Delta according to this replacement
         /// </summary>
         /// <param name="text">The replacement text</param>
         /// <param name="start"></param>
@@ -59,7 +59,7 @@ namespace DataDictionary.Interpreter.Refactor
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public BaseRefactorTree()
         {
@@ -67,7 +67,7 @@ namespace DataDictionary.Interpreter.Refactor
         }
 
         /// <summary>
-        /// Executes the update and changes the corresponding Text field
+        ///     Executes the update and changes the corresponding Text field
         /// </summary>
         /// <returns>true if update was OK (either no change or successful change)</returns>
         public void PerformUpdate(IExpressionable expressionable)

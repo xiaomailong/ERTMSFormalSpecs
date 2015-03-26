@@ -20,17 +20,17 @@ using Importers.RtfDeltaImporter;
 namespace Reports.Importer
 {
     /// <summary>
-    /// TODO: Update summary.
+    ///     TODO: Update summary.
     /// </summary>
     public class DeltaImportReportHandler : ReportHandler
     {
         /// <summary>
-        /// The document on which the report should be created
+        ///     The document on which the report should be created
         /// </summary>
         private Document ImportResult { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="aDictionary"></param>
         /// <param name="importResult"></param>
@@ -42,7 +42,7 @@ namespace Reports.Importer
         }
 
         /// <summary>
-        /// Creates a report on the model, according to user's choices
+        ///     Creates a report on the model, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
         public override MigraDoc.DocumentObjectModel.Document BuildDocument()

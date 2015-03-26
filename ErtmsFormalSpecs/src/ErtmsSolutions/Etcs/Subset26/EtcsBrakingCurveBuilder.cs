@@ -31,12 +31,13 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         private static SiDistance minimal_distance_threshold = new SiDistance(0.1);
 
         /// <summary>
-        /// Method used to get the full EBD and SBD curves from the MRSP
+        ///     Method used to get the full EBD and SBD curves from the MRSP
         /// </summary>
         /// <param name="A_V_D"></param>
         /// <param name="MRSP"></param>
         /// <returns></returns>
-        public static QuadraticSpeedDistanceCurve Build_A_Safe_Backward(AccelerationSpeedDistanceSurface A_V_D, FlatSpeedDistanceCurve MRSP)
+        public static QuadraticSpeedDistanceCurve Build_A_Safe_Backward(AccelerationSpeedDistanceSurface A_V_D,
+            FlatSpeedDistanceCurve MRSP)
         {
             debugging_counter = 0;
 
@@ -73,7 +74,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                     current_position = segment.X.X1;
 
                     if (debug)
-                        Log.DebugFormat("    new start position V={0,7:F2} at={1,7:F2} ", current_speed.ToUnits(), current_position.ToUnits());
+                        Log.DebugFormat("    new start position V={0,7:F2} at={1,7:F2} ", current_speed.ToUnits(),
+                            current_position.ToUnits());
                 }
             }
 
@@ -88,7 +90,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             /*************************************************************************/
             while (current_position > end_position)
             {
-                Compute_Curve(A_V_D, result, MRSP, ref current_position, ref next_position, ref current_speed, BrakingCurveDirectionEnum.Backwards);
+                Compute_Curve(A_V_D, result, MRSP, ref current_position, ref next_position, ref current_speed,
+                    BrakingCurveDirectionEnum.Backwards);
 
                 /* Next loop starts from our new position.
                    We do not need to update current_acceleration because
@@ -111,13 +114,14 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /// <summary>
-        /// Builds a full deceleration curve corresponding to a given target(location, speed)
+        ///     Builds a full deceleration curve corresponding to a given target(location, speed)
         /// </summary>
         /// <param name="A_V_D"></param>
         /// <param name="TargetSpeed"></param>
         /// <param name="TargetDistance"></param>
         /// <returns></returns>
-        public static QuadraticSpeedDistanceCurve Build_Deceleration_Curve(AccelerationSpeedDistanceSurface A_V_D, SiSpeed TargetSpeed, SiDistance TargetDistance)
+        public static QuadraticSpeedDistanceCurve Build_Deceleration_Curve(AccelerationSpeedDistanceSurface A_V_D,
+            SiSpeed TargetSpeed, SiDistance TargetDistance)
         {
             debugging_counter = 0;
 
@@ -164,14 +168,15 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                 current_speed = result.GetValueAt(current_position, dir);
             }
 
-            result.Add(current_position, mrsp[mrsp.SegmentCount - 1].X.X1, SiAcceleration.Zero, SiSpeed.Zero, current_position);
+            result.Add(current_position, mrsp[mrsp.SegmentCount - 1].X.X1, SiAcceleration.Zero, SiSpeed.Zero,
+                current_position);
 
             return result;
         }
 
 
         /// <summary>
-        /// Computes the curve from a point
+        ///     Computes the curve from a point
         /// </summary>
         /// <param name="A_V_D"></param>
         /// <param name="result"></param>
@@ -211,9 +216,11 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             /* If at previous loop wi did 'hit' the vertical part of the MRSP,
                we might have a speed above the current MRSP segment.*/
             /***************************************************************************/
-            if (current_speed > mrsp.GetValueAt(current_position - minimal_distance_threshold, BrakingCurveDirectionEnum.Backwards))
+            if (current_speed >
+                mrsp.GetValueAt(current_position - minimal_distance_threshold, BrakingCurveDirectionEnum.Backwards))
             {
-                current_speed = mrsp.GetValueAt(current_position - minimal_distance_threshold, BrakingCurveDirectionEnum.Backwards);
+                current_speed = mrsp.GetValueAt(current_position - minimal_distance_threshold,
+                    BrakingCurveDirectionEnum.Backwards);
             }
 
             /******************************************************************* 
@@ -221,7 +228,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
               and acceleration. The arc domain [0..current_position] is not valid yet.
               We must find out the domain left limit.
              *****************************************************************/
-            QuadraticCurveSegment current_curve = Build_One_Curve_Segment(current_tile, current_position, current_speed, mrsp, dir);
+            QuadraticCurveSegment current_curve = Build_One_Curve_Segment(current_tile, current_position, current_speed,
+                mrsp, dir);
 
             next_position = Distance_Edge(current_curve, dir);
             SiAcceleration current_acceleration = current_curve.A;
@@ -233,7 +241,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Converts the direction to a positive or negative integer, for use in the speed and distance steps
+        ///     Converts the direction to a positive or negative integer, for use in the speed and distance steps
         /// </summary>
         /// <param name="dir"></param>
         /// <returns></returns>
@@ -254,7 +262,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Method to return the curve segment at the current location and speed, going in the specified direction.
+        ///     Method to return the curve segment at the current location and speed, going in the specified direction.
         /// </summary>
         /// <param name="current_tile"></param>
         /// <param name="current_position"></param>
@@ -295,7 +303,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
             if (debug)
             {
-                Log.DebugFormat("  current_acceleration = {0,7:F2} from a_tile {1}", current_acceleration.ToUnits(), current_tile.ToString());
+                Log.DebugFormat("  current_acceleration = {0,7:F2} from a_tile {1}", current_acceleration.ToUnits(),
+                    current_tile.ToString());
                 Log.DebugFormat("  current_speed        = {0,7:F2} ", current_speed.ToUnits());
                 Log.DebugFormat("  current_position     = {0,7:F2} ", current_position.ToUnits());
 
@@ -323,7 +332,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             if (dir == BrakingCurveDirectionEnum.Backwards)
             {
                 /*Since the MRSP is continous, the following cannot fail. */
-                ConstantCurveSegment<SiDistance, SiSpeed> speed_limit_here = MRSP.Intersect(current_position - new SiDistance(0.1), current_curve);
+                ConstantCurveSegment<SiDistance, SiSpeed> speed_limit_here =
+                    MRSP.Intersect(current_position - new SiDistance(0.1), current_curve);
                 if (debug)
                     Log.DebugFormat("  MRSP segment          {0} ", speed_limit_here.ToString());
 
@@ -340,14 +350,16 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                         if (d >= next_position)
                         {
                             if (debug)
-                                Log.DebugFormat("  --> case_4a next_d        {0,7:F2} -> {1,7:F2}", next_position.ToUnits(), d.ToUnits());
+                                Log.DebugFormat("  --> case_4a next_d        {0,7:F2} -> {1,7:F2}",
+                                    next_position.ToUnits(), d.ToUnits());
                             next_position = d;
                         }
                     }
                     else
                     {
                         if (debug)
-                            Log.DebugFormat("  --> case_4b next_acc_0    {0,7:F2} -> {1,7:F2}", next_position.ToUnits(), speed_limit_here.X.X0.ToUnits());
+                            Log.DebugFormat("  --> case_4b next_acc_0    {0,7:F2} -> {1,7:F2}", next_position.ToUnits(),
+                                speed_limit_here.X.X0.ToUnits());
                         current_acceleration = SiAcceleration.Zero;
                         next_position = speed_limit_here.X.X0;
                     }
@@ -379,13 +391,14 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Finds the tile edge that is intersected in the chosen direction
+        ///     Finds the tile edge that is intersected in the chosen direction
         /// </summary>
         /// <param name="current_tile"></param>
         /// <param name="current_curve"></param>
         /// <param name="dir"></param>
         /// <returns></returns>
-        private static SiDistance Tile_Intersect(SiDistance current_position, SurfaceTile current_tile, QuadraticCurveSegment current_curve, BrakingCurveDirectionEnum dir)
+        private static SiDistance Tile_Intersect(SiDistance current_position, SurfaceTile current_tile,
+            QuadraticCurveSegment current_curve, BrakingCurveDirectionEnum dir)
         {
             SiDistance result = SiDistance.Zero;
 
@@ -398,7 +411,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Takes three SiDistances and determines which of the second two is closest to the first one
+        ///     Takes three SiDistances and determines which of the second two is closest to the first one
         /// </summary>
         /// <param name="reference">The point the others are compared to.</param>
         /// <param name="first">The first compared distance.</param>
@@ -417,13 +430,14 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Provides the distance at which the curve intersects the horizontal edge of the tile in the given direction
+        ///     Provides the distance at which the curve intersects the horizontal edge of the tile in the given direction
         /// </summary>
         /// <param name="current_tile"></param>
         /// <param name="current_curve"></param>
         /// <param name="dir"></param>
         /// <returns></returns>
-        private static SiDistance Speed_Edge_Location(SurfaceTile current_tile, QuadraticCurveSegment current_curve, BrakingCurveDirectionEnum dir)
+        private static SiDistance Speed_Edge_Location(SurfaceTile current_tile, QuadraticCurveSegment current_curve,
+            BrakingCurveDirectionEnum dir)
         {
             SiDistance result = SiDistance.Zero;
 
@@ -444,7 +458,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Provides the distance limit of a tile in the requested direction
+        ///     Provides the distance limit of a tile in the requested direction
         /// </summary>
         /// <param name="current_tile"></param>
         /// <param name="dir"></param>
@@ -468,7 +482,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /// <summary>
-        /// Provides the distance limit of a tile in the requested direction
+        ///     Provides the distance limit of a tile in the requested direction
         /// </summary>
         /// <param name="current_tile"></param>
         /// <param name="dir"></param>
@@ -491,7 +505,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Finds the distance at which the curve intersects the MRSP speed
+        ///     Finds the distance at which the curve intersects the MRSP speed
         /// </summary>
         /// <param name="next_position"></param>
         /// <param name="speed_limit_here"></param>
@@ -503,7 +517,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             if (speed_limit_here.X.X0 >= next_position)
             {
                 if (debug)
-                    Log.DebugFormat("  --> case_3  next_position {0,7:F2} -> {1,7:F2}", next_position.ToUnits(), speed_limit_here.X.X0.ToUnits());
+                    Log.DebugFormat("  --> case_3  next_position {0,7:F2} -> {1,7:F2}", next_position.ToUnits(),
+                        speed_limit_here.X.X0.ToUnits());
                 next_position = speed_limit_here.X.X0;
             }
             return next_position;
@@ -511,13 +526,14 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /// <summary>
-        /// Provides the current tile based on the direction we are looking in
+        ///     Provides the current tile based on the direction we are looking in
         /// </summary>
         /// <param name="A_V_D"></param>
         /// <param name="location"></param>
         /// <param name="dir"></param>
         /// <returns></returns>
-        private static SurfaceTile Get_Current_Tile(AccelerationSpeedDistanceSurface A_V_D, SiDistance current_location, SiSpeed current_speed, BrakingCurveDirectionEnum dir)
+        private static SurfaceTile Get_Current_Tile(AccelerationSpeedDistanceSurface A_V_D, SiDistance current_location,
+            SiSpeed current_speed, BrakingCurveDirectionEnum dir)
         {
             foreach (SurfaceTile Tile in A_V_D.Tiles)
             {
@@ -529,14 +545,15 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         }
 
         /// <summary>
-        /// Determines whether a tile conatins the provided speed and distance, based on the direction in which we are looking
+        ///     Determines whether a tile conatins the provided speed and distance, based on the direction in which we are looking
         /// </summary>
         /// <param name="tile"></param>
         /// <param name="current_location"></param>
         /// <param name="current_speed"></param>
         /// <param name="dir"></param>
         /// <returns></returns>
-        private static bool TileContains(SurfaceTile tile, SiDistance current_location, SiSpeed current_speed, BrakingCurveDirectionEnum dir)
+        private static bool TileContains(SurfaceTile tile, SiDistance current_location, SiSpeed current_speed,
+            BrakingCurveDirectionEnum dir)
         {
             bool result = false;
 

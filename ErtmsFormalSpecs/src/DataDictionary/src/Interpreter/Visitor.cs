@@ -22,12 +22,12 @@ using DataDictionary.Interpreter.Statement;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
-    /// Hand written visitor for expressions
+    ///     Hand written visitor for expressions
     /// </summary>
     public class Visitor
     {
         /// <summary>
-        /// Visits a tree node
+        ///     Visits a tree node
         /// </summary>
         /// <param name="interpreterTreeNode"></param>
         protected virtual void visitInterpreterTreeNode(InterpreterTreeNode interpreterTreeNode)
@@ -58,7 +58,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a designator
+        ///     Visits a designator
         /// </summary>
         /// <param name="?"></param>
         protected virtual void VisitDesignator(Designator designator)
@@ -66,7 +66,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a term
+        ///     Visits a term
         /// </summary>
         /// <param name="?"></param>
         protected virtual void VisitTerm(Term term)
@@ -86,7 +86,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits an expression
+        ///     Visits an expression
         /// </summary>
         /// <param name="?"></param>
         protected virtual void VisitExpression(Expression expression)
@@ -173,10 +173,11 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a condition based list expression
+        ///     Visits a condition based list expression
         /// </summary>
         /// <param name="conditionBasedListExpression"></param>
-        protected virtual void VisitConditionBasedListExpression(ConditionBasedListExpression conditionBasedListExpression)
+        protected virtual void VisitConditionBasedListExpression(
+            ConditionBasedListExpression conditionBasedListExpression)
         {
             if (conditionBasedListExpression != null)
             {
@@ -192,7 +193,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a THERE IS expression
+        ///     Visits a THERE IS expression
         /// </summary>
         /// <param name="thereIsExpression"></param>
         protected virtual void VisitThereIsExpression(ThereIsExpression thereIsExpression)
@@ -204,7 +205,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a STABILIZE expression
+        ///     Visits a STABILIZE expression
         /// </summary>
         /// <param name="stabilizeExpression"></param>
         protected virtual void VisitStabilizeExpression(StabilizeExpression stabilizeExpression)
@@ -218,7 +219,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a SUM expression
+        ///     Visits a SUM expression
         /// </summary>
         /// <param name="sumExpression"></param>
         protected virtual void VisitSumExpression(SumExpression sumExpression)
@@ -234,10 +235,11 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits an expression based list expression
+        ///     Visits an expression based list expression
         /// </summary>
         /// <param name="expressionBasedListExpression"></param>
-        protected virtual void VisitExpressionBasedListExpression(ExpressionBasedListExpression expressionBasedListExpression)
+        protected virtual void VisitExpressionBasedListExpression(
+            ExpressionBasedListExpression expressionBasedListExpression)
         {
             if (expressionBasedListExpression != null)
             {
@@ -250,7 +252,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a REDUCE expression
+        ///     Visits a REDUCE expression
         /// </summary>
         /// <param name="reduceExpression"></param>
         protected virtual void VisitReduceExpression(ReduceExpression reduceExpression)
@@ -266,7 +268,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a MAP expression
+        ///     Visits a MAP expression
         /// </summary>
         /// <param name="mapExpression"></param>
         protected virtual void VisitMapExpression(MapExpression mapExpression)
@@ -278,7 +280,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a LAST expression
+        ///     Visits a LAST expression
         /// </summary>
         /// <param name="lastExpression"></param>
         protected virtual void VisitLastExpression(LastExpression lastExpression)
@@ -290,7 +292,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a FOR ALL expression
+        ///     Visits a FOR ALL expression
         /// </summary>
         /// <param name="forAllExpression"></param>
         protected virtual void VisitForAllExpression(ForAllExpression forAllExpression)
@@ -302,7 +304,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a FIRST expression
+        ///     Visits a FIRST expression
         /// </summary>
         /// <param name="firstExpression"></param>
         protected virtual void VisitFirstExpression(FirstExpression firstExpression)
@@ -314,7 +316,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a COUNT expression
+        ///     Visits a COUNT expression
         /// </summary>
         /// <param name="countExpression"></param>
         protected virtual void VisitCountExpression(CountExpression countExpression)
@@ -326,7 +328,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a unary expression
+        ///     Visits a unary expression
         /// </summary>
         /// <param name="unaryExpression"></param>
         protected virtual void VisitUnaryExpression(UnaryExpression unaryExpression)
@@ -342,7 +344,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a struct expression
+        ///     Visits a struct expression
         /// </summary>
         /// <param name="structExpression"></param>
         protected virtual void VisitStructExpression(StructExpression structExpression)
@@ -365,7 +367,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a String expression
+        ///     Visits a String expression
         /// </summary>
         /// <param name="stringExpression"></param>
         protected virtual void VisitStringExpression(StringExpression stringExpression)
@@ -373,7 +375,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a Number expression
+        ///     Visits a Number expression
         /// </summary>
         /// <param name="numberExpression"></param>
         protected virtual void VisitNumberExpression(NumberExpression numberExpression)
@@ -381,7 +383,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a List expression
+        ///     Visits a List expression
         /// </summary>
         /// <param name="listExpression"></param>
         protected virtual void VisitListExpression(ListExpression listExpression)
@@ -396,7 +398,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a Function expression
+        ///     Visits a Function expression
         /// </summary>
         /// <param name="functionExpression"></param>
         protected virtual void VisitFunctionExpression(FunctionExpression functionExpression)
@@ -408,7 +410,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a Deref expression
+        ///     Visits a Deref expression
         /// </summary>
         /// <param name="derefExpression"></param>
         protected virtual void VisitDerefExpression(DerefExpression derefExpression)
@@ -423,7 +425,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a Call expression
+        ///     Visits a Call expression
         /// </summary>
         /// <param name="call"></param>
         protected virtual void VisitCall(Call call)
@@ -453,7 +455,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a Binary expression
+        ///     Visits a Binary expression
         /// </summary>
         /// <param name="binaryExpression"></param>
         protected virtual void VisitBinaryExpression(BinaryExpression binaryExpression)
@@ -469,7 +471,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a let expression
+        ///     Visits a let expression
         /// </summary>
         /// <param name="letExpression"></param>
         protected virtual void VisitLetExpression(LetExpression letExpression)
@@ -485,7 +487,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a statement
+        ///     Visits a statement
         /// </summary>
         /// <param name="?"></param>
         protected virtual void VisitStatement(Statement.Statement statement)
@@ -520,7 +522,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a Variable update statement
+        ///     Visits a Variable update statement
         /// </summary>
         /// <param name="variableUpdateStatement"></param>
         protected virtual void VisitVariableUpdateStatement(VariableUpdateStatement variableUpdateStatement)
@@ -536,7 +538,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a REPLACE statement
+        ///     Visits a REPLACE statement
         /// </summary>
         /// <param name="replaceStatement"></param>
         protected virtual void VisitReplaceStatement(ReplaceStatement replaceStatement)
@@ -556,7 +558,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a REMOVE statement
+        ///     Visits a REMOVE statement
         /// </summary>
         /// <param name="removeStatement"></param>
         protected virtual void VisitRemoveStatement(RemoveStatement removeStatement)
@@ -572,7 +574,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits a Procedure call statement
+        ///     Visits a Procedure call statement
         /// </summary>
         /// <param name="procedureCallStatement"></param>
         protected virtual void VisitProcedureCallStatement(ProcedureCallStatement procedureCallStatement)
@@ -584,7 +586,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits an INSERT statement
+        ///     Visits an INSERT statement
         /// </summary>
         /// <param name="insertStatement"></param>
         protected virtual void VisitInsertStatement(InsertStatement insertStatement)
@@ -604,7 +606,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits an APPLY statement
+        ///     Visits an APPLY statement
         /// </summary>
         /// <param name="applyStatement"></param>
         protected virtual void VisitApplyStatement(ApplyStatement applyStatement)
@@ -624,7 +626,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Visits an interpreter tree node
+        ///     Visits an interpreter tree node
         /// </summary>
         /// <param name="interpreterTreeNode"></param>
         protected virtual void VisitInterpreterTreeNode(InterpreterTreeNode interpreterTreeNode)

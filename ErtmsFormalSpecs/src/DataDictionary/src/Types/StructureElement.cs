@@ -23,7 +23,8 @@ using Utils;
 
 namespace DataDictionary.Types
 {
-    public class StructureElement : Generated.StructureElement, ITypedElement, ISubDeclarator, TextualExplain, IDefaultValueElement
+    public class StructureElement : Generated.StructureElement, ITypedElement, ISubDeclarator, TextualExplain,
+        IDefaultValueElement
     {
         public NameSpace NameSpace
         {
@@ -31,7 +32,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the mode of the structure element
+        ///     Provides the mode of the structure element
         /// </summary>
         public acceptor.VariableModeEnumType Mode
         {
@@ -41,14 +42,14 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
         }
 
         /// <summary>
-        /// Provides all the values that can be stored in this structure
+        ///     Provides all the values that can be stored in this structure
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements
         {
@@ -72,7 +73,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -86,7 +87,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the type name of the structure element
+        ///     Provides the type name of the structure element
         /// </summary>
         public string TypeName
         {
@@ -102,12 +103,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The cached type
+        ///     The cached type
         /// </summary>
         private Type __type;
 
         /// <summary>
-        /// The type associated to this structure element
+        ///     The type associated to this structure element
         /// </summary>
         public Type Type
         {
@@ -154,7 +155,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The enclosing structure
+        ///     The enclosing structure
         /// </summary>
         public Structure Structure
         {
@@ -162,7 +163,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The enclosing collection
+        ///     The enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -170,7 +171,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The default value
+        ///     The default value
         /// </summary>
         public string Default
         {
@@ -199,7 +200,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the expression tree associated to this action's expression
+        ///     Provides the expression tree associated to this action's expression
         /// </summary>
         private Expression __expression;
 
@@ -223,7 +224,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -231,7 +232,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {
@@ -241,7 +242,7 @@ namespace DataDictionary.Types
 
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -256,7 +257,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the variable's default value
+        ///     Provides the variable's default value
         /// </summary>
         public IValue DefaultValue
         {
@@ -281,7 +282,8 @@ namespace DataDictionary.Types
                                 retVal = Expression.GetValue(new InterpretationContext(this), null);
                                 if (retVal != null && !Type.Match(retVal.Type))
                                 {
-                                    AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");
+                                    AddError("Default value type (" + retVal.Type.Name +
+                                             ")does not match variable type (" + Type.Name + ")");
                                     retVal = null;
                                 }
                             }
@@ -303,7 +305,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -312,7 +314,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the structure element
+        ///     Provides an explanation of the structure element
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -332,7 +334,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the range
+        ///     Provides an explanation of the range
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>

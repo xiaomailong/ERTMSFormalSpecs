@@ -19,15 +19,15 @@ namespace GUI.BoxArrowDiagram
     public class Span
     {
         /// <summary>
-        /// The two bounds which define the span
-        /// Hyp : LowBound <= HighBound
+        ///     The two bounds which define the span
+        ///     Hyp : LowBound <= HighBound
         /// </summary>
         public int LowBound { get; set; }
 
         public int HighBound { get; set; }
 
         /// <summary>
-        /// Provides the center of the span
+        ///     Provides the center of the span
         /// </summary>
         public int Center
         {
@@ -35,7 +35,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="b1"></param>
         /// <param name="b2"></param>
@@ -54,7 +54,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the intersection of two spans
+        ///     Provides the intersection of two spans
         /// </summary>
         /// <param name="span1"></param>
         /// <param name="span2"></param>
@@ -97,7 +97,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the union of two spans
+        ///     Provides the union of two spans
         /// </summary>
         /// <param name="span1"></param>
         /// <param name="span2"></param>

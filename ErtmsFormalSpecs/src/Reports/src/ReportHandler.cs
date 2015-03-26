@@ -28,16 +28,16 @@ using Utils;
 namespace Reports
 {
     /// <summary>
-    /// Class contain the base information for report configs
-    /// (Name of the report, the path of the generated .pdf and
-    /// the dictionary)
+    ///     Class contain the base information for report configs
+    ///     (Name of the report, the path of the generated .pdf and
+    ///     the dictionary)
     /// </summary>
     public abstract class ReportHandler : ProgressHandler
     {
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Creates the full file name from a given title
+        ///     Creates the full file name from a given title
         /// </summary>
         /// <param name="fileName">Name of the report</param>
         protected void createFileName(string title)
@@ -53,7 +53,7 @@ namespace Reports
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ReportHandler(Dictionary dictionary)
         {
@@ -65,7 +65,7 @@ namespace Reports
         public abstract Document BuildDocument();
 
         /// <summary>
-        /// Generates the file in the background thread
+        ///     Generates the file in the background thread
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()
@@ -88,17 +88,17 @@ namespace Reports
         }
 
         /// <summary>
-        /// Name of the report
+        ///     Name of the report
         /// </summary>
         public string Name { set; get; }
 
         /// <summary>
-        /// The name and the path of the final .pdf document
+        ///     The name and the path of the final .pdf document
         /// </summary>
         public string FileName { set; get; }
 
         /// <summary>
-        /// The dictionary representing the model
+        ///     The dictionary representing the model
         /// </summary>
         public Dictionary Dictionary { set; get; }
 
@@ -109,8 +109,8 @@ namespace Reports
         }
 
         /// <summary>
-        /// Produces the .pdf corresponding to the book, according to user's choices
-        /// specified in the report config
+        ///     Produces the .pdf corresponding to the book, according to user's choices
+        ///     specified in the report config
         /// </summary>
         /// <param name="aBook">The book to be created</param>
         /// <returns></returns>

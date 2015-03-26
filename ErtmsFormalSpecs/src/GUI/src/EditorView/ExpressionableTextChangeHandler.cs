@@ -20,14 +20,14 @@ using DataDictionary.Tests;
 namespace GUI.EditorView
 {
     /// <summary>
-    /// Sets the string value into the right property
+    ///     Sets the string value into the right property
     /// </summary>
     /// <param name="instance"></param>
     /// <param name="value"></param>
     public class ExpressionableTextChangeHandler : Window.HandleTextChange
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="instance"></param>
         public ExpressionableTextChangeHandler(ModelElement instance)
@@ -36,7 +36,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// The way text is retrieved from the instance
+        ///     The way text is retrieved from the instance
         /// </summary>
         /// <returns></returns>
         public override string GetText()
@@ -52,7 +52,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// The way text is set back in the instance
+        ///     The way text is set back in the instance
         /// </summary>
         /// <returns></returns>
         public override void SetText(string text)
@@ -68,14 +68,14 @@ namespace GUI.EditorView
 
 
     /// <summary>
-    /// Sets the string value into the right property
+    ///     Sets the string value into the right property
     /// </summary>
     /// <param name="instance"></param>
     /// <param name="value"></param>
     public class ConditionTextChangeHandler : Window.HandleTextChange
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="instance"></param>
         public ConditionTextChangeHandler(ModelElement instance)
@@ -84,7 +84,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// The way text is retrieved from the instance
+        ///     The way text is retrieved from the instance
         /// </summary>
         /// <returns></returns>
         public override string GetText()
@@ -100,7 +100,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// The way text is set back in the instance
+        ///     The way text is set back in the instance
         /// </summary>
         /// <returns></returns>
         public override void SetText(string text)

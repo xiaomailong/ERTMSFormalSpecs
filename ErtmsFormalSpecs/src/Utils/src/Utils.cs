@@ -22,7 +22,7 @@ namespace Utils
     public class Utils
     {
         /// <summary>
-        /// Indicates whether the data provided is empty
+        ///     Indicates whether the data provided is empty
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -34,7 +34,7 @@ namespace Utils
         private static char[] END_LINE = {'\r', '\n'};
 
         /// <summary>
-        /// Converts a string into a list of string, splitted by eol
+        ///     Converts a string into a list of string, splitted by eol
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -49,7 +49,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Converts a list of strings into its corresponding array
+        ///     Converts a list of strings into its corresponding array
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -63,7 +63,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Generates the list of strings associated to a given element log list
+        ///     Generates the list of strings associated to a given element log list
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Concats the 'name' to the existing scope, separated by '.'
+        ///     Concats the 'name' to the existing scope, separated by '.'
         /// </summary>
         /// <param name="scope"></param>
         /// <param name="name"></param>
@@ -98,8 +98,8 @@ namespace Utils
         }
 
         /// <summary>
-        /// Reduces the length of the provided value to the expected length.
-        /// Adds "..." at the end of the output string
+        ///     Reduces the length of the provided value to the expected length.
+        ///     Adds "..." at the end of the output string
         /// </summary>
         /// <param name="value"></param>
         /// <param name="length"></param>

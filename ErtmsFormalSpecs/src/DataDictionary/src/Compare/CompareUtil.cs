@@ -17,12 +17,12 @@
 namespace DataDictionary.Compare
 {
     /// <summary>
-    /// Tools used during version comparison
+    ///     Tools used during version comparison
     /// </summary>
     public static class CompareUtil
     {
         /// <summary>
-        /// Computes a canonic form of a string
+        ///     Computes a canonic form of a string
         /// </summary>
         /// <param name="s1"></param>
         /// <returns></returns>
@@ -48,7 +48,7 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// Compares two strings
+        ///     Compares two strings
         /// </summary>
         /// <param name="s1"></param>
         /// <param name="s2"></param>

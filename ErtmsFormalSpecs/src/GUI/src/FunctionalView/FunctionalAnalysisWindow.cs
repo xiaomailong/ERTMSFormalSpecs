@@ -25,20 +25,20 @@ namespace GUI.FunctionalView
     public partial class FunctionalAnalysisWindow : BoxArrowWindow<NameSpace, AccessMode>
     {
         /// <summary>
-        /// The namespace currently displayed
+        ///     The namespace currently displayed
         /// </summary>
         public IEnclosesNameSpaces NameSpaceContainer { get; private set; }
 
         /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
+        ///     Required method for Designer support - do not modify
+        ///     the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public FunctionalAnalysisWindow()
             : base()
@@ -46,7 +46,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// The panel used to display the state diagram
+        ///     The panel used to display the state diagram
         /// </summary>
         private FunctionalAnalysisPanel FunctionalAnalysisPanel
         {
@@ -54,7 +54,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Sets the state machine type
+        ///     Sets the state machine type
         /// </summary>
         /// <param name="stateMachine"></param>
         public void SetNameSpaceContainer(IEnclosesNameSpaces nameSpaceContainer)
@@ -73,12 +73,12 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// A box editor
+        ///     A box editor
         /// </summary>
         protected class NameSpaceEditor : BoxEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public NameSpaceEditor(BoxControl<NameSpace, AccessMode> control)
@@ -95,7 +95,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Factory for BoxEditor
+        ///     Factory for BoxEditor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
@@ -107,12 +107,12 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// An arrow editor
+        ///     An arrow editor
         /// </summary>
         protected class AccessModeEditor : ArrowEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="control"></param>
             public AccessModeEditor(ArrowControl<NameSpace, AccessMode> control)
@@ -122,7 +122,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Factory for arrow editor
+        ///     Factory for arrow editor
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>

@@ -19,29 +19,28 @@ using System.Collections.Generic;
 namespace Utils
 {
     /// <summary>
-    /// A finder utility class. 
+    ///     A finder utility class.
     /// </summary>
     public interface IFinder
     {
         /// <summary>
-        /// Used to clear the cache related to a single finder
+        ///     Used to clear the cache related to a single finder
         /// </summary>
         void ClearCache();
     }
 
-    ///
     /// --------------------------------------------------------------------
-    ///   Enclosing finder
+    /// Enclosing finder
     /// --------------------------------------------------------------------
     /// <summary>
-    /// Finds in an enclosing element the element whose type matches T
+    ///     Finds in an enclosing element the element whose type matches T
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class EnclosingFinder<T> : IFinder
         where T : class
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public EnclosingFinder()
         {
@@ -49,7 +48,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Finds an enclosing element whose type is T
+        ///     Finds an enclosing element whose type is T
         /// </summary>
         /// <param name="el"></param>
         /// <returns></returns>
@@ -81,7 +80,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Clears the cache
+        ///     Clears the cache
         /// </summary>
         public void ClearCache()
         {
@@ -89,28 +88,27 @@ namespace Utils
         }
     }
 
-    ///
     /// --------------------------------------------------------------------
-    ///  ISubDeclarator
+    /// ISubDeclarator
     /// --------------------------------------------------------------------
     /// <summary>
-    ///  An element which declares subthings. 
-    ///  SubElements can be referenced using the dot notation
+    ///     An element which declares subthings.
+    ///     SubElements can be referenced using the dot notation
     /// </summary>
     public interface ISubDeclarator
     {
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         Dictionary<string, List<INamable>> DeclaredElements { get; }
 
         /// <summary>
-        /// Initialises the declared elements in the dictionary
+        ///     Initialises the declared elements in the dictionary
         /// </summary>
         void InitDeclaredElements();
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -118,12 +116,12 @@ namespace Utils
     }
 
     /// <summary>
-    /// Utility class for sub declarators
+    ///     Utility class for sub declarators
     /// </summary>
     public class ISubDeclaratorUtils
     {
         /// <summary>
-        /// Appends a namable in a dictionary of a sub declarator
+        ///     Appends a namable in a dictionary of a sub declarator
         /// </summary>
         /// <param name="subDeclarator"></param>
         /// <param name="namable"></param>
@@ -143,7 +141,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Appends a namable in a dictionary
+        ///     Appends a namable in a dictionary
         /// </summary>
         /// <param name="subDeclarator"></param>
         /// <param name="name"></param>
@@ -161,7 +159,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Finds a symbol in a sub declarator and adds it to retVal
+        ///     Finds a symbol in a sub declarator and adds it to retVal
         /// </summary>
         /// <param name="subDeclarator"></param>
         /// <param name="name"></param>
@@ -185,7 +183,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Indicates whether the declarator contains the value provided as parameter
+        ///     Indicates whether the declarator contains the value provided as parameter
         /// </summary>
         /// <param name="subDeclarator"></param>
         /// <param name="value"></param>
@@ -211,19 +209,18 @@ namespace Utils
         }
     }
 
-    ///
     /// --------------------------------------------------------------------
-    ///  Overall finder
+    /// Overall finder
     /// --------------------------------------------------------------------
     /// <summary>
-    /// A utility class used to find an instance based on the name provided
+    ///     A utility class used to find an instance based on the name provided
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class OverallFinder<T> : IFinder
         where T : class, INamable
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public OverallFinder()
         {
@@ -231,12 +228,12 @@ namespace Utils
         }
 
         /// <summary>
-        /// The cache 
+        ///     The cache
         /// </summary>
         private Dictionary<object, Dictionary<string, T>> cache = new Dictionary<object, Dictionary<string, T>>();
 
         /// <summary>
-        /// Stores a value in the cache
+        ///     Stores a value in the cache
         /// </summary>
         /// <param name="root"></param>
         /// <param name="name"></param>
@@ -251,7 +248,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Finds an element in the model based on its name
+        ///     Finds an element in the model based on its name
         /// </summary>
         /// <param name="root">the root where search need be conducted</param>
         /// <param name="name">The . separated name of the element</param>
@@ -287,7 +284,8 @@ namespace Utils
         }
 
         /// <summary>
-        /// Finds an element in the model based on its decomposed name, where the index indicates which element have already been matched
+        ///     Finds an element in the model based on its decomposed name, where the index indicates which element have already
+        ///     been matched
         /// </summary>
         /// <param name="root">the root where search need be conducted</param>
         /// <param name="names">the decomposed name</param>
@@ -362,7 +360,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Provides the name of all values of type T
+        ///     Provides the name of all values of type T
         /// </summary>
         /// <param name="scope">The scope to used when identifying the elements</param>
         /// <param name="root">The root element where search must be conducted</param>
@@ -378,7 +376,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Provides all the values of type T along with their identification name
+        ///     Provides all the values of type T along with their identification name
         /// </summary>
         /// <param name="scope">The scope to used when identifying the elements</param>
         /// <param name="root">The root element where search must be conducted</param>
@@ -414,12 +412,12 @@ namespace Utils
         }
 
         /// <summary>
-        /// The maximum depth the search must go (avoid infinite recursion)
+        ///     The maximum depth the search must go (avoid infinite recursion)
         /// </summary>
         private static int MAX_DEPTH = 10;
 
         /// <summary>
-        /// Provides all the values of type T along with their identification name
+        ///     Provides all the values of type T along with their identification name
         /// </summary>
         /// <param name="root">The root element where search must be conducted</param>
         /// <param name="scope">The namespace where elements are declared</param>
@@ -458,7 +456,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Clears the cache
+        ///     Clears the cache
         /// </summary>
         public void ClearCache()
         {
@@ -466,22 +464,21 @@ namespace Utils
         }
     }
 
-    ///
     /// --------------------------------------------------------------------
-    ///  Finder Repository
+    /// Finder Repository
     /// --------------------------------------------------------------------
     /// <summary>
-    /// Takes care of all finders
+    ///     Takes care of all finders
     /// </summary>
     public class FinderRepository
     {
         /// <summary>
-        /// The registered finders
+        ///     The registered finders
         /// </summary>
         private List<IFinder> finders = new List<IFinder>();
 
         /// <summary>
-        /// Clears the cache of the registered finders
+        ///     Clears the cache of the registered finders
         /// </summary>
         public void ClearCache()
         {
@@ -492,7 +489,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Registers a new finder
+        ///     Registers a new finder
         /// </summary>
         /// <param name="finder"></param>
         public void Register(IFinder finder)
@@ -501,7 +498,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Unregisters a finder
+        ///     Unregisters a finder
         /// </summary>
         /// <param name="finder"></param>
         public void UnRegister(IFinder finder)
@@ -511,7 +508,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The finder repository instance
+        ///     The finder repository instance
         /// </summary>
         public static FinderRepository INSTANCE = new FinderRepository();
     };

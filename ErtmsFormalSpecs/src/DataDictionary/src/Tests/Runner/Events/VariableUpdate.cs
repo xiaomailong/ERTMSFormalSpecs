@@ -26,12 +26,12 @@ namespace DataDictionary.Tests.Runner.Events
     public class VariableUpdate : ModelEvent
     {
         /// <summary>
-        /// The action to execute
+        ///     The action to execute
         /// </summary>
         public Action Action { get; private set; }
 
         /// <summary>
-        /// The namespace associated to this event
+        ///     The namespace associated to this event
         /// </summary>
         public override NameSpace NameSpace
         {
@@ -39,14 +39,14 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The changes performed by this action execution
+        ///     The changes performed by this action execution
         /// </summary>
         public ChangeList Changes { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
-        /// <param name="action"The action which raised the variable update></param>
+        /// <param name="action" The action which raised the variable update></param>
         public VariableUpdate(Action action, IModelElement instance, acceptor.RulePriority? priority)
             : base(action.ExpressionText, instance, priority)
         {
@@ -54,7 +54,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Computes the changes related to this event
+        ///     Computes the changes related to this event
         /// </summary>
         /// <param name="apply">Indicates that the changes should be applied directly</param>
         /// <param name="runner"></param>
@@ -79,7 +79,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Performs the variable change
+        ///     Performs the variable change
         /// </summary>
         /// <param name="context">The execution context used to compute the values</param>
         /// <param name="runner"></param>
@@ -90,7 +90,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rollsback the changes performed during this event
+        ///     Rollsback the changes performed during this event
         /// </summary>
         public override void RollBack()
         {
@@ -99,7 +99,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The explanation of the element
+        ///     The explanation of the element
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>

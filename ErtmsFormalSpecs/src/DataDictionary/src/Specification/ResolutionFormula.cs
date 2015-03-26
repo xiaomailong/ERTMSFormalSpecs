@@ -21,7 +21,7 @@ namespace DataDictionary.Specification
     public class ResolutionFormula : resolution_formula
     {
         /// <summary>
-        /// The ResolutionFormula content
+        ///     The ResolutionFormula content
         /// </summary>
         public string GetText(int depth)
         {

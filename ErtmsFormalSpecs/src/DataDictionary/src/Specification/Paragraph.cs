@@ -85,7 +85,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the Guid of the paragraph and creates one if it is not yet set
+        ///     Provides the Guid of the paragraph and creates one if it is not yet set
         /// </summary>
         public override string Guid
         {
@@ -103,7 +103,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the requirement set references for this paragraph
+        ///     Provides the requirement set references for this paragraph
         /// </summary>
         public ArrayList RequirementSetReferences
         {
@@ -125,14 +125,14 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The maximum size of the text to be displayed
+        ///     The maximum size of the text to be displayed
         /// </summary>
         private static int MAX_TEXT_LENGTH = 50;
 
         private static bool STRIP_LONG_TEXT = false;
 
         /// <summary>
-        /// The paragraph name
+        ///     The paragraph name
         /// </summary>
         public override string Name
         {
@@ -160,7 +160,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Allow to edit the paragraph text in the ExpressionText richttextbox
+        ///     Allow to edit the paragraph text in the ExpressionText richttextbox
         /// </summary>
         public override string ExpressionText
         {
@@ -169,7 +169,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The paragraph text
+        ///     The paragraph text
         /// </summary>
         public string Text
         {
@@ -234,7 +234,8 @@ namespace DataDictionary.Specification
 
             foreach (Paragraph p in SubParagraphs)
             {
-                retVal = p.BelongsToRequirementSet(requirementSet) || p.SubParagraphBelongsToRequirementSet(requirementSet);
+                retVal = p.BelongsToRequirementSet(requirementSet) ||
+                         p.SubParagraphBelongsToRequirementSet(requirementSet);
                 if (retVal)
                 {
                     break;
@@ -259,7 +260,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Tells if the paragraph is of the selected type
+        ///     Tells if the paragraph is of the selected type
         /// </summary>
         /// <param name="Type"></param>
         /// <returns></returns>
@@ -270,7 +271,7 @@ namespace DataDictionary.Specification
 
 
         /// <summary>
-        /// Looks for a specific paragraph
+        ///     Looks for a specific paragraph
         /// </summary>
         /// <param name="id">The id of the paragraph to find</param>
         /// <param name="create">If true, creates the paragraph tree if needed</param>
@@ -319,7 +320,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The sub paragraphs of this paragraph
+        ///     The sub paragraphs of this paragraph
         /// </summary>
         /// <param name="letter">Indicates that the paragraph id should be terminated by a letter</param>
         public string GetNewSubParagraphId(bool letter)
@@ -353,7 +354,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The sub paragraphs of this paragraph
+        ///     The sub paragraphs of this paragraph
         /// </summary>
         public ArrayList SubParagraphs
         {
@@ -369,7 +370,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The type specs of this paragraph
+        ///     The type specs of this paragraph
         /// </summary>
         public ArrayList TypeSpecs
         {
@@ -385,7 +386,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Adds a type spec to a paragraph
+        ///     Adds a type spec to a paragraph
         /// </summary>
         /// <param name="aTypeSpec">The type spec to add</param>
         public void AddTypeSpec(TypeSpec aTypeSpec)
@@ -442,8 +443,8 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The paragraph level. 
-        ///   1.1 is level 2, ...
+        ///     The paragraph level.
+        ///     1.1 is level 2, ...
         /// </summary>
         public int Level
         {
@@ -468,7 +469,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Restructures the name of this paragraph
+        ///     Restructures the name of this paragraph
         /// </summary>
         public void RestructureName()
         {
@@ -483,12 +484,12 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Finds all req ref to this paragraph
+        ///     Finds all req ref to this paragraph
         /// </summary>
         private class ReqRefFinder : Visitor
         {
             /// <summary>
-            /// Provides the paragraph currently looked for
+            ///     Provides the paragraph currently looked for
             /// </summary>
             private Paragraph paragraph;
 
@@ -499,7 +500,7 @@ namespace DataDictionary.Specification
             }
 
             /// <summary>
-            /// Provides the req refs which implement this paragraph 
+            ///     Provides the req refs which implement this paragraph
             /// </summary>
             private List<ReqRef> implementations;
 
@@ -510,7 +511,7 @@ namespace DataDictionary.Specification
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="paragraph"></param>
             public ReqRefFinder(Paragraph paragraph)
@@ -533,7 +534,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the list of references to this paragraph
+        ///     Provides the list of references to this paragraph
         /// </summary>
         public List<ReqRef> Implementations
         {
@@ -546,7 +547,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Fills the collection of paragraphs with this paragraph, and the sub paragraphs
+        ///     Fills the collection of paragraphs with this paragraph, and the sub paragraphs
         /// </summary>
         /// <param name="retVal"></param>
         public void FillCollection(List<Paragraph> retVal)
@@ -559,7 +560,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Changes the type of the paragraph if the paragraph type is the original type
+        ///     Changes the type of the paragraph if the paragraph type is the original type
         /// </summary>
         /// <param name="originalType">The type of the paragraph which should be matched</param>
         /// <param name="targetType">When the originalType is matched, the new type to set</param>
@@ -579,7 +580,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Worker for get sub paragraphs
+        ///     Worker for get sub paragraphs
         /// </summary>
         /// <param name="retVal"></param>
         public void GetParagraphs(List<Paragraph> retVal)
@@ -592,7 +593,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides all sub paragraphs of this paragraph
+        ///     Provides all sub paragraphs of this paragraph
         /// </summary>
         /// <returns></returns>
         public List<Paragraph> getSubParagraphs()
@@ -605,7 +606,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -622,12 +623,12 @@ namespace DataDictionary.Specification
         private class RemoveReqRef : Visitor
         {
             /// <summary>
-            /// The paragraph for which no req ref should exist
+            ///     The paragraph for which no req ref should exist
             /// </summary>
             private Paragraph Paragraph { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="paragraph"></param>
             public RemoveReqRef(Paragraph paragraph)
@@ -649,7 +650,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Also removes the req refs to that paragraph
+        ///     Also removes the req refs to that paragraph
         /// </summary>
         public override void Delete()
         {
@@ -663,7 +664,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Indicates whether this paragraphs belongs to the functionam block whose name is provided as parameter
+        ///     Indicates whether this paragraphs belongs to the functionam block whose name is provided as parameter
         /// </summary>
         /// <param name="requirementSet"></param>
         public bool BelongsToRequirementSet(RequirementSet requirementSet)
@@ -711,7 +712,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Appends this paragraph to the requirement set if it does not belong to it already
+        ///     Appends this paragraph to the requirement set if it does not belong to it already
         /// </summary>
         /// <param name="requirementSet"></param>
         public bool AppendToRequirementSet(RequirementSet requirementSet)
@@ -721,7 +722,8 @@ namespace DataDictionary.Specification
             if (!BelongsToRequirementSet(requirementSet))
             {
                 retVal = true;
-                RequirementSetReference reference = (RequirementSetReference) acceptor.getFactory().createRequirementSetReference();
+                RequirementSetReference reference =
+                    (RequirementSetReference) acceptor.getFactory().createRequirementSetReference();
                 reference.setTarget(requirementSet.Guid);
                 appendRequirementSets(reference);
             }
@@ -730,7 +732,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the list of applicable requirement sets
+        ///     Provides the list of applicable requirement sets
         /// </summary>
         /// <returns></returns>
         public HashSet<RequirementSet> ApplicableRequirementSets
@@ -746,11 +748,12 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the list of applicable requirement sets
+        ///     Provides the list of applicable requirement sets
         /// </summary>
         /// <param name="applicableRequirementSets"></param>
         /// <param name="onlyConsiderRecursiveRequirementSets">Indicates that only recursive requirement sets should be considered</param>
-        private void FillApplicableRequirementSets(HashSet<RequirementSet> applicableRequirementSets, bool onlyConsiderRecursiveRequirementSets)
+        private void FillApplicableRequirementSets(HashSet<RequirementSet> applicableRequirementSets,
+            bool onlyConsiderRecursiveRequirementSets)
         {
             foreach (RequirementSetReference reference in RequirementSetReferences)
             {
@@ -769,8 +772,8 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Indicates if all implementations of the paragraph have been verified
-        /// If there are none, returns false
+        ///     Indicates if all implementations of the paragraph have been verified
+        ///     If there are none, returns false
         /// </summary>
         public bool Verified
         {

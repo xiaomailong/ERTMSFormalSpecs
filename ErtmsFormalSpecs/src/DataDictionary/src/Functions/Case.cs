@@ -30,7 +30,7 @@ namespace DataDictionary.Functions
         private Expression expression;
 
         /// <summary>
-        /// The enclosing function
+        ///     The enclosing function
         /// </summary>
         public Function EnclosingFunction
         {
@@ -39,7 +39,7 @@ namespace DataDictionary.Functions
 
 
         /// <summary>
-        /// Pre-conditions of the case
+        ///     Pre-conditions of the case
         /// </summary>
         public ArrayList PreConditions
         {
@@ -54,7 +54,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Expression of the case as string
+        ///     Expression of the case as string
         /// </summary>
         public override string ExpressionText
         {
@@ -74,7 +74,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Expression of the case
+        ///     Expression of the case
         /// </summary>
         public Expression Expression
         {
@@ -96,7 +96,7 @@ namespace DataDictionary.Functions
 
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -104,7 +104,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {
@@ -113,7 +113,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -128,7 +128,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The enclosing collection of the parameter
+        ///     The enclosing collection of the parameter
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -136,7 +136,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Expression of the case
+        ///     Expression of the case
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -166,7 +166,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -203,7 +203,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -215,7 +215,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -279,7 +279,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The comment related to this element
+        ///     The comment related to this element
         /// </summary>
         public string Comment
         {

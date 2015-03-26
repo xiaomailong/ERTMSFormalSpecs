@@ -32,22 +32,22 @@ using Variable = DataDictionary.Variables.Variable;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
-    /// Compiles all expressions and statements located in the model & tests
+    ///     Compiles all expressions and statements located in the model & tests
     /// </summary>
     public class Compiler : Generated.Visitor
     {
         /// <summary>
-        /// Performs a clean before compiling
+        ///     Performs a clean before compiling
         /// </summary>
         private class CleanBeforeCompilation : Generated.Visitor
         {
             /// <summary>
-            /// The compilation options
+            ///     The compilation options
             /// </summary>
             private CompilationOptions Options { get; set; }
 
             /// <summary>
-            /// Cleans up the declared elements dictionaries
+            ///     Cleans up the declared elements dictionaries
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -69,7 +69,7 @@ namespace DataDictionary.Interpreter
             }
 
             /// <summary>
-            /// Clears the cache dependancy when a full rebuilt is asked
+            ///     Clears the cache dependancy when a full rebuilt is asked
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -84,7 +84,7 @@ namespace DataDictionary.Interpreter
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="options"></param>
             /// <param name="system"></param>
@@ -101,37 +101,37 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The EFS system that need to be compiled
+        ///     The EFS system that need to be compiled
         /// </summary>
         public EFSSystem EFSSystem { get; set; }
 
         /// <summary>
-        /// Indicates that the compilation should be performed
+        ///     Indicates that the compilation should be performed
         /// </summary>
         public bool DoCompile { get; set; }
 
         /// <summary>
-        /// The compilation options needed for the next compile
+        ///     The compilation options needed for the next compile
         /// </summary>
         private class CompilationOptions
         {
             /// <summary>
-            /// Indicates that everything should be recompiled
+            ///     Indicates that everything should be recompiled
             /// </summary>
             public bool Rebuild { get; set; }
 
             /// <summary>
-            /// Indicates that compilation should be silent (or not)
+            ///     Indicates that compilation should be silent (or not)
             /// </summary>
             public bool SilentCompile { get; set; }
 
             /// <summary>
-            /// Indicates that the compilation has been performed
+            ///     Indicates that the compilation has been performed
             /// </summary>
             public bool CompilationDone { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="rebuild"></param>
             /// <param name="silent"></param>
@@ -143,22 +143,22 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The next compile session options
+        ///     The next compile session options
         /// </summary>
         private CompilationOptions NextCompile { get; set; }
 
         /// <summary>
-        /// The current compilation session options
+        ///     The current compilation session options
         /// </summary>
         private CompilationOptions CurrentCompile { get; set; }
 
         /// <summary>
-        /// The compiler thread
+        ///     The compiler thread
         /// </summary>
         private Thread CompilerThread { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="rebuild"></param>
         public Compiler(EFSSystem system)
@@ -171,7 +171,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Perform continuous compilation
+        ///     Perform continuous compilation
         /// </summary>
         /// <param name="obj"></param>
         private void CompileContinuously(object obj)
@@ -191,36 +191,36 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the function dependancies
+        ///     Creates the function dependancies
         /// </summary>
         private class CreateDependancy : Generated.Visitor
         {
             /// <summary>
-            /// Visits the expressions used in functions to create the dependancy graph for that functions
+            ///     Visits the expressions used in functions to create the dependancy graph for that functions
             /// </summary>
             private class ReferenceVisitor : Visitor
             {
                 /// <summary>
-                /// The function for which the dependancy graph is being built
+                ///     The function for which the dependancy graph is being built
                 /// </summary>
                 private Function DependantFunction { get; set; }
 
                 /// <summary>
-                /// Indicates that a change in the dependancy graph has been performed
+                ///     Indicates that a change in the dependancy graph has been performed
                 /// </summary>
                 public bool DependancyChange { get; set; }
 
                 /// <summary>
-                /// Constructor
+                ///     Constructor
                 /// </summary>
                 public ReferenceVisitor()
                 {
                 }
 
                 /// <summary>
-                /// Updates the dependancy graph according to this expression tree
+                ///     Updates the dependancy graph according to this expression tree
                 /// </summary>
-                /// <param name="dependantFunction"/>
+                /// <param name="dependantFunction" />
                 /// <param name="tree"></param>
                 public void UpdateReferences(Function dependantFunction, InterpreterTreeNode tree)
                 {
@@ -273,12 +273,12 @@ namespace DataDictionary.Interpreter
 
 
             /// <summary>
-            /// The reference visitor
+            ///     The reference visitor
             /// </summary>
             private ReferenceVisitor TheReferenceVisitor { get; set; }
 
             /// <summary>
-            /// Indicates that a change in the dependancy graph has been performed
+            ///     Indicates that a change in the dependancy graph has been performed
             /// </summary>
             public bool DependancyChange
             {
@@ -286,7 +286,7 @@ namespace DataDictionary.Interpreter
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="system"></param>
             public CreateDependancy(EFSSystem system)
@@ -317,17 +317,17 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// PropagatesDependancy the dependancy relationship between elements
+        ///     PropagatesDependancy the dependancy relationship between elements
         /// </summary>
         private class FlattenDependancy : Generated.Visitor
         {
             /// <summary>
-            /// The elements that have already been browsed
+            ///     The elements that have already been browsed
             /// </summary>
             private HashSet<Utils.ModelElement> BrowsedElements { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="system"></param>
             public FlattenDependancy(EFSSystem system)
@@ -342,7 +342,7 @@ namespace DataDictionary.Interpreter
             }
 
             /// <summary>
-            /// PropagatesDependancy the elementToAdd to the dependancies of the elementToBrowse
+            ///     PropagatesDependancy the elementToAdd to the dependancies of the elementToBrowse
             /// </summary>
             /// <param name="elementToBrowse"></param>
             /// <param name="elementToAdd"></param>
@@ -382,7 +382,7 @@ namespace DataDictionary.Interpreter
             }
 
             /// <summary>
-            /// PropagatesDependancy all elements
+            ///     PropagatesDependancy all elements
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -424,7 +424,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Compiles or recompiles everything
+        ///     Compiles or recompiles everything
         /// </summary>
         private void PerformCompile(CompilationOptions options)
         {
@@ -460,7 +460,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Setups the NextCompile option
+        ///     Setups the NextCompile option
         /// </summary>
         /// <param name="rebuild"></param>
         /// <param name="silent"></param>
@@ -484,7 +484,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs a synchronous compilation
+        ///     Performs a synchronous compilation
         /// </summary>
         /// <param name="rebuild"></param>
         /// <param name="silent"></param>
@@ -507,7 +507,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs an asynchronous compilation
+        ///     Performs an asynchronous compilation
         /// </summary>
         /// <param name="rebuild"></param>
         /// <param name="silent"></param>
@@ -556,7 +556,7 @@ namespace DataDictionary.Interpreter
         #region Refactoring
 
         /// <summary>
-        /// Cleans the caches of the full names
+        ///     Cleans the caches of the full names
         /// </summary>
         private class FullNameCleaner : Generated.Visitor
         {
@@ -571,7 +571,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Refactors an element which can hold an expression
+        ///     Refactors an element which can hold an expression
         /// </summary>
         /// <param name="element">The element that has been modified, and for which refactoring is done</param>
         /// <param name="user">The user, which can hold an expression</param>
@@ -593,7 +593,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Refactors an element which has a type
+        ///     Refactors an element which has a type
         /// </summary>
         /// <param name="element">The element that has been modified</param>
         /// <param name="user">The user which references this type</param>
@@ -638,17 +638,17 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Replaces all occurences of namespaces in the system
+        ///     Replaces all occurences of namespaces in the system
         /// </summary>
         private class NameSpaceRefactorer : Generated.Visitor
         {
             /// <summary>
-            /// The namespace that has been modified, and for which the process is launched
+            ///     The namespace that has been modified, and for which the process is launched
             /// </summary>
             private NameSpace NameSpace { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="nameSpace"></param>
             public NameSpaceRefactorer(NameSpace nameSpace)
@@ -666,7 +666,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Modifies the system according to the new element definition
+        ///     Modifies the system according to the new element definition
         /// </summary>
         /// <param name="element">The element that has been modified, and for which refactoring is done</param>
         /// <param name="newName">The new element name</param>
@@ -682,7 +682,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Follow the namespace names
+        ///     Follow the namespace names
         /// </summary>
         private void RefactorNameSpaceNames()
         {
@@ -695,7 +695,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Refactors a single element
+        ///     Refactors a single element
         /// </summary>
         /// <param name="element"></param>
         /// <param name="originalName">The original element's name</param>
@@ -754,7 +754,7 @@ namespace DataDictionary.Interpreter
         private class RelocateVisitor : Generated.Visitor
         {
             /// <summary>
-            /// The new location of the element
+            ///     The new location of the element
             /// </summary>
             private ModelElement BaseLocation { get; set; }
 
@@ -778,7 +778,7 @@ namespace DataDictionary.Interpreter
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="newNameSpace"></param>
             public RelocateVisitor(ModelElement modelElement)
@@ -795,7 +795,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs a refactoring of the model then ensure that the namespaces in its inner elements are correct
+        ///     Performs a refactoring of the model then ensure that the namespaces in its inner elements are correct
         /// </summary>
         /// <param name="model"></param>
         /// <param name="newName"></param>

@@ -22,7 +22,7 @@ namespace GUI
     public class ExplainTextBox : EditorTextBox
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ExplainTextBox()
             : base()
@@ -30,7 +30,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sets the model for this explain text box
+        ///     Sets the model for this explain text box
         /// </summary>
         /// <param name="model"></param>
         public void SetModel(IModelElement model)
@@ -40,12 +40,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The explanation last time
+        ///     The explanation last time
         /// </summary>
         private string LastExplanation = "";
 
         /// <summary>
-        /// Refreshes the data
+        ///     Refreshes the data
         /// </summary>
         public virtual void RefreshData()
         {

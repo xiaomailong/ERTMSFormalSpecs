@@ -41,7 +41,7 @@ namespace Reports.Specs
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="document"></param>
         public SpecCoverageReport(Document document)
@@ -50,7 +50,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates an article with informations about all the paragraphs of the specification
+        ///     Creates an article with informations about all the paragraphs of the specification
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
@@ -69,7 +69,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates an article with informations about the covered requirements
+        ///     Creates an article with informations about the covered requirements
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
@@ -79,7 +79,8 @@ namespace Reports.Specs
             GenerateStatistics(aReportConfig.Dictionary, true, false, true, false);
 
             HashSet<Paragraph> coveredParagraphs = CoveredRequirements(aReportConfig.Dictionary, true);
-            if (coveredParagraphs.Count > 0) /* If we have some covered paragraphs, we create a section with informations about it */
+            if (coveredParagraphs.Count > 0)
+                /* If we have some covered paragraphs, we create a section with informations about it */
             {
                 AddSubParagraph("Coverage detail");
                 CreateImplementedParagraphsTable(coveredParagraphs, aReportConfig.Dictionary);
@@ -90,7 +91,7 @@ namespace Reports.Specs
 
 
         /// <summary>
-        /// Creates an article with informations about the non covered requirements
+        ///     Creates an article with informations about the non covered requirements
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
@@ -100,7 +101,8 @@ namespace Reports.Specs
             GenerateStatistics(aReportConfig.Dictionary, false, true, true, false);
 
             HashSet<Paragraph> nonCoveredParagraphs = CoveredRequirements(aReportConfig.Dictionary, false);
-            if (nonCoveredParagraphs.Count > 0) /* If we have some non covered paragraphs, we create a section containing the list of these paragraphs */
+            if (nonCoveredParagraphs.Count > 0)
+                /* If we have some non covered paragraphs, we create a section containing the list of these paragraphs */
             {
                 foreach (Paragraph paragraph in nonCoveredParagraphs)
                 {
@@ -114,7 +116,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates an article with informations about the implemented model elements
+        ///     Creates an article with informations about the implemented model elements
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>
@@ -149,7 +151,9 @@ namespace Reports.Specs
 
             AddTable(new string[] {"Statistics"}, new int[] {70, 70});
             AddRow("Number of implemented model elements", implementedReqRelated.Count.ToString());
-            AddRow("Number of modeled paragraphs", String.Format("{0} of {1} ({2:0.##}%)", modeledParagraphs.Count, applicableParagraphs.Count, modeledPercentage));
+            AddRow("Number of modeled paragraphs",
+                String.Format("{0} of {1} ({2:0.##}%)", modeledParagraphs.Count, applicableParagraphs.Count,
+                    modeledPercentage));
 
             if (implementedRules.Count > 0)
             {
@@ -172,7 +176,8 @@ namespace Reports.Specs
                 /* This section will contain the list of implemented variables and possibly
                  * the list of paragraphs modeled by each variable */
                 AddSubParagraph("Implemented variables");
-                CreateReqRelatedTable("Implemented variables", implementedVariables, aReportConfig.ShowAssociatedParagraphs);
+                CreateReqRelatedTable("Implemented variables", implementedVariables,
+                    aReportConfig.ShowAssociatedParagraphs);
                 CloseSubParagraph();
             }
             CloseSubParagraph();
@@ -180,7 +185,7 @@ namespace Reports.Specs
 
 
         /// <summary>
-        /// Generates a table with specification coverage statistics
+        ///     Generates a table with specification coverage statistics
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <param name="coveredParagraphs">Number and percentage of covered paragraphs</param>
@@ -188,7 +193,8 @@ namespace Reports.Specs
         /// <param name="applicableParagraphs">Number of applicable paragraphs</param>
         /// <param name="allParagraphs">Total number of paragraphs</param>
         /// <returns></returns>
-        private void GenerateStatistics(Dictionary aDictionary, bool coveredParagraphs, bool nonCoveredParagraphs, bool applicableParagraphs, bool allParagraphs)
+        private void GenerateStatistics(Dictionary aDictionary, bool coveredParagraphs, bool nonCoveredParagraphs,
+            bool applicableParagraphs, bool allParagraphs)
         {
             AddTable(new string[] {"Statistics"}, new int[] {70, 70});
             if (allParagraphs)
@@ -208,17 +214,19 @@ namespace Reports.Specs
 
             if (coveredParagraphs)
             {
-                AddRow("Number of covered requirements", String.Format("{0} ({1:0.##}%)", coveredParagraphsCount, coveredPercentage));
+                AddRow("Number of covered requirements",
+                    String.Format("{0} ({1:0.##}%)", coveredParagraphsCount, coveredPercentage));
             }
             if (nonCoveredParagraphs)
             {
-                AddRow("Number of non covered requirements", String.Format("{0} ({1:0.##}%)", nonCoveredParagraphsCount, nonCoveredPercentage));
+                AddRow("Number of non covered requirements",
+                    String.Format("{0} ({1:0.##}%)", nonCoveredParagraphsCount, nonCoveredPercentage));
             }
         }
 
 
         /// <summary>
-        /// Provides the set of covered requirements by the model
+        ///     Provides the set of covered requirements by the model
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <param name="covered">Indicates if we need compute covered or non covered requirements</param>
@@ -231,7 +239,8 @@ namespace Reports.Specs
             Dictionary<Paragraph, List<ReqRef>> paragraphsReqRefDictionary = aDictionary.ParagraphsReqRefs;
             foreach (Paragraph paragraph in applicableParagraphs)
             {
-                bool implemented = paragraph.getImplementationStatus() == acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
+                bool implemented = paragraph.getImplementationStatus() ==
+                                   acceptor.SPEC_IMPLEMENTED_ENUM.Impl_Implemented;
                 if (implemented)
                 {
                     if (paragraphsReqRefDictionary.ContainsKey(paragraph))
@@ -262,7 +271,7 @@ namespace Reports.Specs
 
 
         /// <summary>
-        /// Creates a table resuming all requirements of the specification
+        ///     Creates a table resuming all requirements of the specification
         /// </summary>
         /// <param name="aDictionary">The model</param>
         /// <returns></returns>
@@ -277,13 +286,14 @@ namespace Reports.Specs
                 {
                     requirementSets += requirementSet.Name + " ";
                 }
-                AddRow(paragraph.FullId, requirementSets, paragraph.getType_AsString(), paragraph.getImplementationStatus_AsString());
+                AddRow(paragraph.FullId, requirementSets, paragraph.getType_AsString(),
+                    paragraph.getImplementationStatus_AsString());
             }
         }
 
 
         /// <summary>
-        /// Creates a table for a given set of paragraphs
+        ///     Creates a table for a given set of paragraphs
         /// </summary>
         /// <param name="paragraphs">The paragraphs to display</param>
         /// <param name="dictionary">The dictionary</param>
@@ -359,7 +369,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates a table with implemented req related in the dictionary
+        ///     Creates a table with implemented req related in the dictionary
         /// </summary>
         /// <param name="aReportConfig">The report config containing user's choices</param>
         /// <returns></returns>

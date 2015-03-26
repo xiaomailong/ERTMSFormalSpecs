@@ -41,7 +41,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -64,14 +64,14 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The sub state machine
+        ///     The sub state machine
         /// </summary>
         public StateSubStatesTreeNode SubStates;
 
         public StateRulesTreeNode Rules;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public StateTreeNode(State item, bool buildSubNodes)
@@ -80,7 +80,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -103,7 +103,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -139,14 +139,16 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Handles the drop event
+        ///     Handles the drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             if (SourceNode is StateMachineTreeNode)
             {
-                if (MessageBox.Show("Are you sure you want to override the state machine ? ", "Override state machine", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                if (
+                    MessageBox.Show("Are you sure you want to override the state machine ? ", "Override state machine",
+                        MessageBoxButtons.OKCancel) == DialogResult.OK)
                 {
                     StateMachineTreeNode stateMachineTreeNode = (StateMachineTreeNode) SourceNode;
                     StateMachine stateMachine = stateMachineTreeNode.Item;
@@ -166,7 +168,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Display the associated state diagram
+        ///     Display the associated state diagram
         /// </summary>
         public void ViewDiagram()
         {
@@ -187,7 +189,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

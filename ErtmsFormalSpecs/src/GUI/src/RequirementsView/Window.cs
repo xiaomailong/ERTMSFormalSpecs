@@ -7,19 +7,18 @@ namespace GUI.RequirementsView
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// The editor used to edit these properties
+        ///     The editor used to edit these properties
         /// </summary>
         private ModelElement Model { get; set; }
 
         /// <summary>
-        /// The empty RTF
+        ///     The empty RTF
         /// </summary>
         private string EmptyRTF { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
-        /// 
         public Window()
         {
             InitializeComponent();
@@ -33,7 +32,7 @@ namespace GUI.RequirementsView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -43,7 +42,7 @@ namespace GUI.RequirementsView
         }
 
         /// <summary>
-        /// Sets the model element for which messages should be displayed
+        ///     Sets the model element for which messages should be displayed
         /// </summary>
         /// <param name="editor"></param>
         public void SetModel(ModelElement model)
@@ -53,7 +52,7 @@ namespace GUI.RequirementsView
         }
 
         /// <summary>
-        /// Refreshes the displayed messages according to the window model
+        ///     Refreshes the displayed messages according to the window model
         /// </summary>
         public override void RefreshModel()
         {

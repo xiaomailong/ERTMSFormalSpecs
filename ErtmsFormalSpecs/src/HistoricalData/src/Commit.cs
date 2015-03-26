@@ -20,12 +20,12 @@ using System.Collections;
 namespace HistoricalData
 {
     /// <summary>
-    /// A commit
+    ///     A commit
     /// </summary>
     public class Commit : Generated.Commit
     {
         /// <summary>
-        /// All the changes in this commit
+        ///     All the changes in this commit
         /// </summary>
         public ArrayList Changes
         {
@@ -40,7 +40,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The Hash of the commit
+        ///     The Hash of the commit
         /// </summary>
         public string Sha
         {
@@ -49,7 +49,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The commit message
+        ///     The commit message
         /// </summary>
         public string Message
         {
@@ -58,7 +58,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The date when the commit was performed
+        ///     The date when the commit was performed
         /// </summary>
         public DateTime Date
         {
@@ -79,7 +79,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Commit()
             : base()

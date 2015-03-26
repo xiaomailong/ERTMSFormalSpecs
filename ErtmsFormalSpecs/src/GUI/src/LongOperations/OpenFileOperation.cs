@@ -19,29 +19,28 @@ using System.Windows.Forms;
 using DataDictionary;
 using GUI.Properties;
 using Utils;
-using Dictionary = DataDictionary.Dictionary;
 
 namespace GUI.LongOperations
 {
     public class OpenFileOperation : BaseLongOperation
     {
         /// <summary>
-        /// The name of the file to open
+        ///     The name of the file to open
         /// </summary>
         private string FileName { get; set; }
 
         /// <summary>
-        /// The system in which the dictionary should be loaded
+        ///     The system in which the dictionary should be loaded
         /// </summary>
         private EFSSystem System { get; set; }
 
         /// <summary>
-        /// The dictionary that has been opened
+        ///     The dictionary that has been opened
         /// </summary>
         public Dictionary Dictionary { get; private set; }
 
         /// <summary>
-        /// Indicates that errors can occur during load, for instance, for comparison purposes
+        ///     Indicates that errors can occur during load, for instance, for comparison purposes
         /// </summary>
         public bool AllowErrorsDuringLoad
         {
@@ -49,28 +48,31 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Indicates that errors are allowed during load. 
+        ///     Indicates that errors are allowed during load.
         /// </summary>
-        public bool AllowErrors { get { return ErrorsDuringLoad != null; } }
+        public bool AllowErrors
+        {
+            get { return ErrorsDuringLoad != null; }
+        }
 
         /// <summary>
-        /// The errors encountered during load of the file. 
-        /// null indicates that no errors are tolerated
+        ///     The errors encountered during load of the file.
+        ///     null indicates that no errors are tolerated
         /// </summary>
         public List<ElementLog> ErrorsDuringLoad { get; private set; }
 
         /// <summary>
-        /// Indicates that Guid should be updated during load
+        ///     Indicates that Guid should be updated during load
         /// </summary>
         private bool UpdateGuid { get; set; }
 
         /// <summary>
-        /// Indicates that files should be locked
+        ///     Indicates that files should be locked
         /// </summary>
         public bool PleaseLockFiles { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="fileName">The file path of the file to load</param>
         /// <param name="system">The EFS system for which the load is performed</param>
@@ -94,7 +96,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Performs the job as a background task
+        ///     Performs the job as a background task
         /// </summary>
         public override void ExecuteWork()
         {
@@ -112,7 +114,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Displays errors during load, when the flag AllowErrorDuringLoad is active
+        ///     Displays errors during load, when the flag AllowErrorDuringLoad is active
         /// </summary>
         public void DisplayErrors()
         {
@@ -128,12 +130,15 @@ namespace GUI.LongOperations
                             errors += log.Level + ": " + log.Log + "\n";
                         }
 
-                        MessageBox.Show("Errors while opening file " + FileName + "\n\n" + errors, "Errors where encountered while opening file", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Errors while opening file " + FileName + "\n\n" + errors,
+                            "Errors where encountered while opening file", MessageBoxButtons.OK,
+                            MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Cannot open file " + FileName, "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cannot open file " + FileName, "Cannot open file", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                 }
             }
         }

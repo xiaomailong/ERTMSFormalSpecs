@@ -27,7 +27,7 @@ namespace GUI.BoxArrowDiagram
         where ArrowModel : class, IGraphicalArrow<BoxModel>
     {
         /// <summary>
-        /// The display mode the each arrow
+        ///     The display mode the each arrow
         /// </summary>
         protected enum ArrowModeEnum
         {
@@ -37,12 +37,12 @@ namespace GUI.BoxArrowDiagram
         };
 
         /// <summary>
-        /// The display mode the each arrow
+        ///     The display mode the each arrow
         /// </summary>
         protected ArrowModeEnum ArrowMode { get; set; }
 
         /// <summary>
-        /// The way the tip of the arrow is displayed
+        ///     The way the tip of the arrow is displayed
         /// </summary>
         protected enum ArrowFillEnum
         {
@@ -51,12 +51,12 @@ namespace GUI.BoxArrowDiagram
         };
 
         /// <summary>
-        /// The way the tip of the arrow is displayed
+        ///     The way the tip of the arrow is displayed
         /// </summary>
         protected ArrowFillEnum ArrowFill { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ArrowControl()
         {
@@ -70,7 +70,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public ArrowControl(IContainer container)
@@ -87,7 +87,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Initializes the colors of the pens
+        ///     Initializes the colors of the pens
         /// </summary>
         private void InitializeColors()
         {
@@ -108,7 +108,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles a mouse click event
+        ///     Handles a mouse click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -118,7 +118,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles a mouse click event on an arrow
+        ///     Handles a mouse click event on an arrow
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -128,7 +128,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The parent box-arrow panel
+        ///     The parent box-arrow panel
         /// </summary>
         public BoxArrowPanel<BoxModel, ArrowModel> BoxArrowPanel
         {
@@ -136,7 +136,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the enclosing form
+        ///     Provides the enclosing form
         /// </summary>
         public Form EnclosingForm
         {
@@ -144,7 +144,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Selects the current arrow
+        ///     Selects the current arrow
         /// </summary>
         public void SelectArrow()
         {
@@ -152,7 +152,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the enclosing box-arrow diagram panel
+        ///     Provides the enclosing box-arrow diagram panel
         /// </summary>
         public BoxArrowPanel<BoxModel, ArrowModel> Panel
         {
@@ -160,7 +160,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The Model
+        ///     The Model
         /// </summary>
         private ArrowModel __model;
 
@@ -175,7 +175,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Refreshes the control contents, according to the modeled arrow
+        ///     Refreshes the control contents, according to the modeled arrow
         /// </summary>
         public void RefreshControl()
         {
@@ -189,7 +189,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the box control which corresponds to the initial state
+        ///     Provides the box control which corresponds to the initial state
         /// </summary>
         public BoxControl<BoxModel, ArrowModel> SourceBoxControl
         {
@@ -207,7 +207,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the box control which corresponds to the target state
+        ///     Provides the box control which corresponds to the target state
         /// </summary>
         public BoxControl<BoxModel, ArrowModel> TargetBoxControl
         {
@@ -222,7 +222,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The default size of a arrow. This is used when one of the control ending the arrow does not belong to the diagram
+        ///     The default size of a arrow. This is used when one of the control ending the arrow does not belong to the diagram
         /// </summary>
         public int DEFAULT_ARROW_LENGTH = 40;
 
@@ -230,7 +230,7 @@ namespace GUI.BoxArrowDiagram
         private static double ARROW_ANGLE = Math.PI/6;
 
         /// <summary>
-        /// Provides the angle the arrow performs
+        ///     Provides the angle the arrow performs
         /// </summary>
         public double Angle
         {
@@ -281,7 +281,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Indicates whether the angle is nearly vertical
+        ///     Indicates whether the angle is nearly vertical
         /// </summary>
         /// <param name="angle"></param>
         /// <returns></returns>
@@ -301,7 +301,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the start location of the arrow
+        ///     Provides the start location of the arrow
         /// </summary>
         public Point StartLocation
         {
@@ -328,13 +328,15 @@ namespace GUI.BoxArrowDiagram
                         Span xIntersection = Span.Intersection(initialBoxControl.XSpan, targetBoxControl.XSpan);
                         if (xIntersection != null)
                         {
-                            x = xIntersection.Center + Math.Max(initialBoxControl.Location.X, targetBoxControl.Location.X);
+                            x = xIntersection.Center +
+                                Math.Max(initialBoxControl.Location.X, targetBoxControl.Location.X);
                         }
 
                         Span yIntersection = Span.Intersection(initialBoxControl.YSpan, targetBoxControl.YSpan);
                         if (yIntersection != null)
                         {
-                            y = yIntersection.Center + Math.Max(initialBoxControl.Location.Y, targetBoxControl.Location.Y);
+                            y = yIntersection.Center +
+                                Math.Max(initialBoxControl.Location.Y, targetBoxControl.Location.Y);
                         }
                     }
 
@@ -355,7 +357,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the target location of the arrow
+        ///     Provides the target location of the arrow
         /// </summary>
         public Point TargetLocation
         {
@@ -382,13 +384,15 @@ namespace GUI.BoxArrowDiagram
                         Span xIntersection = Span.Intersection(initialBoxControl.XSpan, targetBoxControl.XSpan);
                         if (xIntersection != null)
                         {
-                            x = xIntersection.Center + Math.Max(initialBoxControl.Location.X, targetBoxControl.Location.X);
+                            x = xIntersection.Center +
+                                Math.Max(initialBoxControl.Location.X, targetBoxControl.Location.X);
                         }
 
                         Span yIntersection = Span.Intersection(initialBoxControl.YSpan, targetBoxControl.YSpan);
                         if (yIntersection != null)
                         {
-                            y = yIntersection.Center + Math.Max(initialBoxControl.Location.Y, targetBoxControl.Location.Y);
+                            y = yIntersection.Center +
+                                Math.Max(initialBoxControl.Location.Y, targetBoxControl.Location.Y);
                         }
                     }
 
@@ -396,7 +400,8 @@ namespace GUI.BoxArrowDiagram
                 }
                 else if (initialBoxControl != null)
                 {
-                    retVal = new Point(initialBoxControl.Center.X, initialBoxControl.Location.Y + initialBoxControl.Height + DEFAULT_ARROW_LENGTH);
+                    retVal = new Point(initialBoxControl.Center.X,
+                        initialBoxControl.Location.Y + initialBoxControl.Height + DEFAULT_ARROW_LENGTH);
                 }
                 else
                 {
@@ -410,7 +415,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Sets the label color
+        ///     Sets the label color
         /// </summary>
         /// <param name="color"></param>
         private void SetColor(Color color)
@@ -422,42 +427,42 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// A normal pen
+        ///     A normal pen
         /// </summary>
         public Color NORMAL_COLOR;
 
         public Pen NORMAL_PEN;
 
         /// <summary>
-        /// A degraded case pen
+        ///     A degraded case pen
         /// </summary>
         public Color DEDUCED_CASE_COLOR;
 
         public Pen DEDUCED_CASE_PEN;
 
         /// <summary>
-        /// A pen indicating that the arrow is disabled
+        ///     A pen indicating that the arrow is disabled
         /// </summary>
         public Color DISABLED_COLOR;
 
         public Pen DISABLED_PEN;
 
         /// <summary>
-        /// A activated pen
+        ///     A activated pen
         /// </summary>
         public Color ACTIVATED_COLOR;
 
         public Pen ACTIVATED_PEN;
 
         /// <summary>
-        /// An external box
+        ///     An external box
         /// </summary>
         public Color EXTERNAL_BOX_COLOR;
 
         public Pen EXTERNAL_BOX_PEN;
 
         /// <summary>
-        /// Indicates that the arrow should be displayed in the DISABLED color
+        ///     Indicates that the arrow should be displayed in the DISABLED color
         /// </summary>
         /// <returns></returns>
         public virtual bool IsDisabled()
@@ -466,7 +471,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Indicates that the arrow should be displayed in the DEDUCED color
+        ///     Indicates that the arrow should be displayed in the DEDUCED color
         /// </summary>
         /// <returns></returns>
         public virtual bool IsDeduced()
@@ -475,7 +480,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Indicates that the arrow should be displayed in the ACTIVE color
+        ///     Indicates that the arrow should be displayed in the ACTIVE color
         /// </summary>
         /// <returns></returns>
         public virtual bool IsActive()
@@ -484,7 +489,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Draws the arrow within the box-arrow panel
+        ///     Draws the arrow within the box-arrow panel
         /// </summary>
         /// <param name="e"></param>
         public void PaintInBoxArrowPanel(Graphics g)
@@ -584,7 +589,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the name of the target state
+        ///     Provides the name of the target state
         /// </summary>
         /// <returns></returns>
         public virtual string getTargetName()
@@ -600,7 +605,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Sets the initial box of the arrow controlled by this arrow control
+        ///     Sets the initial box of the arrow controlled by this arrow control
         /// </summary>
         /// <param name="box"></param>
         public void SetInitialBox(BoxModel box)
@@ -610,7 +615,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Sets the target box of the arrow controlled by this arrow control
+        ///     Sets the target box of the arrow controlled by this arrow control
         /// </summary>
         /// <param name="box"></param>
         public void SetTargetBox(BoxModel box)
@@ -620,17 +625,17 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The offset to apply to the start location & end location before painting the arrow
+        ///     The offset to apply to the start location & end location before painting the arrow
         /// </summary>
         public Point Offset { get; set; }
 
         /// <summary>
-        /// The offset to be applied to the end arrow
+        ///     The offset to be applied to the end arrow
         /// </summary>
         public Point EndOffset { get; set; }
 
         /// <summary>
-        /// Provides the center of the arrow
+        ///     Provides the center of the arrow
         /// </summary>
         /// <returns></returns>
         public Point getCenter()
@@ -650,8 +655,8 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the text bounding box, according to the center point provided.
-        /// The text bounding box for initial arrows is above that arrow
+        ///     Provides the text bounding box, according to the center point provided.
+        ///     The text bounding box for initial arrows is above that arrow
         /// </summary>
         /// <param name="center">The center of the box</param>
         /// <returns></returns>
@@ -670,12 +675,12 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The delta applied when sliding the arrow
+        ///     The delta applied when sliding the arrow
         /// </summary>
         private const int DELTA = 5;
 
         /// <summary>
-        /// Direction of the slide
+        ///     Direction of the slide
         /// </summary>
         public enum SlideDirection
         {
@@ -684,8 +689,8 @@ namespace GUI.BoxArrowDiagram
         };
 
         /// <summary>
-        /// Slides the arrow following the arrow 
-        /// to avoid colliding with the colliding rectangle
+        ///     Slides the arrow following the arrow
+        ///     to avoid colliding with the colliding rectangle
         /// </summary>
         /// <param name="center">The current center of the text box</param>
         /// <param name="colliding">The colliding rectangle</param>

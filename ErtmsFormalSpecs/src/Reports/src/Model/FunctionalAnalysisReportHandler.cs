@@ -31,7 +31,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a report on the model, according to user's choices
+        ///     Creates a report on the model, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
         public override Document BuildDocument()
@@ -53,7 +53,8 @@ namespace Reports.Model
             return retVal;
         }
 
-        public void CreateNamespaceSection(FunctionalAnalysisReport report, NameSpace nameSpace, List<AccessMode> accesses)
+        public void CreateNamespaceSection(FunctionalAnalysisReport report, NameSpace nameSpace,
+            List<AccessMode> accesses)
         {
             Log.Info("..generating name space " + nameSpace.Name);
 

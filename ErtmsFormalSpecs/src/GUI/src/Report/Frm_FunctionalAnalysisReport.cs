@@ -28,12 +28,12 @@ namespace GUI.Report
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// The report handler
+        ///     The report handler
         /// </summary>
         private FunctionalAnalysisReportHandler reportHandler;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public FunctionalAnalysisReport(Dictionary dictionary)
@@ -44,7 +44,7 @@ namespace GUI.Report
         }
 
         /// <summary>
-        /// Permits to select the name and the path of the report
+        ///     Permits to select the name and the path of the report
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

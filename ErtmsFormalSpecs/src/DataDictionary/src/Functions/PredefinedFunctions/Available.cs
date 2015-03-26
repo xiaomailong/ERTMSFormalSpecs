@@ -24,17 +24,17 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Indicates whether a entry in a table is available
+    ///     Indicates whether a entry in a table is available
     /// </summary>
     public class Available : PredefinedFunction
     {
         /// <summary>
-        /// The value which is checked
+        ///     The value which is checked
         /// </summary>
         public Parameter Element { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Available(EFSSystem efsSystem)
             : base(efsSystem, "Available")
@@ -47,7 +47,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the available function
+        ///     The return type of the available function
         /// </summary>
         public override Type ReturnType
         {
@@ -55,13 +55,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = EFSSystem.BoolType.False;
 

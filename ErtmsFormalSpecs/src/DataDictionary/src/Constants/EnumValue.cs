@@ -30,7 +30,7 @@ namespace DataDictionary.Constants
     public class EnumValue : Generated.EnumValue, IValue
     {
         /// <summary>
-        /// The corresponding type
+        ///     The corresponding type
         /// </summary>
         public Type Type
         {
@@ -72,7 +72,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The enclosing enumeration type
+        ///     The enclosing enumeration type
         /// </summary>
         public Enum Enum
         {
@@ -80,7 +80,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The enclosing range
+        ///     The enclosing range
         /// </summary>
         public Range Range
         {
@@ -103,7 +103,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the enclosing collection, for deletion purposes
+        ///     Provides the enclosing collection, for deletion purposes
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -125,7 +125,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Creates a valid right side IValue, according to the target variable (left side)
+        ///     Creates a valid right side IValue, according to the target variable (left side)
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
@@ -137,7 +137,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The namespace related to the typed element
+        ///     The namespace related to the typed element
         /// </summary>
         public NameSpace NameSpace
         {
@@ -145,7 +145,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the type name of the element
+        ///     Provides the type name of the element
         /// </summary>
         public string TypeName
         {
@@ -154,7 +154,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the mode of the typed element
+        ///     Provides the mode of the typed element
         /// </summary>
         public acceptor.VariableModeEnumType Mode
         {
@@ -162,7 +162,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides the default value of the typed element
+        ///     Provides the default value of the typed element
         /// </summary>
         public string Default
         {
@@ -171,7 +171,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -179,7 +179,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Provides an explanation of the enumeration
+        ///     Provides an explanation of the enumeration
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -197,7 +197,7 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// The explanation of the element
+        ///     The explanation of the element
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -207,8 +207,8 @@ namespace DataDictionary.Constants
         }
 
         /// <summary>
-        /// Converts a structure value to its corresponding structure expression.
-        /// null entries correspond to the default value
+        ///     Converts a structure value to its corresponding structure expression.
+        ///     null entries correspond to the default value
         /// </summary>
         /// <returns></returns>
         public string ToExpressionWithDefault()

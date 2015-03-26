@@ -23,7 +23,7 @@ namespace DataDictionary.Tests.Translations
     public class SourceTextComment : Generated.SourceTextComment, IExpressionable
     {
         /// <summary>
-        /// The enclosing source text, if any
+        ///     The enclosing source text, if any
         /// </summary>
         public SourceText SourceText
         {
@@ -36,7 +36,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -44,7 +44,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Explains the SourceText
+        ///     Explains the SourceText
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -53,7 +53,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Explains the SourceText with indentation
+        ///     Explains the SourceText with indentation
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements, int indent)
@@ -62,7 +62,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// The expression text for this expressionable
+        ///     The expression text for this expressionable
         /// </summary>
         public override string ExpressionText
         {
@@ -71,7 +71,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// The corresponding expression tree
+        ///     The corresponding expression tree
         /// </summary>
         public InterpreterTreeNode Tree
         {
@@ -79,7 +79,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -89,14 +89,14 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {

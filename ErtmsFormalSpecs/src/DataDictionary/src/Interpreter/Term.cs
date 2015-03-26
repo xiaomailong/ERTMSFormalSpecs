@@ -26,22 +26,22 @@ namespace DataDictionary.Interpreter
     public class Term : InterpreterTreeNode, IReference
     {
         /// <summary>
-        /// The designator of this term
+        ///     The designator of this term
         /// </summary>
         public Designator Designator { get; private set; }
 
         /// <summary>
-        /// The literal value of this designator
+        ///     The literal value of this designator
         /// </summary>
         public Expression LiteralValue { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">The root element for which this model is built</param>
         /// <param name="designator"></parparam>
-        /// <param name="start">The start character for this expression in the original string</param>
-        /// <param name="end">The end character for this expression in the original string</param>
+        ///     <param name="start">The start character for this expression in the original string</param>
+        ///     <param name="end">The end character for this expression in the original string</param>
         public Term(ModelElement root, ModelElement log, Designator designator, int start, int end)
             : base(root, log, start, end)
         {
@@ -50,7 +50,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">The root element for which this model is built</param>
         /// <param name="literal"></param>
@@ -63,7 +63,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the possible references for this term (only available during semantic analysis)
+        ///     Provides the possible references for this term (only available during semantic analysis)
         /// </summary>
         /// <param name="instance">the instance on which this element should be found.</param>
         /// <param name="expectation">the expectation on the element found</param>
@@ -86,7 +86,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the possible references types for this expression (used in semantic analysis)
+        ///     Provides the possible references types for this expression (used in semantic analysis)
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -118,12 +118,13 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the term
+        ///     Performs the semantic analysis of the term
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
-        /// <param name="expectation">Indicates the kind of element we are looking for</paraparam>
-        /// <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
-        /// <returns>True if semantic analysis should be continued</returns>
+        /// <param name="expectation">
+        ///     Indicates the kind of element we are looking for</paraparam>
+        ///     <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
+        ///     <returns>True if semantic analysis should be continued</returns>
         public void SemanticAnalysis(INamable instance, BaseFilter expectation, bool lastElement)
         {
             if (Designator != null)
@@ -139,7 +140,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The model element referenced by this term.
+        ///     The model element referenced by this term.
         /// </summary>
         public INamable Ref
         {
@@ -161,7 +162,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -182,7 +183,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the variable referenced by this expression, if any
+        ///     Provides the variable referenced by this expression, if any
         /// </summary>
         /// <param name="context">The context on which the variable must be found</param>
         /// <returns></returns>
@@ -203,7 +204,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain"></param>
@@ -225,7 +226,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the element called by this term, if any
+        ///     Provides the element called by this term, if any
         /// </summary>
         /// <param name="context">The context on which the variable must be found</param>
         /// <param name="explain"></param>
@@ -243,7 +244,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -260,7 +261,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the expression text
+        ///     Provides the expression text
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -269,7 +270,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -290,7 +291,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public void checkExpression()
         {

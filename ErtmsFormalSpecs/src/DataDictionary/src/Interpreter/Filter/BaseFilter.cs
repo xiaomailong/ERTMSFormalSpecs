@@ -19,19 +19,19 @@ using Utils;
 namespace DataDictionary.Interpreter.Filter
 {
     /// <summary>
-    /// A base interpreter tree node filter
+    ///     A base interpreter tree node filter
     /// </summary>
     public abstract class BaseFilter
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected BaseFilter()
         {
         }
 
         /// <summary>
-        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
+        ///     Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>

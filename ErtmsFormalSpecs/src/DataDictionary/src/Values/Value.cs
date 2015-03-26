@@ -28,17 +28,17 @@ namespace DataDictionary.Values
     public interface IValue : INamable, ITypedElement, TextualExplain
     {
         /// <summary>
-        /// Provides the EFS system in which this value is created
+        ///     Provides the EFS system in which this value is created
         /// </summary>
         EFSSystem EFSSystem { get; }
 
         /// <summary>
-        /// The complete name to access the value
+        ///     The complete name to access the value
         /// </summary>
         string LiteralName { get; }
 
         /// <summary>
-        /// Creates a valid right side IValue, according to the target variable (left side)
+        ///     Creates a valid right side IValue, according to the target variable (left side)
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
@@ -47,8 +47,8 @@ namespace DataDictionary.Values
         IValue RightSide(IVariable variable, bool duplicate, bool setEnclosing);
 
         /// <summary>
-        /// Converts a structure value to its corresponding structure expression.
-        /// null entries correspond to the default value
+        ///     Converts a structure value to its corresponding structure expression.
+        ///     null entries correspond to the default value
         /// </summary>
         /// <returns></returns>
         string ToExpressionWithDefault();
@@ -73,7 +73,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Provides the EFS system in which this value is created
+        ///     Provides the EFS system in which this value is created
         /// </summary>
         public EFSSystem EFSSystem
         {
@@ -88,7 +88,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public Value(Type type)
@@ -97,7 +97,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Creates a valid right side IValue, according to the target variable (left side)
+        ///     Creates a valid right side IValue, according to the target variable (left side)
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
@@ -114,7 +114,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The namespace related to the typed element
+        ///     The namespace related to the typed element
         /// </summary>
         public NameSpace NameSpace
         {
@@ -122,7 +122,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Provides the type name of the element
+        ///     Provides the type name of the element
         /// </summary>
         public string TypeName
         {
@@ -131,12 +131,12 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The type of the element
+        ///     The type of the element
         /// </summary>
         public Type Type { get; set; }
 
         /// <summary>
-        /// Provides the mode of the typed element
+        ///     Provides the mode of the typed element
         /// </summary>
         public acceptor.VariableModeEnumType Mode
         {
@@ -144,7 +144,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Provides the default value of the typed element
+        ///     Provides the default value of the typed element
         /// </summary>
         public string Default
         {
@@ -153,12 +153,12 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The enclosing model element
+        ///     The enclosing model element
         /// </summary>
         public object Enclosing { get; set; }
 
         /// <summary>
-        /// Compares two values
+        ///     Compares two values
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -172,14 +172,14 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Nothing to do
+        ///     Nothing to do
         /// </summary>
         public void Delete()
         {
         }
 
         /// <summary>
-        /// The enclosing collection
+        ///     The enclosing collection
         /// </summary>
         public ArrayList EnclosingCollection
         {
@@ -187,7 +187,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The expression text data of this model element
+        ///     The expression text data of this model element
         /// </summary>
         /// <param name="text"></param>
         public string ExpressionText
@@ -197,7 +197,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The messages logged on the model element
+        ///     The messages logged on the model element
         /// </summary>
         public List<ElementLog> Messages
         {
@@ -205,14 +205,14 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Nothing to do
+        ///     Nothing to do
         /// </summary>
         public void ClearMessages()
         {
         }
 
         /// <summary>
-        /// Indicates that at least one message of type levelEnum is attached to the element
+        ///     Indicates that at least one message of type levelEnum is attached to the element
         /// </summary>
         /// <param name="levelEnum"></param>
         /// <returns></returns>
@@ -222,7 +222,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The sub elements of this model element
+        ///     The sub elements of this model element
         /// </summary>
         public ArrayList SubElements
         {
@@ -230,7 +230,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public void AddModelElement(IModelElement element)
@@ -238,7 +238,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Provides an RTF explanation of the value
+        ///     Provides an RTF explanation of the value
         /// </summary>
         /// <returns></returns>
         public string getExplain()
@@ -247,7 +247,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Provides an explanation of the enumeration
+        ///     Provides an explanation of the enumeration
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -257,7 +257,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The explanation of the element
+        ///     The explanation of the element
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -267,7 +267,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Indicates if the element holds messages, or is part of a path to a message 
+        ///     Indicates if the element holds messages, or is part of a path to a message
         /// </summary>
         public MessagePathInfoEnum MessagePathInfo
         {
@@ -275,7 +275,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The enclosing value, if exists
+        ///     The enclosing value, if exists
         /// </summary>
         public Value EnclosingValue
         {
@@ -283,8 +283,8 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Converts a structure value to its corresponding structure expression.
-        /// null entries correspond to the default value
+        ///     Converts a structure value to its corresponding structure expression.
+        ///     null entries correspond to the default value
         /// </summary>
         /// <returns></returns>
         public virtual string ToExpressionWithDefault()
@@ -297,7 +297,7 @@ namespace DataDictionary.Values
         where CorrespondingType : Type
     {
         /// <summary>
-        /// The actual value of this value
+        ///     The actual value of this value
         /// </summary>
         private StorageType val;
 
@@ -308,7 +308,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         /// <param name="val"></param>

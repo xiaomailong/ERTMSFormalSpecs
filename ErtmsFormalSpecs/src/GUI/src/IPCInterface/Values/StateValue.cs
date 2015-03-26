@@ -24,13 +24,13 @@ namespace GUI.IPCInterface.Values
     public class StateValue : Value
     {
         /// <summary>
-        /// The actual value
+        ///     The actual value
         /// </summary>
         [DataMember]
         public string Name { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         public StateValue(string name)
@@ -39,7 +39,7 @@ namespace GUI.IPCInterface.Values
         }
 
         /// <summary>
-        /// Provides the display value of this value
+        ///     Provides the display value of this value
         /// </summary>
         /// <returns></returns>
         public override string DisplayValue()
@@ -48,7 +48,7 @@ namespace GUI.IPCInterface.Values
         }
 
         /// <summary>
-        /// Converts the value provided as an EFS value
+        ///     Converts the value provided as an EFS value
         /// </summary>
         /// <returns></returns>
         public override IValue convertBack(Type type)

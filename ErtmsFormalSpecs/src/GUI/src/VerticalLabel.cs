@@ -25,7 +25,7 @@ using System.Windows.Forms;
 namespace randz.CustomControls
 {
     /// <summary>
-    /// A custom windows control to display text vertically
+    ///     A custom windows control to display text vertically
     /// </summary>
     [ToolboxBitmap(typeof (VerticalLabel), "VerticalLabel.ico")]
     public class VerticalLabel : Control
@@ -38,7 +38,7 @@ namespace randz.CustomControls
         private Container components = new Container();
 
         /// <summary>
-        /// VerticalLabel constructor
+        ///     VerticalLabel constructor
         /// </summary>
         public VerticalLabel()
         {
@@ -48,7 +48,7 @@ namespace randz.CustomControls
         }
 
         /// <summary>
-        /// Dispose override method
+        ///     Dispose override method
         /// </summary>
         /// <param name="disposing">boolean parameter</param>
         protected override void Dispose(bool disposing)
@@ -70,7 +70,7 @@ namespace randz.CustomControls
         }
 
         /// <summary>
-        /// OnPaint override. This is where the text is rendered vertically.
+        ///     OnPaint override. This is where the text is rendered vertically.
         /// </summary>
         /// <param name="e">PaintEventArgs</param>
         protected override void OnPaint(PaintEventArgs e)
@@ -123,7 +123,6 @@ namespace randz.CustomControls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         protected override CreateParams CreateParams //v1.10 
         {
@@ -141,7 +140,7 @@ namespace randz.CustomControls
         }
 
         /// <summary>
-        /// Graphics rendering mode. Supprot for antialiasing.
+        ///     Graphics rendering mode. Supprot for antialiasing.
         /// </summary>
         [Category("Properties"), Description("Rendering mode.")]
         public TextRenderingHint RenderingMode
@@ -151,7 +150,7 @@ namespace randz.CustomControls
         }
 
         /// <summary>
-        /// The text to be displayed in the control
+        ///     The text to be displayed in the control
         /// </summary>
         [Category("VerticalLabel"), Description("Text is displayed vertically in container.")]
         public override string Text
@@ -165,7 +164,6 @@ namespace randz.CustomControls
         }
 
         /// <summary>
-        /// 
         /// </summary>
         [Category("Properties"), Description("Whether the text will be drawn from Bottom or from Top.")]
         public DrawMode TextDrawMode
@@ -183,17 +181,17 @@ namespace randz.CustomControls
     }
 
     /// <summary>
-    /// Text Drawing Mode
+    ///     Text Drawing Mode
     /// </summary>
     public enum DrawMode
     {
         /// <summary>
-        /// Text is drawn from bottom - up
+        ///     Text is drawn from bottom - up
         /// </summary>
         BottomUp = 1,
 
         /// <summary>
-        /// Text is drawn from top to bottom
+        ///     Text is drawn from top to bottom
         /// </summary>
         TopBottom
     }

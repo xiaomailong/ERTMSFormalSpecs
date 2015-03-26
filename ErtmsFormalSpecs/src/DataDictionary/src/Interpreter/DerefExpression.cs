@@ -29,12 +29,12 @@ namespace DataDictionary.Interpreter
     public class DerefExpression : Expression
     {
         /// <summary>
-        /// Desig elements of this designator
+        ///     Desig elements of this designator
         /// </summary>
         public List<Expression> Arguments { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="left"></param>
         /// <param name="op"></param>
@@ -53,12 +53,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The model element referenced by this designator.
+        ///     The model element referenced by this designator.
         /// </summary>
         public override INamable Ref { get; protected set; }
 
         /// <summary>
-        /// Provides the ICallable referenced by this 
+        ///     Provides the ICallable referenced by this
         /// </summary>
         public ICallable Called
         {
@@ -80,7 +80,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -173,7 +173,8 @@ namespace DataDictionary.Interpreter
                 else if (tmp.IsAmbiguous)
                 {
                     // Several possible interpretations for this deref expression, not allowed
-                    AddError("Expression " + ToString() + " may have several interpretations " + tmp.ToString() + ", please disambiguate");
+                    AddError("Expression " + ToString() + " may have several interpretations " + tmp.ToString() +
+                             ", please disambiguate");
                 }
                 else
                 {
@@ -186,7 +187,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -207,7 +208,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the variable referenced by this expression, if any
+        ///     Provides the variable referenced by this expression, if any
         /// </summary>
         /// <param name="context">The context on which the variable must be found</param>
         /// <param name="explain"></param>
@@ -236,7 +237,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -272,7 +273,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value of the prefix of the expression
+        ///     Provides the value of the prefix of the expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="elementCount">The number of elements to consider</param>
@@ -310,7 +311,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the callable that is called by this expression
+        ///     Provides the callable that is called by this expression
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -328,7 +329,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -341,7 +342,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -365,7 +366,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         /// <param name="context">The interpretation context</param>
         public override void checkExpression()
@@ -379,7 +380,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
+        ///     Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
@@ -401,14 +402,15 @@ namespace DataDictionary.Interpreter
 
 
         /// <summary>
-        /// Provides the surface of this function if it has been statically defined
+        ///     Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam,
+            ExplanationPart explain)
         {
             Surface retVal = base.createSurface(context, xParam, yParam, explain);
 

@@ -28,12 +28,12 @@ namespace DataDictionary.Interpreter
     public class ListExpression : Expression
     {
         /// <summary>
-        /// The values in the list
+        ///     The values in the list
         /// </summary>
         public List<Expression> ListElements { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="left"></param>
         /// <param name="op"></param>
@@ -52,12 +52,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The type of the collection
+        ///     The type of the collection
         /// </summary>
         private Collection ExpressionType { get; set; }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -84,7 +84,8 @@ namespace DataDictionary.Interpreter
                     {
                         if (!current.Match(elementType))
                         {
-                            AddError("Cannot mix types " + current.ToString() + " and " + elementType.ToString() + "in collection");
+                            AddError("Cannot mix types " + current.ToString() + " and " + elementType.ToString() +
+                                     "in collection");
                         }
                     }
                 }
@@ -108,7 +109,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression
+        ///     Checks the expression
         /// </summary>
         public override void checkExpression()
         {
@@ -119,7 +120,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -129,7 +130,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -155,7 +156,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -168,7 +169,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>

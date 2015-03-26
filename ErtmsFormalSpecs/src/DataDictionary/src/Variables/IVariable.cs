@@ -23,12 +23,12 @@ namespace DataDictionary.Variables
     public interface IVariable : IModelElement, ITypedElement, ISubDeclarator
     {
         /// <summary>
-        /// Provides the value of the variable
+        ///     Provides the value of the variable
         /// </summary>
         IValue Value { get; set; }
 
         /// <summary>
-        /// Provides the default value to give to the variable
+        ///     Provides the default value to give to the variable
         /// </summary>
         IValue DefaultValue { get; }
     }

@@ -69,7 +69,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates if this StateMachine contains implemented sub-elements
+        ///     Indicates if this StateMachine contains implemented sub-elements
         /// </summary>
         public override bool ImplementationPartiallyCompleted
         {
@@ -93,7 +93,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public StateMachine()
         {
@@ -101,7 +101,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The states 
+        ///     The states
         /// </summary>
         public ArrayList States
         {
@@ -116,7 +116,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Gets the state which name corresponds to the image provided
+        ///     Gets the state which name corresponds to the image provided
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -137,7 +137,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The rules
+        ///     The rules
         /// </summary>
         public ArrayList Rules
         {
@@ -152,7 +152,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the values whose name matches the name provided
+        ///     Provides the values whose name matches the name provided
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
@@ -179,7 +179,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the state which corresponds to the name provided
+        ///     Provides the state which corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -263,7 +263,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the set of states available in this state machine 
+        ///     Provides the set of states available in this state machine
         /// </summary>
         public List<IValue> cachedValues;
 
@@ -308,7 +308,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -321,12 +321,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the states that can be stored in this state machine
+        ///     Provides all the states that can be stored in this state machine
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -336,7 +336,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the states used in an expression
+        ///     Provides the states used in an expression
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -377,12 +377,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// This class is used to find all transitions in the model
+        ///     This class is used to find all transitions in the model
         /// </summary>
         private class TransitionFinder : Visitor
         {
             /// <summary>
-            /// The transitions currently found
+            ///     The transitions currently found
             /// </summary>
             private List<Transition> transitions = new List<Transition>();
 
@@ -392,7 +392,7 @@ namespace DataDictionary.Types
             }
 
             /// <summary>
-            /// The state machine for which this transition creator has been created
+            ///     The state machine for which this transition creator has been created
             /// </summary>
             private StateMachine stateMachine;
 
@@ -403,7 +403,7 @@ namespace DataDictionary.Types
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="stateMachine"></param>
             public TransitionFinder(StateMachine stateMachine)
@@ -419,7 +419,7 @@ namespace DataDictionary.Types
             }
 
             /// <summary>
-            /// Check if this rule corresponds to a transition for this state machine
+            ///     Check if this rule corresponds to a transition for this state machine
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -460,7 +460,8 @@ namespace DataDictionary.Types
                                             // A transition from one state to another has been found
                                             foreach (State stt2 in GetStates(preCondition.Expression))
                                             {
-                                                filteredOut = filteredOut || AddTransition(update, stt1, preCondition, stt2);
+                                                filteredOut = filteredOut ||
+                                                              AddTransition(update, stt1, preCondition, stt2);
                                             }
                                         }
                                     }
@@ -490,16 +491,19 @@ namespace DataDictionary.Types
             }
 
             /// <summary>
-            /// Adds a transition in the transitions sets
+            ///     Adds a transition in the transitions sets
             /// </summary>
             /// <param name="update">The update state which provides the target of the transition</param>
             /// <param name="target">The target state, as determined by the update statement</param>
             /// <param name="filteredOut"></param>
             /// <param name="preCondition">the precondition (if any) which is used to determine the initial state</param>
             /// <param name="initial">The initial state</param>
-            /// <returns>true if the transition has been filtered out. A transition can be filtered out if the target state is equal to the initial state or the initial state is null
+            /// <returns>
+            ///     true if the transition has been filtered out. A transition can be filtered out if the target state is equal to the
+            ///     initial state or the initial state is null
             /// </returns>
-            private bool AddTransition(VariableUpdateStatement update, State target, PreCondition preCondition, State initial)
+            private bool AddTransition(VariableUpdateStatement update, State target, PreCondition preCondition,
+                State initial)
             {
                 bool retVal = false;
 
@@ -544,7 +548,7 @@ namespace DataDictionary.Types
             }
 
             /// <summary>
-            /// Indicates that the two states have the same outermost state machine
+            ///     Indicates that the two states have the same outermost state machine
             /// </summary>
             /// <param name="state1"></param>
             /// <param name="state2"></param>
@@ -555,7 +559,7 @@ namespace DataDictionary.Types
             }
 
             /// <summary>
-            /// Provides the outermost state machine enclosing the state provided
+            ///     Provides the outermost state machine enclosing the state provided
             /// </summary>
             /// <param name="state"></param>
             /// <returns></returns>
@@ -572,7 +576,7 @@ namespace DataDictionary.Types
             }
 
             /// <summary>
-            /// Finds a transition which matches the initial state, target state and rule condition in the existing transitions
+            ///     Finds a transition which matches the initial state, target state and rule condition in the existing transitions
             /// </summary>
             /// <param name="condition"></param>
             /// <param name="initialState"></param>
@@ -596,7 +600,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the transitions associated to this state machine, based on the underlying rules
+        ///     Provides the transitions associated to this state machine, based on the underlying rules
         /// </summary>
         public List<Transition> Transitions
         {
@@ -612,7 +616,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the state machine contains (either directly or indirectly) the state
+        ///     Indicates that the state machine contains (either directly or indirectly) the state
         /// </summary>
         /// <param name="state"></param>
         /// <returns></returns>
@@ -640,7 +644,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the enclosing state machine, if any
+        ///     Provides the enclosing state machine, if any
         /// </summary>
         public StateMachine EnclosingStateMachine
         {
@@ -658,7 +662,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the other type can be placed in variables of this type
+        ///     Indicates that the other type can be placed in variables of this type
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -677,7 +681,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -701,7 +705,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Instanciates this state machine for the instanciation of a StructureProcedure into a Procedure
+        ///     Instanciates this state machine for the instanciation of a StructureProcedure into a Procedure
         /// </summary>
         /// <returns></returns>
         public StateMachine instanciate()

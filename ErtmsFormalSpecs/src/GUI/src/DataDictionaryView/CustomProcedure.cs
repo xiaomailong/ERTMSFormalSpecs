@@ -61,7 +61,8 @@ namespace GUI.DataDictionaryView
                 aConfig.VariableOutName = TxtB_VariableOut.Text;
                 aConfig.VariableRequestName = TxtB_VariableRequest.Text;
                 aConfig.VariableRequestDisabledName = TxtB_VariableRequestDisabled.Text;
-                aConfig.Type = (CustomProcedureType) Enum.Parse(typeof (CustomProcedureType), CbB_Types.SelectedValue.ToString());
+                aConfig.Type =
+                    (CustomProcedureType) Enum.Parse(typeof (CustomProcedureType), CbB_Types.SelectedValue.ToString());
                 CreateCustomProcedure(aConfig);
             }
             this.Hide();

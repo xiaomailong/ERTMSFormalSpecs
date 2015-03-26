@@ -21,12 +21,12 @@ using DataDictionary.Variables;
 namespace DataDictionary.Types.AccessMode
 {
     /// <summary>
-    /// This class represents an access to a variable
+    ///     This class represents an access to a variable
     /// </summary>
     public class AccessToVariable : AccessMode, IComparable<AccessToVariable>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
@@ -40,12 +40,12 @@ namespace DataDictionary.Types.AccessMode
         }
 
         /// <summary>
-        /// The model element which is referenced by this arrow
+        ///     The model element which is referenced by this arrow
         /// </summary>
         public IVariable Variable { get; private set; }
 
         /// <summary>
-        /// The referenced model 
+        ///     The referenced model
         /// </summary>
         public override ModelElement ReferencedModel
         {
@@ -53,12 +53,12 @@ namespace DataDictionary.Types.AccessMode
         }
 
         /// <summary>
-        /// Indicates the way the variable has been accessed
+        ///     Indicates the way the variable has been accessed
         /// </summary>
         public Usage.ModeEnum AccessMode { get; private set; }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public override string GraphicalName
         {

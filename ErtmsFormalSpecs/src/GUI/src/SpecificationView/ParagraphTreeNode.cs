@@ -36,12 +36,12 @@ namespace GUI.SpecificationView
     public class ParagraphTreeNode : ReferencesParagraphTreeNode<Paragraph>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : UnnamedReferencesParagraphEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -49,7 +49,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// The item name
+            ///     The item name
             /// </summary>
             [Category("\t\tDescription")]
             public string Id
@@ -63,7 +63,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// Provides the type of the paragraph
+            ///     Provides the type of the paragraph
             /// </summary>
             [Category("\t\tDescription"), TypeConverter(typeof (SpecTypeConverter))]
             public virtual acceptor.Paragraph_type Type
@@ -77,7 +77,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// Indicates if the paragraph has been reviewed (content & structure)
+            ///     Indicates if the paragraph has been reviewed (content & structure)
             /// </summary>
             [Category("Meta data")]
             public virtual bool Reviewed
@@ -87,7 +87,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// Indicates if the paragraph can be implemented by the EFS
+            ///     Indicates if the paragraph can be implemented by the EFS
             /// </summary>
             [Category("Meta data"), TypeConverter(typeof (ImplementationStatusConverter))]
             public virtual acceptor.SPEC_IMPLEMENTED_ENUM ImplementationStatus
@@ -97,7 +97,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// Indicates if the paragraph has been tested
+            ///     Indicates if the paragraph has been tested
             /// </summary>
             [Category("Meta data")]
             public virtual bool Tested
@@ -107,7 +107,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// Indicates that more information is required to understand the requirement
+            ///     Indicates that more information is required to understand the requirement
             /// </summary>
             [Category("Meta data")]
             public virtual bool MoreInfoRequired
@@ -117,7 +117,7 @@ namespace GUI.SpecificationView
             }
 
             /// <summary>
-            /// Indicates that this paragraph has an issue
+            ///     Indicates that this paragraph has an issue
             /// </summary>
             [Category("Meta data")]
             public virtual bool SpecIssue
@@ -128,7 +128,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ParagraphTreeNode(Paragraph item, bool buildSubNodes)
@@ -137,7 +137,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -151,7 +151,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -160,7 +160,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Update counts according to the selected chapter
+        ///     Update counts according to the selected chapter
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
@@ -207,7 +207,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Adds a new paragraph in this paragraph
+        ///     Adds a new paragraph in this paragraph
         /// </summary>
         /// <param name="paragraph"></param>
         public void AddParagraph(Paragraph paragraph)
@@ -295,7 +295,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Handles a drop event
+        ///     Handles a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -310,7 +310,9 @@ namespace GUI.SpecificationView
 
                 if (current == null)
                 {
-                    if (MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (
+                        MessageBox.Show("Are you sure you want to move the corresponding paragraph?", "Move paragraph",
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         ParagraphTreeNode paragraphTreeNode = (ParagraphTreeNode) SourceNode;
 
@@ -321,7 +323,8 @@ namespace GUI.SpecificationView
                 }
                 else
                 {
-                    MessageBox.Show("Cannot move a paragraph in its sub paragraphs", "Move paragraph", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Cannot move a paragraph in its sub paragraphs", "Move paragraph",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -350,7 +353,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Updates the paragraph name by appending the "Table " string at its beginning
+        ///     Updates the paragraph name by appending the "Table " string at its beginning
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -361,7 +364,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Updates the paragraph name by appending the "Entry " string at its beginning
+        ///     Updates the paragraph name by appending the "Entry " string at its beginning
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -372,18 +375,19 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Recursively marks all model elements as verified
+        ///     Recursively marks all model elements as verified
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected void RemoveRequirementSets(object sender, EventArgs e)
         {
-            RequirementSetReference.RemoveReferencesVisitor remover = new RequirementSetReference.RemoveReferencesVisitor();
+            RequirementSetReference.RemoveReferencesVisitor remover =
+                new RequirementSetReference.RemoveReferencesVisitor();
             remover.visit(Item);
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -407,14 +411,15 @@ namespace GUI.SpecificationView
             if (recursiveActions != null)
             {
                 recursiveActions.MenuItems.Add(new MenuItem("-"));
-                recursiveActions.MenuItems.Add(new MenuItem("Remove requirement sets", new EventHandler(RemoveRequirementSets)));
+                recursiveActions.MenuItems.Add(new MenuItem("Remove requirement sets",
+                    new EventHandler(RemoveRequirementSets)));
             }
 
             return retVal;
         }
 
         /// <summary>
-        /// Holds metrics computed on a set of paragraphs
+        ///     Holds metrics computed on a set of paragraphs
         /// </summary>
         public struct ParagraphSetMetrics
         {
@@ -428,7 +433,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Creates the stat message according to the list of paragraphs provided
+        ///     Creates the stat message according to the list of paragraphs provided
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="paragraphs"></param>
@@ -519,7 +524,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Creates the stat message according to the list of paragraphs provided
+        ///     Creates the stat message according to the list of paragraphs provided
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="paragraphs"></param>
@@ -534,11 +539,16 @@ namespace GUI.SpecificationView
             if (metrics.subParagraphCount > 0 && metrics.implementableCount > 0)
             {
                 retVal += metrics.subParagraphCount + (indicateSelected ? " selected" : "") + " requirements, ";
-                retVal += +metrics.implementableCount + " implementable (" + Math.Round(((float) metrics.implementableCount/metrics.subParagraphCount*100), 2) + "%), ";
-                retVal += metrics.implementedCount + " implemented (" + Math.Round(((float) metrics.implementedCount/metrics.implementableCount*100), 2) + "%), ";
-                retVal += +metrics.unImplementedCount + " not implemented (" + Math.Round(((float) metrics.unImplementedCount/metrics.implementableCount*100), 2) + "%), ";
-                retVal += metrics.newRevisionAvailable + " with new revision (" + Math.Round(((float) metrics.newRevisionAvailable/metrics.implementableCount*100), 2) + "%), ";
-                retVal += metrics.testedCount + " tested (" + Math.Round(((float) metrics.testedCount/metrics.implementableCount*100), 2) + "%)";
+                retVal += +metrics.implementableCount + " implementable (" +
+                          Math.Round(((float) metrics.implementableCount/metrics.subParagraphCount*100), 2) + "%), ";
+                retVal += metrics.implementedCount + " implemented (" +
+                          Math.Round(((float) metrics.implementedCount/metrics.implementableCount*100), 2) + "%), ";
+                retVal += +metrics.unImplementedCount + " not implemented (" +
+                          Math.Round(((float) metrics.unImplementedCount/metrics.implementableCount*100), 2) + "%), ";
+                retVal += metrics.newRevisionAvailable + " with new revision (" +
+                          Math.Round(((float) metrics.newRevisionAvailable/metrics.implementableCount*100), 2) + "%), ";
+                retVal += metrics.testedCount + " tested (" +
+                          Math.Round(((float) metrics.testedCount/metrics.implementableCount*100), 2) + "%)";
             }
             else
             {

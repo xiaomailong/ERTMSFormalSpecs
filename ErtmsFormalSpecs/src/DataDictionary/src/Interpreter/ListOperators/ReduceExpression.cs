@@ -30,22 +30,22 @@ namespace DataDictionary.Interpreter.ListOperators
     public class ReduceExpression : ExpressionBasedListExpression, ISubDeclarator
     {
         /// <summary>
-        /// The operator for this expression
+        ///     The operator for this expression
         /// </summary>
         public static string OPERATOR = "REDUCE";
 
         /// <summary>
-        /// The reduce initial value
+        ///     The reduce initial value
         /// </summary>
         public Expression InitialValue { get; private set; }
 
         /// <summary>
-        /// The accumulator variable
+        ///     The accumulator variable
         /// </summary>
         public Variable AccumulatorVariable { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="listExpression"></param>
         /// <param name="condition"></param>
@@ -55,7 +55,9 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ReduceExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, Expression function, Expression initialValue, int start, int end)
+        public ReduceExpression(ModelElement root, ModelElement log, Expression listExpression,
+            string iteratorVariableName, Expression condition, Expression function, Expression initialValue, int start,
+            int end)
             : base(root, log, listExpression, iteratorVariableName, condition, function, start, end)
         {
             InitialValue = initialValue;
@@ -68,7 +70,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -94,7 +96,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -104,7 +106,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -145,7 +147,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the callable that is called by this expression
+        ///     Provides the callable that is called by this expression
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -176,8 +178,10 @@ namespace DataDictionary.Interpreter.ListOperators
                 else if (function.FormalParameters.Count == 2)
                 {
                     int token = context.LocalScope.PushContext();
-                    context.LocalScope.setSurfaceParameters((Parameter) function.FormalParameters[0], (Parameter) function.FormalParameters[1]);
-                    Surface surface = createSurface(context, (Parameter) function.FormalParameters[0], (Parameter) function.FormalParameters[1], explain);
+                    context.LocalScope.setSurfaceParameters((Parameter) function.FormalParameters[0],
+                        (Parameter) function.FormalParameters[1]);
+                    Surface surface = createSurface(context, (Parameter) function.FormalParameters[0],
+                        (Parameter) function.FormalParameters[1], explain);
                     context.LocalScope.PopContext(token);
                     if (surface != null)
                     {
@@ -198,7 +202,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
@@ -211,13 +215,14 @@ namespace DataDictionary.Interpreter.ListOperators
                 retVal += " | " + Condition.ToString(indentLevel);
             }
 
-            retVal = retVal + " USING " + " " + IteratorVariable.Name + " IN " + IteratorExpression.ToString(indentLevel) + " INITIAL_VALUE " + InitialValue.ToString(indentLevel);
+            retVal = retVal + " USING " + " " + IteratorVariable.Name + " IN " +
+                     IteratorExpression.ToString(indentLevel) + " INITIAL_VALUE " + InitialValue.ToString(indentLevel);
 
             return retVal;
         }
 
         /// <summary>
-        /// Prepares the iteration on the context provided
+        ///     Prepares the iteration on the context provided
         /// </summary>
         /// <param name="context"></param>
         protected override int PrepareIteration(InterpretationContext context)
@@ -230,7 +235,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
         {
@@ -252,7 +257,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
+        ///     Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>
@@ -306,14 +311,15 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Provides the surface of this function if it has been statically defined
+        ///     Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
         /// <param name="xParam">The X axis of this surface</param>
         /// <param name="yParam">The Y axis of this surface</param>
         /// <param name="explain"></param>
         /// <returns>The surface which corresponds to this expression</returns>
-        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam, ExplanationPart explain)
+        public override Surface createSurface(InterpretationContext context, Parameter xParam, Parameter yParam,
+            ExplanationPart explain)
         {
             Surface retVal = base.createSurface(context, xParam, yParam, explain);
 

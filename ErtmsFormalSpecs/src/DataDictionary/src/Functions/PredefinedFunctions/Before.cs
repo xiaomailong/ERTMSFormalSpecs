@@ -24,27 +24,27 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Indicates whether a entry X is before another entry Y in a list
+    ///     Indicates whether a entry X is before another entry Y in a list
     /// </summary>
     public class Before : PredefinedFunction
     {
         /// <summary>
-        /// The expected first entry
+        ///     The expected first entry
         /// </summary>
         public Parameter ExpectedFirst { get; private set; }
 
         /// <summary>
-        /// The expected second entry
+        ///     The expected second entry
         /// </summary>
         public Parameter ExpectedSecond { get; private set; }
 
         /// <summary>
-        /// The collection which contains the two entries
+        ///     The collection which contains the two entries
         /// </summary>
         public Parameter Collection { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Before(EFSSystem efsSystem)
             : base(efsSystem, "Before")
@@ -69,7 +69,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the before function
+        ///     The return type of the before function
         /// </summary>
         public override Type ReturnType
         {
@@ -77,13 +77,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = EFSSystem.BoolType.False;
 
@@ -113,7 +114,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
                             }
                             else
                             {
-                                Collection.AddError("Cannot find " + expectedSecond.FullName + " in " + collection.ToString() + " to evaluate " + Name);
+                                Collection.AddError("Cannot find " + expectedSecond.FullName + " in " +
+                                                    collection.ToString() + " to evaluate " + Name);
                             }
                         }
                         else
@@ -123,7 +125,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     }
                     else
                     {
-                        Collection.AddError("Cannot find " + expectedFirst.FullName + " in " + collection.ToString() + " to evaluate " + Name);
+                        Collection.AddError("Cannot find " + expectedFirst.FullName + " in " + collection.ToString() +
+                                            " to evaluate " + Name);
                     }
                 }
                 else

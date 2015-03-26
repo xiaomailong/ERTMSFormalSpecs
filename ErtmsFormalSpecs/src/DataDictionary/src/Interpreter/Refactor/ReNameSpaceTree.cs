@@ -20,12 +20,12 @@ using DataDictionary.Types;
 namespace DataDictionary.Interpreter.Refactor
 {
     /// <summary>
-    /// This visitor is used to handle refactoring of expressions.
+    ///     This visitor is used to handle refactoring of expressions.
     /// </summary>
     public class RelocateTree : BaseRefactorTree
     {
         /// <summary>
-        /// The new location of the element
+        ///     The new location of the element
         /// </summary>
         private ModelElement BaseLocation { get; set; }
 
@@ -101,7 +101,7 @@ namespace DataDictionary.Interpreter.Refactor
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="baseLocation"></param>
         public RelocateTree(ModelElement baseLocation)

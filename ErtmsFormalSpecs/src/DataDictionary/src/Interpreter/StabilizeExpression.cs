@@ -29,32 +29,32 @@ namespace DataDictionary.Interpreter
     public class StabilizeExpression : Expression, ISubDeclarator
     {
         /// <summary>
-        /// The expression to stabilize
+        ///     The expression to stabilize
         /// </summary>
         public Expression Expression { get; private set; }
 
         /// <summary>
-        /// The initial value for the stabilisation algorithm
+        ///     The initial value for the stabilisation algorithm
         /// </summary>
         public Expression InitialValue { get; private set; }
 
         /// <summary>
-        /// The condition which indicates that the stabilization is complete
+        ///     The condition which indicates that the stabilization is complete
         /// </summary>
         public Expression Condition { get; private set; }
 
         /// <summary>
-        /// The value of the last iteration
+        ///     The value of the last iteration
         /// </summary>
         private Variable LastIteration { get; set; }
 
         /// <summary>
-        /// The value of the current iteration
+        ///     The value of the current iteration
         /// </summary>
         private Variable CurrentIteration { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root"></param>
         /// <param name="expression">The expression to stabilize</param>
@@ -62,7 +62,8 @@ namespace DataDictionary.Interpreter
         /// <param name="condition">The condition which indicates that the stabilisation is not complete</param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public StabilizeExpression(ModelElement root, ModelElement log, Expression expression, Expression initialValue, Expression condition, int start, int end)
+        public StabilizeExpression(ModelElement root, ModelElement log, Expression expression, Expression initialValue,
+            Expression condition, int start, int end)
             : base(root, log, start, end)
         {
             Expression = expression;
@@ -86,7 +87,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -97,12 +98,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -112,7 +113,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -144,7 +145,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -154,14 +155,15 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
         /// <returns></returns>
         public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            ExplanationPart stabilizeExpressionExplanation = ExplanationPart.CreateSubExplanation(explain, ToString() + " = ");
+            ExplanationPart stabilizeExpressionExplanation = ExplanationPart.CreateSubExplanation(explain,
+                ToString() + " = ");
 
             LastIteration.Value = InitialValue.GetValue(context, explain);
 
@@ -170,14 +172,17 @@ namespace DataDictionary.Interpreter
             while (!stop)
             {
                 i = i + 1;
-                ExplanationPart iterationExplanation = ExplanationPart.CreateSubExplanation(stabilizeExpressionExplanation, "Iteration " + i);
-                ExplanationPart iteratorValueExplanation = ExplanationPart.CreateSubExplanation(iterationExplanation, "Iteration expression value = ");
+                ExplanationPart iterationExplanation =
+                    ExplanationPart.CreateSubExplanation(stabilizeExpressionExplanation, "Iteration " + i);
+                ExplanationPart iteratorValueExplanation = ExplanationPart.CreateSubExplanation(iterationExplanation,
+                    "Iteration expression value = ");
                 int token = context.LocalScope.PushContext();
                 context.LocalScope.setVariable(LastIteration);
                 CurrentIteration.Value = Expression.GetValue(context, iteratorValueExplanation);
                 ExplanationPart.SetNamable(iteratorValueExplanation, CurrentIteration.Value);
 
-                ExplanationPart stopValueExplanation = ExplanationPart.CreateSubExplanation(iterationExplanation, "Stop expression value = ");
+                ExplanationPart stopValueExplanation = ExplanationPart.CreateSubExplanation(iterationExplanation,
+                    "Stop expression value = ");
                 context.LocalScope.setVariable(CurrentIteration);
                 BoolValue stopCondition = Condition.GetValue(context, stopValueExplanation) as BoolValue;
                 ExplanationPart.SetNamable(stopValueExplanation, stopCondition);
@@ -201,7 +206,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -213,19 +218,20 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
         public override string ToString(int indentLevel)
         {
-            string retVal = "STABILIZE " + Expression.ToString(indentLevel) + " INITIAL_VALUE " + InitialValue.ToString(indentLevel) + " STOP_CONDITION " + Condition.ToString(indentLevel);
+            string retVal = "STABILIZE " + Expression.ToString(indentLevel) + " INITIAL_VALUE " +
+                            InitialValue.ToString(indentLevel) + " STOP_CONDITION " + Condition.ToString(indentLevel);
 
             return retVal;
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         /// <param name="context">The interpretation context</param>
         public override void checkExpression()
@@ -242,7 +248,8 @@ namespace DataDictionary.Interpreter
                 {
                     if (expressionType != initialValueType)
                     {
-                        AddError("Expression " + Expression + " has not the same type (" + expressionType.FullName + " than initial value " + InitialValue + " type " + initialValueType.FullName);
+                        AddError("Expression " + Expression + " has not the same type (" + expressionType.FullName +
+                                 " than initial value " + InitialValue + " type " + initialValueType.FullName);
                     }
                 }
                 else
@@ -270,7 +277,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Creates the graph associated to this expression, when the given parameter ranges over the X axis
+        ///     Creates the graph associated to this expression, when the given parameter ranges over the X axis
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <param name="parameter">The parameters of *the enclosing function* for which the graph should be created</param>

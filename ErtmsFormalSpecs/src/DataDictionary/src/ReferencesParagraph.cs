@@ -24,7 +24,7 @@ namespace DataDictionary
     public class ReferencesParagraph : Generated.ReferencesParagraph, ICommentable
     {
         /// <summary>
-        /// The requirements for this req related model element
+        ///     The requirements for this req related model element
         /// </summary>
         public ArrayList Requirements
         {
@@ -39,7 +39,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Associates the comment text box with the comment
+        ///     Associates the comment text box with the comment
         /// </summary>
         public string Comment
         {
@@ -56,7 +56,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the set of paragraphs modeled by this req related
+        ///     Provides the set of paragraphs modeled by this req related
         /// </summary>
         public List<Paragraph> ModeledParagraphs
         {
@@ -86,7 +86,7 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Provides all the paragraphs associated to this req related
+        ///     Provides all the paragraphs associated to this req related
         /// </summary>
         /// <param name="paragraphs">The list of paragraphs to be filled</param>
         /// <returns></returns>
@@ -107,7 +107,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the requirements related to this rule
+        ///     Provides the requirements related to this rule
         /// </summary>
         /// <returns></returns>
         public string getRequirements()
@@ -132,7 +132,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)

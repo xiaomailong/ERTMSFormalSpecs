@@ -24,30 +24,30 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Combines two surfaces (functions like f(V,d) ) using the following formula
-    ///    Combine ( f1, f2, default ) = 
-    ///        f1 == default  => f2
-    ///        otherwise      => f1
+    ///     Combines two surfaces (functions like f(V,d) ) using the following formula
+    ///     Combine ( f1, f2, default ) =
+    ///     f1 == default  => f2
+    ///     otherwise      => f1
     /// </summary>
     public class Override : PredefinedFunction
     {
         /// <summary>
-        /// The first function to combine 
+        ///     The first function to combine
         /// </summary>
         public Parameter DefaultFunction { get; private set; }
 
         /// <summary>
-        /// The second function to combine
+        ///     The second function to combine
         /// </summary>
         public Parameter OverrideFunction { get; private set; }
 
         /// <summary>
-        /// The return type of this function
+        ///     The return type of this function
         /// </summary>
         public Function Returns { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         /// <param name="name">the name of the cast function</param>
@@ -85,7 +85,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the available function
+        ///     The return type of the available function
         /// </summary>
         public override Type ReturnType
         {
@@ -93,19 +93,20 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context,
+            Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[DefaultFunction.Name], 2);
             CheckFunctionalParameter(root, context, actualParameters[OverrideFunction.Name], 2);
         }
 
         /// <summary>
-        /// Provides the surface of this function if it has been statically defined
+        ///     Provides the surface of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the surface</param>
         /// <param name="explain"></param>
@@ -117,7 +118,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
             Surface defaultSurface = createSurfaceForValue(context, context.findOnStack(DefaultFunction).Value, explain);
             if (defaultSurface != null)
             {
-                Surface overrideSurface = createSurfaceForValue(context, context.findOnStack(OverrideFunction).Value, explain);
+                Surface overrideSurface = createSurfaceForValue(context, context.findOnStack(OverrideFunction).Value,
+                    explain);
                 if (overrideSurface != null)
                 {
                     retVal = defaultSurface.Override(overrideSurface);
@@ -136,13 +138,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 
@@ -150,7 +153,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
             AssignParameters(context, actuals);
 
             Function function = (Function) acceptor.getFactory().createFunction();
-            function.Name = "Override ( Default => " + getName(DefaultFunction) + ", Override => " + getName(OverrideFunction) + ")";
+            function.Name = "Override ( Default => " + getName(DefaultFunction) + ", Override => " +
+                            getName(OverrideFunction) + ")";
             function.Enclosing = EFSSystem;
             function.Surface = createSurface(context, explain);
 

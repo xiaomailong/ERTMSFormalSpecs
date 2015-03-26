@@ -20,12 +20,12 @@ using DataDictionary.Functions;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent a procedure
+    ///     The boxes that represent a procedure
     /// </summary>
     public class ProcedureModelControl : ModelControl
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ProcedureModelControl(Procedure model)
             : base(model)
@@ -34,7 +34,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Handles a simple click event on the control
+        ///     Handles a simple click event on the control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -47,7 +47,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name of the kind of model
+        ///     The name of the kind of model
         /// </summary>
         public override string ModelName
         {

@@ -19,17 +19,17 @@ namespace Importers.RtfDeltaImporter
     public class ImportationError
     {
         /// <summary>
-        /// The error message
+        ///     The error message
         /// </summary>
         public string Message { get; private set; }
 
         /// <summary>
-        /// The paragraph on which the error message applies
+        ///     The paragraph on which the error message applies
         /// </summary>
         public Paragraph Paragraph { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="message"></param>
         /// <param name="paragraph"></param>

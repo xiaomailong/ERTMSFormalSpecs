@@ -23,17 +23,17 @@ using XmlBooster;
 namespace HistoricalData
 {
     /// <summary>
-    /// Utility class for historical data
+    ///     Utility class for historical data
     /// </summary>
     public class HistoryUtils
     {
         /// <summary>
-        /// The Logger
+        ///     The Logger
         /// </summary>
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Initializes the Historical data package
+        ///     Initializes the Historical data package
         /// </summary>
         /// <param name="filePath">The path to the file to load</param>
         /// <param name="factory">THe factory used to create instances of the loaded file</param>

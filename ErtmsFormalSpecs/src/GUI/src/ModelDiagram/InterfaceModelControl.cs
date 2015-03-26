@@ -20,12 +20,12 @@ using DataDictionary.Types;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent an interface
+    ///     The boxes that represent an interface
     /// </summary>
     public class InterfaceModelControl : TypeModelControl
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public InterfaceModelControl(Structure model)
             : base(model)
@@ -34,7 +34,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name of the kind of type
+        ///     The name of the kind of type
         /// </summary>
         public override string ModelName
         {

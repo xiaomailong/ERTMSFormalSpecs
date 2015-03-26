@@ -46,7 +46,7 @@ namespace GUI.DataDictionaryView
 
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="aStructure"></param>
         public CustomAction(Structure aStructure)
@@ -65,7 +65,8 @@ namespace GUI.DataDictionaryView
                 {
                     if (element.Type is Structure)
                     {
-                        Structure structure = OverallStructureFinder.INSTANCE.findByName(myStructure.Dictionary, element.Type.FullName);
+                        Structure structure = OverallStructureFinder.INSTANCE.findByName(myStructure.Dictionary,
+                            element.Type.FullName);
                         if (structure != null)
                         {
                             foreach (Procedure procedure in structure.Procedures)
@@ -102,7 +103,8 @@ namespace GUI.DataDictionaryView
                     if (aCheckBox.Checked == true)
                     {
                         Action anAction = (Action) acceptor.getFactory().createAction();
-                        anAction.ExpressionText = aCheckBox.Text + " <- " + aCheckBox.Text + "." + CbB_StateName.SelectedItem.ToString();
+                        anAction.ExpressionText = aCheckBox.Text + " <- " + aCheckBox.Text + "." +
+                                                  CbB_StateName.SelectedItem.ToString();
                         CreateCustomAction(anAction);
                     }
                 }

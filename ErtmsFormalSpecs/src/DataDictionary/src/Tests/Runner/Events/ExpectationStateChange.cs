@@ -24,12 +24,12 @@ namespace DataDictionary.Tests.Runner.Events
     public class ExpectationStateChange : ModelEvent
     {
         /// <summary>
-        /// The corresponding expect
+        ///     The corresponding expect
         /// </summary>
         public Expect Expect { get; private set; }
 
         /// <summary>
-        /// The namespace associated to this event
+        ///     The namespace associated to this event
         /// </summary>
         public override NameSpace NameSpace
         {
@@ -37,17 +37,17 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The new expectation state
+        ///     The new expectation state
         /// </summary>
         public Expect.EventState NewState { get; set; }
 
         /// <summary>
-        /// The previous expectation state
+        ///     The previous expectation state
         /// </summary>
         private Expect.EventState PrevState { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="expect">the expectation which changed</param>
         /// <param name="newState">the new expectation state</param>
@@ -61,7 +61,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Apply the expectation state change
+        ///     Apply the expectation state change
         /// </summary>
         /// <param name="runner"></param>
         public override void Apply(Runner runner)
@@ -71,7 +71,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rollsback the changes performed during this event
+        ///     Rollsback the changes performed during this event
         /// </summary>
         public override void RollBack()
         {
@@ -84,7 +84,7 @@ namespace DataDictionary.Tests.Runner.Events
     public class FailedExpectation : ExpectationStateChange
     {
         /// <summary>
-        /// The log associated to this expectation state change
+        ///     The log associated to this expectation state change
         /// </summary>
         private ElementLog elementLog;
 
@@ -95,7 +95,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="expect"></param>
         /// <param name="priority"></param>
@@ -107,7 +107,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Apply the failed expectation
+        ///     Apply the failed expectation
         /// </summary>
         /// <param name="runner"></param>
         public override void Apply(Runner runner)
@@ -121,7 +121,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rollsback the changes performed during this event
+        ///     Rollsback the changes performed during this event
         /// </summary>
         public override void RollBack()
         {
@@ -136,7 +136,7 @@ namespace DataDictionary.Tests.Runner.Events
     public class ExpectationReached : ExpectationStateChange
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="expect"></param>
         /// <param name="priority"></param>
@@ -148,7 +148,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Apply the reached expectation
+        ///     Apply the reached expectation
         /// </summary>
         /// <param name="runner"></param>
         public override void Apply(Runner runner)
@@ -161,7 +161,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rolls back the changes for this expectation
+        ///     Rolls back the changes for this expectation
         /// </summary>
         public override void RollBack()
         {

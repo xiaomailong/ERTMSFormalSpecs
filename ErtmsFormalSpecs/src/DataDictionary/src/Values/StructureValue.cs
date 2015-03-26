@@ -30,7 +30,7 @@ namespace DataDictionary.Values
     public class StructureValue : BaseValue<Structure, Dictionary<string, INamable>>, ISubDeclarator
     {
         /// <summary>
-        /// Provides the type as a structure
+        ///     Provides the type as a structure
         /// </summary>
         public Structure Structure
         {
@@ -40,7 +40,7 @@ namespace DataDictionary.Values
         private static int depth = 0;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="structure"></param>
         /// <param name="setDefaultValue">Indicates that default values should be set</param>
@@ -90,12 +90,13 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="structureExpression"></param>
         /// <param name="context"></param>
         /// <param name="explain"></param>
-        public StructureValue(StructExpression structureExpression, InterpretationContext context, ExplanationPart explain)
+        public StructureValue(StructExpression structureExpression, InterpretationContext context,
+            ExplanationPart explain)
             : base(structureExpression.GetExpressionType() as Structure, new Dictionary<string, INamable>())
         {
             Enclosing = Structure;
@@ -110,7 +111,7 @@ namespace DataDictionary.Values
                     IValue val = pair.Value.GetValue(new InterpretationContext(context), explain);
                     if (val != null)
                     {
-                        Variable var = (Variable)acceptor.getFactory().createVariable();
+                        Variable var = (Variable) acceptor.getFactory().createVariable();
                         var.Name = pair.Key.Image;
                         var.Value = val;
                         var.Enclosing = this;
@@ -150,7 +151,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="structure"></param>
         public StructureValue(StructureValue other)
@@ -185,7 +186,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Sets the value of a given association
+        ///     Sets the value of a given association
         /// </summary>
         /// <param name="name"></param>
         /// <param name="val"></param>
@@ -202,7 +203,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Gets the value associated to a name
+        ///     Gets the value associated to a name
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -219,7 +220,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -232,12 +233,12 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -275,7 +276,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The sub variables of this structure
+        ///     The sub variables of this structure
         /// </summary>
         private Dictionary<string, IVariable> subVariables;
 
@@ -303,7 +304,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Creates a valid right side IValue, according to the target variable (left side)
+        ///     Creates a valid right side IValue, according to the target variable (left side)
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
@@ -327,8 +328,8 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Converts a structure value to its corresponding structure expression.
-        /// null entries correspond to the default value
+        ///     Converts a structure value to its corresponding structure expression.
+        ///     null entries correspond to the default value
         /// </summary>
         /// <returns></returns>
         public override string ToExpressionWithDefault()

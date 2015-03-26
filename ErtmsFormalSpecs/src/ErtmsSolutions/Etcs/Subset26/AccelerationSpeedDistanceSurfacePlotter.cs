@@ -40,7 +40,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         {
             StreamWriter swj = new StreamWriter(job_filename);
 
-            List<AccelerationSpeedDistanceSurfaceExport.SurfaceTripple> Tripples = AccelerationSpeedDistanceSurfaceExport.Collect_And_Sort_Surface(A_V_D);
+            List<AccelerationSpeedDistanceSurfaceExport.SurfaceTripple> Tripples =
+                AccelerationSpeedDistanceSurfaceExport.Collect_And_Sort_Surface(A_V_D);
 
             string filename_dat = BuildTempFile(true, String.Format("{0}.dat", my_base_name));
             {

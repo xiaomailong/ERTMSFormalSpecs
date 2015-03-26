@@ -19,12 +19,12 @@ using System.Collections;
 namespace DataDictionary.Specification
 {
     /// <summary>
-    /// Represents a requirement set
+    ///     Represents a requirement set
     /// </summary>
     public class RequirementSetDependancy : Generated.RequirementSetDependancy, IGraphicalArrow<RequirementSet>
     {
         /// <summary>
-        /// The name of the dependancy (always the same)
+        ///     The name of the dependancy (always the same)
         /// </summary>
         public override string Name
         {
@@ -33,7 +33,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The source of the arrow
+        ///     The source of the arrow
         /// </summary>
         public RequirementSet Source
         {
@@ -41,7 +41,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Sets the source box for this arrow
+        ///     Sets the source box for this arrow
         /// </summary>
         /// <param name="initialBox"></param>
         public void SetInitialBox(IGraphicalDisplay initialBox)
@@ -52,7 +52,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The target of the arrow
+        ///     The target of the arrow
         /// </summary>
         public RequirementSet Target
         {
@@ -60,7 +60,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Sets the target box for this arrow
+        ///     Sets the target box for this arrow
         /// </summary>
         /// <param name="targetBox"></param>
         public void SetTargetBox(IGraphicalDisplay targetBox)
@@ -70,7 +70,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName
         {
@@ -78,7 +78,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The model element which is referenced by this arrow
+        ///     The model element which is referenced by this arrow
         /// </summary>
         public ModelElement ReferencedModel
         {
@@ -86,7 +86,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The collection in which this model element lies
+        ///     The collection in which this model element lies
         /// </summary>
         public override ArrayList EnclosingCollection
         {

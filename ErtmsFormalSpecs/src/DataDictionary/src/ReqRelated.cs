@@ -21,7 +21,7 @@ namespace DataDictionary
     public class ReqRelated : Generated.ReqRelated, ICommentable
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ReqRelated()
             : base()
@@ -31,7 +31,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates if this ReqRelated has to be associated with a requirement
+        ///     Indicates if this ReqRelated has to be associated with a requirement
         /// </summary>
         public virtual bool NeedsRequirement
         {
@@ -40,7 +40,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates if the implementation of this ReqRelated is completed
+        ///     Indicates if the implementation of this ReqRelated is completed
         /// </summary>
         public virtual bool ImplementationCompleted
         {
@@ -48,7 +48,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates if this ReqRelated contains implemented sub-elements
+        ///     Indicates if this ReqRelated contains implemented sub-elements
         /// </summary>
         public virtual bool ImplementationPartiallyCompleted
         {
@@ -56,7 +56,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the description of all requirements
+        ///     Provides the description of all requirements
         /// </summary>
         /// <returns></returns>
         public override string RequirementDescription()

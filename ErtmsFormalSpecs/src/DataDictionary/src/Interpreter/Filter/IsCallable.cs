@@ -20,12 +20,12 @@ using Utils;
 namespace DataDictionary.Interpreter.Filter
 {
     /// <summary>
-    /// Predicate which indicates that the namable can be called
+    ///     Predicate which indicates that the namable can be called
     /// </summary>
     public class IsCallable : BaseFilter
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected IsCallable()
             : base()
@@ -33,7 +33,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
+        ///     Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate, so that the code can be reused
+        ///     Predicate, so that the code can be reused
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Singleton
+        ///     Singleton
         /// </summary>
         public static IsCallable INSTANCE = new IsCallable();
     }

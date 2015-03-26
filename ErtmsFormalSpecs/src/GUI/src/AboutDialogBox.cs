@@ -24,7 +24,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public AboutDialogBox()
         {

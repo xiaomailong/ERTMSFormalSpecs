@@ -21,17 +21,17 @@ using System.Text;
 namespace Utils
 {
     /// <summary>
-    /// The class versioned writer overwrites a new file when the preceding contents is different from the original one
+    ///     The class versioned writer overwrites a new file when the preceding contents is different from the original one
     /// </summary>
     public class VersionedWriter : StreamWriter
     {
         /// <summary>
-        /// The file currently being created
+        ///     The file currently being created
         /// </summary>
         private String TargetPath { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="path"></param>
         public VersionedWriter(String path)
@@ -41,8 +41,8 @@ namespace Utils
         }
 
         /// <summary>
-        /// When the file is created, compare its contents with the original one. 
-        /// Overwrite the target file if the contents differ
+        ///     When the file is created, compare its contents with the original one.
+        ///     Overwrite the target file if the contents differ
         /// </summary>
         public override void Close()
         {
@@ -58,7 +58,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Formats the line currently read
+        ///     Formats the line currently read
         /// </summary>
         /// <param name="line"></param>
         /// <returns></returns>
@@ -84,7 +84,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Checks if the file contents are the same
+        ///     Checks if the file contents are the same
         /// </summary>
         /// <param name="tempFilePath"></param>
         /// <returns></returns>
@@ -117,7 +117,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Replaces the contents of the original file with the newly created file
+        ///     Replaces the contents of the original file with the newly created file
         /// </summary>
         /// <param name="tempFilePath"></param>
         private void ReplaceContents(string tempFilePath)
@@ -141,7 +141,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Creates a new temporary FileStream 
+        ///     Creates a new temporary FileStream
         /// </summary>
         /// <param name="original"></param>
         /// <returns></returns>

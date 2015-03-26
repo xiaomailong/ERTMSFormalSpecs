@@ -25,17 +25,17 @@ namespace DataDictionary.Interpreter
     public class StringExpression : Expression
     {
         /// <summary>
-        /// The value associated to this string expression
+        ///     The value associated to this string expression
         /// </summary>
         private StringValue Value { get; set; }
 
         /// <summary>
-        /// The image of the string
+        ///     The image of the string
         /// </summary>
         public string Image { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="left"></param>
         /// <param name="op"></param>
@@ -49,7 +49,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -68,7 +68,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the INamable which is referenced by this expression, if any
+        ///     Provides the INamable which is referenced by this expression, if any
         /// </summary>
         public override INamable Ref
         {
@@ -76,7 +76,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <param name="context">The interpretation context</param>
         /// <returns></returns>
@@ -86,7 +86,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -97,7 +97,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -110,7 +110,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>

@@ -19,7 +19,7 @@ using HistoricalData.Generated;
 namespace DataDictionary.Compare
 {
     /// <summary>
-    /// The Historical data specific factory for DataDictionary
+    ///     The Historical data specific factory for DataDictionary
     /// </summary>
     public class Factory : HistoricalData.Factory
     {
@@ -44,12 +44,12 @@ namespace DataDictionary.Compare
         }
 
         /// <summary>
-        /// The singleton instance
+        ///     The singleton instance
         /// </summary>
         private static Factory __instance = new Factory();
 
         /// <summary>
-        /// The singleton instance
+        ///     The singleton instance
         /// </summary>
         public new static Factory INSTANCE
         {

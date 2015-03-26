@@ -49,67 +49,67 @@ namespace GUI.IPCInterface
     public class EFSService : IEFSService
     {
         /// <summary>
-        /// Indicates that the explain view should be updated according to the scenario execution
+        ///     Indicates that the explain view should be updated according to the scenario execution
         /// </summary>
         public bool Explain { get; private set; }
 
         /// <summary>
-        /// Indicates that the events should be logged
+        ///     Indicates that the events should be logged
         /// </summary>
         public bool LogEvents { get; private set; }
 
         /// <summary>
-        /// The duration (in ms) of an execution cycle
+        ///     The duration (in ms) of an execution cycle
         /// </summary>
         public int CycleDuration { get; private set; }
 
         /// <summary>
-        /// The number of events that should be kept in memory
+        ///     The number of events that should be kept in memory
         /// </summary>
         public int KeepEventCount { get; private set; }
 
         /// <summary>
-        /// Resource protection
+        ///     Resource protection
         /// </summary>
         private Dictionary<Step, Mutex> StepAccess { get; set; }
 
         /// <summary>
-        /// Mutual exclusion for accessing EFS structures
+        ///     Mutual exclusion for accessing EFS structures
         /// </summary>
         private Mutex EFSAccess { get; set; }
 
         /// <summary>
-        /// Keeps track of each connection status
+        ///     Keeps track of each connection status
         /// </summary>
         private class ConnectionStatus
         {
             /// <summary>
-            /// Indicates that the connection is still active
+            ///     Indicates that the connection is still active
             /// </summary>
             public bool Active { get; set; }
 
             /// <summary>
-            /// The step for which the client is waiting
+            ///     The step for which the client is waiting
             /// </summary>
             public Step ExpectedStep { get; set; }
 
             /// <summary>
-            /// Indicates that the client is a listener, and should not create a runner
+            ///     Indicates that the client is a listener, and should not create a runner
             /// </summary>
             public bool Listener { get; set; }
 
             /// <summary>
-            /// The last time a cycle request has been performed
+            ///     The last time a cycle request has been performed
             /// </summary>
             public DateTime LastCycleRequest { get; set; }
 
             /// <summary>
-            /// The last time a cycle activity has been resumed
+            ///     The last time a cycle activity has been resumed
             /// </summary>
             public DateTime LastCycleResume { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="listener"></param>
             public ConnectionStatus(bool listener)
@@ -122,17 +122,17 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// The list of connection statuses
+        ///     The list of connection statuses
         /// </summary>
         private List<ConnectionStatus> Connections { get; set; }
 
         /// <summary>
-        /// The last step being executed
+        ///     The last step being executed
         /// </summary>
         private Step LastStep { get; set; }
 
         /// <summary>
-        /// Provides the next step to execute
+        ///     Provides the next step to execute
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>
@@ -163,12 +163,12 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// The thread which is used to launch the runner
+        ///     The thread which is used to launch the runner
         /// </summary>
         private LaunchRunner LaunchRunnerSynchronizer { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public EFSService()
         {
@@ -187,7 +187,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Adds a client for this server
+        ///     Adds a client for this server
         /// </summary>
         /// <param name="listener"></param>
         /// <returns>The client id</returns>
@@ -201,7 +201,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Connects to the service 
+        ///     Connects to the service
         /// </summary>
         /// <param name="listener">Indicates that the client is a listener</param>
         /// <returns>The client identifier</returns>
@@ -217,7 +217,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Connects to the service 
+        ///     Connects to the service
         /// </summary>
         /// <param name="listener">Indicates that the client is a listener</param>
         /// <param name="explain">Indicates that the explain view should be updated according to the scenario execution</param>
@@ -241,7 +241,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Ensures that the client id is valid
+        ///     Ensures that the client id is valid
         /// </summary>
         /// <param name="clientId"></param>
         private void checkClient(int clientId)
@@ -258,7 +258,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Checks that a cycle can be launched, that is each client has voted for his next step
+        ///     Checks that a cycle can be launched, that is each client has voted for his next step
         /// </summary>
         /// <param name="step"></param>
         /// <returns></returns>
@@ -293,7 +293,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Indicates if there is a client pending for a specific step
+        ///     Indicates if there is a client pending for a specific step
         /// </summary>
         /// <param name="step"></param>
         /// <returns></returns>
@@ -315,12 +315,12 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// 1s between each client decisions
+        ///     1s between each client decisions
         /// </summary>
         private static TimeSpan MAX_DELTA = new TimeSpan(0, 0, 0, 5, 0);
 
         /// <summary>
-        /// Performs a single cycle
+        ///     Performs a single cycle
         /// </summary>
         public void Cycle()
         {
@@ -354,7 +354,8 @@ namespace GUI.IPCInterface
                                 Runner.ExecuteOnePriority(convertStep2Priority(LastStep));
                                 if (LastStep == Step.CleanUp)
                                 {
-                                    GUIUtils.MDIWindow.Invoke((MethodInvoker)delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                                    GUIUtils.MDIWindow.Invoke(
+                                        (MethodInvoker) delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
                                 }
                             }
                         }
@@ -388,12 +389,12 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Continuously launch the runner when all client have selected their next stop step
+        ///     Continuously launch the runner when all client have selected their next stop step
         /// </summary>
         private class LaunchRunner : GenericSynchronizationHandler<EFSService>
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="service"></param>
             /// <param name="cycleTime"></param>
@@ -403,7 +404,7 @@ namespace GUI.IPCInterface
             }
 
             /// <summary>
-            /// Initialize the task 
+            ///     Initialize the task
             /// </summary>
             /// <param name="instance"></param>
             public override void Initialize(EFSService instance)
@@ -416,7 +417,7 @@ namespace GUI.IPCInterface
             }
 
             /// <summary>
-            /// Actually performes the synchronization, that is launch the runner when all client are ready
+            ///     Actually performes the synchronization, that is launch the runner when all client are ready
             /// </summary>
             /// <param name="instance"></param>
             public override void HandleSynchronization(EFSService instance)
@@ -426,7 +427,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Activates the execution of a single cycle, as the given priority level
+        ///     Activates the execution of a single cycle, as the given priority level
         /// </summary>
         /// <param name="clientId">The id of the client</param>
         /// <param name="step">The cycle step to execute</param>
@@ -460,7 +461,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Restarts the engine with default values
+        ///     Restarts the engine with default values
         /// </summary>
         public void Restart()
         {
@@ -472,7 +473,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Provides the runner on which the service is applied
+        ///     Provides the runner on which the service is applied
         /// </summary>
         public Runner Runner
         {
@@ -490,7 +491,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Indicates that all connections are listeners
+        ///     Indicates that all connections are listeners
         /// </summary>
         /// <returns></returns>
         private bool AllListeners
@@ -512,7 +513,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Provides the value of a specific variable
+        ///     Provides the value of a specific variable
         /// </summary>
         /// <param name="variableName"></param>
         /// <returns></returns>
@@ -542,7 +543,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Provides the value of an expression
+        ///     Provides the value of an expression
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -553,14 +554,16 @@ namespace GUI.IPCInterface
             EFSAccess.WaitOne();
             try
             {
-                Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0], expression);
+                Expression expressionTree = EFSSystem.INSTANCE.Parser.Expression(EFSSystem.INSTANCE.Dictionaries[0],
+                    expression);
                 if (expressionTree != null)
                 {
                     retVal = convertOut(expressionTree.GetValue(new InterpretationContext(), null));
                 }
                 else
                 {
-                    throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot evaluate expression " + expression));
+                    throw new FaultException<EFSServiceFault>(
+                        new EFSServiceFault("Cannot evaluate expression " + expression));
                 }
             }
             finally
@@ -572,7 +575,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Converts a DataDictionary.Values.IValue into an EFSIPCInterface.Value
+        ///     Converts a DataDictionary.Values.IValue into an EFSIPCInterface.Value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -683,17 +686,17 @@ namespace GUI.IPCInterface
         private class SyntheticVariableUpdateAction : Action
         {
             /// <summary>
-            /// The variable identification that is modified by this variable update action
+            ///     The variable identification that is modified by this variable update action
             /// </summary>
             public IVariable Variable { get; private set; }
 
             /// <summary>
-            /// The value that is assigned to this variable
+            ///     The value that is assigned to this variable
             /// </summary>
             public IValue Value { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="variable"></param>
             /// <param name="value"></param>
@@ -708,7 +711,8 @@ namespace GUI.IPCInterface
                 get { return Variable.FullName + " <- " + Value.FullName; }
             }
 
-            public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
+            public override void GetChanges(InterpretationContext context, ChangeList changes,
+                ExplanationPart explanation, bool apply, Runner runner)
             {
                 Change change = new Change(Variable, Variable.Value, Value);
                 changes.Add(change, apply, runner);
@@ -716,7 +720,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Sets the value of a specific variable
+        ///     Sets the value of a specific variable
         /// </summary>
         /// <param name="variableName"></param>
         /// <param name="value"></param>
@@ -731,13 +735,15 @@ namespace GUI.IPCInterface
 
                     if (variable != null)
                     {
-                        SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable, value.convertBack(variable.Type));
+                        SyntheticVariableUpdateAction action = new SyntheticVariableUpdateAction(variable,
+                            value.convertBack(variable.Type));
                         VariableUpdate variableUpdate = new VariableUpdate(action, null, null);
                         Runner.EventTimeLine.AddModelEvent(variableUpdate, Runner, true);
                     }
                     else
                     {
-                        throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot find variable " + variableName));
+                        throw new FaultException<EFSServiceFault>(
+                            new EFSServiceFault("Cannot find variable " + variableName));
                     }
                 }
             }
@@ -748,7 +754,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Applies a specific statement on the model
+        ///     Applies a specific statement on the model
         /// </summary>
         /// <param name="statementText"></param>
         public void ApplyStatement(string statementText)
@@ -759,7 +765,8 @@ namespace GUI.IPCInterface
                 if (Runner != null)
                 {
                     bool silent = true;
-                    Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0], statementText, silent);
+                    Statement statement = EFSSystem.INSTANCE.Parser.Statement(EFSSystem.INSTANCE.Dictionaries[0],
+                        statementText, silent);
 
                     if (statement != null)
                     {
@@ -770,7 +777,8 @@ namespace GUI.IPCInterface
                     }
                     else
                     {
-                        throw new FaultException<EFSServiceFault>(new EFSServiceFault("Cannot create statement for " + statementText));
+                        throw new FaultException<EFSServiceFault>(
+                            new EFSServiceFault("Cannot create statement for " + statementText));
                     }
                 }
             }
@@ -781,7 +789,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Converts an interface priority to a Runner priority
+        ///     Converts an interface priority to a Runner priority
         /// </summary>
         /// <param name="priority"></param>
         private acceptor.RulePriority convertStep2Priority(Step priority)
@@ -815,7 +823,7 @@ namespace GUI.IPCInterface
         }
 
         /// <summary>
-        /// Converts an interface priority to a Runner priority
+        ///     Converts an interface priority to a Runner priority
         /// </summary>
         /// <param name="priority"></param>
         private Step convertPriority2Step(acceptor.RulePriority priority)
@@ -851,7 +859,7 @@ namespace GUI.IPCInterface
         private static EFSService __instance = null;
 
         /// <summary>
-        /// The service instance
+        ///     The service instance
         /// </summary>
         public static EFSService INSTANCE
         {

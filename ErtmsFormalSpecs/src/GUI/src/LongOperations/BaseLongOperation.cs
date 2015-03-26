@@ -20,27 +20,27 @@ using Utils;
 namespace GUI.LongOperations
 {
     /// <summary>
-    /// The base class used to handle long operations
+    ///     The base class used to handle long operations
     /// </summary>
     public abstract class BaseLongOperation : ProgressHandler
     {
         /// <summary>
-        /// Execution time span
+        ///     Execution time span
         /// </summary>
         public TimeSpan Span { get; set; }
 
         /// <summary>
-        /// Indicates that the dialog should be displayed
+        ///     Indicates that the dialog should be displayed
         /// </summary>
         public bool ShowDialog { get; set; }
 
         /// <summary>
-        /// The dialog used to display progress to the user
+        ///     The dialog used to display progress to the user
         /// </summary>
         public ProgressDialog Dialog { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public BaseLongOperation()
             : base()
@@ -49,7 +49,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Executes the operation in background using a progress handler
+        ///     Executes the operation in background using a progress handler
         /// </summary>
         /// <param name="message">The message to display on the dialog window</param>
         /// <param name="allowCancel">Indicates that the opeation can be canceled</param>

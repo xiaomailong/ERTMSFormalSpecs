@@ -26,7 +26,7 @@ namespace Reports.Tests
     public class TestsCoverageReportHandler : ReportHandler
     {
         /// <summary>
-        /// The system for which this report is built
+        ///     The system for which this report is built
         /// </summary>
         private EFSSystem __efsSystem;
 
@@ -50,7 +50,7 @@ namespace Reports.Tests
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="system"></param>
         public TestsCoverageReportHandler(EFSSystem system)
@@ -62,7 +62,7 @@ namespace Reports.Tests
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public TestsCoverageReportHandler(Dictionary dictionary)
@@ -89,7 +89,7 @@ namespace Reports.Tests
         }
 
         /// <summary>
-        /// Creates a report on tests coverage, according to user's choices
+        ///     Creates a report on tests coverage, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
         public override Document BuildDocument()

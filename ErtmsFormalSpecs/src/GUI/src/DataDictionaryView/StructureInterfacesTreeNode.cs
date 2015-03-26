@@ -18,12 +18,8 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using DataDictionary.Generated;
-using GUI.SpecificationView;
-using NameSpace = DataDictionary.Types.NameSpace;
-using Paragraph = DataDictionary.Specification.Paragraph;
-using ReqRef = DataDictionary.ReqRef;
 using Structure = DataDictionary.Types.Structure;
-using StructureElement = DataDictionary.Types.StructureElement;
+using StructureRef = DataDictionary.Generated.StructureRef;
 
 namespace GUI.DataDictionaryView
 {
@@ -32,7 +28,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -41,7 +37,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
@@ -51,7 +47,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -66,7 +62,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -75,7 +71,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -90,13 +86,13 @@ namespace GUI.DataDictionaryView
 
         public void AddHandler(object sender, EventArgs args)
         {
-            StructureRef structureRef = (StructureRef)acceptor.getFactory().createStructureRef();
+            StructureRef structureRef = (StructureRef) acceptor.getFactory().createStructureRef();
             structureRef.Name = "<Interface" + (GetNodeCount(false) + 1) + ">";
             AddInterface(structureRef);
         }
 
         /// <summary>
-        /// Adds a new structure interface to the structure
+        ///     Adds a new structure interface to the structure
         /// </summary>
         /// <param name="rule"></param>
         public void AddInterface(StructureRef structureRef)

@@ -23,44 +23,44 @@ using Specification = DataDictionary.Specification.Specification;
 namespace Importers.RtfDeltaImporter
 {
     /// <summary>
-    /// This class is used to import a delta in the specifications based on a delta operation 
-    /// performed in Word and saved in Rtf file format. 
-    /// It detects the paragraphs that have been modified and updates the specification 
-    /// according to the changes, that is
-    ///   - save the current paragraph text, to ease the revision
-    ///   - update the paragraph text with the new paragraph version 
-    ///   - sets the paragraph as needing a manual review 
-    ///   - invalidates the models to take this change into consideration
+    ///     This class is used to import a delta in the specifications based on a delta operation
+    ///     performed in Word and saved in Rtf file format.
+    ///     It detects the paragraphs that have been modified and updates the specification
+    ///     according to the changes, that is
+    ///     - save the current paragraph text, to ease the revision
+    ///     - update the paragraph text with the new paragraph version
+    ///     - sets the paragraph as needing a manual review
+    ///     - invalidates the models to take this change into consideration
     /// </summary>
     public class Importer : ProgressHandler
     {
         /// <summary>
-        /// The file path of the original file
+        ///     The file path of the original file
         /// </summary>
         private string OriginalFilePath { get; set; }
 
         /// <summary>
-        /// The document which corresponds to the original file path
+        ///     The document which corresponds to the original file path
         /// </summary>
         public Document OriginalDocument { get; private set; }
 
         /// <summary>
-        /// The file path of the new file
+        ///     The file path of the new file
         /// </summary>
         private string NewFilePath { get; set; }
 
         /// <summary>
-        /// The document which corresponds to the new file path
+        ///     The document which corresponds to the new file path
         /// </summary>
         public Document NewDocument { get; private set; }
 
         /// <summary>
-        /// The specification to be udated
+        ///     The specification to be udated
         /// </summary>
         private Specification Specifications { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="originalFilePath"></param>
         /// <param name="newFilePath"></param>
@@ -73,7 +73,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Performs the delta on the specification provided
+        ///     Performs the delta on the specification provided
         /// </summary>
         /// <param name="delta"></param>
         /// <param name="specifications"></param>
@@ -101,7 +101,9 @@ namespace Importers.RtfDeltaImporter
 
                 if (par != null)
                 {
-                    AddError(specifications, p, "Paragraph " + p.Id + " already exists, whereas it has been detected as a new paragraph in the release");
+                    AddError(specifications, p,
+                        "Paragraph " + p.Id +
+                        " already exists, whereas it has been detected as a new paragraph in the release");
                 }
                 else
                 {
@@ -137,7 +139,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Indicates that this paragraph is a new revision 
+        ///     Indicates that this paragraph is a new revision
         /// </summary>
         /// <param name="par"></param>
         private void NewParagraphRevision(DataDictionary.Specification.Paragraph par)
@@ -163,7 +165,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Adds an importation error
+        ///     Adds an importation error
         /// </summary>
         /// <param name="specifications"></param>
         /// <param name="p"></param>
@@ -175,7 +177,7 @@ namespace Importers.RtfDeltaImporter
         }
 
         /// <summary>
-        /// Executes the work in the background task
+        ///     Executes the work in the background task
         /// </summary>
         public override void ExecuteWork()
         {

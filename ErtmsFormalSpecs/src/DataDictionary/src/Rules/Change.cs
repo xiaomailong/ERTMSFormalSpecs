@@ -24,37 +24,37 @@ using log4net;
 namespace DataDictionary.Rules
 {
     /// <summary>
-    /// Records a change event
+    ///     Records a change event
     /// </summary>
     public class Change
     {
         /// <summary>
-        /// The Logger
+        ///     The Logger
         /// </summary>
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Indicates whether the change has already been applied
+        ///     Indicates whether the change has already been applied
         /// </summary>
         public bool Applied { get; private set; }
 
         /// <summary>
-        /// The variable affected by the change
+        ///     The variable affected by the change
         /// </summary>
         public IVariable Variable { get; private set; }
 
         /// <summary>
-        /// The value the variable had before the change
+        ///     The value the variable had before the change
         /// </summary>
         public IValue PreviousValue { get; private set; }
 
         /// <summary>
-        /// The new value affected by the change
+        ///     The new value affected by the change
         /// </summary>
         public IValue NewValue { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="variable"></param>
         /// <param name="previousValue"></param>
@@ -68,7 +68,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Applies the change if it has not yet been applied
+        ///     Applies the change if it has not yet been applied
         /// </summary>
         /// <param name="runner"></param>
         public void Apply(Runner runner)
@@ -85,7 +85,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Rolls back the change
+        ///     Rolls back the change
         /// </summary>
         public void RollBack()
         {
@@ -97,7 +97,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Changes the value of the corresponding variable
+        ///     Changes the value of the corresponding variable
         /// </summary>
         /// <param name="value"></param>
         private void ChangeVariableValue(IValue value)
@@ -112,7 +112,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates whether this change impacts the selected variable
+        ///     Indicates whether this change impacts the selected variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
@@ -141,17 +141,17 @@ namespace DataDictionary.Rules
     }
 
     /// <summary>
-    /// Holds a list of changes
+    ///     Holds a list of changes
     /// </summary>
     public class ChangeList
     {
         /// <summary>
-        /// The changes stored in this change list
+        ///     The changes stored in this change list
         /// </summary>
         public List<Change> Changes { get; set; }
 
         /// <summary>
-        /// Consdtructor
+        ///     Consdtructor
         /// </summary>
         public ChangeList()
         {
@@ -159,7 +159,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Adds a change to the list of changes
+        ///     Adds a change to the list of changes
         /// </summary>
         /// <param name="change">The change to add</param>
         /// <param name="apply">Indicates whether the change should be applied immediately</param>
@@ -179,7 +179,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Ensures that all changes have a correct value
+        ///     Ensures that all changes have a correct value
         /// </summary>
         /// <param name="element"></param>
         public void CheckChanges(ModelElement element)
@@ -194,7 +194,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Apply all changes
+        ///     Apply all changes
         /// </summary>
         /// <param name="runner"></param>
         public void Apply(Runner runner)
@@ -206,7 +206,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Roll back all changes in the list
+        ///     Roll back all changes in the list
         /// </summary>
         public void RollBack()
         {
@@ -217,7 +217,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates that the change list modifies the variable provided as parameter
+        ///     Indicates that the change list modifies the variable provided as parameter
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>

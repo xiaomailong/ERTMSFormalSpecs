@@ -29,22 +29,22 @@ namespace DataDictionary.Functions
         public class Segment : IComparable<Segment>
         {
             /// <summary>
-            /// The start of the segment
+            ///     The start of the segment
             /// </summary>
             public double Start { get; set; }
 
             /// <summary>
-            /// The end of the segment
+            ///     The end of the segment
             /// </summary>
             public double End { get; set; }
 
             /// <summary>
-            /// The graph associated to this segment
+            ///     The graph associated to this segment
             /// </summary>
             public Graph Graph { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="start">The start of the segment</param>
             /// <param name="end">The end of the segment</param>
@@ -57,7 +57,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="other">The other segment to copy</param>
             public Segment(Segment other)
@@ -68,7 +68,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Indicates whether the value of x belongs to the segment
+            ///     Indicates whether the value of x belongs to the segment
             /// </summary>
             /// <param name="x"></param>
             /// <returns></returns>
@@ -106,7 +106,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Indicates whether the segment is empty
+            ///     Indicates whether the segment is empty
             /// </summary>
             /// <returns></returns>
             public bool Empty()
@@ -115,7 +115,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// The operation to perform on the graphs
+            ///     The operation to perform on the graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -123,8 +123,8 @@ namespace DataDictionary.Functions
             public delegate Graph Op(Graph graph1, Graph graph2);
 
             /// <summary>
-            /// Selects and delegates an operation for the coefficients provided. 
-            /// Does not apply the operation on null coefficients
+            ///     Selects and delegates an operation for the coefficients provided.
+            ///     Does not apply the operation on null coefficients
             /// </summary>
             /// <param name="coef1">The first coefficients</param>
             /// <param name="coef2">The second coefficients</param>
@@ -154,7 +154,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Adds graphs
+            ///     Adds graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -165,7 +165,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Adds graphs
+            ///     Adds graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -176,7 +176,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Substract graphs
+            ///     Substract graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -187,7 +187,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Substract graphs
+            ///     Substract graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -198,7 +198,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Multiplies graphs
+            ///     Multiplies graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -209,7 +209,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Substract graphs
+            ///     Substract graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -220,7 +220,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Divides graphs
+            ///     Divides graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -231,7 +231,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Divides graphs
+            ///     Divides graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -242,7 +242,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Merges two graphs
+            ///     Merges two graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -255,7 +255,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Merges two graphs
+            ///     Merges two graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -266,7 +266,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Redeuces the size of this segment according to the acceptable boudaries provided
+            ///     Redeuces the size of this segment according to the acceptable boudaries provided
             /// </summary>
             /// <param name="boundaries"></param>
             /// <returns></returns>
@@ -291,7 +291,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Combines two graphs
+            ///     Combines two graphs
             /// </summary>
             /// <param name="graph1"></param>
             /// <param name="graph2"></param>
@@ -309,7 +309,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Combines two graphs
+            ///     Combines two graphs
             /// </summary>
             /// <param name="graph1"></param>
             /// <param name="graph2"></param>
@@ -320,7 +320,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Provides the minimum of two graphs
+            ///     Provides the minimum of two graphs
             /// </summary>
             /// <param name="graph1"></param>
             /// <param name="graph2"></param>
@@ -331,7 +331,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Adds graphs
+            ///     Adds graphs
             /// </summary>
             /// <param name="coef1"></param>
             /// <param name="coef2"></param>
@@ -360,7 +360,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Negates the values of the graph in this segment
+            ///     Negates the values of the graph in this segment
             /// </summary>
             public void Negate()
             {
@@ -369,22 +369,22 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The segments associated to this graph
+        ///     The segments associated to this graph
         /// </summary>
         public List<Segment> Segments { get; private set; }
 
         /// <summary>
-        /// The X axis for this surface 
+        ///     The X axis for this surface
         /// </summary>
         public Parameter XParameter { get; set; }
 
         /// <summary>
-        /// The Y axis for this surface 
+        ///     The Y axis for this surface
         /// </summary>
         public Parameter YParameter { get; set; }
 
         /// <summary>
-        /// Provides the function associated to this graph
+        ///     Provides the function associated to this graph
         /// </summary>
         private Function function;
 
@@ -416,7 +416,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="Xaxis">The X axis for this surface</param>
         /// <param name="Yaxis">The Y axis for this surface</param>
@@ -429,7 +429,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Adds a new segment in the list of segments of this surface
+        ///     Adds a new segment in the list of segments of this surface
         /// </summary>
         /// <param name="segment"></param>
         public void AddSegment(Segment segment)
@@ -467,10 +467,11 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Creates the surface for the Acceleration based on speed and distance (A(V,d))
+        ///     Creates the surface for the Acceleration based on speed and distance (A(V,d))
         /// </summary>
         /// <returns></returns>
-        public AccelerationSpeedDistanceSurface createAccelerationSpeedDistanceSurface(double expectedEndX, double expectedEndY)
+        public AccelerationSpeedDistanceSurface createAccelerationSpeedDistanceSurface(double expectedEndX,
+            double expectedEndY)
         {
             AccelerationSpeedDistanceSurface retVal = new AccelerationSpeedDistanceSurface();
 
@@ -503,7 +504,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Merges a surface within this one, using the X axis as the merge orientation
+        ///     Merges a surface within this one, using the X axis as the merge orientation
         /// </summary>
         /// <param name="otherSurface"></param>
         public void MergeX(Surface otherSurface)
@@ -570,7 +571,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Merges tow surfaces, using the Y axis as the merge orientation
+        ///     Merges tow surfaces, using the Y axis as the merge orientation
         /// </summary>
         /// <param name="otherSurface"></param>
         public static Surface MergeY(Surface first, Surface second)
@@ -579,7 +580,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Creates a surface for an Ivalue provided
+        ///     Creates a surface for an Ivalue provided
         /// </summary>
         /// <param name="xParam"></param>
         /// <param name="yParam"></param>
@@ -620,11 +621,11 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Performs an operation based on two surfaces.
+        ///     Performs an operation based on two surfaces.
         /// </summary>
         /// <param name="first">the first surface</param>
         /// <param name="second">the second surface</param>
-        /// <param name="operation"the operation to perform on these graphs
+        /// <param name="operation" the operation to perform on these graphs
         /// <returns>the new graph</returns>
         private static Surface CombineTwoSurfaces(Surface first, Surface second, Segment.Op operation)
         {
@@ -739,7 +740,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Merges duplicate segments of a surface
+        ///     Merges duplicate segments of a surface
         /// </summary>
         private void MergeDuplicates()
         {
@@ -759,7 +760,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Adds two surfaces
+        ///     Adds two surfaces
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -769,7 +770,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Substract two surfaces
+        ///     Substract two surfaces
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -779,7 +780,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Multiplies two surfaces
+        ///     Multiplies two surfaces
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -789,7 +790,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Divides two surfaces
+        ///     Divides two surfaces
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -799,7 +800,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Reduces the graph to the boundaries provided as parameter
+        ///     Reduces the graph to the boundaries provided as parameter
         /// </summary>
         /// <param name="boundaries"></param>
         /// <returns>The reduced graph</returns>
@@ -822,8 +823,8 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Combines two surfaces by replacing in this the value of second 
-        /// on each segment of this == def
+        ///     Combines two surfaces by replacing in this the value of second
+        ///     on each segment of this == def
         /// </summary>
         /// <param name="second"></param>
         /// <param name="def"></param>
@@ -834,7 +835,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Selects the minimum surface
+        ///     Selects the minimum surface
         /// </summary>
         /// <param name="second"></param>
         /// <param name="def"></param>
@@ -845,7 +846,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the last X value where there is some interest to show the graph
+        ///     Provides the last X value where there is some interest to show the graph
         /// </summary>
         /// <returns></returns>
         public double ExpectedEndX()
@@ -890,7 +891,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the value associated to the coordinates given
+        ///     Provides the value associated to the coordinates given
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
@@ -912,7 +913,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Creates a surface for a single constant value
+        ///     Creates a surface for a single constant value
         /// </summary>
         /// <param name="retVal"></param>
         /// <param name="value"></param>
@@ -928,7 +929,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Creates a surface for the value provided expression
+        ///     Creates a surface for the value provided expression
         /// </summary>
         /// <param name="iValue"></param>
         /// <param name="xParam"></param>
@@ -1005,7 +1006,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Negates the surface contents
+        ///     Negates the surface contents
         /// </summary>
         /// <returns></returns>
         public void Negate()

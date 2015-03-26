@@ -19,12 +19,12 @@ using Utils;
 namespace DataDictionary.Interpreter.Filter
 {
     /// <summary>
-    /// Predicates which indicates that the namable can be an actual parameter
+    ///     Predicates which indicates that the namable can be an actual parameter
     /// </summary>
     public class IsActualParameter : IsVariableOrValue
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected IsActualParameter()
             : base()
@@ -32,7 +32,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
+        ///     Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -44,7 +44,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Singleton
+        ///     Singleton
         /// </summary>
         public new static IsActualParameter INSTANCE = new IsActualParameter();
     }

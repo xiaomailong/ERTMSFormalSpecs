@@ -29,8 +29,8 @@ using Utils;
 namespace DataDictionary.Functions
 {
     /// <summary>
-    /// The graph of a function is the complete representation of the function based on its parameters. 
-    /// In EVC, the graph of a function is represented as non interrupted sequence of polynoms of the third degree
+    ///     The graph of a function is the complete representation of the function based on its parameters.
+    ///     In EVC, the graph of a function is represented as non interrupted sequence of polynoms of the third degree
     /// </summary>
     public class Graph
     {
@@ -40,27 +40,27 @@ namespace DataDictionary.Functions
         public class Segment : IComparable<Segment>
         {
             /// <summary>
-            /// This class represents the expression val(x) = sqrt ( v0² + 2a ( d - d0 ) )
+            ///     This class represents the expression val(x) = sqrt ( v0² + 2a ( d - d0 ) )
             /// </summary>
             public class Curve
             {
                 /// <summary>
-                /// Acceleration
+                ///     Acceleration
                 /// </summary>
                 public double a { get; set; }
 
                 /// <summary>
-                /// Initial speed
+                ///     Initial speed
                 /// </summary>
                 public double v0 { get; set; }
 
                 /// <summary>
-                /// Initial distance
+                ///     Initial distance
                 /// </summary>
                 public double d0 { get; set; }
 
                 /// <summary>
-                /// Constructor
+                ///     Constructor
                 /// </summary>
                 public Curve()
                 {
@@ -70,7 +70,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Constructor
+                ///     Constructor
                 /// </summary>
                 /// <param name="a">Acceleration</param>
                 /// <param name="v0">Initial speed</param>
@@ -83,7 +83,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Computes the expression value
+                ///     Computes the expression value
                 /// </summary>
                 /// <param name="d">Distance</param>
                 /// <returns></returns>
@@ -102,8 +102,8 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Computes the value x corresponding to a given f(x)
-                /// We apply the formula d = ( (v*v) - (V0*V0) ) / 2*A
+                ///     Computes the value x corresponding to a given f(x)
+                ///     We apply the formula d = ( (v*v) - (V0*V0) ) / 2*A
                 /// </summary>
                 /// <param name="Y">Speed</param>
                 /// <returns></returns>
@@ -118,7 +118,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Converts speed expressed in km/h to m/s
+                ///     Converts speed expressed in km/h to m/s
                 /// </summary>
                 /// <param name="val"></param>
                 /// <returns></returns>
@@ -128,7 +128,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Converts speed expressed in m/s to km/h
+                ///     Converts speed expressed in m/s to km/h
                 /// </summary>
                 /// <param name="val"></param>
                 /// <returns></returns>
@@ -138,7 +138,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Indicates if the current curve equals the other curve
+                ///     Indicates if the current curve equals the other curve
                 /// </summary>
                 /// <param name="other"></param>
                 /// <returns></returns>
@@ -157,7 +157,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Indicates if the curve is flat
+                ///     Indicates if the curve is flat
                 /// </summary>
                 /// <param name="c">A curve</param>
                 /// <returns></returns>
@@ -167,7 +167,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// The operation to perform on the curves
+                ///     The operation to perform on the curves
                 /// </summary>
                 /// <param name="c1">The first curve</param>
                 /// <param name="c2">The second curve</param>
@@ -175,8 +175,8 @@ namespace DataDictionary.Functions
                 public delegate Curve Op(Curve c1, Curve c2);
 
                 /// <summary>
-                /// Selects and delegates an operation for the curves provided. 
-                /// Does not apply the operation on null curves
+                ///     Selects and delegates an operation for the curves provided.
+                ///     Does not apply the operation on null curves
                 /// </summary>
                 /// <param name="c1">The first curve</param>
                 /// <param name="c2">The second curve</param>
@@ -206,7 +206,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Add curves
+                ///     Add curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -226,7 +226,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Adds curves
+                ///     Adds curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -237,7 +237,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Substract curves
+                ///     Substract curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -259,7 +259,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Substracts curves
+                ///     Substracts curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -270,7 +270,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Multiplies flat curves
+                ///     Multiplies flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -292,7 +292,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Multiplies flat curves
+                ///     Multiplies flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -303,7 +303,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Divides flat curves
+                ///     Divides flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -325,7 +325,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Divides flat curves
+                ///     Divides flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -336,7 +336,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Provides the minimum of two flat curves
+                ///     Provides the minimum of two flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -358,7 +358,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Provides the minimum of two flat curves
+                ///     Provides the minimum of two flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -369,7 +369,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Provides the maximum of two flat curves
+                ///     Provides the maximum of two flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -391,7 +391,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Provides the maximum of two flat curves
+                ///     Provides the maximum of two flat curves
                 /// </summary>
                 /// <param name="c1">First curve</param>
                 /// <param name="c2">Second curve</param>
@@ -402,7 +402,7 @@ namespace DataDictionary.Functions
                 }
 
                 /// <summary>
-                /// Negates the values of the curve
+                ///     Negates the values of the curve
                 /// </summary>
                 public void Negate()
                 {
@@ -416,22 +416,22 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// The start of the segment
+            ///     The start of the segment
             /// </summary>
             public double Start { get; set; }
 
             /// <summary>
-            /// The end of the segment
+            ///     The end of the segment
             /// </summary>
             public double End { get; set; }
 
             /// <summary>
-            /// The expression associated to the segment
+            ///     The expression associated to the segment
             /// </summary>
             public Curve Expression { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="start">The start of the segment</param>
             /// <param name="end">The end of the segment</param>
@@ -446,7 +446,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="start">Copy of the other segment</param>
             public Segment(Segment other)
@@ -457,7 +457,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Indicates whether the value of x belongs to the segment
+            ///     Indicates whether the value of x belongs to the segment
             /// </summary>
             /// <param name="x"></param>
             /// <returns></returns>
@@ -467,7 +467,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Computes the value associated to this segment for the value of d
+            ///     Computes the value associated to this segment for the value of d
             /// </summary>
             /// <param name="d">Distance</param>
             /// <returns></returns>
@@ -484,7 +484,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Computes the value of x corresponding to a given f(x)
+            ///     Computes the value of x corresponding to a given f(x)
             /// </summary>
             /// <param name="Y">Speed</param>
             /// <returns></returns>
@@ -503,7 +503,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Compares the current segment to an other segment
+            ///     Compares the current segment to an other segment
             /// </summary>
             /// <param name="other"></param>
             /// <returns></returns>
@@ -536,7 +536,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Indicates whether two segments are equal
+            ///     Indicates whether two segments are equal
             /// </summary>
             /// <param name="other"></param>
             /// <returns></returns>
@@ -550,7 +550,7 @@ namespace DataDictionary.Functions
             }
 
             /// <summary>
-            /// Redeuces the size of this segment according to the acceptable boudaries provided
+            ///     Redeuces the size of this segment according to the acceptable boudaries provided
             /// </summary>
             /// <param name="boundaries"></param>
             /// <returns></returns>
@@ -602,12 +602,12 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The segments associated to this graph
+        ///     The segments associated to this graph
         /// </summary>
         public List<Segment> Segments { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Graph()
         {
@@ -615,7 +615,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Adds a new segment in the ordered list of segments
+        ///     Adds a new segment in the ordered list of segments
         /// </summary>
         /// <param name="segment">The segment to add</param>
         public void addSegment(Segment segment)
@@ -668,7 +668,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Computes the value of the function for a given x value
+        ///     Computes the value of the function for a given x value
         /// </summary>
         /// <param name="x"></param>
         /// <returns></returns>
@@ -689,7 +689,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the last X value where there is some interest to show the graph
+        ///     Provides the last X value where there is some interest to show the graph
         /// </summary>
         /// <returns></returns>
         public double ExpectedEndX()
@@ -722,7 +722,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the flat speed / distance curve for this graph
+        ///     Provides the flat speed / distance curve for this graph
         /// </summary>
         /// <returns></returns>
         public FlatSpeedDistanceCurve FlatSpeedDistanceCurve()
@@ -731,7 +731,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the flat speed / distance curve for this graph
+        ///     Provides the flat speed / distance curve for this graph
         /// </summary>
         /// <param name="expectedEnd">the last X value</param>
         /// <returns></returns>
@@ -759,7 +759,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the quadratic speed / distance curve for this graph
+        ///     Provides the quadratic speed / distance curve for this graph
         /// </summary>
         /// <returns></returns>
         public QuadraticSpeedDistanceCurve QuadraticSpeedDistanceCurve()
@@ -768,7 +768,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the quadratic speed / distance curve for this graph
+        ///     Provides the quadratic speed / distance curve for this graph
         /// </summary>
         /// <param name="expectedEnd">the last X value</param>
         /// <returns></returns>
@@ -798,7 +798,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the flat acceleration / speed curve for this graph
+        ///     Provides the flat acceleration / speed curve for this graph
         /// </summary>
         /// <param name="expectedEnd">The expected end for the curve</param>
         /// <returns></returns>
@@ -821,7 +821,8 @@ namespace DataDictionary.Functions
                     curve.Add(
                         new SiSpeed(segment.Start, SiSpeed_SubUnits.KiloMeter_per_Hour),
                         new SiSpeed(end, SiSpeed_SubUnits.KiloMeter_per_Hour),
-                        new SiAcceleration(-segment.Expression.v0, SiAcceleration_SubUnits.Meter_per_SecondSquare)); // decelerations are negative
+                        new SiAcceleration(-segment.Expression.v0, SiAcceleration_SubUnits.Meter_per_SecondSquare));
+                        // decelerations are negative
                 }
             }
 
@@ -829,7 +830,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the function associated to this graph
+        ///     Provides the function associated to this graph
         /// </summary>
         private Function function;
 
@@ -857,7 +858,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the graph associated to the namable
+        ///     Provides the graph associated to the namable
         /// </summary>
         /// <param name="namable"></param>
         /// <param name="parameter"></param>
@@ -886,7 +887,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Creates a graph for a single constant value
+        ///     Creates a graph for a single constant value
         /// </summary>
         /// <param name="retVal"></param>
         /// <param name="value"></param>
@@ -903,7 +904,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Reduces the graph to the boundaries provided as parameter
+        ///     Reduces the graph to the boundaries provided as parameter
         /// </summary>
         /// <param name="boundaries"></param>
         /// <returns>The reduced graph</returns>
@@ -923,7 +924,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Merges a graph within this one
+        ///     Merges a graph within this one
         /// </summary>
         /// <param name="subGraph"></param>
         public void Merge(Graph subGraph)
@@ -987,7 +988,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Indicates whether this graph corresponds to a flat curve or to a quadratic curve
+        ///     Indicates whether this graph corresponds to a flat curve or to a quadratic curve
         /// </summary>
         /// <returns></returns>
         public bool IsFlat()
@@ -1007,7 +1008,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Performs an operation based on two graphs
+        ///     Performs an operation based on two graphs
         /// </summary>
         /// <param name="first">the first graph</param>
         /// <param name="second">the second graph</param>
@@ -1073,7 +1074,7 @@ namespace DataDictionary.Functions
 
 
         /// <summary>
-        /// Merges duplicate segments of a graph
+        ///     Merges duplicate segments of a graph
         /// </summary>
         private void MergeDuplicates()
         {
@@ -1094,7 +1095,7 @@ namespace DataDictionary.Functions
 
 
         /// <summary>
-        /// Adds a graph to this graph
+        ///     Adds a graph to this graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns>the new graph</returns>
@@ -1104,7 +1105,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Substract a graph from this graph
+        ///     Substract a graph from this graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns>the new graph</returns>
@@ -1114,7 +1115,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Multiply this graph values of another graph
+        ///     Multiply this graph values of another graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns>the new graph</returns>
@@ -1124,7 +1125,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Divides this graph values by values of another graph
+        ///     Divides this graph values by values of another graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns>the new graph</returns>
@@ -1134,7 +1135,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the graph of the minimal value between this graph and another graph
+        ///     Provides the graph of the minimal value between this graph and another graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -1144,7 +1145,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the graph of the maximum value between this graph and another graph
+        ///     Provides the graph of the maximum value between this graph and another graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -1154,7 +1155,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Negates a graph
+        ///     Negates a graph
         /// </summary>
         public void Negate()
         {
@@ -1165,7 +1166,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Crops the graph by removing the segments which are before the given position.
+        ///     Crops the graph by removing the segments which are before the given position.
         /// </summary>
         /// <param name="position"></param>
         /// <returns></returns>
@@ -1188,7 +1189,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// In a flat graph, replaces one value with another one
+        ///     In a flat graph, replaces one value with another one
         /// </summary>
         /// <param name="value">The value to find</param>
         /// <param name="newValue">The value which replaces the value found</param>
@@ -1215,7 +1216,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the segments of the graph which satisfy the operator with the value provided 
+        ///     Provides the segments of the graph which satisfy the operator with the value provided
         /// </summary>
         /// <param name="Operator">The operator to apply</param>
         /// <param name="value">The value to compare with the values of the graph</param>
@@ -1271,7 +1272,8 @@ namespace DataDictionary.Functions
                 }
                 else
                 {
-                    throw new Exception("Non flat segments cannot be checked for " + Operator + " against " + value.ToString());
+                    throw new Exception("Non flat segments cannot be checked for " + Operator + " against " +
+                                        value.ToString());
                 }
             }
 
@@ -1279,7 +1281,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Creates the graph of the function on which the increment function has been added
+        ///     Creates the graph of the function on which the increment function has been added
         /// </summary>
         /// <param name="context">the context used to evaluate the function</param>
         /// <param name="increment">The increment function do add</param>
@@ -1307,7 +1309,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Indicates if the graph is equal to another graph
+        ///     Indicates if the graph is equal to another graph
         /// </summary>
         /// <param name="aGraph"></param>
         /// <returns></returns>
@@ -1330,7 +1332,7 @@ namespace DataDictionary.Functions
         private const double EPSILON = 0.0000001;
 
         /// <summary>
-        /// Performs double equality, with a margin of epsilon
+        ///     Performs double equality, with a margin of epsilon
         /// </summary>
         /// <param name="d1"></param>
         /// <param name="d2"></param>
@@ -1343,9 +1345,9 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the first X coordinate where the Y corresponds to the parameter.
-        /// In other words, we need to find the first x for which f(x) = y where 
-        ///   f(x) = sqtr ( v0^2 - 2a ( d0 - x ) )
+        ///     Provides the first X coordinate where the Y corresponds to the parameter.
+        ///     In other words, we need to find the first x for which f(x) = y where
+        ///     f(x) = sqtr ( v0^2 - 2a ( d0 - x ) )
         /// </summary>
         /// <param name="Y">The y for which the x must be found</param>
         /// <returns>double.MaxValue if no solution is found</returns>
@@ -1394,7 +1396,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Indicates if this graph is equal to the other graph
+        ///     Indicates if this graph is equal to the other graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -1415,7 +1417,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Extends the graph to a graph where the ranges are expressed on the X axis
+        ///     Extends the graph to a graph where the ranges are expressed on the X axis
         /// </summary>
         /// <returns></returns>
         public Surface ToSurfaceX()
@@ -1435,7 +1437,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Extends the graph to a graph where the ranges are expressed on the Y axis
+        ///     Extends the graph to a graph where the ranges are expressed on the Y axis
         /// </summary>
         /// <returns></returns>
         public Surface ToSurfaceY()

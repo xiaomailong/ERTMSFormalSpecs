@@ -28,7 +28,7 @@ namespace Utils
         };
 
         /// <summary>
-        /// The element log level
+        ///     The element log level
         /// </summary>
         private LevelEnum level = LevelEnum.Error;
 
@@ -39,7 +39,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// The log message
+        ///     The log message
         /// </summary>
         private string log;
 
@@ -50,7 +50,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Indicates if this log concerns a failed expectation (in that case, this is not a model error)
+        ///     Indicates if this log concerns a failed expectation (in that case, this is not a model error)
         /// </summary>
         private bool failedExpectation;
 
@@ -61,7 +61,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="message"></param>
         public ElementLog(LevelEnum level, string message)
@@ -72,7 +72,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Comparator
+        ///     Comparator
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>

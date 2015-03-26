@@ -21,7 +21,7 @@ namespace GUI.Shortcuts
     public partial class ShortcutTreeView : TypedTreeView<EFSSystem>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ShortcutTreeView()
             : base()
@@ -30,7 +30,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Builds the tree model according to the root node
+        ///     Builds the tree model according to the root node
         /// </summary>
         protected override void BuildModel()
         {

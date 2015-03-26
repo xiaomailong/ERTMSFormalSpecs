@@ -26,14 +26,14 @@ namespace GUI.SpecificationView
     public class SpecificationsTreeNode : ModelElementTreeNode<Dictionary>
     {
         /// <summary>
-        /// The editor
+        ///     The editor
         /// </summary>
         private class SpecificationEditor : NamedEditor
         {
         }
 
         /// <summary>
-        /// Instanciates the editor
+        ///     Instanciates the editor
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -42,7 +42,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public SpecificationsTreeNode(Dictionary item, bool buildSubNodes)
@@ -51,7 +51,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -66,7 +66,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Adds a new specification to this dictionary
+        ///     Adds a new specification to this dictionary
         /// </summary>
         /// <param name="specification"></param>
         public void AddSpecification(Specification specification)
@@ -84,7 +84,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -97,7 +97,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Update counts according to the selected chapter
+        ///     Update counts according to the selected chapter
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)

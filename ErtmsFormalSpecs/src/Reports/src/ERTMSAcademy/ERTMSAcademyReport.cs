@@ -21,7 +21,7 @@ namespace Reports.ERTMSAcademy
     public class ERTMSAcademyReport : ReportTools
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="document"></param>
         public ERTMSAcademyReport(Document document)

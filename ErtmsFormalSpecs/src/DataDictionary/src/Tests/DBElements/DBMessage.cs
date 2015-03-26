@@ -22,7 +22,7 @@ namespace DataDictionary.Tests.DBElements
     public class DBMessage : Generated.DBMessage
     {
         /// <summary>
-        /// Order of the message
+        ///     Order of the message
         /// </summary>
         public int MessageOrder
         {
@@ -31,7 +31,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Order of the message
+        ///     Order of the message
         /// </summary>
         public acceptor.DBMessageType MessageType
         {
@@ -40,7 +40,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Fields of the message
+        ///     Fields of the message
         /// </summary>
         public ArrayList Fields
         {
@@ -48,7 +48,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Packets of the message
+        ///     Packets of the message
         /// </summary>
         public ArrayList Packets
         {
@@ -56,7 +56,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Adds a new field to message fields
+        ///     Adds a new field to message fields
         /// </summary>
         /// <param name="aField">A new field</param>
         public void AddField(DBField aField)
@@ -65,7 +65,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Adds a new packet to message packets
+        ///     Adds a new packet to message packets
         /// </summary>
         /// <param name="aField">A new packet</param>
         public void AddPacket(DBPacket aPacket)
@@ -74,7 +74,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Merges two DBmessages
+        ///     Merges two DBmessages
         /// </summary>
         /// <param name="other"></param>
         public void Merge(DBMessage other)

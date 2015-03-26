@@ -25,27 +25,27 @@ namespace GUI.LongOperations
     public class ImportTestDataBaseOperation : BaseLongOperation
     {
         /// <summary>
-        /// The name of the frame for the subset 76
+        ///     The name of the frame for the subset 76
         /// </summary>
         private static string SUBSET_076 = "Subset-076";
 
         /// <summary>
-        /// The password requireed to access the database
+        ///     The password requireed to access the database
         /// </summary>
         private static string DB_PASSWORD = "papagayo";
 
         /// <summary>
-        /// The dictionary in which the database should be imported
+        ///     The dictionary in which the database should be imported
         /// </summary>
         private Dictionary Dictionary;
 
         /// <summary>
-        /// The name of the database to import
+        ///     The name of the database to import
         /// </summary>
         private string FileName { get; set; }
 
         /// <summary>
-        /// Should we import a file, or a directory containing a set of files?
+        ///     Should we import a file, or a directory containing a set of files?
         /// </summary>
         public enum Mode
         {
@@ -54,12 +54,12 @@ namespace GUI.LongOperations
         };
 
         /// <summary>
-        /// The import mode
+        ///     The import mode
         /// </summary>
         private Mode ImportMode { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="fileName"></param>
         /// <param name="dictionary"></param>
@@ -71,7 +71,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        ///     Generates the file in the background thread
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()

@@ -26,7 +26,7 @@ namespace GUI.FunctionalView
     public partial class FunctionalBlockControl : BoxControl<NameSpace, AccessMode>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public FunctionalBlockControl()
             : base()
@@ -37,7 +37,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public FunctionalBlockControl(IContainer container)
@@ -49,7 +49,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Handles a double click event on the control
+        ///     Handles a double click event on the control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

@@ -21,7 +21,7 @@ namespace DataDictionary.Specification
     public class MatchRange : match_range
     {
         /// <summary>
-        /// The MatchRange content
+        ///     The MatchRange content
         /// </summary>
         public string GetText(int depth)
         {

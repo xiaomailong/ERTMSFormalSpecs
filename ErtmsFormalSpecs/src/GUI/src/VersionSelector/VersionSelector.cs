@@ -11,17 +11,17 @@ namespace GUI.VersionSelector
     public partial class VersionSelector : Form
     {
         /// <summary>
-        /// The dictionary for which this selection is built
+        ///     The dictionary for which this selection is built
         /// </summary>
         public Dictionary Dictionary { get; private set; }
 
         /// <summary>
-        /// The selected commit
+        ///     The selected commit
         /// </summary>
         public Commit Selected { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public VersionSelector()
         {
@@ -29,7 +29,7 @@ namespace GUI.VersionSelector
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public VersionSelector(Dictionary dictionary)
@@ -42,8 +42,8 @@ namespace GUI.VersionSelector
         }
 
         /// <summary>
-        /// When double clicking on an element of the version selector, 
-        /// select the corresponding Commit and close the window to continue work
+        ///     When double clicking on an element of the version selector,
+        ///     select the corresponding Commit and close the window to continue work
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -53,7 +53,9 @@ namespace GUI.VersionSelector
 
             if (dataGridView.SelectedCells.Count == 1)
             {
-                Selected = ((List<DisplayObject>) dataGridView.DataSource)[dataGridView.SelectedCells[0].OwningRow.Index].Commit;
+                Selected =
+                    ((List<DisplayObject>) dataGridView.DataSource)[dataGridView.SelectedCells[0].OwningRow.Index]
+                        .Commit;
             }
 
             if (Selected != null)
@@ -65,7 +67,7 @@ namespace GUI.VersionSelector
         private class DisplayObject
         {
             /// <summary>
-            /// The date of the commit
+            ///     The date of the commit
             /// </summary>
             public DateTimeOffset Date
             {
@@ -73,7 +75,7 @@ namespace GUI.VersionSelector
             }
 
             /// <summary>
-            /// The author of the commit
+            ///     The author of the commit
             /// </summary>
             public String Author
             {
@@ -81,7 +83,7 @@ namespace GUI.VersionSelector
             }
 
             /// <summary>
-            /// The message of the commit
+            ///     The message of the commit
             /// </summary>
             public String Message
             {
@@ -89,12 +91,12 @@ namespace GUI.VersionSelector
             }
 
             /// <summary>
-            /// The commit to be displayed
+            ///     The commit to be displayed
             /// </summary>
             public Commit Commit { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="commit"></param>
             public DisplayObject(Commit commit)
@@ -104,7 +106,7 @@ namespace GUI.VersionSelector
         }
 
         /// <summary>
-        /// Rebuilds the model according to the dictionary to be considered
+        ///     Rebuilds the model according to the dictionary to be considered
         /// </summary>
         public void RefreshModel()
         {
@@ -148,7 +150,8 @@ namespace GUI.VersionSelector
                 }
                 else
                 {
-                    MessageBox.Show("Document does not belong to a GIT repository", "GIT information not found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Document does not belong to a GIT repository", "GIT information not found",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
@@ -156,7 +159,7 @@ namespace GUI.VersionSelector
         }
 
         /// <summary>
-        /// Provides the repository related to the VersionSelector directory
+        ///     Provides the repository related to the VersionSelector directory
         /// </summary>
         /// <returns></returns>
         public Repository Repository

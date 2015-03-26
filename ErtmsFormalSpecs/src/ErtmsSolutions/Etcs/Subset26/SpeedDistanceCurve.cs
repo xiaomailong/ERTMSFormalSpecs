@@ -43,7 +43,8 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
         /**@brief Returns the segment wich intersects the arc a_quadratic_segment.    */
         /******************************************************************************/
 
-        public ConstantCurveSegment<SiDistance, SiSpeed> Intersect(SiDistance d_max, QuadraticCurveSegment a_quadratic_segment)
+        public ConstantCurveSegment<SiDistance, SiSpeed> Intersect(SiDistance d_max,
+            QuadraticCurveSegment a_quadratic_segment)
         {
             ConstantCurveSegment<SiDistance, SiSpeed> matching_flat_segment = null;
 

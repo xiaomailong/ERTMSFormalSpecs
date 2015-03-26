@@ -27,12 +27,12 @@ namespace GUI.TestRunnerView
     public class ActionsTreeNode : ModelElementTreeNode<SubStep>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -41,7 +41,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ActionsTreeNode(SubStep item, bool buildSubNodes)
@@ -50,7 +50,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -65,7 +65,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -74,7 +74,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Adds the given action to the list of actions
+        ///     Adds the given action to the list of actions
         /// </summary>
         /// <param name="action"></param>
         public void addAction(Action action)
@@ -94,7 +94,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -107,7 +107,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles the drop event
+        ///     Handles the drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -122,7 +122,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a selection change event
+        ///     Handles a selection change event
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)

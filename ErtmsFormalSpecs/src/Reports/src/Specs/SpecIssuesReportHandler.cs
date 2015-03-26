@@ -22,7 +22,7 @@ namespace Reports.Specs
     public class SpecIssuesReportHandler : ReportHandler
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public SpecIssuesReportHandler(Dictionary dictionary)
@@ -36,7 +36,7 @@ namespace Reports.Specs
         }
 
         /// <summary>
-        /// Creates a report on specs issues, according to user's choices
+        ///     Creates a report on specs issues, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
         public override Document BuildDocument()

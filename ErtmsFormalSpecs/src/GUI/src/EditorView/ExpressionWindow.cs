@@ -17,7 +17,7 @@
 namespace GUI.EditorView
 {
     /// <summary>
-    /// An expression editor window
+    ///     An expression editor window
     /// </summary>
     public class ExpressionWindow : Window
     {

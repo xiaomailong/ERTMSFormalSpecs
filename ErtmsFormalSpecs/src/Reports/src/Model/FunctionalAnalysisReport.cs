@@ -33,7 +33,7 @@ namespace Reports.Model
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="document"></param>
         public FunctionalAnalysisReport(Document document)
@@ -42,7 +42,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for a namespace 
+        ///     Creates a section for a namespace
         /// </summary>
         /// <param name="nameSpace">The namespace to consider</param>
         /// <param name="accesses">The accesses performed in the system</param>
@@ -51,9 +51,12 @@ namespace Reports.Model
         {
             AddSubParagraph("Namespace " + nameSpace.FullName);
 
-            Dictionary<Procedure, List<ProcedureOrFunctionCall>> procedureCalls = new Dictionary<Procedure, List<ProcedureOrFunctionCall>>();
-            Dictionary<Function, List<ProcedureOrFunctionCall>> functionCalls = new Dictionary<Function, List<ProcedureOrFunctionCall>>();
-            Dictionary<IVariable, List<AccessToVariable>> accessesToVariables = new Dictionary<IVariable, List<AccessToVariable>>();
+            Dictionary<Procedure, List<ProcedureOrFunctionCall>> procedureCalls =
+                new Dictionary<Procedure, List<ProcedureOrFunctionCall>>();
+            Dictionary<Function, List<ProcedureOrFunctionCall>> functionCalls =
+                new Dictionary<Function, List<ProcedureOrFunctionCall>>();
+            Dictionary<IVariable, List<AccessToVariable>> accessesToVariables =
+                new Dictionary<IVariable, List<AccessToVariable>>();
 
             foreach (AccessMode access in accesses)
             {
@@ -153,7 +156,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Provides the description of a procedure or a function
+        ///     Provides the description of a procedure or a function
         /// </summary>
         /// <param name="callable">The callable to describe</param>
         /// <returns></returns>
@@ -193,7 +196,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates the procedure usage table of a list of access modes
+        ///     Creates the procedure usage table of a list of access modes
         /// </summary>
         /// <param name="usages"></param>
         private void CreateProcedureOrFunctionUsage(List<ProcedureOrFunctionCall> usages)
@@ -211,7 +214,7 @@ namespace Reports.Model
 
 
         /// <summary>
-        /// Provides the description of a variable
+        ///     Provides the description of a variable
         /// </summary>
         /// <param name="variable">The variable to describe</param>
         /// <returns></returns>
@@ -240,7 +243,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates the variable usage table of a list of access modes
+        ///     Creates the variable usage table of a list of access modes
         /// </summary>
         /// <param name="usages"></param>
         private void CreateVariableUsage(List<AccessToVariable> usages)
@@ -257,7 +260,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Provides a string enumerating all the requirements of the given list of requirements
+        ///     Provides a string enumerating all the requirements of the given list of requirements
         /// </summary>
         /// <param name="requirements">List of requirements</param>
         /// <returns></returns>

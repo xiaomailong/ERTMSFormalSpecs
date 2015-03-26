@@ -21,7 +21,7 @@ namespace DataDictionary.Tests.DBElements
     public class DBPacket : Generated.DBPacket
     {
         /// <summary>
-        /// Fields of the packet
+        ///     Fields of the packet
         /// </summary>
         public ArrayList Fields
         {
@@ -29,7 +29,7 @@ namespace DataDictionary.Tests.DBElements
         }
 
         /// <summary>
-        /// Adds a new field to packet fields
+        ///     Adds a new field to packet fields
         /// </summary>
         /// <param name="aField">A new field</param>
         public void AddField(DBField aField)

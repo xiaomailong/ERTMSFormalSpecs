@@ -2,9 +2,11 @@ using System;
 
 namespace XmlBooster
 {
-    /// <remarks>Used by XMLBooster-generated class
-    /// to test the performance and the memory
-    /// occupation for the generated parser.</remarks>
+    /// <remarks>
+    ///     Used by XMLBooster-generated class
+    ///     to test the performance and the memory
+    ///     occupation for the generated parser.
+    /// </remarks>
     public class XmlBTester
     {
         public XmlBTester()

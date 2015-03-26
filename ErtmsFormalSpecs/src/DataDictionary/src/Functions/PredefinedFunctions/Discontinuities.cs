@@ -27,23 +27,30 @@ using Variable = DataDictionary.Variables.Variable;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Calculates the discontinuities in the MRSP and returns them as a list of targets to EFS
+    ///     Calculates the discontinuities in the MRSP and returns them as a list of targets to EFS
     /// </summary>
     public class Discontinuities : PredefinedFunction
     {
         /// <summary>
-        /// The MRSP function
+        ///     The MRSP function
         /// </summary>
         public Parameter Targets { get; private set; }
 
 
         public override Type ReturnType
         {
-            get { return EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"); }
+            get
+            {
+                return
+                    EFSSystem.findType(
+                        OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0],
+                            "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"),
+                        "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
+            }
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem"></param>
         public Discontinuities(EFSSystem efsSystem)
@@ -57,31 +64,38 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter type
+        ///     Perform additional checks based on the parameter type
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context,
+            Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Targets.Name], 1);
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 
             int token = context.LocalScope.PushContext();
             AssignParameters(context, actuals);
 
-            Collection collectionType = (Collection) EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
+            Collection collectionType =
+                (Collection)
+                    EFSSystem.findType(
+                        OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0],
+                            "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"),
+                        "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
             ListValue collection = new ListValue(collectionType, new List<IValue>());
 
             Function function = context.findOnStack(Targets).Value as Function;
@@ -98,7 +112,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Computes targets from the function and stores them in the collection
+        ///     Computes targets from the function and stores them in the collection
         /// </summary>
         /// <param name="function">Function containing targets</param>
         /// <param name="collection">Collection to be filled with targets</param>
@@ -121,7 +135,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Creates a single target
+        ///     Creates a single target
         /// </summary>
         /// <param name="start"></param>
         /// <param name="length"></param>
@@ -129,11 +143,19 @@ namespace DataDictionary.Functions.PredefinedFunctions
         /// <returns></returns>
         private StructureValue CreateTarget(double start, double length, double speed)
         {
-            Structure structureType = (Structure) EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"), "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target");
+            Structure structureType =
+                (Structure)
+                    EFSSystem.findType(
+                        OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0],
+                            "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"),
+                        "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target");
             StructureValue value = new StructureValue(structureType);
 
             Variable speedV = (Variable) acceptor.getFactory().createVariable();
-            speedV.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Speed");
+            speedV.Type =
+                EFSSystem.findType(
+                    OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"),
+                    "Default.BaseTypes.Speed");
             speedV.Name = "Speed";
             speedV.Mode = acceptor.VariableModeEnumType.aInternal;
             speedV.Default = "0.0";
@@ -142,7 +164,10 @@ namespace DataDictionary.Functions.PredefinedFunctions
             value.set(speedV);
 
             Variable location = (Variable) acceptor.getFactory().createVariable();
-            location.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Distance");
+            location.Type =
+                EFSSystem.findType(
+                    OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"),
+                    "Default.BaseTypes.Distance");
             location.Name = "Location";
             location.Mode = acceptor.VariableModeEnumType.aInternal;
             location.Default = "0.0";
@@ -151,7 +176,10 @@ namespace DataDictionary.Functions.PredefinedFunctions
             value.set(location);
 
             Variable lengthV = (Variable) acceptor.getFactory().createVariable();
-            lengthV.Type = EFSSystem.findType(OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"), "Default.BaseTypes.Length");
+            lengthV.Type =
+                EFSSystem.findType(
+                    OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0], "Default.BaseTypes"),
+                    "Default.BaseTypes.Length");
             lengthV.Name = "Length";
             lengthV.Mode = acceptor.VariableModeEnumType.aInternal;
             lengthV.Default = "0.0";

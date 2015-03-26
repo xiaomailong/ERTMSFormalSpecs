@@ -22,7 +22,7 @@ namespace DataDictionary.Tests.Runner.Events
     public class Expect : ModelEvent
     {
         /// <summary>
-        /// The time out for this expectation
+        ///     The time out for this expectation
         /// </summary>
         public double TimeOut
         {
@@ -41,10 +41,10 @@ namespace DataDictionary.Tests.Runner.Events
 
 
         /// <summary>
-        /// The state of this expect : 
-        ///   Active     : still expecting something
-        ///   Fullfilled : the expectation has been reached
-        ///   TimeOut    : the time before the expectation has been reached
+        ///     The state of this expect :
+        ///     Active     : still expecting something
+        ///     Fullfilled : the expectation has been reached
+        ///     TimeOut    : the time before the expectation has been reached
         /// </summary>
         public enum EventState
         {
@@ -62,7 +62,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The corresponding expectation
+        ///     The corresponding expectation
         /// </summary>
         private Expectation expectation;
 
@@ -73,7 +73,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// The namespace associated to this event
+        ///     The namespace associated to this event
         /// </summary>
         public override NameSpace NameSpace
         {
@@ -81,7 +81,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="id"></param>
         public Expect(Expectation expectation, acceptor.RulePriority? priority)
@@ -92,7 +92,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Adds this expectation in the list of active expectations in the time line
+        ///     Adds this expectation in the list of active expectations in the time line
         /// </summary>
         /// <param name="runner"></param>
         public override void Apply(Runner runner)
@@ -102,7 +102,7 @@ namespace DataDictionary.Tests.Runner.Events
         }
 
         /// <summary>
-        /// Rolls back this event
+        ///     Rolls back this event
         /// </summary>
         public override void RollBack()
         {

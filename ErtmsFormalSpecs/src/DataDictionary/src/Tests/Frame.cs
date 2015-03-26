@@ -27,7 +27,7 @@ namespace DataDictionary.Tests
     public class Frame : Generated.Frame, IExpressionable, ICommentable
     {
         /// <summary>
-        /// The frame sub sequences
+        ///     The frame sub sequences
         /// </summary>
         public ArrayList SubSequences
         {
@@ -42,7 +42,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Executes the test cases for this test sequence
+        ///     Executes the test cases for this test sequence
         /// </summary>
         /// <param name="ensureCompilationDone"></param>
         /// <returns>the number of failed sub sequences</returns>
@@ -87,7 +87,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// ¨Provides the test cases for this test frame
+        ///     ¨Provides the test cases for this test frame
         /// </summary>
         /// <param name="testCases"></param>
         public void FillTestCases(List<TestCase> testCases)
@@ -99,7 +99,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the list of sub sequences for this frame
+        ///     Provides the list of sub sequences for this frame
         /// </summary>
         /// <param name="retVal"></param>
         public void FillSubSequences(List<SubSequence> retVal)
@@ -111,7 +111,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the sub sequence whose name corresponds to the name provided
+        ///     Provides the sub sequence whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -121,7 +121,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Translates the frame according to the translation dictionary provided
+        ///     Translates the frame according to the translation dictionary provided
         /// </summary>
         /// <param name="translationDictionary"></param>
         public void Translate(TranslationDictionary translationDictionary)
@@ -133,7 +133,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -148,7 +148,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the cycle time value
+        ///     Provides the cycle time value
         /// </summary>
         private Expression __cycleTime = null;
 
@@ -175,7 +175,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The expression text for this expressionable
+        ///     The expression text for this expressionable
         /// </summary>
         public override string ExpressionText
         {
@@ -188,7 +188,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The corresponding expression tree
+        ///     The corresponding expression tree
         /// </summary>
         public InterpreterTreeNode Tree
         {
@@ -196,7 +196,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -204,7 +204,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {
@@ -213,7 +213,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -228,7 +228,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Creates the frame and sets its default values
+        ///     Creates the frame and sets its default values
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -243,12 +243,12 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The frameref which instanciated this frame
+        ///     The frameref which instanciated this frame
         /// </summary>
         public FrameRef FrameRef { get; set; }
 
         /// <summary>
-        /// The comment related to this element
+        ///     The comment related to this element
         /// </summary>
         public string Comment
         {

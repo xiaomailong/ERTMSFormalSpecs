@@ -20,7 +20,9 @@ namespace GUI.Options
 
             [Category("Display")]
             [DisplayName("Requirements as list")]
-            [Description("When set to true, indicates that the requirements should only be displayed as a list of number, instead of the requirement number followed by the requirement text")]
+            [Description(
+                "When set to true, indicates that the requirements should only be displayed as a list of number, instead of the requirement number followed by the requirement text"
+                )]
             public bool DisplayRequirementsAsList
             {
                 get { return Settings.Default.DisplayRequirementsAsList; }
@@ -29,7 +31,9 @@ namespace GUI.Options
 
             [Category("Files")]
             [DisplayName("Lock opened files")]
-            [Description("When set to true, indicates that the files opened by EFS should be locked, which forbid other processes to access them")]
+            [Description(
+                "When set to true, indicates that the files opened by EFS should be locked, which forbid other processes to access them"
+                )]
             public bool LockOpenedFiles
             {
                 get { return Settings.Default.LockOpenedFiles; }
@@ -38,7 +42,9 @@ namespace GUI.Options
 
             [Category("Files")]
             [DisplayName("Convert obsote version of model file")]
-            [Description("When set to true, indicates that EFS should convert the format of obsolete version of EFS files. For instance, it will replace USING X with USING X IN Coll in all expressions.")]
+            [Description(
+                "When set to true, indicates that EFS should convert the format of obsolete version of EFS files. For instance, it will replace USING X with USING X IN Coll in all expressions."
+                )]
             public bool ConvertObsoleteFiles
             {
                 get { return Settings.Default.ConvertObsoleteVersionOfModelFile; }
@@ -47,7 +53,9 @@ namespace GUI.Options
 
             [Category("Display")]
             [DisplayName("Display all variables in structure editor")]
-            [Description("When set to true, indicates that all the variables should be displayed in the structure editor, even those which are empty")]
+            [Description(
+                "When set to true, indicates that all the variables should be displayed in the structure editor, even those which are empty"
+                )]
             public bool DisplayAllVariablesInStructureEditor
             {
                 get { return Settings.Default.DisplayAllVariablesInStructureEditor; }
@@ -56,7 +64,8 @@ namespace GUI.Options
 
             [Category("Behaviour")]
             [DisplayName("Check parent relationship")]
-            [Description("When animating the model, verify the correctness of the 'parent' relation for each model element")]
+            [Description(
+                "When animating the model, verify the correctness of the 'parent' relation for each model element")]
             public bool CheckParentRelationship
             {
                 get { return Settings.Default.CheckParentRelationship; }
@@ -89,7 +98,7 @@ namespace GUI.Options
         }
 
         /// <summary>
-        /// Sets the settings according to the application data
+        ///     Sets the settings according to the application data
         /// </summary>
         /// <param name="syste"></param>
         public static void setSettings(EFSSystem system)

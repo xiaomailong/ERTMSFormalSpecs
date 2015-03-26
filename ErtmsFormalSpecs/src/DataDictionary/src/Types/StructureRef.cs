@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using DataDictionary.Interpreter;
 using DataDictionary.Interpreter.Filter;
@@ -22,7 +23,7 @@ namespace DataDictionary.Types
     public class StructureRef : Generated.StructureRef, IExpressionable
     {
         /// <summary>
-        /// The type associated to this StructureRef
+        ///     The type associated to this StructureRef
         /// </summary>
         public Structure ReferencedStructure
         {
@@ -41,8 +42,8 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Computes the recursive list of the interfaces implemented
-        /// by the structure corresponding to this StructureRef
+        ///     Computes the recursive list of the interfaces implemented
+        ///     by the structure corresponding to this StructureRef
         /// </summary>
         public List<Structure> ImplementedStructures
         {
@@ -62,21 +63,21 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The expression text for this expressionable
+        ///     The expression text for this expressionable
         /// </summary>
         public override string ExpressionText
         {
-            get { return getName(); } 
-            set { setName(value);}
+            get { return getName(); }
+            set { setName(value); }
         }
 
         /// <summary>
-        /// The expression which references the structure
+        ///     The expression which references the structure
         /// </summary>
         private Expression ReferencedStructureExpression { get; set; }
 
         /// <summary>
-        /// The tree which corresponds to the expression text
+        ///     The tree which corresponds to the expression text
         /// </summary>
         public InterpreterTreeNode Tree
         {
@@ -88,7 +89,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -106,7 +107,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -114,7 +115,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {

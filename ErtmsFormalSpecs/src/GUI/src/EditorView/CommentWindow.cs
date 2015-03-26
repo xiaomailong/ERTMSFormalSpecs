@@ -17,7 +17,7 @@
 namespace GUI.EditorView
 {
     /// <summary>
-    /// A comment editor window
+    ///     A comment editor window
     /// </summary>
     public class CommentWindow : Window
     {

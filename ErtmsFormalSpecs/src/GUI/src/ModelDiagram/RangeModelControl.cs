@@ -19,12 +19,12 @@ using DataDictionary.Types;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent a range
+    ///     The boxes that represent a range
     /// </summary>
     public class RangeModelControl : TypeModelControl
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RangeModelControl(Range model)
             : base(model)
@@ -32,7 +32,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name of the kind of type
+        ///     The name of the kind of type
         /// </summary>
         public override string ModelName
         {

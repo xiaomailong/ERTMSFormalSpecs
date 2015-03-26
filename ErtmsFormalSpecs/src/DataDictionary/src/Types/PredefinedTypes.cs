@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -29,7 +30,7 @@ namespace DataDictionary.Types
     public class PredefinedType : Type
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         /// <param name="name"></param>
@@ -40,7 +41,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the values whose name matches the name provided
+        ///     Provides the values whose name matches the name provided
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
@@ -66,7 +67,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The true constant value
+        ///     The true constant value
         /// </summary>
         private BoolValue trueValue;
 
@@ -77,7 +78,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The false constant value
+        ///     The false constant value
         /// </summary>
         private BoolValue falseValue;
 
@@ -88,7 +89,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -99,12 +100,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -114,7 +115,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public BoolType(EFSSystem efsSystem)
@@ -127,7 +128,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Gets a value based on its image
+        ///     Gets a value based on its image
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -146,7 +147,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all constant values for this type
+        ///     Provides all constant values for this type
         /// </summary>
         /// <param name="scope"></param>
         /// <param name="retVal"></param>
@@ -189,7 +190,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public IntegerType(EFSSystem efsSystem)
@@ -198,7 +199,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The default value
+        ///     The default value
         /// </summary>
         public override IValue DefaultValue
         {
@@ -211,7 +212,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the other type can be placed in variables of this type
+        ///     Indicates that the other type can be placed in variables of this type
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -232,7 +233,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Gets a value based on its image
+        ///     Gets a value based on its image
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -253,7 +254,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the int value from the IValue provided
+        ///     Provides the int value from the IValue provided
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
@@ -281,14 +282,15 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Performs the arithmetic operation based on the type of the result
+        ///     Performs the arithmetic operation based on the type of the result
         /// </summary>
         /// <param name="context">The context used to perform this operation</param>
         /// <param name="left"></param>
         /// <param name="Operation"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left,
+            BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
         {
             IntValue retVal = null;
 
@@ -361,7 +363,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// One can cast into a int
+        ///     One can cast into a int
         /// </summary>
         public override bool CanBeCastInto
         {
@@ -369,7 +371,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Converts a value into an int value
+        ///     Converts a value into an int value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -390,7 +392,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public DoubleType(EFSSystem efsSystem)
@@ -399,7 +401,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The default value
+        ///     The default value
         /// </summary>
         public override IValue DefaultValue
         {
@@ -412,7 +414,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the other type can be placed in variables of this type
+        ///     Indicates that the other type can be placed in variables of this type
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -433,7 +435,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Gets a value based on its image
+        ///     Gets a value based on its image
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -446,7 +448,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the double value from the IValue provided
+        ///     Provides the double value from the IValue provided
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
@@ -493,14 +495,15 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Performs the arithmetic operation based on the type of the result
+        ///     Performs the arithmetic operation based on the type of the result
         /// </summary>
         /// <param name="context">The context used to perform this operation</param>
         /// <param name="left"></param>
         /// <param name="Operation"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left,
+            BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
         {
             DoubleValue retVal = null;
 
@@ -542,7 +545,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Compares two double values for equality
+        ///     Compares two double values for equality
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -580,7 +583,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Combines two types to create a new one
+        ///     Combines two types to create a new one
         /// </summary>
         /// <param name="right"></param>
         /// <returns></returns>
@@ -604,7 +607,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// One can cast into a double
+        ///     One can cast into a double
         /// </summary>
         public override bool CanBeCastInto
         {
@@ -612,7 +615,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Converts a value into a double value
+        ///     Converts a value into a double value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -638,7 +641,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Gets a value based on its image
+        ///     Gets a value based on its image
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>

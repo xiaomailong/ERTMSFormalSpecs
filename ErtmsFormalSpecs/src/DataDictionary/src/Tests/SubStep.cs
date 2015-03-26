@@ -26,7 +26,7 @@ namespace DataDictionary.Tests
     public class SubStep : Generated.SubStep, TextualExplain, ICommentable
     {
         /// <summary>
-        /// This step changes
+        ///     This step changes
         /// </summary>
         public ArrayList Actions
         {
@@ -42,7 +42,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// This step expectations
+        ///     This step expectations
         /// </summary>
         public ArrayList Expectations
         {
@@ -57,7 +57,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The enclosing step, if any
+        ///     The enclosing step, if any
         /// </summary>
         public Step Step
         {
@@ -65,7 +65,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The enclosing translation, if any
+        ///     The enclosing translation, if any
         /// </summary>
         public Translation Translation
         {
@@ -92,7 +92,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -116,7 +116,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Indicates if this step contains some actions or expectations
+        ///     Indicates if this step contains some actions or expectations
         /// </summary>
         /// <returns></returns>
         public bool IsEmpty()
@@ -130,7 +130,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The explanation of this step, as RTF pseudo code
+        ///     The explanation of this step, as RTF pseudo code
         /// </summary>
         /// <returns></returns>
         public override string getExplain()
@@ -155,7 +155,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Creates a sub step and sets its default values
+        ///     Creates a sub step and sets its default values
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -169,7 +169,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -191,7 +191,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -205,7 +205,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The comment related to this element
+        ///     The comment related to this element
         /// </summary>
         public string Comment
         {
@@ -215,7 +215,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// Indicates whether this substep references the special variable %Message_i
+        ///     Indicates whether this substep references the special variable %Message_i
         /// </summary>
         /// <returns></returns>
         public bool ReferencesMessages()

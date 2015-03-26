@@ -28,22 +28,23 @@ namespace DataDictionary.Interpreter.Statement
     public class VariableUpdateStatement : Statement
     {
         /// <summary>
-        /// The designator which identifies the variable to update
+        ///     The designator which identifies the variable to update
         /// </summary>
         public Expression VariableIdentification { get; private set; }
 
         /// <summary>
-        /// The expression expressing the value to set
+        ///     The expression expressing the value to set
         /// </summary>
         public Expression Expression { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public VariableUpdateStatement(ModelElement root, ModelElement log, Expression variableIdentification, Expression expression, int start, int end)
+        public VariableUpdateStatement(ModelElement root, ModelElement log, Expression variableIdentification,
+            Expression expression, int start, int end)
             : base(root, log, start, end)
         {
             VariableIdentification = variableIdentification;
@@ -54,7 +55,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the statement
+        ///     Performs the semantic analysis of the statement
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
@@ -77,7 +78,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the target of this update statement
+        ///     Provides the target of this update statement
         /// </summary>
         public ITypedElement Target
         {
@@ -90,7 +91,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the type of the target variable
+        ///     Provides the type of the target variable
         /// </summary>
         public Type TargetType
         {
@@ -112,7 +113,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the statement which modifies the element
+        ///     Provides the statement which modifies the element
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
@@ -129,7 +130,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the list of update statements induced by this statement
+        ///     Provides the list of update statements induced by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
         public override void UpdateStatements(List<VariableUpdateStatement> retVal)
@@ -138,7 +139,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the list of elements read by this statement
+        ///     Provides the list of elements read by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
         public override void ReadElements(List<ITypedElement> retVal)
@@ -147,7 +148,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Checks the statement for semantical errors
+        ///     Checks the statement for semantical errors
         /// </summary>
         public override void CheckStatement()
         {
@@ -181,11 +182,14 @@ namespace DataDictionary.Interpreter.Statement
                             UnaryExpression unaryExpression = Expression as UnaryExpression;
                             if (unaryExpression != null && unaryExpression.Term.LiteralValue != null)
                             {
-                                Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " + VariableIdentification.ToString());
+                                Root.AddError("Expression " + Expression.ToString() + " does not fit in variable " +
+                                              VariableIdentification.ToString());
                             }
                             else
                             {
-                                Root.AddError("Expression [" + Expression.ToString() + "] type (" + type.FullName + ") does not match variable [" + VariableIdentification.ToString() + "] type (" + targetType.FullName + ")");
+                                Root.AddError("Expression [" + Expression.ToString() + "] type (" + type.FullName +
+                                              ") does not match variable [" + VariableIdentification.ToString() +
+                                              "] type (" + targetType.FullName + ")");
                             }
                         }
                         else
@@ -198,7 +202,8 @@ namespace DataDictionary.Interpreter.Statement
                                 {
                                     if (rangeType.convert(value) == null)
                                     {
-                                        Root.AddError("Cannot set " + value.LiteralName + " in variable of type " + rangeType.Name);
+                                        Root.AddError("Cannot set " + value.LiteralName + " in variable of type " +
+                                                      rangeType.Name);
                                     }
                                 }
                             }
@@ -208,7 +213,8 @@ namespace DataDictionary.Interpreter.Statement
                         {
                             if (targetType is Collection)
                             {
-                                Root.AddError("Assignation of " + Expression.Ref.Name + " cannot be performed on variables of type collection. Use [] instead.");
+                                Root.AddError("Assignation of " + Expression.Ref.Name +
+                                              " cannot be performed on variables of type collection. Use [] instead.");
                             }
                         }
                     }
@@ -229,14 +235,15 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the changes performed by this statement
+        ///     Provides the changes performed by this statement
         /// </summary>
         /// <param name="context">The context on which the changes should be computed</param>
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation,
+            bool apply, Runner runner)
         {
             IVariable var = VariableIdentification.GetVariable(context);
             if (var != null)
@@ -263,7 +270,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides a real short description of this statement
+        ///     Provides a real short description of this statement
         /// </summary>
         /// <returns></returns>
         public override string ShortShortDescription()
@@ -283,7 +290,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the main model elemnt affected by this statement
+        ///     Provides the main model elemnt affected by this statement
         /// </summary>
         /// <returns></returns>
         public override ModelElement AffectedElement()

@@ -29,12 +29,12 @@ namespace GUI.TestRunnerView
     public class ExpectationTreeNode : ModelElementTreeNode<Expectation>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : Editor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -94,7 +94,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// The item name
+            ///     The item name
             /// </summary>
             [Category("Description"), TypeConverter(typeof (CyclePhaseConverter))]
             public acceptor.RulePriority CyclePhase
@@ -105,7 +105,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ExpectationTreeNode(Expectation item, bool buildSubNodes)
@@ -114,7 +114,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a selection change event
+        ///     Handles a selection change event
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
@@ -137,7 +137,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -146,7 +146,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -160,7 +160,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates sub sequence tree nodes
+        ///     Creates sub sequence tree nodes
         /// </summary>
         /// <param name="elements">The elements to be placed in the node</param>
         public static List<BaseTreeNode> CreateExpectations(ArrayList elements)

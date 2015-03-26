@@ -19,7 +19,7 @@ using DataDictionary.Types;
 namespace DataDictionary.Values
 {
     /// <summary>
-    /// A place holder value, not available through the EFS interface
+    ///     A place holder value, not available through the EFS interface
     /// </summary>
     public class PlaceHolder : BaseValue<Type, int>
     {
@@ -34,7 +34,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public PlaceHolder(Type type, int val)

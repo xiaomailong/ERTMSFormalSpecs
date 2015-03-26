@@ -19,7 +19,7 @@ namespace DataDictionary.Specification
     public class Message : Generated.Message
     {
         /// <summary>
-        /// The message content
+        ///     The message content
         /// </summary>
         public string Text
         {

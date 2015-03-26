@@ -82,7 +82,8 @@ namespace ErtmsSolutions.Utils.RunProcessExec
          *
          */
 
-        public RunProcessExec(string WorkingDirectory, string Path, string Program, string Arguments, string FName_StandardInput, string FName_StandardOutput, string FName_StandardError, TimeSpan TimeOut)
+        public RunProcessExec(string WorkingDirectory, string Path, string Program, string Arguments,
+            string FName_StandardInput, string FName_StandardOutput, string FName_StandardError, TimeSpan TimeOut)
         {
             processHasExited = false;
 
@@ -309,7 +310,8 @@ namespace ErtmsSolutions.Utils.RunProcessExec
 
             // LockSetForegroundWindow (LSFW_UNLOCK);
 
-            Log.DebugFormat("  Process result : Result={0} ('{1}'), ExitCode={2}", result.ExecResult, result.Message, result.ExitCode);
+            Log.DebugFormat("  Process result : Result={0} ('{1}'), ExitCode={2}", result.ExecResult, result.Message,
+                result.ExitCode);
 
             return result;
         }

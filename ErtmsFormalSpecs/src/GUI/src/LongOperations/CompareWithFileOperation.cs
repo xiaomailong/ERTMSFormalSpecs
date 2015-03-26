@@ -23,17 +23,17 @@ namespace GUI.LongOperations
     public class CompareWithFileOperation : BaseLongOperation
     {
         /// <summary>
-        /// The dictionary to compare with the file
+        ///     The dictionary to compare with the file
         /// </summary>
         private Dictionary Dictionary { get; set; }
 
         /// <summary>
-        /// The path to the file to compare with
+        ///     The path to the file to compare with
         /// </summary>
         private string OtherFilePath { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary">The dictionary to compare with</param>
         /// <param name="filePath">The path to the file to compare with</param>
@@ -44,7 +44,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        ///     Generates the file in the background thread
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()
@@ -64,7 +64,8 @@ namespace GUI.LongOperations
             }
             else
             {
-                MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information", "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information",
+                    "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

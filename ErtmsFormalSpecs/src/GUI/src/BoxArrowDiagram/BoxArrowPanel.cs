@@ -37,7 +37,7 @@ namespace GUI.BoxArrowDiagram
         private System.Windows.Forms.ToolStripMenuItem reDisplayMenuItem;
 
         /// <summary>
-        /// Initializes the context menu items
+        ///     Initializes the context menu items
         /// </summary>
         public virtual void InitializeStartMenu()
         {
@@ -67,29 +67,29 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The images used by this time line control
+        ///     The images used by this time line control
         /// </summary>
         public ImageList Images { get; set; }
 
         /// <summary>
-        /// The image indexes used to retrieve images
+        ///     The image indexes used to retrieve images
         /// </summary>
         public const int PinnedImageIndex = 0;
 
         public const int UnPinnedImageIndex = 1;
 
         /// <summary>
-        /// The size of an box control button
+        ///     The size of an box control button
         /// </summary>
         public Size DefaultBoxSize = new Size(100, 50);
 
         /// <summary>
-        /// The model 
+        ///     The model
         /// </summary>
         private object __model = null;
 
         /// <summary>
-        /// The model element for which this panel is built
+        ///     The model element for which this panel is built
         /// </summary>
         public object Model
         {
@@ -102,7 +102,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public BoxArrowPanel()
         {
@@ -143,7 +143,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the enclosing form
+        ///     Provides the enclosing form
         /// </summary>
         public Form EnclosingForm
         {
@@ -163,7 +163,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Called to initiate a drag & drop operation
+        ///     Called to initiate a drag & drop operation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -176,7 +176,7 @@ namespace GUI.BoxArrowDiagram
         private const int ALT = 32;
 
         /// <summary>
-        /// Called when the drop operation is performed on a node
+        ///     Called when the drop operation is performed on a node
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -210,7 +210,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Refreshes the panel
+        ///     Refreshes the panel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -220,7 +220,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Refreshes the panel
+        ///     Refreshes the panel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -256,7 +256,10 @@ namespace GUI.BoxArrowDiagram
                     {
                         pinned = "!";
                     }
-                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\"[shape=record,width={1},height={2},label={3},pos=\"{4},{5}{6}\"];", box.Guid, DefaultBoxSize.Width/100.0, DefaultBoxSize.Height/100.0, box.GraphicalName, box.X/100.0, box.Y/100.0, pinned));
+                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture,
+                        "  \"{0}\"[shape=record,width={1},height={2},label={3},pos=\"{4},{5}{6}\"];", box.Guid,
+                        DefaultBoxSize.Width/100.0, DefaultBoxSize.Height/100.0, box.GraphicalName, box.X/100.0,
+                        box.Y/100.0, pinned));
                 }
 
                 // Generate the arrows
@@ -272,7 +275,8 @@ namespace GUI.BoxArrowDiagram
                     {
                         targetGuid = arrow.Target.Guid;
                     }
-                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\" -> \"{1}\";", sourceGuid, targetGuid));
+                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\" -> \"{1}\";", sourceGuid,
+                        targetGuid));
                 }
 
                 // Generate dependancies betweens boxes
@@ -282,7 +286,9 @@ namespace GUI.BoxArrowDiagram
                     {
                         for (int j = i + 1; j < boxesOfAKind.Count; j++)
                         {
-                            writer.WriteLine(string.Format(CultureInfo.InvariantCulture, "  \"{0}\" -> \"{1}\"[penwidth=0,arrowhead=none,len={2}];", boxesOfAKind[i].Guid, boxesOfAKind[j].Guid, ((boxesOfAKind.Count + 5)/5)*DefaultBoxSize.Width/100.0));
+                            writer.WriteLine(string.Format(CultureInfo.InvariantCulture,
+                                "  \"{0}\" -> \"{1}\"[penwidth=0,arrowhead=none,len={2}];", boxesOfAKind[i].Guid,
+                                boxesOfAKind[j].Guid, ((boxesOfAKind.Count + 5)/5)*DefaultBoxSize.Width/100.0));
                         }
                     }
                 }
@@ -335,7 +341,8 @@ namespace GUI.BoxArrowDiagram
             }
             catch (Exception excp)
             {
-                MessageBox.Show("Cannot perfom operation due to error " + excp.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot perfom operation due to error " + excp.Message, "Cannot perform operation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
@@ -354,7 +361,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public BoxArrowPanel(IContainer container)
@@ -367,31 +374,31 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The selected object
+        ///     The selected object
         /// </summary>
         public object Selected { get; set; }
 
         /// <summary>
-        /// Method used to create a box
+        ///     Method used to create a box
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         public abstract BoxControl<BoxModel, ArrowModel> createBox(BoxModel model);
 
         /// <summary>
-        /// Method used to create an arrow
+        ///     Method used to create an arrow
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
         public abstract ArrowControl<BoxModel, ArrowModel> createArrow(ArrowModel model);
 
         /// <summary>
-        /// The arrow that is currently being changed
+        ///     The arrow that is currently being changed
         /// </summary>
         private ArrowControl<BoxModel, ArrowModel> changingArrow = null;
 
         /// <summary>
-        /// The action that is applied on the arrow
+        ///     The action that is applied on the arrow
         /// </summary>
         private enum ChangeAction
         {
@@ -428,8 +435,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles the move event, which, in case of an arrow is selected to be modified, 
-        /// 
+        ///     Handles the move event, which, in case of an arrow is selected to be modified,
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -473,12 +479,12 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The maximum delta when considering if two points are near one from the other
+        ///     The maximum delta when considering if two points are near one from the other
         /// </summary>
         private const int MAX_DELTA = 5;
 
         /// <summary>
-        /// Indicates whether two points are near one from the other
+        ///     Indicates whether two points are near one from the other
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
@@ -489,7 +495,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles the add box event
+        ///     Handles the add box event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -498,7 +504,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles the add arrow event
+        ///     Handles the add arrow event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -507,12 +513,13 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The dictionary used to keep the relation between boxe controls and their model
+        ///     The dictionary used to keep the relation between boxe controls and their model
         /// </summary>
-        private Dictionary<BoxModel, BoxControl<BoxModel, ArrowModel>> boxes = new Dictionary<BoxModel, BoxControl<BoxModel, ArrowModel>>();
+        private Dictionary<BoxModel, BoxControl<BoxModel, ArrowModel>> boxes =
+            new Dictionary<BoxModel, BoxControl<BoxModel, ArrowModel>>();
 
         /// <summary>
-        /// Provides the box control which corresponds to the model provided
+        ///     Provides the box control which corresponds to the model provided
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -532,12 +539,13 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The dictionary used to keep the relation between arrows and their model
+        ///     The dictionary used to keep the relation between arrows and their model
         /// </summary>
-        private Dictionary<ArrowModel, ArrowControl<BoxModel, ArrowModel>> arrows = new Dictionary<ArrowModel, ArrowControl<BoxModel, ArrowModel>>();
+        private Dictionary<ArrowModel, ArrowControl<BoxModel, ArrowModel>> arrows =
+            new Dictionary<ArrowModel, ArrowControl<BoxModel, ArrowModel>>();
 
         /// <summary>
-        /// Provides the arrow control which corresponds to the model provided
+        ///     Provides the arrow control which corresponds to the model provided
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -554,7 +562,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the arrow control which corresponds to the rule
+        ///     Provides the arrow control which corresponds to the rule
         /// </summary>
         /// <param name="referencedModel"></param>
         /// <returns></returns>
@@ -575,12 +583,12 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Indicates whether the layout should be suspended
+        ///     Indicates whether the layout should be suspended
         /// </summary>
         private bool refreshingControl = false;
 
         /// <summary>
-        /// Refreshes the layout, if it is not suspended
+        ///     Refreshes the layout, if it is not suspended
         /// </summary>
         public override void Refresh()
         {
@@ -591,19 +599,19 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the boxes that need be displayed
+        ///     Provides the boxes that need be displayed
         /// </summary>
         /// <returns></returns>
         public abstract List<BoxModel> getBoxes();
 
         /// <summary>
-        /// Provides the arrows that need be displayed
+        ///     Provides the arrows that need be displayed
         /// </summary>
         /// <returns></returns>
         public abstract List<ArrowModel> getArrows();
 
         /// <summary>
-        /// Refreshes the control according to the model
+        ///     Refreshes the control according to the model
         /// </summary>
         public void RefreshControl()
         {
@@ -669,24 +677,24 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Handles the rectangles that are already allocated in the diagram
+        ///     Handles the rectangles that are already allocated in the diagram
         /// </summary>
         private class BoxAllocation
         {
             /// <summary>
-            /// The allocated rectangles
+            ///     The allocated rectangles
             /// </summary>
             private List<Rectangle> AllocatedBoxes = new List<Rectangle>();
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public BoxAllocation()
             {
             }
 
             /// <summary>
-            /// Finds a rectangle which intersects with the current rectangle
+            ///     Finds a rectangle which intersects with the current rectangle
             /// </summary>
             /// <param name="rectangle"></param>
             /// <returns></returns>
@@ -707,7 +715,7 @@ namespace GUI.BoxArrowDiagram
             }
 
             /// <summary>
-            /// Allocates a new rectangle 
+            ///     Allocates a new rectangle
             /// </summary>
             /// <param name="rectangle"></param>
             public void Allocate(Rectangle rectangle)
@@ -717,12 +725,12 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The allocated boxes
+        ///     The allocated boxes
         /// </summary>
         private BoxAllocation AllocatedBoxes;
 
         /// <summary>
-        /// Provides a distance between two points
+        ///     Provides a distance between two points
         /// </summary>
         /// <param name="p1"></param>
         /// <param name="p2"></param>
@@ -733,9 +741,9 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Updates the arrows position to ensure that no overlap exists
-        ///   - on the arrows
-        ///   - on their text
+        ///     Updates the arrows position to ensure that no overlap exists
+        ///     - on the arrows
+        ///     - on their text
         /// </summary>
         public void UpdateArrowPosition()
         {
@@ -744,17 +752,17 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
+        ///     The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
         /// </summary>
         private static int HORIZONTAL_SHIFT_SIZE = 40;
 
         /// <summary>
-        /// The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
+        ///     The size of the shift between arrows to be used when overlap occurs (more or less horizontally)
         /// </summary>
         private static int VERTICAL_SHIFT_SIZE = 20;
 
         /// <summary>
-        /// Ensures that two arrowss do not overlap by computing an offset between the arrows
+        ///     Ensures that two arrowss do not overlap by computing an offset between the arrows
         /// </summary>
         private void ComputeArrowPosition()
         {
@@ -827,7 +835,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Computes the position of the arrow texts, following the arrow, to avoid text overlap
+        ///     Computes the position of the arrow texts, following the arrow, to avoid text overlap
         /// </summary>
         private void ComputeArrowTextPosition()
         {
@@ -863,13 +871,14 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Tries to slide the arrow up following the arrow to avoid any collision
-        /// with the already allocated bounding boxes
+        ///     Tries to slide the arrow up following the arrow to avoid any collision
+        ///     with the already allocated bounding boxes
         /// </summary>
         /// <param name="arrow"></param>
         /// <param name="center"></param>
         /// <returns></returns>
-        private Point Slide(ArrowControl<BoxModel, ArrowModel> arrow, Point center, ArrowControl<BoxModel, ArrowModel>.SlideDirection direction)
+        private Point Slide(ArrowControl<BoxModel, ArrowModel> arrow, Point center,
+            ArrowControl<BoxModel, ArrowModel>.SlideDirection direction)
         {
             Point retVal = center;
             Rectangle colliding = AllocatedBoxes.Intersects(arrow.getTextBoundingBox(retVal));
@@ -884,12 +893,12 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// The next position available for a computed box position
+        ///     The next position available for a computed box position
         /// </summary>
         protected Point CurrentPosition = new Point(1, 1);
 
         /// <summary>
-        /// Reinitialises the automatic position handling
+        ///     Reinitialises the automatic position handling
         /// </summary>
         protected virtual void InitPositionHandling()
         {
@@ -897,7 +906,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the next available position in the box-arrow diagram
+        ///     Provides the next available position in the box-arrow diagram
         /// </summary>
         /// <returns></returns>
         public virtual Point GetNextPosition(BoxModel model)
@@ -943,7 +952,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Provides the enclosing form
+        ///     Provides the enclosing form
         /// </summary>
         protected BoxArrowWindow<BoxModel, ArrowModel> EnclosingWindow
         {
@@ -951,10 +960,13 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Selects a model element
+        ///     Selects a model element
         /// </summary>
         /// <param name="model"></param>
-        /// <param name="alsoSelectInOtherWindows">Indicates that the element should also be selected in the other windows + get focus</param>
+        /// <param name="alsoSelectInOtherWindows">
+        ///     Indicates that the element should also be selected in the other windows + get
+        ///     focus
+        /// </param>
         public void Select(object model, bool alsoSelectInOtherWindows)
         {
             if (EnclosingWindow != null)
@@ -979,7 +991,7 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        /// Indicates whether the control is selected
+        ///     Indicates whether the control is selected
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>

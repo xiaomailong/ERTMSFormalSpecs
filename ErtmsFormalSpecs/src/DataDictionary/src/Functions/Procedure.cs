@@ -26,7 +26,7 @@ namespace DataDictionary.Functions
     public class Procedure : Generated.Procedure, ISubDeclarator, ICallable, TextualExplain, IGraphicalDisplay
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Procedure()
             : base()
@@ -34,7 +34,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Indicates if this Procedure contains implemented sub-elements
+        ///     Indicates if this Procedure contains implemented sub-elements
         /// </summary>
         public override bool ImplementationPartiallyCompleted
         {
@@ -53,7 +53,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -66,12 +66,12 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The elements declared by this variable
+        ///     The elements declared by this variable
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -81,7 +81,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The enclosing name space
+        ///     The enclosing name space
         /// </summary>
         public NameSpace NameSpace
         {
@@ -89,7 +89,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The enclosing structure
+        ///     The enclosing structure
         /// </summary>
         public Structure Structure
         {
@@ -97,7 +97,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Parameters of the procedure
+        ///     Parameters of the procedure
         /// </summary>
         public ArrayList FormalParameters
         {
@@ -114,7 +114,7 @@ namespace DataDictionary.Functions
 
 
         /// <summary>
-        /// Provides the formal parameter whose name corresponds to the name provided
+        ///     Provides the formal parameter whose name corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -135,7 +135,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The procedure return type
+        ///     The procedure return type
         /// </summary>
         public Type ReturnType
         {
@@ -143,7 +143,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides the enclosing collection, for deletion
+        ///     Provides the enclosing collection, for deletion
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -163,7 +163,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The rules declared in this procedure
+        ///     The rules declared in this procedure
         /// </summary>
         public ArrayList Rules
         {
@@ -179,7 +179,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -203,7 +203,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
@@ -213,7 +213,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -237,7 +237,8 @@ namespace DataDictionary.Functions
                     {
                         retVal = retVal + ",\\par";
                     }
-                    retVal = retVal + TextualExplainUtilities.Pad(parameter.Name + ":" + parameter.TypeName, indentLevel + 4);
+                    retVal = retVal +
+                             TextualExplainUtilities.Pad(parameter.Name + ":" + parameter.TypeName, indentLevel + 4);
                     first = false;
                 }
                 retVal = retVal + ")}\\par";
@@ -258,7 +259,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -270,7 +271,7 @@ namespace DataDictionary.Functions
 
 
         /// <summary>
-        /// The X position
+        ///     The X position
         /// </summary>
         public int X
         {
@@ -279,7 +280,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The Y position
+        ///     The Y position
         /// </summary>
         public int Y
         {
@@ -288,7 +289,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The width
+        ///     The width
         /// </summary>
         public int Width
         {
@@ -297,7 +298,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The height
+        ///     The height
         /// </summary>
         public int Height
         {
@@ -306,7 +307,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName
         {
@@ -314,7 +315,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Indicates whether the namespace is hidden
+        ///     Indicates whether the namespace is hidden
         /// </summary>
         public bool Hidden
         {
@@ -323,7 +324,7 @@ namespace DataDictionary.Functions
         }
 
         /// <summary>
-        /// Indicates that the element is pinned
+        ///     Indicates that the element is pinned
         /// </summary>
         public bool Pinned
         {

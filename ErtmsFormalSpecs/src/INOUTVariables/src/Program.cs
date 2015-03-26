@@ -34,12 +34,12 @@ namespace EFSInterface
         private class VariableVisitor : Visitor
         {
             /// <summary>
-            /// Used to write the contents of the interface
+            ///     Used to write the contents of the interface
             /// </summary>
             public TextWriter Writer { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="writer"></param>
             public VariableVisitor(TextWriter writer)
@@ -74,7 +74,8 @@ namespace EFSInterface
                 if (rangeType != null)
                 {
                     displayIndent(indent);
-                    Writer.WriteLine("RANGE " + rangeType.MinValueAsDouble + ".." + rangeType.MaxValueAsDouble + " DEFAULT VALUE = " + rangeType.DefaultValue.LiteralName);
+                    Writer.WriteLine("RANGE " + rangeType.MinValueAsDouble + ".." + rangeType.MaxValueAsDouble +
+                                     " DEFAULT VALUE = " + rangeType.DefaultValue.LiteralName);
                 }
 
                 Collection collectionType = type as Collection;
@@ -147,7 +148,7 @@ namespace EFSInterface
         }
 
         /// <summary>
-        /// Creates the interfaces of the the EFS model 
+        ///     Creates the interfaces of the the EFS model
         /// </summary>
         /// <param name="args"></param>
         /// <returns>the error code of the program</returns>

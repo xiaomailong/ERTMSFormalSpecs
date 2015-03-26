@@ -16,7 +16,6 @@
 
 using System.Collections;
 using DataDictionary.Interpreter;
-using DataDictionary.Interpreter.Statement;
 using DataDictionary.Tests.Translations;
 using Utils;
 
@@ -25,7 +24,7 @@ namespace DataDictionary.Tests
     public class Expectation : Generated.Expectation, IExpressionable, TextualExplain
     {
         /// <summary>
-        /// The enclosing step, if any
+        ///     The enclosing step, if any
         /// </summary>
         public Step Step
         {
@@ -33,7 +32,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The enclosing sub-step, if any
+        ///     The enclosing sub-step, if any
         /// </summary>
         public SubStep SubStep
         {
@@ -41,7 +40,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The enclosing translation, if any
+        ///     The enclosing translation, if any
         /// </summary>
         public Translation Translation
         {
@@ -57,7 +56,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The enclosing frame
+        ///     The enclosing frame
         /// </summary>
         public Frame Frame
         {
@@ -65,7 +64,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// The expected value
+        ///     The expected value
         /// </summary>
         public string Value
         {
@@ -78,7 +77,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Indicates if this expectation is blocking
+        ///     Indicates if this expectation is blocking
         /// </summary>
         public bool Blocking
         {
@@ -87,7 +86,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// When blocking, this indicates the deadling before the expectation should be achieved
+        ///     When blocking, this indicates the deadling before the expectation should be achieved
         /// </summary>
         public double DeadLine
         {
@@ -131,7 +130,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// Clears the tree to ensure new compilation
+        ///     Clears the tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -140,7 +139,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {
@@ -151,7 +150,7 @@ namespace DataDictionary.Tests
 
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -202,7 +201,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Indicates the name of the checked variable, if any
+        ///     Indicates the name of the checked variable, if any
         /// </summary>
         /// <returns></returns>
         public Designator CheckedVariable()
@@ -223,7 +222,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -231,7 +230,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -260,7 +259,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>

@@ -1,26 +1,35 @@
-﻿using DataDictionary.Constants;
-using DataDictionary.Functions;
+﻿using DataDictionary.Generated;
 using DataDictionary.Interpreter;
-using DataDictionary.Rules;
-using DataDictionary.Types;
-using DataDictionary.Variables;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Utils;
+using Action = DataDictionary.Rules.Action;
+using Function = DataDictionary.Functions.Function;
+using NameSpace = DataDictionary.Types.NameSpace;
+using PreCondition = DataDictionary.Rules.PreCondition;
+using Rule = DataDictionary.Rules.Rule;
+using RuleCondition = DataDictionary.Rules.RuleCondition;
+using State = DataDictionary.Constants.State;
+using StateMachine = DataDictionary.Types.StateMachine;
+using Structure = DataDictionary.Types.Structure;
+using StructureElement = DataDictionary.Types.StructureElement;
+using StructureRef = DataDictionary.Types.StructureRef;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.test
 {
     public class BaseModelTest
     {
         /// <summary>
-        /// Initializes all tests
+        ///     Initializes all tests
         /// </summary>
         [TestInitialize]
         public void Initialise()
         {
-            Generated.acceptor.setFactory(new ObjectFactory());
+            acceptor.setFactory(new ObjectFactory());
         }
 
         /// <summary>
-        /// Clean up the environment after a test has been executed
+        ///     Clean up the environment after a test has been executed
         /// </summary>
         [TestCleanup]
         public void CleanUp()
@@ -29,7 +38,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// The EFS System to test
+        ///     The EFS System to test
         /// </summary>
         protected EFSSystem System
         {
@@ -37,7 +46,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// The Compiler
+        ///     The Compiler
         /// </summary>
         protected Compiler Compiler
         {
@@ -45,36 +54,36 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// The factory used to create elements
+        ///     The factory used to create elements
         /// </summary>
-        protected Generated.Factory Factory
+        protected Factory Factory
         {
-            get { return Generated.acceptor.getFactory(); }
+            get { return acceptor.getFactory(); }
         }
 
         /// <summary>
-        /// Performs a refactor
+        ///     Performs a refactor
         /// </summary>
         /// <param name="namable"></param>
         /// <param name="newName"></param>
-        protected void Refactor(Utils.INamable namable, string newName)
+        protected void Refactor(INamable namable, string newName)
         {
             Compiler.Compile_Synchronous(true);
             Compiler.Refactor(namable as ModelElement, newName);
         }
 
         /// <summary>
-        /// Performs a refactor
+        ///     Performs a refactor
         /// </summary>
         /// <param name="namable"></param>
-        protected void RefactorAndRelocate(Utils.INamable namable)
+        protected void RefactorAndRelocate(INamable namable)
         {
             Compiler.Compile_Synchronous(true);
             Compiler.RefactorAndRelocate(namable as ModelElement);
         }
 
         /// <summary>
-        /// Creates a dictionary in the system
+        ///     Creates a dictionary in the system
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -89,7 +98,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a namespace in the dictionary/namespace provided
+        ///     Creates a namespace in the dictionary/namespace provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -102,11 +111,11 @@ namespace DataDictionary.test
             NameSpace nameSpace = enclosing as NameSpace;
             if (dictionary != null)
             {
-                dictionary.appendNameSpaces(retVal);                
+                dictionary.appendNameSpaces(retVal);
             }
             else if (nameSpace != null)
             {
-                nameSpace.appendNameSpaces(retVal);                
+                nameSpace.appendNameSpaces(retVal);
             }
             else
             {
@@ -118,7 +127,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a variable in the namespace provided
+        ///     Creates a variable in the namespace provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -126,7 +135,7 @@ namespace DataDictionary.test
         /// <returns></returns>
         protected Variable CreateVariable(NameSpace enclosing, string name, string typeName)
         {
-            Variable retVal = (Variable)Factory.createVariable();
+            Variable retVal = (Variable) Factory.createVariable();
 
             enclosing.appendVariables(retVal);
             retVal.Name = name;
@@ -136,7 +145,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a structure in the namespace provided
+        ///     Creates a structure in the namespace provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -152,14 +161,14 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a structure in the namespace provided
+        ///     Creates a structure in the namespace provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
         /// <returns></returns>
         protected StructureRef CreateStructureRef(Structure enclosing, string name)
         {
-            StructureRef retVal = (StructureRef)Factory.createStructureRef();
+            StructureRef retVal = (StructureRef) Factory.createStructureRef();
 
             enclosing.appendInterfaces(retVal);
             retVal.Name = name;
@@ -168,7 +177,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a state machine in the structure provided
+        ///     Creates a state machine in the structure provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -184,7 +193,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a state in the state machine provided
+        ///     Creates a state in the state machine provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -200,7 +209,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a structure element in the structure provided
+        ///     Creates a structure element in the structure provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -218,7 +227,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a rule and a rule condition in the state machine provided
+        ///     Creates a rule and a rule condition in the state machine provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -251,7 +260,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a function in the enclosing namespace
+        ///     Creates a function in the enclosing namespace
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -259,7 +268,7 @@ namespace DataDictionary.test
         /// <returns></returns>
         protected Function CreateFunction(NameSpace enclosing, string name, string type)
         {
-            Function retVal = (Function)Factory.createFunction();
+            Function retVal = (Function) Factory.createFunction();
             enclosing.appendFunctions(retVal);
             retVal.Name = name;
             retVal.TypeName = type;
@@ -268,7 +277,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates an action in the enclosing rule condition
+        ///     Creates an action in the enclosing rule condition
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -283,19 +292,18 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        /// Creates a precondition in the enclosing rule condition
+        ///     Creates a precondition in the enclosing rule condition
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
         /// <returns></returns>
         protected PreCondition CreatePreCondition(RuleCondition enclosing, string name)
         {
-            PreCondition retVal = (PreCondition)Factory.createPreCondition();
+            PreCondition retVal = (PreCondition) Factory.createPreCondition();
             enclosing.appendPreConditions(retVal);
             retVal.ExpressionText = name;
 
             return retVal;
         }
-
     }
 }

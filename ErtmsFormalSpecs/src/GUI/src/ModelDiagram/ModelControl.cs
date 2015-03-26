@@ -22,12 +22,12 @@ using GUI.BoxArrowDiagram;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent a model element
+    ///     The boxes that represent a model element
     /// </summary>
     public abstract class ModelControl : BoxControl<IGraphicalDisplay, ModelArrow>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public ModelControl(IGraphicalDisplay model)
             : base()
@@ -43,8 +43,8 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// Avoid the control displaying the graphical name itself.
-        /// Tt shall be done during the PaintInBoxArrowPanel method
+        ///     Avoid the control displaying the graphical name itself.
+        ///     Tt shall be done during the PaintInBoxArrowPanel method
         /// </summary>
         public override string Text
         {
@@ -52,7 +52,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name of the kind of model
+        ///     The name of the kind of model
         /// </summary>
         public abstract string ModelName { get; }
 
@@ -66,13 +66,15 @@ namespace GUI.ModelDiagram
             Brush textBrush = new SolidBrush(Color.Black);
             graphics.DrawString(typeName, bold, textBrush, Location.X + 2, Location.Y + 2);
             Pen border = new Pen(Color.Black);
-            graphics.DrawLine(border, new Point(Location.X, Location.Y + Font.Height + 2), new Point(Location.X + Width, Location.Y + Font.Height + 2));
+            graphics.DrawLine(border, new Point(Location.X, Location.Y + Font.Height + 2),
+                new Point(Location.X + Width, Location.Y + Font.Height + 2));
 
             // Center the element name
             string name = GUIUtils.AdjustForDisplay(graphics, Model.GraphicalName, Width, Font);
             SizeF textSize = graphics.MeasureString(name, Font);
             int boxHeight = Height - bold.Height - 4;
-            graphics.DrawString(name, Font, textBrush, Location.X + Width/2 - textSize.Width/2, Location.Y + bold.Height + 4 + boxHeight/2 - Font.Height/2);
+            graphics.DrawString(name, Font, textBrush, Location.X + Width/2 - textSize.Width/2,
+                Location.Y + bold.Height + 4 + boxHeight/2 - Font.Height/2);
         }
     }
 }

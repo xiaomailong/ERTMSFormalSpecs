@@ -20,12 +20,12 @@ using HistoricalData.Generated;
 namespace HistoricalData
 {
     /// <summary>
-    /// A single change in a commit
+    ///     A single change in a commit
     /// </summary>
     public class Change : Generated.Change, IComparable<Change>
     {
         /// <summary>
-        /// The name of the change
+        ///     The name of the change
         /// </summary>
         public override string Name
         {
@@ -52,7 +52,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The commit related to this change
+        ///     The commit related to this change
         /// </summary>
         public Commit Commit
         {
@@ -60,7 +60,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The action performed during the change
+        ///     The action performed during the change
         /// </summary>
         public acceptor.ChangeOperationEnum Action
         {
@@ -69,7 +69,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The guid on which the change occured
+        ///     The guid on which the change occured
         /// </summary>
         public string Guid
         {
@@ -78,7 +78,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The field that is affected, if applicable
+        ///     The field that is affected, if applicable
         /// </summary>
         public string Field
         {
@@ -87,7 +87,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The previous value of the field, if applicable
+        ///     The previous value of the field, if applicable
         /// </summary>
         public string Before
         {
@@ -96,7 +96,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The value of the field after the change, if applicable
+        ///     The value of the field after the change, if applicable
         /// </summary>
         public string After
         {
@@ -105,7 +105,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="action"></param>
         /// <param name="field"></param>
@@ -122,7 +122,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Change()
             : base()
@@ -130,7 +130,7 @@ namespace HistoricalData
         }
 
         /// <summary>
-        /// The date when the change was done
+        ///     The date when the change was done
         /// </summary>
         public DateTime Date
         {

@@ -27,7 +27,7 @@ namespace GUI.SelectionHistory
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Window()
         {
@@ -49,7 +49,9 @@ namespace GUI.SelectionHistory
 
             if (historyDataGridView.SelectedCells.Count == 1)
             {
-                selected = ((List<HistoryObject>) historyDataGridView.DataSource)[historyDataGridView.SelectedCells[0].OwningRow.Index].Reference;
+                selected =
+                    ((List<HistoryObject>) historyDataGridView.DataSource)[
+                        historyDataGridView.SelectedCells[0].OwningRow.Index].Reference;
             }
 
             if (selected != null)
@@ -67,7 +69,7 @@ namespace GUI.SelectionHistory
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -77,7 +79,7 @@ namespace GUI.SelectionHistory
         }
 
         /// <summary>
-        /// Refreshed the model of the window
+        ///     Refreshed the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -101,7 +103,7 @@ namespace GUI.SelectionHistory
         }
 
         /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
+        ///     Provides the model element currently selected in this IBaseForm
         /// </summary>
         public override IModelElement Selected
         {
@@ -121,13 +123,13 @@ namespace GUI.SelectionHistory
         private class HistoryObject
         {
             /// <summary>
-            /// The object that is referenced for history
+            ///     The object that is referenced for history
             /// </summary>
             [Browsable(false)]
             public ModelElement Reference { get; private set; }
 
             /// <summary>
-            /// The identification of the history element
+            ///     The identification of the history element
             /// </summary>
             public string Model
             {
@@ -135,7 +137,7 @@ namespace GUI.SelectionHistory
             }
 
             /// <summary>
-            /// The type of the referenced object
+            ///     The type of the referenced object
             /// </summary>
             public string Type
             {
@@ -143,7 +145,7 @@ namespace GUI.SelectionHistory
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="reference"></param>
             public HistoryObject(ModelElement reference)

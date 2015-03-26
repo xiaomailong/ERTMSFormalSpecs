@@ -177,6 +177,5 @@ namespace DataDictionary.test
             Refactor(el1, "NewE1");
             Assert.AreEqual("NewE1", el2.Name);
         }
-
     }
 }

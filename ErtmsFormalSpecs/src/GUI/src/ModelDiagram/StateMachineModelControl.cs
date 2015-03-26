@@ -19,12 +19,12 @@ using DataDictionary.Types;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// The boxes that represent a state machine
+    ///     The boxes that represent a state machine
     /// </summary>
     public class StateMachineModelControl : TypeModelControl
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public StateMachineModelControl(StateMachine model)
             : base(model)
@@ -32,7 +32,7 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name of the kind of type
+        ///     The name of the kind of type
         /// </summary>
         public override string ModelName
         {

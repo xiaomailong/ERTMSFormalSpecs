@@ -25,28 +25,28 @@ using Variable = DataDictionary.Variables.Variable;
 namespace DataDictionary.Interpreter
 {
     /// <summary>
-    /// LET variable '<-' expression IN expression
+    ///     LET variable '<-' expression IN expression
     /// LET variable '=>' expression IN expression
     /// </summary>
     public class LetExpression : Expression, ISubDeclarator
     {
         /// <summary>
-        /// The variable bound by the LET expression
+        ///     The variable bound by the LET expression
         /// </summary>
         public Variable BoundVariable { get; private set; }
 
         /// <summary>
-        /// The binding expression
+        ///     The binding expression
         /// </summary>
         public Expression BindingExpression { get; private set; }
 
         /// <summary>
-        /// The expression to be evaluated
+        ///     The expression to be evaluated
         /// </summary>
         public Expression Expression { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">the root element for which this expression should be parsed</param>
         /// <param name="start">The start character for this expression in the original string</param>
@@ -54,7 +54,8 @@ namespace DataDictionary.Interpreter
         /// <param name="boundVariableName">The name of the bound variable</param>
         /// <param name="bindingExpression">The binding expression which provides the value of the variable</param>
         /// <param name="expression">The expression to be evaluated</param>
-        public LetExpression(ModelElement root, ModelElement log, string boundVariableName, Expression bindingExpression, Expression expression, int start, int end)
+        public LetExpression(ModelElement root, ModelElement log, string boundVariableName, Expression bindingExpression,
+            Expression expression, int start, int end)
             : base(root, log, start, end)
         {
             BoundVariable = (Variable) acceptor.getFactory().createVariable();
@@ -70,7 +71,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -80,12 +81,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; private set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -95,7 +96,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -130,7 +131,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -141,7 +142,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
         {
@@ -153,7 +154,7 @@ namespace DataDictionary.Interpreter
 
 
         /// <summary>
-        /// Provides the type of this expression
+        ///     Provides the type of this expression
         /// </summary>
         /// <returns></returns>
         public override Type GetExpressionType()
@@ -162,7 +163,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the value associated to this Expression
+        ///     Provides the value associated to this Expression
         /// </summary>
         /// <param name="context">The context on which the value must be found</param>
         /// <param name="explain">The explanation to fill, if any</param>
@@ -184,13 +185,14 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>
         public override string ToString(int indentLevel)
         {
-            string retVal = "LET " + BoundVariable.Name + " <- " + BindingExpression.ToString(indentLevel) + " IN " + Expression.ToString(indentLevel);
+            string retVal = "LET " + BoundVariable.Name + " <- " + BindingExpression.ToString(indentLevel) + " IN " +
+                            Expression.ToString(indentLevel);
 
             return retVal;
         }

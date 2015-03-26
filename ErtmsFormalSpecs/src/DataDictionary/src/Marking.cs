@@ -21,19 +21,19 @@ using Utils;
 namespace DataDictionary
 {
     /// <summary>
-    /// Keeps track of all the model element which have a message
+    ///     Keeps track of all the model element which have a message
     /// </summary>
     public class Marking
     {
         private class Gatherer : Visitor
         {
             /// <summary>
-            /// Provides the logs associated to the model elements
+            ///     Provides the logs associated to the model elements
             /// </summary>
             public Dictionary<ModelElement, List<ElementLog>> Markings { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public Gatherer(EFSSystem system)
             {
@@ -61,12 +61,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The gatherer used to collect all logs
+        ///     The gatherer used to collect all logs
         /// </summary>
         private Gatherer TheGatherer { get; set; }
 
         /// <summary>
-        /// Creates a marking for the current system
+        ///     Creates a marking for the current system
         /// </summary>
         /// <param name="system"></param>
         public Marking(EFSSystem system)
@@ -75,7 +75,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Restores the marks 
+        ///     Restores the marks
         /// </summary>
         public void RestoreMarks()
         {

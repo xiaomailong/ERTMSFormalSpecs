@@ -39,7 +39,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// The rule set which is used to check the specifications
+        ///     The rule set which is used to check the specifications
         /// </summary>
         private IModelElement model;
 
@@ -76,7 +76,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="specification"></param>
         public Window()
@@ -94,7 +94,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -110,7 +110,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// Refreshes the model of the window
+        ///     Refreshes the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -118,7 +118,7 @@ namespace GUI.HistoryView
         }
 
         /// <summary>
-        /// Updates the window according to the new selected change
+        ///     Updates the window according to the new selected change
         /// </summary>
         /// <param name="Item"></param>
         public void SelectionChanged(Change Item)

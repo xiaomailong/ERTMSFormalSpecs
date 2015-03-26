@@ -24,12 +24,12 @@ namespace GUI.SpecificationView
     public class RequirementSetReferenceTreeNode : ModelElementTreeNode<RequirementSetReference>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -38,7 +38,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public RequirementSetReferenceTreeNode(RequirementSetReference item, bool buildSubNodes)
@@ -47,7 +47,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -56,7 +56,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -65,7 +65,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -78,7 +78,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Deletes the selected item
+        ///     Deletes the selected item
         /// </summary>
         public override void DeleteHandler(object sender, EventArgs args)
         {
@@ -87,7 +87,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Handles a selection change event
+        ///     Handles a selection change event
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)

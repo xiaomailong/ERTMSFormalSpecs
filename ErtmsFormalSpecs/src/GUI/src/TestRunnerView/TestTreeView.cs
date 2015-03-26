@@ -5,12 +5,12 @@ namespace GUI.TestRunnerView
     public class TestTreeView : TypedTreeView<EFSSystem>
     {
         /// <summary>
-        /// The tests tree node
+        ///     The tests tree node
         /// </summary>
         private TestsTreeNode tests;
 
         /// <summary>
-        /// Builds the tree model according to the root node
+        ///     Builds the tree model according to the root node
         /// </summary>
         protected override void BuildModel()
         {
@@ -23,7 +23,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new frame
+        ///     Creates a new frame
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -33,7 +33,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Finds the frame which corresponds to the name provided
+        ///     Finds the frame which corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>

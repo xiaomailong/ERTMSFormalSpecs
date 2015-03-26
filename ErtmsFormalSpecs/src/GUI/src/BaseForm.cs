@@ -26,47 +26,47 @@ namespace GUI
     public interface IBaseForm
     {
         /// <summary>
-        /// The property grid used to edit elements properties
+        ///     The property grid used to edit elements properties
         /// </summary>
         MyPropertyGrid Properties { get; }
 
         /// <summary>
-        /// The requirements text box used to display the associated requirements
+        ///     The requirements text box used to display the associated requirements
         /// </summary>
         EditorTextBox RequirementsTextBox { get; }
 
         /// <summary>
-        /// The text box used to edit expression
+        ///     The text box used to edit expression
         /// </summary>
         EditorTextBox ExpressionEditorTextBox { get; }
 
         /// <summary>
-        /// The main tree view of the form
+        ///     The main tree view of the form
         /// </summary>
         BaseTreeView TreeView { get; }
 
         /// <summary>
-        /// The sub tree view of the form
+        ///     The sub tree view of the form
         /// </summary>
         BaseTreeView subTreeView { get; }
 
         /// <summary>
-        /// The explain text box
+        ///     The explain text box
         /// </summary>
         ExplainTextBox ExplainTextBox { get; }
 
         /// <summary>
-        /// Refreshed the view, while no structural model occurred
+        ///     Refreshed the view, while no structural model occurred
         /// </summary>
         void Refresh();
 
         /// <summary>
-        /// Allows to refresh the view, according to the fact that the structure for the model could change
+        ///     Allows to refresh the view, according to the fact that the structure for the model could change
         /// </summary>
         void RefreshModel();
 
         /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
+        ///     Provides the model element currently selected in this IBaseForm
         /// </summary>
         IModelElement Selected { get; }
     }
@@ -74,7 +74,7 @@ namespace GUI
     public class BaseForm : DockContent, IBaseForm
     {
         /// <summary>
-        /// The property grid used to edit elements properties
+        ///     The property grid used to edit elements properties
         /// </summary>
         public virtual MyPropertyGrid Properties
         {
@@ -82,7 +82,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The requirements text box used to display the associated requirements
+        ///     The requirements text box used to display the associated requirements
         /// </summary>
         public virtual EditorTextBox RequirementsTextBox
         {
@@ -90,7 +90,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The text box used to edit expression
+        ///     The text box used to edit expression
         /// </summary>
         public virtual EditorTextBox ExpressionEditorTextBox
         {
@@ -98,7 +98,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The main tree view of the form
+        ///     The main tree view of the form
         /// </summary>
         public virtual BaseTreeView TreeView
         {
@@ -106,7 +106,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The sub tree view of the form
+        ///     The sub tree view of the form
         /// </summary>
         public virtual BaseTreeView subTreeView
         {
@@ -114,7 +114,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The explain text box
+        ///     The explain text box
         /// </summary>
         public virtual ExplainTextBox ExplainTextBox
         {
@@ -122,14 +122,14 @@ namespace GUI
         }
 
         /// <summary>
-        /// Allows to refresh the view, according to the fact that the structure for the model could change
+        ///     Allows to refresh the view, according to the fact that the structure for the model could change
         /// </summary>
         public virtual void RefreshModel()
         {
         }
 
         /// <summary>
-        /// Provides the model element currently selected in this IBaseForm
+        ///     Provides the model element currently selected in this IBaseForm
         /// </summary>
         public virtual IModelElement Selected
         {
@@ -147,12 +147,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The thread used to synchronize node names with their model
+        ///     The thread used to synchronize node names with their model
         /// </summary>
         private class Synchronizer : GenericSynchronizationHandler<BaseForm>
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="instance"></param>
             public Synchronizer(BaseForm instance, int cycleTime)
@@ -161,7 +161,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Synchronization
+            ///     Synchronization
             /// </summary>
             /// <param name="instance"></param>
             public override void HandleSynchronization(BaseForm instance)
@@ -171,12 +171,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that synchronization is required
+        ///     Indicates that synchronization is required
         /// </summary>
         private Synchronizer FormSynchronizer { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public BaseForm()
             : base()
@@ -207,7 +207,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Stop the synchronizer when the form is closed
+        ///     Stop the synchronizer when the form is closed
         /// </summary>
         /// <param name="e"></param>
         protected override void OnClosed(EventArgs e)
@@ -216,7 +216,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Synchronizes the form with its model
+        ///     Synchronizes the form with its model
         /// </summary>
         public virtual void SynchronizeForm()
         {
@@ -247,7 +247,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Resizes the description area of the property grid to be as small as possible
+        ///     Resizes the description area of the property grid to be as small as possible
         /// </summary>
         /// <param name="grid"></param>
         /// <param name="height"></param>

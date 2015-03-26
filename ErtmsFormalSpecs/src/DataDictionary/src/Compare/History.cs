@@ -20,12 +20,12 @@ using HistoricalData;
 namespace DataDictionary.Compare
 {
     /// <summary>
-    /// The model related history
+    ///     The model related history
     /// </summary>
     public class History : HistoricalData.History
     {
         /// <summary>
-        /// Provides the ordered set of changes on a given model element
+        ///     Provides the ordered set of changes on a given model element
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>

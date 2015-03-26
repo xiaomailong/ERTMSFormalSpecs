@@ -20,12 +20,12 @@ using DataDictionary.Interpreter;
 namespace DataDictionary.Types.AccessMode
 {
     /// <summary>
-    /// This class represents a procedure or function call
+    ///     This class represents a procedure or function call
     /// </summary>
     public class ProcedureOrFunctionCall : AccessMode, IComparable<ProcedureOrFunctionCall>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
@@ -37,12 +37,12 @@ namespace DataDictionary.Types.AccessMode
         }
 
         /// <summary>
-        /// The model element which is referenced by this arrow
+        ///     The model element which is referenced by this arrow
         /// </summary>
         public ICallable Called { get; private set; }
 
         /// <summary>
-        /// The referenced model 
+        ///     The referenced model
         /// </summary>
         public override ModelElement ReferencedModel
         {
@@ -50,7 +50,7 @@ namespace DataDictionary.Types.AccessMode
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public override string GraphicalName
         {

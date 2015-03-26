@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.IO;
 using Utils;
 
@@ -21,7 +22,7 @@ namespace DataDictionary.Types
     public class NameSpaceRef : Generated.NameSpaceRef
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public NameSpaceRef()
             : base()
@@ -30,7 +31,7 @@ namespace DataDictionary.Types
 
 
         /// <summary>
-        /// The file name which corresponds to this namespace ref
+        ///     The file name which corresponds to this namespace ref
         /// </summary>
         public string FileName
         {
@@ -49,7 +50,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Saves the namespace provided associated to this namespace ref
+        ///     Saves the namespace provided associated to this namespace ref
         /// </summary>
         /// <param name="nameSpace"></param>
         public void SaveNameSpace(NameSpace nameSpace)
@@ -62,7 +63,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Loads the namespace which corresponds to this namespace ref
+        ///     Loads the namespace which corresponds to this namespace ref
         /// </summary>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <param name="allowErrors">Allows errors during load (best effort)</param>
@@ -73,7 +74,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Removes the temporary file associated to that item
+        ///     Removes the temporary file associated to that item
         /// </summary>
         public void ClearTempFile()
         {

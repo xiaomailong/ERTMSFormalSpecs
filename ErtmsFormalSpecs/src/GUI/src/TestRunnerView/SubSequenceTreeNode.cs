@@ -32,19 +32,20 @@ namespace GUI.TestRunnerView
     public class SubSequenceTreeNode : ModelElementTreeNode<SubSequence>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : CommentableEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
             {
             }
 
-            [Category("Process"), Description("This flag indicates that the sequence is complete and can be executed during nightbuild")]
+            [Category("Process"),
+             Description("This flag indicates that the sequence is complete and can be executed during nightbuild")]
             public Boolean Completed
             {
                 get { return Item.getCompleted(); }
@@ -107,7 +108,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public SubSequenceTreeNode(SubSequence item, bool buildSubNodes)
@@ -116,7 +117,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -130,7 +131,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -139,7 +140,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new test case (e.g. feature + test case)
+        ///     Creates a new test case (e.g. feature + test case)
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
@@ -158,12 +159,12 @@ namespace GUI.TestRunnerView
         private class ApplyTranslationRulesHandler : ProgressHandler
         {
             /// <summary>
-            /// The subsequence on which the translation rules should be applied
+            ///     The subsequence on which the translation rules should be applied
             /// </summary>
             private SubSequence SubSequence { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="subSequence"></param>
             public ApplyTranslationRulesHandler(SubSequence subSequence)
@@ -172,7 +173,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Generates the file in the background thread
+            ///     Generates the file in the background thread
             /// </summary>
             /// <param name="arg"></param>
             public override void ExecuteWork()
@@ -185,7 +186,7 @@ namespace GUI.TestRunnerView
         #endregion
 
         /// <summary>
-        /// Translates the corresponding sub sequence, according to translation rules
+        ///     Translates the corresponding sub sequence, according to translation rules
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -206,7 +207,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Provides the EFS System in which this element belongs
+        ///     Provides the EFS System in which this element belongs
         /// </summary>
         public EFSSystem EFSSystem
         {
@@ -218,17 +219,17 @@ namespace GUI.TestRunnerView
         private class ExecuteTestsHandler : BaseLongOperation
         {
             /// <summary>
-            /// The window for which theses tests should be executed
+            ///     The window for which theses tests should be executed
             /// </summary>
             private Window Window { get; set; }
 
             /// <summary>
-            /// The subsequence which should be executed
+            ///     The subsequence which should be executed
             /// </summary>
             private SubSequence SubSequence { get; set; }
 
             /// <summary>
-            /// The EFS system 
+            ///     The EFS system
             /// </summary>
             private EFSSystem EFSSystem
             {
@@ -236,7 +237,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="window"></param>
             /// <param name="subSequence"></param>
@@ -247,7 +248,7 @@ namespace GUI.TestRunnerView
             }
 
             /// <summary>
-            /// Executes the tests in the background thread
+            ///     Executes the tests in the background thread
             /// </summary>
             /// <param name="arg"></param>
             public override void ExecuteWork()
@@ -262,7 +263,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a run event on this test case
+        ///     Handles a run event on this test case
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -288,7 +289,9 @@ namespace GUI.TestRunnerView
 
             if (!executeTestHandler.Dialog.Canceled)
             {
-                MessageBox.Show("Sub sequence execution report.\n" + runtimeErrors + "Test duration : " + Math.Round(executeTestHandler.Span.TotalSeconds) + " seconds", "Execution report");
+                MessageBox.Show(
+                    "Sub sequence execution report.\n" + runtimeErrors + "Test duration : " +
+                    Math.Round(executeTestHandler.Span.TotalSeconds) + " seconds", "Execution report");
             }
 
             GUIUtils.MDIWindow.RefreshAfterStep();
@@ -297,7 +300,7 @@ namespace GUI.TestRunnerView
         #endregion
 
         /// <summary>
-        /// Handles a run event on sub sequence case and creates the associated report
+        ///     Handles a run event on sub sequence case and creates the associated report
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -344,7 +347,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -365,7 +368,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles the drop event
+        ///     Handles the drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

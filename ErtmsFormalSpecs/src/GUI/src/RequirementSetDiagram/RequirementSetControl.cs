@@ -29,12 +29,12 @@ namespace GUI.RequirementSetDiagram
     public partial class RequirementSetControl : BoxControl<RequirementSet, RequirementSetDependancy>
     {
         /// <summary>
-        /// The metrics associates to this requirements set
+        ///     The metrics associates to this requirements set
         /// </summary>
         private ParagraphTreeNode.ParagraphSetMetrics Metrics { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RequirementSetControl()
             : base()
@@ -43,7 +43,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public RequirementSetControl(IContainer container)
@@ -73,7 +73,8 @@ namespace GUI.RequirementSetDiagram
             {
                 if (!paragraph.AppendToRequirementSet(Model))
                 {
-                    MessageBox.Show("Paragraph not added to the requirement set because it already belongs to it", "Paragraph not added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Paragraph not added to the requirement set because it already belongs to it",
+                        "Paragraph not added", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 GUIUtils.MDIWindow.SpecificationWindow.TreeView.Selected.SelectionChanged(false);
             }
@@ -87,7 +88,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Handles a double click event on the control
+        ///     Handles a double click event on the control
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -106,21 +107,21 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Implemented color
+        ///     Implemented color
         /// </summary>
         public static Color IMPLEMENTED_COLOR = Color.Green;
 
         public static Pen IMPLEMENTED_PEN = new Pen(IMPLEMENTED_COLOR);
 
         /// <summary>
-        /// Tested color
+        ///     Tested color
         /// </summary>
         public static Color TESTED_COLOR = Color.Yellow;
 
         public static Pen TESTED_PEN = new Pen(TESTED_COLOR);
 
         /// <summary>
-        /// Draws the box within the box-arrow panel
+        ///     Draws the box within the box-arrow panel
         /// </summary>
         /// <param name="g"></param>
         public override void PaintInBoxArrowPanel(Graphics g)
@@ -138,7 +139,7 @@ namespace GUI.RequirementSetDiagram
         }
 
         /// <summary>
-        /// Fills the progression bar according to the task ratio completed
+        ///     Fills the progression bar according to the task ratio completed
         /// </summary>
         /// <param name="g"></param>
         /// <param name="performed"></param>
@@ -151,7 +152,8 @@ namespace GUI.RequirementSetDiagram
             {
                 ratio = (double) performed/(double) total;
             }
-            g.FillRectangle(new SolidBrush(color), Location.X + 10 + 1, Location.Y + Height - 20 + 10 - width + 1, (int) ((Width - 20)*ratio) - 1, width - 1);
+            g.FillRectangle(new SolidBrush(color), Location.X + 10 + 1, Location.Y + Height - 20 + 10 - width + 1,
+                (int) ((Width - 20)*ratio) - 1, width - 1);
         }
     }
 }

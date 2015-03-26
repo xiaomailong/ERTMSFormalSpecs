@@ -31,7 +31,7 @@ namespace GUI.TranslationRules
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -40,7 +40,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public FolderTreeNode(Folder item, bool buildSubNodes)
@@ -49,7 +49,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -68,7 +68,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -77,7 +77,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates a new folder
+        ///     Creates a new folder
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -100,7 +100,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates a new translation based on a step
+        ///     Creates a new translation based on a step
         /// </summary>
         /// <param name="step"></param>
         private void createTranslation(Step step)
@@ -111,7 +111,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Creates a new translation
+        ///     Creates a new translation
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -131,7 +131,10 @@ namespace GUI.TranslationRules
 
             if (existingTranslation != null)
             {
-                DialogResult dialogResult = MessageBox.Show("Translation already exists. Do you want to create a new one (Cancel will select the existing translation) ?", "Already existing translation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                DialogResult dialogResult =
+                    MessageBox.Show(
+                        "Translation already exists. Do you want to create a new one (Cancel will select the existing translation) ?",
+                        "Already existing translation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                 if (dialogResult == DialogResult.OK)
                 {
                     existingTranslation = null;
@@ -163,7 +166,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -179,7 +182,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Sorts the sub nodes of this node
+        ///     Sorts the sub nodes of this node
         /// </summary>
         public override void SortSubNodes()
         {
@@ -213,7 +216,7 @@ namespace GUI.TranslationRules
         }
 
         /// <summary>
-        /// Handles drop event
+        ///     Handles drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

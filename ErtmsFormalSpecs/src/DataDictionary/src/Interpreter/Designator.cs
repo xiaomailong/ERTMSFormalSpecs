@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System.Collections.Generic;
 using DataDictionary.Constants;
 using DataDictionary.Interpreter.Filter;
@@ -27,19 +28,19 @@ namespace DataDictionary.Interpreter
     public class Designator : InterpreterTreeNode, IReference
     {
         /// <summary>
-        /// Provides the designator image
+        ///     Provides the designator image
         /// </summary>
         public string Image { get; private set; }
 
         /// <summary>
-        /// Predefined designators
+        ///     Predefined designators
         /// </summary>
         public const string THIS = "THIS";
 
         public const string ENCLOSING = "ENCLOSING";
 
         /// <summary>
-        /// Indicates that the designator is predefined
+        ///     Indicates that the designator is predefined
         /// </summary>
         /// <returns></returns>
         public bool IsPredefined()
@@ -48,12 +49,12 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Indicates whether this designator references
-        ///   - an element from the stack 
-        ///   - an element from the model
-        ///   - an element from the current instance
-        ///   - reference to THIS
-        ///   - reference to the enclosing structure
+        ///     Indicates whether this designator references
+        ///     - an element from the stack
+        ///     - an element from the model
+        ///     - an element from the current instance
+        ///     - reference to THIS
+        ///     - reference to the enclosing structure
         /// </summary>
         public enum LocationEnum
         {
@@ -66,7 +67,7 @@ namespace DataDictionary.Interpreter
         };
 
         /// <summary>
-        /// The location referenced by this designator
+        ///     The location referenced by this designator
         /// </summary>
         public LocationEnum Location
         {
@@ -131,7 +132,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="enclosing">the enclosing tree node</param>
         /// <param name="image">The designator image</param>
@@ -144,7 +145,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the possible references for this designator (only available during semantic analysis)
+        ///     Provides the possible references for this designator (only available during semantic analysis)
         /// </summary>
         /// <param name="instance">the instance on which this element should be found.</param>
         /// <param name="expectation">the expectation on the element found</param>
@@ -289,7 +290,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Adds a reference which satisfies the provided expectation in the result set
+        ///     Adds a reference which satisfies the provided expectation in the result set
         /// </summary>
         /// <param name="namable"></param>
         /// <param name="expectation"></param>
@@ -329,7 +330,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the retVal result set according to the subDeclarator class provided as parameter
+        ///     Fills the retVal result set according to the subDeclarator class provided as parameter
         /// </summary>
         /// <param name="subDeclarator">The subdeclarator used to get the image</param>
         /// <param name="expectation">The expectatino of the desired element</param>
@@ -337,7 +338,8 @@ namespace DataDictionary.Interpreter
         /// <param name="asType">Indicates that we had to go from the values to the types to perform dereferencing</param>
         /// <param name="values">The return value to update</param>
         /// <return>the number of elements added</return>
-        private int FillBySubdeclarator(ISubDeclarator subDeclarator, BaseFilter expectation, bool asType, ReturnValue values)
+        private int FillBySubdeclarator(ISubDeclarator subDeclarator, BaseFilter expectation, bool asType,
+            ReturnValue values)
         {
             int retVal = 0;
 
@@ -355,18 +357,20 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// The model element referenced by this designator.
-        /// This value can be null. In that case, reference should be done by dereferencing each argument of the Deref expression
+        ///     The model element referenced by this designator.
+        ///     This value can be null. In that case, reference should be done by dereferencing each argument of the Deref
+        ///     expression
         /// </summary>
         public INamable Ref { get; set; }
 
         /// <summary>
-        /// Performs the semantic analysis of the term
+        ///     Performs the semantic analysis of the term
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
-        /// <para name="expectation">Indicates the kind of element we are looking for</paraparam>
-        /// <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
-        /// <returns>True if semantic analysis should be continued</returns>
+        /// <para name="expectation">
+        ///     Indicates the kind of element we are looking for</paraparam>
+        ///     <param name="lastElement">Indicates that this element is the last one in a dereference chain</param>
+        ///     <returns>True if semantic analysis should be continued</returns>
         public void SemanticAnalysis(INamable instance, BaseFilter expectation, bool lastElement)
         {
             ReturnValue tmp = getReferences(instance, expectation, lastElement);
@@ -387,7 +391,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the element referenced by this designator, given the enclosing element
+        ///     Provides the element referenced by this designator, given the enclosing element
         /// </summary>
         /// <param name="enclosing"></param>
         /// <returns></returns>
@@ -474,7 +478,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the enclosing element
+        ///     Provides the enclosing element
         /// </summary>
         /// <param name="retVal"></param>
         /// <returns></returns>
@@ -495,7 +499,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the enclosing sub declarator
+        ///     Provides the enclosing sub declarator
         /// </summary>
         /// <param name="instance"></param>
         /// <returns></returns>
@@ -512,7 +516,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the reference for this subdeclarator
+        ///     Provides the reference for this subdeclarator
         /// </summary>
         /// <param name="subDeclarator"></param>
         /// <returns></returns>
@@ -552,7 +556,8 @@ namespace DataDictionary.Interpreter
                             {
                                 if (enclosed != subDeclVar.Value)
                                 {
-                                    AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                    AddError(
+                                        "Consistency check failed : enclosed element's father relationship is inconsistent");
                                 }
                             }
                             else
@@ -560,9 +565,11 @@ namespace DataDictionary.Interpreter
                                 if (enclosed != subDeclarator)
                                 {
                                     // There is still an exception : when the element is declared in the default namespace
-                                    if (subDeclarator != EFSSystem.INSTANCE || enclosed != EFSSystem.INSTANCE.findByFullName("Default"))
+                                    if (subDeclarator != EFSSystem.INSTANCE ||
+                                        enclosed != EFSSystem.INSTANCE.findByFullName("Default"))
                                     {
-                                        AddError("Consistency check failed : enclosed element's father relationship is inconsistent");
+                                        AddError(
+                                            "Consistency check failed : enclosed element's father relationship is inconsistent");
                                     }
                                 }
                             }
@@ -581,7 +588,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the type designated by this designator
+        ///     Provides the type designated by this designator
         /// </summary>
         /// <returns></returns>
         public Type GetDesignatorType()
@@ -606,7 +613,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -668,7 +675,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the expression text
+        ///     Provides the expression text
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -677,7 +684,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Provides the indented expression text
+        ///     Provides the indented expression text
         /// </summary>
         /// <param name="indentLevel"></param>
         /// <returns></returns>

@@ -19,12 +19,12 @@ using System;
 namespace DataDictionary.Types.AccessMode
 {
     /// <summary>
-    /// References an access to a model element, referencing the source and target namespaces
+    ///     References an access to a model element, referencing the source and target namespaces
     /// </summary>
     public abstract class AccessMode : IGraphicalArrow<NameSpace>, IComparable<AccessMode>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
@@ -35,12 +35,12 @@ namespace DataDictionary.Types.AccessMode
         }
 
         /// <summary>
-        /// The source of the arrow
+        ///     The source of the arrow
         /// </summary>
         public NameSpace Source { get; private set; }
 
         /// <summary>
-        /// Sets the source box for this arrow
+        ///     Sets the source box for this arrow
         /// </summary>
         /// <param name="initialBox"></param>
         public void SetInitialBox(IGraphicalDisplay initialBox)
@@ -49,12 +49,12 @@ namespace DataDictionary.Types.AccessMode
         }
 
         /// <summary>
-        /// The target of the arrow
+        ///     The target of the arrow
         /// </summary>
         public NameSpace Target { get; private set; }
 
         /// <summary>
-        /// Sets the target box for this arrow
+        ///     Sets the target box for this arrow
         /// </summary>
         /// <param name="targetBox"></param>
         public void SetTargetBox(IGraphicalDisplay targetBox)
@@ -63,12 +63,12 @@ namespace DataDictionary.Types.AccessMode
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public abstract string GraphicalName { get; }
 
         /// <summary>
-        /// The referenced model element
+        ///     The referenced model element
         /// </summary>
         public abstract ModelElement ReferencedModel { get; }
 

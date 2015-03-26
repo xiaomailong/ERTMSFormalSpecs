@@ -21,12 +21,12 @@ using GUI.BoxArrowDiagram;
 namespace GUI.ModelDiagram
 {
     /// <summary>
-    /// An arrow
+    ///     An arrow
     /// </summary>
     public class ModelArrow : IGraphicalArrow<IGraphicalDisplay>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="source"></param>
         /// <param name="target"></param>
@@ -41,12 +41,12 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The source of the arrow
+        ///     The source of the arrow
         /// </summary>
         public IGraphicalDisplay Source { get; private set; }
 
         /// <summary>
-        /// Sets the source box for this arrow
+        ///     Sets the source box for this arrow
         /// </summary>
         /// <param name="initialBox"></param>
         public void SetInitialBox(IGraphicalDisplay initialBox)
@@ -55,12 +55,12 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The target of the arrow
+        ///     The target of the arrow
         /// </summary>
         public IGraphicalDisplay Target { get; private set; }
 
         /// <summary>
-        /// Sets the target box for this arrow
+        ///     Sets the target box for this arrow
         /// </summary>
         /// <param name="targetBox"></param>
         public void SetTargetBox(IGraphicalDisplay targetBox)
@@ -69,23 +69,23 @@ namespace GUI.ModelDiagram
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName { get; private set; }
 
         /// <summary>
-        /// The model element which is referenced by this arrow
+        ///     The model element which is referenced by this arrow
         /// </summary>
         public ModelElement ReferencedModel { get; private set; }
     }
 
     /// <summary>
-    /// An arrow between the models
+    ///     An arrow between the models
     /// </summary>
     public class ModelArrowControl : ArrowControl<IGraphicalDisplay, ModelArrow>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="model"></param>
         public ModelArrowControl(ModelArrow model)

@@ -21,12 +21,12 @@ namespace DataDictionary.Interpreter
     public class ParseErrorException : Exception
     {
         /// <summary>
-        /// The size of the context to provide
+        ///     The size of the context to provide
         /// </summary>
         private static int CONTEXT_SIZE = 20;
 
         /// <summary>
-        /// Builds the context messag
+        ///     Builds the context messag
         /// </summary>
         /// <param name="message"></param>
         /// <param name="index"></param>
@@ -57,7 +57,7 @@ namespace DataDictionary.Interpreter
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="message"></param>
         /// <param name="index"></param>

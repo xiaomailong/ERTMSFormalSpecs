@@ -27,17 +27,17 @@ using Variable = DataDictionary.Variables.Variable;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Returns the full deceleration curve (all the way down to zero speed) for the given target
+    ///     Returns the full deceleration curve (all the way down to zero speed) for the given target
     /// </summary>
     public class FullDecelerationForTarget : FunctionOnGraph
     {
         /// <summary>
-        /// The target used for the deceleration curve
+        ///     The target used for the deceleration curve
         /// </summary>
         public Parameter Target { get; private set; }
 
         /// <summary>
-        /// The deceleration factor
+        ///     The deceleration factor
         /// </summary>
         public Parameter DecelerationFactor { get; private set; }
 
@@ -58,19 +58,20 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Perform additional checks based on the parameter types
+        ///     Perform additional checks based on the parameter types
         /// </summary>
         /// <param name="root">The element on which the errors should be reported</param>
         /// <param name="context">The evaluation context</param>
         /// <param name="actualParameters">The parameters applied to this function call</param>
-        public override void additionalChecks(ModelElement root, InterpretationContext context, Dictionary<string, Expression> actualParameters)
+        public override void additionalChecks(ModelElement root, InterpretationContext context,
+            Dictionary<string, Expression> actualParameters)
         {
             CheckFunctionalParameter(root, context, actualParameters[Target.Name], 1);
             CheckFunctionalParameter(root, context, actualParameters[DecelerationFactor.Name], 2);
         }
 
         /// <summary>
-        /// Creates a graph for the function
+        ///     Creates a graph for the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="parameter"></param>
@@ -98,13 +99,15 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     Surface DecelerationSurface = decelerationFactor.createSurface(context, explain);
                     if (DecelerationSurface != null)
                     {
-                        AccelerationSpeedDistanceSurface accelerationSurface = DecelerationSurface.createAccelerationSpeedDistanceSurface(double.MaxValue, double.MaxValue);
+                        AccelerationSpeedDistanceSurface accelerationSurface =
+                            DecelerationSurface.createAccelerationSpeedDistanceSurface(double.MaxValue, double.MaxValue);
 
                         QuadraticSpeedDistanceCurve BrakingCurve = null;
 
                         try
                         {
-                            BrakingCurve = EtcsBrakingCurveBuilder.Build_Deceleration_Curve(accelerationSurface, speed, location);
+                            BrakingCurve = EtcsBrakingCurveBuilder.Build_Deceleration_Curve(accelerationSurface, speed,
+                                location);
                         }
                         catch (Exception e)
                         {
@@ -135,13 +138,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 
@@ -149,7 +153,8 @@ namespace DataDictionary.Functions.PredefinedFunctions
             AssignParameters(context, actuals);
 
             Function function = (Function) acceptor.getFactory().createFunction();
-            function.Name = "FullDecelerationForTarget ( Target => " + getName(Target) + ", DecelerationFactor => " + getName(DecelerationFactor) + " )";
+            function.Name = "FullDecelerationForTarget ( Target => " + getName(Target) + ", DecelerationFactor => " +
+                            getName(DecelerationFactor) + " )";
             function.Enclosing = EFSSystem;
             Parameter parameter = (Parameter) acceptor.getFactory().createParameter();
             parameter.Name = "X";

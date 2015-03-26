@@ -26,7 +26,7 @@ using WeifenLuo.WinFormsUI.Docking;
 namespace GUI.Converters
 {
     /// <summary>
-    /// TODO: Update summary.
+    ///     TODO: Update summary.
     /// </summary>
     public class TypeUITypedEditor : UITypeEditor
     {
@@ -36,7 +36,7 @@ namespace GUI.Converters
         }
 
         /// <summary>
-        /// Sets the string value into the right property
+        ///     Sets the string value into the right property
         /// </summary>
         /// <param name="instance"></param>
         /// <param name="value"></param>
@@ -52,7 +52,8 @@ namespace GUI.Converters
 
         public override object EditValue(ITypeDescriptorContext context, IServiceProvider provider, object value)
         {
-            IWindowsFormsEditorService svc = provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
+            IWindowsFormsEditorService svc =
+                provider.GetService(typeof (IWindowsFormsEditorService)) as IWindowsFormsEditorService;
             if (svc != null)
             {
                 ITypedElement typedElement = value as ITypedElement;

@@ -29,12 +29,12 @@ namespace GUI.TestRunnerView
     public class SubStepTreeNode : ModelElementTreeNode<SubStep>
     {
         /// <summary>
-        /// The value editor
+        ///     The value editor
         /// </summary>
         private class ItemEditor : CommentableEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -53,7 +53,7 @@ namespace GUI.TestRunnerView
         private ExpectationsTreeNode expectations;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public SubStepTreeNode(SubStep item, bool buildSubNodes)
@@ -62,7 +62,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles a selection change event
+        ///     Handles a selection change event
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
@@ -85,7 +85,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -100,7 +100,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -109,19 +109,20 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Ensures that the runner corresponds to test case
+        ///     Ensures that the runner corresponds to test case
         /// </summary>
         private void CheckRunner()
         {
             Window window = BaseForm as Window;
-            if (window != null && window.EFSSystem.Runner != null && window.EFSSystem.Runner.SubSequence != Item.Step.SubSequence)
+            if (window != null && window.EFSSystem.Runner != null &&
+                window.EFSSystem.Runner.SubSequence != Item.Step.SubSequence)
             {
                 window.Clear();
             }
         }
 
         /// <summary>
-        /// Adds an action for this sub-step
+        ///     Adds an action for this sub-step
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -134,7 +135,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new action
+        ///     Creates a new action
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
@@ -149,7 +150,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Adds an expectation for this sub-step
+        ///     Adds an expectation for this sub-step
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -162,7 +163,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Creates a new expectation
+        ///     Creates a new expectation
         /// </summary>
         /// <param name="testCase"></param>
         /// <returns></returns>
@@ -177,7 +178,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -195,7 +196,7 @@ namespace GUI.TestRunnerView
         }
 
         /// <summary>
-        /// Handles the drop event
+        ///     Handles the drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)

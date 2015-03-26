@@ -46,7 +46,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a report on the model, according to user's choices
+        ///     Creates a report on the model, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
         public override Document BuildDocument()

@@ -28,7 +28,7 @@ namespace DataDictionary.Types
     public class Structure : Generated.Structure, ISubDeclarator, IFinder, TextualExplain
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Structure()
         {
@@ -36,7 +36,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The structure elements 
+        ///     The structure elements
         /// </summary>
         public ArrayList Elements
         {
@@ -51,7 +51,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The structure procedures
+        ///     The structure procedures
         /// </summary>
         public ArrayList Procedures
         {
@@ -66,7 +66,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The state machines
+        ///     The state machines
         /// </summary>
         public ArrayList StateMachines
         {
@@ -81,7 +81,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates if the structure is abstract
+        ///     Indicates if the structure is abstract
         /// </summary>
         public override bool IsAbstract
         {
@@ -90,7 +90,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the list of implemented interfaces (not recursive)
+        ///     Provides the list of implemented interfaces (not recursive)
         /// </summary>
         public List<Structure> Interfaces
         {
@@ -106,7 +106,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the list of implemented interfaces (not recursive)
+        ///     Provides the list of implemented interfaces (not recursive)
         /// </summary>
         public List<StructureRef> InterfaceRefs
         {
@@ -122,8 +122,8 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the recursive list of the interfaces implemented by the structure,
-        /// together with the structure itself
+        ///     Provides the recursive list of the interfaces implemented by the structure,
+        ///     together with the structure itself
         /// </summary>
         public List<Structure> ImplementedStructures
         {
@@ -131,7 +131,7 @@ namespace DataDictionary.Types
             {
                 List<Structure> result = new List<Structure>();
                 result.Add(this);
-                foreach(StructureRef structureRef in allInterfaces())
+                foreach (StructureRef structureRef in allInterfaces())
                 {
                     result.AddRange(structureRef.ImplementedStructures);
                 }
@@ -144,7 +144,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -166,12 +166,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The declared elements of the structure
+        ///     The declared elements of the structure
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -181,7 +181,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The structure rules
+        ///     The structure rules
         /// </summary>
         public ArrayList Rules
         {
@@ -196,7 +196,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the structure element which corresponds to the name provided
+        ///     Provides the structure element which corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -211,7 +211,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the default value for this structure
+        ///     Provides the default value for this structure
         /// </summary>
         public override IValue DefaultValue
         {
@@ -224,7 +224,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -269,7 +269,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the other type can be placed in variables of this type
+        ///     Indicates that the other type can be placed in variables of this type
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -290,7 +290,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that binary operation is valid for this type and the other type 
+        ///     Indicates that binary operation is valid for this type and the other type
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -298,7 +298,9 @@ namespace DataDictionary.Types
         {
             bool retVal;
 
-            if (operation == BinaryExpression.OPERATOR.LESS || operation == BinaryExpression.OPERATOR.LESS_OR_EQUAL || operation == BinaryExpression.OPERATOR.GREATER || operation == BinaryExpression.OPERATOR.GREATER_OR_EQUAL)
+            if (operation == BinaryExpression.OPERATOR.LESS || operation == BinaryExpression.OPERATOR.LESS_OR_EQUAL ||
+                operation == BinaryExpression.OPERATOR.GREATER ||
+                operation == BinaryExpression.OPERATOR.GREATER_OR_EQUAL)
             {
                 retVal = false;
             }
@@ -347,7 +349,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the structure
+        ///     Provides an explanation of the structure
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -430,7 +432,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the range
+        ///     Provides an explanation of the range
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -442,7 +444,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The explanation of the element
+        ///     The explanation of the element
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -452,28 +454,28 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Generates the fields from the interited interfaces, if they are missing
+        ///     Generates the fields from the interited interfaces, if they are missing
         /// </summary>
         public void GenerateInheritedFields()
         {
-            foreach(Structure inheritedStructure in Interfaces)
+            foreach (Structure inheritedStructure in Interfaces)
             {
-                foreach(StructureElement inheritedElement in inheritedStructure.Elements)
+                foreach (StructureElement inheritedElement in inheritedStructure.Elements)
                 {
                     StructureElement correspondingElement = null;
-                    foreach(StructureElement element in Elements)
+                    foreach (StructureElement element in Elements)
                     {
-                        if(element.Name.Equals(inheritedElement.Name))
+                        if (element.Name.Equals(inheritedElement.Name))
                         {
                             correspondingElement = element;
                             break;
                         }
                     }
-                    if(correspondingElement == null) // no correspondance found => create that element
+                    if (correspondingElement == null) // no correspondance found => create that element
                     {
-                        appendElements(inheritedElement.Duplicate()as StructureElement);
+                        appendElements(inheritedElement.Duplicate() as StructureElement);
                     }
-                    else  // correspondace found => update that element
+                    else // correspondace found => update that element
                     {
                         correspondingElement.TypeName = inheritedElement.TypeName;
                     }
@@ -482,7 +484,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates if the structure implements the interface provided as parameter
+        ///     Indicates if the structure implements the interface provided as parameter
         /// </summary>
         /// <param name="anInterface"></param>
         /// <returns></returns>
@@ -497,7 +499,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates if the given structure element is inherited from an interface or not
+        ///     Indicates if the given structure element is inherited from an interface or not
         /// </summary>
         /// <param name="anElement"></param>
         /// <returns></returns>
@@ -505,7 +507,7 @@ namespace DataDictionary.Types
         {
             bool retVal = false;
 
-            foreach(Structure inheritedStructure in Interfaces)
+            foreach (Structure inheritedStructure in Interfaces)
             {
                 if (inheritedStructure != null)
                 {

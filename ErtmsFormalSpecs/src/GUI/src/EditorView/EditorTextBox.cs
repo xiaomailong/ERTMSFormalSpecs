@@ -43,22 +43,22 @@ namespace GUI
     public partial class EditorTextBox : UserControl
     {
         /// <summary>
-        /// Indicates that only types should be considered in the search
+        ///     Indicates that only types should be considered in the search
         /// </summary>
         public bool ConsiderOnlyTypes { get; set; }
 
         /// <summary>
-        /// Indicates whether there is a pending selection in the combo box
+        ///     Indicates whether there is a pending selection in the combo box
         /// </summary>
         private bool PendingSelection { get; set; }
 
         /// <summary>
-        /// The initial RTF data, used to initialise back the control and remove all formatting information
+        ///     The initial RTF data, used to initialise back the control and remove all formatting information
         /// </summary>
         private string InitialRTF { get; set; }
 
         /// <summary>
-        /// The enclosing IBaseForm
+        ///     The enclosing IBaseForm
         /// </summary>
         private IBaseForm EnclosingForm
         {
@@ -77,7 +77,7 @@ namespace GUI
         private object __instance = null;
 
         /// <summary>
-        /// Provides the instance on which this editor is based
+        ///     Provides the instance on which this editor is based
         /// </summary>
         public object Instance
         {
@@ -93,7 +93,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The instance viewed as a model element
+        ///     The instance viewed as a model element
         /// </summary>
         public IModelElement Model
         {
@@ -102,7 +102,7 @@ namespace GUI
 
 
         /// <summary>
-        /// Provides the EFSSystem 
+        ///     Provides the EFSSystem
         /// </summary>
         private EFSSystem EFSSystem
         {
@@ -121,27 +121,27 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that autocompletion is active for the text box
+        ///     Indicates that autocompletion is active for the text box
         /// </summary>
         public bool AutoComplete { get; set; }
 
         /// <summary>
-        /// A clean and empty RTF text
+        ///     A clean and empty RTF text
         /// </summary>
         private string CleanText { get; set; }
 
         /// <summary>
-        /// Indicates that a mouse mouve event hides the explanation
+        ///     Indicates that a mouse mouve event hides the explanation
         /// </summary>
         private bool ConsiderMouseMoveToCloseExplanation { get; set; }
 
         /// <summary>
-        /// The location of the mouse
+        ///     The location of the mouse
         /// </summary>
         private Point MouseLocation { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public EditorTextBox()
         {
@@ -170,7 +170,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Displays the help associated to a location in the text box
+        ///     Displays the help associated to a location in the text box
         /// </summary>
         /// <param name="location"></param>
         private void DisplayHelp(Point location)
@@ -190,7 +190,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the instances related to a location in the textbox
+        ///     Provides the instances related to a location in the textbox
         /// </summary>
         /// <param name="location"></param>
         /// <returns></returns>
@@ -213,7 +213,8 @@ namespace GUI
                 }
 
                 int end = index;
-                while (end < EditionTextBox.Text.Length && ValidIdentifierCharacter(EditionTextBox.Text[end]) && EditionTextBox.Text[end] != '.')
+                while (end < EditionTextBox.Text.Length && ValidIdentifierCharacter(EditionTextBox.Text[end]) &&
+                       EditionTextBox.Text[end] != '.')
                 {
                     end += 1;
                 }
@@ -224,8 +225,10 @@ namespace GUI
 
                 if (start < end)
                 {
-                    string identifier = EditionTextBox.Text.Substring(start, Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, identifier, AllMatches.INSTANCE, true, null, true);
+                    string identifier = EditionTextBox.Text.Substring(start,
+                        Math.Min(end - start + 1, EditionTextBox.Text.Length - start));
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, identifier,
+                        AllMatches.INSTANCE, true, null, true);
                     if (expression != null)
                     {
                         if (expression.Ref != null)
@@ -249,7 +252,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Takes case of the mouse move to hide the explain text box, if needed
+        ///     Takes case of the mouse move to hide the explain text box, if needed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -270,7 +273,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that the character belongs to a fully qualified identifier
+        ///     Indicates that the character belongs to a fully qualified identifier
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
@@ -319,10 +322,13 @@ namespace GUI
         }
 
         /// <summary>
-        /// Explains a reference and shows the associated textbox
+        ///     Explains a reference and shows the associated textbox
         /// </summary>
         /// <param name="reference">The object reference to explain</param>
-        /// <param name="location">The location where the explain box should be displayed. If empty is displayed, the location is computed based on the combo box location</param>
+        /// <param name="location">
+        ///     The location where the explain box should be displayed. If empty is displayed, the location is
+        ///     computed based on the combo box location
+        /// </param>
         /// <param name="sensibleToMouseMove">Indicates that the explain box should be closed when the mouse moves</param>
         private void ExplainAndShowReference(ObjectReference reference, Point location, bool sensibleToMouseMove = false)
         {
@@ -333,10 +339,13 @@ namespace GUI
         }
 
         /// <summary>
-        /// Explains a list of namables and shows the associated textbox
+        ///     Explains a list of namables and shows the associated textbox
         /// </summary>
         /// <param name="namable">The namable to explain</param>
-        /// <param name="location">The location where the explain box should be displayed. If empty is displayed, the location is computed based on the combo box location</param>
+        /// <param name="location">
+        ///     The location where the explain box should be displayed. If empty is displayed, the location is
+        ///     computed based on the combo box location
+        /// </param>
         /// <param name="sensibleToMouseMove">Indicates that the explain box should be closed when the mouse moves</param>
         private void ExplainAndShow(List<INamable> namables, Point location, bool sensibleToMouseMove)
         {
@@ -395,7 +404,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The text box
+        ///     The text box
         /// </summary>
         public RichTextBox TextBox
         {
@@ -453,7 +462,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the list of available elements which match the prefix provided
+        ///     Provides the list of available elements which match the prefix provided
         /// </summary>
         /// <param name="element">The element in which the possibilities should be found</param>
         /// <param name="searchOptions"></param>
@@ -490,7 +499,8 @@ namespace GUI
             return retVal;
         }
 
-        private bool ConsiderElement(IModelElement element, SearchOptions searchOptions, HashSet<ObjectReference> retVal, bool type)
+        private bool ConsiderElement(IModelElement element, SearchOptions searchOptions, HashSet<ObjectReference> retVal,
+            bool type)
         {
             ISubDeclarator subDeclarator = element as ISubDeclarator;
             if (subDeclarator == null)
@@ -522,7 +532,8 @@ namespace GUI
                         {
                             foreach (INamable namable in subDeclarator.DeclaredElements[subElem])
                             {
-                                if (namable.FullName.EndsWith(searchOptions.EnclosingName + "." + subElem) || type || subDeclarator is StructureElement)
+                                if (namable.FullName.EndsWith(searchOptions.EnclosingName + "." + subElem) || type ||
+                                    subDeclarator is StructureElement)
                                 {
                                     if (ConsiderOnlyTypes)
                                     {
@@ -554,7 +565,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the current prefix, according to the selection position
+        ///     Provides the current prefix, according to the selection position
         /// </summary>
         /// <returns></returns>
         private string CurrentPrefix()
@@ -611,22 +622,22 @@ namespace GUI
         }
 
         /// <summary>
-        /// A reference to an object, displayed in the combo box
+        ///     A reference to an object, displayed in the combo box
         /// </summary>
         private class ObjectReference : IComparable<ObjectReference>
         {
             /// <summary>
-            /// The display name of the object reference
+            ///     The display name of the object reference
             /// </summary>
             public string DisplayName { get; private set; }
 
             /// <summary>
-            /// The model elements referenced by this object reference
+            ///     The model elements referenced by this object reference
             /// </summary>
             public List<INamable> Models { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="models"></param>
             /// <param name="name"></param>
@@ -660,7 +671,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Code templates
+        ///     Code templates
         /// </summary>
         private static string[] TEMPLATES = new string[]
         {
@@ -671,7 +682,8 @@ namespace GUI
             CountExpression.OPERATOR + " X IN <collection> | <condition>",
             MapExpression.OPERATOR + " <collection> | <condition> USING X IN <map_expression>",
             SumExpression.OPERATOR + " <collection> | <condition> USING X IN <map_expression>",
-            ReduceExpression.OPERATOR + " <collection> | <condition> USING X IN <map_expression> INITIAL_VALUE <expression>",
+            ReduceExpression.OPERATOR +
+            " <collection> | <condition> USING X IN <map_expression> INITIAL_VALUE <expression>",
             "LET <variable> <- <expression> IN <expression>",
             "STABILIZE <expression> INITIAL_VALUE <expression> STOP_CONDITION <condition>",
             "APPLY <statement> ON <collection> | <condition>",
@@ -703,7 +715,7 @@ namespace GUI
         };
 
         /// <summary>
-        /// Provides the list of model elements which correspond to the prefix given
+        ///     Provides the list of model elements which correspond to the prefix given
         /// </summary>
         /// <param name="prefix"></param>
         /// <returns></returns>
@@ -719,7 +731,9 @@ namespace GUI
             bool isANumber = false;
             if (!string.IsNullOrEmpty(searchOptions.EnclosingName))
             {
-                isANumber = int.TryParse(searchOptions.EnclosingName.Substring(0, searchOptions.EnclosingName.Length - 1), out value);
+                isANumber =
+                    int.TryParse(searchOptions.EnclosingName.Substring(0, searchOptions.EnclosingName.Length - 1),
+                        out value);
             }
 
             if (!isANumber)
@@ -749,37 +763,37 @@ namespace GUI
 
 
         /// <summary>
-        /// The search options to be used
+        ///     The search options to be used
         /// </summary>
         private class SearchOptions
         {
             /// <summary>
-            /// Indicates that templates should be taken into consideration
+            ///     Indicates that templates should be taken into consideration
             /// </summary>
             public bool ConsiderTemplates { get; set; }
 
             /// <summary>
-            /// Indicates that the enclosing elements should be taken into consideration
+            ///     Indicates that the enclosing elements should be taken into consideration
             /// </summary>
             public bool ConsiderEnclosing { get; set; }
 
             /// <summary>
-            /// The name of the enclosing element
+            ///     The name of the enclosing element
             /// </summary>
             public string EnclosingName { get; set; }
 
             /// <summary>
-            /// The prefix of the element to be found
+            ///     The prefix of the element to be found
             /// </summary>
             public string Prefix { get; set; }
 
             /// <summary>
-            /// The list of instances on which the search should occur
+            ///     The list of instances on which the search should occur
             /// </summary>
             public List<INamable> Instances { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public SearchOptions()
             {
@@ -792,7 +806,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the search options according to the text provided 
+        ///     Provides the search options according to the text provided
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -864,9 +878,12 @@ namespace GUI
                         ModelElement modelElement = Instance as ModelElement;
                         if (modelElement != null)
                         {
-                            Expression listExpression = EFSSystem.Parser.Expression(modelElement, EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false, null, true);
-                            Expression currentExpression = EFSSystem.Parser.Expression(modelElement, retVal.EnclosingName, AllMatches.INSTANCE, false, null, true);
-                            Expression foreachExpression = new ForAllExpression(modelElement, modelElement, listExpression, "X", currentExpression, -1, -1);
+                            Expression listExpression = EFSSystem.Parser.Expression(modelElement,
+                                EditionTextBox.Text.Substring(start, len), IsVariableOrValue.INSTANCE, false, null, true);
+                            Expression currentExpression = EFSSystem.Parser.Expression(modelElement,
+                                retVal.EnclosingName, AllMatches.INSTANCE, false, null, true);
+                            Expression foreachExpression = new ForAllExpression(modelElement, modelElement,
+                                listExpression, "X", currentExpression, -1, -1);
                             foreachExpression.SemanticAnalysis();
                             if (currentExpression.Ref != null)
                             {
@@ -884,7 +901,8 @@ namespace GUI
                     int parentIndex = retVal.EnclosingName.LastIndexOf('(');
                     string functionName = retVal.EnclosingName.Substring(0, parentIndex);
 
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, functionName, AllMatches.INSTANCE, true, null, true);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, functionName,
+                        AllMatches.INSTANCE, true, null, true);
                     Function function = expression.Ref as Function;
                     if (function != null)
                     {
@@ -894,7 +912,8 @@ namespace GUI
                 }
                 else
                 {
-                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, retVal.EnclosingName, AllMatches.INSTANCE, true, null, true);
+                    Expression expression = EFSSystem.Parser.Expression(Instance as ModelElement, retVal.EnclosingName,
+                        AllMatches.INSTANCE, true, null, true);
 
                     if (expression != null)
                     {
@@ -904,7 +923,9 @@ namespace GUI
                         }
                         else
                         {
-                            foreach (ReturnValueElement element in expression.getReferences(null, AllMatches.INSTANCE, false).Values)
+                            foreach (
+                                ReturnValueElement element in
+                                    expression.getReferences(null, AllMatches.INSTANCE, false).Values)
                             {
                                 retVal.Instances.Add(element.Value);
                             }
@@ -933,7 +954,7 @@ namespace GUI
         private int selectionLength = 0;
 
         /// <summary>
-        /// Displays the combo box if required and updates the edotor's text
+        ///     Displays the combo box if required and updates the edotor's text
         /// </summary>
         private void DisplayComboBox()
         {
@@ -1061,7 +1082,8 @@ namespace GUI
                             break;
 
                         case '{':
-                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsStructure.INSTANCE, true, null, true);
+                            Expression structureTypeExpression = EFSSystem.Parser.Expression(Instance as ModelElement,
+                                CurrentPrefix().Trim(), IsStructure.INSTANCE, true, null, true);
                             if (structureTypeExpression != null)
                             {
                                 Structure structure = structureTypeExpression.Ref as Structure;
@@ -1076,7 +1098,8 @@ namespace GUI
                             break;
 
                         case '(':
-                            Expression callableExpression = EFSSystem.Parser.Expression(Instance as ModelElement, CurrentPrefix().Trim(), IsCallable.INSTANCE, true, null, true);
+                            Expression callableExpression = EFSSystem.Parser.Expression(Instance as ModelElement,
+                                CurrentPrefix().Trim(), IsCallable.INSTANCE, true, null, true);
                             if (callableExpression != null)
                             {
                                 ICallable callable = callableExpression.Ref as ICallable;
@@ -1167,7 +1190,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called when the drop operation is performed on this text box
+        ///     Called when the drop operation is performed on this text box
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1215,7 +1238,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sets the variable in the editor
+        ///     Sets the variable in the editor
         /// </summary>
         /// <param name="variable"></param>
         private string setVariable(Variable variable)
@@ -1236,7 +1259,8 @@ namespace GUI
             return text.ToString();
         }
 
-        private void createDefaultStructureValue(StringBuilder text, Structure structure, bool displayStructureName = true)
+        private void createDefaultStructureValue(StringBuilder text, Structure structure,
+            bool displayStructureName = true)
         {
             if (displayStructureName)
             {
@@ -1326,7 +1350,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the writing context of this edition
+        ///     Provides the writing context of this edition
         /// </summary>
         /// <returns></returns>
         private IModelElement writingContext()
@@ -1342,12 +1366,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The prefix for the Default namespace
+        ///     The prefix for the Default namespace
         /// </summary>
         private static string DEFAULT_PREFIX = "Default.";
 
         /// <summary>
-        /// Removes useless prefixes from the string provided
+        ///     Removes useless prefixes from the string provided
         /// </summary>
         /// <param name="fullName"></param>
         /// <param name="model"></param>
@@ -1426,7 +1450,7 @@ namespace GUI
 
 
         /// <summary>
-        /// Edits a value expression and provides the edited expression after user has performed his changes
+        ///     Edits a value expression and provides the edited expression after user has performed his changes
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -1453,7 +1477,8 @@ namespace GUI
                         string newExpression = value.ToExpressionWithDefault();
                         const bool doSemanticalAnalysis = true;
                         const bool silent = true;
-                        retVal = EFSSystem.INSTANCE.Parser.Expression(expression.Root, newExpression, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+                        retVal = EFSSystem.INSTANCE.Parser.Expression(expression.Root, newExpression,
+                            AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
                     }
                 }
                 finally
@@ -1466,7 +1491,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Browses through the expression to find the value to edit
+        ///     Browses through the expression to find the value to edit
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -1513,7 +1538,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Browse through the Term to find the value to edit
+        ///     Browse through the Term to find the value to edit
         /// </summary>
         /// <param name="term"></param>
         private void visitTerm(Term term)
@@ -1525,7 +1550,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Browses through the statement to find the structures to edit
+        ///     Browses through the statement to find the structures to edit
         /// </summary>
         /// <param name="statement"></param>
         private Statement VisitStatement(Statement statement)
@@ -1582,7 +1607,8 @@ namespace GUI
                 }
 
                 string text = EditionTextBox.Text;
-                Expression expression = EFSSystem.INSTANCE.Parser.Expression(root, text, AllMatches.INSTANCE, doSemanticalAnalysis, null, silent);
+                Expression expression = EFSSystem.INSTANCE.Parser.Expression(root, text, AllMatches.INSTANCE,
+                    doSemanticalAnalysis, null, silent);
                 if (expression != null)
                 {
                     expression = VisitExpression(expression);

@@ -27,12 +27,12 @@ namespace GUI.LongOperations
     public abstract class BaseCompareWithRepositoryOperation : BaseLongOperation
     {
         /// <summary>
-        /// The dictionary on which the comparison operation is performed
+        ///     The dictionary on which the comparison operation is performed
         /// </summary>
         protected Dictionary Dictionary { get; private set; }
 
         /// <summary>
-        /// The dictionary working directory
+        ///     The dictionary working directory
         /// </summary>
         protected string WorkingDir
         {
@@ -40,7 +40,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// The dictionary file name
+        ///     The dictionary file name
         /// </summary>
         protected string DictionaryFileName
         {
@@ -48,12 +48,12 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Provides the path of the repository
+        ///     Provides the path of the repository
         /// </summary>
         protected string RepositoryPath { get; private set; }
 
         /// <summary>
-        /// Provides the repository related to the Dictionary directory
+        ///     Provides the repository related to the Dictionary directory
         /// </summary>
         /// <returns></returns>
         protected Repository getRepository()
@@ -77,7 +77,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary">The dictionary on which the operation should be performed</param>
         public BaseCompareWithRepositoryOperation(Dictionary dictionary)
@@ -87,7 +87,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Retrieves a specific version of a data dictionary
+        ///     Retrieves a specific version of a data dictionary
         /// </summary>
         /// <param name="dictionary">The dictionary from which the version should be found</param>
         /// <param name="commit">The specific version to be found</param>
@@ -119,7 +119,8 @@ namespace GUI.LongOperations
                 catch (Exception exception)
                 {
                     MessageBox.Show(
-                        "Exception raised during operation " + exception.Message + "\nPlease make sure that git is available in your path",
+                        "Exception raised during operation " + exception.Message +
+                        "\nPlease make sure that git is available in your path",
                         "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
@@ -131,7 +132,8 @@ namespace GUI.LongOperations
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 try
@@ -139,14 +141,17 @@ namespace GUI.LongOperations
                     // Open the dictionary but do not store it in the EFS System
                     const bool allowErrors = true;
                     const bool updateGuid = false;
-                    OpenFileOperation openFileOperation = new OpenFileOperation(tempDirectory + Path.DirectorySeparatorChar + DictionaryFileName, null, allowErrors, updateGuid);
+                    OpenFileOperation openFileOperation =
+                        new OpenFileOperation(tempDirectory + Path.DirectorySeparatorChar + DictionaryFileName, null,
+                            allowErrors, updateGuid);
                     openFileOperation.PleaseLockFiles = false;
                     openFileOperation.ExecuteWork();
                     retVal = openFileOperation.Dictionary;
                 }
                 catch (Exception exception)
                 {
-                    MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Exception raised during operation " + exception.Message, "Cannot perform operation",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 try
@@ -155,7 +160,8 @@ namespace GUI.LongOperations
                 }
                 catch (Exception exception2)
                 {
-                    MessageBox.Show("Exception raised during operation " + exception2.Message, "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Exception raised during operation " + exception2.Message,
+                        "Cannot perform operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 

@@ -24,22 +24,22 @@ using Type = DataDictionary.Types.Type;
 namespace DataDictionary.Functions.PredefinedFunctions
 {
     /// <summary>
-    /// Casts a value as a new value of range type 
+    ///     Casts a value as a new value of range type
     /// </summary>
     public class Cast : PredefinedFunction
     {
         /// <summary>
-        /// The target type for which the cast is performed
+        ///     The target type for which the cast is performed
         /// </summary>
         public Type TargetType { get; private set; }
 
         /// <summary>
-        /// The value which is casted
+        ///     The value which is casted
         /// </summary>
         public Parameter Value { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type">The type in which the cast is performed</param>
         public Cast(Type type)
@@ -55,7 +55,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// The return type of the cast function
+        ///     The return type of the cast function
         /// </summary>
         public override Type ReturnType
         {
@@ -63,13 +63,14 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the value of the function
+        ///     Provides the value of the function
         /// </summary>
         /// <param name="context"></param>
         /// <param name="actuals">the actual parameters values</param>
         /// <param name="explain"></param>
         /// <returns>The value for the function application</returns>
-        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals, ExplanationPart explain)
+        public override IValue Evaluate(InterpretationContext context, Dictionary<Actual, IValue> actuals,
+            ExplanationPart explain)
         {
             IValue retVal = null;
 
@@ -90,7 +91,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         }
 
         /// <summary>
-        /// Provides the graph of this function if it has been statically defined
+        ///     Provides the graph of this function if it has been statically defined
         /// </summary>
         /// <param name="context">the context used to create the graph</param>
         /// <param name="parameter"></param>

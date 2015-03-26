@@ -32,14 +32,14 @@ namespace DataDictionary.Rules
     public class RuleCondition : Generated.RuleCondition, TextualExplain
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public RuleCondition()
         {
         }
 
         /// <summary>
-        /// Indicates if this RuleCondition contains implemented sub-elements
+        ///     Indicates if this RuleCondition contains implemented sub-elements
         /// </summary>
         public override bool ImplementationPartiallyCompleted
         {
@@ -63,7 +63,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the preconditions associated to this rule condition
+        ///     Provides the preconditions associated to this rule condition
         /// </summary>
         public ArrayList PreConditions
         {
@@ -79,7 +79,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the set of preconditions (both local and from the eclosing rules)
+        ///     Provides the set of preconditions (both local and from the eclosing rules)
         /// </summary>
         public List<PreCondition> AllPreConditions
         {
@@ -104,7 +104,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the actions associated to this rule condition
+        ///     Provides the actions associated to this rule condition
         /// </summary>
         public ArrayList Actions
         {
@@ -120,7 +120,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the sub rules associated to this rule condition
+        ///     Provides the sub rules associated to this rule condition
         /// </summary>
         public ArrayList SubRules
         {
@@ -136,7 +136,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the enclosing rule
+        ///     Provides the enclosing rule
         /// </summary>
         public Rule EnclosingRule
         {
@@ -144,7 +144,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the enclosing structure
+        ///     Provides the enclosing structure
         /// </summary>
         public Structure EnclosingStructure
         {
@@ -152,7 +152,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the enclosing collection
+        ///     Provides the enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -160,7 +160,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates whether this rule uses the typed element
+        ///     Indicates whether this rule uses the typed element
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
@@ -170,7 +170,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the statement which modifies the variable
+        ///     Provides the statement which modifies the variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
@@ -192,7 +192,7 @@ namespace DataDictionary.Rules
 
 
         /// <summary>
-        /// Indicates whether this rule reads the content of this variable
+        ///     Indicates whether this rule reads the content of this variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
@@ -219,7 +219,7 @@ namespace DataDictionary.Rules
 
 
         /// <summary>
-        /// Evaluates the rule and its sub rules
+        ///     Evaluates the rule and its sub rules
         /// </summary>
         /// <param name="runner"></param>
         /// <param name="priority">the priority level : a rule can be activated only if its priority level == priority</param>
@@ -228,7 +228,8 @@ namespace DataDictionary.Rules
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Runner runner, acceptor.RulePriority priority, IModelElement instance, HashSet<Runner.Activation> activations, ExplanationPart explanation)
+        public bool Evaluate(Runner runner, acceptor.RulePriority priority, IModelElement instance,
+            HashSet<Runner.Activation> activations, ExplanationPart explanation)
         {
             bool retVal = false;
 
@@ -266,7 +267,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the actual value for the preconditions
+        ///     Provides the actual value for the preconditions
         /// </summary>
         /// <param name="context">The context on which the precondition must be evaluated</param>
         /// <param name="explanation">The explanation part to fill, if any</param>
@@ -283,7 +284,9 @@ namespace DataDictionary.Rules
                 {
                     Expression expression = preCondition.Expression;
 
-                    BoolValue value = expression.GetValue(context, ExplanationPart.CreateSubExplanation(explanation, expression)) as BoolValue;
+                    BoolValue value =
+                        expression.GetValue(context, ExplanationPart.CreateSubExplanation(explanation, expression)) as
+                            BoolValue;
                     if (value != null)
                     {
                         retVal = retVal && value.Val;
@@ -311,7 +314,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <param name="firstCondition">indicates whether this is the first condition or a following condition in a rule</param>
@@ -331,11 +334,15 @@ namespace DataDictionary.Rules
                     {
                         if (firstCondition)
                         {
-                            retVal = retVal + TextualExplainUtilities.Pad("{\\b IF} " + preCondition.getExplain(true), indentLevel);
+                            retVal = retVal +
+                                     TextualExplainUtilities.Pad("{\\b IF} " + preCondition.getExplain(true),
+                                         indentLevel);
                         }
                         else
                         {
-                            retVal = retVal + TextualExplainUtilities.Pad("{\\b ELSIF} " + preCondition.getExplain(true), indentLevel);
+                            retVal = retVal +
+                                     TextualExplainUtilities.Pad("{\\b ELSIF} " + preCondition.getExplain(true),
+                                         indentLevel);
                         }
                         first = false;
                     }
@@ -357,12 +364,14 @@ namespace DataDictionary.Rules
 
             if (Name.CompareTo(EnclosingRule.Name) != 0)
             {
-                retVal = retVal + TextualExplainUtilities.Pad("{\\cf11//" + Name + "}\\cf1\\par", indentLevel + subIndent);
+                retVal = retVal +
+                         TextualExplainUtilities.Pad("{\\cf11//" + Name + "}\\cf1\\par", indentLevel + subIndent);
             }
 
             foreach (Action action in Actions)
             {
-                retVal = retVal + "{ " + TextualExplainUtilities.Pad(action.getExplain() + "\\par}", indentLevel + subIndent);
+                retVal = retVal + "{ " +
+                         TextualExplainUtilities.Pad(action.getExplain() + "\\par}", indentLevel + subIndent);
             }
 
             if (getExplain)
@@ -377,7 +386,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <returns></returns>
         public string getExplain(bool explainSubElements)
@@ -388,7 +397,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -420,7 +429,7 @@ namespace DataDictionary.Rules
 
 
         /// <summary>
-        /// Indicates that the rule condition has been disabled
+        ///     Indicates that the rule condition has been disabled
         /// </summary>
         /// <returns></returns>
         public bool IsDisabled()
@@ -438,7 +447,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Duplicates this model element
+        ///     Duplicates this model element
         /// </summary>
         /// <returns></returns>
         public RuleCondition duplicate()

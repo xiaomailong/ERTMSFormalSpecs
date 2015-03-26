@@ -21,9 +21,7 @@ using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using Utils;
 using XmlBooster;
-using NameSpace = DataDictionary.Types.NameSpace;
 using StateMachine = DataDictionary.Types.StateMachine;
-using Structure = DataDictionary.Types.Structure;
 using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary
@@ -31,7 +29,7 @@ namespace DataDictionary
     public abstract class ModelElement : BaseModelElement
     {
         /// <summary>
-        /// Provides the EFS System in which this element belongs
+        ///     Provides the EFS System in which this element belongs
         /// </summary>
         public EFSSystem EFSSystem
         {
@@ -39,7 +37,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the Dictionary in which this element belongs
+        ///     Provides the Dictionary in which this element belongs
         /// </summary>
         public Dictionary Dictionary
         {
@@ -47,7 +45,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds a new element log attached to this model element
+        ///     Adds a new element log attached to this model element
         /// </summary>
         /// <param name="log"></param>
         public override void AddElementLog(ElementLog log)
@@ -68,7 +66,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Adds an error and explains it
+        ///     Adds an error and explains it
         /// </summary>
         /// <param name="message"></param>
         /// <param name="explanation"></param>
@@ -79,12 +77,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The last explanation part for this model element
+        ///     The last explanation part for this model element
         /// </summary>
         public ExplanationPart Explain { get; set; }
 
         /// <summary>
-        /// Indicates that no logging should occur
+        ///     Indicates that no logging should occur
         /// </summary>
         public static bool BeSilent { get; set; }
 
@@ -97,14 +95,14 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the Guid of the paragraph and creates one if it is not yet set
+        ///     Provides the Guid of the paragraph and creates one if it is not yet set
         /// </summary>
         public virtual string Guid
         {
             get
             {
                 ObjectFactory factory = (ObjectFactory) acceptor.getFactory();
-                if (string.IsNullOrEmpty(getGuid()) )
+                if (string.IsNullOrEmpty(getGuid()))
                 {
                     EnsureGuid();
                 }
@@ -114,7 +112,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        ///  Provides the common prefix between s1 and s2
+        ///     Provides the common prefix between s1 and s2
         /// </summary>
         /// <param name="s1"></param>
         /// <param name="s2"></param>
@@ -137,7 +135,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the name of this model element when accessing it from the other model element (provided as parameter)
+        ///     Provides the name of this model element when accessing it from the other model element (provided as parameter)
         /// </summary>
         /// <param name="modelElement"></param>
         /// <returns></returns>
@@ -184,7 +182,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the description of the requirements related to this model element 
+        ///     Provides the description of the requirements related to this model element
         /// </summary>
         /// <returns></returns>
         public virtual string RequirementDescription()
@@ -202,12 +200,12 @@ namespace DataDictionary
 
 
         /// <summary>
-        /// Generates new GUID for the element
+        ///     Generates new GUID for the element
         /// </summary>
         private class RegererateGuidVisitor : Visitor
         {
             /// <summary>
-            /// Ensures that all elements have a new Guid
+            ///     Ensures that all elements have a new Guid
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -224,7 +222,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Duplicates the model element and avoid duplicated GUID
+        ///     Duplicates the model element and avoid duplicated GUID
         /// </summary>
         /// <returns></returns>
         public ModelElement Duplicate()
@@ -249,7 +247,7 @@ namespace DataDictionary
     public interface TextualExplain
     {
         /// <summary>
-        /// The explanation of the element
+        ///     The explanation of the element
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -257,12 +255,12 @@ namespace DataDictionary
     }
 
     /// <summary>
-    /// Utilities for RTF explain boxes
+    ///     Utilities for RTF explain boxes
     /// </summary>
     public class TextualExplainUtilities
     {
         /// <summary>
-        /// Left pads the string provided
+        ///     Left pads the string provided
         /// </summary>
         /// <param name="data">the data to pad</param>
         /// <param name="padlen">the size of the pad</param>
@@ -273,7 +271,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the expression
+        ///     Provides the expression
         /// </summary>
         /// <param name="element"></param>
         /// <param name="padlen"></param>
@@ -299,7 +297,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Comments a section of text
+        ///     Comments a section of text
         /// </summary>
         /// <param name="data">the data to pad</param>
         /// <param name="padlen">the size of the pad</param>
@@ -317,7 +315,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Comments an Icommentable
+        ///     Comments an Icommentable
         /// </summary>
         /// <param name="element"></param>
         /// <param name="padlen"></param>
@@ -336,7 +334,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The name of the element
+        ///     The name of the element
         /// </summary>
         /// <param name="element"></param>
         /// <param name="padlen"></param>
@@ -355,7 +353,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Provides the header of the element 
+        ///     Provides the header of the element
         /// </summary>
         /// <param name="element"></param>
         /// <param name="padlen"></param>
@@ -371,7 +369,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Iterates the same character a given number of times
+        ///     Iterates the same character a given number of times
         /// </summary>
         /// <param name="c">the character to iterate</param>
         /// <param name="padlen">the size of the expected result</param>
@@ -387,7 +385,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// The kind of opening brace
+        ///     The kind of opening brace
         /// </summary>
         private enum BraceType
         {
@@ -396,7 +394,7 @@ namespace DataDictionary
         };
 
         /// <summary>
-        /// Adds RTF prefixes and postfixes
+        ///     Adds RTF prefixes and postfixes
         /// </summary>
         /// <param name="data"></param>
         /// <returns></returns>
@@ -483,7 +481,9 @@ namespace DataDictionary
                 retVal = "{\\cf11}\\cf1" + retVal;
 
                 // Common prefix to handle the colors
-                retVal = "{\\rtf1\\ansi{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}" + retVal + "}";
+                retVal =
+                    "{\\rtf1\\ansi{\\colortbl;\\red0\\green0\\blue0;\\red0\\green0\\blue255;\\red0\\green255\\blue255;\\red0\\green255\\blue0;\\red255\\green0\\blue255;\\red255\\green0\\blue0;\\red255\\green255\\blue0;\\red255\\green255\\blue255;\\red0\\green0\\blue128;\\red0\\green128\\blue128;\\red0\\green128\\blue0;\\red128\\green0\\blue128;\\red128\\green0\\blue0;\\red128\\green128\\blue0;\\red128\\green128\\blue128;\\red192\\green192\\blue192;}" +
+                    retVal + "}";
             }
 
             return retVal;

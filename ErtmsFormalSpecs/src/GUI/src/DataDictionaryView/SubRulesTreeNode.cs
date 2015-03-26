@@ -26,7 +26,7 @@ namespace GUI.DataDictionaryView
     public class SubRulesTreeNode : RuleConditionTreeNode
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public SubRulesTreeNode(RuleCondition item, bool buildSubNodes)
@@ -35,7 +35,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -56,7 +56,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Adds a rule in this set of sub rules
+        ///     Adds a rule in this set of sub rules
         /// </summary>
         /// <param name="rule"></param>
         public RuleTreeNode AddRule(Rule rule)
@@ -85,14 +85,16 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Handles a drop event
+        ///     Handles a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             if (SourceNode is RuleTreeNode)
             {
-                if (MessageBox.Show("Are you sure you want to move the corresponding rule ?", "Move rule", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (
+                    MessageBox.Show("Are you sure you want to move the corresponding rule ?", "Move rule",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     RuleTreeNode ruleTreeNode = (RuleTreeNode) SourceNode;
 
@@ -104,7 +106,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

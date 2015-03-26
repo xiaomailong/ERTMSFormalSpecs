@@ -21,7 +21,7 @@ namespace DataDictionary.Specification
     public class Mask : mask
     {
         /// <summary>
-        /// The Mask content
+        ///     The Mask content
         /// </summary>
         public string GetText(int depth)
         {

@@ -30,12 +30,12 @@ using TypeSpec = DataDictionary.Generated.TypeSpec;
 namespace DataDictionary
 {
     /// <summary>
-    /// Sets the default values of the objects
+    ///     Sets the default values of the objects
     /// </summary>
     public class DefaultValueSetter : Visitor
     {
         /// <summary>
-        /// Indicates that the Guid should be automatically set when creating a new object
+        ///     Indicates that the Guid should be automatically set when creating a new object
         /// </summary>
         public bool AutomaticallyGenerateGuid { get; set; }
 
@@ -279,17 +279,17 @@ namespace DataDictionary
     }
 
     /// <summary>
-    /// The factory
+    ///     The factory
     /// </summary>
     public class ObjectFactory : Factory
     {
         /// <summary>
-        /// The class used to set the default values
+        ///     The class used to set the default values
         /// </summary>
         private DefaultValueSetter DefaultValueSetter = new DefaultValueSetter();
 
         /// <summary>
-        /// Indicates that the Guid should be automatically set when creating a new object
+        ///     Indicates that the Guid should be automatically set when creating a new object
         /// </summary>
         public bool AutomaticallyGenerateGuid
         {

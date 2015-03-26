@@ -28,12 +28,12 @@ namespace GUI
         where T : ReferencesParagraph
     {
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         protected class ReferencesParagraphEditor : CommentableEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             protected ReferencesParagraphEditor()
                 : base()
@@ -42,12 +42,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         protected class UnnamedReferencesParagraphEditor : Editor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             protected UnnamedReferencesParagraphEditor()
                 : base()
@@ -69,20 +69,21 @@ namespace GUI
         }
 
         /// <summary>
-        /// The tree node that holds the references to requirements
+        ///     The tree node that holds the references to requirements
         /// </summary>
         protected ReqRefsTreeNode ReqReferences;
 
         /// <summary>
-        /// Indicates whether this node handles requirements
+        ///     Indicates whether this node handles requirements
         /// </summary>
         protected bool HandleRequirements { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
-        protected ReferencesParagraphTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false, bool addRequirements = true)
+        protected ReferencesParagraphTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false,
+            bool addRequirements = true)
             : base(item, buildSubNodes, name, isFolder)
         {
             HandleRequirements = addRequirements;
@@ -92,7 +93,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -107,7 +108,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a drop event
+        ///     Handles a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -131,7 +132,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

@@ -26,29 +26,29 @@ using Utils;
 namespace DataDictionary
 {
     /// <summary>
-    /// Holds several namespaces
+    ///     Holds several namespaces
     /// </summary>
     public interface IEnclosesNameSpaces
     {
         /// <summary>
-        /// The EFS system in which this container lies
+        ///     The EFS system in which this container lies
         /// </summary>
         EFSSystem EFSSystem { get; }
 
         /// <summary>
-        /// The namespaces referenced by this 
+        ///     The namespaces referenced by this
         /// </summary>
         ArrayList NameSpaces { get; }
     }
 
 
     /// <summary>
-    /// Utility class to handle INameSpaceContainer
+    ///     Utility class to handle INameSpaceContainer
     /// </summary>
     public static class IEnclosesNameSpacesUtils
     {
         /// <summary>
-        /// Provides all the function calls related to this namespace
+        ///     Provides all the function calls related to this namespace
         /// </summary>
         /// <param name="system">The system in which the calls should be gathered</param>
         /// <param name="container">If provided, indicates that the calls should be limited to a given container</param>
@@ -69,7 +69,8 @@ namespace DataDictionary
                 {
                     if (considerCall(usage, container, sourceNameSpace, targetNameSpace))
                     {
-                        procedureCalls.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace, (ICallable) target));
+                        procedureCalls.Add(new ProcedureOrFunctionCall(sourceNameSpace, targetNameSpace,
+                            (ICallable) target));
                     }
                 }
                 else
@@ -83,7 +84,8 @@ namespace DataDictionary
                         AccessToVariable otherAccess = null;
                         foreach (AccessToVariable access in accessesToVariables)
                         {
-                            if (access.Target == usage.Referenced && access.Source == sourceNameSpace && access.Target == targetNameSpace)
+                            if (access.Target == usage.Referenced && access.Source == sourceNameSpace &&
+                                access.Target == targetNameSpace)
                             {
                                 otherAccess = access;
                                 break;
@@ -97,7 +99,8 @@ namespace DataDictionary
                                 // Since the access mode is different, one of them is either Read or ReadWrite and the other is ReadWrite or Write. 
                                 // So, in any case, the resulting access mode is ReadWrite
                                 accessesToVariables.Remove(otherAccess);
-                                accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable) target, Usage.ModeEnum.ReadAndWrite));
+                                accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace,
+                                    (IVariable) target, Usage.ModeEnum.ReadAndWrite));
                             }
                             else
                             {
@@ -107,7 +110,8 @@ namespace DataDictionary
                         else
                         {
                             // Does not already exists, insert it in the list
-                            accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace, (IVariable) target, mode));
+                            accessesToVariables.Add(new AccessToVariable(sourceNameSpace, targetNameSpace,
+                                (IVariable) target, mode));
                         }
                     }
                 }
@@ -122,14 +126,15 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates whether a call should be considered in the ProcedureOrFunctionCalls
+        ///     Indicates whether a call should be considered in the ProcedureOrFunctionCalls
         /// </summary>
         /// <param name="functionCall"></param>
         /// <param name="container"></param>
         /// <param name="sourceNameSpace"></param>
         /// <param name="targetNameSpace"></param>
         /// <returns></returns>
-        private static bool considerCall(Usage functionCall, IEnclosesNameSpaces container, NameSpace sourceNameSpace, NameSpace targetNameSpace)
+        private static bool considerCall(Usage functionCall, IEnclosesNameSpaces container, NameSpace sourceNameSpace,
+            NameSpace targetNameSpace)
         {
             bool retVal = considerCommon(container, sourceNameSpace, targetNameSpace);
 
@@ -143,14 +148,15 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates whether a call should be considered in the ProcedureOrFunctionCalls
+        ///     Indicates whether a call should be considered in the ProcedureOrFunctionCalls
         /// </summary>
         /// <param name="variableReference"></param>
         /// <param name="container"></param>
         /// <param name="sourceNameSpace"></param>
         /// <param name="targetNameSpace"></param>
         /// <returns></returns>
-        private static bool considerVariableReference(Usage variableReference, IEnclosesNameSpaces container, NameSpace sourceNameSpace, NameSpace targetNameSpace)
+        private static bool considerVariableReference(Usage variableReference, IEnclosesNameSpaces container,
+            NameSpace sourceNameSpace, NameSpace targetNameSpace)
         {
             bool retVal = considerCommon(container, sourceNameSpace, targetNameSpace);
 
@@ -164,14 +170,15 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Common part of the consideration of an access
+        ///     Common part of the consideration of an access
         /// </summary>
         /// <param name="container"></param>
         /// <param name="sourceNameSpace"></param>
         /// <param name="targetNameSpace"></param>
         /// <param name="retVal"></param>
         /// <returns></returns>
-        private static bool considerCommon(IEnclosesNameSpaces container, NameSpace sourceNameSpace, NameSpace targetNameSpace)
+        private static bool considerCommon(IEnclosesNameSpaces container, NameSpace sourceNameSpace,
+            NameSpace targetNameSpace)
         {
             bool retVal = true;
 
@@ -185,20 +192,23 @@ namespace DataDictionary
             {
                 // Only display things that can be displayed in this functional view
                 // TODO : also consider sub namespaces in the diagram
-                retVal = retVal && (container.NameSpaces.Contains(sourceNameSpace) || container.NameSpaces.Contains(targetNameSpace));
+                retVal = retVal &&
+                         (container.NameSpaces.Contains(sourceNameSpace) ||
+                          container.NameSpaces.Contains(targetNameSpace));
             }
 
             return retVal;
         }
 
         /// <summary>
-        /// Provides the namespace of the element provided in this container
+        ///     Provides the namespace of the element provided in this container
         /// </summary>
         /// <param name="source">The element from which the namespace should be found</param>
         /// <param name="container">The container which contains the namespace</param>
         /// <param name="allowOutsideContainer">Indicaes that namespace can be found outside of the container</param>
         /// <returns></returns>
-        private static NameSpace getCorrespondingNameSpace(ModelElement source, IEnclosesNameSpaces container, bool allowOutsideContainer)
+        private static NameSpace getCorrespondingNameSpace(ModelElement source, IEnclosesNameSpaces container,
+            bool allowOutsideContainer)
         {
             NameSpace retVal = null;
 

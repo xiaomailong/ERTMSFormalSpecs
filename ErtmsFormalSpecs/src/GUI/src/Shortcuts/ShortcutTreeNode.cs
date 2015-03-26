@@ -27,7 +27,7 @@ namespace GUI.Shortcuts
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -36,7 +36,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ShortcutTreeNode(Shortcut item, bool buildSubNodes)
@@ -45,7 +45,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -62,7 +62,7 @@ namespace GUI.Shortcuts
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

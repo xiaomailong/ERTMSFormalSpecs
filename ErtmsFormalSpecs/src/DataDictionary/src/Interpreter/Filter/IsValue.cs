@@ -20,12 +20,12 @@ using Utils;
 namespace DataDictionary.Interpreter.Filter
 {
     /// <summary>
-    /// Predicates which indicates that the namable is either a variable or a value
+    ///     Predicates which indicates that the namable is either a variable or a value
     /// </summary>
     public class IsValue : BaseFilter
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected IsValue()
             : base()
@@ -33,7 +33,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
+        ///     Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate, so that the code can be reused
+        ///     Predicate, so that the code can be reused
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Singleton
+        ///     Singleton
         /// </summary>
         public static IsValue INSTANCE = new IsValue();
     }

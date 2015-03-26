@@ -23,12 +23,12 @@ namespace GUI.LongOperations
     public class CheckDeadModelOperation : BaseLongOperation
     {
         /// <summary>
-        /// The system on which the check is performed
+        ///     The system on which the check is performed
         /// </summary>
         private EFSSystem EFSSystem { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="system"></param>
         public CheckDeadModelOperation(EFSSystem system)
@@ -37,7 +37,7 @@ namespace GUI.LongOperations
         }
 
         /// <summary>
-        /// Generates the file in the background thread
+        ///     Generates the file in the background thread
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()

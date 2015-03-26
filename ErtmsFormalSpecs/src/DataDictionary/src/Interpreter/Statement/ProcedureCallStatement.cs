@@ -31,17 +31,17 @@ namespace DataDictionary.Interpreter.Statement
     public class ProcedureCallStatement : Statement
     {
         /// <summary>
-        /// The Logger
+        ///     The Logger
         /// </summary>
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// The designator which identifies the procedure to call
+        ///     The designator which identifies the procedure to call
         /// </summary>
         public Call Call { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="root">The root element for which this element is built</param>
         /// <param name="call">The corresponding function call designator</param>
@@ -56,7 +56,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the statement
+        ///     Performs the semantic analysis of the statement
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <returns>True if semantic analysis should be continued</returns>
@@ -74,7 +74,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the rules associates to this procedure call statement
+        ///     Provides the rules associates to this procedure call statement
         /// </summary>
         public ArrayList Rules
         {
@@ -95,7 +95,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the list of actions performed during this procedure call
+        ///     Provides the list of actions performed during this procedure call
         /// </summary>
         public List<Action> Actions
         {
@@ -119,7 +119,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the statement which modifies the variable
+        ///     Provides the statement which modifies the variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
@@ -140,7 +140,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the list of update statements induced by this statement
+        ///     Provides the list of update statements induced by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
         public override void UpdateStatements(List<VariableUpdateStatement> retVal)
@@ -155,7 +155,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Indicates whether this statement reads the element
+        ///     Indicates whether this statement reads the element
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
@@ -173,7 +173,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the list of elements read by this statement
+        ///     Provides the list of elements read by this statement
         /// </summary>
         /// <param name="retVal">the list to fill</param>
         public override void ReadElements(List<ITypedElement> retVal)
@@ -188,7 +188,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the context on which function evaluation should be performed
+        ///     Provides the context on which function evaluation should be performed
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -211,7 +211,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Checks the statement for semantical errors
+        ///     Checks the statement for semantical errors
         /// </summary>
         public override void CheckStatement()
         {
@@ -239,9 +239,11 @@ namespace DataDictionary.Interpreter.Statement
                         if (deref != null)
                         {
                             int count = deref.Arguments.Count;
-                            if ((deref.Arguments[count - 2].Ref is NameSpace) || (deref.Arguments[count - 2].Ref is Structure))
+                            if ((deref.Arguments[count - 2].Ref is NameSpace) ||
+                                (deref.Arguments[count - 2].Ref is Structure))
                             {
-                                Root.AddError("Invalid procedure call : context should be the instance on which the call is performed");
+                                Root.AddError(
+                                    "Invalid procedure call : context should be the instance on which the call is performed");
                             }
                         }
                     }
@@ -254,14 +256,15 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the changes performed by this statement
+        ///     Provides the changes performed by this statement
         /// </summary>
         /// <param name="context">The context on which the changes should be computed</param>
         /// <param name="changes">The list to fill with the changes</param>
         /// <param name="explanation">The explanatino to fill, if any</param>
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
-        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
+        public override void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation,
+            bool apply, Runner runner)
         {
             if (Call != null)
             {
@@ -306,13 +309,15 @@ namespace DataDictionary.Interpreter.Statement
                         explanation.SubExplanations.Add(part);
                         if (ctxt.Instance != null)
                         {
-                            ExplanationPart instanceExplanation = ExplanationPart.CreateSubExplanation(part, "instance = ");
+                            ExplanationPart instanceExplanation = ExplanationPart.CreateSubExplanation(part,
+                                "instance = ");
                             ExplanationPart.SetNamable(instanceExplanation, ctxt.Instance);
                         }
                     }
 
                     int token = ctxt.LocalScope.PushContext();
-                    foreach (KeyValuePair<Actual, IValue> pair in Call.AssignParameterValues(context, procedure, true, part))
+                    foreach (
+                        KeyValuePair<Actual, IValue> pair in Call.AssignParameterValues(context, procedure, true, part))
                     {
                         ctxt.LocalScope.setVariable(pair.Key, pair.Value);
                     }
@@ -336,14 +341,15 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Applies a rule defined in a procedure
+        ///     Applies a rule defined in a procedure
         /// </summary>
         /// <param name="rule"></param>
         /// <param name="changes"></param>
         /// <param name="ctxt"></param>
         /// <param name="explanation"></param>
         /// <param name="runner"></param>
-        private void ApplyRule(Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation, Runner runner)
+        private void ApplyRule(Rule rule, ChangeList changes, InterpretationContext ctxt, ExplanationPart explanation,
+            Runner runner)
         {
             foreach (RuleCondition condition in rule.RuleConditions)
             {
@@ -386,7 +392,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides a real short description of this statement
+        ///     Provides a real short description of this statement
         /// </summary>
         /// <returns></returns>
         public override string ShortShortDescription()
@@ -395,7 +401,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the usage description done by this statement
+        ///     Provides the usage description done by this statement
         /// </summary>
         /// <returns></returns>
         public override ModeEnum UsageDescription()
@@ -406,7 +412,7 @@ namespace DataDictionary.Interpreter.Statement
         }
 
         /// <summary>
-        /// Provides the main model elemnt affected by this statement
+        ///     Provides the main model elemnt affected by this statement
         /// </summary>
         /// <returns></returns>
         public override ModelElement AffectedElement()

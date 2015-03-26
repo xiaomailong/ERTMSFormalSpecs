@@ -21,7 +21,7 @@ namespace DataDictionary.Specification
     public class Match : match
     {
         /// <summary>
-        /// The Match content
+        ///     The Match content
         /// </summary>
         public string GetText(int depth)
         {

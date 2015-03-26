@@ -25,12 +25,12 @@ namespace DataDictionary.Interpreter.ListOperators
     public abstract class ConditionBasedListExpression : ListOperatorExpression
     {
         /// <summary>
-        /// The condition used for THERE_IS, FORALL, FIRST, LAST
+        ///     The condition used for THERE_IS, FORALL, FIRST, LAST
         /// </summary>
         public Expression Condition { get; private set; }
 
         /// <summary>
-        /// Constructor for THERE_IS, FORALL, FIRST, LAST
+        ///     Constructor for THERE_IS, FORALL, FIRST, LAST
         /// </summary>
         /// <param name="listExpression"></param>
         /// <param name="condition"></param>
@@ -38,7 +38,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ConditionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, int start, int end)
+        public ConditionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression,
+            string iteratorVariableName, Expression condition, int start, int end)
             : base(root, log, listExpression, iteratorVariableName, start, end)
         {
             Condition = condition;
@@ -49,7 +50,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>
@@ -72,7 +73,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Fills the list provided with the element matching the filter provided
+        ///     Fills the list provided with the element matching the filter provided
         /// </summary>
         /// <param name="retVal">The list to be filled with the element matching the condition expressed in the filter</param>
         /// <param name="filter">The filter to apply</param>
@@ -87,8 +88,8 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Indicates whether the condition is satisfied with the value provided
-        /// Hyp : the value of the iterator variable has been assigned before
+        ///     Indicates whether the condition is satisfied with the value provided
+        ///     Hyp : the value of the iterator variable has been assigned before
         /// </summary>
         /// <param name="context"></param>
         /// <param name="explain"></param>
@@ -114,7 +115,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Checks the expression and appends errors to the root tree node when inconsistencies are found
+        ///     Checks the expression and appends errors to the root tree node when inconsistencies are found
         /// </summary>
         public override void checkExpression()
         {

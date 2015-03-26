@@ -21,7 +21,7 @@ namespace DataDictionary.Specification
     public class SpecialOrReservedValues : special_or_reserved_values
     {
         /// <summary>
-        /// The SpecialOrReservedValues content
+        ///     The SpecialOrReservedValues content
         /// </summary>
         public string GetText(int depth)
         {

@@ -24,7 +24,7 @@ namespace DataDictionary.Specification
     public class Chapter : Generated.Chapter, IHoldsParagraphs
     {
         /// <summary>
-        /// The chapter name
+        ///     The chapter name
         /// </summary>
         public override string Name
         {
@@ -33,7 +33,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The paragraphs
+        ///     The paragraphs
         /// </summary>
         public ArrayList Paragraphs
         {
@@ -49,7 +49,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The type specs
+        ///     The type specs
         /// </summary>
         public ArrayList TypeSpecs
         {
@@ -65,7 +65,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Looks for a specific paragraph in this chapter
+        ///     Looks for a specific paragraph in this chapter
         /// </summary>
         /// <param name="id">The id of the paragraph to find</param>
         /// <param name="create">If true, creates the paragraph tree if needed</param>
@@ -118,7 +118,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the enclosing specification
+        ///     Provides the enclosing specification
         /// </summary>
         public Specification EnclosingSpecification
         {
@@ -126,7 +126,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Provides the enclosing collection
+        ///     Provides the enclosing collection
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -134,12 +134,12 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The current index
+        ///     The current index
         /// </summary>
         private static int index;
 
         /// <summary>
-        /// Restructure the paragraph nodes
+        ///     Restructure the paragraph nodes
         /// </summary>
         public void RestructureParagraphs()
         {
@@ -148,7 +148,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Restructure the paragraph nodes
+        ///     Restructure the paragraph nodes
         /// </summary>
         /// <param name="elements">The elements to be placed in the node</param>
         /// <param name="level">The current paragraph level</param>
@@ -198,7 +198,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Restructures the names of the paragraphs
+        ///     Restructures the names of the paragraphs
         /// </summary>
         public void RestructureParagraphsNames()
         {
@@ -209,7 +209,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Looks for specific paragraphs in this chapter, whose number begins with the Id provided
+        ///     Looks for specific paragraphs in this chapter, whose number begins with the Id provided
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -225,7 +225,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Adds all the paragraphs in the set provided as parameter
+        ///     Adds all the paragraphs in the set provided as parameter
         /// </summary>
         /// <param name="retVal"></param>
         public void GetParagraphs(List<Paragraph> retVal)
@@ -237,7 +237,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -252,7 +252,7 @@ namespace DataDictionary.Specification
         }
 
         /// <summary>
-        /// The chapter ref which instanciated this chapter
+        ///     The chapter ref which instanciated this chapter
         /// </summary>
         public ChapterRef ChapterRef { get; set; }
     }

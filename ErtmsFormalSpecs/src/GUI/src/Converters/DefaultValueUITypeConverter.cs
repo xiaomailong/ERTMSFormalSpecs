@@ -22,7 +22,7 @@ using Type = System.Type;
 namespace GUI.Converters
 {
     /// <summary>
-    /// Converts IExpressionable to string, by getting the Expression property
+    ///     Converts IExpressionable to string, by getting the Expression property
     /// </summary>
     public class DefaultValueUITypeConverter : StringConverter
     {
@@ -59,7 +59,8 @@ namespace GUI.Converters
             return true;
         }
 
-        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value,
+            Type destinationType)
         {
             string retVal = "<unknown>";
             IDefaultValueElement defaultValueElement = value as IDefaultValueElement;

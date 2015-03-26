@@ -43,23 +43,23 @@ using TestCase = DataDictionary.Tests.TestCase;
 namespace GUI
 {
     /// <summary>
-    /// The base class for all tree nodes
+    ///     The base class for all tree nodes
     /// </summary>
     public class BaseTreeNode : TreeNode, IComparable<BaseTreeNode>
     {
         /// <summary>
-        /// The editor for this tree node
+        ///     The editor for this tree node
         /// </summary>
         public class BaseEditor
         {
             /// <summary>
-            /// The model element currently edited
+            ///     The model element currently edited
             /// </summary>
             [Browsable(false)]
             public IModelElement Model { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="model"></param>
             protected BaseEditor()
@@ -68,12 +68,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The editor used to edit the node contents
+        ///     The editor used to edit the node contents
         /// </summary>
         public BaseEditor NodeEditor { get; set; }
 
         /// <summary>
-        /// The fixed node name
+        ///     The fixed node name
         /// </summary>
         private string defaultName;
 
@@ -84,12 +84,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// The model represented by this node
+        ///     The model represented by this node
         /// </summary>
         public IModelElement Model { get; set; }
 
         /// <summary>
-        /// Provides the base tree view which holds this node
+        ///     Provides the base tree view which holds this node
         /// </summary>
         public BaseTreeView BaseTreeView
         {
@@ -97,7 +97,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the base form which holds this node
+        ///     Provides the base form which holds this node
         /// </summary>
         public IBaseForm BaseForm
         {
@@ -116,7 +116,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="value"></param>
@@ -135,12 +135,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that the subNodes have already been built, hence, does not require to build its contents anymore
+        ///     Indicates that the subNodes have already been built, hence, does not require to build its contents anymore
         /// </summary>
         public bool SubNodesBuilt = false;
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public virtual void BuildSubNodes(bool buildSubNodes)
@@ -150,7 +150,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Changes the image index
+        ///     Changes the image index
         /// </summary>
         /// <param name="value"></param>
         protected void ChangeImageIndex(int value)
@@ -160,7 +160,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sets the image index for this node
+        ///     Sets the image index for this node
         /// </summary>
         /// <param name="isFolder">Indicates whether this item represents a folder</param>
         public virtual void setImageIndex(bool isFolder)
@@ -200,14 +200,14 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called before the selection changes
+        ///     Called before the selection changes
         /// </summary>
         public virtual void BeforeSelectionChange()
         {
         }
 
         /// <summary>
-        /// Handles a selection change event
+        ///     Handles a selection change event
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public virtual void SelectionChanged(bool displayStatistics)
@@ -237,7 +237,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates that the model is related to a shortcut
+        ///     Indicates that the model is related to a shortcut
         /// </summary>
         /// <returns></returns>
         private bool isShortCut()
@@ -247,7 +247,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Indicates whether the explain box should be displayed
+        ///     Indicates whether the explain box should be displayed
         /// </summary>
         /// <returns></returns>
         private bool ShouldExplain()
@@ -258,7 +258,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Refreshes the view according to the model
+        ///     Refreshes the view according to the model
         /// </summary>
         /// <param name="baseForm"></param>
         /// <param name="ignoreFocused"></param>
@@ -328,7 +328,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Handles a double click event on this tree node
+        ///     Handles a double click event on this tree node
         /// </summary>
         public virtual void DoubleClickHandler()
         {
@@ -336,7 +336,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Compares two tree nodes, used by the sort
+        ///     Compares two tree nodes, used by the sort
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -353,7 +353,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Updates the node color according to the associated messages
+        ///     Updates the node color according to the associated messages
         /// </summary>
         public virtual void UpdateColor()
         {
@@ -371,7 +371,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The colors used to display things
+        ///     The colors used to display things
         /// </summary>
         private Color ERROR_COLOR = Color.Red;
 
@@ -383,7 +383,7 @@ namespace GUI
         private Color NOTHING_COLOR = Color.Black;
 
         /// <summary>
-        /// Provides the color according to the info status
+        ///     Provides the color according to the info status
         /// </summary>
         /// <param name="info"></param>
         /// <returns></returns>
@@ -427,7 +427,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the path to a message info
+        ///     Provides the path to a message info
         /// </summary>
         /// <param name="info"></param>
         /// <returns></returns>
@@ -452,7 +452,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Combines two colors
+        ///     Combines two colors
         /// </summary>
         /// <param name="c1"></param>
         /// <param name="c2"></param>
@@ -474,7 +474,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Computes this node's color based on its sub nodes
+        ///     Computes this node's color based on its sub nodes
         /// </summary>
         /// <returns></returns>
         protected Color ComputeColorBasedOnItsSubNodes()
@@ -495,7 +495,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the computed color
+        ///     Provides the computed color
         /// </summary>
         public virtual Color ComputedColor
         {
@@ -503,7 +503,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Updates the node name text according to the modelized item
+        ///     Updates the node name text according to the modelized item
         /// </summary>
         public virtual void UpdateText()
         {
@@ -526,7 +526,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Deletes the item modelised by this tree node
+        ///     Deletes the item modelised by this tree node
         /// </summary>
         public virtual void Delete()
         {
@@ -551,7 +551,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Deletes the selected item
+        ///     Deletes the selected item
         /// </summary>
         public virtual void DeleteHandler(object sender, EventArgs args)
         {
@@ -559,12 +559,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Marks all model elements as implemented
+        ///     Marks all model elements as implemented
         /// </summary>
         private class MarkAsImplementedVisitor : Visitor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public MarkAsImplementedVisitor(IModelElement element)
             {
@@ -576,7 +576,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Marks all req related as implemented
+            ///     Marks all req related as implemented
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -588,7 +588,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Marks all req related as implemented
+            ///     Marks all req related as implemented
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -601,7 +601,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Checks the node
+        ///     Checks the node
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -618,7 +618,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Recursively marks all model elemeSnts as implemented
+        ///     Recursively marks all model elemeSnts as implemented
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -628,12 +628,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Marks all model elements as verified
+        ///     Marks all model elements as verified
         /// </summary>
         private class MarkAsVerifiedVisitor : Visitor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public MarkAsVerifiedVisitor(IModelElement element)
             {
@@ -645,7 +645,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Marks all req related as implemented
+            ///     Marks all req related as implemented
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -657,7 +657,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Marks all req related as implemented
+            ///     Marks all req related as implemented
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -670,7 +670,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Recursively marks all model elements as verified
+        ///     Recursively marks all model elements as verified
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -680,7 +680,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Recursively marks all model elements as verified
+        ///     Recursively marks all model elements as verified
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -690,7 +690,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Launches label editing
+        ///     Launches label editing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -700,7 +700,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Selects this element to display its history in the history view
+        ///     Selects this element to display its history in the history view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -713,7 +713,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the menu items for this tree node
+        ///     Provides the menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected virtual List<MenuItem> GetMenuItems()
@@ -736,7 +736,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the context menu for this item
+        ///     Provides the context menu for this item
         /// </summary>
         public override ContextMenu ContextMenu
         {
@@ -744,7 +744,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Provides the sub node whose text matches the string provided as parameter
+        ///     Provides the sub node whose text matches the string provided as parameter
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -765,7 +765,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// refreshes the node text and color
+        ///     refreshes the node text and color
         /// </summary>
         public virtual void RefreshNode()
         {
@@ -773,7 +773,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Clears messages for all nodes of the system
+        ///     Clears messages for all nodes of the system
         /// </summary>
         public void ClearMessages()
         {
@@ -781,7 +781,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Sort the sub nodes of this node
+        ///     Sort the sub nodes of this node
         /// </summary>
         public virtual void SortSubNodes()
         {
@@ -801,7 +801,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Accepts the drop of a base tree node on this node
+        ///     Accepts the drop of a base tree node on this node
         /// </summary>
         /// <param name="SourceNode"></param>
         public virtual void AcceptDrop(BaseTreeNode SourceNode)
@@ -809,12 +809,12 @@ namespace GUI
         }
 
         /// <summary>
-        /// Generates new GUID for the element
+        ///     Generates new GUID for the element
         /// </summary>
         private class RegererateGuidVisitor : Visitor
         {
             /// <summary>
-            /// Ensures that all elements have a new Guid
+            ///     Ensures that all elements have a new Guid
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -831,7 +831,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Accepts the drop of a base tree node on this node
+        ///     Accepts the drop of a base tree node on this node
         /// </summary>
         /// <param name="SourceNode"></param>
         public virtual void AcceptCopy(BaseTreeNode SourceNode)
@@ -899,7 +899,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Accepts the move of a base tree node on this node
+        ///     Accepts the move of a base tree node on this node
         /// </summary>
         /// <param name="SourceNode"></param>
         public virtual void AcceptMove(BaseTreeNode SourceNode)
@@ -934,7 +934,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called when an expand event is performed in this tree node
+        ///     Called when an expand event is performed in this tree node
         /// </summary>
         public virtual void HandleExpand()
         {
@@ -945,7 +945,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called when a collapse event is performed in this tree node
+        ///     Called when a collapse event is performed in this tree node
         /// </summary>
         public virtual void HandleCollapse()
         {
@@ -956,7 +956,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Called when a label edit event is performed in this tree node
+        ///     Called when a label edit event is performed in this tree node
         /// </summary>
         public void HandleLabelEdit(string newLabel)
         {
@@ -979,22 +979,22 @@ namespace GUI
     }
 
     /// <summary>
-    /// A tree node which hold a reference to a data item. 
-    /// This item can be edited by a PropertyGrid
+    ///     A tree node which hold a reference to a data item.
+    ///     This item can be edited by a PropertyGrid
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public abstract class ModelElementTreeNode<T> : BaseTreeNode
         where T : class, IModelElement
     {
         /// <summary>
-        /// An editor for an item. It is the responsibility of this class to implement attributes 
-        /// for the elements to be edited.
+        ///     An editor for an item. It is the responsibility of this class to implement attributes
+        ///     for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public abstract class Editor : BaseEditor
         {
             /// <summary>
-            /// The item that is edited. 
+            ///     The item that is edited.
             /// </summary>
             private T item;
 
@@ -1011,7 +1011,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// The node that holds the item. 
+            ///     The node that holds the item.
             /// </summary>
             private ModelElementTreeNode<T> node;
 
@@ -1032,7 +1032,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             protected Editor()
                 : base()
@@ -1040,14 +1040,14 @@ namespace GUI
             }
 
             /// <summary>
-            /// Updates the field activation according to the displayed data 
+            ///     Updates the field activation according to the displayed data
             /// </summary>
             protected virtual void UpdateActivation()
             {
             }
 
             /// <summary>
-            /// Updates the activation of a single field
+            ///     Updates the activation of a single field
             /// </summary>
             /// <param name="name"></param>
             /// <param name="value"></param>
@@ -1055,18 +1055,19 @@ namespace GUI
             {
                 PropertyDescriptor descriptor = TypeDescriptor.GetProperties(this.GetType())[name];
                 ReadOnlyAttribute attribute = (ReadOnlyAttribute) descriptor.Attributes[typeof (ReadOnlyAttribute)];
-                FieldInfo fieldToChange = attribute.GetType().GetField("isReadOnly", BindingFlags.NonPublic | BindingFlags.Instance);
+                FieldInfo fieldToChange = attribute.GetType()
+                    .GetField("isReadOnly", BindingFlags.NonPublic | BindingFlags.Instance);
                 fieldToChange.SetValue(attribute, value);
             }
         }
 
         /// <summary>
-        /// The element that is represented by this tree node
+        ///     The element that is represented by this tree node
         /// </summary>
         public T Item { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item">The element to be represented by this tree node</param>
         /// <param name="buildSubNodes">Indicates that subnodes should also be built</param>
@@ -1080,7 +1081,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Builds the sub nodes of this node if required
+        ///     Builds the sub nodes of this node if required
         /// </summary>
         /// <param name="buildSubNodes"></param>
         protected void BaseBuildSubNodes(bool buildSubNodes)
@@ -1094,7 +1095,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Lazy create the subnodes when it is expanded
+        ///     Lazy create the subnodes when it is expanded
         /// </summary>
         public override void HandleExpand()
         {
@@ -1114,14 +1115,14 @@ namespace GUI
 
 
         /// <summary>
-        /// An editor for an item. It is the responsibility of this class to implement attributes 
-        /// for the elements to be edited.
+        ///     An editor for an item. It is the responsibility of this class to implement attributes
+        ///     for the elements to be edited.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public abstract class NamedEditor : Editor
         {
             /// <summary>
-            /// The item name
+            ///     The item name
             /// </summary>
             [Category("Description")]
             public virtual string Name
@@ -1149,7 +1150,10 @@ namespace GUI
                         }
                         else
                         {
-                            MessageBox.Show("Cannot set the name to " + value + "because it conflits with another element of the same collection", "Name conflict", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(
+                                "Cannot set the name to " + value +
+                                "because it conflits with another element of the same collection", "Name conflict",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -1161,7 +1165,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Provides the unique identifier
+            ///     Provides the unique identifier
             /// </summary>
             [Category("Meta data")]
             public virtual string UniqueIdentifier
@@ -1170,7 +1174,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             protected NamedEditor()
             {
@@ -1178,7 +1182,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The editor for a namable which can hold a comment
+        ///     The editor for a namable which can hold a comment
         /// </summary>
         public abstract class CommentableEditor : NamedEditor
         {
@@ -1196,7 +1200,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             protected CommentableEditor()
             {
@@ -1204,14 +1208,14 @@ namespace GUI
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
         protected abstract Editor createEditor();
 
         /// <summary>
-        /// Handles a selection change event
+        ///     Handles a selection change event
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)

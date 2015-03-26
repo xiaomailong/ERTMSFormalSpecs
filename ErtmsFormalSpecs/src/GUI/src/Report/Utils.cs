@@ -31,7 +31,8 @@ namespace ReportUtils
             }
             catch (Exception)
             {
-                MessageBox.Show("Cannot find pdf viewer. Please install a pdf viewer.", "Cannot find pdf viewer", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cannot find pdf viewer. Please install a pdf viewer.", "Cannot find pdf viewer",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

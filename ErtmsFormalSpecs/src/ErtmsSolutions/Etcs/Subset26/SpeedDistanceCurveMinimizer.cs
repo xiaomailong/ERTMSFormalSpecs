@@ -39,7 +39,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 
 
         /// <summary>
-        /// Provides the graph of the minimal value between this graph and another graph
+        ///     Provides the graph of the minimal value between this graph and another graph
         /// </summary>
         /// <param name="other"></param>
         /// <returns></returns>
@@ -84,8 +84,10 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
                 SiDistance x1 = x_positions[i];
 
                 /* Caution GetSegmentAt might return null */
-                ConstantCurveSegment<SiDistance, SiSpeed> left_segment = left.GetSegmentAt(x0, BrakingCurveDirectionEnum.Backwards);
-                ConstantCurveSegment<SiDistance, SiSpeed> right_segment = right.GetSegmentAt(x0, BrakingCurveDirectionEnum.Backwards);
+                ConstantCurveSegment<SiDistance, SiSpeed> left_segment = left.GetSegmentAt(x0,
+                    BrakingCurveDirectionEnum.Backwards);
+                ConstantCurveSegment<SiDistance, SiSpeed> right_segment = right.GetSegmentAt(x0,
+                    BrakingCurveDirectionEnum.Backwards);
 
                 if (left_segment == null)
                 {

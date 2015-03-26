@@ -20,7 +20,7 @@ using System.Collections.Generic;
 namespace Utils
 {
     /// <summary>
-    /// Something that has a name
+    ///     Something that has a name
     /// </summary>
     public interface INamable
     {
@@ -30,12 +30,12 @@ namespace Utils
     }
 
     /// <summary>
-    /// Utilities for INamables
+    ///     Utilities for INamables
     /// </summary>
     public static class INamableUtils
     {
         /// <summary>
-        /// Provides the element which matches the name provided
+        ///     Provides the element which matches the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -64,7 +64,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Provides the element which matches the name provided
+        ///     Provides the element which matches the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -99,7 +99,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Provides the element which matches the fullname provided
+        ///     Provides the element which matches the fullname provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -120,7 +120,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Provides the element which matches the fullname provided
+        ///     Provides the element which matches the fullname provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -141,7 +141,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Provides the enclosing INamable, if exists
+        ///     Provides the enclosing INamable, if exists
         /// </summary>
         /// <param name="current"></param>
         /// <returns></returns>

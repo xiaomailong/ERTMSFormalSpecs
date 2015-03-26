@@ -26,7 +26,7 @@ namespace GUI.FunctionalView
     public class FunctionalAnalysisPanel : BoxArrowPanel<NameSpace, AccessMode>
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public FunctionalAnalysisPanel()
             : base()
@@ -34,7 +34,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="container"></param>
         public FunctionalAnalysisPanel(IContainer container)
@@ -44,7 +44,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Method used to create a box
+        ///     Method used to create a box
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -57,7 +57,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Method used to create an arrow
+        ///     Method used to create an arrow
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -70,12 +70,12 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// The namespace displayed by this panel
+        ///     The namespace displayed by this panel
         /// </summary>
         public IEnclosesNameSpaces NameSpaceContainer { get; set; }
 
         /// <summary>
-        /// Provides the boxes that need be displayed
+        ///     Provides the boxes that need be displayed
         /// </summary>
         /// <returns></returns>
         public override List<NameSpace> getBoxes()
@@ -91,7 +91,7 @@ namespace GUI.FunctionalView
         }
 
         /// <summary>
-        /// Provides the arrows that need be displayed
+        ///     Provides the arrows that need be displayed
         /// </summary>
         /// <returns></returns>
         public override List<AccessMode> getArrows()

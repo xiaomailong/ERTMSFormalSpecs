@@ -22,12 +22,12 @@ namespace DataDictionary.Interpreter.ListOperators
     public abstract class ExpressionBasedListExpression : ConditionBasedListExpression
     {
         /// <summary>
-        /// The function used for MAP & REDUCE
+        ///     The function used for MAP & REDUCE
         /// </summary>
         public Expression IteratorExpression { get; private set; }
 
         /// <summary>
-        /// Constructor for MAP, REDUCE
+        ///     Constructor for MAP, REDUCE
         /// </summary>
         /// <param name="listExpression"></param>
         /// <param name="condition">the condition to apply to list elements</param>
@@ -35,7 +35,8 @@ namespace DataDictionary.Interpreter.ListOperators
         /// <param name="iteratorVariableName"></param>
         /// <param name="start">The start character for this expression in the original string</param>
         /// <param name="end">The end character for this expression in the original string</param>
-        public ExpressionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression, string iteratorVariableName, Expression condition, Expression iteratorExpression, int start, int end)
+        public ExpressionBasedListExpression(ModelElement root, ModelElement log, Expression listExpression,
+            string iteratorVariableName, Expression condition, Expression iteratorExpression, int start, int end)
             : base(root, log, listExpression, iteratorVariableName, condition, start, end)
         {
             IteratorExpression = iteratorExpression;
@@ -43,7 +44,7 @@ namespace DataDictionary.Interpreter.ListOperators
         }
 
         /// <summary>
-        /// Performs the semantic analysis of the expression
+        ///     Performs the semantic analysis of the expression
         /// </summary>
         /// <param name="instance">the reference instance on which this element should analysed</param>
         /// <paraparam name="expectation">Indicates the kind of element we are looking for</paraparam>

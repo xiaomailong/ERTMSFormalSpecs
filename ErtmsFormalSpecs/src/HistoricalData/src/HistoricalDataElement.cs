@@ -19,7 +19,7 @@ using Utils;
 namespace HistoricalData
 {
     /// <summary>
-    /// The base class for all historical data element
+    ///     The base class for all historical data element
     /// </summary>
     public abstract class HistoricalDataElement : ModelElement
     {

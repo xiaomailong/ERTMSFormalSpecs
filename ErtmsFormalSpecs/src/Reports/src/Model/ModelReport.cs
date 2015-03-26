@@ -47,13 +47,13 @@ namespace Reports.Model
         private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Indicates if only the implemented model elements should be included to the report
+        ///     Indicates if only the implemented model elements should be included to the report
         /// </summary>
         private bool implementedOnly;
 
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="document"></param>
         public ModelReport(Document document, bool ImplementedOnly)
@@ -63,7 +63,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Counts the number of req related in a list which implementation is partially completed
+        ///     Counts the number of req related in a list which implementation is partially completed
         /// </summary>
         /// <param name="list">The list of req related to consider</param>
         /// <returns></returns>
@@ -83,7 +83,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Counts the number of req related in a list which implementation is partially completed
+        ///     Counts the number of req related in a list which implementation is partially completed
         /// </summary>
         /// <param name="list">The list of req related to consider</param>
         /// <param name="inOutFilter">Consider only IN and OUT variables</param>
@@ -104,7 +104,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for all the ranges of the given namespace
+        ///     Creates a section for all the ranges of the given namespace
         /// </summary>
         /// <param name="ranges">The list of ranges to add</param>
         /// <param name="addDetails">Add details or simply enumerate the ranges</param>
@@ -159,7 +159,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for all the enums and sub-enums of the given namespace
+        ///     Creates a section for all the enums and sub-enums of the given namespace
         /// </summary>
         /// <param name="enumerations">The list of enumerations to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
@@ -177,7 +177,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Adds information about an enum (or sub-enum of an enum)
+        ///     Adds information about an enum (or sub-enum of an enum)
         /// </summary>
         /// <param name="anEnum">The enum to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
@@ -227,7 +227,7 @@ namespace Reports.Model
 
 
         /// <summary>
-        /// Creates a section for all the structures of the given namespace
+        ///     Creates a section for all the structures of the given namespace
         /// </summary>
         /// <param name="structures">The list of structures to add</param>
         /// <param name="addDetails">Add details or simply enumerate the structures</param>
@@ -276,7 +276,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for all the collections of the given namespace
+        ///     Creates a section for all the collections of the given namespace
         /// </summary>
         /// <param name="collections">The list of collections to add</param>
         /// <param name="addDetails">Add details or simply enumerate the collections</param>
@@ -312,7 +312,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for all the state machines of the given namespace
+        ///     Creates a section for all the state machines of the given namespace
         /// </summary>
         /// <param name="stateMachines">The list of state machines to add</param>
         /// <param name="addDetails">Add details or simply enumerate the state machines</param>
@@ -331,7 +331,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Adds information about a state machine
+        ///     Adds information about a state machine
         /// </summary>
         /// <param name="aSM">The state machine</param>
         /// <param name="addDetails">Add details or simply enumerate the state machines</param>
@@ -387,7 +387,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for all the functions of the given namespace
+        ///     Creates a section for all the functions of the given namespace
         /// </summary>
         /// <param name="functions">The list of functions to add</param>
         /// <param name="addDetails">Add details or simply enumerate the collections</param>
@@ -402,7 +402,8 @@ namespace Reports.Model
                     if (addDetails)
                     {
                         AddSubParagraph(function.Name);
-                        CreateParameters("Function " + function.Name, function.Comment, function.FormalParameters, function.TypeName);
+                        CreateParameters("Function " + function.Name, function.Comment, function.FormalParameters,
+                            function.TypeName);
 
                         if (function.Cases.Count > 0)
                         {
@@ -444,7 +445,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for all the procedures of the given namespace
+        ///     Creates a section for all the procedures of the given namespace
         /// </summary>
         /// <param name="procedures">The list of procedures to add</param>
         /// <param name="addDetails">Add de tails or simply enumerate the procedures</param>
@@ -471,7 +472,8 @@ namespace Reports.Model
                         {
                             AddSubParagraph(procedure.Name);
                         }
-                        CreateParameters("Procedure " + procedure.Name, procedure.Comment, procedure.FormalParameters, null);
+                        CreateParameters("Procedure " + procedure.Name, procedure.Comment, procedure.FormalParameters,
+                            null);
                         if (CountDisplayedReqRelated(procedure.Rules) > 0)
                         {
                             CreateRulesSection(procedure.Rules, addDetails, true);
@@ -496,7 +498,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a section for all the variables of the given namespace
+        ///     Creates a section for all the variables of the given namespace
         /// </summary>
         /// <param name="variables">The list of variables to add</param>
         /// <param name="addDetails">Add details or simply enumerate the variables</param>
@@ -531,7 +533,7 @@ namespace Reports.Model
 
 
         /// <summary>
-        /// Creates a section for all the rules of the given namespace
+        ///     Creates a section for all the rules of the given namespace
         /// </summary>
         /// <param name="rules">The list of rules to add</param>
         /// <param name="addDetails">Add details or simply enumerate the rules</param>
@@ -559,7 +561,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Adds information about a rule (or sub-rule of a rule)
+        ///     Adds information about a rule (or sub-rule of a rule)
         /// </summary>
         /// <param name="aRule">The rule to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
@@ -585,7 +587,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Adds a row for a rule (or sub-rule of a rule)
+        ///     Adds a row for a rule (or sub-rule of a rule)
         /// </summary>
         /// <param name="aRule">The rule to add</param>
         /// <param name="addDetails">Add details or simply enumerate the enums</param>
@@ -595,7 +597,12 @@ namespace Reports.Model
             {
                 if (aRule.EnclosingRuleCondition != null)
                 {
-                    AddTable(new string[] {"Sub-rule " + aRule.Name + " (parent rule condition : " + aRule.EnclosingRuleCondition.Name + ")"}, new int[] {40, 100});
+                    AddTable(
+                        new string[]
+                        {
+                            "Sub-rule " + aRule.Name + " (parent rule condition : " + aRule.EnclosingRuleCondition.Name +
+                            ")"
+                        }, new int[] {40, 100});
                 }
                 else
                 {
@@ -628,7 +635,7 @@ namespace Reports.Model
 
 
         /// <summary>
-        /// Provides a string enumerating all the requirements of the given list of requirements
+        ///     Provides a string enumerating all the requirements of the given list of requirements
         /// </summary>
         /// <param name="requirements">List of requirements</param>
         /// <returns></returns>
@@ -660,7 +667,7 @@ namespace Reports.Model
 
 
         /// <summary>
-        /// Provides a list enumerating all the parameters of the given list of parameters
+        ///     Provides a list enumerating all the parameters of the given list of parameters
         /// </summary>
         /// <param name="parameters">The list of parameters</param>
         /// <returns></returns>
@@ -688,8 +695,8 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Creates a containing the implementation/verification status and the
-        /// requirements of a ReqRelated element
+        ///     Creates a containing the implementation/verification status and the
+        ///     requirements of a ReqRelated element
         /// </summary>
         /// <param name="aReqRelated">The ReqRelated element</param>
         /// <returns></returns>
@@ -713,7 +720,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Indicates if a req related should be considered for the report
+        ///     Indicates if a req related should be considered for the report
         /// </summary>
         /// <param name="aReqRelated"></param>
         /// <returns></returns>
@@ -723,7 +730,7 @@ namespace Reports.Model
         }
 
         /// <summary>
-        /// Indicates if a variable should be considered for the report
+        ///     Indicates if a variable should be considered for the report
         /// </summary>
         /// <param name="aVariable"></param>
         /// <param name="inOutOnly"></param>

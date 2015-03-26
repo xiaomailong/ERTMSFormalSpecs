@@ -34,17 +34,17 @@ namespace DataDictionary.Rules
     public class Rule : Generated.Rule, TextualExplain, IGraphicalDisplay
     {
         /// <summary>
-        /// Provides the execution time for this rule, in milliseconds
+        ///     Provides the execution time for this rule, in milliseconds
         /// </summary>
         public long ExecutionTimeInMilli { get; set; }
 
         /// <summary>
-        /// Provides the number of times this rule has been executed
+        ///     Provides the number of times this rule has been executed
         /// </summary>
         public int ExecutionCount { get; set; }
 
         /// <summary>
-        /// Indicates if this Rule contains implemented sub-elements
+        ///     Indicates if this Rule contains implemented sub-elements
         /// </summary>
         public override bool ImplementationPartiallyCompleted
         {
@@ -68,7 +68,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the namespace associated to the rule
+        ///     Provides the namespace associated to the rule
         /// </summary>
         public NameSpace NameSpace
         {
@@ -76,7 +76,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The preconditions for this rule
+        ///     The preconditions for this rule
         /// </summary>
         public ArrayList RuleConditions
         {
@@ -91,7 +91,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The traces to the specifications
+        ///     The traces to the specifications
         /// </summary>
         public ArrayList Traces
         {
@@ -106,7 +106,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing rule, if any
+        ///     The enclosing rule, if any
         /// </summary>
         public Rule EnclosingRule
         {
@@ -114,7 +114,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing rule condition, if any
+        ///     The enclosing rule condition, if any
         /// </summary>
         public RuleCondition EnclosingRuleCondition
         {
@@ -122,7 +122,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing procedure, if any
+        ///     The enclosing procedure, if any
         /// </summary>
         public Procedure EnclosingProcedure
         {
@@ -130,7 +130,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing structure (if any)
+        ///     The enclosing structure (if any)
         /// </summary>
         public Structure EnclosingStructure
         {
@@ -138,7 +138,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing state machine (if any)
+        ///     The enclosing state machine (if any)
         /// </summary>
         public StateMachine EnclosingStateMachine
         {
@@ -173,7 +173,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates if the implementation of this Rule is completed
+        ///     Indicates if the implementation of this Rule is completed
         /// </summary>
         public override bool ImplementationCompleted
         {
@@ -193,7 +193,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -219,7 +219,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -268,7 +268,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the requirements for enclosing rules
+        ///     Provides the requirements for enclosing rules
         /// </summary>
         public List<ReqRef> EnclosingRequirements
         {
@@ -291,7 +291,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the list of applicable paragraphs
+        ///     Provides the list of applicable paragraphs
         /// </summary>
         public List<Paragraph> ApplicableParagraphs
         {
@@ -324,7 +324,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the activation priority list for this rule
+        ///     Provides the activation priority list for this rule
         /// </summary>
         private HashSet<acceptor.RulePriority> activationPriorities;
 
@@ -350,7 +350,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Evaluates the rule and its sub rules
+        ///     Evaluates the rule and its sub rules
         /// </summary>
         /// <param name="runner"></param>
         /// <param name="priority">the priority level : a rule can be activated only if its priority level == priority</param>
@@ -359,7 +359,8 @@ namespace DataDictionary.Rules
         /// <param name="explanation">The explanation part to be filled</param>
         /// <param name="runner"></param>
         /// <returns>the number of actions that were activated during this evaluation</returns>
-        public bool Evaluate(Runner runner, acceptor.RulePriority priority, IModelElement instance, HashSet<Runner.Activation> activations, ExplanationPart explanation)
+        public bool Evaluate(Runner runner, acceptor.RulePriority priority, IModelElement instance,
+            HashSet<Runner.Activation> activations, ExplanationPart explanation)
         {
             bool retVal = false;
 
@@ -386,22 +387,22 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds all usages of a TypedElement
+        ///     Finds all usages of a TypedElement
         /// </summary>
         private class UsageVisitor : Visitor
         {
             /// <summary>
-            /// The usages
+            ///     The usages
             /// </summary>
             public HashSet<RuleCondition> Usages { get; private set; }
 
             /// <summary>
-            /// The element looked for
+            ///     The element looked for
             /// </summary>
             public IVariable Target { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="target"></param>
             public UsageVisitor(IVariable target)
@@ -411,7 +412,7 @@ namespace DataDictionary.Rules
             }
 
             /// <summary>
-            /// Take care of all conditions
+            ///     Take care of all conditions
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -429,7 +430,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the set of rules which uses this variable
+        ///     Provides the set of rules which uses this variable
         /// </summary>
         /// <param name="node">the element to find in rules</param>
         /// <returns>the list of rules which use the element provided</returns>
@@ -450,7 +451,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides all the paragraphs associated to this rule
+        ///     Provides all the paragraphs associated to this rule
         /// </summary>
         /// <param name="paragraphs">The list of paragraphs to be filled</param>
         /// <returns></returns>
@@ -469,7 +470,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates whether the rule is disabled
+        ///     Indicates whether the rule is disabled
         /// </summary>
         public bool Disabled
         {
@@ -477,7 +478,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -494,7 +495,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates that this rule has been defined in a procedure
+        ///     Indicates that this rule has been defined in a procedure
         /// </summary>
         /// <returns></returns>
         public bool BelongsToAProcedure()
@@ -505,7 +506,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Duplicates this model element
+        ///     Duplicates this model element
         /// </summary>
         /// <returns></returns>
         public Rule duplicate()
@@ -522,7 +523,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The X position
+        ///     The X position
         /// </summary>
         public int X
         {
@@ -531,7 +532,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The Y position
+        ///     The Y position
         /// </summary>
         public int Y
         {
@@ -540,7 +541,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The width
+        ///     The width
         /// </summary>
         public int Width
         {
@@ -549,7 +550,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The height
+        ///     The height
         /// </summary>
         public int Height
         {
@@ -558,7 +559,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName
         {
@@ -566,7 +567,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates whether the namespace is hidden
+        ///     Indicates whether the namespace is hidden
         /// </summary>
         public bool Hidden
         {
@@ -575,7 +576,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates that the element is pinned
+        ///     Indicates that the element is pinned
         /// </summary>
         public bool Pinned
         {

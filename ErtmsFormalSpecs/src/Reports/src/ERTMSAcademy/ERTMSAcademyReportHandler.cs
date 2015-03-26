@@ -26,22 +26,22 @@ namespace Reports.ERTMSAcademy
     public class ERTMSAcademyReportHandler : ReportHandler
     {
         /// <summary>
-        /// The number of days to consider for the report
+        ///     The number of days to consider for the report
         /// </summary>
         public int SinceHowManyDays { get; set; }
 
         /// <summary>
-        /// The user for the report
+        ///     The user for the report
         /// </summary>
         public string User { get; set; }
 
         /// <summary>
-        /// The user's git login
+        ///     The user's git login
         /// </summary>
         public string GitLogin { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary">The dictionary to use to create the report</param>
         public ERTMSAcademyReportHandler(Dictionary dictionary)
@@ -51,7 +51,7 @@ namespace Reports.ERTMSAcademy
         }
 
         /// <summary>
-        /// Provides the repository related to the Dictionary directory
+        ///     Provides the repository related to the Dictionary directory
         /// </summary>
         /// <returns></returns>
         protected Repository Repository
@@ -78,7 +78,7 @@ namespace Reports.ERTMSAcademy
         }
 
         /// <summary>
-        /// Holds statistics about a single file
+        ///     Holds statistics about a single file
         /// </summary>
         private class Statistics
         {
@@ -87,7 +87,7 @@ namespace Reports.ERTMSAcademy
             public int Deletions { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="fileName"></param>
             /// <param name="additions"></param>
@@ -101,7 +101,7 @@ namespace Reports.ERTMSAcademy
         }
 
         /// <summary>
-        /// Holds information about a single commit
+        ///     Holds information about a single commit
         /// </summary>
         private class Activity
         {
@@ -138,7 +138,7 @@ namespace Reports.ERTMSAcademy
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="user"></param>
             /// <param name="date"></param>
@@ -153,7 +153,7 @@ namespace Reports.ERTMSAcademy
             }
 
             /// <summary>
-            /// Generates the statistics message
+            ///     Generates the statistics message
             /// </summary>
             /// <returns></returns>
             public string getStatistics()
@@ -162,16 +162,18 @@ namespace Reports.ERTMSAcademy
 
                 foreach (Statistics statistic in Statistics)
                 {
-                    retVal += statistic.FileName + " " + statistic.Additions + " addition(s), " + statistic.Deletions + " deletion(s)\n";
+                    retVal += statistic.FileName + " " + statistic.Additions + " addition(s), " + statistic.Deletions +
+                              " deletion(s)\n";
                 }
-                retVal += Statistics.Count + " file(s) changed, " + Additions + " addition(s), " + Deletions + " deletion(s)";
+                retVal += Statistics.Count + " file(s) changed, " + Additions + " addition(s), " + Deletions +
+                          " deletion(s)";
 
                 return retVal;
             }
         }
 
         /// <summary>
-        /// Creates a report on the model, according to user's choices
+        ///     Creates a report on the model, according to user's choices
         /// </summary>
         /// <returns>The document created, or null</returns>
         public override Document BuildDocument()
@@ -208,7 +210,8 @@ namespace Reports.ERTMSAcademy
                     {
                         if (commit.Message.Contains("EA_MODEL") || commit.Message.Contains("EA_TEST"))
                         {
-                            Activity activity = new Activity(commit.Author.Name, commit.Author.Email, commit.Author.When, commit.Message);
+                            Activity activity = new Activity(commit.Author.Name, commit.Author.Email, commit.Author.When,
+                                commit.Message);
                             foreach (Commit other in commit.Parents)
                             {
                                 TreeChanges changes = Repository.Diff.Compare(other.Tree, commit.Tree);
@@ -257,7 +260,7 @@ namespace Reports.ERTMSAcademy
         }
 
         /// <summary>
-        /// Reports a single activity
+        ///     Reports a single activity
         /// </summary>
         /// <param name="report"></param>
         /// <param name="activity"></param>

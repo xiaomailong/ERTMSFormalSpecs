@@ -21,29 +21,29 @@ namespace DataDictionary
     public interface IExpressionable
     {
         /// <summary>
-        /// The expression text for this expressionable
+        ///     The expression text for this expressionable
         /// </summary>
         string ExpressionText { get; set; }
 
         /// <summary>
-        /// The corresponding expression tree
+        ///     The corresponding expression tree
         /// </summary>
         InterpreterTreeNode Tree { get; }
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
         bool checkValidExpression(string expression);
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         void CleanCompilation();
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         InterpreterTreeNode Compile();
     }

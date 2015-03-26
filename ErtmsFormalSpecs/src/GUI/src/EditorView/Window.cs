@@ -10,22 +10,22 @@ namespace GUI.EditorView
     public partial class Window : BaseForm
     {
         /// <summary>
-        /// Indicates the actions to be performed to get the text from the instance and to set it into the instance
+        ///     Indicates the actions to be performed to get the text from the instance and to set it into the instance
         /// </summary>
         public abstract class HandleTextChange
         {
             /// <summary>
-            /// The instance that is currently handled
+            ///     The instance that is currently handled
             /// </summary>
             public ModelElement Instance { get; private set; }
 
             /// <summary>
-            /// The messages that identifies the action that is performed in the instance
+            ///     The messages that identifies the action that is performed in the instance
             /// </summary>
             public string IdentifyingMessage { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="instance"></param>
             public HandleTextChange(ModelElement instance, string identifyingMessage)
@@ -35,20 +35,20 @@ namespace GUI.EditorView
             }
 
             /// <summary>
-            /// The way text is retrieved from the instance
+            ///     The way text is retrieved from the instance
             /// </summary>
             /// <returns></returns>
             public abstract string GetText();
 
             /// <summary>
-            /// The way text is set back in the instance
+            ///     The way text is set back in the instance
             /// </summary>
             /// <returns></returns>
             public abstract void SetText(string text);
         }
 
         /// <summary>
-        /// Indicates that only types should be considered
+        ///     Indicates that only types should be considered
         /// </summary>
         public bool ConsiderOnlyTypes
         {
@@ -56,7 +56,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public Window()
         {
@@ -87,7 +87,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -97,8 +97,8 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// Called when the text has been changed in the inner text box
-        /// This updates the instance according to the __textChangeHandler
+        ///     Called when the text has been changed in the inner text box
+        ///     This updates the instance according to the __textChangeHandler
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -111,7 +111,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// Indicates whether auto completion is available
+        ///     Indicates whether auto completion is available
         /// </summary>
         public bool AutoComplete
         {
@@ -119,12 +119,12 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// The delegate method that need to be called when the text of the text box has been changed
+        ///     The delegate method that need to be called when the text of the text box has been changed
         /// </summary>
         private HandleTextChange __textChangeHandler = null;
 
         /// <summary>
-        /// The name of the editor
+        ///     The name of the editor
         /// </summary>
         protected virtual string EditorName
         {
@@ -132,7 +132,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// The element on which this editor is built
+        ///     The element on which this editor is built
         /// </summary>
         public void setChangeHandler(HandleTextChange handleTextChange)
         {
@@ -155,7 +155,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// Refreshes the text of the text box
+        ///     Refreshes the text of the text box
         /// </summary>
         public void RefreshText()
         {
@@ -168,7 +168,7 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// Indicates that the editor text box has the focus
+        ///     Indicates that the editor text box has the focus
         /// </summary>
         /// <returns></returns>
         public bool EditorTextBoxHasFocus()
@@ -177,20 +177,21 @@ namespace GUI.EditorView
         }
 
         /// <summary>
-        /// The textual value to edit
+        ///     The textual value to edit
         /// </summary>
         public string Value
         {
             get { return editorTextBox.TextBox.Text; }
             set
             {
-                editorTextBox.TextBox.Font = new Font("Courier New", 8.25F, FontStyle.Regular, GraphicsUnit.Point, ((byte) (0)));
+                editorTextBox.TextBox.Font = new Font("Courier New", 8.25F, FontStyle.Regular, GraphicsUnit.Point,
+                    ((byte) (0)));
                 editorTextBox.TextBox.Text = value;
             }
         }
 
         /// <summary>
-        /// The instance currently edited by the editor
+        ///     The instance currently edited by the editor
         /// </summary>
         public BaseModelElement Instance
         {

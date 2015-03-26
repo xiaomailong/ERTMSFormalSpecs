@@ -29,7 +29,7 @@ namespace DataDictionary.Types
     public class Range : Generated.Range, IEnumerateValues, ISubDeclarator, TextualExplain
     {
         /// <summary>
-        /// The min value of the range
+        ///     The min value of the range
         /// </summary>
         public string MinValue
         {
@@ -42,7 +42,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// A cache for the min value
+        ///     A cache for the min value
         /// </summary>
         private bool minValueSet;
 
@@ -76,7 +76,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The max value of the range
+        ///     The max value of the range
         /// </summary>
         public string MaxValue
         {
@@ -85,7 +85,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// A cache for the min value
+        ///     A cache for the min value
         /// </summary>
         private bool maxValueSet = false;
 
@@ -119,7 +119,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// The special values of the range
+        ///     The special values of the range
         /// </summary>
         public ArrayList SpecialValues
         {
@@ -135,12 +135,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Just a cache
+        ///     Just a cache
         /// </summary>
         private static Dictionary<string, double> cache = new Dictionary<string, double>();
 
         /// <summary>
-        /// Faster method of getting a double from its string representation
+        ///     Faster method of getting a double from its string representation
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -158,7 +158,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Parses the image and provides the corresponding value
+        ///     Parses the image and provides the corresponding value
         /// </summary>
         /// <param name="image"></param>
         /// <returns></returns>
@@ -217,7 +217,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates whether a value can be cast into this type
+        ///     Indicates whether a value can be cast into this type
         /// </summary>
         public override bool CanBeCastInto
         {
@@ -225,7 +225,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Converts a value in this type
+        ///     Converts a value in this type
         /// </summary>
         /// <param name="value">The value to convert</param>
         /// <returns></returns>
@@ -282,7 +282,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the value as a decimal value
+        ///     Provides the value as a decimal value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -312,7 +312,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the value as a double value
+        ///     Provides the value as a double value
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -342,7 +342,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the enclosing collection to allow deletion of a range
+        ///     Provides the enclosing collection to allow deletion of a range
         /// </summary>
         public override ArrayList EnclosingCollection
         {
@@ -350,7 +350,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Derefs enumerate values
+        ///     Derefs enumerate values
         /// </summary>
         /// <param name="val"></param>
         /// <returns></returns>
@@ -368,7 +368,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that binary operation is valid for this type and the other type 
+        ///     Indicates that binary operation is valid for this type and the other type
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -378,7 +378,8 @@ namespace DataDictionary.Types
 
             if (!retVal)
             {
-                if (operation == BinaryExpression.OPERATOR.ADD || operation == BinaryExpression.OPERATOR.DIV || operation == BinaryExpression.OPERATOR.MULT || operation == BinaryExpression.OPERATOR.SUB)
+                if (operation == BinaryExpression.OPERATOR.ADD || operation == BinaryExpression.OPERATOR.DIV ||
+                    operation == BinaryExpression.OPERATOR.MULT || operation == BinaryExpression.OPERATOR.SUB)
                 {
                     // Allow implicit conversions
                     IntegerType integerType = otherType as IntegerType;
@@ -398,14 +399,15 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Performs the arithmetic operation based on the type of the result
+        ///     Performs the arithmetic operation based on the type of the result
         /// </summary>
         /// <param name="context">The context used to perform this operation</param>
         /// <param name="left"></param>
         /// <param name="Operation"></param>
         /// <param name="right"></param>
         /// <returns></returns>
-        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left, BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
+        public override IValue PerformArithmericOperation(InterpretationContext context, IValue left,
+            BinaryExpression.OPERATOR Operation, IValue right) // left +/-/*/div/exp right
         {
             IValue retVal = null;
 
@@ -428,7 +430,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Performs the dereferencing and launches an exception if the enum cannot be used for arithmetic operations
+        ///     Performs the dereferencing and launches an exception if the enum cannot be used for arithmetic operations
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -453,7 +455,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Compares two ranges for equality
+        ///     Compares two ranges for equality
         /// </summary>
         /// <param name="left"></param>
         /// <param name="right"></param>
@@ -536,7 +538,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all constant values for this type
+        ///     Provides all constant values for this type
         /// </summary>
         /// <param name="scope"></param>
         /// <param name="retVal"></param>
@@ -550,7 +552,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -563,12 +565,12 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides all the values that can be stored in this range
+        ///     Provides all the values that can be stored in this range
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -578,7 +580,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the enum value which corresponds to the name provided
+        ///     Provides the enum value which corresponds to the name provided
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -592,7 +594,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides the values whose name matches the name provided
+        ///     Provides the values whose name matches the name provided
         /// </summary>
         /// <param name="index">the index in names to consider</param>
         /// <param name="names">the simple value names</param>
@@ -603,7 +605,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Indicates that the other type may be placed in this range
+        ///     Indicates that the other type may be placed in this range
         /// </summary>
         /// <param name="otherType"></param>
         /// <returns></returns>
@@ -635,7 +637,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -652,7 +654,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the range
+        ///     Provides an explanation of the range
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -660,7 +662,8 @@ namespace DataDictionary.Types
         {
             string retVal = TextualExplainUtilities.Comment(this, indentLevel);
 
-            retVal += TextualExplainUtilities.Pad(Name + "{\\b : RANGE FROM }" + MinValue + " {\\b TO }" + MaxValue, indentLevel);
+            retVal += TextualExplainUtilities.Pad(Name + "{\\b : RANGE FROM }" + MinValue + " {\\b TO }" + MaxValue,
+                indentLevel);
             foreach (EnumValue enumValue in SpecialValues)
             {
                 retVal += "\\par " + enumValue.getExplain(indentLevel + 2);
@@ -670,7 +673,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Provides an explanation of the range
+        ///     Provides an explanation of the range
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -682,7 +685,7 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
-        /// Combines two types to create a new one
+        ///     Combines two types to create a new one
         /// </summary>
         /// <param name="right"></param>
         /// <returns></returns>
@@ -692,7 +695,8 @@ namespace DataDictionary.Types
 
             if (Operator == BinaryExpression.OPERATOR.MULT)
             {
-                if (FullName.CompareTo("Default.BaseTypes.Speed") == 0 && right.FullName.CompareTo("Default.BaseTypes.Time") == 0)
+                if (FullName.CompareTo("Default.BaseTypes.Speed") == 0 &&
+                    right.FullName.CompareTo("Default.BaseTypes.Time") == 0)
                 {
                     NameSpace nameSpace = EnclosingNameSpaceFinder.find(this);
                     retVal = nameSpace.findTypeByName("Distance");

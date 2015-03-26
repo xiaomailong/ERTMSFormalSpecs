@@ -27,7 +27,7 @@ using Utils;
 namespace GUI.Converters
 {
     /// <summary>
-    /// Types converter. Provides the available types 
+    ///     Types converter. Provides the available types
     /// </summary>
     public class TypesConverter : TypeConverter
     {
@@ -69,7 +69,7 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// Values converter. Provides all possible values for a specific variable.
+    ///     Values converter. Provides all possible values for a specific variable.
     /// </summary>
     public class ValuesConverter : TypeConverter
     {
@@ -104,7 +104,7 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// Provides the list of sub systems
+    ///     Provides the list of sub systems
     /// </summary>
     public class NameSpaceConverter : TypeConverter
     {
@@ -131,7 +131,7 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// Provides the list of requirement paragraphs
+    ///     Provides the list of requirement paragraphs
     /// </summary>
     public class TracesConverter : TypeConverter
     {
@@ -178,7 +178,7 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// Provides the list of operators
+    ///     Provides the list of operators
     /// </summary>
     public class StateTypeConverter : TypeConverter
     {
@@ -218,7 +218,7 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// Provides the list of operators
+    ///     Provides the list of operators
     /// </summary>
     public class OperatorConverter : TypeConverter
     {
@@ -241,7 +241,7 @@ namespace GUI.Converters
     }
 
     /// <summary>
-    /// Provides the list of requirement sets
+    ///     Provides the list of requirement sets
     /// </summary>
     public class RequirementSetTypeConverter : TypeConverter
     {

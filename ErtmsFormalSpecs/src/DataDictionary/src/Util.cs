@@ -38,32 +38,32 @@ namespace DataDictionary
     public class Util
     {
         /// <summary>
-        /// The Logger
+        ///     The Logger
         /// </summary>
         protected static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         /// <summary>
-        /// Indicates that the files should be locked for edition when opened
+        ///     Indicates that the files should be locked for edition when opened
         /// </summary>
         public static bool PleaseLockFiles = true;
 
         /// <summary>
-        /// Updates the dictionary contents
+        ///     Updates the dictionary contents
         /// </summary>
         public class Updater : Cleaner
         {
             /// <summary>
-            /// Indicates that GUID should be updated
+            ///     Indicates that GUID should be updated
             /// </summary>
             private bool UpdateGuid { get; set; }
 
             /// <summary>
-            /// Indicates obsolete versions of model files should be updated
+            ///     Indicates obsolete versions of model files should be updated
             /// </summary>
-            private bool ConvertObsoleteFile{ get; set; }
+            private bool ConvertObsoleteFile { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="updateGuid"></param>
             /// <param name="convertObsoleteFile"></param>
@@ -74,7 +74,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Ensures that all elements have a Guid
+            ///     Ensures that all elements have a Guid
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -98,7 +98,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Indicates that a character may belong to an identifier
+            ///     Indicates that a character may belong to an identifier
             /// </summary>
             /// <param name="c"></param>
             /// <returns></returns>
@@ -110,7 +110,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Indicates that a character is a white space
+            ///     Indicates that a character is a white space
             /// </summary>
             /// <param name="c"></param>
             /// <returns></returns>
@@ -122,7 +122,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Provides the identifier, if any at the position in the expression
+            ///     Provides the identifier, if any at the position in the expression
             /// </summary>
             /// <param name="expression"></param>
             /// <param name="index"></param>
@@ -146,11 +146,11 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Updates the expressionable, according to the grammar changes
+            ///     Updates the expressionable, according to the grammar changes
             /// </summary>
             /// <param name="expressionable"></param>
             private void UpdateExpressionable(IExpressionable expressionable)
-            {                
+            {
                 string expression = expressionable.ExpressionText;
 
                 expression = Replace(expression, "USING", "USING X IN");
@@ -164,8 +164,8 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Replaces an initial expression from 'expression' by the 'replacementValue'
-            /// if the exclusiong pattern is not found after the 'initial expression'
+            ///     Replaces an initial expression from 'expression' by the 'replacementValue'
+            ///     if the exclusiong pattern is not found after the 'initial expression'
             /// </summary>
             /// <param name="expression"></param>
             /// <param name="initialExpression"></param>
@@ -181,7 +181,9 @@ namespace DataDictionary
                     i = retVal.IndexOf(initialExpression, i);
                     if (i >= 0)
                     {
-                        if ((i == 0) || (i > 0 && i < retVal.Length - 1 && !belongsToIdentifier(retVal[i - 1]) && !belongsToIdentifier(retVal[i + initialExpression.Length])))
+                        if ((i == 0) ||
+                            (i > 0 && i < retVal.Length - 1 && !belongsToIdentifier(retVal[i - 1]) &&
+                             !belongsToIdentifier(retVal[i + initialExpression.Length])))
                         {
                             bool replace = false;
                             string identifier = Identifier(retVal, i + initialExpression.Length);
@@ -201,7 +203,8 @@ namespace DataDictionary
 
                             if (replace)
                             {
-                                retVal = retVal.Substring(0, i) + replacementValue + retVal.Substring(i + initialExpression.Length);
+                                retVal = retVal.Substring(0, i) + replacementValue +
+                                         retVal.Substring(i + initialExpression.Length);
                             }
                             i = i + 1;
                         }
@@ -216,7 +219,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Update references to paragraphs
+            ///     Update references to paragraphs
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -236,7 +239,8 @@ namespace DataDictionary
                         }
 
                         // Updates the specification Guid
-                        Specification.Specification specification = EnclosingFinder<Specification.Specification>.find(paragraph);
+                        Specification.Specification specification =
+                            EnclosingFinder<Specification.Specification>.find(paragraph);
                         if (specification.Guid != reqRef.getSpecId())
                         {
                             reqRef.setSpecId(specification.Guid);
@@ -248,7 +252,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Replaces the paragraph scope by the corresponding flags
+            ///     Replaces the paragraph scope by the corresponding flags
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -313,7 +317,8 @@ namespace DataDictionary
 
                 if (paragraph.getObsoleteScopeRollingStock())
                 {
-                    RequirementSet rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, false);
+                    RequirementSet rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME,
+                        false);
                     if (rollingStock == null)
                     {
                         rollingStock = scope.findRequirementSet(RequirementSet.ROLLING_STOCK_SCOPE_NAME, true);
@@ -327,8 +332,10 @@ namespace DataDictionary
                 // Updates the functional block information based on the FunctionalBlockName field
                 if (!string.IsNullOrEmpty(paragraph.getObsoleteFunctionalBlockName()))
                 {
-                    RequirementSet allFunctionalBlocks = paragraph.Dictionary.findRequirementSet(Dictionary.FUNCTIONAL_BLOCK_NAME, true);
-                    RequirementSet functionalBlock = allFunctionalBlocks.findRequirementSet(paragraph.getObsoleteFunctionalBlockName(), true);
+                    RequirementSet allFunctionalBlocks =
+                        paragraph.Dictionary.findRequirementSet(Dictionary.FUNCTIONAL_BLOCK_NAME, true);
+                    RequirementSet functionalBlock =
+                        allFunctionalBlocks.findRequirementSet(paragraph.getObsoleteFunctionalBlockName(), true);
                     functionalBlock.setRecursiveSelection(true);
                     functionalBlock.setDefault(false);
                     paragraph.AppendToRequirementSet(functionalBlock);
@@ -339,7 +346,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Updates the state machine : initial state has been moved to the default value
+            ///     Updates the state machine : initial state has been moved to the default value
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -358,7 +365,7 @@ namespace DataDictionary
 
 
             /// <summary>
-            /// Updates the step : comment has been moved
+            ///     Updates the step : comment has been moved
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -383,7 +390,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Updates the step : comment has been moved
+            ///     Updates the step : comment has been moved
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -408,7 +415,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Remove the obsolete comments
+            ///     Remove the obsolete comments
             /// </summary>
             /// <param name="obj"></param>
             /// <param name="visitSubNodes"></param>
@@ -439,22 +446,22 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Updates the dictionary contents
+        ///     Updates the dictionary contents
         /// </summary>
         private class LoadDepends : Visitor
         {
             /// <summary>
-            /// The base path used to load files
+            ///     The base path used to load files
             /// </summary>
             public string BasePath { get; private set; }
 
             /// <summary>
-            /// Indicates that the files should be locked
+            ///     Indicates that the files should be locked
             /// </summary>
             public bool LockFiles { get; private set; }
 
             /// <summary>
-            /// Indicates that errors can occur during load, for instance, for comparison purposes
+            ///     Indicates that errors can occur during load, for instance, for comparison purposes
             /// </summary>
             public bool AllowErrorsDuringLoad
             {
@@ -462,12 +469,12 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// The errors that occured during the load of the file
+            ///     The errors that occured during the load of the file
             /// </summary>
             public List<ElementLog> ErrorsDuringLoad { get; private set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="basePath"></param>
             /// <param name="lockFiles"></param>
@@ -495,7 +502,8 @@ namespace DataDictionary
                         }
                         else
                         {
-                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + nameSpaceRef.FileName));
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error,
+                                "Cannot load file " + nameSpaceRef.FileName));
                         }
                     }
                     dictionary.allNameSpaceRefs().Clear();
@@ -512,7 +520,8 @@ namespace DataDictionary
                         }
                         else
                         {
-                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + testRef.FileName));
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error,
+                                "Cannot load file " + testRef.FileName));
                         }
                     }
                     dictionary.allTestRefs().Clear();
@@ -537,7 +546,8 @@ namespace DataDictionary
                         }
                         else
                         {
-                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + nameSpaceRef.FileName));
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error,
+                                "Cannot load file " + nameSpaceRef.FileName));
                         }
                     }
                     nameSpace.allNameSpaceRefs().Clear();
@@ -562,7 +572,8 @@ namespace DataDictionary
                         }
                         else
                         {
-                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error, "Cannot load file " + chapterRef.FileName));
+                            ErrorsDuringLoad.Add(new ElementLog(ElementLog.LevelEnum.Error,
+                                "Cannot load file " + chapterRef.FileName));
                         }
                     }
                     specification.allChapterRefs().Clear();
@@ -573,27 +584,27 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Holds information about opened files in the system
+        ///     Holds information about opened files in the system
         /// </summary>
         private class FileData
         {
             /// <summary>
-            /// The name of the corresponding file
+            ///     The name of the corresponding file
             /// </summary>
             public String FileName { get; private set; }
 
             /// <summary>
-            /// The stream used to lock the file
+            ///     The stream used to lock the file
             /// </summary>
             public FileStream Stream { get; private set; }
 
             /// <summary>
-            /// The length of the lock section
+            ///     The length of the lock section
             /// </summary>
             private long LockLength { get; set; }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="fileName"></param>
             public FileData(String fileName)
@@ -603,7 +614,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Locks the corresponding file
+            ///     Locks the corresponding file
             /// </summary>
             public void Lock()
             {
@@ -616,7 +627,7 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// Unlocks the corresponding file
+            ///     Unlocks the corresponding file
             /// </summary>
             public void Unlock()
             {
@@ -630,12 +641,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Lock all opened files
+        ///     Lock all opened files
         /// </summary>
         private static List<FileData> openedFiles = new List<FileData>();
 
         /// <summary>
-        /// Locks a single file
+        ///     Locks a single file
         /// </summary>
         /// <param name="filePath"></param>
         private static void LockFile(String filePath)
@@ -645,7 +656,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Unlocks all files locked by the system
+        ///     Unlocks all files locked by the system
         /// </summary>
         public static void UnlockAllFiles()
         {
@@ -656,7 +667,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Locks all files loaded in the system
+        ///     Locks all files loaded in the system
         /// </summary>
         public static void LockAllFiles()
         {
@@ -667,14 +678,14 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a document and handles its associated locks
+        ///     Loads a document and handles its associated locks
         /// </summary>
         /// <typeparam name="T"></typeparam>
         private class DocumentLoader<T>
             where T : class, IXmlBBase
         {
             /// <summary>
-            /// Loads a file and locks it if required
+            ///     Loads a file and locks it if required
             /// </summary>
             /// <param name="filePath"></param>
             /// <param name="enclosing"></param>
@@ -724,12 +735,12 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Parameters to be used when loading a file
+        ///     Parameters to be used when loading a file
         /// </summary>
         public class LoadParams
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="filePath"></param>
             public LoadParams(string filePath)
@@ -738,41 +749,41 @@ namespace DataDictionary
             }
 
             /// <summary>
-            /// The file path to load
+            ///     The file path to load
             /// </summary>
             public String FilePath { get; private set; }
 
             /// <summary>
-            /// Indicates that the files should be locked
+            ///     Indicates that the files should be locked
             /// </summary>
             public bool LockFiles { get; set; }
 
             /// <summary>
-            /// The location where errors should be stored
+            ///     The location where errors should be stored
             /// </summary>
-            public List<ElementLog> Errors { get; set; } 
+            public List<ElementLog> Errors { get; set; }
 
             /// <summary>
-            /// Indicates that errors can be raised when loading the file
+            ///     Indicates that errors can be raised when loading the file
             /// </summary>
-            public bool AllowErrors 
+            public bool AllowErrors
             {
                 get { return Errors != null; }
             }
 
             /// <summary>
-            /// Indicates that the empty GUID of the elements should be setup to a real GUID
+            ///     Indicates that the empty GUID of the elements should be setup to a real GUID
             /// </summary>
             public bool UpdateGuid { get; set; }
 
             /// <summary>
-            /// Indicates that obsolete files should be updated 
+            ///     Indicates that obsolete files should be updated
             /// </summary>
             public bool ConvertObsolete { get; set; }
         }
 
         /// <summary>
-        /// Loads a dictionary and lock the file
+        ///     Loads a dictionary and lock the file
         /// </summary>
         /// <param name="efsSystem">The system for which this dictionary is loaded</param>
         /// <param name="loadParams">The parameters used to load the file</param>
@@ -799,7 +810,8 @@ namespace DataDictionary
                     try
                     {
                         ControllersManager.DesactivateAllNotifications();
-                        LoadDepends loadDepends = new LoadDepends(retVal.BasePath, loadParams.LockFiles, loadParams.Errors);
+                        LoadDepends loadDepends = new LoadDepends(retVal.BasePath, loadParams.LockFiles,
+                            loadParams.Errors);
                         loadDepends.visit(retVal);
                     }
                     catch (Exception e)
@@ -847,15 +859,17 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a specification and lock the file
+        ///     Loads a specification and lock the file
         /// </summary>
         /// <param name="filePath">The name of the file which holds the dictionary data</param>
         /// <param name="dictionary">The dictionary for which the specification is loaded</param>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <returns></returns>
-        public static Specification.Specification loadSpecification(String filePath, Dictionary dictionary, bool lockFiles)
+        public static Specification.Specification loadSpecification(String filePath, Dictionary dictionary,
+            bool lockFiles)
         {
-            Specification.Specification retVal = DocumentLoader<Specification.Specification>.loadFile(filePath, dictionary, lockFiles);
+            Specification.Specification retVal = DocumentLoader<Specification.Specification>.loadFile(filePath,
+                dictionary, lockFiles);
 
             if (retVal == null)
             {
@@ -866,15 +880,17 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a translation dictionary and lock the file
+        ///     Loads a translation dictionary and lock the file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="dictionary"></param>
         /// <param name="lockFiles">Indicates that the files should be locked</param>
         /// <returns></returns>
-        public static TranslationDictionary loadTranslationDictionary(string filePath, Dictionary dictionary, bool lockFiles)
+        public static TranslationDictionary loadTranslationDictionary(string filePath, Dictionary dictionary,
+            bool lockFiles)
         {
-            TranslationDictionary retVal = DocumentLoader<TranslationDictionary>.loadFile(filePath, dictionary, lockFiles);
+            TranslationDictionary retVal = DocumentLoader<TranslationDictionary>.loadFile(filePath, dictionary,
+                lockFiles);
 
             if (retVal == null)
             {
@@ -885,14 +901,15 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a namespace and locks the file
+        ///     Loads a namespace and locks the file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="enclosing"></param>
         /// <param name="lockFiles"></param>
         /// <param name="allowErrors"></param>
         /// <returns></returns>
-        public static Types.NameSpace loadNameSpace(string filePath, ModelElement enclosing, bool lockFiles, bool allowErrors)
+        public static Types.NameSpace loadNameSpace(string filePath, ModelElement enclosing, bool lockFiles,
+            bool allowErrors)
         {
             Types.NameSpace retVal = DocumentLoader<Types.NameSpace>.loadFile(filePath, enclosing, lockFiles);
 
@@ -908,7 +925,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a frame and locks the file
+        ///     Loads a frame and locks the file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="enclosing"></param>
@@ -931,7 +948,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Loads a chapter and locks the file
+        ///     Loads a chapter and locks the file
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="dictionary"></param>
@@ -956,14 +973,14 @@ namespace DataDictionary
         private class MessageInfoVisitor : Visitor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public MessageInfoVisitor()
             {
             }
 
             /// <summary>
-            /// Provides the maximum path info
+            ///     Provides the maximum path info
             /// </summary>
             /// <param name="v1"></param>
             /// <param name="v2"></param>
@@ -1046,7 +1063,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Updates the message info according to the model element messages and its sub model elements
+        ///     Updates the message info according to the model element messages and its sub model elements
         /// </summary>
         /// <param name="modelElement"></param>
         public static void UpdateMessageInfo(ModelElement modelElement)
@@ -1056,7 +1073,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Indicates that the character is a valid character for a file path
+        ///     Indicates that the character is a valid character for a file path
         /// </summary>
         /// <param name="c"></param>
         /// <returns></returns>
@@ -1077,7 +1094,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Creates a valid file path for the path provided
+        ///     Creates a valid file path for the path provided
         /// </summary>
         /// <param name="path"></param>
         /// <returns></returns>

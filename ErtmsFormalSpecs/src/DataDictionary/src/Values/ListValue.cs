@@ -23,7 +23,7 @@ using Utils;
 namespace DataDictionary.Values
 {
     /// <summary>
-    /// An empty value to fill the empty gaps in the collections
+    ///     An empty value to fill the empty gaps in the collections
     /// </summary>
     public class EmptyValue : Value, ISubDeclarator
     {
@@ -34,7 +34,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public EmptyValue(EFSSystem efsSystem)
             : base(efsSystem.AnyType)
@@ -43,7 +43,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
@@ -51,12 +51,12 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The elements declared by this declarator
+        ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -95,7 +95,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public ListValue(Collection type, List<IValue> val)
@@ -104,7 +104,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="type"></param>
         public ListValue(ListValue other)
@@ -119,7 +119,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// The collection type associated to this list value
+        ///     The collection type associated to this list value
         /// </summary>
         public Collection CollectionType
         {
@@ -127,7 +127,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Creates a valid right side IValue, according to the target variable (left side)
+        ///     Creates a valid right side IValue, according to the target variable (left side)
         /// </summary>
         /// <param name="variable">The target variable</param>
         /// <param name="duplicate">Indicates that a duplication of the variable should be performed</param>
@@ -157,7 +157,7 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Provides the number of non empty elements in the list value
+        ///     Provides the number of non empty elements in the list value
         /// </summary>
         public int ElementCount
         {
@@ -178,8 +178,8 @@ namespace DataDictionary.Values
         }
 
         /// <summary>
-        /// Converts a structure value to its corresponding structure expression.
-        /// null entries correspond to the default value
+        ///     Converts a structure value to its corresponding structure expression.
+        ///     null entries correspond to the default value
         /// </summary>
         /// <returns></returns>
         public override string ToExpressionWithDefault()

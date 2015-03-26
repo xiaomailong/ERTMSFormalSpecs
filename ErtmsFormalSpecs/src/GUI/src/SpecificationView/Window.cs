@@ -30,7 +30,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="specification"></param>
         public Window()
@@ -42,7 +42,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Perform speicific initializations
+        ///     Perform speicific initializations
         /// </summary>
         private void SpecificInitialisation()
         {
@@ -52,7 +52,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Handles the close event
+        ///     Handles the close event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -68,7 +68,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Refreshes the model of the window
+        ///     Refreshes the model of the window
         /// </summary>
         public override void RefreshModel()
         {
@@ -76,7 +76,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Selects the next node where error message is available
+        ///     Selects the next node where error message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -86,7 +86,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Selects the next node where warning message is available
+        ///     Selects the next node where warning message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -96,7 +96,7 @@ namespace GUI.SpecificationView
         }
 
         /// <summary>
-        /// Selects the next node where info message is available
+        ///     Selects the next node where info message is available
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -109,7 +109,8 @@ namespace GUI.SpecificationView
         {
             if (!EFSSystem.INSTANCE.Markings.selectPreviousMarking())
             {
-                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 
@@ -117,7 +118,8 @@ namespace GUI.SpecificationView
         {
             if (!EFSSystem.INSTANCE.Markings.selectNextMarking())
             {
-                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No more marking to show", "No more markings", MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
     }

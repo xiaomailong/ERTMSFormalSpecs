@@ -22,7 +22,7 @@ namespace Utils
     public static class ThreadUtil
     {
         /// <summary>
-        /// Single location where threads are created
+        ///     Single location where threads are created
         /// </summary>
         /// <param name="name"></param>
         /// <param name="threadStart"></param>
@@ -37,7 +37,7 @@ namespace Utils
         }
 
         /// <summary>
-        /// Single location where threads are created
+        ///     Single location where threads are created
         /// </summary>
         /// <param name="name"></param>
         /// <param name="threadStart"></param>

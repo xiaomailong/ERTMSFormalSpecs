@@ -196,7 +196,7 @@ namespace XmlBooster
         }
 
         /// <summary>
-        /// Performs a full text search
+        ///     Performs a full text search
         /// </summary>
         /// <param name="search"></param>
         /// <returns>True if the string provided if found in the object</returns>

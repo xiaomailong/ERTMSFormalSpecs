@@ -13,6 +13,7 @@
 // -- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // --
 // ------------------------------------------------------------------------------
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -57,7 +58,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the expression tree associated to this action's expression
+        ///     Provides the expression tree associated to this action's expression
         /// </summary>
         private Statement statement;
 
@@ -80,7 +81,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Clears the statement tree to ensure new compilation
+        ///     Clears the statement tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -88,7 +89,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Creates the tree according to the statement text
+        ///     Creates the tree according to the statement text
         /// </summary>
         public InterpreterTreeNode Compile()
         {
@@ -97,7 +98,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -112,7 +113,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing Rule, if any
+        ///     The enclosing Rule, if any
         /// </summary>
         public Rule Rule
         {
@@ -120,7 +121,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing RuleCondition, if any
+        ///     The enclosing RuleCondition, if any
         /// </summary>
         public RuleCondition RuleCondition
         {
@@ -128,7 +129,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the enclosing structure
+        ///     Finds the enclosing structure
         /// </summary>
         public Structure EnclosingStructure
         {
@@ -136,7 +137,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the enclosing namespace
+        ///     Finds the enclosing namespace
         /// </summary>
         public NameSpace NameSpace
         {
@@ -144,7 +145,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing sub-step, if any
+        ///     The enclosing sub-step, if any
         /// </summary>
         public SubStep SubStep
         {
@@ -152,7 +153,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing step, if any
+        ///     The enclosing step, if any
         /// </summary>
         public Step Step
         {
@@ -160,7 +161,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing translation, if any
+        ///     The enclosing translation, if any
         /// </summary>
         public Translation Translation
         {
@@ -195,7 +196,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the list of update statements induced by this action
+        ///     Provides the list of update statements induced by this action
         /// </summary>
         public List<VariableUpdateStatement> UpdateStatements
         {
@@ -217,7 +218,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the statement which modifies the variable
+        ///     Provides the statement which modifies the variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns>null if no statement modifies the element</returns>
@@ -232,7 +233,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates whether this action reads the variable
+        ///     Indicates whether this action reads the variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
@@ -247,7 +248,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Creates a list of changes to be applied on the system
+        ///     Creates a list of changes to be applied on the system
         /// </summary>
         /// <param name="context">The context on which the changes should be computed</param>
         /// <param name="changes">The list of changes to be updated</param>
@@ -255,7 +256,8 @@ namespace DataDictionary.Rules
         /// <param name="apply">Indicates that the changes should be applied immediately</param>
         /// <param name="runner"></param>
         /// <returns>The list to fill with the changes</param>
-        public virtual void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation, bool apply, Runner runner)
+        public virtual void GetChanges(InterpretationContext context, ChangeList changes, ExplanationPart explanation,
+            bool apply, Runner runner)
         {
             long start = Environment.TickCount;
 
@@ -287,7 +289,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Explains the pre Condition
+        ///     Explains the pre Condition
         /// </summary>
         /// <returns></returns>
         public override string getExplain()
@@ -298,7 +300,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates the name of the updated variable, if any
+        ///     Indicates the name of the updated variable, if any
         /// </summary>
         /// <returns></returns>
         public string UpdatedVariable()
@@ -315,7 +317,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -323,7 +325,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Duplicates this model element
+        ///     Duplicates this model element
         /// </summary>
         /// <returns></returns>
         public Action duplicate()
@@ -336,7 +338,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -350,7 +352,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides an explanation of the step's behaviour
+        ///     Provides an explanation of the step's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -364,7 +366,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The comment related to this element
+        ///     The comment related to this element
         /// </summary>
         public string Comment
         {

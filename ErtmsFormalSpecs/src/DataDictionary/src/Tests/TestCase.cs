@@ -53,7 +53,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the sub sequence for this step
+        ///     Provides the sub sequence for this step
         /// </summary>
         public SubSequence SubSequence
         {
@@ -67,7 +67,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Translates the current step, according to the translation dictionary
+        ///     Translates the current step, according to the translation dictionary
         /// </summary>
         /// <param name="translationDictionary"></param>
         public void Translate(TranslationDictionary translationDictionary)
@@ -79,7 +79,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -96,7 +96,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Fills the actual test case with steps of another test case
+        ///     Fills the actual test case with steps of another test case
         /// </summary>
         /// <param name="oldTestCase"></param>
         public void Merge(TestCase aTestCase)
@@ -109,7 +109,8 @@ namespace DataDictionary.Tests
                     Step oldStep = null;
                     foreach (Step other in aTestCase.Steps)
                     {
-                        if (other.getDescription() == step.getDescription() && other.getTCS_Order() == step.getTCS_Order())
+                        if (other.getDescription() == step.getDescription() &&
+                            other.getTCS_Order() == step.getTCS_Order())
                         {
                             oldStep = other;
                             break;
@@ -124,7 +125,8 @@ namespace DataDictionary.Tests
                         }
                         else
                         {
-                            throw new Exception("The new version of the test case " + Name + " contains the step " + step.Name + " instead of " + oldStep.Name);
+                            throw new Exception("The new version of the test case " + Name + " contains the step " +
+                                                step.Name + " instead of " + oldStep.Name);
                         }
                     }
                 }
@@ -132,7 +134,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Creates a test case and sets its default values
+        ///     Creates a test case and sets its default values
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -147,7 +149,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides an explanation of the test case's behaviour
+        ///     Provides an explanation of the test case's behaviour
         /// </summary>
         /// <param name="indentLevel">the number of white spaces to add at the beginning of each line</param>
         /// <returns></returns>
@@ -163,7 +165,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides an explanation of the test case's behaviour
+        ///     Provides an explanation of the test case's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -177,7 +179,7 @@ namespace DataDictionary.Tests
         }
 
         /// <summary>
-        /// Provides the number of actions & expectations for this test case
+        ///     Provides the number of actions & expectations for this test case
         /// </summary>
         public int ActionCount
         {

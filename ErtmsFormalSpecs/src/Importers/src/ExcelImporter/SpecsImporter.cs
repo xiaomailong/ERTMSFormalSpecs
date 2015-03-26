@@ -55,7 +55,7 @@ namespace Importers.ExcelImporter
 
 
         /// <summary>
-        /// Launches import of the excel file in the background task
+        ///     Launches import of the excel file in the background task
         /// </summary>
         /// <param name="arg"></param>
         public override void ExecuteWork()
@@ -96,7 +96,7 @@ namespace Importers.ExcelImporter
 
 
         /// <summary>
-        /// Imports the paragraphs from the provided worksheet to the provided chapter
+        ///     Imports the paragraphs from the provided worksheet to the provided chapter
         /// </summary>
         /// <param name="aChapter"></param>
         /// <param name="aWorksheet"></param>
@@ -123,7 +123,8 @@ namespace Importers.ExcelImporter
                     // Add the requirement set "Onboard"
                     aParagraph.setObsoleteScopeOnBoard(false);
                     aParagraph.setObsoleteScopeTrackside(false);
-                    RequirementSetReference requirementSetReference = (RequirementSetReference) acceptor.getFactory().createRequirementSetReference();
+                    RequirementSetReference requirementSetReference =
+                        (RequirementSetReference) acceptor.getFactory().createRequirementSetReference();
                     RequirementSet requirementSet = TheDictionary.findRequirementSet("Scope", false);
                     if (requirementSet != null)
                     {
@@ -153,13 +154,15 @@ namespace Importers.ExcelImporter
                     if (text != null)
                     {
                         aParagraph.Text += "START: " + text + "\n";
-                        if (specId.Equals((string) (aRange.Cells[i + 1, 1] as Range).Value2)) // the following element can give the stop condition for the current element
+                        if (specId.Equals((string) (aRange.Cells[i + 1, 1] as Range).Value2))
+                            // the following element can give the stop condition for the current element
                         {
                             text = (string) (aRange.Cells[i + 1, 7] as Range).Value2; // stop condition
                             if (text != null)
                             {
                                 aParagraph.Text += "STOP: " + text + "\n";
-                                skipRow = true; // the remaining information of the following document is identical => let's skip it
+                                skipRow = true;
+                                    // the remaining information of the following document is identical => let's skip it
                             }
                         }
                     }
@@ -222,7 +225,7 @@ namespace Importers.ExcelImporter
 
 
         /// <summary>
-        /// Finds the specification corresponding to Subset-026
+        ///     Finds the specification corresponding to Subset-026
         /// </summary>
         /// <returns></returns>
         private Specification findSubset026Specification()

@@ -30,7 +30,7 @@ namespace GUI.Report
         private ModelReportHandler reportHandler;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="dictionary"></param>
         public ModelReport(Dictionary dictionary)
@@ -42,8 +42,8 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Gives the list of all the controls of the form
-        /// (situated on the main form or on its group box)
+        ///     Gives the list of all the controls of the form
+        ///     (situated on the main form or on its group box)
         /// </summary>
         public ArrayList AllControls
         {
@@ -58,7 +58,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Method called in case of check event of one of the check boxes
+        ///     Method called in case of check event of one of the check boxes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -97,8 +97,8 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Enables all the check boxes of the selected level
-        /// and the check box corresponding to the filter of selected level + 1
+        ///     Enables all the check boxes of the selected level
+        ///     and the check box corresponding to the filter of selected level + 1
         /// </summary>
         /// <param name="level">Level of the checked check box</param>
         private void SelectCheckBoxes(int level)
@@ -122,7 +122,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Checks all the check boxes of the selected property
+        ///     Checks all the check boxes of the selected property
         /// </summary>
         /// <param name="level">Property of the checked check box</param>
         private void SelectCheckBoxes(string property)
@@ -146,7 +146,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Disables the check boxes corresponding to the statistics of the selected level
+        ///     Disables the check boxes corresponding to the statistics of the selected level
         /// </summary>
         /// <param name="level">Level of the unckecked check box</param>
         private void DeselectCheckBoxes(int level)
@@ -171,7 +171,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Disables the check boxes corresponding to the statistics of the selected level
+        ///     Disables the check boxes corresponding to the statistics of the selected level
         /// </summary>
         /// <param name="level">Level of the unckecked check box</param>
         private void DeselectCheckBoxes(string property)
@@ -195,7 +195,7 @@ namespace GUI.Report
 
 
         /// <summary>
-        /// Creates a report config with user's choices
+        ///     Creates a report config with user's choices
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -240,7 +240,7 @@ namespace GUI.Report
         }
 
         /// <summary>
-        /// Permits to select the name and the path of the report
+        ///     Permits to select the name and the path of the report
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

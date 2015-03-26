@@ -30,12 +30,12 @@ namespace GUI.DataDictionaryView
     public class NameSpaceVariablesTreeNode : ModelElementTreeNode<NameSpace>
     {
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         private class ItemEditor : NamedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -44,7 +44,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="name"></param>
@@ -54,7 +54,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -69,7 +69,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -85,7 +85,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Adds a variable in the corresponding namespace
+        ///     Adds a variable in the corresponding namespace
         /// </summary>
         /// <param name="variable"></param>
         public VariableTreeNode AddVariable(Variable variable)
@@ -105,7 +105,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()
@@ -118,7 +118,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Accepts drop of a tree node, in a drag & drop operation
+        ///     Accepts drop of a tree node, in a drag & drop operation
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
@@ -149,14 +149,15 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Update counts according to the selected folder
+        ///     Update counts according to the selected folder
         /// </summary>
         /// <param name="displayStatistics">Indicates that statistics should be displayed in the MDI window</param>
         public override void SelectionChanged(bool displayStatistics)
         {
             base.SelectionChanged(false);
 
-            GUIUtils.MDIWindow.SetStatus(Item.Variables.Count + (Item.Variables.Count > 1 ? " variables " : " variable ") + "selected.");
+            GUIUtils.MDIWindow.SetStatus(Item.Variables.Count +
+                                         (Item.Variables.Count > 1 ? " variables " : " variable ") + "selected.");
         }
     }
 }

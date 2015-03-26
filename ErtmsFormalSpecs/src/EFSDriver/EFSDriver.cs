@@ -10,17 +10,17 @@ namespace EFSDriver
     public partial class EFSDriver : Form
     {
         /// <summary>
-        /// Access to EFS as a client
+        ///     Access to EFS as a client
         /// </summary>
         private EFSServiceClient EFS { get; set; }
 
         /// <summary>
-        /// The client ID for EFS Service
+        ///     The client ID for EFS Service
         /// </summary>
         private int ClientId { get; set; }
 
         /// <summary>
-        /// Handles the background process
+        ///     Handles the background process
         /// </summary>
         private void HandleBackgroundProcess()
         {
@@ -58,12 +58,12 @@ namespace EFSDriver
         }
 
         /// <summary>
-        /// Indicates whether the communication has been established
+        ///     Indicates whether the communication has been established
         /// </summary>
         private bool CommunicationEstablished { get; set; }
 
         /// <summary>
-        /// Establishes the communication with the EFS Server
+        ///     Establishes the communication with the EFS Server
         /// </summary>
         private void EstablishCommunication()
         {
@@ -87,7 +87,7 @@ namespace EFSDriver
         private Thread BackgroundThread { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public EFSDriver()
         {
@@ -101,7 +101,7 @@ namespace EFSDriver
         }
 
         /// <summary>
-        /// Destructor
+        ///     Destructor
         /// </summary>
         ~EFSDriver()
         {
@@ -110,7 +110,7 @@ namespace EFSDriver
         }
 
         /// <summary>
-        /// Updates the value of the variable referenced by the variable name text box
+        ///     Updates the value of the variable referenced by the variable name text box
         /// </summary>
         private void UpdateVariableValue()
         {
@@ -128,12 +128,12 @@ namespace EFSDriver
         }
 
         /// <summary>
-        /// Indicates that changes in the UI should be propagated in the EFS system
+        ///     Indicates that changes in the UI should be propagated in the EFS system
         /// </summary>
         private bool Propagate = true;
 
         /// <summary>
-        /// Displays the value of the variable provided
+        ///     Displays the value of the variable provided
         /// </summary>
         /// <param name="value"></param>
         private void DisplayVariableValue(Value value)
@@ -157,13 +157,13 @@ namespace EFSDriver
         }
 
         /// <summary>
-        /// The new value to be assigned to the variable
+        ///     The new value to be assigned to the variable
         /// </summary>
         private string NewVariableValue { get; set; }
 
         /// <summary>
-        /// Handles a change of the text box for the variable value. 
-        /// Does not propagate the change if this change was due to DisplayVariableValue (propagate = false)
+        ///     Handles a change of the text box for the variable value.
+        ///     Does not propagate the change if this change was due to DisplayVariableValue (propagate = false)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -177,8 +177,8 @@ namespace EFSDriver
         }
 
         /// <summary>
-        /// Changes the EFS variable value if the new variable value is not null.
-        /// NewVariableValue is changed when the user changes the value of the textbox
+        ///     Changes the EFS variable value if the new variable value is not null.
+        ///     NewVariableValue is changed when the user changes the value of the textbox
         /// </summary>
         private void SetVariableValue()
         {

@@ -30,7 +30,7 @@ namespace DataDictionary.Rules
     public class PreCondition : Generated.PreCondition, IExpressionable, TextualExplain, ICommentable
     {
         /// <summary>
-        /// The precondition display name
+        ///     The precondition display name
         /// </summary>
         public override string Name
         {
@@ -39,7 +39,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The precondition condition
+        ///     The precondition condition
         /// </summary>
         public string Condition
         {
@@ -72,7 +72,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides the expression tree associated to this action's expression
+        ///     Provides the expression tree associated to this action's expression
         /// </summary>
         private Expression __expression;
 
@@ -97,7 +97,7 @@ namespace DataDictionary.Rules
 
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -105,7 +105,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {
@@ -114,7 +114,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -129,7 +129,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing rule, if any
+        ///     The enclosing rule, if any
         /// </summary>
         public Rule Rule
         {
@@ -137,7 +137,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing rule condition, if any
+        ///     The enclosing rule condition, if any
         /// </summary>
         public RuleCondition RuleCondition
         {
@@ -145,7 +145,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the enclosing structure
+        ///     Finds the enclosing structure
         /// </summary>
         public Structure EnclosingStructure
         {
@@ -153,7 +153,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the enclosing function
+        ///     Finds the enclosing function
         /// </summary>
         public Function EnclosingFunction
         {
@@ -161,7 +161,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the enclosing namespace
+        ///     Finds the enclosing namespace
         /// </summary>
         public NameSpace NameSpace
         {
@@ -169,7 +169,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing translation, if any
+        ///     The enclosing translation, if any
         /// </summary>
         public Translation Translation
         {
@@ -177,7 +177,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The enclosing test step
+        ///     The enclosing test step
         /// </summary>
         public Case Case
         {
@@ -204,7 +204,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Indicates whether this preCondition reads the variable
+        ///     Indicates whether this preCondition reads the variable
         /// </summary>
         /// <param name="variable"></param>
         /// <returns></returns>
@@ -237,7 +237,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the variable checked by the precondition
+        ///     Finds the variable checked by the precondition
         /// </summary>
         /// <returns></returns>
         public string findVariable()
@@ -251,7 +251,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the operator checked by the precondition
+        ///     Finds the operator checked by the precondition
         /// </summary>
         /// <returns></returns>
         public string findOperator()
@@ -265,7 +265,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Finds the operator checked by the precondition
+        ///     Finds the operator checked by the precondition
         /// </summary>
         /// <returns></returns>
         public string findValue()
@@ -279,7 +279,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Explains the pre Condition
+        ///     Explains the pre Condition
         /// </summary>
         /// <returns></returns>
         public string getExplain(int level)
@@ -295,7 +295,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Provides an explanation of the rule's behaviour
+        ///     Provides an explanation of the rule's behaviour
         /// </summary>
         /// <param name="explainSubElements">Precises if we need to explain the sub elements (if any)</param>
         /// <returns></returns>
@@ -308,7 +308,7 @@ namespace DataDictionary.Rules
 
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -316,7 +316,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// Duplicates this model element
+        ///     Duplicates this model element
         /// </summary>
         /// <returns></returns>
         public PreCondition duplicate()
@@ -329,7 +329,7 @@ namespace DataDictionary.Rules
         }
 
         /// <summary>
-        /// The comment related to this element
+        ///     The comment related to this element
         /// </summary>
         public string Comment
         {

@@ -25,37 +25,37 @@ namespace GUI.TestRunnerView.TimeLineControl
     public class FilterConfiguration
     {
         /// <summary>
-        /// Keep expectation events
+        ///     Keep expectation events
         /// </summary>
         public bool Expect { get; set; }
 
         /// <summary>
-        /// Keep rule activations
+        ///     Keep rule activations
         /// </summary>
         public bool RuleFired { get; set; }
 
         /// <summary>
-        /// Keep variable updates
+        ///     Keep variable updates
         /// </summary>
         public bool VariableUpdate { get; set; }
 
         /// <summary>
-        /// Namespace that should be kept
+        ///     Namespace that should be kept
         /// </summary>
         public List<NameSpace> NameSpaces { get; private set; }
 
         /// <summary>
-        /// Variables that should be kept
+        ///     Variables that should be kept
         /// </summary>
         public List<Variable> Variables { get; private set; }
 
         /// <summary>
-        /// The regular expression used for filtering
+        ///     The regular expression used for filtering
         /// </summary>
         public string RegExp { get; set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public FilterConfiguration()
         {
@@ -67,7 +67,7 @@ namespace GUI.TestRunnerView.TimeLineControl
         }
 
         /// <summary>
-        /// Indicates that an event should be shown
+        ///     Indicates that an event should be shown
         /// </summary>
         /// <param name="evt"></param>
         /// <returns></returns>

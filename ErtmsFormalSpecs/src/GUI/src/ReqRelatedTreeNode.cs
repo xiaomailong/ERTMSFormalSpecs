@@ -26,12 +26,12 @@ namespace GUI
         where T : ReqRelated
     {
         /// <summary>
-        /// The editor for message variables
+        ///     The editor for message variables
         /// </summary>
         protected class ReqRelatedEditor : ReferencesParagraphEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             protected ReqRelatedEditor()
                 : base()
@@ -39,7 +39,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Indicates if the item is completely implemented
+            ///     Indicates if the item is completely implemented
             /// </summary>
             [Category("Meta data")]
             public virtual bool Implemented
@@ -49,7 +49,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Indicates if the item is completely verified
+            ///     Indicates if the item is completely verified
             /// </summary>
             [Category("Meta data")]
             public virtual bool Verified
@@ -59,7 +59,7 @@ namespace GUI
             }
 
             /// <summary>
-            /// Indicates that the req related item does not need to be attached to a requirement
+            ///     Indicates that the req related item does not need to be attached to a requirement
             /// </summary>
             [Category("Meta data")]
             public bool NeedsRequirement
@@ -70,17 +70,18 @@ namespace GUI
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
-        protected ReqRelatedTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false, bool addRequirements = true)
+        protected ReqRelatedTreeNode(T item, bool buildSubNodes, string name = null, bool isFolder = false,
+            bool addRequirements = true)
             : base(item, buildSubNodes, name, isFolder, addRequirements)
         {
         }
 
         /// <summary>
-        /// Mark the item as implemented
+        ///     Mark the item as implemented
         /// </summary>
         public void ImplementedHandler(object sender, EventArgs args)
         {
@@ -88,7 +89,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Mark the item as verified
+        ///     Mark the item as verified
         /// </summary>
         public void VerifiedHandler(object sender, EventArgs args)
         {
@@ -96,7 +97,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// Deletes the selected item
+        ///     Deletes the selected item
         /// </summary>
         public override void DeleteHandler(object sender, EventArgs args)
         {
@@ -105,7 +106,7 @@ namespace GUI
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

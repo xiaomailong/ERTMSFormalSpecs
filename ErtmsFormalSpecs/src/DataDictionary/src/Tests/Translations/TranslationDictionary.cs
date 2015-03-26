@@ -24,7 +24,7 @@ namespace DataDictionary.Tests.Translations
     public class TranslationDictionary : Generated.TranslationDictionary, IFinder
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         public TranslationDictionary()
             : base()
@@ -33,7 +33,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the folders
+        ///     Provides the folders
         /// </summary>
         public ArrayList Folders
         {
@@ -49,7 +49,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the translations for this dictionary
+        ///     Provides the translations for this dictionary
         /// </summary>
         public ArrayList Translations
         {
@@ -65,7 +65,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the number of translations of the TranslationDictionary and all its folders
+        ///     Provides the number of translations of the TranslationDictionary and all its folders
         /// </summary>
         public int TranslationsCount
         {
@@ -81,7 +81,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Strips the text from useless characters
+        ///     Strips the text from useless characters
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -114,7 +114,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// The cache
+        ///     The cache
         /// </summary>
         private Dictionary<string, Dictionary<string, Translation>> theCache = null;
 
@@ -153,7 +153,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Indicates that the source text is applicable for any comment
+        ///     Indicates that the source text is applicable for any comment
         /// </summary>
         private static string NO_SPECIFIC_COMMENT = "___NOSPECIFICCOMMENT___";
 
@@ -186,9 +186,9 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the translation which matches the description provided. Matching is performed the following way
-        ///   1.  First try to find a translation whose source text corresponds to the step description
-        ///   2.  If that source text holds any associated comment, ensure that the step comment matches one of them
+        ///     Provides the translation which matches the description provided. Matching is performed the following way
+        ///     1.  First try to find a translation whose source text corresponds to the step description
+        ///     2.  If that source text holds any associated comment, ensure that the step comment matches one of them
         /// </summary>
         /// <param name="description"></param>
         /// <param name="comment">the comment associated to the step</param>
@@ -216,7 +216,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Clears the cache
+        ///     Clears the cache
         /// </summary>
         public void ClearCache()
         {
@@ -224,7 +224,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -245,7 +245,7 @@ namespace DataDictionary.Tests.Translations
         }
 
         /// <summary>
-        /// Provides the existing translation corresponding to the source text provided
+        ///     Provides the existing translation corresponding to the source text provided
         /// </summary>
         /// <param name="sourceText"></param>
         /// <returns></returns>

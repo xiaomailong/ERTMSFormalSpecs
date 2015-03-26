@@ -26,7 +26,7 @@ namespace GUI.DataDictionaryView
     public class RulePreConditionsTreeNode : RuleConditionTreeNode
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         /// <param name="children"></param>
@@ -36,7 +36,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -51,7 +51,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Adds a preCondition to the modelized item
+        ///     Adds a preCondition to the modelized item
         /// </summary>
         /// <param name="preCondition"></param>
         /// <returns></returns>
@@ -76,14 +76,16 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Handles a drop event
+        ///     Handles a drop event
         /// </summary>
         /// <param name="SourceNode"></param>
         public override void AcceptDrop(BaseTreeNode SourceNode)
         {
             if (SourceNode is PreConditionTreeNode)
             {
-                if (MessageBox.Show("Are you sure you want to move the corresponding pre-condition ?", "Move pre-condition", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (
+                    MessageBox.Show("Are you sure you want to move the corresponding pre-condition ?",
+                        "Move pre-condition", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     PreConditionTreeNode preConditionTreeNode = (PreConditionTreeNode) SourceNode;
 
@@ -95,7 +97,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

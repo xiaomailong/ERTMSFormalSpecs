@@ -20,12 +20,12 @@ using Utils;
 namespace DataDictionary.Interpreter.Filter
 {
     /// <summary>
-    /// Predicates which indicates that the namable is either a variable (and not a structure element) or a value
+    ///     Predicates which indicates that the namable is either a variable (and not a structure element) or a value
     /// </summary>
     public class IsStrictVariableOrValue : IsVariable
     {
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         protected IsStrictVariableOrValue()
             : base()
@@ -33,7 +33,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
+        ///     Predicate which indicates whether the namable provided matches the expectation for the semantic analysis
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -43,7 +43,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Predicate, so that the code can be reused
+        ///     Predicate, so that the code can be reused
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace DataDictionary.Interpreter.Filter
         }
 
         /// <summary>
-        /// Singleton
+        ///     Singleton
         /// </summary>
         public new static IsStrictVariableOrValue INSTANCE = new IsStrictVariableOrValue();
     }

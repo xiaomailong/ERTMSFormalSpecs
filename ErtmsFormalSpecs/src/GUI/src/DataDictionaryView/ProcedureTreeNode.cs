@@ -27,7 +27,7 @@ namespace GUI.DataDictionaryView
         private class ItemEditor : ReqRelatedEditor
         {
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             public ItemEditor()
                 : base()
@@ -35,7 +35,7 @@ namespace GUI.DataDictionaryView
             }
 
             /// <summary>
-            /// The item name
+            ///     The item name
             /// </summary>
             [Category("Description")]
             public override string Name
@@ -46,17 +46,17 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The rules associates to this procedure
+        ///     The rules associates to this procedure
         /// </summary>
         public ProcedureRulesTreeNode rules;
 
         /// <summary>
-        /// The parameters of this procedure
+        ///     The parameters of this procedure
         /// </summary>
         public ProcedureParametersTreeNode parameters;
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="item"></param>
         public ProcedureTreeNode(Procedure item, bool buildSubNodes)
@@ -65,7 +65,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="name"></param>
         /// <param name="item"></param>
@@ -75,7 +75,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Builds the subnodes of this node
+        ///     Builds the subnodes of this node
         /// </summary>
         /// <param name="buildSubNodes">Indicates whether the subnodes of the nodes should also be built</param>
         public override void BuildSubNodes(bool buildSubNodes)
@@ -89,7 +89,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// Creates the editor for this tree node
+        ///     Creates the editor for this tree node
         /// </summary>
         /// <returns></returns>
         protected override Editor createEditor()
@@ -98,7 +98,7 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
-        /// The menu items for this tree node
+        ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
         protected override List<MenuItem> GetMenuItems()

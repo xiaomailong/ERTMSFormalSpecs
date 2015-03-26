@@ -24,17 +24,17 @@ namespace GUI.DictionarySelector
     public partial class DictionarySelector : Form
     {
         /// <summary>
-        /// An entry in the list box
+        ///     An entry in the list box
         /// </summary>
         private class ListBoxEntry
         {
             /// <summary>
-            /// The reference entry
+            ///     The reference entry
             /// </summary>
             public Dictionary Dictionary { get; private set; }
 
             /// <summary>
-            /// The display name of the entry
+            ///     The display name of the entry
             /// </summary>
             public string Name
             {
@@ -42,7 +42,7 @@ namespace GUI.DictionarySelector
             }
 
             /// <summary>
-            /// Constructor
+            ///     Constructor
             /// </summary>
             /// <param name="dictionary"></param>
             public ListBoxEntry(Dictionary dictionary)
@@ -52,7 +52,7 @@ namespace GUI.DictionarySelector
         }
 
         /// <summary>
-        /// Constructor (for designer)
+        ///     Constructor (for designer)
         /// </summary>
         public DictionarySelector()
         {
@@ -60,7 +60,7 @@ namespace GUI.DictionarySelector
         }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="efsSystem">The EFSSystem for which this rule set selector is created</param>
         public DictionarySelector(EFSSystem efsSystem)
@@ -70,7 +70,7 @@ namespace GUI.DictionarySelector
         }
 
         /// <summary>
-        /// The associated EFS System
+        ///     The associated EFS System
         /// </summary>
         private EFSSystem efsSystem;
 
@@ -92,14 +92,14 @@ namespace GUI.DictionarySelector
         }
 
         /// <summary>
-        /// The selected dictionary
+        ///     The selected dictionary
         /// </summary>
         public Dictionary Selected { get; private set; }
 
         /// <summary>
-        /// Handles the click event on the select button : 
-        ///   - stores the selected dictionary
-        ///   - close the window
+        ///     Handles the click event on the select button :
+        ///     - stores the selected dictionary
+        ///     - close the window
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

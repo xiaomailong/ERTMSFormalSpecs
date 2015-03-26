@@ -20,27 +20,27 @@ using Utils;
 namespace DataDictionary
 {
     /// <summary>
-    /// Counts the number of messages in the model
+    ///     Counts the number of messages in the model
     /// </summary>
     public class MessageCounter : Visitor
     {
         /// <summary>
-        /// The number of information found
+        ///     The number of information found
         /// </summary>
         public int Info { get; private set; }
 
         /// <summary>
-        /// The number of warnings found
+        ///     The number of warnings found
         /// </summary>
         public int Warning { get; private set; }
 
         /// <summary>
-        /// The number of errors found
+        ///     The number of errors found
         /// </summary>
         public int Error { get; private set; }
 
         /// <summary>
-        /// Constructor
+        ///     Constructor
         /// </summary>
         /// <param name="system"></param>
         public MessageCounter(EFSSystem system)
@@ -55,7 +55,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        ///  Actually counts the messages
+        ///     Actually counts the messages
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
@@ -67,7 +67,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        ///  Actually counts the messages
+        ///     Actually counts the messages
         /// </summary>
         /// <param name="obj"></param>
         /// <param name="visitSubNodes"></param>
@@ -79,7 +79,7 @@ namespace DataDictionary
         }
 
         /// <summary>
-        /// Actually counts 
+        ///     Actually counts
         /// </summary>
         /// <param name="obj"></param>
         private void count(BaseModelElement obj)

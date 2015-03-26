@@ -28,22 +28,23 @@ using Type = DataDictionary.Types.Type;
 
 namespace DataDictionary.Variables
 {
-    public class Variable : Generated.Variable, IVariable, ISubDeclarator, TextualExplain, IDefaultValueElement, IGraphicalDisplay
+    public class Variable : Generated.Variable, IVariable, ISubDeclarator, TextualExplain, IDefaultValueElement,
+        IGraphicalDisplay
     {
         /// <summary>
-        /// Indicates that the DeclaredElement dictionary is currently being built
+        ///     Indicates that the DeclaredElement dictionary is currently being built
         /// </summary>
         private bool BuildingDeclaredElements = false;
 
         /// <summary>
-        /// Initialises the declared elements 
+        ///     Initialises the declared elements
         /// </summary>
         public void InitDeclaredElements()
         {
         }
 
         /// <summary>
-        /// The elements declared by this variable
+        ///     The elements declared by this variable
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements
         {
@@ -78,7 +79,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Indicates if this Procedure contains implemented sub-elements
+        ///     Indicates if this Procedure contains implemented sub-elements
         /// </summary>
         public override bool ImplementationPartiallyCompleted
         {
@@ -102,7 +103,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Appends the INamable which match the name provided in retVal
+        ///     Appends the INamable which match the name provided in retVal
         /// </summary>
         /// <param name="name"></param>
         /// <param name="retVal"></param>
@@ -135,7 +136,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The enclosing name space
+        ///     The enclosing name space
         /// </summary>
         public NameSpace NameSpace
         {
@@ -143,7 +144,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Provides the mode of the variable
+        ///     Provides the mode of the variable
         /// </summary>
         public acceptor.VariableModeEnumType Mode
         {
@@ -152,7 +153,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The default value
+        ///     The default value
         /// </summary>
         public string Default
         {
@@ -182,7 +183,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Provides the expression tree associated to this action's expression
+        ///     Provides the expression tree associated to this action's expression
         /// </summary>
         private Expression __expression;
 
@@ -206,7 +207,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Clears the expression tree to ensure new compilation
+        ///     Clears the expression tree to ensure new compilation
         /// </summary>
         public void CleanCompilation()
         {
@@ -214,7 +215,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Creates the tree according to the expression text
+        ///     Creates the tree according to the expression text
         /// </summary>
         public InterpreterTreeNode Compile()
         {
@@ -224,7 +225,7 @@ namespace DataDictionary.Variables
 
 
         /// <summary>
-        /// Indicates that the expression is valid for this IExpressionable
+        ///     Indicates that the expression is valid for this IExpressionable
         /// </summary>
         /// <param name="expression"></param>
         /// <returns></returns>
@@ -244,7 +245,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Provides the type name of the variable
+        ///     Provides the type name of the variable
         /// </summary>
         public string TypeName
         {
@@ -261,7 +262,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The type associated to this variable
+        ///     The type associated to this variable
         /// </summary>
         private Type type;
 
@@ -290,7 +291,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The enclosed variables
+        ///     The enclosed variables
         /// </summary>
         public Dictionary<string, IVariable> SubVariables
         {
@@ -309,7 +310,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Provides the variable's default value
+        ///     Provides the variable's default value
         /// </summary>
         public IValue DefaultValue
         {
@@ -332,7 +333,8 @@ namespace DataDictionary.Variables
                             retVal = Expression.GetValue(new InterpretationContext(Type), null);
                             if (retVal != null && !Type.Match(retVal.Type))
                             {
-                                AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" + Type.Name + ")");
+                                AddError("Default value type (" + retVal.Type.Name + ")does not match variable type (" +
+                                         Type.Name + ")");
                                 retVal = null;
                             }
                         }
@@ -382,7 +384,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The variable's value
+        ///     The variable's value
         /// </summary>
         public IValue theValue;
 
@@ -400,7 +402,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Adds a model element in this model element
+        ///     Adds a model element in this model element
         /// </summary>
         /// <param name="copy"></param>
         public override void AddModelElement(IModelElement element)
@@ -409,7 +411,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Explains the current item
+        ///     Explains the current item
         /// </summary>
         /// <param name="subElements"></param>
         /// <returns></returns>
@@ -454,7 +456,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Provides the text of the default value
+        ///     Provides the text of the default value
         /// </summary>
         /// <returns></returns>
         public string GetDefaultValueText()
@@ -491,7 +493,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The X position
+        ///     The X position
         /// </summary>
         public int X
         {
@@ -500,7 +502,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The Y position
+        ///     The Y position
         /// </summary>
         public int Y
         {
@@ -509,7 +511,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The width
+        ///     The width
         /// </summary>
         public int Width
         {
@@ -518,7 +520,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The height
+        ///     The height
         /// </summary>
         public int Height
         {
@@ -527,7 +529,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// The name to be displayed
+        ///     The name to be displayed
         /// </summary>
         public string GraphicalName
         {
@@ -535,7 +537,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Indicates whether the namespace is hidden
+        ///     Indicates whether the namespace is hidden
         /// </summary>
         public bool Hidden
         {
@@ -544,7 +546,7 @@ namespace DataDictionary.Variables
         }
 
         /// <summary>
-        /// Indicates that the element is pinned
+        ///     Indicates that the element is pinned
         /// </summary>
         public bool Pinned
         {
