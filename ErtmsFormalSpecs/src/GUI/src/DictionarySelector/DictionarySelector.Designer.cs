@@ -43,6 +43,7 @@ namespace GUI.DictionarySelector
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DictionarySelector));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.dataDictionaryListBox = new System.Windows.Forms.ListBox();
             this.selectButton = new System.Windows.Forms.Button();
@@ -99,6 +100,7 @@ namespace GUI.DictionarySelector
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(195, 164);
             this.Controls.Add(this.splitContainer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "DictionarySelector";
             this.ShowInTaskbar = false;

@@ -43,6 +43,7 @@ namespace GUI.TestRunnerView.Watch
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.watchDataGridView = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.watchDataGridView)).BeginInit();
             this.SuspendLayout();
@@ -58,17 +59,18 @@ namespace GUI.TestRunnerView.Watch
             this.watchDataGridView.GridColor = System.Drawing.SystemColors.Window;
             this.watchDataGridView.Location = new System.Drawing.Point(0, 0);
             this.watchDataGridView.Name = "watchDataGridView";
-            this.watchDataGridView.Size = new System.Drawing.Size(1148, 210);
+            this.watchDataGridView.Size = new System.Drawing.Size(631, 210);
             this.watchDataGridView.TabIndex = 0;
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1148, 210);
+            this.ClientSize = new System.Drawing.Size(631, 210);
             this.Controls.Add(this.watchDataGridView);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Window";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

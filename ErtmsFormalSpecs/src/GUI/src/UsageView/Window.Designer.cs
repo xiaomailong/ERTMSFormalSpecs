@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.usageTreeView = new GUI.DataDictionaryView.UsageTreeView.UsageTreeView();
             this.SuspendLayout();
             // 
-            // usageTreeView1
+            // usageTreeView
             // 
             this.usageTreeView.AllowDrop = true;
             this.usageTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -40,7 +41,7 @@
             this.usageTreeView.ImageIndex = 0;
             this.usageTreeView.LabelEdit = true;
             this.usageTreeView.Location = new System.Drawing.Point(0, 0);
-            this.usageTreeView.Name = "usageTreeView1";
+            this.usageTreeView.Name = "usageTreeView";
             this.usageTreeView.Root = null;
             this.usageTreeView.Selected = null;
             this.usageTreeView.SelectedImageIndex = 0;
@@ -54,6 +55,7 @@
             this.ClientSize = new System.Drawing.Size(767, 240);
             this.Controls.Add(this.usageTreeView);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Window";
             this.Text = "Usages";
             this.ResumeLayout(false);

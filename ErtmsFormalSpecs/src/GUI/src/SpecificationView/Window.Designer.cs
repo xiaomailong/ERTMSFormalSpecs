@@ -57,10 +57,10 @@ namespace GUI.SpecificationView
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.specBrowserTreeView = new GUI.SpecificationView.SpecificationTreeView();
             this.splitContainer4 = new System.Windows.Forms.SplitContainer();
-            this.specBrowserRuleView = new GUI.SpecificationView.SpecificationTreeView();
-            this.functionalBlocksTreeView = new GUI.SpecificationView.RequirementSetsTreeView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.specBrowserRuleView = new GUI.SpecificationView.SpecificationTreeView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.functionalBlocksTreeView = new GUI.SpecificationView.RequirementSetsTreeView();
             this.toolStrip3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -70,8 +70,8 @@ namespace GUI.SpecificationView
             this.splitContainer4.Panel1.SuspendLayout();
             this.splitContainer4.Panel2.SuspendLayout();
             this.splitContainer4.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip3
@@ -212,6 +212,17 @@ namespace GUI.SpecificationView
             this.splitContainer4.SplitterDistance = 247;
             this.splitContainer4.TabIndex = 1;
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.specBrowserRuleView);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(0, 0);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(352, 247);
+            this.groupBox2.TabIndex = 6;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Traceability";
+            // 
             // specBrowserRuleView
             // 
             this.specBrowserRuleView.AllowDrop = true;
@@ -226,6 +237,17 @@ namespace GUI.SpecificationView
             this.specBrowserRuleView.SelectedImageIndex = 0;
             this.specBrowserRuleView.Size = new System.Drawing.Size(346, 228);
             this.specBrowserRuleView.TabIndex = 4;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.functionalBlocksTreeView);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(352, 92);
+            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Requirement sets";
             // 
             // functionalBlocksTreeView
             // 
@@ -242,28 +264,6 @@ namespace GUI.SpecificationView
             this.functionalBlocksTreeView.Size = new System.Drawing.Size(346, 73);
             this.functionalBlocksTreeView.TabIndex = 0;
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.functionalBlocksTreeView);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(352, 92);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Requirement sets";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.specBrowserRuleView);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(352, 247);
-            this.groupBox2.TabIndex = 6;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Traceability";
-            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,6 +273,7 @@ namespace GUI.SpecificationView
             this.Controls.Add(this.toolStrip3);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;
@@ -287,8 +288,8 @@ namespace GUI.SpecificationView
             this.splitContainer4.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer4)).EndInit();
             this.splitContainer4.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

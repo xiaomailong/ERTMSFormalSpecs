@@ -43,6 +43,7 @@ namespace GUI.HistoryView
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -193,7 +194,9 @@ namespace GUI.HistoryView
             this.beforeRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.beforeRichTextBox.Name = "beforeRichTextBox";
             this.beforeRichTextBox.ReadOnly = true;
-            this.beforeRichTextBox.Rtf = resources.GetString("beforeRichTextBox.Rtf");
+            this.beforeRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
+    "\n\\fs17\\par\r\n\\cf1\\par\r\n}\r\n";
             this.beforeRichTextBox.Size = new System.Drawing.Size(346, 134);
             this.beforeRichTextBox.TabIndex = 0;
             // 
@@ -217,7 +220,9 @@ namespace GUI.HistoryView
             this.afterRichTextBox.Location = new System.Drawing.Point(3, 16);
             this.afterRichTextBox.Name = "afterRichTextBox";
             this.afterRichTextBox.ReadOnly = true;
-            this.afterRichTextBox.Rtf = resources.GetString("afterRichTextBox.Rtf");
+            this.afterRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n{\\colortbl ;\\red0\\green0\\blue0;}\r\n\\viewkind4\\uc1\\pard\\f0\\fs24\\par\r" +
+    "\n\\fs17\\par\r\n\\cf1\\par\r\n}\r\n";
             this.afterRichTextBox.Size = new System.Drawing.Size(346, 132);
             this.afterRichTextBox.TabIndex = 0;
             // 
@@ -230,6 +235,7 @@ namespace GUI.HistoryView
             this.Controls.Add(this.toolStrip3);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;

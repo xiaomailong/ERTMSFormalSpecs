@@ -44,6 +44,7 @@ namespace GUI.Shortcuts
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.shortcutTreeView = new GUI.Shortcuts.ShortcutTreeView();
             this.SuspendLayout();
             // 
@@ -70,6 +71,7 @@ namespace GUI.Shortcuts
             this.Controls.Add(this.shortcutTreeView);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Window";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;

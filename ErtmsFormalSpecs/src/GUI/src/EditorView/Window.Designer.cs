@@ -43,6 +43,7 @@ namespace GUI.EditorView
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.editorTextBox = new GUI.EditorTextBox();
             this.SuspendLayout();
             // 
@@ -60,15 +61,15 @@ namespace GUI.EditorView
             this.editorTextBox.Size = new System.Drawing.Size(699, 218);
             this.editorTextBox.TabIndex = 0;
             // 
-            // EditorForm
+            // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 218);
             this.Controls.Add(this.editorTextBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
-            this.Name = "EditorForm";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Window";
             this.Text = "Editor";
             this.ResumeLayout(false);
 

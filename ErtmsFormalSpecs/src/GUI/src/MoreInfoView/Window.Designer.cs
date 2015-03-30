@@ -28,18 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.moreInfoRichTextBox = new EditorTextBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
+            this.moreInfoRichTextBox = new GUI.EditorTextBox();
             this.SuspendLayout();
             // 
             // moreInfoRichTextBox
             // 
+            this.moreInfoRichTextBox.AutoComplete = true;
+            this.moreInfoRichTextBox.ConsiderOnlyTypes = false;
             this.moreInfoRichTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.moreInfoRichTextBox.Instance = null;
             this.moreInfoRichTextBox.Location = new System.Drawing.Point(0, 0);
             this.moreInfoRichTextBox.Name = "moreInfoRichTextBox";
             this.moreInfoRichTextBox.ReadOnly = true;
+            this.moreInfoRichTextBox.Rtf = "{\\rtf1\\ansi\\ansicpg1252\\deff0\\deflang2060{\\fonttbl{\\f0\\fnil\\fcharset0 Microsoft S" +
+    "ans Serif;}}\r\n\\viewkind4\\uc1\\pard\\f0\\fs17\\par\r\n}\r\n";
             this.moreInfoRichTextBox.Size = new System.Drawing.Size(1004, 165);
             this.moreInfoRichTextBox.TabIndex = 0;
-            this.moreInfoRichTextBox.Text = "";
             // 
             // Window
             // 
@@ -48,6 +53,7 @@
             this.ClientSize = new System.Drawing.Size(1004, 165);
             this.Controls.Add(this.moreInfoRichTextBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Window";
             this.Text = "More info";
             this.ResumeLayout(false);

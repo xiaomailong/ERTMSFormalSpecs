@@ -43,6 +43,7 @@ namespace GUI.FunctionsPerformances
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FunctionsPerformances));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.dataSet1 = new System.Data.DataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
@@ -73,6 +74,8 @@ namespace GUI.FunctionsPerformances
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 262);
             this.Controls.Add(this.dataGridView);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FunctionsPerformances";
             this.ShowInTaskbar = false;
             this.Text = "Functions performances";

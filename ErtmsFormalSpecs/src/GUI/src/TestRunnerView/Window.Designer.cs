@@ -286,7 +286,7 @@ namespace GUI.TestRunnerView
             // toolStripLabel4
             // 
             this.toolStripLabel4.Name = "toolStripLabel4";
-            this.toolStripLabel4.Size = new System.Drawing.Size(73, 15);
+            this.toolStripLabel4.Size = new System.Drawing.Size(73, 22);
             this.toolStripLabel4.Text = "Current Step";
             this.toolStripLabel4.Click += new System.EventHandler(this.toolStripLabel4_Click);
             // 
@@ -402,6 +402,7 @@ namespace GUI.TestRunnerView
             this.Controls.Add(this.toolStrip2);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Window";
             this.ShowInTaskbar = false;

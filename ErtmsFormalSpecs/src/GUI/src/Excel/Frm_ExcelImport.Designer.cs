@@ -43,6 +43,7 @@ namespace GUI.ExcelImport
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_ExcelImport));
             this.TB_FileName = new System.Windows.Forms.TextBox();
             this.Btn_SelectFile = new System.Windows.Forms.Button();
             this.Btn_Import = new System.Windows.Forms.Button();
@@ -262,6 +263,7 @@ namespace GUI.ExcelImport
             this.Controls.Add(this.Btn_Import);
             this.Controls.Add(this.Btn_SelectFile);
             this.Controls.Add(this.TB_FileName);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Frm_ExcelImport";
             this.Text = "Import excel file....";
             this.ResumeLayout(false);

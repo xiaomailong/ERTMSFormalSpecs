@@ -741,6 +741,10 @@ namespace GUI
                         }
                         GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow,
                             DockAreas.DockBottom);
+                        if ( shouldPlace )
+                        {
+                            WatchWindow.Show(CommentEditorWindow.Pane, CommentEditorWindow);
+                        }
                         CommentEditorWindow.Show();
 
                         // Display the views in the right pane
@@ -752,10 +756,23 @@ namespace GUI
                             ExpressionEditorWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
                         }
                         GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
+                        if (shouldPlace)
+                        {
+                            HistoryWindow.Show(ExpressionEditorWindow.Pane, ExpressionEditorWindow);
+                        }
+
                         GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
+                        if (shouldPlace)
+                        {
+                            ShortcutsWindow.Show(ExpressionEditorWindow.Pane, ExpressionEditorWindow);
+                        } 
+                        
                         GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow,
                             DockAreas.DockRight);
-                        SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
+                        if (shouldPlace)
+                        {
+                            SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
+                        }
                         ExpressionEditorWindow.Show();
 
                         GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
