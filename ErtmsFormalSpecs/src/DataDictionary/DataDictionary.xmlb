@@ -13,9 +13,11 @@
   <ELEMENT NAME="BaseModelElement" ABSTRACT="TRUE" BASECLASS="Utils.ModelElement">
     <FIELDS>
       <FIELD NAME="Guid" TYPE="PCHAR" />
-    </FIELDS>
+	  <FIELD NAME="Updates" TYPE="PCHAR" />
+	  </FIELDS>
     <ATTRIBUTES>
       <ATTR NAME="Guid" TARGET="Guid" OPTIONAL="TRUE" />
+	  <ATTR NAME="Updates" TARGET="Updates" OPTIONAL="TRUE" />
     </ATTRIBUTES>
   </ELEMENT>
 
