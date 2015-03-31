@@ -492,7 +492,6 @@
     <Compile Include="src\StateDiagram\TransitionControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\StructureEditor\CustomizeTreeView.cs" />
     <Compile Include="src\StructureEditor\Window.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -798,6 +797,10 @@
       <Project>{7A9B0694-8FCE-4F94-B380-219893B31DB9}</Project>
       <Name>ErtmsSolutions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GUIUtils\GUIUtils.csproj">
+      <Project>{dcb5a3cb-fe45-413a-b2f6-954051320b01}</Project>
+      <Name>GUIUtils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HistoricalData\HistoricalData.csproj">
       <Project>{3206C50F-D6E7-44B9-9D8A-CE412A8A6310}</Project>
       <Name>HistoricalData</Name>
@@ -829,7 +832,6 @@
     <None Include="resources\folder_opened.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\type-icon-new.png" />
     <None Include="resources\type-icon.png" />
     <None Include="resources\unpin.png" />
     <None Include="resources\wheel.png" />
@@ -849,14 +851,11 @@
     <None Include="resources\Pause.png" />
     <None Include="resources\circular arrow.png" />
     <None Include="resources\down arrow.png" />
-    <None Include="resources\parameter_icon.png" />
-    <None Include="resources\interface_icon.png" />
     <None Include="resources\parameter-icon.png" />
     <None Include="resources\interface-icon.png" />
     <None Include="resources\redefines-icon.png" />
     <Content Include="EFS.ico" />
     <Content Include="resources\tools.png" />
-    <None Include="resources\type_icon.png" />
     <None Include="resources\call_icon.png" />
     <Content Include="resources\model_icon.png" />
     <None Include="resources\write_icon.png" />

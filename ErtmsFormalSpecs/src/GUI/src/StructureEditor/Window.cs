@@ -20,8 +20,11 @@ using System.Windows.Forms;
 using BrightIdeasSoftware;
 using DataDictionary;
 using DataDictionary.Interpreter;
+using DataDictionary.Types;
 using DataDictionary.Values;
 using DataDictionary.Variables;
+using GUI.Properties;
+using GUI.StateDiagram;
 using Utils;
 
 namespace GUI.StructureValueEditor
@@ -40,6 +43,8 @@ namespace GUI.StructureValueEditor
         {
             InitializeComponent();
 
+            CustomizeTreeView.DisplayAllVariables = Settings.Default.DisplayAllVariablesInStructureEditor;
+
             // The text to get for each column
             structureTreeListView.GetColumn(0).AspectGetter = CustomizeTreeView.FieldColumnStringonizer;
             structureTreeListView.GetColumn(1).AspectGetter = CustomizeTreeView.ValueColumnStringonizer;
@@ -52,7 +57,7 @@ namespace GUI.StructureValueEditor
 
             // Contextual menu
             structureTreeListView.CellRightClick +=
-                new EventHandler<CellRightClickEventArgs>(CustomizeTreeView.CreateContextualMenu);
+                new EventHandler<CellRightClickEventArgs>(CreateContextualMenu);
 
             // Edition
             structureTreeListView.CellEditStarting += new CellEditEventHandler(CustomizeTreeView.HandleCellEditStarting);
@@ -138,5 +143,58 @@ namespace GUI.StructureValueEditor
                 }
             }
         }
+
+
+        /// <summary>
+        ///     Shows the state machine which corresponds to the variable
+        /// </summary>
+        private class ToolStripShowStateMachine : CustomizeTreeView.BaseToolStripButton
+        {
+            /// <summary>
+            ///     The variable that holds the list value
+            /// </summary>
+            private Variable Variable { get; set; }
+
+            /// <summary>
+            ///     Constructor
+            /// </summary>
+            /// <param name="args"></param>
+            /// <param name="variable"></param>
+            public ToolStripShowStateMachine(CellRightClickEventArgs args, Variable variable)
+                : base(args, "Show state machine")
+            {
+                Variable = variable;
+            }
+
+            /// <summary>
+            ///     Executes the action requested by this tool strip button
+            /// </summary>
+            protected override void OnClick(EventArgs e)
+            {
+                StateDiagramWindow window = new StateDiagramWindow();
+                GUIUtils.MDIWindow.AddChildWindow(window);
+                window.SetStateMachine(Variable);
+                window.Text = Variable.Name + " state diagram";
+
+                base.OnClick(e);
+            }
+        }
+
+        public static void CreateContextualMenu(object obj, CellRightClickEventArgs args)
+        {
+            CustomizeTreeView.CreateContextualMenu(obj, args);
+
+            Variable enclosingVariable = args.Model as Variable;
+
+            if (enclosingVariable != null)
+            {
+                if (enclosingVariable.Type is StateMachine)
+                {
+                    args.MenuStrip.Items.Add(new ToolStripShowStateMachine(args, enclosingVariable));
+                }
+            }
+        }
+
+
     }
 }

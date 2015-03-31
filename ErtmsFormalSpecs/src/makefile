@@ -12,6 +12,7 @@ all:
 	@make -C DataDictionary all 
 	@make -C Reports all 
 	@make -C Importers all 
+	@make -C GUIUtils all 
 	@make -C GUI all 
 	@make -C EFSTester all
 
@@ -21,6 +22,7 @@ clean:
 	@make -C DataDictionary clean 
 	@make -C Reports clean 
 	@make -C Importers clean 
+	@make -C GUIUtils clean 
 	@make -C GUI clean 
 	@make -C EFSTester clean 
 
