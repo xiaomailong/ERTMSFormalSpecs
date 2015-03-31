@@ -45,6 +45,15 @@ namespace DataDictionary.Interpreter
             : base(root, log, start, end)
         {
             Structure = structure;
+            SetAssociation(associations);
+        }
+
+        /// <summary>
+        /// Setup the variable => value association
+        /// </summary>
+        /// <param name="associations"></param>
+        public void SetAssociation(Dictionary<Designator, Expression> associations)
+        {
             Associations = associations;
             foreach (Expression expr in Associations.Values)
             {
