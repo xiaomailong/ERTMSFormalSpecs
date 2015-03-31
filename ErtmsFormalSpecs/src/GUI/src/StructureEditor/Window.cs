@@ -49,26 +49,23 @@ namespace GUI.StructureValueEditor
             structureTreeListView.GetColumn(0).AspectGetter = CustomizeTreeView.FieldColumnStringonizer;
             structureTreeListView.GetColumn(1).AspectGetter = CustomizeTreeView.ValueColumnStringonizer;
             structureTreeListView.GetColumn(2).AspectGetter = CustomizeTreeView.DescriptionColumnStringonizer;
-            structureTreeListView.FormatCell += new EventHandler<FormatCellEventArgs>(CustomizeTreeView.FormatCell);
+            structureTreeListView.FormatCell += CustomizeTreeView.FormatCell;
 
             // Tree structure
             structureTreeListView.CanExpandGetter = CustomizeTreeView.HasChildren;
             structureTreeListView.ChildrenGetter = CustomizeTreeView.GetChildren;
 
             // Contextual menu
-            structureTreeListView.CellRightClick +=
-                new EventHandler<CellRightClickEventArgs>(CreateContextualMenu);
+            structureTreeListView.CellRightClick += CreateContextualMenu;
 
             // Edition
-            structureTreeListView.CellEditStarting += new CellEditEventHandler(CustomizeTreeView.HandleCellEditStarting);
-            structureTreeListView.CellEditValidating +=
-                new CellEditEventHandler(CustomizeTreeView.HandleCellEditValidating);
-            structureTreeListView.CellEditFinishing +=
-                new CellEditEventHandler(CustomizeTreeView.HandleCellEditFinishing);
+            structureTreeListView.CellEditStarting += CustomizeTreeView.HandleCellEditStarting;
+            structureTreeListView.CellEditValidating += CustomizeTreeView.HandleCellEditValidating;
+            structureTreeListView.CellEditFinishing += CustomizeTreeView.HandleCellEditFinishing;
 
-            structureTreeListView.ItemDrag += new ItemDragEventHandler(structureTreeListView_ItemDrag);
+            structureTreeListView.ItemDrag += structureTreeListView_ItemDrag;
 
-            FormClosed += new FormClosedEventHandler(Window_FormClosed);
+            FormClosed += Window_FormClosed;
         }
 
         private void structureTreeListView_ItemDrag(object sender, ItemDragEventArgs e)
@@ -87,7 +84,7 @@ namespace GUI.StructureValueEditor
         /// <param name="model"></param>
         public void SetModel(IValue model)
         {
-            List<IValue> ObjectModel = new List<IValue>();
+            List<IValue> objectModel = new List<IValue>();
 
             ListValue listValue = model as ListValue;
             if (listValue != null)
@@ -96,16 +93,16 @@ namespace GUI.StructureValueEditor
                 {
                     if (value != EFSSystem.INSTANCE.EmptyValue)
                     {
-                        ObjectModel.Add(value);
+                        objectModel.Add(value);
                     }
                 }
             }
             else
             {
-                ObjectModel.Add(model);
+                objectModel.Add(model);
             }
 
-            structureTreeListView.SetObjects(ObjectModel);
+            structureTreeListView.SetObjects(objectModel);
         }
 
         /// <summary>
@@ -117,9 +114,9 @@ namespace GUI.StructureValueEditor
             Variable = variable;
 
             Text = Variable.FullName;
-            List<IVariable> ObjectModel = new List<IVariable>();
-            ObjectModel.Add(variable);
-            structureTreeListView.SetObjects(ObjectModel);
+            List<IVariable> objectModel = new List<IVariable>();
+            objectModel.Add(variable);
+            structureTreeListView.SetObjects(objectModel);
         }
 
         /// <summary>
