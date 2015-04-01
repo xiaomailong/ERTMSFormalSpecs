@@ -337,6 +337,56 @@ namespace DataDictionary.Types
         }
 
         /// <summary>
+        ///     Overrides the declared elements of the 
+        /// </summary>
+        public void ApplyPatch()
+        {
+            foreach (NameSpace nameSpace in NameSpaces)
+            {
+                nameSpace.ApplyPatch();
+            }
+
+            foreach (Type type in Types)
+            {
+                Type baseType = (Type)GuidCache.INSTANCE.GetModel(type.getUpdates());
+                baseType.NameSpace.ReplaceDeclaredElement(baseType, type);
+            }
+
+            foreach (IVariable variable in AllVariables)
+            {
+                // Can't use the getUpdates method on variable because IVariable is not in the BaseModelElement inheritance line
+                // I could probably safely cast it as something else, but that's not terribly cool
+            }
+
+            foreach (Procedure proc in Procedures)
+            {
+                Procedure baseProc = (Procedure)GuidCache.INSTANCE.GetModel(proc.getUpdates());
+                baseProc.NameSpace.ReplaceDeclaredElement(baseProc, proc);
+            }
+
+            foreach (Function function in Functions)
+            {
+                Function baseFunction = (Function) GuidCache.INSTANCE.GetModel(function.getUpdates());
+                baseFunction.NameSpace.ReplaceDeclaredElement(baseFunction, function);
+            }
+        }
+
+
+        private void ReplaceDeclaredElement(INamable prevNamable, INamable newNamable)
+        {
+            if (DeclaredElements.ContainsKey(prevNamable.Name))
+            {
+                DeclaredElements[prevNamable.Name].Remove(prevNamable);
+                DeclaredElements[prevNamable.Name].Add(newNamable);
+            }
+            else
+            {
+                ISubDeclaratorUtils.AppendNamable(this, newNamable);
+            }
+            
+        }
+
+        /// <summary>
         ///     The elements declared by this declarator
         /// </summary>
         public Dictionary<string, List<INamable>> DeclaredElements { get; set; }

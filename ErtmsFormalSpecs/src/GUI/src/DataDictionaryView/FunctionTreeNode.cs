@@ -18,14 +18,17 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
+using System.Linq;
 using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Functions;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using GUI.Converters;
+using Utils;
 using Case = DataDictionary.Functions.Case;
 using Function = DataDictionary.Functions.Function;
+using ModelElement = DataDictionary.ModelElement;
 using Parameter = DataDictionary.Parameter;
 
 namespace GUI.DataDictionaryView
@@ -169,6 +172,106 @@ namespace GUI.DataDictionaryView
             }
         }
 
+
+        public void AddUpdate(object sender, EventArgs args)
+        {
+            // Choose the dictionary you want to add the update to
+            // duplicate the function (+ namespace structure) to the
+            //     in the new one, set the updates field to the guid of this function
+
+            DataDictionary.Dictionary dictionary = GetPatchDictionary();
+
+            if (dictionary != null)
+            {
+
+                if (dictionary.getUpdates() == null)
+                {
+                    dictionary.setUpdates(Item.Dictionary.Guid);
+                }
+
+                INamable patchedNamable = dictionary.findByFullName(Item.FullName);
+                if (patchedNamable == null)
+                {
+                    // If the element does not already exist in the patch, add a copy of the function to it
+                    // Get the enclosing namespace (by splitting the fullname and asking a recursive function to provide or make it)
+                    String[] thing = Item.FullName.Split('.');
+                    thing = thing.Take(thing.Count() - 1).ToArray();
+                    NameSpace nameSpace = GetNameSpace(thing, dictionary);
+
+                    // Add a copy of Item to it
+                    ModelElement newFunction = Item.Duplicate();
+                    newFunction.setUpdates(Item.Guid);
+                    if ((newFunction as Function) != null)
+                    {
+                        nameSpace.appendFunctions(newFunction as Function);
+                    }
+                }
+
+                // navigate to the function, whether it was created or not
+            }
+        }
+
+
+        private DataDictionary.Types.NameSpace GetNameSpace(String[] levels, DataDictionary.Dictionary dictionary)
+        {
+            DataDictionary.Types.NameSpace nameSpace = OverallNameSpaceFinder.INSTANCE.findByName(dictionary, String.Join(".", levels));
+
+            if (nameSpace == null)
+            {
+                nameSpace = new DataDictionary.Types.NameSpace();
+                if (levels.Count() == 1)
+                {
+                    nameSpace.setName(levels[0]);
+                    nameSpace.setUpdates(Item.Dictionary.findNameSpace(levels[0]).Guid);
+                    dictionary.appendNameSpaces(nameSpace);
+                }
+                else
+                {
+                    String[] higherLevels = levels.Take(levels.Count() - 1).ToArray();
+                    DataDictionary.Types.NameSpace parent = GetNameSpace(higherLevels, dictionary);
+                    nameSpace.setName(levels[levels.Count() - 1]);
+                    nameSpace.setUpdates(OverallNameSpaceFinder.INSTANCE.findByName(Item.Dictionary, String.Join(".", levels)).Guid);
+                    parent.appendNameSpaces(nameSpace);
+                }
+            }
+
+            return nameSpace;
+        }
+
+        
+        /// <summary>
+        ///     Provides the dictionary on which operation should be performed
+        /// </summary>
+        /// <returns></returns>
+        public DataDictionary.Dictionary GetPatchDictionary()
+        {
+            DataDictionary.Dictionary retVal = null;
+
+            MainWindow mainWindow = GUIUtils.MDIWindow;
+            EFSSystem efsSystem = mainWindow.EFSSystem;
+            if (efsSystem != null)
+            {
+
+                if (efsSystem.Dictionaries.Count == 1)
+                {
+                    retVal = efsSystem.Dictionaries[0];
+                }
+                else if (efsSystem.Dictionaries.Count > 1)
+                {
+                    DictionarySelector.DictionarySelector dictionarySelector =
+                        new DictionarySelector.DictionarySelector(efsSystem);
+                    dictionarySelector.ShowDialog(mainWindow);
+
+                    if (dictionarySelector.Selected != null)
+                    {
+                        retVal = dictionarySelector.Selected;
+                    }
+                }
+            }
+
+            return retVal;
+        }
+
         public void DisplayHandler(object sender, EventArgs args)
         {
             GraphView.GraphView view = new GraphView.GraphView();
@@ -188,6 +291,7 @@ namespace GUI.DataDictionaryView
             MenuItem newItem = new MenuItem("Add...");
             newItem.MenuItems.Add(new MenuItem("Parameter", new EventHandler(AddParameterHandler)));
             newItem.MenuItems.Add(new MenuItem("Case", new EventHandler(AddCaseHandler)));
+            newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddUpdate)));
             retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());

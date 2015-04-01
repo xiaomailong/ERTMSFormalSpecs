@@ -404,9 +404,20 @@ namespace DataDictionary
         {
             DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            foreach (Types.NameSpace nameSpace in NameSpaces)
+            if (this.getUpdates() == null)
             {
-                ISubDeclaratorUtils.AppendNamable(this, nameSpace);
+                foreach (Types.NameSpace nameSpace in NameSpaces)
+                {
+                    ISubDeclaratorUtils.AppendNamable(this, nameSpace);
+                }
+            }
+            else
+            {
+                // new function to replace the things in the corresponding namespace
+                foreach (Types.NameSpace nameSpace in NameSpaces)
+                {
+                    nameSpace.ApplyPatch();
+                }
             }
         }
 
