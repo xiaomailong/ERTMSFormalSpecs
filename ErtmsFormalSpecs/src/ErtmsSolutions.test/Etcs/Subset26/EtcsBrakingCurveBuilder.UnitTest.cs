@@ -2,16 +2,16 @@
 using System.IO;
 using System.Text;
 using ErtmsSolutions.SiUnits;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
 {
-    [TestClass]
+    [TestFixture]
     public class EtcsBrakingCurveBuilder_UnitTest
     {
         private StringBuilder TestOutput;
 
-        [TestMethod]
+        [Test]
         public void Build_A_Safe_BackwardTestMethod()
         {
             // TODO : Fill the acceleration surface
@@ -96,7 +96,7 @@ namespace ErtmsSolutions.Etcs.Subset26.BrakingCurves
             File.WriteAllText("ResultsCompare.csv", TestOutput.ToString());
         }
 
-        [TestMethod]
+        [Test]
         public void Build_Deceleration_CurveTestMethod()
         {
             // TODO : Fill the acceleration surface

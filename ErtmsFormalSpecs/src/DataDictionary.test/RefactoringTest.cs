@@ -1,5 +1,5 @@
 ﻿using DataDictionary.Generated;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Action = DataDictionary.Rules.Action;
 using NameSpace = DataDictionary.Types.NameSpace;
 using RuleCondition = DataDictionary.Rules.RuleCondition;
@@ -8,10 +8,10 @@ using StructureElement = DataDictionary.Types.StructureElement;
 
 namespace DataDictionary.test
 {
-    [TestClass]
+    [TestFixture]
     public class RefactoringTest : BaseModelTest
     {
-        [TestMethod]
+        [Test]
         public void TestRefactorStructureName()
         {
             Dictionary test = CreateDictionary("Test");
@@ -31,7 +31,7 @@ namespace DataDictionary.test
             Assert.AreEqual("V <- N1.NewS1 { E1 => False }", a.ExpressionText);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorElementStructureName()
         {
             Dictionary test = CreateDictionary("Test");
@@ -50,7 +50,7 @@ namespace DataDictionary.test
             Assert.AreEqual("E2.NewE1 <- False", action.ExpressionText);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorElementStructureName2()
         {
             Dictionary test = CreateDictionary("Test");
@@ -65,7 +65,7 @@ namespace DataDictionary.test
             Assert.AreEqual("A <- S1 { NewE1 => False }", action.ExpressionText);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorNameSpaceName()
         {
             Dictionary test = CreateDictionary("Test");
@@ -84,7 +84,7 @@ namespace DataDictionary.test
             Assert.AreEqual("V <- NewN1.S1 { E1 => False }", a.ExpressionText);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorNameSpaceName2()
         {
             Dictionary test = CreateDictionary("Test");
@@ -104,7 +104,7 @@ namespace DataDictionary.test
             Assert.AreEqual("V <- NewN0.N1.S1 { E1 => False }", a.ExpressionText);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorNameSpaceName3()
         {
             Dictionary test = CreateDictionary("Test");
@@ -132,7 +132,7 @@ namespace DataDictionary.test
             Assert.AreEqual("NewN1.f().E2.E1", p.ExpressionText);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorNameSpaceName4()
         {
             Dictionary test = CreateDictionary("Test");
@@ -148,7 +148,7 @@ namespace DataDictionary.test
             Assert.AreEqual("StateMachine", el1.TypeName);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorInterfaceName()
         {
             Dictionary test = CreateDictionary("Test");
@@ -162,7 +162,7 @@ namespace DataDictionary.test
             Assert.AreEqual("NewI1", sr.ExpressionText);
         }
 
-        [TestMethod]
+        [Test]
         public void TestRefactorInterfaceField()
         {
             Dictionary test = CreateDictionary("Test");

@@ -1,6 +1,6 @@
 ﻿using DataDictionary.Generated;
 using DataDictionary.Interpreter;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using Utils;
 using Action = DataDictionary.Rules.Action;
 using Function = DataDictionary.Functions.Function;
@@ -22,7 +22,7 @@ namespace DataDictionary.test
         /// <summary>
         ///     Initializes all tests
         /// </summary>
-        [TestInitialize]
+        [TestFixtureSetUp]
         public void Initialise()
         {
             acceptor.setFactory(new ObjectFactory());
@@ -31,7 +31,7 @@ namespace DataDictionary.test
         /// <summary>
         ///     Clean up the environment after a test has been executed
         /// </summary>
-        [TestCleanup]
+        [TearDown]
         public void CleanUp()
         {
             System.Dictionaries.Clear();
