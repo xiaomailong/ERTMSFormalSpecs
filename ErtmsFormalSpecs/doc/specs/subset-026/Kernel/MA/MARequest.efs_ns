@@ -173,12 +173,12 @@
 >Kernel.MA.MARequest.MARequestParameters != EMPTY
   AND
 Kernel.MA.MARequest.MARequestParameters.HandleRepetitions</PreCondition></PreConditions>
-<Expression>LastMARequestRepetitionTime + Kernel.MA.MARequest.MARequestParameters.RepetitionTime &gt;= DateAndTime.CurrentTime</Expression>
+<Expression>LastMARequestRepetitionTime + Kernel.MA.MARequest.MARequestParameters.RepetitionTime &lt;= DateAndTime.CurrentTime</Expression>
 </Case><Case
  Name="No MA request parameters available"
  Guid="55ec0701-fd5e-43b2-9640-bc3cb868d66c"
 >
-<Expression>LastMARequestRepetitionTime + MARequestRepetitionCycle &gt;= DateAndTime.CurrentTime</Expression>
+<Expression>LastMARequestRepetitionTime + MARequestRepetitionCycle &lt;= DateAndTime.CurrentTime</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
