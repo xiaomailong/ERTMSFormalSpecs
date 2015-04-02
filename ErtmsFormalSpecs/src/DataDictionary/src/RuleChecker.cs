@@ -191,10 +191,18 @@ namespace DataDictionary
                     {
                         Tests.Step step = (Tests.Step) testCase.Steps[0];
 
-                        if (step.Name.IndexOf("Setup") < 0 && step.Name.IndexOf("Initialize") < 0)
+                        if (step.Name != null)
                         {
-                            step.AddWarning(
-                                "First step of the first test case of a subsequence should be used to setup the system, and should hold 'Setup' or 'Initialize' in its name");
+                            if (step.Name.IndexOf("Setup") < 0 && step.Name.IndexOf("Initialize") < 0)
+                            {
+                                step.AddWarning(
+                                    "First step of the first test case of a subsequence should be used to setup the system, and should hold 'Setup' or 'Initialize' in its name");
+                            }
+                        }
+                        else
+                        {
+                            step.AddWarning("All steps should have a name");
+                            
                         }
                     }
                 }
