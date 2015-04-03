@@ -2452,9 +2452,31 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ Name="Initialize output message"
+ Guid="b3ca7648-8b67-4709-95ee-2f8cfb9a8c27"
+>
+<Comment>Create an empty train-to-track message in MessageOUT.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Initialize output message"
+ Guid="897b44be-ccb7-4af5-8179-0f67f9261cdf"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="9f3b3517-56d9-4c9b-9039-5b24f08109fd"
+>InitializeOutMessage()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
  Name="Handle sending of the message"
  Guid="3f90535c-78a3-42c5-ba47-d02d698b3b5f"
 >
+<Comment>Add a position report to the output message.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -2468,8 +2490,6 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 >MessageCanBeSent ( anRBC =&gt; THIS )</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="9f3b3517-56d9-4c9b-9039-5b24f08109fd"
->InitializeOutMessage()</Action><Action
  Guid="bf147e3b-7386-4f94-9725-2f8ca11d85bf"
 >MessageOut.ACKNOWLEDGEMENT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT.Message{
     NID_MESSAGE =&gt; 146,
