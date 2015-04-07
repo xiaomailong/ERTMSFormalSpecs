@@ -1380,28 +1380,34 @@ namespace DataDictionary
         {
             string fullName = String.Join(".", levels);
 
+            // Look at all the namespaces of this dictionary for the one designated by fullName
             List<String> nameSpaces = new List<string>();
             OverallNameSpaceFinder.INSTANCE.findAllValueNames(null, this, false, nameSpaces);
 
             if (!nameSpaces.Contains(fullName))
             {
-                NameSpace nameSpace = (Types.NameSpace)acceptor.getFactory().createNameSpace();
-                if (levels.Count() == 1)
+                Types.NameSpace nameSpace = (Types.NameSpace)acceptor.getFactory().createNameSpace();
+                if (levels.Count() > 1)
                 {
-                    nameSpace.setName(levels[0]);
-                    nameSpace.setUpdates(baseDictionary.findNameSpace(levels[0]).Guid);
-                    appendNameSpaces(nameSpace);
+                    // Find or create the parent namespace (through recursive call to GetNameSpace) and add a new namespace to it
+                    String[] higherLevels = levels.Take(levels.Count() - 1).ToArray();
+                    Types.NameSpace parent = GetNameSpace(higherLevels, baseDictionary);
+
+                    nameSpace.setName(levels[levels.Count() - 1]);
+                    nameSpace.setUpdates(OverallNameSpaceFinder.INSTANCE.findByName(baseDictionary, String.Join(".", levels)).Guid);
+
+                    parent.appendNameSpaces(nameSpace);
+                    parent.InitDeclaredElements();
                 }
                 else
                 {
-                    String[] higherLevels = levels.Take(levels.Count() - 1).ToArray();
-                    NameSpace parent = GetNameSpace(higherLevels, baseDictionary);
-                    nameSpace.setName(levels[levels.Count() - 1]);
-                    nameSpace.setUpdates(OverallNameSpaceFinder.INSTANCE.findByName(Dictionary, String.Join(".", levels)).Guid);
-                    parent.appendNameSpaces(nameSpace);
-                }
+                    // if there is only one level of namespaces, create it and add it to the dictionary
+                    nameSpace.setName(levels[0]);
+                    nameSpace.setUpdates(baseDictionary.findNameSpace(levels[0]).Guid);
 
-                ISubDeclaratorUtils.AppendNamable(this, nameSpace);
+                    appendNameSpaces(nameSpace);
+                    InitDeclaredElements();
+                }
             }
 
             return OverallNameSpaceFinder.INSTANCE.findByName(this, fullName);
