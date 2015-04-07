@@ -41,13 +41,6 @@ namespace DataDictionary.test
             Assert.AreEqual(System.BoolType.False, value);
         }
 
-        // Further tests:
-        //  - Replace both f and q              [  ]
-        //      change the parameters for q     [  ]
-        //  - Replace q (with f calling it)     [OK]
-        // Other model elements                 [  ]
-
-
         [Test]
         public void TestUpdateMultipleFunctions()
         {
@@ -111,6 +104,66 @@ namespace DataDictionary.test
             Expression expression2 = Parser.Expression(dictionary, "N1.f()");
             IValue value2 = expression.GetValue(new InterpretationContext(), null);
             Assert.AreEqual(System.BoolType.False, value2);
+        }
+
+        [Test]
+        public void TestUpdateNestedNamespaces()
+        {
+            Dictionary dictionary = CreateDictionary("Test");
+            NameSpace nameSpace = CreateNameSpace(dictionary, "N1");
+            NameSpace subNameSpace = CreateNameSpace(nameSpace, "N2");
+            NameSpace subSubNameSpace = CreateNameSpace(subNameSpace, "N3");
+            NameSpace usedNameSpace = CreateNameSpace(subSubNameSpace, "N4");
+
+            Function function = CreateFunction(usedNameSpace, "f", "Bool");
+            Case cas = CreateCase(function, "Case 1", "True");
+
+            Dictionary dictionary2 = CreateDictionary("TestUpdate");
+            dictionary2.setUpdates(dictionary.Guid);
+
+            Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
+            Case cas2 = (Case)updatedFunction.Cases[0];
+            cas2.ExpressionText = "False";
+
+
+            Compiler.Compile_Synchronous(true);
+
+
+            Expression expression = Parser.Expression(dictionary, "N1.N2.N3.N4.f()");
+            IValue value = expression.GetValue(new InterpretationContext(), null);
+            Assert.AreEqual(System.BoolType.False, value);
+        }
+
+
+        [Test]
+        public void TestUpdateBranchingNameSpaces()
+        {
+            Dictionary dictionary = CreateDictionary("Test");
+            NameSpace nameSpace = CreateNameSpace(dictionary, "N");
+            NameSpace nameSpace1 = CreateNameSpace(nameSpace, "N1");
+            NameSpace nameSpace2 = CreateNameSpace(nameSpace, "N2");
+
+            Function function1 = CreateFunction(nameSpace1, "f", "Bool");
+            Case cas1 = CreateCase(function1, "Case 1", "N2.q()");
+
+            Function function2 = CreateFunction(nameSpace2, "q", "Bool");
+            Case cas2 = CreateCase(function2, "Case 1", "True");
+
+            Dictionary dictionary2 = CreateDictionary("TestUpdate");
+            dictionary2.setUpdates(dictionary.Guid);
+
+            Function updateFunction1 = function1.CreateFunctionUpdate(dictionary2);
+            ((Case) updateFunction1.Cases[0]).ExpressionText = "NOT N2.q()";
+            Function updateFunction2 = function2.CreateFunctionUpdate(dictionary2);
+            ((Case)updateFunction2.Cases[0]).ExpressionText = "False";
+
+
+            Compiler.Compile_Synchronous(true);
+
+
+            Expression expression = Parser.Expression(dictionary, "N.N1.f()");
+            IValue value = expression.GetValue(new InterpretationContext(), null);
+            Assert.AreEqual(System.BoolType.True, value);
         }
 
         // Further further tests:
