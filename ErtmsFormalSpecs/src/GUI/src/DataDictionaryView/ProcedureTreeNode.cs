@@ -18,6 +18,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Functions;
 
 namespace GUI.DataDictionaryView
@@ -97,6 +98,29 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
+        public void AddProcedureUpdate(object sender, EventArgs args)
+        {
+            DataDictionary.Dictionary dictionary = GetPatchDictionary();
+
+            if (dictionary != null)
+            {
+                if (dictionary.getUpdates() == null)
+                {
+                    dictionary.setUpdates(Item.Dictionary.Guid);
+                }
+
+                ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
+                if (updatedElement == null)
+                {
+                    // If the element does not already exist in the patch, add a copy of the function to it
+                    // Get the enclosing namespace (by splitting the fullname and asking a recursive function to provide or make it)
+                    updatedElement = Item.CreateProcedureUpdate(dictionary);
+                }
+                // navigate to the function, whether it was created or not
+                GUIUtils.MDIWindow.Select(updatedElement);
+            }
+        }
+
         /// <summary>
         ///     The menu items for this tree node
         /// </summary>
@@ -105,6 +129,9 @@ namespace GUI.DataDictionaryView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddProcedureUpdate)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
 

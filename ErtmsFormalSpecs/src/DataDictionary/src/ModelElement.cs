@@ -242,6 +242,24 @@ namespace DataDictionary
 
             return retVal;
         }
+
+        /// <summary>
+        /// Provides the model element that has been updated by this one (if any)
+        /// </summary>
+        public ModelElement Updates
+        {
+            get
+            {
+                ModelElement retVal = null;
+
+                if (!string.IsNullOrEmpty(getUpdates()))
+                {
+                    retVal = GuidCache.INSTANCE.GetModel(getUpdates());
+                }
+
+                return retVal;
+            }
+        }
     }
 
     public interface TextualExplain

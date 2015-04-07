@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Functions;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
@@ -192,6 +193,29 @@ namespace GUI.DataDictionaryView
             ViewDiagram();
         }
 
+
+        public void AddVariableUpdate(object sender, EventArgs args)
+        {
+            DataDictionary.Dictionary dictionary = GetPatchDictionary();
+
+            if (dictionary != null)
+            {
+                if (dictionary.getUpdates() == null)
+                {
+                    dictionary.setUpdates(Item.Dictionary.Guid);
+                }
+
+                ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
+                if (updatedElement == null)
+                {
+                    // If the element does not already exist in the patch, add a copy to it
+                    updatedElement = Item.CreateVariableUpdate(dictionary);
+                }
+                // navigate to the function, whether it was created or not
+                GUIUtils.MDIWindow.Select(updatedElement);
+            }
+        }
+
         /// <summary>
         ///     The menu items for this tree node
         /// </summary>
@@ -200,6 +224,9 @@ namespace GUI.DataDictionaryView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddVariableUpdate)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
 

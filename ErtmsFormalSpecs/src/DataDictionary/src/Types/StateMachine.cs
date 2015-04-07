@@ -14,8 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Interpreter.Statement;
@@ -724,6 +726,25 @@ namespace DataDictionary.Types
                 Rule newRule = rule.duplicate();
                 retVal.appendRules(newRule);
             }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates a copy of the state machine in the designated dictionary. The namespace structure is copied over.
+        /// The new state machine is set to update this one.
+        /// </summary>
+        /// <param name="dictionary">The target dictionary of the copy</param>
+        /// <returns></returns>
+        public StateMachine CreateStateMachineUpdate(Dictionary dictionary)
+        {
+            StateMachine retVal = (StateMachine)Duplicate();
+            retVal.setUpdates(Guid);
+
+            String[] names = FullName.Split('.');
+            names = names.Take(names.Count() - 1).ToArray();
+            NameSpace nameSpace = dictionary.GetNameSpace(names, Dictionary);
+            nameSpace.appendStateMachines(retVal);
 
             return retVal;
         }

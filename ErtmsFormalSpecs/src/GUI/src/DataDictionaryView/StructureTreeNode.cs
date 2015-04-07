@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Types;
 
 namespace GUI.DataDictionaryView
@@ -203,6 +204,29 @@ namespace GUI.DataDictionaryView
             }
         }
 
+
+        public void AddStructureUpdate(object sender, EventArgs args)
+        {
+            DataDictionary.Dictionary dictionary = GetPatchDictionary();
+
+            if (dictionary != null)
+            {
+                if (dictionary.getUpdates() == null)
+                {
+                    dictionary.setUpdates(Item.Dictionary.Guid);
+                }
+
+                ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
+                if (updatedElement == null)
+                {
+                    // If the element does not already exist in the patch, add a copy to it
+                    updatedElement = Item.CreateStructureUpdate(dictionary);
+                }
+                // navigate to the function, whether it was created or not
+                GUIUtils.MDIWindow.Select(updatedElement);
+            }
+        }
+
         /// <summary>
         ///     The menu items for this tree node
         /// </summary>
@@ -216,6 +240,7 @@ namespace GUI.DataDictionaryView
             newItem.MenuItems.Add(new MenuItem("Structure element", new EventHandler(AddStructureElementHandler)));
             newItem.MenuItems.Add(new MenuItem("Procedure", new EventHandler(AddProcedureHandler)));
             newItem.MenuItems.Add(new MenuItem("State machine", new EventHandler(AddStateMachineHandler)));
+            newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddStructureUpdate)));
             retVal.Add(newItem);
             retVal.AddRange(base.GetMenuItems());
 

@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Utils;
 using Action = DataDictionary.Rules.Action;
 using Function = DataDictionary.Functions.Function;
+using Case = DataDictionary.Functions.Case ;
 using NameSpace = DataDictionary.Types.NameSpace;
 using PreCondition = DataDictionary.Rules.PreCondition;
 using Rule = DataDictionary.Rules.Rule;
@@ -51,6 +52,14 @@ namespace DataDictionary.test
         protected Compiler Compiler
         {
             get { return System.Compiler; }
+        }
+
+        /// <summary>
+        ///     The Parser
+        /// </summary>
+        protected Parser Parser
+        {
+            get { return System.Parser; }
         }
 
         /// <summary>
@@ -276,6 +285,40 @@ namespace DataDictionary.test
             return retVal;
         }
 
+        /// <summary>
+        ///     Creates a function in the enclosing namespace
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        protected Parameter CreateFunctionParameter(Function function , string name, string type)
+        {
+            Parameter retVal = (Parameter)Factory.createParameter();
+            function.appendParameters(retVal);
+            retVal.Name = name;
+            retVal.TypeName = type;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a function in the enclosing namespace
+        /// </summary>
+        /// <param name="function"></param>
+        /// <param name="name"></param>
+        /// <param name="expression"></param>
+        /// <returns></returns>
+        protected Case CreateCase(Function function, string name, string expression)
+        {
+            Case retVal = (Case)Factory.createCase();
+            function.appendCases(retVal);
+            retVal.Name = name;
+            retVal.ExpressionText = expression;
+
+            return retVal;
+        }
+       
         /// <summary>
         ///     Creates an action in the enclosing rule condition
         /// </summary>

@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
 using System.Windows.Forms;
+using DataDictionary;
 using DataDictionary.Generated;
 using GUI.Converters;
 using Enum = DataDictionary.Types.Enum;
@@ -147,6 +148,30 @@ namespace GUI.DataDictionaryView
             valuesTreeNode.AddValue(value);
         }
 
+
+        private void AddEnumUpdate(object sender, EventArgs args)
+        {
+            DataDictionary.Dictionary dictionary = GetPatchDictionary();
+
+            if (dictionary != null)
+            {
+                if (dictionary.getUpdates() == null)
+                {
+                    dictionary.setUpdates(Item.Dictionary.Guid);
+                }
+
+                ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
+                if (updatedElement == null)
+                {
+                    // If the element does not already exist in the patch, add a copy of the function to it
+                    // Get the enclosing namespace (by splitting the fullname and asking a recursive function to provide or make it)
+                    updatedElement = Item.CreateEnumUpdate(dictionary);
+                }
+                // navigate to the function, whether it was created or not
+                GUIUtils.MDIWindow.Select(updatedElement);
+            }
+        }
+
         /// <summary>
         ///     The menu items for this tree node
         /// </summary>
@@ -155,6 +180,9 @@ namespace GUI.DataDictionaryView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add("Update", new EventHandler(AddEnumUpdate));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Add value", new EventHandler(AddValueHandler)));
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());

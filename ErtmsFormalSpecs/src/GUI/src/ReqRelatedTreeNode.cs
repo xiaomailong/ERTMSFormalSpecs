@@ -120,5 +120,38 @@ namespace GUI
 
             return retVal;
         }
+
+        /// <summary>
+        ///     Provides the dictionary on which operation should be performed
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary GetPatchDictionary()
+        {
+            Dictionary retVal = null;
+
+            MainWindow mainWindow = GUIUtils.MDIWindow;
+            EFSSystem efsSystem = mainWindow.EFSSystem;
+            if (efsSystem != null)
+            {
+
+                if (efsSystem.Dictionaries.Count == 1)
+                {
+                    retVal = efsSystem.Dictionaries[0];
+                }
+                else if (efsSystem.Dictionaries.Count > 1)
+                {
+                    DictionarySelector.DictionarySelector dictionarySelector =
+                        new DictionarySelector.DictionarySelector(efsSystem);
+                    dictionarySelector.ShowDialog(mainWindow);
+
+                    if (dictionarySelector.Selected != null)
+                    {
+                        retVal = dictionarySelector.Selected;
+                    }
+                }
+            }
+
+            return retVal;
+        }
     }
 }

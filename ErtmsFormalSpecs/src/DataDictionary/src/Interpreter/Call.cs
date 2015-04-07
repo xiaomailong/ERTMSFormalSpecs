@@ -376,11 +376,11 @@ namespace DataDictionary.Interpreter
             IValue retVal = null;
 
             Function function = getFunction(context, explain);
-
-            ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
-                function.Name + " (...) returned ");
             if (function != null)
             {
+                ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
+                    function.Name + " (...) returned ");
+
                 long start = Environment.TickCount;
 
                 Dictionary<Actual, IValue> parameterValues = null;

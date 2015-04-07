@@ -14,9 +14,11 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using DataDictionary.Generated;
 using DataDictionary.Specification;
 using Utils;
@@ -404,20 +406,9 @@ namespace DataDictionary
         {
             DeclaredElements = new Dictionary<string, List<INamable>>();
 
-            if (this.getUpdates() == null)
+            foreach (Types.NameSpace nameSpace in NameSpaces)
             {
-                foreach (Types.NameSpace nameSpace in NameSpaces)
-                {
-                    ISubDeclaratorUtils.AppendNamable(this, nameSpace);
-                }
-            }
-            else
-            {
-                // new function to replace the things in the corresponding namespace
-                foreach (Types.NameSpace nameSpace in NameSpaces)
-                {
-                    nameSpace.ApplyPatch();
-                }
+                ISubDeclaratorUtils.AppendNamable(this, nameSpace);
             }
         }
 
@@ -1377,6 +1368,43 @@ namespace DataDictionary
         public void AddRequirementSet(RequirementSet requirementSet)
         {
             appendRequirementSets(requirementSet);
+        }
+
+        /// <summary>
+        /// Either provides the requested namespace or creates it if it cannot be found
+        /// This method can create many levels of nested namespaces
+        /// </summary>
+        /// <param name="levels">The name of the namespace, with the levels separated into separate Strings</param>
+        /// <returns></returns>
+        public Types.NameSpace GetNameSpace(String[] levels, Dictionary baseDictionary)
+        {
+            string fullName = String.Join(".", levels);
+
+            List<String> nameSpaces = new List<string>();
+            OverallNameSpaceFinder.INSTANCE.findAllValueNames(null, this, false, nameSpaces);
+
+            if (!nameSpaces.Contains(fullName))
+            {
+                NameSpace nameSpace = (Types.NameSpace)acceptor.getFactory().createNameSpace();
+                if (levels.Count() == 1)
+                {
+                    nameSpace.setName(levels[0]);
+                    nameSpace.setUpdates(baseDictionary.findNameSpace(levels[0]).Guid);
+                    appendNameSpaces(nameSpace);
+                }
+                else
+                {
+                    String[] higherLevels = levels.Take(levels.Count() - 1).ToArray();
+                    NameSpace parent = GetNameSpace(higherLevels, baseDictionary);
+                    nameSpace.setName(levels[levels.Count() - 1]);
+                    nameSpace.setUpdates(OverallNameSpaceFinder.INSTANCE.findByName(Dictionary, String.Join(".", levels)).Guid);
+                    parent.appendNameSpaces(nameSpace);
+                }
+
+                ISubDeclaratorUtils.AppendNamable(this, nameSpace);
+            }
+
+            return OverallNameSpaceFinder.INSTANCE.findByName(this, fullName);
         }
 
 

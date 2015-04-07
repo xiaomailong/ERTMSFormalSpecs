@@ -14,8 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DataDictionary.Functions;
 using DataDictionary.Interpreter;
 using DataDictionary.Rules;
@@ -521,6 +523,25 @@ namespace DataDictionary.Types
                     }
                 }
             }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates a copy of the structure in the designated dictionary. The namespace structure is copied over.
+        /// The new structure is set to update this one.
+        /// </summary>
+        /// <param name="dictionary">The target dictionary of the copy</param>
+        /// <returns></returns>
+        public Structure CreateStructureUpdate(Dictionary dictionary)
+        {
+            Structure retVal = (Structure)Duplicate();
+            retVal.setUpdates(Guid);
+
+            String[] names = FullName.Split('.');
+            names = names.Take(names.Count() - 1).ToArray();
+            NameSpace nameSpace = dictionary.GetNameSpace(names, Dictionary);
+            nameSpace.appendStructures(retVal);
 
             return retVal;
         }

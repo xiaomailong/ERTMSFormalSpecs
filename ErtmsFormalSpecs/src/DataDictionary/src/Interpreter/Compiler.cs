@@ -53,16 +53,16 @@ namespace DataDictionary.Interpreter
             /// <param name="visitSubNodes"></param>
             public override void visit(IXmlBBase obj, bool visitSubNodes)
             {
-                ISubDeclarator subDeclarator = obj as ISubDeclarator;
-                if (subDeclarator != null)
-                {
-                    subDeclarator.InitDeclaredElements();
-                }
-
                 IFinder finder = obj as IFinder;
                 if (finder != null)
                 {
                     finder.ClearCache();
+                }
+
+                ISubDeclarator subDeclarator = obj as ISubDeclarator;
+                if (subDeclarator != null)
+                {
+                    subDeclarator.InitDeclaredElements();
                 }
 
                 base.visit(obj, visitSubNodes);

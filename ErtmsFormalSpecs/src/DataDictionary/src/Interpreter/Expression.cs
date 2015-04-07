@@ -245,6 +245,36 @@ namespace DataDictionary.Interpreter
         /// <param name="accept"></param>
         public void filter(BaseFilter accept)
         {
+            {
+                HashSet<ModelElement> redefined = new HashSet<ModelElement>();
+                foreach (ReturnValueElement element in Values)
+                {
+                    ModelElement modelElement = element.Value as ModelElement;
+                    if (modelElement != null && modelElement.Updates != null)
+                    {
+                        redefined.Add(modelElement.Updates);
+                    }
+                }
+
+                List<ReturnValueElement> tmp = new List<ReturnValueElement>();
+                foreach ( ReturnValueElement element in Values )
+                {
+                    ModelElement modelElement = element.Value as ModelElement;
+                    if (modelElement != null)
+                    {
+                        if (!redefined.Contains(modelElement))
+                        {
+                            tmp.Add(element);
+                        }
+                    }
+                    else
+                    {
+                        tmp.Add(element);
+                    }
+                }
+                Values = tmp;
+            }
+
             // Only keep the most specific elements.
             string mostSpecific = null;
             foreach (ReturnValueElement element in Values)

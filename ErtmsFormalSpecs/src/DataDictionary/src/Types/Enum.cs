@@ -14,8 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DataDictionary.Constants;
 using DataDictionary.Values;
 using Utils;
@@ -295,6 +297,25 @@ namespace DataDictionary.Types
             string retVal = getExplain(0);
 
             return TextualExplainUtilities.Encapsule(retVal);
+        }
+
+        /// <summary>
+        /// Creates a copy of the enum in the designated dictionary. The namespace structure is copied over.
+        /// The new enum is set to update this one.
+        /// </summary>
+        /// <param name="dictionary">The target dictionary of the copy</param>
+        /// <returns></returns>
+        public Enum CreateEnumUpdate(Dictionary dictionary)
+        {
+            Enum retVal = (Enum)Duplicate();
+            retVal.setUpdates(Guid);
+
+            String[] names = FullName.Split('.');
+            names = names.Take(names.Count() - 1).ToArray();
+            NameSpace nameSpace = dictionary.GetNameSpace(names, Dictionary);
+            nameSpace.appendEnumerations(retVal);
+
+            return retVal;
         }
     }
 }

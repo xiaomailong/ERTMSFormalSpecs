@@ -343,13 +343,23 @@ namespace DataDictionary.Interpreter
         {
             int retVal = 0;
 
-            if (subDeclarator != null)
+            ISubDeclarator currentDeclarator = subDeclarator;
+            while (currentDeclarator != null)
             {
                 List<INamable> tmp = new List<INamable>();
-                subDeclarator.Find(Image, tmp);
+                currentDeclarator.Find(Image, tmp);
                 foreach (INamable namable in tmp)
                 {
                     retVal += addReference(namable, expectation, asType, values);
+                }
+                ModelElement modelElement = currentDeclarator as ModelElement;
+                if (modelElement != null && retVal == 0)
+                {
+                    currentDeclarator = modelElement.Updates as ISubDeclarator;
+                }
+                else
+                {
+                    currentDeclarator = null;
                 }
             }
 

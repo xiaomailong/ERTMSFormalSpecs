@@ -14,8 +14,10 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Types;
@@ -573,6 +575,25 @@ namespace DataDictionary.Variables
                     enclosingVariable.HandleChange();
                 }
             }
+        }
+
+        /// <summary>
+        /// Creates a copy of the variable in the designated dictionary. The namespace structure is copied over.
+        /// The new variable is set to update this one.
+        /// </summary>
+        /// <param name="dictionary">The target dictionary of the copy</param>
+        /// <returns></returns>
+        public Variable CreateVariableUpdate(Dictionary dictionary)
+        {
+            Variable retVal = (Variable)Duplicate();
+            retVal.setUpdates(Guid);
+
+            String[] names = FullName.Split('.');
+            names = names.Take(names.Count() - 1).ToArray();
+            NameSpace nameSpace = dictionary.GetNameSpace(names, Dictionary);
+            nameSpace.appendVariables(retVal);
+
+            return retVal;
         }
     }
 }

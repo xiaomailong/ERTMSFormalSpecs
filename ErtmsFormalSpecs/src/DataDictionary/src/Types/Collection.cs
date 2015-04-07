@@ -14,7 +14,9 @@
 // --
 // ------------------------------------------------------------------------------
 
+using System;
 using System.Collections;
+using System.Linq;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Values;
@@ -277,6 +279,25 @@ namespace DataDictionary.Types
             string retVal = getExplain(0);
 
             return TextualExplainUtilities.Encapsule(retVal);
+        }
+
+        /// <summary>
+        /// Creates a copy of the collection in the designated dictionary. The namespace structure is copied over.
+        /// The new collection is set to update this one.
+        /// </summary>
+        /// <param name="dictionary">The target dictionary of the copy</param>
+        /// <returns></returns>
+        public Collection CreateCollectionUpdate(Dictionary dictionary)
+        {
+            Collection retVal = (Collection)Duplicate();
+            retVal.setUpdates(Guid);
+
+            String[] names = FullName.Split('.');
+            names = names.Take(names.Count() - 1).ToArray();
+            NameSpace nameSpace = dictionary.GetNameSpace(names, Dictionary);
+            nameSpace.appendCollections(retVal);
+
+            return retVal;
         }
     }
 
