@@ -2713,6 +2713,11 @@
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="df4bf83c-9d7f-45f5-855a-d1e620b5033d"
 >
+</ReqRef><ReqRef
+ Id="b74d1689-f942-4e2a-abdb-aa241f4f117f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9b562be6-4109-4292-801d-55a038ac94d4"
+>
 </ReqRef><Steps>
 <Step
  IO="NA"
@@ -2741,11 +2746,33 @@
  Guid="6e2474a5-10c6-45aa-bb59-ef4337369337"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S150.MARequestSent</Expectation><Expectation
  Kind="Instantaneous"
- Guid="f568396b-11ec-4046-a80b-fdc2890b419e"
->Available ( EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST )</Expectation><Expectation
+ DeadLine="1"
+ Guid="5a2849a0-250c-471c-9187-734b08739f3f"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == Default.MessageTypes.UnResolveTime ( Kernel.DateAndTime.CurrentTime )</Expectation><Expectation
  Kind="Instantaneous"
- Guid="693279f3-5ec3-4002-b6aa-ef1efa472f2c"
->EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation></Expectations>
+ DeadLine="1"
+ Guid="2b56be16-3cb7-4946-a224-fac53d83a67a"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.Q_MARQSTREASON == Messages.Q_MARQSTREASON.Start_selected_by_driver</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="43426094-8e48-43f5-b3b1-ef8fb940aeb4"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.POSITION_REPORT != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4cb9adce-aa87-498b-8366-3994e9488c7f"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.NID_MESSAGE == 132</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="f232b4f0-4899-4e20-aa36-f28cbb6b8c4b"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.NID_ENGINE == Kernel.NidEngine</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="4149893a-6351-41a0-9bf9-f1f737d78b91"
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST != EMPTY</Expectation><Expectation
+ Kind="Instantaneous"
+ DeadLine="1"
+ Guid="3b766a06-4f7d-4462-a970-07045d2ba244"
+>EURORADIO.CurrentRBCConnection().MessageOut != EMPTY</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
