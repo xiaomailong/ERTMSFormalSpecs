@@ -78,7 +78,10 @@ namespace GUI.TestRunnerView.TimeLineControl
             filtering.ShowDialog(this);
             filtering.UpdateConfiguration(FilterConfiguration);
             CleanEventPositions();
-            TimeLine.Changed = true;
+            if (TimeLine != null)
+            {
+                TimeLine.Changed = true;
+            }
             Refresh();
         }
 
