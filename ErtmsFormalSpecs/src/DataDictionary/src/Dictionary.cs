@@ -1375,6 +1375,7 @@ namespace DataDictionary
         /// This method can create many levels of nested namespaces
         /// </summary>
         /// <param name="levels">The name of the namespace, with the levels separated into separate Strings</param>
+        /// <param name="baseDictionary">The dictionary the namespace structure is being copied form</param>
         /// <returns></returns>
         public Types.NameSpace GetNameSpace(String[] levels, Dictionary baseDictionary)
         {

@@ -352,10 +352,23 @@ namespace DataDictionary.Interpreter
                 {
                     retVal += addReference(namable, expectation, asType, values);
                 }
+
+                // if nothing was found and there is an update for the subdeclarator, check the update for relevant model elements
                 ModelElement modelElement = currentDeclarator as ModelElement;
-                if (modelElement != null && retVal == 0)
+                if (modelElement != null)
                 {
-                    currentDeclarator = modelElement.Updates as ISubDeclarator;
+                    if (retVal == 0)
+                    {
+                        currentDeclarator = modelElement.Updates as ISubDeclarator;
+                    }
+                    else if (modelElement.UpdatedBy.Count == 1)
+                    {
+                        currentDeclarator = modelElement.UpdatedBy[0] as ISubDeclarator;
+                    }
+                    else
+                    {
+                        currentDeclarator = null;
+                    }
                 }
                 else
                 {

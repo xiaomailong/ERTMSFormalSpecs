@@ -75,6 +75,13 @@ namespace DataDictionary.Interpreter
             /// <param name="visitSubNodes"></param>
             public override void visit(BaseModelElement obj, bool visitSubNodes)
             {
+                // Clear the update information, to be built later
+                ModelElement modelElement = obj as ModelElement;
+                if (modelElement != null)
+                {
+                    modelElement.UpdatedBy.Clear();
+                }
+
                 if (Options.Rebuild)
                 {
                     obj.CacheDependancy = null;
@@ -99,6 +106,50 @@ namespace DataDictionary.Interpreter
                 }
             }
         }
+
+        /// <summary>
+        ///     Finds and stores the updates for each ModelElement
+        /// </summary>
+        public class FindUpdates : Generated.Visitor
+        {
+            /// <summary>
+            ///     Constructor
+            /// </summary>
+            /// <param name="system">the EFS System</param>
+            public FindUpdates(EFSSystem system)
+            {
+                foreach (Dictionary dictionary in system.Dictionaries)
+                {
+                    visit(dictionary, true);
+                }
+            }
+
+
+            /// <summary>
+            ///     Cleans up the declared elements dictionaries
+            /// </summary>
+            /// <param name="obj"></param>
+            /// <param name="visitSubNodes"></param>
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
+            {
+                ModelElement modelElement = obj as ModelElement;
+                if (modelElement != null)
+                {
+                    if (modelElement.getUpdates() != null)
+                    {
+                        // find the model element updated by obj and add to its list of updates
+                        ModelElement baseElement = GuidCache.INSTANCE.GetModel(modelElement.getUpdates());
+                        baseElement.UpdatedBy.Add(modelElement);
+
+                        base.visit(obj, visitSubNodes);
+                    }
+                }
+            }
+        }
+
+
+
+
 
         /// <summary>
         ///     The EFS system that need to be compiled
@@ -434,6 +485,9 @@ namespace DataDictionary.Interpreter
 
                 // Initialises the declared elements
                 CleanBeforeCompilation cleanBeforeCompilation = new CleanBeforeCompilation(options, EFSSystem);
+
+                // Create the update information
+                FindUpdates findUpdates = new FindUpdates(EFSSystem);
 
                 // Compiles each expression and each statement encountered in the nodes
                 foreach (Dictionary dictionary in EFSSystem.Dictionaries)

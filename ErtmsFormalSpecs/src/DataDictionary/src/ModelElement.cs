@@ -260,6 +260,11 @@ namespace DataDictionary
                 return retVal;
             }
         }
+
+        /// <summary>
+        /// Provides the list of the model elements which update this model element
+        /// </summary>
+        public List<ModelElement> UpdatedBy = new List<ModelElement>();  
     }
 
     public interface TextualExplain

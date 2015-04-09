@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DataDictionary.Functions;
 using DataDictionary.Rules;
 using DataDictionary.Variables;
@@ -614,6 +615,20 @@ namespace DataDictionary.Types
         {
             get { return getComment(); }
             set { setComment(value); }
+        }
+
+        /// <summary>
+        /// Creates a copy of the namespace in the designated dictionary. The enclosing namespace structure is copied over.
+        /// The new namespace is set to update this one.
+        /// </summary>
+        /// <param name="dictionary">The target dictionary of the copy</param>
+        /// <returns></returns>
+        public NameSpace CreateNameSpaceUpdate(Dictionary dictionary)
+        {
+            // Looks in the target dictionary for a namespace with the same path as this one,
+            // if none is found, creates any necessary namespaces
+            NameSpace retVal = dictionary.GetNameSpace(FullName.Split('.'), Dictionary);
+            return retVal;
         }
     }
 }

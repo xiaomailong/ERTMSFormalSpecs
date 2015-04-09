@@ -348,5 +348,20 @@ namespace DataDictionary.test
 
             return retVal;
         }
+
+        /// <summary>
+        ///     Creates a precondition in the enclosing function case
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected PreCondition CreatePreCondition(Case enclosing, string name)
+        {
+            PreCondition retVal = (PreCondition)Factory.createPreCondition();
+            enclosing.appendPreConditions(retVal);
+            retVal.ExpressionText = name;
+
+            return retVal;
+        }
     }
 }

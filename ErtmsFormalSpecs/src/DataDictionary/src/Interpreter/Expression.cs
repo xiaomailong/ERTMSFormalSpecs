@@ -245,35 +245,7 @@ namespace DataDictionary.Interpreter
         /// <param name="accept"></param>
         public void filter(BaseFilter accept)
         {
-            {
-                HashSet<ModelElement> redefined = new HashSet<ModelElement>();
-                foreach (ReturnValueElement element in Values)
-                {
-                    ModelElement modelElement = element.Value as ModelElement;
-                    if (modelElement != null && modelElement.Updates != null)
-                    {
-                        redefined.Add(modelElement.Updates);
-                    }
-                }
-
-                List<ReturnValueElement> tmp = new List<ReturnValueElement>();
-                foreach ( ReturnValueElement element in Values )
-                {
-                    ModelElement modelElement = element.Value as ModelElement;
-                    if (modelElement != null)
-                    {
-                        if (!redefined.Contains(modelElement))
-                        {
-                            tmp.Add(element);
-                        }
-                    }
-                    else
-                    {
-                        tmp.Add(element);
-                    }
-                }
-                Values = tmp;
-            }
+            RemoveUpdated();
 
             // Only keep the most specific elements.
             string mostSpecific = null;
@@ -359,6 +331,45 @@ namespace DataDictionary.Interpreter
 
                 Values = tmp;
             }
+        }
+
+        /// <summary>
+        /// Removes the elements that have been updated by another element
+        /// </summary>
+        private void RemoveUpdated()
+        {
+            // 
+            HashSet<ModelElement> redefined = new HashSet<ModelElement>();
+            foreach (ReturnValueElement element in Values)
+            {
+                ModelElement modelElement = element.Value as ModelElement;
+                if (modelElement != null && modelElement.Updates != null)
+                {
+                    redefined.Add(modelElement.Updates);
+                }
+            }
+
+            // According to updates, several path may lead to the same model element. 
+            // Since that model element is uniquely idenfied, keep only one instance
+            HashSet<ModelElement> alreadyAdded = new HashSet<ModelElement>();
+            List<ReturnValueElement> tmp = new List<ReturnValueElement>();
+            foreach (ReturnValueElement element in Values)
+            {
+                ModelElement modelElement = element.Value as ModelElement;
+                if (modelElement != null)
+                {
+                    if (!redefined.Contains(modelElement) && !alreadyAdded.Contains(modelElement))
+                    {
+                        alreadyAdded.Add(modelElement);
+                        tmp.Add(element);
+                    }
+                }
+                else
+                {
+                    tmp.Add(element);
+                }
+            }
+            Values = tmp;
         }
 
         /// <summary>
