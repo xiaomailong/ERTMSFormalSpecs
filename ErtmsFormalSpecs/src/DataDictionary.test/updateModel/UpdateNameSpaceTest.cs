@@ -28,17 +28,9 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             NameSpace updatedNameSpace = nameSpace.CreateNameSpaceUpdate(dictionary2);
-            Function updatedFunction = OverallFunctionFinder.INSTANCE.findByName(updatedNameSpace, "f");
-
-            try
-            {
-                ((Case) updatedFunction.Cases[0]).ExpressionText = "True";
-            }
-            catch (NullReferenceException e)
-            {
-                throw new Exception("Copy not performed properly, could not find updatedfunction or one of its sub-elements.");
-            }
-
+            Function updatedFunction = CreateFunction(nameSpace, "f", "Bool");
+            Case updCase1 = CreateCase(updatedFunction, "Case 1", "True");
+            updatedFunction.setUpdates(function.Guid);
 
             Compiler.Compile_Synchronous(true);
 

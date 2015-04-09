@@ -19,7 +19,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using DataDictionary.Generated;
+using DataDictionary.Interpreter;
 using DataDictionary.Specification;
 using Utils;
 using XmlBooster;
@@ -37,6 +39,7 @@ using StateMachine = DataDictionary.Types.StateMachine;
 using SubSequence = DataDictionary.Tests.SubSequence;
 using TranslationDictionary = DataDictionary.Tests.Translations.TranslationDictionary;
 using Type = DataDictionary.Types.Type;
+using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary
 {
@@ -1379,39 +1382,58 @@ namespace DataDictionary
         /// <returns></returns>
         public Types.NameSpace GetNameSpace(String[] levels, Dictionary baseDictionary)
         {
-            string fullName = String.Join(".", levels);
-
-            // Look at all the namespaces of this dictionary for the one designated by fullName
+            // Keep a list of the sub-namespaces of the current element. This will be updated for each level of nesting
             List<String> nameSpaces = new List<string>();
             OverallNameSpaceFinder.INSTANCE.findAllValueNames(null, this, false, nameSpaces);
 
-            if (!nameSpaces.Contains(fullName))
+            Types.NameSpace retVal = FindOrCreateNameSpace(levels[0], this, nameSpaces, baseDictionary);
+
+            Types.NameSpace parent = retVal;
+            for (int index = 1; index < levels.Length; index++)
             {
-                Types.NameSpace nameSpace = (Types.NameSpace)acceptor.getFactory().createNameSpace();
-                if (levels.Count() > 1)
-                {
-                    // Find or create the parent namespace (through recursive call to GetNameSpace) and add a new namespace to it
-                    String[] higherLevels = levels.Take(levels.Count() - 1).ToArray();
-                    Types.NameSpace parent = GetNameSpace(higherLevels, baseDictionary);
-
-                    nameSpace.setName(levels[levels.Count() - 1]);
-                    nameSpace.setUpdates(OverallNameSpaceFinder.INSTANCE.findByName(baseDictionary, String.Join(".", levels)).Guid);
-
-                    parent.appendNameSpaces(nameSpace);
-                    parent.InitDeclaredElements();
-                }
-                else
-                {
-                    // if there is only one level of namespaces, create it and add it to the dictionary
-                    nameSpace.setName(levels[0]);
-                    nameSpace.setUpdates(baseDictionary.findNameSpace(levels[0]).Guid);
-
-                    appendNameSpaces(nameSpace);
-                    InitDeclaredElements();
-                }
+                string fullName = String.Join(".", levels, 0, index + 1);
+                retVal = FindOrCreateNameSpace(fullName, parent, nameSpaces, baseDictionary);
+                parent = retVal;
             }
 
-            return OverallNameSpaceFinder.INSTANCE.findByName(this, fullName);
+            return retVal;
+        }
+
+        private Types.NameSpace FindOrCreateNameSpace(string fullName, IEnclosesNameSpaces parent, List<String> namespaces, Dictionary dictionary)
+        {
+            // get parent's type
+
+            Types.NameSpace retVal;
+
+            if (namespaces.Contains(fullName))
+            {
+                retVal = OverallNameSpaceFinder.INSTANCE.findByName(this, fullName);
+            }
+            else
+            {
+                retVal = (Types.NameSpace)acceptor.getFactory().createNameSpace();
+                string name = fullName.Substring(fullName.LastIndexOf('.') + 1);
+                retVal.setName(name);
+
+                // set the updates link for the new namespace
+                retVal.setUpdates(OverallNameSpaceFinder.INSTANCE.findByName(dictionary, fullName).Guid);
+
+                if (parent as Dictionary != null)
+                {
+                    Dictionary enclosing = parent as Dictionary;
+                    enclosing.appendNameSpaces(retVal);
+                    enclosing.InitDeclaredElements();
+                }
+                else if (parent as Types.NameSpace != null)
+                {
+                    Types.NameSpace enclosing = parent as Types.NameSpace;
+                    enclosing.appendNameSpaces(retVal);
+                    enclosing.InitDeclaredElements();
+                }
+                
+            }
+
+            return retVal;
         }
 
 
@@ -1421,7 +1443,7 @@ namespace DataDictionary
         public const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";
 
         /// <summary>
-        ///     The name of the requireement set for scoping information
+        ///     The name of the requirement set for scoping information
         /// </summary>
         public const string SCOPE_NAME = "Scope";
     }
