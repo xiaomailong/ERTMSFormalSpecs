@@ -1809,7 +1809,9 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
  Guid="17ba976d-ce42-46dc-bde1-e8c9dab8a0e3"
 >IncomingMessageIsConsistent(MessageIn)</PreCondition><PreCondition
  Guid="0fc0e74a-540a-4b62-9910-5cf32bab4dde"
->DataPriorityCorrect(MessageIn)</PreCondition></PreConditions>
+>DataPriorityCorrect(MessageIn)</PreCondition><PreCondition
+ Guid="a5c08762-5545-4f90-9842-d38abbcca45b"
+>MessageIn != EMPTY</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7ffe8131-5392-4ec9-a32e-1ad7d3cb2dcd"
@@ -6624,8 +6626,9 @@ Kernel.Mode not in [Default.Mode.SH, Default.Mode.PS]</Expression>
 >
 </ReqRef><Comment>Performs the data consistency checks on an incoming radio message.
 The checks performed in EFS are:
-  - the time stanp of the received message is greater than the time stamp of the previous received message.
-  - all values of variables in the message are valid.</Comment>
+  - the time stamp of the received message is greater than the time stamp of the previous received message.
+  - all values of variables in the message are valid.
+In the case the incoming message is EMPTY, the function returns true since the absence of message is not considered as inconsistancy.</Comment>
 <Parameters>
 <Parameter
  Type="InMessageStruct"
@@ -6642,7 +6645,7 @@ The checks performed in EFS are:
 <PreCondition
  Guid="2f5d5aef-f2c0-4e0b-958e-3b4a3769699b"
 >NOT Available(InMessage.Message)</PreCondition></PreConditions>
-<Expression>False</Expression>
+<Expression>True</Expression>
 </Case><Case
  Name="High priority message"
  Guid="a6510492-0c7e-4ab1-956a-8527ad7a594b"
