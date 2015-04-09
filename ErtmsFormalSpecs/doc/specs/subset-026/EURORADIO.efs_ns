@@ -5926,6 +5926,13 @@ Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Ex
 </ReqRef><Comment>Indicates if the session is already established with the requested RBC.
 
 It can only return false if there is no open session or if the last known RBC has to be contacted and the id of the currenly connected RBC corresponds to the last known RBC id.</Comment>
+<Parameters>
+<Parameter
+ Type="RBCIdStruct"
+ Name="newId"
+ Guid="ed1875f0-7d41-4f59-bed4-5c0381adcbad"
+>
+</Parameter></Parameters>
 <Cases>
 <Case
  Name="No open session"
@@ -5937,21 +5944,10 @@ It can only return false if there is no open session or if the last known RBC ha
 >AllSessionsClosed()</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
- Name="Contact last known RBC"
- Guid="64d6f106-510a-4e1f-84b6-125c437a5319"
+ Name="Session is open"
+ Guid="40a342f5-b51c-445d-85e3-d59075550cf3"
 >
-<PreConditions>
-<PreCondition
- Guid="bcb10fd3-510d-4c90-bae8-f07439b7b2bf"
->ContactOption == ContactOptionEnum.ContactLastKnownRBC</PreCondition><PreCondition
- Guid="5681dc01-53e7-409e-9433-13e0c39fa57b"
->LastKnownRBC.Id != CurrentRBCConnection().ContactData.Id</PreCondition></PreConditions>
-<Expression>False</Expression>
-</Case><Case
- Name="Otherwise"
- Guid="0996c4d0-015e-467b-a61e-cc13846a6c74"
->
-<Expression>True</Expression>
+<Expression>CurrentRBCConnection().ContactData.Id == newId</Expression>
 </Case></Cases>
 </Function><Function
  Type="SystemVersionEnum"
@@ -6947,7 +6943,14 @@ Available(Message.Message.UNCONDITIONAL_EMERGENCY_STOP)</Expression>
     DataState =&gt; Default.DataState.Valid
 }</Action><Action
  Guid="b327d97a-1053-46ca-a7eb-480617cdb643"
->RBCContactOrderToRepeat &lt;- EMPTY</Action></Actions>
+>RBCContactOrderToRepeat &lt;- EMPTY</Action><Action
+ Guid="890385aa-93d6-49a6-be94-a3fd1d17d4e8"
+>SelectRBCToContact().ContactData &lt;- RBCContactStruct
+{
+    Id =&gt; anOrder.Id,
+    PhoneNumber =&gt; anOrder.PhoneNumber,
+    DataState =&gt; Default.DataState.Valid
+}</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="No mobile terminals are registered"
@@ -7257,7 +7260,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <PreConditions>
 <PreCondition
  Guid="dd160343-60f0-4795-ae66-17e29ea4cd14"
->SessionIsAlreadyEstablishedWithRequestedRBC()</PreCondition></PreConditions>
+>SessionIsAlreadyEstablishedWithRequestedRBC( newId =&gt; LastKnownRBC.Id )</PreCondition></PreConditions>
 <Actions>
 </Actions>
 </RuleCondition><RuleCondition
@@ -7542,13 +7545,27 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0a0571a8-3af1-44b4-8760-c3e5cb384074"
 >
+</ReqRef><ReqRef
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dee3a696-b7b0-48b7-a1bf-8b75e04cb6a2"
+>
 </ReqRef><Comment>If the contact information is provided by the packet (no special values in NID_RBC or NID_RADIO), then the order can be created with these values.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7b666480-3ecb-4c96-8c61-ffca7307d3f0"
 >Packet.NID_RBC != Messages.NID_RBC.contact_last_known_RBC</PreCondition><PreCondition
  Guid="cfb7f6d4-38c4-4b3c-8c66-f6f85d58f314"
->Packet.NID_RADIO != &apos;FFFFFFFFFFFFFFFF&apos;</PreCondition></PreConditions>
+>Packet.NID_RADIO != &apos;FFFFFFFFFFFFFFFF&apos;</PreCondition><PreCondition
+ Guid="fc75e5ff-9626-40d5-b7c2-9ea806fb6023"
+>NOT SessionIsAlreadyEstablishedWithRequestedRBC
+(
+  newId =&gt; RBCIdStruct
+  {
+    Country =&gt; Packet.NID_C,
+    Id =&gt; Packet.NID_RBC
+  }
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a6ebac2e-aa73-4d15-b591-4cdeeb13852b"
@@ -7586,13 +7603,20 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="61312243-54c8-4f97-8fba-9d4e9873d62c"
 >
+</ReqRef><ReqRef
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aebe376c-a6c3-4656-b792-a9f1386bc6ad"
+>
 </ReqRef><Comment>If the packet asks to contact the last known RBC and this information is available, then it is used to create to order. Otherwise the order is ignored.</Comment>
 <PreConditions>
 <PreCondition
  Guid="3b4b580e-3c79-489d-a09a-403729e158a8"
 >Packet.NID_RBC == Messages.NID_RBC.contact_last_known_RBC</PreCondition><PreCondition
  Guid="ed774a24-cf60-4ff7-a891-167c4f37b771"
->LastKnownRBC != EMPTY</PreCondition></PreConditions>
+>LastKnownRBC != EMPTY</PreCondition><PreCondition
+ Guid="643dd1e5-247c-445a-9d5b-4e180783a3ae"
+>NOT SessionIsAlreadyEstablishedWithRequestedRBC( newId =&gt; LastKnownRBC.Id )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="21f26d0a-7720-431b-a2c8-aa7386d415c0"
@@ -7630,11 +7654,25 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="22b090a3-8bd5-4a4c-b5bd-c7de0e0dba4b"
 >
+</ReqRef><ReqRef
+ Id="66543af0-6c4b-46a0-b17f-96ed3e1d37ba"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a9bccd46-4c22-4999-b7ae-5cc2435b6ef4"
+>
 </ReqRef><Comment>If the packet asks to use the short number, then the order is created from the RBC id provided by the packet + the short number stored on-board.</Comment>
 <PreConditions>
 <PreCondition
  Guid="22232e5b-8c7d-4811-8464-469786240a65"
->Packet.NID_RADIO == &apos;FFFFFFFFFFFFFFFF&apos;</PreCondition></PreConditions>
+>Packet.NID_RADIO == &apos;FFFFFFFFFFFFFFFF&apos;</PreCondition><PreCondition
+ Guid="5d34872a-e00b-4a6c-9a22-783bc78f4dea"
+>NOT SessionIsAlreadyEstablishedWithRequestedRBC
+(
+  newId =&gt; RBCIdStruct
+  {
+    Country =&gt; Packet.NID_C,
+    Id =&gt; Packet.NID_RBC
+  }
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="81f8e818-3b94-4484-9cb1-2ae9a62240e9"
