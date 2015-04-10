@@ -338,7 +338,7 @@ namespace DataDictionary.Interpreter
         /// </summary>
         public void RemoveUpdated()
         {
-            // 
+            // We collect all the values that have been redefined to filter them out of the list
             HashSet<ModelElement> redefined = new HashSet<ModelElement>();
             foreach (ReturnValueElement element in Values)
             {
@@ -349,18 +349,14 @@ namespace DataDictionary.Interpreter
                 }
             }
 
-            // According to updates, several path may lead to the same model element. 
-            // Since that model element is uniquely idenfied, keep only one instance
-            HashSet<ModelElement> alreadyAdded = new HashSet<ModelElement>();
             List<ReturnValueElement> tmp = new List<ReturnValueElement>();
             foreach (ReturnValueElement element in Values)
             {
                 ModelElement modelElement = element.Value as ModelElement;
                 if (modelElement != null)
                 {
-                    if (!redefined.Contains(modelElement) && !alreadyAdded.Contains(modelElement))
+                    if (!redefined.Contains(modelElement))
                     {
-                        alreadyAdded.Add(modelElement);
                         tmp.Add(element);
                     }
                 }
@@ -369,7 +365,40 @@ namespace DataDictionary.Interpreter
                     tmp.Add(element);
                 }
             }
+
+            tmp = RemoveDuplicates(tmp);
             Values = tmp;
+        }
+
+        /// <summary>
+        /// According to updates, several path may lead to the same model element. 
+        /// Since that model element is uniquely idenfied, keep only one instance
+        /// </summary>
+        /// <param name="list">The list of elements from which we remove duplicates</param>
+        /// <returns></returns>
+        private List<ReturnValueElement> RemoveDuplicates(List<ReturnValueElement> list)
+        {
+            List<ReturnValueElement> retVal = new List<ReturnValueElement>();
+            if (list.Count > 0)
+            {
+                foreach (ReturnValueElement element in list)
+                {
+                    bool isPresent = false;
+                    foreach (ReturnValueElement elem in retVal)
+                    {
+                        if (elem.CompareTo(element) == 0)
+                        {
+                            isPresent = true;
+                        }
+                    }
+
+                    if (!isPresent)
+                    {
+                        retVal.Add(element);
+                    }
+                }
+            }
+            return retVal;
         }
 
         /// <summary>
