@@ -23,6 +23,7 @@ using System.Security.Cryptography;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Specification;
+using log4net.Core;
 using Utils;
 using XmlBooster;
 using Chapter = DataDictionary.Specification.Chapter;
@@ -1378,64 +1379,36 @@ namespace DataDictionary
         /// This method can create many levels of nested namespaces
         /// </summary>
         /// <param name="levels">The name of the namespace, with the levels separated into separate Strings</param>
-        /// <param name="baseDictionary">The dictionary the namespace structure is being copied form</param>
+        /// <param name="initialDictionary">The dictionary the namespace structure is being copied form</param>
         /// <returns></returns>
-        public Types.NameSpace GetNameSpace(String[] levels, Dictionary baseDictionary)
+        public Types.NameSpace GetNameSpaceUpdate(String[] levels, Dictionary initialDictionary)
         {
-            // Keep a list of the sub-namespaces of the current element. This will be updated for each level of nesting
-            List<String> nameSpaces = new List<string>();
-            OverallNameSpaceFinder.INSTANCE.findAllValueNames(null, this, false, nameSpaces);
+            Types.NameSpace retVal = null;
 
-            Types.NameSpace retVal = FindOrCreateNameSpace(levels[0], this, nameSpaces, baseDictionary);
-
-            Types.NameSpace parent = retVal;
-            for (int index = 1; index < levels.Length; index++)
+            if (levels.Length > 0)
             {
-                string fullName = String.Join(".", levels, 0, index + 1);
-                retVal = FindOrCreateNameSpace(fullName, parent, nameSpaces, baseDictionary);
-                parent = retVal;
+                retVal = findNameSpace(levels[0]);
+                Types.NameSpace initialNameSpace = initialDictionary.findNameSpace(levels[0]);
+
+                if (retVal == null)
+                {
+                    retVal = (Types.NameSpace) acceptor.getFactory().createNameSpace();
+                    retVal.setName(levels[0]);
+                    appendNameSpaces(retVal);
+
+                    // set the updates link for the new namespace
+                    retVal.setUpdates(initialNameSpace.Guid);
+                }
+
+                for (int index = 1; index < levels.Length; index++)
+                {
+                    initialNameSpace = initialNameSpace.findNameSpaceByName((levels[index]));
+                    retVal = retVal.FindOrCreateNameSpaceUpdate(levels[index], initialNameSpace);
+                }
             }
 
             return retVal;
         }
-
-        private Types.NameSpace FindOrCreateNameSpace(string fullName, IEnclosesNameSpaces parent, List<String> namespaces, Dictionary dictionary)
-        {
-            // get parent's type
-
-            Types.NameSpace retVal;
-
-            if (namespaces.Contains(fullName))
-            {
-                retVal = OverallNameSpaceFinder.INSTANCE.findByName(this, fullName);
-            }
-            else
-            {
-                retVal = (Types.NameSpace)acceptor.getFactory().createNameSpace();
-                string name = fullName.Substring(fullName.LastIndexOf('.') + 1);
-                retVal.setName(name);
-
-                // set the updates link for the new namespace
-                retVal.setUpdates(OverallNameSpaceFinder.INSTANCE.findByName(dictionary, fullName).Guid);
-
-                if (parent as Dictionary != null)
-                {
-                    Dictionary enclosing = parent as Dictionary;
-                    enclosing.appendNameSpaces(retVal);
-                    enclosing.InitDeclaredElements();
-                }
-                else if (parent as Types.NameSpace != null)
-                {
-                    Types.NameSpace enclosing = parent as Types.NameSpace;
-                    enclosing.appendNameSpaces(retVal);
-                    enclosing.InitDeclaredElements();
-                }
-                
-            }
-
-            return retVal;
-        }
-
 
         /// <summary>
         ///     The name of the requirement set for functional blocs

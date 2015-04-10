@@ -343,25 +343,33 @@ namespace DataDictionary.Interpreter
         {
             int retVal = 0;
 
-            ISubDeclarator currentDeclarator = subDeclarator;
-            while (currentDeclarator != null)
+            if (subDeclarator != null)
             {
-                List<INamable> tmp = new List<INamable>();
-                currentDeclarator.Find(Image, tmp);
-                foreach (INamable namable in tmp)
+                // Go to the beginning of the update chain 
+                ISubDeclarator currentDeclarator = subDeclarator;
+                ModelElement modelElement = subDeclarator as ModelElement;
+                while (modelElement != null)
                 {
-                    retVal += addReference(namable, expectation, asType, values);
-                }
-
-                // if nothing was found and there is an update for the subdeclarator, check the update for relevant model elements
-                ModelElement modelElement = currentDeclarator as ModelElement;
-                if (modelElement != null)
-                {
-                    if (retVal == 0)
+                    if (modelElement.Updates != null)
                     {
                         currentDeclarator = modelElement.Updates as ISubDeclarator;
                     }
-                    else if (modelElement.UpdatedBy.Count == 1)
+                    modelElement = modelElement.Updates;
+                }
+
+                while (currentDeclarator != null)
+                {
+                    // Adds the elements of the current declarator
+                    List<INamable> tmp = new List<INamable>();
+                    currentDeclarator.Find(Image, tmp);
+                    foreach (INamable namable in tmp)
+                    {
+                        retVal += addReference(namable, expectation, asType, values);
+                    }
+
+                    // Follow the update chain
+                    modelElement = currentDeclarator as ModelElement;
+                    if (modelElement != null && modelElement.UpdatedBy.Count == 1)
                     {
                         currentDeclarator = modelElement.UpdatedBy[0] as ISubDeclarator;
                     }
@@ -370,11 +378,9 @@ namespace DataDictionary.Interpreter
                         currentDeclarator = null;
                     }
                 }
-                else
-                {
-                    currentDeclarator = null;
-                }
             }
+
+            values.RemoveUpdated();
 
             return retVal;
         }

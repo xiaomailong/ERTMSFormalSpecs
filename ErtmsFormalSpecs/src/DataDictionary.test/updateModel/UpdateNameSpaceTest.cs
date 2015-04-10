@@ -27,7 +27,7 @@ namespace DataDictionary.test
             Dictionary dictionary2 = CreateDictionary("TestUpdate");
             dictionary2.setUpdates(dictionary.Guid);
 
-            NameSpace updatedNameSpace = nameSpace.CreateNameSpaceUpdate(dictionary2);
+            NameSpace updatedNameSpace = nameSpace.CreateUpdateInDictionary(dictionary2);
             Function updatedFunction = CreateFunction(nameSpace, "f", "Bool");
             Case updCase1 = CreateCase(updatedFunction, "Case 1", "True");
             updatedFunction.setUpdates(function.Guid);

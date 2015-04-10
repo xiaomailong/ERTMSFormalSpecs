@@ -743,7 +743,7 @@ namespace DataDictionary.Types
 
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
-            NameSpace nameSpace = dictionary.GetNameSpace(names, Dictionary);
+            NameSpace nameSpace = dictionary.GetNameSpaceUpdate(names, Dictionary);
             nameSpace.appendStateMachines(retVal);
 
             return retVal;

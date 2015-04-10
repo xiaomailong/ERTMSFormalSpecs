@@ -348,7 +348,7 @@ namespace DataDictionary.Functions
 
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
-            NameSpace nameSpace = dictionary.GetNameSpace(names, Dictionary);
+            NameSpace nameSpace = dictionary.GetNameSpaceUpdate(names, Dictionary);
             nameSpace.appendProcedures(retVal);
 
             return retVal;

@@ -336,7 +336,7 @@ namespace DataDictionary.Interpreter
         /// <summary>
         /// Removes the elements that have been updated by another element
         /// </summary>
-        private void RemoveUpdated()
+        public void RemoveUpdated()
         {
             // 
             HashSet<ModelElement> redefined = new HashSet<ModelElement>();

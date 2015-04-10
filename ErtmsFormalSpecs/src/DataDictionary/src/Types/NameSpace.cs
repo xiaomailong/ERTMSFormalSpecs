@@ -17,10 +17,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using DataDictionary.Functions;
-using DataDictionary.Rules;
+using DataDictionary.Generated;
 using DataDictionary.Variables;
 using Utils;
+using Function = DataDictionary.Functions.Function;
+using Procedure = DataDictionary.Functions.Procedure;
+using Rule = DataDictionary.Rules.Rule;
+using Variable = DataDictionary.Variables.Variable;
 
 namespace DataDictionary.Types
 {
@@ -623,12 +626,34 @@ namespace DataDictionary.Types
         /// </summary>
         /// <param name="dictionary">The target dictionary of the copy</param>
         /// <returns></returns>
-        public NameSpace CreateNameSpaceUpdate(Dictionary dictionary)
+        public NameSpace CreateUpdateInDictionary(Dictionary dictionary)
         {
-            // Looks in the target dictionary for a namespace with the same path as this one,
-            // if none is found, creates any necessary namespaces
-            NameSpace retVal = dictionary.GetNameSpace(FullName.Split('.'), Dictionary);
+            NameSpace retVal = dictionary.GetNameSpaceUpdate(FullName.Split('.'), Dictionary);
             return retVal;
         }
+
+        /// <summary>
+        /// Finds or creates a new namespace, and indicates that the original namespace is updated
+        /// </summary>
+        /// <param name="name">The name of the namespace to find or create</param>
+        /// <param name="initialNameSpace">The namespace that is updated</param>
+        /// <returns></returns>
+        public NameSpace FindOrCreateNameSpaceUpdate(string name, NameSpace initialNameSpace)
+        {
+            NameSpace retVal = findNameSpaceByName(name);
+
+            if (retVal == null)
+            {
+                retVal = (NameSpace)acceptor.getFactory().createNameSpace();
+                retVal.setName(name);
+                appendNameSpaces(retVal);
+
+                // set the updates link for the new namespace
+                retVal.setUpdates(initialNameSpace.Guid);
+            }
+
+            return retVal;
+        }
+
     }
 }

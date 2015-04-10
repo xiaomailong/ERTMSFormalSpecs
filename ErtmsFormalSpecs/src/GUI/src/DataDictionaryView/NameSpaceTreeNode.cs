@@ -211,7 +211,7 @@ namespace GUI.DataDictionaryView
                 if (updatedElement == null)
                 {
                     // If the element does not already exist in the patch, add a copy to it
-                    updatedElement = Item.CreateNameSpaceUpdate(dictionary);
+                    updatedElement = Item.CreateUpdateInDictionary(dictionary);
                 }
                 // navigate to the function, whether it was created or not
                 GUIUtils.MDIWindow.Select(updatedElement);
