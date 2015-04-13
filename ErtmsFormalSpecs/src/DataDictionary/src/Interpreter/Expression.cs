@@ -366,7 +366,7 @@ namespace DataDictionary.Interpreter
                 }
             }
 
-            tmp = RemoveDuplicates(tmp);
+            RemoveDuplicates(tmp);
             Values = tmp;
         }
 
@@ -375,16 +375,16 @@ namespace DataDictionary.Interpreter
         /// Since that model element is uniquely idenfied, keep only one instance
         /// </summary>
         /// <param name="list">The list of elements from which we remove duplicates</param>
-        /// <returns></returns>
-        private List<ReturnValueElement> RemoveDuplicates(List<ReturnValueElement> list)
+        /// <returns>The list of individual ReturnValueElements derived from List</returns>
+        private void RemoveDuplicates(List<ReturnValueElement> list)
         {
-            List<ReturnValueElement> retVal = new List<ReturnValueElement>();
+            List<ReturnValueElement> tmp = new List<ReturnValueElement>();
             if (list.Count > 0)
             {
                 foreach (ReturnValueElement element in list)
                 {
                     bool isPresent = false;
-                    foreach (ReturnValueElement elem in retVal)
+                    foreach (ReturnValueElement elem in tmp)
                     {
                         if (elem.CompareTo(element) == 0)
                         {
@@ -394,11 +394,11 @@ namespace DataDictionary.Interpreter
 
                     if (!isPresent)
                     {
-                        retVal.Add(element);
+                        tmp.Add(element);
                     }
                 }
             }
-            return retVal;
+            list = tmp;
         }
 
         /// <summary>
