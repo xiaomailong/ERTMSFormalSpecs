@@ -29,10 +29,10 @@ namespace DataDictionary.test
             Variable variable = CreateVariable(nameSpace, "ModelElement", "ModelElement");
             variable.SubVariables["Value"].Value = System.BoolType.False;
 
-            Expression expression = Parser.Expression(dictionary, "NameSpace.ModelElement");
+            Expression expression = Parser.Expression(dictionary, "NameSpace.ModelElement.Value");
             IValue value = expression.GetValue(new InterpretationContext(), null);
 
-            Assert.AreEqual(value, variable.Value);
+            Assert.AreEqual(value, variable.SubVariables["Value"].Value);
         }
     }
 }
