@@ -27,7 +27,7 @@ namespace DataDictionary.test
             structElem.setDefault("True"); 
 
             Variable variable = CreateVariable(nameSpace, "ModelElement", "ModelElement");
-            variable.SubVariables["Value"].Value = new BoolValue(structElem.Type, false);
+            variable.SubVariables["Value"].Value = System.BoolType.False;
 
             Expression expression = Parser.Expression(dictionary, "NameSpace.ModelElement");
             IValue value = expression.GetValue(new InterpretationContext(), null);

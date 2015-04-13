@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataDictionary.Functions;
+﻿using DataDictionary.Functions;
 using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Types;
@@ -166,7 +161,7 @@ namespace DataDictionary.test
 
             Expression expression = Parser.Expression(dictionary, "N.N1.f()");
             IValue value = expression.GetValue(new InterpretationContext(), null);
-            IValue refVal = new IntValue(value.Type, 1);
+            IValue refVal = new IntValue(System.IntegerType, 1);
             Assert.AreEqual(refVal.LiteralName, value.LiteralName);
         }
 

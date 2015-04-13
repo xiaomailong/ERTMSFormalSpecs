@@ -236,7 +236,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        ///     Creates a rule and a rule condition in the state machine provided
+        ///     Creates a rule and a rule condition in the model element provided
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
@@ -286,7 +286,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        ///     Creates a function in the enclosing namespace
+        ///     Creates a parameter in the enclosing function
         /// </summary>
         /// <param name="function"></param>
         /// <param name="name"></param>
@@ -303,7 +303,7 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        ///     Creates a function in the enclosing namespace
+        ///     Creates a case in the enclosing function
         /// </summary>
         /// <param name="function"></param>
         /// <param name="name"></param>
@@ -323,13 +323,13 @@ namespace DataDictionary.test
         ///     Creates an action in the enclosing rule condition
         /// </summary>
         /// <param name="enclosing"></param>
-        /// <param name="name"></param>
+        /// <param name="expression"></param>
         /// <returns></returns>
-        protected Action CreateAction(RuleCondition enclosing, string name)
+        protected Action CreateAction(RuleCondition enclosing, string expression)
         {
             Action retVal = (Action) Factory.createAction();
             enclosing.appendActions(retVal);
-            retVal.ExpressionText = name;
+            retVal.ExpressionText = expression;
 
             return retVal;
         }
@@ -338,13 +338,13 @@ namespace DataDictionary.test
         ///     Creates a precondition in the enclosing rule condition
         /// </summary>
         /// <param name="enclosing"></param>
-        /// <param name="name"></param>
+        /// <param name="expression"></param>
         /// <returns></returns>
-        protected PreCondition CreatePreCondition(RuleCondition enclosing, string name)
+        protected PreCondition CreatePreCondition(RuleCondition enclosing, string expression)
         {
             PreCondition retVal = (PreCondition) Factory.createPreCondition();
             enclosing.appendPreConditions(retVal);
-            retVal.ExpressionText = name;
+            retVal.ExpressionText = expression;
 
             return retVal;
         }
