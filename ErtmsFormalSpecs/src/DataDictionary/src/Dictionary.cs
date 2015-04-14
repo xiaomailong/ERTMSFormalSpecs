@@ -1411,6 +1411,34 @@ namespace DataDictionary
         }
 
         /// <summary>
+        ///     Checks the entire chain of updates, to see if the dictionary is an update of this one
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        public bool IsUpdatedBy(Dictionary dictionary)
+        {
+            bool retVal = false;
+
+            bool updates = true;
+            while (updates)
+            {
+                if (dictionary.Updates == null)
+                {
+                    updates = false;
+                }
+                else if (dictionary.Updates == this)
+                {
+                    retVal = true;
+                    break;
+                }
+
+                dictionary = (Dictionary)dictionary.Updates;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         ///     The name of the requirement set for functional blocs
         /// </summary>
         public const string FUNCTIONAL_BLOCK_NAME = "Functional blocs";

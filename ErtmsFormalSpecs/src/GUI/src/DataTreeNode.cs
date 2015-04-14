@@ -1096,14 +1096,31 @@ namespace GUI
                 ModelElement modelElement = Item as ModelElement;
                 if (modelElement != null)
                 {
-                    DictionarySelector.DictionarySelector dictionarySelector =
-                        new DictionarySelector.DictionarySelector(efsSystem, FilterOptions.Updates, modelElement.Dictionary);
-                    dictionarySelector.ShowDictionaries(mainWindow);
-
-                    if (dictionarySelector.Selected != null)
+                    int updates = 0;
+                    foreach (DataDictionary.Dictionary dict in efsSystem.Dictionaries)
                     {
-                        retVal = dictionarySelector.Selected;
+                        if (modelElement.Dictionary.IsUpdatedBy(dict))
+                        {
+                            // Set retVal to the update in case it is the only one for the base dictionary
+                            retVal = dict;
+                            updates++;
+                        }
                     }
+
+                    if (updates > 1)
+                    {
+                        // if there are 0 or 1 possible updates, it will already have the correct value
+                        // if there are more, choose the update from a list of possibilities
+                        DictionarySelector.DictionarySelector dictionarySelector =
+                            new DictionarySelector.DictionarySelector(efsSystem, FilterOptions.Updates, modelElement.Dictionary);
+                        dictionarySelector.ShowDictionaries(mainWindow);
+
+                        if (dictionarySelector.Selected != null)
+                        {
+                            retVal = dictionarySelector.Selected;
+                        }
+                    }
+                    
                 }
             }
 

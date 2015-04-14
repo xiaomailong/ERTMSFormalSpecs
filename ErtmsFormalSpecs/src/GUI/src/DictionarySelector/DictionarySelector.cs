@@ -136,38 +136,10 @@ namespace GUI.DictionarySelector
                 retVal = false;
             }
             else if (options == FilterOptions.Updates && 
-                    !IsUpdate(dictionary))
+                    !updatedDictionary.IsUpdatedBy(dictionary))
             {
                 // The options restrict the selection to updates of a particular dictionary
                 retVal = false;
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        ///     Checks the entire chain of updates, to see if the dictionary is an update of updatedDictionary
-        /// </summary>
-        /// <param name="dictionary"></param>
-        /// <returns></returns>
-        private bool IsUpdate(Dictionary dictionary)
-        {
-            bool retVal = false;
-
-            bool updates = true;
-            while (updates)
-            {
-                if (dictionary.Updates == null)
-                {
-                    updates = false;
-                }
-                else if (dictionary.Updates == updatedDictionary)
-                {
-                    retVal = true;
-                    break;
-                }
-
-                dictionary = (Dictionary)dictionary.Updates;
             }
 
             return retVal;
