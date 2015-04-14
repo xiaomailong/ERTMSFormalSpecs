@@ -16,11 +16,19 @@
 
 using System;
 using System.Collections;
+using System.Security.Policy;
 using System.Windows.Forms;
 using DataDictionary;
 
 namespace GUI.DictionarySelector
 {
+    public enum FilterOptions
+    {
+        None,
+        Updates,
+        HideUpdates
+    };
+
     public partial class DictionarySelector : Form
     {
         /// <summary>
@@ -63,11 +71,25 @@ namespace GUI.DictionarySelector
         ///     Constructor
         /// </summary>
         /// <param name="efsSystem">The EFSSystem for which this rule set selector is created</param>
-        public DictionarySelector(EFSSystem efsSystem)
+        /// <param name="Options">The options used to filter the selection</param>
+        public DictionarySelector(EFSSystem efsSystem, FilterOptions Options = FilterOptions.None, Dictionary UpdatedDictionary = null)
         {
             InitializeComponent();
+
+            options = Options;
+            updatedDictionary = UpdatedDictionary;
             EFSSystem = efsSystem;
         }
+
+        /// <summary>
+        ///     The filtering options applied to the dictionaries
+        /// </summary>
+        private FilterOptions options;
+
+        /// <summary>
+        ///     If the selection is limited to updates of a particular dictionary, the Guid of the updated dictionary
+        /// </summary>
+        private Dictionary updatedDictionary;
 
         /// <summary>
         ///     The associated EFS System
@@ -83,18 +105,107 @@ namespace GUI.DictionarySelector
                 ArrayList entries = new ArrayList();
                 foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
-                    entries.Add(new ListBoxEntry(dictionary));
+                    if (AddToEntries(dictionary))
+                    {
+                        entries.Add(new ListBoxEntry(dictionary));
+                    }
                 }
                 dataDictionaryListBox.DataSource = entries;
                 dataDictionaryListBox.DisplayMember = "Name";
-                dataDictionaryListBox.ValueMember = "Dictionary";
+
+                if (entries.Count > 0)
+                {
+                    dataDictionaryListBox.ValueMember = "Dictionary";
+                }
             }
+        }
+
+        /// <summary>
+        ///     Filters the dictionaries displayed for selection, if required
+        /// </summary>
+        /// <param name="dictionary">The dictionary under consideration</param>
+        /// <returns>Whether the dictionary should be displayed</returns>
+        private bool AddToEntries(Dictionary dictionary)
+        {
+            bool retVal = true;
+
+            if (options == FilterOptions.HideUpdates && 
+                    dictionary.Updates != null)
+            {
+                // The options restrict the selection to non-update dictionaries
+                retVal = false;
+            }
+            else if (options == FilterOptions.Updates && 
+                    !IsUpdate(dictionary))
+            {
+                // The options restrict the selection to updates of a particular dictionary
+                retVal = false;
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Checks the entire chain of updates, to see if the dictionary is an update of updatedDictionary
+        /// </summary>
+        /// <param name="dictionary"></param>
+        /// <returns></returns>
+        private bool IsUpdate(Dictionary dictionary)
+        {
+            bool retVal = false;
+
+            bool updates = true;
+            while (updates)
+            {
+                if (dictionary.Updates == null)
+                {
+                    updates = false;
+                }
+                else if (dictionary.Updates == updatedDictionary)
+                {
+                    retVal = true;
+                    break;
+                }
+
+                dictionary = (Dictionary)dictionary.Updates;
+            }
+
+            return retVal;
         }
 
         /// <summary>
         ///     The selected dictionary
         /// </summary>
         public Dictionary Selected { get; private set; }
+
+
+        public void ShowDictionaries(MainWindow mainWindow)
+        {
+            // test that the data source of the selector is not empty
+            // to do this, we must check whether the DisplayMember is an empty string
+            if (dataDictionaryListBox.DisplayMember != "")
+            {
+                ShowDialog(mainWindow);
+            }
+            else
+            {
+                string noRelevantDictionaries = "";
+                if (options == FilterOptions.None)
+                {
+                    noRelevantDictionaries = "There are no dictionaries loaded in ERTMSFormalSpecs.";
+                }
+                else if (options == FilterOptions.Updates)
+                {
+                    noRelevantDictionaries = "There are no updates for " + updatedDictionary.Name +
+                                             " currently loaded in ERTMSFormalSpecs.\nTo create one, select File-> New-> Update.";
+                }
+                else if (options == FilterOptions.HideUpdates)
+                {
+                    noRelevantDictionaries = "There are no dictionaries that are not updates currently loaded in ERTMSFormalSpecs.";
+                }
+                MessageBox.Show(noRelevantDictionaries);
+            }
+        }
 
         /// <summary>
         ///     Handles the click event on the select button :

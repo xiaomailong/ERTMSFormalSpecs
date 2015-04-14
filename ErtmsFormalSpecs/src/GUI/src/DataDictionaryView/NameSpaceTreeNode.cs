@@ -202,11 +202,6 @@ namespace GUI.DataDictionaryView
 
             if (dictionary != null)
             {
-                if (dictionary.getUpdates() == null)
-                {
-                    dictionary.setUpdates(Item.Dictionary.Guid);
-                }
-
                 ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
                 if (updatedElement == null)
                 {
@@ -238,6 +233,7 @@ namespace GUI.DataDictionaryView
             newItem.MenuItems.Add(new MenuItem("Procedure", new EventHandler(AddProcedureHandler)));
             newItem.MenuItems.Add(new MenuItem("Variable", new EventHandler(AddVariableHandler)));
             newItem.MenuItems.Add(new MenuItem("Rule", new EventHandler(AddRuleHandler)));
+            newItem.MenuItems.Add(new MenuItem("-"));
             newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddNameSpaceUpdate)));
             retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));

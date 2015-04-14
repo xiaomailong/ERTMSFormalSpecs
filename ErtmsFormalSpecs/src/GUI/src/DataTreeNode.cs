@@ -26,6 +26,7 @@ using DataDictionary;
 using DataDictionary.Generated;
 using DataDictionary.Types;
 using GUI.Converters;
+using GUI.DictionarySelector;
 using GUI.Properties;
 using Utils;
 using XmlBooster;
@@ -1092,16 +1093,12 @@ namespace GUI
             EFSSystem efsSystem = mainWindow.EFSSystem;
             if (efsSystem != null)
             {
-
-                if (efsSystem.Dictionaries.Count == 1)
-                {
-                    retVal = efsSystem.Dictionaries[0];
-                }
-                else if (efsSystem.Dictionaries.Count > 1)
+                ModelElement modelElement = Item as ModelElement;
+                if (modelElement != null)
                 {
                     DictionarySelector.DictionarySelector dictionarySelector =
-                        new DictionarySelector.DictionarySelector(efsSystem);
-                    dictionarySelector.ShowDialog(mainWindow);
+                        new DictionarySelector.DictionarySelector(efsSystem, FilterOptions.Updates, modelElement.Dictionary);
+                    dictionarySelector.ShowDictionaries(mainWindow);
 
                     if (dictionarySelector.Selected != null)
                     {

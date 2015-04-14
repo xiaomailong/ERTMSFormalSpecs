@@ -17,6 +17,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Tests.Runner;
@@ -518,6 +519,25 @@ namespace DataDictionary.Rules
                 RuleCondition newRuleCondition = ruleCondition.duplicate();
                 retVal.appendConditions(newRuleCondition);
             }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Creates a copy of the rule in the designated dictionary. The namespace structure is copied over.
+        /// The new rule is set to update this one.
+        /// </summary>
+        /// <param name="dictionary">The target dictionary of the copy</param>
+        /// <returns></returns>
+        public Rule CreateRuleUpdate(Dictionary dictionary)
+        {
+            Rule retVal = (Rule)Duplicate();
+            retVal.setUpdates(Guid);
+
+            String[] names = FullName.Split('.');
+            names = names.Take(names.Count() - 1).ToArray();
+            NameSpace nameSpace = dictionary.GetNameSpaceUpdate(names, Dictionary);
+            nameSpace.appendRules(retVal);
 
             return retVal;
         }

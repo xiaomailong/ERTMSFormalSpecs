@@ -124,11 +124,6 @@ namespace GUI.DataDictionaryView
 
             if (dictionary != null)
             {
-                if (dictionary.getUpdates() == null)
-                {
-                    dictionary.setUpdates(Item.Dictionary.Guid);
-                }
-
                 ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
                 if (updatedElement == null)
                 {

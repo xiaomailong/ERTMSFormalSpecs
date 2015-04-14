@@ -113,6 +113,29 @@ namespace GUI.DataDictionaryView
         }
 
         /// <summary>
+        ///     Creates an update of the selected Item in the chosen updating DataDictionary.
+        ///     Used for both interfaces and structures.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        public void AddStructureUpdate(object sender, EventArgs args)
+        {
+            Dictionary dictionary = GetPatchDictionary();
+
+            if (dictionary != null)
+            {
+                ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
+                if (updatedElement == null)
+                {
+                    // If the element does not already exist in the patch, add a copy to it
+                    updatedElement = Item.CreateStructureUpdate(dictionary);
+                }
+                // navigate to the function, whether it was created or not
+                GUIUtils.MDIWindow.Select(updatedElement);
+            }
+        }
+
+        /// <summary>
         ///     The menu items for this tree node
         /// </summary>
         /// <returns></returns>
@@ -122,8 +145,12 @@ namespace GUI.DataDictionaryView
 
             if (Item.IsAbstract) // this is an interface, otherwise it is a structure
             {
-                retVal.Add(new MenuItem("Add an element", new EventHandler(AddStructureElementHandler)));
-                retVal.Add(new MenuItem("Add an interface", new EventHandler(AddInterfaceHandler)));
+                MenuItem newItem = new MenuItem("Add...");
+                newItem.MenuItems.Add(new MenuItem("Element", new EventHandler(AddStructureElementHandler)));
+                newItem.MenuItems.Add(new MenuItem("Interface", new EventHandler(AddInterfaceHandler)));
+                newItem.MenuItems.Add(new MenuItem("-"));
+                newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddStructureUpdate)));
+                retVal.Add(newItem);
             }
 
             if (Item.Interfaces.Count > 0)
@@ -204,29 +231,6 @@ namespace GUI.DataDictionaryView
             }
         }
 
-
-        public void AddStructureUpdate(object sender, EventArgs args)
-        {
-            DataDictionary.Dictionary dictionary = GetPatchDictionary();
-
-            if (dictionary != null)
-            {
-                if (dictionary.getUpdates() == null)
-                {
-                    dictionary.setUpdates(Item.Dictionary.Guid);
-                }
-
-                ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
-                if (updatedElement == null)
-                {
-                    // If the element does not already exist in the patch, add a copy to it
-                    updatedElement = Item.CreateStructureUpdate(dictionary);
-                }
-                // navigate to the function, whether it was created or not
-                GUIUtils.MDIWindow.Select(updatedElement);
-            }
-        }
-
         /// <summary>
         ///     The menu items for this tree node
         /// </summary>
@@ -240,6 +244,7 @@ namespace GUI.DataDictionaryView
             newItem.MenuItems.Add(new MenuItem("Structure element", new EventHandler(AddStructureElementHandler)));
             newItem.MenuItems.Add(new MenuItem("Procedure", new EventHandler(AddProcedureHandler)));
             newItem.MenuItems.Add(new MenuItem("State machine", new EventHandler(AddStateMachineHandler)));
+            newItem.MenuItems.Add(new MenuItem("-"));
             newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddStructureUpdate)));
             retVal.Add(newItem);
             retVal.AddRange(base.GetMenuItems());

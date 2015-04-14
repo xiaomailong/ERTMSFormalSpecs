@@ -20,6 +20,7 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using DataDictionary.Generated;
 using GUI.Converters;
+using ModelElement = DataDictionary.ModelElement;
 using Dictionary = DataDictionary.Dictionary;
 using Rule = DataDictionary.Rules.Rule;
 
@@ -112,6 +113,24 @@ namespace GUI.DataDictionaryView
             }
         }
 
+
+        private void AddRuleUpdate(object sender, EventArgs args)
+        {
+            DataDictionary.Dictionary dictionary = GetPatchDictionary();
+
+            if (dictionary != null)
+            {
+                ModelElement updatedElement = dictionary.findByFullName(Item.FullName) as ModelElement;
+                if (updatedElement == null)
+                {
+                    // If the element does not already exist in the patch, add a copy to it
+                    updatedElement = Item.CreateRuleUpdate(dictionary);
+                }
+                // navigate to the function, whether it was created or not
+                GUIUtils.MDIWindow.Select(updatedElement);
+            }
+        }
+
         /// <summary>
         ///     The menu items for this tree node
         /// </summary>
@@ -120,6 +139,9 @@ namespace GUI.DataDictionaryView
         {
             List<MenuItem> retVal = new List<MenuItem>();
 
+            MenuItem newItem = new MenuItem("Add...");
+            newItem.MenuItems.Add(new MenuItem("Update", new EventHandler(AddRuleUpdate)));
+            retVal.Add(newItem);
             retVal.Add(new MenuItem("Delete", new EventHandler(DeleteHandler)));
             retVal.AddRange(base.GetMenuItems());
             retVal.Insert(5, new MenuItem("-"));
