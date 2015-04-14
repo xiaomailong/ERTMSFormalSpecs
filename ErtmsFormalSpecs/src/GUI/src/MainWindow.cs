@@ -23,6 +23,7 @@ using System.Windows.Forms;
 using DataDictionary;
 using DataDictionary.Generated;
 using DataDictionary.Specification;
+using GUI.DictionarySelector;
 using GUI.EditorView;
 using GUI.LongOperations;
 using GUI.Report;
@@ -1941,6 +1942,41 @@ namespace GUI
                     ProgressDialog dialog = new ProgressDialog("Importing excel file....", specsImporter);
                     dialog.ShowDialog(Owner);
                 }
+            }
+        }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // First select the base dictionary that will be updated
+            // This ensures that the update will have a base dictionary
+            string updatedGuid = "";
+            {
+                DictionarySelector.DictionarySelector dictionarySelector =
+                    new DictionarySelector.DictionarySelector(EFSSystem);
+                dictionarySelector.ShowDictionaries(this);
+
+                if (dictionarySelector.Selected != null)
+                {
+                    updatedGuid = dictionarySelector.Selected.Guid;
+                }
+            }
+
+            // Creates a new dictionary
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Title = "Create update for an existing dictionary. Select update file location";
+            openFileDialog.Filter = "EFS Files (*.efs)|*.efs";
+            openFileDialog.CheckFileExists = false;
+            if (openFileDialog.ShowDialog(this) == DialogResult.OK)
+            {
+                string filePath = openFileDialog.FileName;
+
+                Dictionary dictionary = new Dictionary();
+                dictionary.FilePath = filePath;
+                dictionary.Name = Path.GetFileNameWithoutExtension(filePath);
+                dictionary.setUpdates(updatedGuid);
+                EFSSystem.AddDictionary(dictionary);
+                RefreshModel();
+                AddChildWindow(new DataDictionaryView.Window(dictionary), DockAreas.Document);
             }
         }
     }
