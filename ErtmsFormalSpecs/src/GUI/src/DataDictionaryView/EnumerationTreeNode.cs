@@ -162,7 +162,8 @@ namespace GUI.DataDictionaryView
                     // Get the enclosing namespace (by splitting the fullname and asking a recursive function to provide or make it)
                     updatedElement = Item.CreateEnumUpdate(dictionary);
                 }
-                // navigate to the function, whether it was created or not
+                // navigate to the enum, whether it was created or not
+                GUIUtils.MDIWindow.RefreshModel();
                 GUIUtils.MDIWindow.Select(updatedElement);
             }
         }

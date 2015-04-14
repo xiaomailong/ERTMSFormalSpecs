@@ -187,6 +187,7 @@ namespace GUI.DataDictionaryView
                     updatedElement = Item.CreateFunctionUpdate(dictionary);
                 }
                 // navigate to the function, whether it was created or not
+                GUIUtils.MDIWindow.RefreshModel();
                 GUIUtils.MDIWindow.Select(updatedElement);
             }
         }

@@ -117,7 +117,11 @@ namespace GUI.DataDictionaryView
             return new ItemEditor();
         }
 
-
+        /// <summary>
+        ///     Adds an update of the seleced collection to the chosen patch dictionary
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
         private void AddCollectionUpdate(object sender, EventArgs args)
         {
             DataDictionary.Dictionary dictionary = GetPatchDictionary();
@@ -130,7 +134,8 @@ namespace GUI.DataDictionaryView
                     // If the element does not already exist in the patch, add a copy to it
                     updatedElement = Item.CreateCollectionUpdate(dictionary);
                 }
-                // navigate to the function, whether it was created or not
+                // navigate to the collection, whether it was created or not
+                GUIUtils.MDIWindow.RefreshModel();
                 GUIUtils.MDIWindow.Select(updatedElement);
             }
         }

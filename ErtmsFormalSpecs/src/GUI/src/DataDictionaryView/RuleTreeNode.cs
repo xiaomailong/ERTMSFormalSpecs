@@ -126,7 +126,8 @@ namespace GUI.DataDictionaryView
                     // If the element does not already exist in the patch, add a copy to it
                     updatedElement = Item.CreateRuleUpdate(dictionary);
                 }
-                // navigate to the function, whether it was created or not
+                // navigate to the rule, whether it was created or not
+                GUIUtils.MDIWindow.RefreshModel();
                 GUIUtils.MDIWindow.Select(updatedElement);
             }
         }

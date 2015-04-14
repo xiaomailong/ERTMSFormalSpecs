@@ -186,7 +186,8 @@ namespace GUI.DataDictionaryView
                     // If the element does not already exist in the patch, add a copy to it
                     updatedElement = Item.CreateStateMachineUpdate(dictionary);
                 }
-                // navigate to the function, whether it was created or not
+                // navigate to the state machine, whether it was created or not
+                GUIUtils.MDIWindow.RefreshModel();
                 GUIUtils.MDIWindow.Select(updatedElement);
             }
         }
