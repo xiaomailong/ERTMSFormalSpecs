@@ -4282,36 +4282,6 @@ IN MRSP</Action></Actions>
  Guid="fd769c43-43d5-4cd7-b0d2-b1dc236e5833"
 >
 </ReqRef><Comment>Provides the indication location at the MRSP speed</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Display when available"
- Guid="c0688ad2-b95a-4d86-9f0a-8979bb6ea24e"
->
-<ReqRef
- Id="5e511b79-1787-413b-ae27-0d7d6246b010"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="25676bff-a7f1-47af-96e9-5377e75399eb"
->
-</ReqRef><Comment>Keeps the information display request active when ProcedureOut is in Available state</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display when available"
- Guid="56a67571-e3cb-4850-820e-eb1cb4b3cdfb"
->
-<Comment>The indistaion location should only be displayed when the speed and distance monitoring is in Ceiling Speed Monitoring or and the start of Target Speed Monitoring (PIM)</Comment>
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="4383da9f-ab69-4fe3-84cf-1b0c583c86e3"
->Display()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4330,9 +4300,10 @@ IN MRSP</Action></Actions>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Updates the request status"
+ Name="Display when required"
  Guid="06f69d9b-2cfc-4bcd-923f-e7ce254bbe2a"
 >
+<Comment>Display the Indication Location at MRSP speed when the speed and distance monitoring is in CSM or PIM modes.</Comment>
 <PreConditions>
 <PreCondition
  Guid="53ea4f82-55d1-44b0-8cc5-ae71ac67eef7"
@@ -4340,7 +4311,19 @@ IN MRSP</Action></Actions>
 <Actions>
 <Action
  Guid="3d929aee-7492-4a27-8111-e05f356f398a"
->THIS.OutputInformation.RequestDisplay()</Action></Actions>
+>IndicationLocationAtMrspSpeed.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Hide otherwise"
+ Guid="74af4920-3f6c-4fa8-9273-c6cd9ed1f446"
+>
+<Comment>Hide if the speed and distance monitoring is inactive or if the monitoring is in TSM or RSM modes.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="381a8777-b8c1-4c03-8c70-3a3192a81a17"
+>IndicationLocationAtMrspSpeed.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

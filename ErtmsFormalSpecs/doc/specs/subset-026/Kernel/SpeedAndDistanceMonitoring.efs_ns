@@ -3497,5 +3497,40 @@ NOT DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested</PreCond
  Guid="e2712580-841c-4dd1-88f4-a8e6583f7ba9"
 >DMI.MasterDMI().Out_ReleaseSpeed.Display()</Action></Actions>
 </RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Display indication location at MRSP speed"
+ Guid="5dc59ca0-f1e7-4d6e-91fe-fffdaf26d2d1"
+>
+<ReqRef
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ba503e2-7680-410b-bae0-8de7fabdab99"
+>
+</ReqRef><SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="In CSM or PIM"
+ Guid="318beb55-bfbd-4d50-95f0-b625034f1951"
+>
+<PreConditions>
+<PreCondition
+ Guid="65b61732-a87c-455b-bdb9-03c8e8fcfa36"
+>DMI.OUT.IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fd2db40b-5d6c-489e-a967-d028d547f0b0"
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Otherwise"
+ Guid="44dd1368-dfee-4d7d-9e63-aab23939412a"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="91d92fd2-af3e-4b15-a7b7-5726df3f7c59"
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
 </Rule></Rules>
 </NameSpace>
