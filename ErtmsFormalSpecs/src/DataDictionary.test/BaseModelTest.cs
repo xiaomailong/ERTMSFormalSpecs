@@ -4,7 +4,9 @@ using NUnit.Framework;
 using Utils;
 using Action = DataDictionary.Rules.Action;
 using Function = DataDictionary.Functions.Function;
-using Case = DataDictionary.Functions.Case ;
+using Case = DataDictionary.Functions.Case;
+using Enum = DataDictionary.Types.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
 using NameSpace = DataDictionary.Types.NameSpace;
 using PreCondition = DataDictionary.Rules.PreCondition;
 using Rule = DataDictionary.Rules.Rule;
@@ -130,6 +132,38 @@ namespace DataDictionary.test
             {
                 Assert.Fail();
             }
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates an enum in the namespace provided
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected Enum CreateEnum(NameSpace enclosing, string name)
+        {
+            Enum retVal = (Enum) Factory.createEnum();
+
+            enclosing.appendEnumerations(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Appends an enum value to the enum provided
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected EnumValue CreateEnumValue(Enum enclosing, string name)
+        {
+            EnumValue retVal = (EnumValue) Factory.createEnumValue();
+
+            enclosing.appendValues(retVal);
             retVal.Name = name;
 
             return retVal;
@@ -309,12 +343,19 @@ namespace DataDictionary.test
         /// <param name="name"></param>
         /// <param name="expression"></param>
         /// <returns></returns>
-        protected Case CreateCase(Function function, string name, string expression)
+        protected Case CreateCase(Function function, string name, string expression, string precondition = "")
         {
             Case retVal = (Case)Factory.createCase();
             function.appendCases(retVal);
             retVal.Name = name;
             retVal.ExpressionText = expression;
+
+            if (precondition != "")
+            {
+                PreCondition preCondition = new PreCondition();
+                preCondition.ExpressionText = precondition;
+                retVal.appendPreConditions(preCondition);
+            }
 
             return retVal;
         }

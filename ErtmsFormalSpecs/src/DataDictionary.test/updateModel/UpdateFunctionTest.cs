@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DataDictionary.Constants;
 using DataDictionary.Functions;
 using DataDictionary.Interpreter;
 using DataDictionary.Types;
@@ -15,7 +16,7 @@ namespace DataDictionary.test
     public class UpdateFunctionTest : BaseModelTest
     {
         /// <summary>
-        /// Tests that ... TODO
+        /// Tests that a call to an updated function is evaluated correctly
         /// </summary>
         [Test]
         public void TestUpdateFunction()
@@ -102,6 +103,41 @@ namespace DataDictionary.test
             Compiler.Compile_Synchronous(true);
 
             Expression expression = Parser.Expression(dictionary, "N1.f()");
+            IValue value = expression.GetValue(new InterpretationContext(), null);
+            Assert.AreEqual(System.BoolType.False, value);
+        }
+
+        [Test]
+        public void TestParameterTypeReference()
+        {
+
+            Dictionary dictionary = CreateDictionary("Test");
+            NameSpace nameSpace = CreateNameSpace(dictionary, "N1");
+
+            DataDictionary.Types.Enum enumeration = CreateEnum(nameSpace, "Enum");
+            DataDictionary.Constants.EnumValue value1 = CreateEnumValue(enumeration, "First");
+
+            Function function = CreateFunction(nameSpace, "f", "Bool");
+            
+            Parameter param = new Parameter();
+            param.setTypeName("N1.Enum");
+            param.setName("Value");
+
+            function.appendParameters(param);
+            Case cas1 = CreateCase(function, "Case 1", "True", "Value == Enum.First");
+
+
+            Dictionary dictionary2 = CreateDictionary("TestUpdate");
+            dictionary2.setUpdates(dictionary.Guid);
+
+            Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
+            Case cas3 = (Case)updatedFunction.Cases[0];
+            cas3.ExpressionText = "False";
+
+
+            Compiler.Compile_Synchronous(true);
+
+            Expression expression = Parser.Expression(dictionary, "N1.f(N1.Enum.First)");
             IValue value = expression.GetValue(new InterpretationContext(), null);
             Assert.AreEqual(System.BoolType.False, value);
         }

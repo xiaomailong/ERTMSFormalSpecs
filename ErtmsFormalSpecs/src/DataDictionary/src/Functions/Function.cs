@@ -1430,6 +1430,13 @@ namespace DataDictionary.Functions
             Function retVal = (Function) Duplicate();
             retVal.setUpdates(Guid);
 
+            // In addition to indicating the function's update information, we need to create links for each parameter
+            foreach (Parameter parameter in retVal.FormalParameters)
+            {
+                Parameter matchingParameter = getFormalParameter(parameter.Name);
+                parameter.setUpdates(matchingParameter.Guid);
+            }
+
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
             NameSpace nameSpace = dictionary.GetNameSpaceUpdate(names, Dictionary);
