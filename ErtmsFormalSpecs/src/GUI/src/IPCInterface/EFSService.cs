@@ -356,6 +356,7 @@ namespace GUI.IPCInterface
                                 {
                                     GUIUtils.MDIWindow.Invoke(
                                         (MethodInvoker) delegate { GUIUtils.MDIWindow.RefreshAfterStep(); });
+                                    ClearFunctionCaches();
                                 }
                             }
                         }
@@ -385,6 +386,51 @@ namespace GUI.IPCInterface
             finally
             {
                 EFSAccess.ReleaseMutex();
+            }
+        }
+
+        /// <summary>
+        /// Cleanup function cache every 
+        /// </summary>
+        private int CacheCycle = 1;
+
+        /// <summary>
+        /// The number of cycles after which a clear cache is required
+        /// </summary>
+        private const int CLEAN_UP_CYCLE_COUNT = 50;
+
+        /// <summary>
+        /// Clears the function cache after each full cycle
+        /// </summary>
+        private void ClearFunctionCaches()
+        {
+            CacheCycle = (CacheCycle + 1) % CLEAN_UP_CYCLE_COUNT;
+            if (CacheCycle == 0)
+            {
+                foreach (DataDictionary.Dictionary dictionary in EFSSystem.INSTANCE.Dictionaries)
+                {
+                    foreach (DataDictionary.Types.NameSpace nameSpace in dictionary.NameSpaces)
+                    {
+                        ClearNameSpaceFunctionCaches(nameSpace);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Manually do the recursive call (instead of using a visitor
+        /// </summary>
+        /// <param name="nameSpace"></param>
+        private void ClearNameSpaceFunctionCaches(DataDictionary.Types.NameSpace nameSpace)
+        {
+            foreach ( Function function in nameSpace.Functions )
+            {
+                function.ClearCache();
+            }
+
+            foreach ( DataDictionary.Types.NameSpace subNameSpace in nameSpace.NameSpaces )
+            {
+                ClearNameSpaceFunctionCaches(subNameSpace);
             }
         }
 
