@@ -393,14 +393,14 @@
 ]</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
- Distance="10000"
+ Distance="390"
  IO="NA"
  LevelIN="NA"
  LevelOUT="NA"
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Distances"
+ Name="Step2 - Distance = 390m"
  Guid="f5e0f501-682e-4942-8fda-276e3430313f"
 >
 <SubSteps>
@@ -414,8 +414,21 @@
 >Odometry.NominalDistance &lt;- 390.0</Action><Action
  Guid="97184589-937a-400e-b76c-972c43215c1d"
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="1390"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step3 - Distance = 1390m"
+ Guid="6d90a7e7-4b1a-4206-a79e-1bc5a1b14b80"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
  Guid="22597dce-869a-4308-95ce-7d77323a4ab4"
 >
 <Actions>
@@ -424,8 +437,21 @@
 >Odometry.NominalDistance &lt;- 1390.0</Action><Action
  Guid="56cbc116-4ef2-4fa0-a2f3-237a0b9996a1"
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step3"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="1890"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step4 - Distance = 1890m"
+ Guid="3d9c88d4-ef06-460b-a686-b9d09dd8c1d7"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
  Guid="98b22f84-d073-4a3a-9fca-b3708803cd39"
 >
 <Actions>
@@ -434,8 +460,21 @@
 >Odometry.NominalDistance &lt;- 1890.0</Action><Action
  Guid="a28131d2-0f93-4d8f-9645-47f29f65d509"
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step4"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="1980"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step5 - Distance = 1980m"
+ Guid="ef691ae5-c940-4a6c-9f97-e57a0cce7b8c"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
  Guid="4d167ec9-26ff-47a5-b76b-379dbeb0d228"
 >
 <Actions>
@@ -444,8 +483,21 @@
 >Odometry.NominalDistance &lt;- 1980.0</Action><Action
  Guid="4003227d-fdf0-4659-a717-38a1f131f860"
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step5"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="2000"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step6 - Distance = 2000m"
+ Guid="0fee0ad4-483d-45f4-9543-f4c4d51f7f04"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
  Guid="a020a533-ede4-4d48-8eb9-d06ce0ffd1ee"
 >
 <Actions>
@@ -454,8 +506,21 @@
 >Odometry.NominalDistance &lt;- 2000.0</Action><Action
  Guid="bd06f463-d9fc-44de-9d5a-e48cfabade70"
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step6"
+</SubStep></SubSteps>
+</Step><Step
+ Distance="2010"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step7 - Distance = 2010m"
+ Guid="b6ea0408-3d2d-4aa4-aeac-e2da669ca2b6"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
  Guid="18666d03-3cef-4d75-8083-7a7565a62d01"
 >
 <Actions>
@@ -463,6 +528,29 @@
  Guid="9e59a459-009d-4f02-99b0-780cbeb29211"
 >Odometry.NominalDistance &lt;- 2010.0</Action><Action
  Guid="07aa0b55-40bf-4e55-9223-f02fc083c1a1"
+>Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ Distance="3000"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step8 - Let the train run"
+ Guid="5ffd1a58-a8f4-41a9-a5d8-8132d11d3dda"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="923d07b8-ef6d-4f37-a51f-45592237f2c3"
+>
+<Actions>
+<Action
+ Guid="3c32f3e4-31bd-449d-b889-457cd4c6fa72"
+>Odometry.NominalDistance &lt;- 3000.0</Action><Action
+ Guid="2b533579-75f3-4181-8b5c-5993e6a56155"
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
