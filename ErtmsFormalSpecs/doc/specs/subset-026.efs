@@ -823,14 +823,19 @@
 <Shortcuts>
 <Shortcut
  Name="EBD"
- Guid="3a813af7-bfa6-44fc-ab90-1a958f9922d8"
+ Guid="2f03e1af-854d-4f74-bbec-6866b44625b9"
 >
-<ShortcutName>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD</ShortcutName>
+<ShortcutName>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Display.EBD</ShortcutName>
+</Shortcut><Shortcut
+ Name="SBD"
+ Guid="c1e3a4fc-58ce-46b5-bf88-cdea43513d5c"
+>
+<ShortcutName>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Display.SBD</ShortcutName>
 </Shortcut><Shortcut
  Name="GUI"
- Guid="9634adad-da0f-42c1-aba9-063c48e7b0d1"
+ Guid="befea442-0f34-433b-b15c-1bf163138429"
 >
-<ShortcutName>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.GUI</ShortcutName>
+<ShortcutName>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Display.GUI</ShortcutName>
 </Shortcut></Shortcuts>
 </ShortcutFolder><ShortcutFolder
  Name="Speed resctrictions"
@@ -838,81 +843,15 @@
 >
 <Shortcuts>
 <Shortcut
- Name="W"
- Guid="e2d88b2e-1e2c-49d4-9dea-3f7626d73c78"
->
-<ShortcutName>Kernel.SpeedAndDistanceMonitoring.CeilingSupervision.W</ShortcutName>
-</Shortcut><Shortcut
- Name="MRSPSpeedRestrictions"
+ Name="MRSP"
  Guid="3b662213-8a99-44fb-bfda-f3343263bbef"
 >
 <ShortcutName>Kernel.MRSP.SpeedRestrictions</ShortcutName>
 </Shortcut><Shortcut
- Name="TSRSpeedRestrictions"
- Guid="0ce83e42-29fc-4ac8-bb6f-edb667c18776"
->
-<ShortcutName>Kernel.TSR.SpeedRestrictions</ShortcutName>
-</Shortcut><Shortcut
- Name="LXSpeedRestrictions"
- Guid="dcffc373-290d-4208-b0e3-44334659bb55"
->
-<ShortcutName>Kernel.LX.SpeedRestrictions</ShortcutName>
-</Shortcut><Shortcut
- Name="MA"
- Guid="1ed4673e-5536-4406-b4af-ec2e0304125e"
->
-<ShortcutName>Kernel.MA.SpeedRestrictions</ShortcutName>
-</Shortcut><Shortcut
- Name="EBI"
- Guid="fd233642-1a82-4e6a-8eb9-6f29d9f07513"
->
-<ShortcutName>Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.EBI</ShortcutName>
-</Shortcut><Shortcut
- Name="SBI"
- Guid="6b853abf-16f4-44d5-90b4-ae48e3267e9e"
->
-<ShortcutName>Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.SBI</ShortcutName>
-</Shortcut><Shortcut
- Name="P"
- Guid="b79dd12b-e52f-4419-b9f1-051eac13d10c"
+ Name="PermittedSpeed"
+ Guid="2f9b490e-08cd-4680-8563-9d38c36e991a"
 >
 <ShortcutName>Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.P</ShortcutName>
-</Shortcut></Shortcuts>
-</ShortcutFolder><ShortcutFolder
- Name="Linking"
- Guid="6fc38cec-19eb-4ead-ab40-76551d631b26"
->
-<Shortcuts>
-<Shortcut
- Name="CurrentBGWithinFrame"
- Guid="1165dbba-bbb7-4fc7-907f-f57df35fbb17"
->
-<ShortcutName>BTM.Linking.CurrentBGWithinFrame</ShortcutName>
-</Shortcut><Shortcut
- Name="BaliseHasReposPacketValidForDirection"
- Guid="b3051ca1-aa9d-460a-996e-8b82ff77c7a4"
->
-<ShortcutName>BTM.Linking.BaliseHasReposPacketValidForDirection</ShortcutName>
-</Shortcut><Shortcut
- Name="ConsiderPacket"
- Guid="722cf8a6-abc5-4216-a448-95c1ac97fd58"
->
-<ShortcutName>BTM.ConsiderPacket</ShortcutName>
-</Shortcut><Shortcut
- Name="AntennaPosition"
- Guid="0d275a95-e226-4a49-94ba-1f2508ceb910"
->
-<ShortcutName>BTM.AntennaPosition</ShortcutName>
-</Shortcut><Shortcut
- Name="CleanLinkingInfo"
- Guid="5f002275-d6ac-41f7-a805-adecae0b04d3"
->
-<ShortcutName>BTM.Linking.CleanLinkingInfo</ShortcutName>
-</Shortcut><Shortcut
- Name="HandleBaliseMessage"
- Guid="1ff03ec9-7303-4df1-aa01-7a29c72dfc84"
->
-<ShortcutName>BTM.HandleBaliseMessage</ShortcutName>
 </Shortcut></Shortcuts>
 </ShortcutFolder><ShortcutFolder
  Name="Euroradio"
@@ -925,32 +864,43 @@
 >
 <ShortcutName>EURORADIO.OpenRBCSession</ShortcutName>
 </Shortcut><Shortcut
- Name="StoreSessionInformation"
- Guid="c11c504b-9ba7-45be-b478-11764ffc3648"
->
-<ShortcutName>EURORADIO.StoreSessionInformation</ShortcutName>
-</Shortcut><Shortcut
  Name="HasActiveSession"
  Guid="08baea53-d80b-4721-99e7-ab5fadbe0cc2"
 >
 <ShortcutName>EURORADIO.HasActiveSession</ShortcutName>
 </Shortcut></Shortcuts>
+</ShortcutFolder><ShortcutFolder
+ Name="Procedures"
+ Guid="27d8e3ec-a2be-496e-b67d-6b94b14c8f48"
+>
+<Shortcuts>
+<Shortcut
+ Name="HandleInputs"
+ Guid="1496aaa2-54c0-4087-98b0-710a108cee42"
+>
+<ShortcutName>Kernel.HandleInputs</ShortcutName>
+</Shortcut><Shortcut
+ Name="HandleOutputs"
+ Guid="e7e3a539-e781-4bd1-8ee3-3f033205c8d5"
+>
+<ShortcutName>Kernel.HandleOutputs</ShortcutName>
+</Shortcut></Shortcuts>
 </ShortcutFolder></Folders>
 <Shortcuts>
 <Shortcut
+ Name="Level"
+ Guid="79218233-6cba-4fd6-9a6e-bfe89052c027"
+>
+<ShortcutName>Kernel.Level</ShortcutName>
+</Shortcut><Shortcut
  Name="Mode"
- Guid="e815c566-847e-4005-b446-c80cdf1d5c91"
+ Guid="e7f44b46-68d3-4ff8-b496-3aad10511bbe"
 >
 <ShortcutName>Kernel.Mode</ShortcutName>
 </Shortcut><Shortcut
- Name="HandleModeChange"
- Guid="862675ed-72a9-455d-ac11-8c6237473fce"
+ Name="MA"
+ Guid="25d243e1-cb33-4120-bdd4-93a2b93c865e"
 >
-<ShortcutName>Kernel.HandleModeChange</ShortcutName>
-</Shortcut><Shortcut
- Name="A_safe"
- Guid="02f84874-7bad-4198-a9d0-3220755b31c1"
->
-<ShortcutName>Kernel.TrainData.BrakingParameters.A_safe</ShortcutName>
+<ShortcutName>Kernel.MA.MA</ShortcutName>
 </Shortcut></Shortcuts>
 </ShortcutDictionary></Dictionary>
