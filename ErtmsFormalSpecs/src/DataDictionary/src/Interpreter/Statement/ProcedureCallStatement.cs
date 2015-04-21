@@ -302,17 +302,11 @@ namespace DataDictionary.Interpreter.Statement
                         }
                     }
 
-                    ExplanationPart part = null;
-                    if (explanation != null)
+                    ExplanationPart part = ExplanationPart.CreateSubExplanation(explanation, procedure);
+                    if (ctxt.Instance != null)
                     {
-                        part = new ExplanationPart(Root, procedure.FullName);
-                        explanation.SubExplanations.Add(part);
-                        if (ctxt.Instance != null)
-                        {
-                            ExplanationPart instanceExplanation = ExplanationPart.CreateSubExplanation(part,
-                                "instance = ");
-                            ExplanationPart.SetNamable(instanceExplanation, ctxt.Instance);
-                        }
+                        ExplanationPart instanceExplanation = ExplanationPart.CreateSubExplanation(part, "instance = ");
+                        ExplanationPart.SetNamable(instanceExplanation, ctxt.Instance);
                     }
 
                     int token = ctxt.LocalScope.PushContext();
@@ -353,7 +347,7 @@ namespace DataDictionary.Interpreter.Statement
         {
             foreach (RuleCondition condition in rule.RuleConditions)
             {
-                ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, condition.Name);
+                ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, condition);
 
                 if (condition.EvaluatePreConditions(ctxt, conditionExplanation, runner))
                 {

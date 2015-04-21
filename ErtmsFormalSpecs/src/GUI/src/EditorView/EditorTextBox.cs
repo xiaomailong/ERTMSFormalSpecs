@@ -290,7 +290,7 @@ namespace GUI
             ExplanationPart part = Instance as ExplanationPart;
             if (part != null)
             {
-                IValue value = part.Namable as IValue;
+                IValue value = part.RightPart as IValue;
                 if (value != null)
                 {
                     Window window = new Window();

@@ -1089,8 +1089,7 @@ namespace DataDictionary.Functions
                     foreach (Case aCase in Cases)
                     {
                         // Evaluate the function
-                        ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
-                            "Case " + aCase.Name + " : ");
+                        ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, aCase);
                         bool val = aCase.EvaluatePreConditions(context, subExplanation);
                         ExplanationPart.SetNamable(subExplanation,
                             val ? EFSSystem.BoolType.True : EFSSystem.BoolType.False);

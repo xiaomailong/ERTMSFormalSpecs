@@ -54,19 +54,41 @@ namespace DataDictionary.Interpreter
                     }
                 }
 
-                if (Expression != null)
+                if (LeftPart != null)
                 {
-                    retVal += Expression.ToString();
+                    retVal += explainLeftPart(LeftPart) + " = ";
                 }
 
-                if (Namable != null)
+                if (RightPart != null)
                 {
-                    retVal += explainNamable(Namable);
+                    retVal += explainNamable(RightPart);
                 }
 
                 return retVal;
             }
             set { _message = value; }
+        }
+
+        /// <summary>
+        /// Explains a left part
+        /// </summary>
+        /// <param name="leftPart"></param>
+        /// <returns></returns>
+        private string explainLeftPart(object leftPart)
+        {
+            string retVal;
+
+            INamable namable = leftPart as INamable;
+            if (namable != null)
+            {
+                retVal = namable.Name;
+            }
+            else
+            {
+                retVal = leftPart.ToString();
+            }
+
+            return retVal;
         }
 
         /// <summary>
@@ -85,24 +107,26 @@ namespace DataDictionary.Interpreter
         public Change Change { get; private set; }
 
         /// <summary>
-        ///     The (optional) expression for which this explanation part is created
+        ///     The (optional) left part of the explanationfor which this explanation part is created
         /// </summary>
-        public Expression Expression { get; set; }
+        public object LeftPart { get; set; }
 
         /// <summary>
-        ///     The (optional) value for which this explanation part is created
+        ///     The (optional) value (right part) for which this explanation part is created
         /// </summary>
-        public INamable Namable { get; set; }
+        public INamable RightPart { get; set; }
 
         /// <summary>
         ///     Constructor
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
-        public ExplanationPart(ModelElement element, string message, INamable namable = null)
+        /// <param name="message">The message to display. MAKE SURE you do not use string concatenation to create this message</param>
+        /// <param name="rightPart">The value associated to the message, if any</param>
+        public ExplanationPart(ModelElement element, string message, INamable rightPart = null)
         {
             Element = element;
             Message = message;
-            Namable = namable;
+            RightPart = rightPart;
             SubExplanations = new List<ExplanationPart>();
         }
 
@@ -122,10 +146,13 @@ namespace DataDictionary.Interpreter
         ///     Constructor
         /// </summary>
         /// <param name="element">The element for which this explanation part is created</param>
-        public ExplanationPart(ModelElement element, Expression expression)
+        /// <param name="leftPart">The left path to associate to this explanation</param>
+        /// <param name="rightPart">The value associate to this left part</param>
+        public ExplanationPart(ModelElement element, object leftPart, INamable rightPart = null)
         {
             Element = element;
-            Expression = expression;
+            LeftPart = leftPart;
+            RightPart = rightPart;
             SubExplanations = new List<ExplanationPart>();
         }
 
@@ -185,15 +212,16 @@ namespace DataDictionary.Interpreter
         ///     Creates a sub explanation for the explain provided as parameter
         /// </summary>
         /// <param name="explain"></param>
-        /// <param name="subExpression"></param>
+        /// <param name="leftPart"></param>
+        /// <param name="rightPart"></param>
         /// <returns></returns>
-        public static ExplanationPart CreateSubExplanation(ExplanationPart explain, Expression subExpression)
+        public static ExplanationPart CreateSubExplanation(ExplanationPart explain, object leftPart, INamable rightPart = null)
         {
             ExplanationPart retVal = null;
 
             if (explain != null)
             {
-                retVal = new ExplanationPart(explain.Element, subExpression);
+                retVal = new ExplanationPart(explain.Element, leftPart, rightPart);
                 explain.SubExplanations.Add(retVal);
             }
 
@@ -204,6 +232,7 @@ namespace DataDictionary.Interpreter
         ///     Creates a sub explanation for the explain provided as parameter
         /// </summary>
         /// <param name="explain"></param>
+        /// <param name="root"></param>
         /// <param name="change"></param>
         /// <returns></returns>
         public static ExplanationPart CreateSubExplanation(ExplanationPart explain, ModelElement root, Change change)
@@ -224,7 +253,6 @@ namespace DataDictionary.Interpreter
         /// </summary>
         /// <param name="explain"></param>
         /// <param name="name"></param>
-        /// <param name="namable"></param>
         /// <returns></returns>
         public static ExplanationPart CreateSubExplanation(ExplanationPart explain, string name)
         {
@@ -248,7 +276,7 @@ namespace DataDictionary.Interpreter
         {
             if (explain != null)
             {
-                explain.Namable = namable;
+                explain.RightPart = namable;
             }
         }
     }

@@ -378,8 +378,7 @@ namespace DataDictionary.Interpreter
             Function function = getFunction(context, explain);
             if (function != null)
             {
-                ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
-                    function.Name + " (...) returned ");
+                ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, function);
 
                 long start = Environment.TickCount;
 
@@ -525,8 +524,7 @@ namespace DataDictionary.Interpreter
                 foreach (Expression expression in ActualParameters)
                 {
                     Parameter parameter = callable.FormalParameters[i] as Parameter;
-                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
-                        "parameter " + parameter.Name + " = ");
+                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, parameter);
                     IValue val = expression.GetValue(context, subExplanation);
                     if (val != null)
                     {
@@ -548,8 +546,7 @@ namespace DataDictionary.Interpreter
                 foreach (KeyValuePair<Designator, Expression> pair in NamedActualParameters)
                 {
                     Parameter parameter = callable.getFormalParameter(pair.Key.Image);
-                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain,
-                        "parameter " + parameter.Name + " = ");
+                    ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, parameter);
                     IValue val = pair.Value.GetValue(context, subExplanation);
                     if (val != null)
                     {

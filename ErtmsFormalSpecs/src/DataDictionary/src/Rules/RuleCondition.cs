@@ -233,7 +233,7 @@ namespace DataDictionary.Rules
         {
             bool retVal = false;
 
-            ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, Name);
+            ExplanationPart conditionExplanation = ExplanationPart.CreateSubExplanation(explanation, this);
             InterpretationContext context = new InterpretationContext(instance);
             retVal = EvaluatePreConditions(context, conditionExplanation, runner);
 

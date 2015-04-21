@@ -392,7 +392,7 @@ namespace DataDictionary.Interpreter
         {
             IValue retVal = null;
 
-            ExplanationPart binaryExpressionExplanation = ExplanationPart.CreateSubExplanation(explain, Name + " = ");
+            ExplanationPart binaryExpressionExplanation = ExplanationPart.CreateSubExplanation(explain, this);
 
             IValue leftValue = null;
             IValue rightValue = null;

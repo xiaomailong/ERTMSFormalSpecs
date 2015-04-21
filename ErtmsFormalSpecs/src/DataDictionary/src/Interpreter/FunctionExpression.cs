@@ -165,7 +165,7 @@ namespace DataDictionary.Interpreter
         {
             IValue retVal = null;
 
-            ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, Name + " = ");
+            ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, this);
             try
             {
                 if (Parameters.Count == 1)

@@ -172,7 +172,7 @@ namespace DataDictionary.Interpreter
         {
             IValue retVal = null;
 
-            ExplanationPart subPart = ExplanationPart.CreateSubExplanation(explain, BoundVariable.Name);
+            ExplanationPart subPart = ExplanationPart.CreateSubExplanation(explain, BoundVariable);
             BoundVariable.Value = BindingExpression.GetValue(context, explain);
             ExplanationPart.SetNamable(subPart, BoundVariable.Value);
 

@@ -162,8 +162,7 @@ namespace DataDictionary.Interpreter
         /// <returns></returns>
         public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            ExplanationPart stabilizeExpressionExplanation = ExplanationPart.CreateSubExplanation(explain,
-                ToString() + " = ");
+            ExplanationPart stabilizeExpressionExplanation = ExplanationPart.CreateSubExplanation(explain, this);
 
             LastIteration.Value = InitialValue.GetValue(context, explain);
 

@@ -241,7 +241,7 @@ namespace GUI.TestRunnerView
                     }
                 }
 
-                Expression expression = explanationPart.Expression;
+                Expression expression = explanationPart.LeftPart as Expression;
                 if (expression != null)
                 {
                     if (VariablePartName != null)
