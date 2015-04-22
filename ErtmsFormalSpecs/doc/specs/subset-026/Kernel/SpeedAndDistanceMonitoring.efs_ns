@@ -3419,6 +3419,7 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Rules>
 <Rule
  Priority="Processing"
+ X="40"
  Y="130"
  Width="100"
  Height="50"
@@ -3456,7 +3457,7 @@ NOT DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested</PreCondi
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- X="110"
+ X="150"
  Y="130"
  Width="100"
  Height="50"
@@ -3499,6 +3500,8 @@ NOT DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested</PreCond
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ X="260"
+ Y="130"
  Width="100"
  Height="50"
  Name="Display indication location at MRSP speed"
