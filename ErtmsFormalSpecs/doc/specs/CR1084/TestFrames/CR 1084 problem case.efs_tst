@@ -284,7 +284,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step1 - Setup"
+ Name="Setup"
  Guid="c6fd5757-ee82-47e2-bf65-9be2ecfa4221"
 >
 <SubSteps>
@@ -311,7 +311,8 @@
 <Actions>
 <Action
  Guid="c35e9986-ba6f-460c-9989-3bd978d4c05b"
->BTM.LRBG.Position &lt;- BTM.Position{
+>BTM.LRBG.Position &lt;- BTM.Position
+{
     Position =&gt; 0.0,
     UnderReadingAmountOdo =&gt; 0.0,
     OverReadingAmountOdo =&gt; 0.0
@@ -400,7 +401,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step2 - Distance = 390m"
+ Name="Before pre-indication"
  Guid="f5e0f501-682e-4942-8fda-276e3430313f"
 >
 <SubSteps>
@@ -416,6 +417,29 @@
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
+ Distance="700"
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Pre-indication"
+ Guid="43d56e69-f20e-4bc1-b938-6a28ea92e75b"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="119b7951-fcee-41fe-9d80-0dda7723f6c0"
+>
+<Actions>
+<Action
+ Guid="2a6fbe5f-ecc0-4b20-aff9-f4afdb3295e1"
+>Odometry.NominalDistance &lt;- 700.0</Action><Action
+ Guid="1a143249-3ae3-4eb9-980c-29995712350e"
+>Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
  Distance="1390"
  IO="NA"
  LevelIN="NA"
@@ -423,7 +447,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step3 - Distance = 1390m"
+ Name="Target Speed Monitoring"
  Guid="6d90a7e7-4b1a-4206-a79e-1bc5a1b14b80"
 >
 <SubSteps>
@@ -446,7 +470,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step4 - Distance = 1890m"
+ Name="Approaching the target"
  Guid="3d9c88d4-ef06-460b-a686-b9d09dd8c1d7"
 >
 <SubSteps>
@@ -469,7 +493,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step5 - Distance = 1980m"
+ Name="Next target is revealed"
  Guid="ef691ae5-c940-4a6c-9f97-e57a0cce7b8c"
 >
 <SubSteps>
@@ -492,7 +516,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step6 - Distance = 2000m"
+ Name="Monitoring next target"
  Guid="0fee0ad4-483d-45f4-9543-f4c4d51f7f04"
 >
 <SubSteps>
@@ -508,29 +532,6 @@
 >Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
- Distance="2010"
- IO="NA"
- LevelIN="NA"
- LevelOUT="NA"
- ModeIN="NA"
- ModeOUT="NA"
- TranslationRequired="FALSE"
- Name="Step7 - Distance = 2010m"
- Guid="b6ea0408-3d2d-4aa4-aeac-e2da669ca2b6"
->
-<SubSteps>
-<SubStep
- Name="Sub-step1"
- Guid="18666d03-3cef-4d75-8083-7a7565a62d01"
->
-<Actions>
-<Action
- Guid="9e59a459-009d-4f02-99b0-780cbeb29211"
->Odometry.NominalDistance &lt;- 2010.0</Action><Action
- Guid="07aa0b55-40bf-4e55-9223-f02fc083c1a1"
->Odometry.EstimatedSpeed &lt;- 0.8 * Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
-</SubStep></SubSteps>
-</Step><Step
  Distance="3000"
  IO="NA"
  LevelIN="NA"
@@ -538,7 +539,7 @@
  ModeIN="NA"
  ModeOUT="NA"
  TranslationRequired="FALSE"
- Name="Step8 - Let the train run"
+ Name="Let the train run"
  Guid="5ffd1a58-a8f4-41a9-a5d8-8132d11d3dda"
 >
 <SubSteps>
