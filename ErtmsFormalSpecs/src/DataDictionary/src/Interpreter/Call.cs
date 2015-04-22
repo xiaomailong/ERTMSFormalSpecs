@@ -375,11 +375,10 @@ namespace DataDictionary.Interpreter
         {
             IValue retVal = null;
 
+            ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, this);
             Function function = getFunction(context, explain);
             if (function != null)
             {
-                ExplanationPart subExplanation = ExplanationPart.CreateSubExplanation(explain, function);
-
                 long start = Environment.TickCount;
 
                 Dictionary<Actual, IValue> parameterValues = null;
@@ -445,7 +444,7 @@ namespace DataDictionary.Interpreter
             }
             else
             {
-                AddError("Cannot find function " + ToString());
+                AddErrorAndExplain("Cannot find function for " + ToString(), subExplanation);
             }
 
             return retVal;

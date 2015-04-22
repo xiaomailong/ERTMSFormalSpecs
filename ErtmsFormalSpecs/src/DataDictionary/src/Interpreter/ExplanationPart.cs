@@ -56,12 +56,26 @@ namespace DataDictionary.Interpreter
 
                 if (LeftPart != null)
                 {
-                    retVal += explainLeftPart(LeftPart) + " = ";
+                    retVal += explainLeftPart(LeftPart);
                 }
 
-                if (RightPart != null)
+                if (RightPart != null && !(RightPart is Procedure))
                 {
-                    retVal += explainNamable(RightPart);
+                    if ( LeftPart is DataDictionary.Rules.RuleCondition )
+                    {
+                        if  ( RightPart == EFSSystem.INSTANCE.BoolType.True )
+                        {
+                            retVal = "SATISFIED " + retVal;
+                        }
+                        else
+                        {
+                            retVal = "NOT APPLICABLE " + retVal;
+                        }
+                    }
+                    else
+                    {
+                        retVal += explainNamable(RightPart);
+                    }
                 }
 
                 return retVal;
@@ -82,10 +96,32 @@ namespace DataDictionary.Interpreter
             if (namable != null)
             {
                 retVal = namable.Name;
+                if ( namable is Function)
+                {
+                    retVal += "(...)";
+                }
+                else if ( namable is Procedure )
+                {
+                    retVal += "(...)";
+                    Types.ITypedElement instance = RightPart as Types.ITypedElement;
+                    if ( instance != null )
+                    {
+                        retVal = instance.Type.Name + "." + retVal;
+                    }
+                }
+                else if ( namable is Case )
+                {
+                    retVal = "CASE " + retVal;
+                }
             }
             else
             {
                 retVal = leftPart.ToString();
+            }
+            
+            if (RightPart != null && !(leftPart is RuleCondition) && !(leftPart is Procedure))
+            {
+                retVal += " = ";
             }
 
             return retVal;
@@ -222,6 +258,27 @@ namespace DataDictionary.Interpreter
             if (explain != null)
             {
                 retVal = new ExplanationPart(explain.Element, leftPart, rightPart);
+                explain.SubExplanations.Add(retVal);
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a sub explanation for the explain provided as parameter
+        /// </summary>
+        /// <param name="explain"></param>
+        /// <param name="message"></param> 
+        /// <param name="leftPart"></param>
+        /// <returns></returns>
+        public static ExplanationPart CreateNamedSubExplanation(ExplanationPart explain, string message, object leftPart)
+        {
+            ExplanationPart retVal = null;
+
+            if (explain != null)
+            {
+                retVal = new ExplanationPart(explain.Element, message);
+                retVal.LeftPart = leftPart;
                 explain.SubExplanations.Add(retVal);
             }
 

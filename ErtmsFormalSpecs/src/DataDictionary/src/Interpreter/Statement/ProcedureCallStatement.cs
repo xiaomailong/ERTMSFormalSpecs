@@ -303,8 +303,9 @@ namespace DataDictionary.Interpreter.Statement
                     }
 
                     ExplanationPart part = ExplanationPart.CreateSubExplanation(explanation, procedure);
-                    if (ctxt.Instance != null)
+                    if (ctxt.Instance is Variables.IVariable)
                     {
+                        ExplanationPart.SetNamable(part, ctxt.Instance);
                         ExplanationPart instanceExplanation = ExplanationPart.CreateSubExplanation(part, "instance = ");
                         ExplanationPart.SetNamable(instanceExplanation, ctxt.Instance);
                     }
@@ -351,14 +352,7 @@ namespace DataDictionary.Interpreter.Statement
 
                 if (condition.EvaluatePreConditions(ctxt, conditionExplanation, runner))
                 {
-                    if (conditionExplanation != null)
-                    {
-                        conditionExplanation.Message = "SATISIFIED " + rule.Name + "." + condition.Name;
-                    }
-                    if (runner.LogEvents)
-                    {
-                        Log.Info("SATISIFIED " + rule.Name + "." + condition.Name);
-                    }
+                    ExplanationPart.SetNamable(conditionExplanation, EFSSystem.BoolType.True);
                     foreach (Action action in condition.Actions)
                     {
                         action.GetChanges(ctxt, changes, conditionExplanation, true, runner);
@@ -372,10 +366,7 @@ namespace DataDictionary.Interpreter.Statement
                 }
                 else
                 {
-                    if (conditionExplanation != null)
-                    {
-                        conditionExplanation.Message = "FAILED " + rule.Name + "." + condition.Name;
-                    }
+                    ExplanationPart.SetNamable(conditionExplanation, EFSSystem.BoolType.False);
                 }
             }
         }

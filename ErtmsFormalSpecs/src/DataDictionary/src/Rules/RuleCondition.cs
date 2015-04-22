@@ -282,11 +282,9 @@ namespace DataDictionary.Rules
             {
                 try
                 {
-                    Expression expression = preCondition.Expression;
-
-                    BoolValue value =
-                        expression.GetValue(context, ExplanationPart.CreateSubExplanation(explanation, expression)) as
-                            BoolValue;
+                    ExplanationPart subExplanation = ExplanationPart.CreateNamedSubExplanation(explanation, "PreCondition ", preCondition);
+                    BoolValue value = preCondition.Expression.GetValue(context, subExplanation) as BoolValue;
+                    ExplanationPart.SetNamable(subExplanation, value);
                     if (value != null)
                     {
                         retVal = retVal && value.Val;
