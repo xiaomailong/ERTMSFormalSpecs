@@ -405,7 +405,6 @@ namespace GUI.SpecificationView
             retVal.Insert(4, newItem);
             retVal.Insert(7, new MenuItem("Add Table to Id", new EventHandler(AddTableHandler)));
             retVal.Insert(8, new MenuItem("Add Entry to Id", new EventHandler(AddEntryHandler)));
-            retVal.Insert(9, new MenuItem("-"));
 
             MenuItem recursiveActions = retVal.Find(x => x.Text.StartsWith("Recursive"));
             if (recursiveActions != null)
