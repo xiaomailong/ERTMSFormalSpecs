@@ -53,17 +53,14 @@ Source: ..\..\bin\XmlBooster.pdb; DestDir: {app}\bin; Flags: ignoreversion
 
 Source: ..\..\bin\gnuplot\*; DestDir: {app}\bin\gnuplot; Flags: recursesubdirs
 
-Source: ..\..\doc\EFSW_Technical_Design.pdf; DestDir: {app}\doc;
 Source: ..\..\doc\EFSW_User_Guide.pdf; DestDir: {app}\doc;
-Source: ..\..\doc\EFSW_Release_Notes.pdf; DestDir: {app};
-Source: ..\..\doc\specs\subset-026.efs; DestDir: {app}\doc\specs;
-Source: ..\..\doc\specs\subset-026\*; DestDir: {app}\doc\specs\subset-026; Flags: recursesubdirs
-Source: ..\..\doc\specs\braking curves verification.efs; DestDir: {app}\doc\specs;
-Source: ..\..\doc\specs\braking curves verification\*; DestDir: {app}\doc\specs\braking curves verification; Flags: recursesubdirs
+Source: ..\..\doc\specs\subset-026.efs; DestDir: {userdocs}\ERTMSFormalSpecs;
+Source: ..\..\doc\specs\subset-026\*; DestDir: {userdocs}\ERTMSFormalSpecs\subset-026; Flags: recursesubdirs
+Source: ..\..\doc\specs\braking curves verification.efs; DestDir: {userdocs}\ERTMSFormalSpecs;
+Source: ..\..\doc\specs\braking curves verification\*; DestDir: {userdocs}\ERTMSFormalSpecs\braking curves verification; Flags: recursesubdirs
 
 [Icons]
 Name: "{group}\docs\User's Manual"; Filename: "{app}\doc\EFSW_User_Guide.pdf";
-Name: "{group}\docs\Technical Design"; Filename: "{app}\doc\EFSW_Technical_Design.pdf";
 Name: "{group}\EFS Workbench"; Filename: "{app}\bin\ERTMSFormalSpecs.exe";
 Name: "{group}\Uninstall EFS"; Filename: "{app}\unins000.exe";
 
