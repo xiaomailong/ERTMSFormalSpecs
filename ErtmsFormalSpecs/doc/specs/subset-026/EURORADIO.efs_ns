@@ -1831,7 +1831,12 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="3077900e-74bb-4e07-b78f-4d66a5db417d"
 >
-</ReqRef><Comment>Handles reception of termination of a communication session.</Comment>
+</ReqRef><ReqRef
+ Id="2a8dff3a-71d3-4a6e-9d2b-85f6c568cd25"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1737e58-cd7b-4318-9d1b-f0708f5dfb11"
+>
+</ReqRef><Comment>Handles reception of termination of a communication session by indicating that the acknowledgement has been received.</Comment>
 <PreConditions>
 <PreCondition
  Guid="ced76e36-5c43-4286-9d04-213366e1c8a1"
@@ -1844,8 +1849,8 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 >DataPriorityCorrect(MessageIn)</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="757ae52c-3581-4ad8-bd4d-bdc6a6dad180"
->HandleAcknowledgementOfTerminationOfACommunicationSession ( aMessage =&gt; MessageIn.Message.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION )</Action></Actions>
+ Guid="7073da78-58f0-4a39-ae89-49ca19eb62dd"
+>SessionManagementData.AcknowledgementOfTerminationReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2177,52 +2182,6 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 >ConnectionState &lt;- ConnectionStateSM.Terminating</Action><Action
  Guid="863a5254-6b4f-4f17-ab0c-6b95df8f5d02"
 >SendTerminationOfCommunicationSession()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- Implemented="TRUE"
- Name="HandleAcknowledgementOfTerminationOfACommunicationSession"
- Guid="02f670d2-b6dc-4079-80e8-8a75a9da20bc"
->
-<ReqRef
- Id="e094e23a-bd94-4440-8632-705782494f35"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="7f014caa-eade-494b-9fcd-4a5adf0777d8"
->
-</ReqRef><ReqRef
- Id="2a8dff3a-71d3-4a6e-9d2b-85f6c568cd25"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="945ce21f-e5eb-4ed2-b142-5559468f4524"
->
-</ReqRef><Comment>Indicates that the acknowledgement has been received.</Comment>
-<Parameters>
-<Parameter
- Type="Messages.MESSAGE.TRACK_TO_TRAIN.ACKNOWLEDGEMENT_OF_TERMINATION_OF_A_COMMUNICATION_SESSION.Message"
- Name="aMessage"
- Guid="5cd96caa-1ee6-45dc-8552-8ef78ae617ef"
->
-</Parameter></Parameters>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Indicate acknowledgement has been received"
- Guid="7f048ded-c30c-4e8a-8802-a96f2cadca26"
->
-<Comment>Indicates that the acknowledgement has been received.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Indicate acknowledgement has been received"
- Guid="80443d2e-265f-4f6e-b114-a68aeca1f97b"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="7073da78-58f0-4a39-ae89-49ca19eb62dd"
->SessionManagementData.AcknowledgementOfTerminationReceived &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
