@@ -437,8 +437,11 @@ namespace GUI.BoxArrowDiagram
                 if (baseForm != null && baseForm.TreeView != null)
                 {
                     BaseTreeNode node = baseForm.TreeView.FindNode(Model);
-                    ContextMenu menu = node.ContextMenu;
-                    menu.Show(this, e.Location);
+                    if (node != null)
+                    {
+                        ContextMenu menu = node.ContextMenu;
+                        menu.Show(this, e.Location);
+                    }
                 }
             }
         }
