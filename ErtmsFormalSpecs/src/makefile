@@ -7,7 +7,6 @@ XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_22_11
 XMLB_CALL=$(XMLBOOSTER_ROOT)/bin/xmlbgui.exe -CFG=../../../tools/xmlb_2_22_11/xmlbcfg.xml
 
 all: 
-	@make -C XmlBooster all 
 	@make -C Utils all 
 	@make -C DataDictionary all 
 	@make -C Reports all 
@@ -17,7 +16,6 @@ all:
 	@make -C EFSTester all
 
 clean:
-	@make -C XmlBooster clean 
 	@make -C Utils clean
 	@make -C DataDictionary clean 
 	@make -C Reports clean 

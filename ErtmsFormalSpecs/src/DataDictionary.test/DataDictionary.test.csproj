@@ -39,6 +39,10 @@
       <HintPath>..\..\depends\NUnit-2.6.3\bin\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="XmlBooster, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\depends\XmlBooster.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -65,10 +69,6 @@
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{508ca32d-6cc9-4528-9a30-567cd9e1b4cb}</Project>
       <Name>Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XmlBooster\XmlBooster.csproj">
-      <Project>{a022717b-2952-4948-b63a-a2d3881b97d7}</Project>
-      <Name>XmlBooster</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

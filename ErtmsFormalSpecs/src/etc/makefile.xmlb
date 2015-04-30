@@ -3,7 +3,7 @@
 # Depends on the following variables
 #  META : the name of the meta definition file, without .xmlb extension
 #
-XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_22_11
+XMLBOOSTER_ROOT=$(ERTMS_TOOLS_ROOT)/xmlb_2_22_12
 XMLB_CALL=$(XMLBOOSTER_ROOT)/bin/xmlbgui.exe -CFG=`cygpath -w $(XMLBOOSTER_ROOT)/xmlbcfg.xml`
 
 .phony: all clean 

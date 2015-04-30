@@ -4,7 +4,7 @@ using System.IO;
 using System.Collections;
 using System;
 
-/// <remarks>XMLBooster-generated code (Version 2.22.11.0)
+/// <remarks>XMLBooster-generated code (Version 2.22.12.0)
 /// This code is generated automatically. It is not meant
 /// to be maintained or even read. As it is generated, 
 /// it does not follow any coding standard. Please refrain

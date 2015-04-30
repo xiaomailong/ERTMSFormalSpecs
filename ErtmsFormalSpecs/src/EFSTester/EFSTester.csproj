@@ -37,6 +37,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="XmlBooster, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\depends\XmlBooster.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Program.cs" />
@@ -53,10 +57,6 @@
     <ProjectReference Include="..\Utils\Utils.csproj">
       <Project>{508CA32D-6CC9-4528-9A30-567CD9E1B4CB}</Project>
       <Name>Utils</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\XmlBooster\XmlBooster.csproj">
-      <Project>{A022717B-2952-4948-B63A-A2D3881B97D7}</Project>
-      <Name>XmlBooster</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

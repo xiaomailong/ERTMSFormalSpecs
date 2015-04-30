@@ -36,6 +36,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="XmlBooster, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\depends\XmlBooster.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -50,12 +54,6 @@
     <Compile Include="src\ThreadUtil.cs" />
     <Compile Include="src\Utils.cs" />
     <Compile Include="src\VersionedWriter.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\XmlBooster\XmlBooster.csproj">
-      <Project>{A022717B-2952-4948-B63A-A2D3881B97D7}</Project>
-      <Name>XmlBooster</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
