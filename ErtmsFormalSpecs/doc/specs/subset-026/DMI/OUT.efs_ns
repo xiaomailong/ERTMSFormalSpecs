@@ -1378,6 +1378,41 @@
  Guid="bd518ebb-a594-48a2-9310-a6e8882d9a25"
 >
 </ReqRef><Comment>Handles display of brake indication</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Display brake status, according to TIU indication"
+ Guid="cb5d900d-ab78-471f-86ba-35b68a18e6be"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Display brake status if one of the brakes is applied"
+ Guid="058bbdd7-b721-4bac-a30f-f4c23a2a42d4"
+>
+<PreConditions>
+<PreCondition
+ Guid="1e4aa67a-c7a9-4b0c-a4f6-e6b98380f87c"
+>TIU.EmergencyBrakeCommanded OR TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fa631f68-f566-4913-9e32-6a55a22d8979"
+>Display()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="f61b42c2-6a66-4f35-853f-07ddcd63b51f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5017d82d-81a3-48aa-b50d-921b997da9e6"
+>Hide()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -1439,6 +1474,34 @@
 >THIS.OutputInformation.DoNotDisplay()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="Hide"
+ Guid="a4eb7943-d74f-4852-b549-caaffd1d60a1"
+>
+<Comment>Hides the brake indication</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Update the output information to remove the display"
+ Guid="b3697c38-a2b2-48bf-9aa8-0c35259310e1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Update the output information to remove the display"
+ Guid="c1cb3eac-4eb0-413e-80d5-54d1236953f9"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="65207685-e49d-49e9-8ed1-ffe502dbf4af"
+>THIS.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </Procedure></Procedures>
 <StructureElement
  TypeName="OutputInformation"
@@ -1449,15 +1512,6 @@
  Name="OutputInformation"
  Guid="2706da91-b47f-4e8f-8613-20165e6cd5e3"
 >
-</StructureElement><StructureElement
- TypeName="Boolean"
- Default="False"
- Mode="Internal"
- Implemented="TRUE"
- Name="BrakeActive"
- Guid="b04cc609-ec9e-4243-af17-31664a5c35a2"
->
-<Comment>Indicates whether a brake (service or emergency) is active</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="220"

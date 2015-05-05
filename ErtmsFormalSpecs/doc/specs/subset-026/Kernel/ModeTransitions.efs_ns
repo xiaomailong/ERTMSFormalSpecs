@@ -6713,7 +6713,9 @@ TIU.NonLeadingPermitted</Expression>
  Guid="9af31329-6766-4c1c-b1fc-c90b2e327f2f"
 >HandleModeChange &lt;- HandleModeChangeSM.TrainTrip.D110</Action><Action
  Guid="381d75e5-0bf3-48e7-aa69-24bae8454f9c"
->TIU.EmergencyBrakeCommanded &lt;- Boolean.False</Action></Actions>
+>TIU.CommandEmergencyBrake(
+    brakeSet=&gt;False
+)</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="TR -&gt; SN"
@@ -8082,7 +8084,9 @@ TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom
 <Actions>
 <Action
  Guid="fce2ce78-cae7-4636-a542-10255cd0c722"
->TIU.EmergencyBrakeCommanded &lt;- False</Action></Actions>
+>TIU.CommandEmergencyBrake(
+    brakeSet=&gt;False
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

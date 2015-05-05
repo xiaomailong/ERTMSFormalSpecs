@@ -30096,6 +30096,16 @@
 >DMI.MasterDMI().Out_BrakeIndication.OutputInformation.DisplayRequested  &lt;- True</Action><Action
  Guid="71ebfca7-9317-46db-bba8-de0591dccc0f"
 >Testing.SetPTMode()</Action></Actions>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="d7ae83f7-45c2-408c-bf61-ee1bf091f88b"
+>
+<Actions>
+<Action
+ Guid="9fbed75e-9a63-479a-9a51-1597dca819f9"
+>TIU.CommandEmergencyBrake(
+    brakeSet=&gt;True
+)</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

@@ -348,6 +348,140 @@
 >
 </ReqRef><Comment>Data state of the train integrity information.</Comment>
 </StructureElement></Structure></Structures>
+<Procedures>
+<Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CommandEmergencyBrake"
+ Guid="95104d4e-a435-4493-938a-c900f3c57062"
+>
+<Comment>Commands the emergency brake</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="brakeSet"
+ Guid="5c6b1250-b707-4d3f-bfc3-b0a2c7da194d"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Set emergency brake"
+ Guid="d51e302b-5352-4ae1-a07b-72f9ce3c80e8"
+>
+<Comment>Actions to be executed when setting the emergency brake</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Set emergency brake"
+ Guid="8ea09210-8e9d-430c-9001-000f390a11e8"
+>
+<PreConditions>
+<PreCondition
+ Guid="fab02f57-5d7d-4a83-be2c-b239b58bb9a8"
+>brakeSet</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="adc7ea4c-6156-4d2c-800b-35193884f4bc"
+>EmergencyBrakeCommanded &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove emergency brake"
+ Guid="d4fd665e-6a9a-4dc1-8885-6f94dea2a134"
+>
+<Comment>Actions to be executed when the emergency brake is unset</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove emergency brake"
+ Guid="b4dbb05b-3c26-43eb-bb18-da59b36c04d1"
+>
+<PreConditions>
+<PreCondition
+ Guid="13b4ff9e-0d8c-4734-968d-6d9f4bc093d0"
+>NOT brakeSet</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a64e8f2e-e2f5-4819-949e-f4a488af8c01"
+>EmergencyBrakeCommanded &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="CommandServiceBrake"
+ Guid="036a401d-371d-4a68-a29b-da5b60fb1ee7"
+>
+<Comment>Commands the service brake</Comment>
+<Parameters>
+<Parameter
+ Type="Boolean"
+ Name="brakeSet"
+ Guid="c57ae39e-2649-472c-99aa-bb81d345c51f"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Set service brake"
+ Guid="be882877-857d-45e0-b44a-b3ac73c94737"
+>
+<Comment>Actions to be executed when setting the service brake</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Set service brake"
+ Guid="9cc2971a-7c40-4617-a3ba-3123271ff21a"
+>
+<PreConditions>
+<PreCondition
+ Guid="a20abe71-fbb4-4c01-adc9-6f5820c2c5de"
+>brakeSet</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="345686c6-494a-4a73-9ca6-8b66f2577645"
+>ServiceBrakeCommanded &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove service brake"
+ Guid="aab60b57-fc02-402a-a107-8ff595cb15be"
+>
+<Comment>Actions to be executed when the service brake is unset</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove service brake"
+ Guid="63470983-99b5-464a-93b7-eebe63525b0d"
+>
+<PreConditions>
+<PreCondition
+ Guid="2cf59d36-79ac-4f74-aaf5-c92c65133c06"
+>NOT brakeSet</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="9a7892bc-bdab-4018-a75e-001316875b61"
+>ServiceBrakeCommanded &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <Variables>
 <Variable
  Type="Boolean"
