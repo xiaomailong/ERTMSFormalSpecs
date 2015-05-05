@@ -9,11 +9,15 @@
 [Setup]
 AppName=ERTMSFormalSpecs
 AppVerName=ERTMSFormalSpecs
+AppPublisher=ERTMS Solutions
+AppPublisherURL=http://www.ertmssolutions.com/
 DefaultGroupName=ERTMSFormalSpecs
 DefaultDirName={pf}\ERTMSSolutions\ERTMSFormalSpecs
 OutputDir=release
 OutputBaseFileName=ERTMSFormalSpecs_Setup
 ChangesAssociations=yes
+SetupIconFile=..\GUI\EFS.ico        
+UninstallDisplayIcon={app}\bin\ERTMSFormalSpecs.exe
 
 [Dirs]
 Name: "{app}\"; Permissions: everyone-modify
