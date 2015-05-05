@@ -49,7 +49,6 @@ Source: ..\..\bin\Importer.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\Reports.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\HistoricalData.pdb; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\Utils.pdb; DestDir: {app}\bin; Flags: ignoreversion
-Source: ..\..\bin\XmlBooster.pdb; DestDir: {app}\bin; Flags: ignoreversion
 
 Source: ..\..\bin\gnuplot\*; DestDir: {app}\bin\gnuplot; Flags: recursesubdirs
 
