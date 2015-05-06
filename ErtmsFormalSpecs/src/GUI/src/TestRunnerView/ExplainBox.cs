@@ -125,6 +125,54 @@ namespace GUI.TestRunnerView
             explainTreeView.DragEnter += new DragEventHandler(explainTreeView_DragEnter);
             explainTreeView.DragDrop += new DragEventHandler(explainTreeView_DragDrop);
             searchTextBox.KeyPress += searchTextBox_KeyPress;
+            explainTreeView.ContextMenu = new ContextMenu();
+            explainTreeView.ContextMenu.MenuItems.Add("Select", SelectModel);
+            explainTreeView.DoubleClick += explainTreeView_DoubleClick;
+        }
+
+        /// <summary>
+        /// Handles a double click event on a tree node
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void explainTreeView_DoubleClick(object sender, EventArgs e)
+        {
+            MouseEventArgs mouseEventArgs = e as MouseEventArgs;
+            if ( mouseEventArgs != null )
+            {
+                SelectModelElement(explainTreeView.GetNodeAt(mouseEventArgs.Location) as ExplainTreeNode);
+            }
+        }
+
+        /// <summary>
+        /// Handles the context menu entry "Select" 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectModel(object sender, EventArgs e)
+        {
+            SelectModelElement(explainTreeView.SelectedNode as ExplainTreeNode);
+        }
+
+        /// <summary>
+        /// Selects the model element which corresponds to the explain tree node
+        /// If the current node does not refer to a model element, selects the one from its parent node
+        /// </summary>
+        /// <param name="node"></param>
+        private void SelectModelElement(ExplainTreeNode node)
+        {
+            while (node != null)
+            {
+                if (node.Explanation.Element != null)
+                {
+                    GUIUtils.MDIWindow.Select(node.Explanation.Element);
+                    node = null;
+                }
+                else
+                {
+                    node = node.Parent as ExplainTreeNode;
+                }
+            }
         }
 
         private void searchTextBox_KeyPress(object sender, KeyPressEventArgs e)
