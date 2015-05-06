@@ -1288,6 +1288,15 @@ namespace DataDictionary
                 }
 
                 retVal = visitor.Usages;
+                foreach ( Usage usage in retVal )
+                {
+                    // It has not been provent that it is something else than Read
+                    // Let's consider it is read
+                    if ( usage.Mode == null )
+                    {
+                        usage.Mode = Usage.ModeEnum.Read;
+                    }
+                }
             }
             else
             {
