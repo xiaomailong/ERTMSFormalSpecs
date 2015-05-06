@@ -1385,6 +1385,12 @@
  Name="Display brake status, according to TIU indication"
  Guid="cb5d900d-ab78-471f-86ba-35b68a18e6be"
 >
+<ReqRef
+ Id="fb80787f-cd4c-4a33-82fd-ed9a873bf58c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0ebdc11-262c-496d-9d34-982febbc279e"
+>
+</ReqRef><Comment>Display the brake status according to TIU data</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -1392,6 +1398,7 @@
  Name="Display brake status if one of the brakes is applied"
  Guid="058bbdd7-b721-4bac-a30f-f4c23a2a42d4"
 >
+<Comment>Brake is applied when Emergency or Service brake is set in the TIU</Comment>
 <PreConditions>
 <PreCondition
  Guid="1e4aa67a-c7a9-4b0c-a4f6-e6b98380f87c"
@@ -1405,6 +1412,7 @@
  Name="Otherwise"
  Guid="f61b42c2-6a66-4f35-853f-07ddcd63b51f"
 >
+<Comment>Otherwise</Comment>
 <PreConditions>
 </PreConditions>
 <Actions>
