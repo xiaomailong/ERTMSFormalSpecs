@@ -76,7 +76,14 @@ namespace DataDictionary.Values
                     }
                     else
                     {
-                        variable.Value = new DefaultValue(variable);
+                        if (variable.Type is Types.Collection)
+                        {
+                            variable.Value = new ListValue(variable.Type as Types.Collection, new List<IValue>());
+                        }
+                        else
+                        {
+                            variable.Value = new DefaultValue(variable);
+                        }                    
                     }
                     set(variable);
                 }
