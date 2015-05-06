@@ -181,21 +181,30 @@ namespace DataDictionary.Interpreter
                 indentText += "    ";
             }
 
-            string retVal = "\n" + indentText + "[\n" + indentText + "    ";
+            string retVal = "";
 
-            bool first = true;
-            foreach (Expression expr in ListElements)
+            if (ListElements.Count > 0)
             {
-                if (!first)
+                retVal = "\n" + indentText + "[\n" + indentText + "    ";
+
+                bool first = true;
+                foreach (Expression expr in ListElements)
                 {
-                    retVal += ", ";
+                    if (!first)
+                    {
+                        retVal += ", ";
+                    }
+                    retVal += expr.ToString(indentLevel + 1);
+
+                    first = false;
                 }
-                retVal += expr.ToString(indentLevel + 1);
 
-                first = false;
+                retVal += "\n" + indentText + "]";
             }
-
-            retVal += "\n" + indentText + "]";
+            else
+            {
+                retVal = "[]";
+            }
 
             return retVal;
         }
