@@ -482,21 +482,24 @@ namespace DataDictionary.Functions
                 for (int i = 0; i < acc.SegmentCount; i++)
                 {
                     double start = segment.Start;
-                    double end = segment.End;
-                    if (end == double.MaxValue)
+                    if (start < expectedEndX)
                     {
-                        end = expectedEndX;
-                    }
+                        double end = segment.End;
+                        if (end == double.MaxValue || end >= expectedEndX )
+                        {
+                            end = expectedEndX;
+                        }
 
-                    ConstantCurveSegment<SiSpeed, SiAcceleration> seg = acc[i];
-                    SurfaceTile tile = new SurfaceTile(
-                        new SiDistance(start, SiDistance_SubUnits.Meter),
-                        new SiDistance(end, SiDistance_SubUnits.Meter),
-                        seg.X.X0,
-                        seg.X.X1,
-                        seg.Y
-                        );
-                    retVal.Tiles.Add(tile);
+                        ConstantCurveSegment<SiSpeed, SiAcceleration> seg = acc[i];
+                        SurfaceTile tile = new SurfaceTile(
+                            new SiDistance(start, SiDistance_SubUnits.Meter),
+                            new SiDistance(end, SiDistance_SubUnits.Meter),
+                            seg.X.X0,
+                            seg.X.X1,
+                            seg.Y
+                            );
+                        retVal.Tiles.Add(tile);
+                    }
                 }
             }
 

@@ -107,7 +107,7 @@ namespace GUI.GraphView
                 InterpretationContext context = new InterpretationContext(function);
                 if (function.FormalParameters.Count == 1)
                 {
-                    Parameter parameter = (Parameter) function.FormalParameters[0];
+                    Parameter parameter = (Parameter)function.FormalParameters[0];
                     Graph graph = function.createGraph(context, parameter, explain);
                     if (graph != null)
                     {
@@ -207,7 +207,7 @@ namespace GUI.GraphView
         /// <summary>
         ///     Colors used to display functions
         /// </summary>
-        private static string[] COLORS = {"blue", "red", "green", "orange", "black", "purple", "yellow"};
+        private static string[] COLORS = { "blue", "red", "green", "orange", "black", "purple", "yellow" };
 
         /// <summary>
         ///     Creates the picture associated to this graph
@@ -229,7 +229,7 @@ namespace GUI.GraphView
                 InterpretationContext context = new InterpretationContext(function);
                 if (function.FormalParameters.Count == 1)
                 {
-                    Parameter parameter = (Parameter) function.FormalParameters[0];
+                    Parameter parameter = (Parameter)function.FormalParameters[0];
                     Graph graph = function.createGraph(context, parameter, null);
                     if (graph != null)
                     {
@@ -256,19 +256,24 @@ namespace GUI.GraphView
                 }
             }
 
-            // Don't display surfaces that are too big 
-            if (setMaximumYValueCheckBox.Checked)
+            try
             {
-                try
-                {
-                    int maxY = Int32.Parse(maximumYValueTextBox.Text);
-                    expectedEndY = Math.Min(expectedEndY, maxY);
-                }
-                catch (Exception)
-                {
-                }
+                int maxX = Int32.Parse(maximumValueTextBox.Text);
+                expectedEndX = Math.Min(expectedEndX, maxX);
             }
-            expectedEndY = Math.Min(600, expectedEndY);
+            catch (Exception)
+            {
+            }
+
+            // Don't display surfaces that are too big 
+            try
+            {
+                int maxY = Int32.Parse(maximumYValueTextBox.Text);
+                expectedEndY = Math.Min(expectedEndY, maxY);
+            }
+            catch (Exception)
+            {
+            }
 
             int i = 0;
             /// Creates the graphs
@@ -282,12 +287,12 @@ namespace GUI.GraphView
                     if (graph.IsFlat())
                     {
                         FlatSpeedDistanceCurve curve = graph.FlatSpeedDistanceCurve(expectedEndX);
-                        display.AddCurve(curve, function.FullName, COLORS[i%COLORS.Length]);
+                        display.AddCurve(curve, function.FullName, COLORS[i % COLORS.Length]);
                     }
                     else
                     {
                         QuadraticSpeedDistanceCurve curve = graph.QuadraticSpeedDistanceCurve(expectedEndX);
-                        display.AddCurve(curve, function.FullName, COLORS[i%COLORS.Length]);
+                        display.AddCurve(curve, function.FullName, COLORS[i % COLORS.Length]);
                     }
 
                     if (name == null)
@@ -329,28 +334,22 @@ namespace GUI.GraphView
                 display.EraseTemporaryFiles = false;
                 display.ShowColouredSegments = false;
 
-                if (setMinimumValueCheckBox.Checked)
+                try
                 {
-                    try
-                    {
-                        double val = double.Parse(minimumValueTextBox.Text);
-                        display.Min_X = new SiDistance(val, SiDistance_SubUnits.Meter);
-                    }
-                    catch (Exception)
-                    {
-                    }
+                    double val = double.Parse(minimumValueTextBox.Text);
+                    display.Min_X = new SiDistance(val, SiDistance_SubUnits.Meter);
+                }
+                catch (Exception)
+                {
                 }
 
-                if (setMaximumValueCheckBox.Checked)
+                try
                 {
-                    try
-                    {
-                        double val = double.Parse(maximumValueTextBox.Text);
-                        display.Max_X = new SiDistance(val, SiDistance_SubUnits.Meter);
-                    }
-                    catch (Exception)
-                    {
-                    }
+                    double val = double.Parse(maximumValueTextBox.Text);
+                    display.Max_X = new SiDistance(val, SiDistance_SubUnits.Meter);
+                }
+                catch (Exception)
+                {
                 }
 
                 if (display.Plot())
@@ -393,89 +392,12 @@ namespace GUI.GraphView
             return retVal;
         }
 
-        /// <summary>
-        ///     Checks that the values of the check box & text box are consistent with bounds
-        /// </summary>
-        /// <param name="checkBox">The check box to check</param>
-        /// <param name="textBox">The text box to check</param>
-        /// <returns></returns>
-        private bool CheckValue(CheckBox checkBox, TextBox textBox)
-        {
-            bool retVal = true;
-
-            if (checkBox.Checked)
-            {
-                try
-                {
-                    double.Parse(textBox.Text);
-                }
-                catch (Exception)
-                {
-                    retVal = false;
-                }
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        ///     Checks the minimun and maximum values
-        /// </summary>
-        /// <returns></returns>
-        private bool CheckMinAndMaxValues()
-        {
-            bool retVal = true;
-
-            retVal = retVal && CheckValue(setMinimumValueCheckBox, minimumValueTextBox);
-            retVal = retVal && CheckValue(setMaximumValueCheckBox, maximumValueTextBox);
-            retVal = retVal && CheckValue(setMaximumYValueCheckBox, maximumYValueTextBox);
-
-            return retVal;
-        }
-
-        private void setMinimumValueCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            minimumValueTextBox.Enabled = setMinimumValueCheckBox.Checked;
-            if (CheckMinAndMaxValues())
-            {
-                Refresh();
-            }
-        }
-
-        private void setMaximumValueCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            maximumValueTextBox.Enabled = setMaximumValueCheckBox.Checked;
-            if (CheckMinAndMaxValues())
-            {
-                Refresh();
-            }
-        }
-
-        private void minimumValueTextBox_LostFocus(object sender, EventArgs e)
-        {
-            if (CheckMinAndMaxValues())
-            {
-                Refresh();
-            }
-        }
-
-        private void maximumValueTextBox_LostFocus(object sender, EventArgs e)
-        {
-            if (CheckMinAndMaxValues())
-            {
-                Refresh();
-            }
-        }
-
-        private void maximumYValueTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (CheckMinAndMaxValues())
-            {
-                Refresh();
-            }
-        }
-
         public void RefreshAfterStep()
+        {
+            Refresh();
+        }
+
+        private void ValueChanged(object sender, EventArgs e)
         {
             Refresh();
         }
