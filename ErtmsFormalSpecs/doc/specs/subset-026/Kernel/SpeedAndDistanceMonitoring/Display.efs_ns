@@ -1,0 +1,316 @@
+<NameSpace
+ Width="100"
+ Height="50"
+ Name="Display"
+ Guid="80739a0a-9d9a-4836-960d-a70674342006"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Boolean"
+ Cacheable="TRUE"
+ Default=""
+ X="420"
+ Y="290"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DisplayReleaseSpeed"
+ Guid="0e03db57-f072-4c06-9f8d-37b08022f0ce"
+>
+<ReqRef
+ Id="da81dc9e-7c01-462c-ae9b-108704d780bc"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="26165586-b87b-4fc6-aef9-ec247e260bce"
+>
+</ReqRef><ReqRef
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c84326fe-ff7d-48f4-a605-f443b22b4615"
+>
+</ReqRef><Comment>Determines whether the DMI should display a release speed.</Comment>
+<Cases>
+<Case
+ Name="Monitoring target speed"
+ Guid="c220ae83-9fd0-4062-b2dd-0b4508cc0570"
+>
+<PreConditions>
+<PreCondition
+ Guid="eae54f73-e54c-496a-b739-536763fd2530"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>MA.IsEOA(TargetSpeedMonitoring.MRDT())
+  OR  
+MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
+</Case><Case
+ Name="Monitoring release speed"
+ Guid="08d09e11-9195-4651-b68a-5e2963886bc4"
+>
+<Expression>Monitoring in MonitoringTypeSM.Release</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="200"
+ Y="290"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="PermittedSpeed"
+ Guid="98c15b8c-4a8b-4fc0-8d3c-6e940e541fe2"
+>
+<ReqRef
+ Id="09e9b21f-a204-44c7-9829-f4221f5ff7a6"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b8cf0ba7-f32e-4c2a-b835-6ba6cb0f32e1"
+>
+</ReqRef><ReqRef
+ Id="74e64307-2966-461e-a976-9a0194ca8514"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f77e2edc-d3c3-4e18-9ba7-1dd5896b3583"
+>
+</ReqRef><ReqRef
+ Id="66b79932-5e84-4126-abe6-3094347749c2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="dce28774-413f-472c-ac6f-6a203e4c010c"
+>
+</ReqRef><ReqRef
+ Id="7da2c959-4215-45b4-b239-3b315d76277c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c841058e-4afa-43ae-be78-9321f14c4139"
+>
+</ReqRef><Comment>Provides the current permitted speed of the train, accounting for the speed and distance monitoring.</Comment>
+<Cases>
+<Case
+ Name="CeilingSpeedMonitoring_P"
+ Guid="9bcbf022-4599-40dc-ad8a-f5e831f6af26"
+>
+<Comment>The permitted speed P (in ceiling speed monnitoring) is equal to V_MRSP or V_LOA.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5394d167-a030-4b1d-a096-b176e1075237"
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
+<Expression>MRSP.V_MRSP()</Expression>
+</Case><Case
+ Name="Other monitoring types"
+ Guid="c121bdd5-4b33-48ef-b069-9a042e43983d"
+>
+<PreConditions>
+<PreCondition
+ Guid="5ba6a2ec-fce4-46ab-8e17-256f0a63ae84"
+>Monitoring in [MonitoringTypeSM.Target, MonitoringTypeSM.Release]</PreCondition></PreConditions>
+<Expression>TargetSpeedMonitoring.V_P_DMI()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Cacheable="TRUE"
+ Default=""
+ X="90"
+ Y="230"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="SBIsAvailableForUse"
+ Guid="b0b21ecb-3c0b-4844-9f7a-1a6e39b0b2fa"
+>
+<ReqRef
+ Id="00747c30-1c6d-4751-8e5f-6d65f3085d3a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20f62c9a-5203-4f25-baf1-01ba9e1875ec"
+>
+</ReqRef><ReqRef
+ Id="0f223275-ff77-4025-a194-a347f5ef0542"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b286a8d9-d73a-4c9b-b746-0bdd2e873eac"
+>
+</ReqRef><Comment>Checks if the service brake is present and whther its use is allowed in the national values</Comment>
+<Cases>
+<Case
+ Name="Value"
+ Guid="d01614d0-298f-4107-8b27-4e7ff976e5e9"
+>
+<Expression>TrainData.TrainData.Value.SBCommandIsImplemented AND NOT NationalValues.UseOfSBIsInhibited()</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="530"
+ Y="230"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SBISpeed"
+ Guid="beeb4057-0fc3-4386-a02a-0a1658883998"
+>
+<ReqRef
+ Id="d5f24a7e-2926-4921-9498-c6e5c16964e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f256a09c-7d89-4cd5-b2f6-9e1c790067ff"
+>
+</ReqRef><ReqRef
+ Id="eb90e9d9-f130-4725-b447-bd6e474f0c8b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="db43c11d-14da-4358-a984-768d070e34b4"
+>
+</ReqRef><Comment>Returns the value of the FLOI curve at the given distance</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="a638ed63-ba73-4d96-94d8-a3d73f64bcda"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="In ceiling speed supervision"
+ Guid="3206369b-6c11-4a65-8d73-d2fbb08375b3"
+>
+<PreConditions>
+<PreCondition
+ Guid="9317ac62-ab65-4993-8355-a3fa4ac12f32"
+>Monitoring in MonitoringTypeSM.Ceiling</PreCondition></PreConditions>
+<Expression>MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi(MRSP.V_MRSP())</Expression>
+</Case><Case
+ Name="In target speed supervision"
+ Guid="eb3345ab-0d5e-4790-8fb3-c13af69a753d"
+>
+<PreConditions>
+<PreCondition
+ Guid="1eda699e-a4d2-4106-8a9a-daf5761de88c"
+>Monitoring in MonitoringTypeSM.Target</PreCondition></PreConditions>
+<Expression>TargetSpeedMonitoring.V_SBI_DMI()</Expression>
+</Case></Cases>
+</Function></Functions>
+<Rules>
+<Rule
+ Priority="Processing"
+ X="260"
+ Y="130"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display indication location at MRSP speed"
+ Guid="5dc59ca0-f1e7-4d6e-91fe-fffdaf26d2d1"
+>
+<ReqRef
+ Id="5e511b79-1787-413b-ae27-0d7d6246b010"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9ba503e2-7680-410b-bae0-8de7fabdab99"
+>
+</ReqRef><Comment>Display the upcoming Indication Location at MRSP Speed when in CSM or at teh start of TSM.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="In CSM or PIM"
+ Guid="318beb55-bfbd-4d50-95f0-b625034f1951"
+>
+<Comment>Display the Indication location.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="65b61732-a87c-455b-bdb9-03c8e8fcfa36"
+>DMI.OUT.IndicationLocationAtMrspSpeedAvailable()</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fd2db40b-5d6c-489e-a967-d028d547f0b0"
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.RequestDisplay()</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="Otherwise"
+ Guid="44dd1368-dfee-4d7d-9e63-aab23939412a"
+>
+<Comment>Do not display the Indication location.</Comment>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="91d92fd2-af3e-4b15-a7b7-5726df3f7c59"
+>DMI.MasterDMI().Out_IndicationLocationAtMrspSpeed.OutputInformation.DoNotDisplay()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="40"
+ Y="130"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display MRDT"
+ Guid="ce801b5f-440e-42ac-b2c8-8673d9527ef2"
+>
+<ReqRef
+ Id="96719821-5827-4475-bf1c-8200e9c230e4"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a28ff937-5c77-4818-ac10-f2c1089b9ae5"
+>
+</ReqRef><Comment>When the speed and distance monitoring is in TSM, display the target speed and distance to target information on the DMI.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="In TSM"
+ Guid="663134a6-2bdd-40df-a5e6-5328537d077d"
+>
+<PreConditions>
+<PreCondition
+ Guid="ed7c18c8-9916-42b4-a148-c8fa749672f4"
+>Monitoring in MonitoringTypeSM.Target</PreCondition><PreCondition
+ Guid="fa5bd0d4-bc50-4790-a500-786894ea795c"
+>NOT DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested
+  OR  
+NOT DMI.MasterDMI().Out_TargetSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="4a411142-5898-4368-94e1-eda1a6d8e0e9"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action><Action
+ Guid="379bfbb4-8fac-409a-b268-779785db0b11"
+>DMI.MasterDMI().Out_TargetSpeed.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ X="150"
+ Y="130"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Display Release Speed"
+ Guid="5c92cde1-4120-4c02-8b69-884049fefac5"
+>
+<ReqRef
+ Id="ee7b5ecc-20f6-480c-aa0a-7836d5308d32"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fd282b9d-7a4a-4a79-b069-3a5e2264465c"
+>
+</ReqRef><ReqRef
+ Id="220617b2-d0d2-4c8e-a475-e9d9a8761441"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6ba159a6-91e1-44d4-bfa4-fee1a44c3e43"
+>
+</ReqRef><Comment>When the speed and distance monitoring is in RSM, display the release speed and distance to target information on the DMI.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="IN RSM"
+ Guid="6f864eb3-3c94-47cf-890b-b2fcf6835df8"
+>
+<PreConditions>
+<PreCondition
+ Guid="674a48a4-12cd-4224-9c99-1d283a29ba91"
+>Monitoring in MonitoringTypeSM.Release</PreCondition><PreCondition
+ Guid="3a58c397-dc7d-4d8e-8748-37fbf73b5f69"
+>NOT DMI.MasterDMI().Out_TargetDistance.OutputInformation.DisplayRequested
+  OR  
+NOT DMI.MasterDMI().Out_ReleaseSpeed.OutputInformation.DisplayRequested</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="1fe599b1-6f99-43f1-8625-70b81b394a28"
+>DMI.MasterDMI().Out_TargetDistance.Display()</Action><Action
+ Guid="e2712580-841c-4dd1-88f4-a8e6583f7ba9"
+>DMI.MasterDMI().Out_ReleaseSpeed.Display()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</NameSpace>

@@ -1325,7 +1325,7 @@ Kernel.SpeedAndDistanceMonitoring.SupervisionStatus() != Kernel.SupervisionStatu
 <Actions>
 <Action
  Guid="f0c8976c-c957-4f3d-a0a5-3295db9e7317"
->Out_SBI.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.SBISpeed(
+>Out_SBI.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.Display.SBISpeed(
 Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -1544,7 +1544,7 @@ Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="abfe8af1-6df4-4510-9e27-17aa6e1e711a"
->Out_PermittedSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.PermittedSpeed()</Action></Actions>
+>Out_PermittedSpeed.Speed &lt;- Kernel.SpeedAndDistanceMonitoring.Display.PermittedSpeed()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -1601,7 +1601,7 @@ Kernel.Mode == Default.Mode.RV</PreCondition></PreConditions>
  Guid="bfda245f-e56b-40df-b3fd-b22f703f58a4"
 >Out_ReleaseSpeed.OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="8038d0e6-78ca-47b8-8610-07535136491d"
->Kernel.SpeedAndDistanceMonitoring.DisplayReleaseSpeed()</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.Display.DisplayReleaseSpeed()</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ac88bf52-f540-44c2-8c94-930fb08165ef"
