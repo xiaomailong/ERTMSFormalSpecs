@@ -1619,10 +1619,10 @@ Regenerative =&gt; Kernel.TrainData.BrakingParameters.BrakingModel{
  Kind="Instantaneous"
  Guid="414f63bb-4185-4954-b45e-2c5d90fc0b19"
 >DistanceForSpeed (
-    Function =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Display.EBD,
+    Function =&gt; Testing.Display.EBD,
     Speed =&gt; 34.416 ) &gt; 5089.533 AND
 DistanceForSpeed (
-    Function =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Display.EBD,
+    Function =&gt; Testing.Display.EBD,
     Speed =&gt; 34.416 ) &lt; 5089.534</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2f70a364-eabf-4ba6-b2e1-a12467cd7c4f"
@@ -1809,10 +1809,10 @@ Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Dbec ( Vest =&gt; 30.0, Vta
 <Expectation
  Kind="Instantaneous"
  Guid="6ac96b4e-dd07-45ec-a975-bfb4401425d5"
->DistanceForSpeed ( Function =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Display.SBD, Speed =&gt; 34.72  ) &gt;= 4186.54</Expectation><Expectation
+>DistanceForSpeed ( Function =&gt; Testing.Display.SBD, Speed =&gt; 34.72  ) &gt;= 4186.54</Expectation><Expectation
  Kind="Instantaneous"
  Guid="71f3d98a-bbe2-4337-b12b-6c9ce4cbfcd3"
->DistanceForSpeed ( Function =&gt; Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.Display.SBD, Speed =&gt; 34.72  ) &lt;= 4186.55</Expectation><Expectation
+>DistanceForSpeed ( Function =&gt; Testing.Display.SBD, Speed =&gt; 34.72  ) &lt;= 4186.55</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c7044d9a-ee58-4d9e-9efd-976535fa3a1e"
 >Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI1 ( Vest =&gt; 34.72 ) &lt;= 4179.6</Expectation><Expectation

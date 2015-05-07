@@ -6,11 +6,7 @@
  Guid="c42809f7-cbe8-4377-b058-7b294c828107"
 >
 <NameSpaces>
-<NameSpaceRef
- Name="Display"
- Guid="ca162c39-085e-48b3-bc8d-3cad43f08aa7"
->
-</NameSpaceRef></NameSpaces>
+</NameSpaces>
 <Functions>
 <Function
  Type="Default.BaseTypes.Speed"
@@ -46,7 +42,7 @@
  Guid="cd5be458-075b-4dc4-815b-076a138762c0"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="8501f4ac-1027-438f-8b73-554bf6ce8129"
 >
@@ -91,7 +87,7 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="EBD_TargetForSpeed"
  Guid="1aa2111c-aee2-4ef9-bb29-e7a13ed20259"
 >
-<Comment>Returns the distance at which the EBD deceleration curve for a given target has the given speed</Comment>
+<Comment>Returns the distance at which the EBD deceleration curve for a given target has the given speed.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -104,7 +100,7 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Guid="d26ac90a-7c32-4398-9b35-4f8e11a76abd"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="9205a509-dcbb-4180-aaea-8ee866a17e88"
 >
@@ -417,7 +413,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
 <Comment>Creates a speed restriction associated to a given target, by adding the increment dV_ebi if the target speed is different from 0.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="5566a9f8-2b1f-4cec-a053-8f5c6b9f5b76"
 >
@@ -642,10 +638,10 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="bfe86b8b-15a7-4790-9977-26a8ba6057dd"
 >
-</ReqRef><Comment>Determines whether the target is the target corresponding to th emaximum distance permitted to run in SR mode</Comment>
+</ReqRef><Comment>Determines whether the target is the target corresponding to th emaximum distance permitted to run in SR mode.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="ba615372-f957-4517-b63d-b9f2700fbf68"
 >
@@ -694,7 +690,7 @@ aTarget.Speed == 0.0</Expression>
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="0a518761-b9f6-4fb9-b250-584b7fb951c6"
 >
-</ReqRef><Comment>The distance offset used in the calculation of the SBI curves for display purposes</Comment>
+</ReqRef><Comment>The distance offset used in the calculation of the SBI curves for display purposes.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -734,7 +730,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="6d9ae2e9-bf7e-4c23-b25b-d076f875134d"
 >
-</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors for the given target</Comment>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors for the given target.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -742,7 +738,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
  Guid="8f4624dd-8b20-4778-ba7f-9c3202f4412d"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="134a8097-f893-43c3-bc23-58de8bfc6e16"
 >
@@ -789,7 +785,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="155c6392-9559-4825-96cc-2210a96f1e40"
 >
-</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Distance"
@@ -797,7 +793,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
  Guid="23bddcb1-5ccf-4509-baaa-6ded3d3e37f2"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="039cf632-3886-4722-b209-2317834458c4"
 >
@@ -833,7 +829,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
  Name="SBD_TargetForSpeed"
  Guid="84a677e7-2097-4535-8ec3-4ae9ded3d2f7"
 >
-<Comment>Returns the distance at which the EBD deceleration curve for a given target has the given speed</Comment>
+<Comment>Returns the distance at which the EBD deceleration curve for a given target has the given speed.</Comment>
 <Parameters>
 <Parameter
  Type="Default.BaseTypes.Speed"
@@ -841,7 +837,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
  Guid="5adf2764-19a7-48cf-addd-30e7791ff59f"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="a587ea44-f686-4370-9a34-89bf21378e98"
 >
@@ -856,6 +852,39 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
         FUNCTION d : Default.BaseTypes.Distance =&gt; SBD_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
         Speed =&gt; Vest
 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="GUI_TargetForSpeed"
+ Guid="56f77e3e-15f7-4775-b7aa-125006c30752"
+>
+<Comment>Returns the distance at which the GUI deceleration curve for a given target has the given speed.</Comment>
+<Parameters>
+<Parameter
+ Type="BaseTypes.Speed"
+ Name="Vest"
+ Guid="82adb4d9-0905-4248-baf0-f4f32fe28ffa"
+>
+</Parameter><Parameter
+ Type="TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="daa1769c-5ca6-4109-a2a6-7645abb3ddbb"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="6104a29f-2d51-4d19-9fb5-9dc3606c1766"
+>
+<Expression>DistanceForSpeed (
+    Function =&gt;
+        FUNCTION d : Default.BaseTypes.Distance =&gt; GUI_Target ( Distance =&gt; d, aTarget =&gt; aTarget ),
+        Speed =&gt; Vest )</Expression>
 </Case></Cases>
 </Function></Functions>
 </NameSpace>

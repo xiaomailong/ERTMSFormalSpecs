@@ -1,0 +1,388 @@
+<NameSpace
+ X="10"
+ Y="10"
+ Width="100"
+ Height="50"
+ Name="Display"
+ Guid="6b59a14b-59e5-4f91-89b7-107a15aee0c5"
+>
+<NameSpaces>
+</NameSpaces>
+<Functions>
+<Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_EBI"
+ Guid="c1f6a3d5-d606-4f86-ab36-29fb5a886e2a"
+>
+<ReqRef
+ Id="12a5c7bd-200a-4b46-8d0a-e8dfd9f2cdda"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c98fc847-f887-4a81-ade4-3508dfc05a78"
+>
+</ReqRef><ReqRef
+ Id="ca227156-e277-48d0-ade5-408ee404622f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a5a3aad7-3724-4f34-a921-68c7560ea50a"
+>
+</ReqRef><ReqRef
+ Id="0a156077-932d-4831-b7d8-8cb0350879e1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ede07de1-1c41-455f-9585-9b20d646e14c"
+>
+</ReqRef><ReqRef
+ Id="972b621c-2a9e-4a94-8256-ae008ed01869"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="0b9d9286-daf7-429c-9551-6604d1c875c6"
+>
+</ReqRef><Comment>Provides the location of the EBI supervision limit.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vtarget"
+ Guid="8ff05368-f045-4e1c-8962-9f351666d2ed"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="EBD below Vtarget for all distances"
+ Guid="e6f95183-d18e-43e0-a173-88a2212b2860"
+>
+<PreConditions>
+<PreCondition
+ Guid="86fef057-8a6f-4d4c-b8fe-f10472c13b9a"
+>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget + Kernel.SpeedAndDistanceMonitoring.f41 ( Vtarget ) ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="372b9a78-c790-4590-90ae-5fc9ed1a311e"
+>
+<Expression>DistanceForSpeed ( Function =&gt; EBD, Speed =&gt; Vtarget + Kernel.SpeedAndDistanceMonitoring.f41 ( Vtarget ) ) - ( Vtarget + Kernel.SpeedAndDistanceMonitoring.f41 (Vtarget ) ) * ( Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_berem(NoA_est =&gt; True) + Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.T_traction(NoA_est =&gt; True) )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Distance"
+ Default=""
+ X="110"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="d_P"
+ Guid="4ae86037-ce7f-4345-84d9-c47b3a56383b"
+>
+<ReqRef
+ Id="12a5c7bd-200a-4b46-8d0a-e8dfd9f2cdda"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bef57f63-a50b-48c6-a773-b4439f91f65b"
+>
+</ReqRef><Comment>Provides the location of the Permitted distance for a given target speed.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Speed"
+ Name="Vtarget"
+ Guid="c971989a-7ed9-47d1-9161-3a4aaf20ff10"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="d_EBI unknown"
+ Guid="acaa04c1-b462-4e70-914a-79a0cb67ff52"
+>
+<PreConditions>
+<PreCondition
+ Guid="d164c315-df41-48a4-aa11-d21cee4593c2"
+>d_EBI ( Vtarget ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+</Case><Case
+ Name="Value"
+ Guid="7e0f93ea-6373-4564-a9fc-832150d2356b"
+>
+<Expression>d_EBI ( Vtarget ) - Vtarget * ( Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver + Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_bs2 )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="220"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SpeedRestrictions"
+ Guid="46dc90b5-4414-422d-b79e-c6dd04220757"
+>
+<ReqRef
+ Id="74a35017-250f-4c6f-948c-0c08da4f4b05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="08591f02-6587-40e1-ae68-9a43ef005b99"
+>
+</ReqRef><Comment>Provides the profile of the most restrictive supervised target as a function of distance.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="e2738072-e26f-49f0-9ea8-8f9f7a72a9ff"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="ec5f07e9-4c6d-4a52-a890-b1a6d9b2dd3a"
+>
+<PreConditions>
+<PreCondition
+ Guid="2798b3c1-e09d-442c-a865-50f7fa1e6dd2"
+>Kernel.SpeedAndDistanceMonitoring.TargetsList() != []</PreCondition></PreConditions>
+<Expression>(REDUCE
+    Kernel.SpeedAndDistanceMonitoring.TargetsList()
+ USING X IN  
+    MIN ( First =&gt; FUNCTION d : BaseTypes.Distance =&gt; TargetSpeedRestriction( aTarget =&gt; X, Distance =&gt; d ), 
+          Second =&gt; RESULT )
+INITIAL_VALUE Default.BaseTypes.MaxSpeedFunction) (Distance)</Expression>
+</Case><Case
+ Name="No targets"
+ Guid="e5d6692f-cc2b-4d90-be1b-064439024aa0"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="TargetSpeedRestriction"
+ Guid="e086594b-5c91-4e58-b60e-8d04ee160e10"
+>
+<ReqRef
+ Id="74a35017-250f-4c6f-948c-0c08da4f4b05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e2367d51-6ddb-4cfd-8751-ab74e3a0d1b8"
+>
+</ReqRef><Comment>Used to get the profile in SpeedRestrictions, provides the full distance over which each target is applicable.</Comment>
+<Parameters>
+<Parameter
+ Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Name="aTarget"
+ Guid="3d065125-f0c2-48d5-9f90-afe570a5f189"
+>
+</Parameter><Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="fc004e5f-e21b-4330-a436-3dbea918421f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="During target (SvL)"
+ Guid="9b2c1b5d-4631-44e1-86eb-4dd89085735e"
+>
+<PreConditions>
+<PreCondition
+ Guid="bdcd4039-f786-429f-ba41-8e8ba5680349"
+>aTarget.Location &lt;= Distance</PreCondition><PreCondition
+ Guid="52ef9e5b-a4ae-4429-a4ca-7166927e82cf"
+>Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
+ Guid="4f4aff81-9edd-42ef-a1e4-c1e421aac841"
+>Kernel.MA.IsSvL ( aTarget )</PreCondition></PreConditions>
+<Expression>aTarget.Speed</Expression>
+</Case><Case
+ Name="During target (other), d_EBI unknown"
+ Guid="9225b095-d979-4770-8e9d-9c7ffb8c29c3"
+>
+<PreConditions>
+<PreCondition
+ Guid="7502e25f-c02c-4e9e-b3a2-eae5695cfd08"
+>d_P ( aTarget.Speed) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+ Guid="fad51a65-a643-4377-96b9-5aad3caf9b5d"
+>Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="During target (other)"
+ Guid="f7e71a99-335d-4fb6-a47a-5ef27931d198"
+>
+<PreConditions>
+<PreCondition
+ Guid="2a171c82-b995-4704-b3ec-b1b9353cbc2d"
+>Distance &lt; aTarget.Location + Default.BaseTypes.LengthToDistance ( aTarget.Length )</PreCondition><PreCondition
+ Guid="e1eb0537-a61d-41fb-96e6-629c3dfd32d6"
+>d_P ( aTarget.Speed ) &lt;= Distance</PreCondition></PreConditions>
+<Expression>0.0</Expression>
+</Case><Case
+ Name="Outside"
+ Guid="a6561902-b639-4591-8ebf-c329b3b0b843"
+>
+<Expression>0.0</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="10"
+ Y="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="GUI"
+ Guid="25a50d8a-67be-4a4a-8e2a-528242187c9d"
+>
+<ReqRef
+ Id="74a35017-250f-4c6f-948c-0c08da4f4b05"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="01ef46e8-37ec-45c1-9168-9e32ad197ff8"
+>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="c3670b74-352d-430b-803c-4d5ac09619e9"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Always"
+ Guid="97d73dd3-41c1-41ad-b682-8ea8dfad5174"
+>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; SpeedRestrictions 
+  DecelerationFactor =&gt; Kernel.TrainData.BrakingParameters.A_normal_service ) 
+( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="230"
+ Y="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="EBD"
+ Guid="052db52b-a60c-4335-91da-4767174b220c"
+>
+<ReqRef
+ Id="690e9583-3caf-46eb-b721-bed7b3d89e9b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a5eb3ba-4906-4655-9c79-4783d815de91"
+>
+</ReqRef><ReqRef
+ Id="2b4c3cb7-6f06-408a-bfd7-85f5c5069e00"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="68f14742-6767-4b1f-9971-9b0f7ecba953"
+>
+</ReqRef><ReqRef
+ Id="2c3d2e5e-98aa-4eda-9eb9-f2fd1ee0a60d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a8b8f6ca-6729-4300-afd9-72b0c6146013"
+>
+</ReqRef><Comment>We don&apos;t explicitly compute the location of EBD foot since we don&apos;t need it (our curves are computed entirely, going until the speed 0 even for MRPS or LOA targets).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="9b6ab90f-d49d-4413-a659-70c7065d3852"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="1529fd2f-2eb1-49c8-94c8-feb16efd487c"
+>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.EBI, 
+  DecelerationFactor =&gt; Kernel.TrainData.BrakingParameters.A_safe )
+( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Cacheable="TRUE"
+ Default=""
+ X="120"
+ Y="330"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="SBD"
+ Guid="fcea94f1-cd48-473c-9b64-4604dffa4a9a"
+>
+<ReqRef
+ Id="7525f72a-3b46-498c-8c48-1ed3ad888b1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="588ebd53-ca31-4d92-9ccf-6760902d4dfa"
+>
+</ReqRef><ReqRef
+ Id="02854410-9ddb-4b94-993c-b26498a498bf"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d289781-e0c4-4b22-9693-7dcbb0ee3d9d"
+>
+</ReqRef><ReqRef
+ Id="50a11b55-dc19-4427-b0fd-d81384417f79"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8df34be1-b4eb-40da-a519-bda48c7f6c2d"
+>
+</ReqRef><ReqRef
+ Id="cb22befd-4969-4fdf-9f68-f6b39ec1abe3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f4a93269-26e4-4ff4-a36c-2506881cad3c"
+>
+</ReqRef><Comment>Provides the deceleration profile based on the MRSP and deceleration factors</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="2ab6fab5-89f4-44a9-8172-4bcfb6e76d33"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Supervising LOA - no SBD"
+ Guid="8a69aae7-09da-458a-927c-b4d2e0e65039"
+>
+<PreConditions>
+<PreCondition
+ Guid="53634c1c-2959-451a-949d-2699a79a286d"
+>NOT Kernel.MA.EOADefined()</PreCondition></PreConditions>
+<Expression>Default.BaseTypes.Speed.NA</Expression>
+</Case><Case
+ Name="Value"
+ Guid="0a8f603f-54a4-4931-a14b-bc70a2d89895"
+>
+<Expression>DecelerationProfile ( 
+  SpeedRestrictions =&gt; Kernel.MA.EOASpeedRestriction, 
+  DecelerationFactor =&gt; Kernel.TrainData.BrakingParameters.A_expected ) 
+( Distance )</Expression>
+</Case></Cases>
+</Function><Function
+ Type="Default.BaseTypes.Speed"
+ Default=""
+ X="340"
+ Y="390"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="EBD_MRDT"
+ Guid="4697a15e-4449-4560-a730-a353a31c4b73"
+>
+<Comment>Calls EBD_Target for the MRDT. This function is used to display the EBD curve for the MRDT (for users of the model).</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="Distance"
+ Guid="8d0a8ab1-6bac-4fcf-a5ed-969745473ed6"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Value"
+ Guid="167cb83d-97c6-43f7-b793-91755f658801"
+>
+<Expression>Kernel.SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target(
+    Distance =&gt; Distance,
+    aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
+)</Expression>
+</Case></Cases>
+</Function></Functions>
+</NameSpace>

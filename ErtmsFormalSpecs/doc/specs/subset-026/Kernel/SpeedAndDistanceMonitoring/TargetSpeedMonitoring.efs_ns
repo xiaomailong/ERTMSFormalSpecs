@@ -1279,6 +1279,25 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
 <Comment>Returns the EOA, if applicable. Otherwise returns the end of SR or a target at infinity.</Comment>
 <Cases>
 <Case
+ Name="SR distance"
+ Guid="4300d783-67d7-435e-bef2-930fbc546b85"
+>
+<PreConditions>
+<PreCondition
+ Guid="d7ba719f-1746-439b-a044-d8afca29cefb"
+>Mode == Mode.SR</PreCondition></PreConditions>
+<Expression>MA.ClosestTarget(
+    Target1 =&gt; Target{
+        Location =&gt; StaffResponsible.SREndLocation(),
+        Speed =&gt; 0.0,
+        Length =&gt; 0.0
+    },
+    Target2 =&gt; MA.ClosestEOA()
+)
+
+
+</Expression>
+</Case><Case
  Name="EOA"
  Guid="c9c02e80-82f9-4ad7-a563-1ac844cdeb9c"
 >
@@ -1287,19 +1306,6 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
  Guid="d2ab17a1-be70-4209-b080-7b9b79663551"
 >Available(MA.MA)</PreCondition></PreConditions>
 <Expression>MA.ClosestEOA()</Expression>
-</Case><Case
- Name="SR distance"
- Guid="4300d783-67d7-435e-bef2-930fbc546b85"
->
-<PreConditions>
-<PreCondition
- Guid="d7ba719f-1746-439b-a044-d8afca29cefb"
->Mode == Mode.SR</PreCondition></PreConditions>
-<Expression>Target{
-    Location =&gt; StaffResponsible.SREndLocation(),
-    Speed =&gt; 0.0,
-    Length =&gt; 0.0
-}</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="7ef2beef-6af6-4e22-9ddb-b9729db49aae"

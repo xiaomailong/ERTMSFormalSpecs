@@ -2301,7 +2301,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets"
+ Type="TargetSpeedMonitoring.Targets"
  Cacheable="TRUE"
  Default=""
  X="90"
@@ -2401,7 +2401,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</Expression>
 <Expression>Monitoring in MonitoringTypeSM.Release</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SupervisionStatus"
+ Type="SupervisionStatus"
  Cacheable="TRUE"
  Default=""
  X="420"
@@ -3138,74 +3138,6 @@ Odometry.TrainIsAtStandstill()</PreCondition></PreConditions>
 <Action
  Guid="bb283a6b-d672-40a0-9fa5-e027239cb8ed"
 >Monitoring &lt;- MonitoringTypeSM.Idle</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
- X="610"
- Y="120"
- Width="100"
- Height="50"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitializeFixedValues"
- Guid="91326901-7ff5-4e7b-84b4-cb373482ce11"
->
-<Comment>Initializes the test environment with a set of fixed values as specified in ERA_Braking_cuvers_tool_v3.0.xlsm.</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialize fixed values"
- Guid="2f342616-f08b-4f2a-ad76-0df5ca5c851f"
->
-<Comment>Initializes the test environment with a set of fixed values as specified in ERA_Braking_cuvers_tool_v3.0.xlsm.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initialize fixed values"
- Guid="f3cba488-1191-4969-8a47-cca7f31a3b48"
->
-<PreConditions>
-</PreConditions>
-<Actions>
-<Action
- Guid="7e85e74c-9534-4ea0-b6c0-4f897f274950"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_ebi_max &lt;- 15.0</Action><Action
- Guid="0a9ce767-5ef2-4720-a120-474f637e9aa8"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_ebi_min &lt;- 7.5</Action><Action
- Guid="ecdc9d99-2b1a-4a23-aae9-0accb278f9bf"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi_max &lt;- 10.0</Action><Action
- Guid="806278c7-48bf-4823-90f0-8d281f434936"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_sbi_min &lt;- 5.5</Action><Action
- Guid="58b75e15-4729-4944-9cac-d6db49b0701b"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_warning_max &lt;- 5.0</Action><Action
- Guid="e0499a82-9634-411e-ac8e-fa39db72a54d"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.dV_warning_min &lt;- 4.0</Action><Action
- Guid="cfe8e4de-c889-462f-bfb6-2792f3fe59c7"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_ebi_max &lt;- 210.0</Action><Action
- Guid="f912e407-dafd-42d1-9a7b-f98b7e9e943a"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_ebi_min &lt;- 110.0</Action><Action
- Guid="fb2743c8-e7ee-4eb8-be74-4bd33422c371"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_sbi_max &lt;- 210.0</Action><Action
- Guid="0dd5306d-48aa-4790-805f-4fbe295deb87"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_sbi_min &lt;- 110.0</Action><Action
- Guid="409e3c78-979d-431f-bb37-602cc97c66ad"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_warning_max &lt;- 140.0</Action><Action
- Guid="6f61e8bc-03b3-43c8-b319-472661e27709"
->Kernel.SpeedAndDistanceMonitoring.CeilingSpeedMonitoring.V_warning_min &lt;- 110.0</Action><Action
- Guid="08b1cd8b-424e-4190-a9cd-a6e0973c09be"
->Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.T_preindication &lt;- 7.0</Action><Action
- Guid="437480c3-c7d2-4e2b-940b-fde43f2f88a0"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_driver &lt;- 4.0</Action><Action
- Guid="b35cebb9-6122-4972-af90-d63324279878"
->Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.T_warning &lt;- 2.0</Action><Action
- Guid="684b0de2-256d-47f1-9441-cd735eb4fe6d"
->Kernel.TrackDescription.Gradient.M_rotating_max &lt;- 15.0</Action><Action
- Guid="528a7dba-991e-4eed-ad14-de3bc5391e83"
->Kernel.TrackDescription.Gradient.M_rotating_min &lt;- 2.0</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>

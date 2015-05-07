@@ -58,7 +58,7 @@
  Guid="55a81856-c78d-4268-b3ab-6a25fab54e07"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="ad8a6301-49b4-439c-a3dc-051c1433b04e"
 >
@@ -114,7 +114,7 @@
  Guid="b48a3e8a-35b5-483a-87e0-86b3a3d4039d"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="3bcc2f1b-2aa5-4627-9be3-2550e4ab4459"
 >
@@ -177,7 +177,7 @@
  Guid="d3d44a74-6a3d-43bc-82af-1df1d08bbcec"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="af7e9799-9b52-4fc7-bd5e-b307a19e2eb0"
 >
@@ -249,7 +249,7 @@
  Name="GUI is enabled"
  Guid="e2ed0a38-959f-4ca1-af51-1fd4543d4a69"
 >
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; d_SBI1 ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.Display.GUI, Speed =&gt; Vmrsp ) )</Expression>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; d_SBI1 ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DecelerationCurves.GUI_TargetForSpeed( Vest =&gt;Vmrsp, aTarget =&gt; TargetSpeedMonitoring.MovementEnd() ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -312,7 +312,7 @@
 </ReqRef><Comment>Calculates the pre-indication location for the deceleration curve of the given target. The target MRSPn is placed at the start of the following section.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="MRSPnTarget"
  Guid="157d4132-628f-4d83-ba3d-e059b7db2413"
 >
@@ -445,7 +445,7 @@ PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationL
  Guid="6508e397-bc4d-4595-8635-f9557fc76553"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="93c5bc3e-e389-48f8-b43d-fde5addad986"
 >
@@ -487,7 +487,7 @@ PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Def
  Name="GUI is enabled"
  Guid="ed419bb1-5c35-46f3-8791-27aa4b53b189"
 >
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) - BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DistanceForSpeed ( Function =&gt; DecelerationCurves.Display.GUI, Speed =&gt; Vmrsp ) )</Expression>
+<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) - BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DecelerationCurves.GUI_TargetForSpeed( aTarget =&gt; aTarget, Vest =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -545,7 +545,7 @@ PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Def
 <Expression>Default.BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Cacheable="TRUE"
  Default=""
  Y="60"
@@ -584,7 +584,7 @@ INITIAL_VALUE TargetSpeedMonitoring.Target{
     }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Cacheable="TRUE"
  Default=""
  X="440"
@@ -637,7 +637,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
 <Comment>Returns the speed of the section prior to the given target</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="c8c68614-6f99-412d-82c4-e17eee5450af"
 >
@@ -683,7 +683,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
 <Comment>Returns the start of the section n of the MRSP</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="MRSPnTarget"
  Guid="ccb79e6e-be9c-4165-a11d-92e054b266b0"
 >
@@ -721,7 +721,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
 <Comment>Provides the end of the section whose target is MRSPnTarget. That position is MRSPnTarget.Location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="MRSPnTarget"
  Guid="a2bac124-a9bd-4d25-b70a-a1a749f16359"
 >
@@ -1006,7 +1006,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 >DecelerationCurves.SBD_Target(
     Distance =&gt; TrainPosition.FrontEndPosition(
     PointOfInterest=&gt;DistanceInterval.Nom ),
-    aTarget =&gt; MA.ClosestEOA()
+    aTarget =&gt; TargetSpeedMonitoring.MovementEnd()
 ) == BaseTypes.Speed.NA</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
@@ -1018,7 +1018,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
  Guid="395d82aa-4a02-4070-89b4-d96d16f5f732"
 >DecelerationCurves.SBD_Target(
     Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
-    aTarget =&gt; MA.ClosestEOA()
+    aTarget =&gt; TargetSpeedMonitoring.MovementEnd()
 )  &lt;  MRSP.V_MRSP()</PreCondition></PreConditions>
 <Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
@@ -1027,11 +1027,11 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 >
 <Expression>DecelerationCurves.SBD_TargetForSpeed(
     Vest =&gt; Vmrsp,
-    aTarget =&gt; MA.ClosestEOA()
+    aTarget =&gt; TargetSpeedMonitoring.MovementEnd()
 ) - BaseTypes.SpeedToMS ( Vmrsp ) * T_bs1ind()</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Cacheable="TRUE"
  Default=""
  Width="100"
@@ -1044,12 +1044,12 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <Comment>Returnst the further of the two targets, measured from the train&apos;s location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="Target1"
  Guid="f6d35e1d-c5aa-44c4-a371-97dea0aa6d7f"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="Target2"
  Guid="b855c6c5-922e-4978-8c72-41862551d44f"
 >
