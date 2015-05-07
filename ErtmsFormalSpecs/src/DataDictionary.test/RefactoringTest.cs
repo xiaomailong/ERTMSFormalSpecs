@@ -177,5 +177,23 @@ namespace DataDictionary.test
             Refactor(el1, "NewE1");
             Assert.AreEqual("NewE1", el2.Name);
         }
+
+        [Test]
+        public void TestMoveFromDefaultNameSpace()
+        {
+            Dictionary test = CreateDictionary("Test");
+            NameSpace defaultNameSpace = CreateNameSpace(test, "Default");
+            Types.Enum e1 = CreateEnum(defaultNameSpace, "E1");
+            Constants.EnumValue v1 = CreateEnumValue(e1, "X");
+ 
+            NameSpace n1 = CreateNameSpace (test, "N1");
+            Variables.Variable var1 = CreateVariable(n1, "V1", "Default.E1");
+            Rules.RuleCondition ruleCondition = CreateRuleAndCondition(n1, "R");
+            Action action = CreateAction(ruleCondition, "N1 <- Default.E1.X");
+
+            MoveToNameSpace(e1, n1);
+            Assert.AreEqual("N1 <- N1.E1.X", action.ExpressionText);
+            Assert.AreEqual("E1", var1.TypeName);
+        }
     }
 }

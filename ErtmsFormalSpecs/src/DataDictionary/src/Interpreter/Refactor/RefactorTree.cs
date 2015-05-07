@@ -48,6 +48,10 @@ namespace DataDictionary.Interpreter.Refactor
                         ReplaceText(replacementValue, expression.Start, expression.End);
                         break;
                     }
+                    else if (expression.Ref is NameSpace && expression.Ref.Name == "Default")
+                    {
+                        ReplaceText("", expression.Start, expression.End + 1);
+                    }
                     else
                     {
                         User = backup;

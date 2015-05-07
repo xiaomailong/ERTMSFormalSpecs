@@ -863,7 +863,6 @@ namespace DataDictionary.Interpreter
                 relocator.visit(model);
             }
         }
-
         #endregion
     }
 }

@@ -94,6 +94,19 @@ namespace DataDictionary.test
         }
 
         /// <summary>
+        ///     Performs a refactor
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="target"></param> 
+        protected void MoveToNameSpace(ModelElement element, NameSpace target)
+        {
+            Compiler.Compile_Synchronous(true);
+
+            target.AddModelElement(element);
+            Compiler.RefactorAndRelocate(element);
+        }
+
+        /// <summary>
         ///     Creates a dictionary in the system
         /// </summary>
         /// <param name="name"></param>
