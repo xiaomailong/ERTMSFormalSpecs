@@ -62,7 +62,7 @@
     Speed =&gt; 30.0
 }</Action><Action
  Guid="1e9ca831-d684-4776-b481-bd799bb5990f"
->Testing.InitializeTestEnvironment()</Action><Action
+>Testing.InitializeTestEnvironment(100.0)</Action><Action
  Guid="6b48ae3f-1421-47b8-840e-cf15416d3548"
 >Odometry.NominalDistance &lt;- 2200.0</Action></Actions>
 </SubStep></SubSteps>
@@ -258,7 +258,7 @@
 <Actions>
 <Action
  Guid="33530600-366a-4095-9aa1-c9289de072c8"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Set FS mode"
  Guid="a05dc2ae-1481-42f5-9c32-ae0f2f9bed87"
@@ -683,7 +683,7 @@
 <Actions>
 <Action
  Guid="e08fbbbe-23ff-4554-807d-7ded416f000a"
->Odometry.NominalDistance &lt;- 1840.0</Action><Action
+>Odometry.NominalDistance &lt;- 1790.0</Action><Action
  Guid="09627ea4-8ee6-438b-bb9a-21717de3f7e4"
 >Odometry.Accuracy.D_ora &lt;- 24.0</Action><Action
  Guid="4a9a6620-7dfa-4163-8e6f-eda43a0f346a"
@@ -705,7 +705,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f38059ab-0201-4211-b48b-66d1bc54b00c"
->BTM.LRBG.Position.Position == 150.0</Expectation><Expectation
+>BTM.LRBG.Position.Position == 100.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="59e33ba2-0798-4a34-8b3f-bdf80d68b6ee"
@@ -713,7 +713,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="e1f0fd5e-637f-4c8a-aceb-26498844e934"
->(BTM.LRBG.Position.Position + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location) == 1850.0</Expectation></Expectations>
+>(BTM.LRBG.Position.Position + Kernel.TrackDescription.ReversingArea.ReversingAreaProfile.Location) == 1800.0</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2 - Estimated front end passes start"
  Guid="9ebcf0e0-30c3-4fd9-9cc6-0c2e528c0a9b"
@@ -721,7 +721,7 @@
 <Actions>
 <Action
  Guid="81ca8e16-8cd5-45ca-9274-dcc322aa80e1"
->Odometry.NominalDistance &lt;- 1860.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 1810.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"

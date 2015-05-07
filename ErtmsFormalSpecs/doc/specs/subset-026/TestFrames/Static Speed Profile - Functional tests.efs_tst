@@ -85,7 +85,7 @@
 <Actions>
 <Action
  Guid="654682b6-9804-447d-b8f9-67d7b769c840"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -119,9 +119,9 @@
     Orientation=&gt;Orientation.Nominal,
     Position=&gt;BTM.Position
     {
-        OverReadingAmountOdo=&gt;12.0,
-        Position=&gt;11000.0,
-        UnderReadingAmountOdo=&gt;11.0
+        OverReadingAmountOdo =&gt; 0.0,
+        Position =&gt; 11000.0,
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action><Action
  Guid="7b0d71bc-2b8a-4145-a3ea-f3af8e81f318"
@@ -634,7 +634,7 @@
 <Actions>
 <Action
  Guid="a1e0c84d-fdae-43f0-aa18-440b46860591"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"

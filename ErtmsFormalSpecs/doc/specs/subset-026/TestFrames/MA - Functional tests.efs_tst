@@ -61,7 +61,7 @@
 <Actions>
 <Action
  Guid="5760df5d-2cdf-41ef-aa12-9fb65d94b437"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -608,9 +608,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="ceae8009-5ac9-4ebc-aad9-319bc44a266b"
->Testing.InitializeTestEnvironment(
-
-)</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 -  Reset MA (+Grad+SSP)"
  Guid="a58a93d8-8899-4314-a596-95b38c07d4a0"
@@ -967,9 +965,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="2a6a0d5e-36e0-49d8-8cd7-d0a9c03920b6"
->Testing.InitializeTestEnvironment(
-
-)</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 -  Reset MA (+Grad+SSP)"
  Guid="cb424143-9d9f-4533-9165-f621b066ab54"
@@ -1322,7 +1318,7 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="70d64647-6a83-4cb1-b705-d9888a212c0c"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 2 - Put the train in FS mode"
  Guid="709ba5f4-41fe-41e0-b69a-1a78916665f5"
@@ -1330,7 +1326,14 @@ BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="04d18e63-f531-47e5-9530-3d1987d063f8"
->Testing.SetFSMode()</Action></Actions>
+>Testing.SetFSMode()</Action><Action
+ Guid="c7786d3d-8216-4903-99d3-4a9853645272"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy{
+    D_ura =&gt; 2.0,
+    D_ora =&gt; 2.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Set the train speed"
  Guid="c3b3428a-c26b-4796-95f7-aba3839f9b0a"
@@ -1546,7 +1549,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="168dec10-d8af-4035-bd99-aab1fd05a951"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="2bdbca76-d4f2-4fbd-b5bc-347798263cf4"
@@ -1580,9 +1583,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 11.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 4000.0,
-        UnderReadingAmountOdo =&gt; 12.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action><Action
  Guid="afe594ec-0029-4031-bb55-443b4f4f5243"
@@ -1745,9 +1748,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 11.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 4000.0,
-        UnderReadingAmountOdo =&gt; 12.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action></Actions>
 </SubStep><SubStep
@@ -1824,7 +1827,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="8ac64e1b-ddeb-49b4-b220-ee7b7bf2e5b1"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="4ce61ee5-0b31-44de-ab4b-9b2de980f6d9"
@@ -2091,7 +2094,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="3bd1723b-f422-4840-87f4-1ce4bca51d1c"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Set LS mode"
  Guid="7fedee45-3836-479b-bdef-62956b69b93c"
@@ -2452,7 +2455,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="ada25dbf-c1ad-42b5-8b70-656553572189"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="e7313022-6f18-4333-8426-97b7b1b504f1"
@@ -2713,7 +2716,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="7f635957-221c-46fe-a4fe-bf22ec150c9b"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="a789fa69-78e6-415b-ad88-c5da177e3fda"
@@ -3005,7 +3008,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="8d62c5a5-f8e2-42b2-a73a-578dff07dbf7"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Set LS mode"
  Guid="359c2b43-76af-4306-9d9f-efd5e485c7fc"
@@ -3367,7 +3370,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="81cf7e2c-6f75-4878-beb6-8fd81694ede9"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 2 - Set mode"
  Guid="14353223-b296-43a4-9e1b-0eb79f1db4f6"
@@ -3858,7 +3861,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="36f92aba-c6d0-4333-98c3-d169aa531756"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 2 - Set FS mode"
  Guid="d3af7ffb-ba0e-4323-a0bd-f0919404817c"
@@ -3866,7 +3869,14 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Actions>
 <Action
  Guid="f5a0ac0a-4021-4bcf-a2cb-473c8e775a34"
->Testing.SetFSMode()</Action></Actions>
+>Testing.SetFSMode()</Action><Action
+ Guid="ebbf20af-9222-4368-9b08-85f64ad56ef8"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy{
+    D_ura =&gt; 2.0,
+    D_ora =&gt; 2.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 3 - Give the train an MA"
  Guid="ca6e9397-1c7e-4907-a7b4-0bdf2e5cf4d6"
@@ -3938,7 +3948,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Action
  Guid="f6991e62-dc07-42e8-8e3a-88cbfc7409fe"
 >INSERT BTM.Linking.LinkingDataStruct{
-    LocationAccuracy =&gt; 10.0,
+    LocationAccuracy =&gt; 1.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 105.0,
@@ -4053,7 +4063,7 @@ IN BTM.Linking.Linkings</Action></Actions>
 <Action
  Guid="c5de6f6a-1552-48ca-81f7-097e18faf94c"
 >INSERT BTM.Linking.LinkingDataStruct{
-    LocationAccuracy =&gt; 10.0,
+    LocationAccuracy =&gt; 1.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 105.0,
@@ -4096,7 +4106,9 @@ IN BTM.Linking.Linkings</Action></Actions>
              }
          }
      ]
- }</Action></Actions>
+ }</Action><Action
+ Guid="33a20ef6-b090-4002-a69b-3ef744277a21"
+>Odometry.NominalDistance &lt;- Odometry.NominalDistance + 105.0</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Second balise for orientation"
  Guid="ee67c683-edc2-4865-9afd-7919eb8d80a3"
@@ -4126,7 +4138,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f08475a0-4c8f-499f-952b-561eb8ed83fa"
->Kernel.MA.ClosestEOA().Location == 2005.0</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location == 2000.0</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="fca6b8cd-7015-4b19-96b2-d51a5c5f498f"
@@ -4165,7 +4177,7 @@ IN BTM.Linking.Linkings</Action></Actions>
  Guid="2845f3d9-488f-49e9-adb6-9a8269f66595"
 >INSERT 
 BTM.Linking.LinkingDataStruct{
-    LocationAccuracy =&gt; 10.0,
+    LocationAccuracy =&gt; 1.0,
     Orientation =&gt; Default.Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 105.0,
@@ -4325,9 +4337,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="653b111c-f27f-4260-91f9-a925a82382ef"
->Testing.InitializeTestEnvironment(
-
-)</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4835,9 +4845,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="17c18d3d-05fe-477c-80cd-907873eb9bc4"
->Testing.InitializeTestEnvironment(
-
-)</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="a2cf86fa-1ca4-4578-973f-8e5d3f3f24d8"
@@ -5305,9 +5313,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="8112a78f-f4db-4662-a23a-f04301e39529"
->Testing.InitializeTestEnvironment(
-
-)</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="31619091-b909-4aac-b1c2-6e916124f741"
@@ -5816,7 +5822,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="c74d7824-7f20-439c-9b52-30b274ed2e59"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="c98a8cf8-ac65-45d8-b1ef-42f342ebc209"
@@ -6182,7 +6188,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="9697545b-cb87-4c3d-bd7f-811f1285e4c5"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="d4e09fe6-4c83-4e36-824e-8be7c273f412"
@@ -6384,7 +6390,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="eb85624b-9d19-4c22-9f0f-6a2f202ac254"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Set LS mode"
  Guid="f61659f1-0ad4-4a46-be0d-f7e850531e82"
@@ -6833,7 +6839,7 @@ BTM.Linking.Linkings</Action><Action
 <Actions>
 <Action
  Guid="f0ff2822-e109-4079-9fbb-5e183c2e5e63"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="36410df0-a9b7-4eab-9544-4900653b388c"

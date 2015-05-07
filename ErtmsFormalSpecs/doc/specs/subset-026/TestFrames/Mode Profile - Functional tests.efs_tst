@@ -49,7 +49,7 @@
 <Actions>
 <Action
  Guid="da8d5ea2-0f55-4dff-89c0-08902cdabefd"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="ae90ab5e-aac6-455b-b9b3-4ac0a0f95a62"
@@ -397,7 +397,7 @@ NID_BG =&gt; 1313
 <Actions>
 <Action
  Guid="a386d4bf-a98c-414d-9941-74a6e0279238"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="c6b1d20e-93cf-4170-92f8-01f7543f51c6"
@@ -425,7 +425,14 @@ NID_BG =&gt; 1313
 <Actions>
 <Action
  Guid="b83172f0-53c6-414d-bd5a-8fbbd46c6588"
->Testing.SetSRMode()</Action></Actions>
+>Testing.SetSRMode()</Action><Action
+ Guid="2a0e029f-f30e-4388-aecc-cba76aed7216"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy{
+    D_ura =&gt; 12.0,
+    D_ora =&gt; 14.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -555,7 +562,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="1cfafc51-3e01-455d-af93-bde127d0ee9a"
->Odometry.NominalDistance &lt;- 167.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 117.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -585,7 +592,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="e9f59385-cd26-4a5c-95ed-838a7a741149"
->Odometry.NominalDistance &lt;- 170.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 120.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -615,7 +622,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="861404ae-e63f-4101-a1e9-c6c7d1c0e3b6"
->Odometry.NominalDistance &lt;- 396.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 346.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -645,7 +652,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="f20aa08e-409a-4700-a2cc-8f47078b5fa2"
->Odometry.NominalDistance &lt;- 397.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 347.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -704,7 +711,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="e6e9b2d2-1c0c-43e4-ad13-cc802e353399"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="6636b65c-bc42-42c5-bea6-170a24409260"
@@ -1065,7 +1072,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="9f5c77e8-51fc-4081-8b5b-8c025cd35e78"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="82d28114-58ae-4460-862e-602759c73c49"
@@ -1291,7 +1298,7 @@ Kernel.TrainPosition.FrontEndPosition(
 <Actions>
 <Action
  Guid="fbbfc174-db4c-408a-b6b4-43b65e089315"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="0c953c0a-5dfb-44f9-a802-9269e2209ac3"
@@ -1611,7 +1618,7 @@ IN Kernel.MA.ModeProfile.Profile</Action><Action
 <Actions>
 <Action
  Guid="f427a599-4bae-4d0c-8481-1fd943d1ecdd"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="b6a3e60e-1851-4b42-87bb-35ba98814813"
@@ -2134,7 +2141,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="c8ded6f6-b54b-47fa-af26-0ac4b4854213"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="78edc3c8-9f55-4a46-95f2-f9bde2d35702"
@@ -2336,7 +2343,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="f358eae4-295d-439a-b327-4b13f0875b28"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="c65ee4cd-4432-4989-9c19-6e64ae6f5582"
@@ -2538,7 +2545,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="36eacec9-9312-43fc-b9e2-e958be491fc4"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to receive MA"
  Guid="39f73505-f76f-4e7a-8773-812441aab469"

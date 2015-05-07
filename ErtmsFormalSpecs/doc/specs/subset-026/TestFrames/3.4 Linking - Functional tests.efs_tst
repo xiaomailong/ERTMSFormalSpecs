@@ -49,7 +49,7 @@
 <Actions>
 <Action
  Guid="64d28a4e-68d4-43dd-8c74-724d1dc9aa02"
->Testing.InitializeTestEnvironment()</Action><Action
+>Testing.InitializeTestEnvironment(100.0)</Action><Action
  Guid="64f3250b-e967-4f1f-98e0-983245897a2f"
 >Odometry.NominalDistance &lt;- 0.0</Action><Action
  Guid="813d6313-ae9b-4c98-9f22-6eb6ab591a61"
@@ -130,12 +130,12 @@ Q_LOCACC=&gt;1
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 9618,
-    Orientation =&gt; Orientation.Nominal,
+    Orientation =&gt; Default.Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 4.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 2000.0,
-        UnderReadingAmountOdo =&gt; 4.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action><Action
  Guid="5ece8d6d-5edd-476c-8cea-8dcb3a050d93"
@@ -350,25 +350,29 @@ N_ITER=&gt;0
 <Actions>
 <Action
  Guid="b68f5849-3fd0-4682-ba6f-fdf5e647cfaa"
->Testing.InitializeTestEnvironment()</Action><Action
- Guid="6a9caf99-cc2f-4d47-8e46-134842537a11"
->Odometry.NominalDistance &lt;- 2000.0</Action><Action
- Guid="69d1771f-a2b4-4223-a819-3561976e813a"
->BTM.PreviousBaliseGroups &lt;- []</Action><Action
- Guid="56435b17-a4a6-4bc3-a78e-c3f91875383b"
->Testing.SetOSMode()</Action><Action
+>Testing.InitializeTestEnvironment(2000.0)</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="70670d21-1cf5-4bbe-b09a-48d8a267c098"
+>
+<Actions>
+<Action
  Guid="bbb8ab2d-67f9-434a-9bde-3f743d24dce6"
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 9618,
-    Orientation =&gt; Orientation.Nominal,
+    Orientation =&gt; Default.Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 4.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 2000.0,
-        UnderReadingAmountOdo =&gt; 4.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="69d1771f-a2b4-4223-a819-3561976e813a"
+>BTM.PreviousBaliseGroups &lt;- []</Action><Action
+ Guid="56435b17-a4a6-4bc3-a78e-c3f91875383b"
+>Testing.SetOSMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -502,12 +506,12 @@ N_ITER=&gt;0
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 10000,
-    Orientation =&gt; Orientation.Nominal,
+    Orientation =&gt; Default.Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 5.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 3100.0,
-        UnderReadingAmountOdo =&gt; 7.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action><Action
  Guid="cc1297b0-8b31-4d25-82e5-d2c4f28d07a5"
@@ -570,12 +574,12 @@ N_ITER=&gt;0
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 10001,
-    Orientation =&gt; Orientation.Nominal,
+    Orientation =&gt; Default.Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 8.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 9000.0,
-        UnderReadingAmountOdo =&gt; 10.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action><Action
  Guid="6eaa1a85-09d3-4ea1-baba-40cb175640c6"

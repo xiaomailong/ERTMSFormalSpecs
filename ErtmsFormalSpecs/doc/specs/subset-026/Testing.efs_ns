@@ -23,6 +23,13 @@
  Guid="7cde642d-80d9-4a06-9f70-c9a305706ab2"
 >
 <Comment>Sets variables to standard values for testing.</Comment>
+<Parameters>
+<Parameter
+ Type="Default.BaseTypes.Distance"
+ Name="TrainPosition"
+ Guid="b894618b-26aa-4a32-847f-200c7b0a7005"
+>
+</Parameter></Parameters>
 <Rules>
 <Rule
  Priority="Processing"
@@ -84,7 +91,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
     Timestamp =&gt; Kernel.DateAndTime.StartDate,
     Position =&gt; BTM.Position
     {
-        Position =&gt; 50.0,
+        Position =&gt; 0.0,
         UnderReadingAmountOdo =&gt; 2.0,
         OverReadingAmountOdo =&gt; 1.0
     },
@@ -103,14 +110,14 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
     DataState =&gt; Default.DataState.Valid
 }</Action><Action
  Guid="b179176e-e37d-4e0e-9d73-12f61aeb9d8c"
->Odometry.NominalDistance &lt;- 150.0</Action><Action
+>Odometry.NominalDistance &lt;- TrainPosition</Action><Action
  Guid="98e08c63-83b7-41b2-ab3c-cd186f5db212"
 >Odometry.Accuracy &lt;- Odometry.OdometerAccuracy
 {
-    D_ura =&gt; 12.0,
-    D_ora =&gt; 14.0,
-    V_ora =&gt; 1.0,
-    V_ura =&gt; 2.0
+    D_ura =&gt; 0.0,
+    D_ora =&gt; 0.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
 }</Action><Action
  Guid="35f34f07-d5ae-493e-8f02-ef3b67c0d497"
 >Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>

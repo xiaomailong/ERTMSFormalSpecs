@@ -50,7 +50,7 @@
 <Actions>
 <Action
  Guid="d06b0d63-61b8-438c-a3cf-359ab2350b27"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -76,9 +76,9 @@
     Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 2.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 500.0,
-        UnderReadingAmountOdo =&gt; 2.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action><Action
  Guid="08379c9e-a5f7-43d3-841b-159147d82d4f"
@@ -331,9 +331,9 @@ IN BTM.Linking.Linkings</Action></Actions>
     Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
-        OverReadingAmountOdo =&gt; 4.0,
+        OverReadingAmountOdo =&gt; 0.0,
         Position =&gt; 1000.0,
-        UnderReadingAmountOdo =&gt; 7.0
+        UnderReadingAmountOdo =&gt; 0.0
     }
 }</Action><Action
  Guid="8f49d8a5-0dd5-4b89-93c8-d95abd90af56"

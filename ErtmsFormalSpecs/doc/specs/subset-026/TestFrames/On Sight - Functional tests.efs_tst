@@ -57,7 +57,7 @@
 <Actions>
 <Action
  Guid="bdd61a93-0235-4ee8-b6c5-ffe9f42f2813"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -376,7 +376,7 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
 <Actions>
 <Action
  Guid="1f6188e7-7f95-4369-b53a-502bf13f7a66"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -692,7 +692,7 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
 <Actions>
 <Action
  Guid="b8765871-1ceb-4b9c-916d-b81f711859d1"
->Testing.InitializeTestEnvironment()</Action></Actions>
+>Testing.InitializeTestEnvironment(100.0)</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2 - Initialize elements to accept MA"
  Guid="4fd3c159-e8a0-49a0-83f4-ace00ad16851"
@@ -814,7 +814,14 @@ Messages.EUROBALISE.SubStructure1
                            ]
 }</Action><Action
  Guid="a9bd2ea6-7253-41fd-aed0-488bf9315acb"
->Odometry.NominalDistance &lt;- 180.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 130.0</Action><Action
+ Guid="47d814ac-981f-4317-99a0-d5191cb7be3a"
+>Odometry.Accuracy &lt;- Odometry.OdometerAccuracy{
+    D_ura =&gt; 12.0,
+    D_ora =&gt; 14.0,
+    V_ora =&gt; 0.0,
+    V_ura =&gt; 0.0
+}</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="3a977a25-9d73-4bca-999b-9af17d39cdf3"
@@ -845,7 +852,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="91033c67-485c-4813-8792-342b1ded83d4"
->Odometry.NominalDistance &lt;- 190.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 140.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -872,7 +879,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="63aed9b2-6f09-4a2d-a480-bc8b1373b89a"
->Odometry.NominalDistance &lt;- 200.0</Action></Actions>
+>Odometry.NominalDistance &lt;- 150.0</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
