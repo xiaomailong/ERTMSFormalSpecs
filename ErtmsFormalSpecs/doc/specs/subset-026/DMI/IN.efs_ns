@@ -7,7 +7,11 @@
  Guid="cda5cf76-e875-4230-bdb0-77e5413b50b2"
 >
 <NameSpaces>
-</NameSpaces>
+<NameSpaceRef
+ Name="Acknowledgements"
+ Guid="ab5d30e9-fc3b-40dc-82b6-5dcccf1cf464"
+>
+</NameSpaceRef></NameSpaces>
 <Structures>
 <Structure
  Default=""
@@ -3761,6 +3765,43 @@
  Guid="1c41ce05-354a-49c4-aa29-5738ba67472b"
 >
 </ReqRef><Comment>Acknowledges the LS mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="a2e18867-295d-4cf0-a6ac-d8afd57a0d96"
+>
+<ReqRef
+ Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="4aac445d-dfc3-4de4-b6e2-b46ec311a9e5"
+>
+</ReqRef><ReqRef
+ Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="044a84f7-e9ab-44ba-affc-d7c1a3952fd6"
+>
+</ReqRef><Comment>In case of timeout, the service brake is applied.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="18219092-b870-4ee3-b217-6e4b4bfe17bd"
+>
+<PreConditions>
+<PreCondition
+ Guid="2775ef0b-b3a6-48da-94f9-26d9cfeb65d1"
+>StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="0032d2ab-08bf-4c4f-ab15-68154487a311"
+>Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
+ Guid="c9a3e8eb-8f97-42ee-942d-bbeca7f1e24d"
+>TIU.CommandServiceBrake( brakeSet =&gt; True )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3794,7 +3835,9 @@
 <Actions>
 <Action
  Guid="7f80394d-d86d-4e0e-9ee9-48ab5ba67ea8"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="f5739bd9-6bb9-4273-8c76-672925676b7b"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3828,7 +3871,9 @@
 <Actions>
 <Action
  Guid="febfd992-c4f5-4d2a-a32c-9b0b21e4b009"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="31618ddd-9074-4f74-a558-ed0775cbd809"
+>StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3874,6 +3919,25 @@
  Guid="c2d6e738-c0db-42fb-a4cd-a4f9d7622965"
 >
 <Comment>The status of the request</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="StartTime"
+ Guid="3fc3d2c1-46ae-4545-8bf9-134926c008dd"
+>
+<ReqRef
+ Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f51bd2bc-3e51-4339-b7ef-5f349578d09c"
+>
+</ReqRef><ReqRef
+ Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7221c10f-f0cf-4ee7-bbd9-499cbe0d4e14"
+>
+</ReqRef><Comment>Represents the time when the driver ack was requested.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="120"
@@ -3890,6 +3954,43 @@
  Guid="7b475ad5-75ae-46ec-85c3-0f13c201200a"
 >
 </ReqRef><Comment>Acknowledges the OS mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="e3c56cc1-7a16-4207-ad0b-5dee0ab9825f"
+>
+<ReqRef
+ Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="60cf3014-aa71-4a47-bed2-ab182e6fae8f"
+>
+</ReqRef><ReqRef
+ Id="19ba3404-792f-4f75-a058-7b89395bce5c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8081efc9-327a-4858-82ff-3f19d864f36e"
+>
+</ReqRef><Comment>In case of timeout, the service brake is applied.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="3775a409-e5df-4a3d-98ab-280f0f481801"
+>
+<PreConditions>
+<PreCondition
+ Guid="f98185fc-8d18-4344-ae88-ea11e7b4c5fb"
+>StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="456feea0-c81d-4514-89b4-32c53ca3f5d5"
+>Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
+ Guid="10d1cee6-15fb-44c7-823d-3bb69ea5609b"
+>TIU.CommandServiceBrake( brakeSet =&gt; True )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -3923,7 +4024,9 @@
 <Actions>
 <Action
  Guid="719101c0-d5a3-40d8-a756-4698d9924399"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="09400527-1555-4055-9e37-f236e1de2bf6"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3957,7 +4060,9 @@
 <Actions>
 <Action
  Guid="92bb23ee-a4c9-436f-acf0-acfe9eaa3059"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="5ac58b4f-4dd8-4f42-b19a-4fe5a43d85b8"
+>StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4003,6 +4108,25 @@
  Guid="c7ec2f61-10d6-4421-9ac9-18b8b19b69fe"
 >
 <Comment>The status of the request</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="StartTime"
+ Guid="f1a00120-4f93-44b1-aead-4daaaaef2670"
+>
+<ReqRef
+ Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c03cfb24-3729-4333-8504-2abf6b1a00c6"
+>
+</ReqRef><ReqRef
+ Id="19ba3404-792f-4f75-a058-7b89395bce5c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a1754a02-8a17-4585-a28c-cfa7ee1cf073"
+>
+</ReqRef><Comment>Represents the time when the driver ack was requested.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="450"
@@ -4019,6 +4143,43 @@
  Guid="fe5e74e6-0a4e-4155-a9c4-a914faf20890"
 >
 </ReqRef><Comment>Acknowledges the SH mode</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="204f5829-f5c1-45f6-9880-a97fe61d359f"
+>
+<ReqRef
+ Id="81394bed-5665-4b0a-a527-9c845c6db537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a403af6e-6b5e-4a11-96cf-9ab0e6ce48b8"
+>
+</ReqRef><ReqRef
+ Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a3466cc-ff00-440d-bb8e-18022f1bc79c"
+>
+</ReqRef><Comment>In case of timeout, the service brake is applied.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="d2a030dc-be54-4e45-882c-3691ec69c0a6"
+>
+<PreConditions>
+<PreCondition
+ Guid="88c0a656-36a1-4db8-bf13-a34783b84219"
+>StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="b0b1c0a4-d1df-4954-a400-fe1668407d47"
+>Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
+ Guid="4df171bc-cb95-4aa3-b13e-7af5765825ff"
+>TIU.CommandServiceBrake( brakeSet =&gt; True )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -4052,7 +4213,9 @@
 <Actions>
 <Action
  Guid="24769eb4-f757-4ced-8cd3-4a57859a3edb"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="849c567f-569a-4156-aa21-b95e33a6f413"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4086,7 +4249,9 @@
 <Actions>
 <Action
  Guid="843da387-e6dc-4659-ae85-6b0981d04135"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>THIS.InputInformation.InitiateRequest()</Action><Action
+ Guid="0bc1dab8-7d59-4e81-a0d8-6e6f38a183ed"
+>StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4132,6 +4297,25 @@
  Guid="87950f54-71fd-4085-b52e-5ba074098bbc"
 >
 <Comment>The status of the request</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="StartTime"
+ Guid="3167d20d-8154-4cb6-97b2-237c435e01cb"
+>
+<ReqRef
+ Id="81394bed-5665-4b0a-a527-9c845c6db537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="6343108d-5337-4ddd-b03c-b7a4c59b4bb5"
+>
+</ReqRef><ReqRef
+ Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="3d1316e4-2746-413a-8638-51dfafba24cd"
+>
+</ReqRef><Comment>Represents the time when the driver ack was requested.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="670"
@@ -4687,7 +4871,7 @@
 <PreConditions>
 <PreCondition
  Guid="74984aa5-533e-4d93-adde-3376902ab995"
->AcknForRollAwayProtection.InputInformation.RequestStatus == Default.Request.Response</PreCondition><PreCondition
+>AcknForRollAwayProtection.InputInformation.RequestStatus == Request.Response</PreCondition><PreCondition
  Guid="537d2a8f-740f-4c14-b1e4-e416a8819ff6"
 >AcknForRollAwayProtectionAvailable()</PreCondition></PreConditions>
 <Actions>

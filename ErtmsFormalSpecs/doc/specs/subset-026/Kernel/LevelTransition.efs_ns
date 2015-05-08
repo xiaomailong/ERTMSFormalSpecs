@@ -184,7 +184,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.LevelTransition.LevelTransitionStruct"
+ TypeName="LevelTransitionStruct"
  MaxSize="20"
  Default="[]"
  X="180"
@@ -238,7 +238,7 @@
 <PreCondition
  Guid="5afbaba3-f808-437d-b085-4139409c92ea"
 >LevelT== Messages.M_LEVELTR.Level_0</PreCondition></PreConditions>
-<Expression>Default.Level.L0</Expression>
+<Expression>Level.L0</Expression>
 </Case><Case
  Name="Level 1"
  Guid="6bc3f312-88af-4e25-9d3e-e6d2b04fb7de"
@@ -247,7 +247,7 @@
 <PreCondition
  Guid="c4adefb8-5403-4459-ae07-a08a5abb77c8"
 >LevelT == Messages.M_LEVELTR.Level_1</PreCondition></PreConditions>
-<Expression>Default.Level.L1</Expression>
+<Expression>Level.L1</Expression>
 </Case><Case
  Name="Level 2"
  Guid="87b3fa69-db82-427d-b7c5-8628085f1117"
@@ -256,7 +256,7 @@
 <PreCondition
  Guid="77a55ed0-fc74-4fb8-9db2-444105a39fab"
 >LevelT == Messages.M_LEVELTR.Level_2</PreCondition></PreConditions>
-<Expression>Default.Level.L2</Expression>
+<Expression>Level.L2</Expression>
 </Case><Case
  Name="Level 3"
  Guid="2bd9216e-6801-402b-a88c-ef6ee9dfcdcd"
@@ -265,7 +265,7 @@
 <PreCondition
  Guid="53c00526-b28d-44d6-a8f8-8960a6b415f2"
 >LevelT == Messages.M_LEVELTR.Level_3</PreCondition></PreConditions>
-<Expression>Default.Level.L3</Expression>
+<Expression>Level.L3</Expression>
 </Case><Case
  Name="Level STM"
  Guid="204562b3-8736-4ca6-9d1e-3054cb410f83"
@@ -274,7 +274,7 @@
 <PreCondition
  Guid="416ab9e7-316b-4221-b5c5-666f38de4161"
 >LevelT == Messages.M_LEVELTR.Level_STM_specified_by_NID_STM</PreCondition></PreConditions>
-<Expression>Default.Level.LNTC</Expression>
+<Expression>Level.LNTC</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -314,7 +314,7 @@
 <PreConditions>
 <PreCondition
  Guid="47dafefb-e91a-4ce8-9bb9-714efb34ba20"
->Level.Value in [Default.Level.L0, Default.Level.L1]</PreCondition></PreConditions>
+>Level.Value in [Level.L0, Level.L1]</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
 </Case><Case
  Name="Level NTC"
@@ -323,7 +323,7 @@
 <PreConditions>
 <PreCondition
  Guid="3894d9bf-99c3-4031-a849-43c8d27dfba7"
->Level.Value == Default.Level.LNTC</PreCondition><PreCondition
+>Level.Value == Level.LNTC</PreCondition><PreCondition
  Guid="d4921d5d-80a6-4357-9508-d1e02eee12f6"
 >THERE_IS X IN Kernel.TrainData.TrainData.Value.LevelsSupportedOnBoard |  ( X.Value == Level.Value AND X.NTC == Level.NTC )</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
@@ -334,7 +334,7 @@
 <PreConditions>
 <PreCondition
  Guid="c2264a6b-4910-4c79-bc1f-45ac870f5e5a"
->Level.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
+>Level.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="61d995ef-8596-4728-b62d-8eca9127d8d8"
 >EURORADIO.OneMobileTerminalIsAvailable()</PreCondition></PreConditions>
 <Expression>Boolean.True</Expression>
@@ -428,7 +428,7 @@
 </ReqRef><Comment>Indicates if the level transition requires the acknowledgement from the driver, according to the current level of the on-board and to the level of the level transition.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LevelTransition.LevelTransitionStruct"
+ Type="LevelTransitionStruct"
  Name="anLTO"
  Guid="cce3afb1-e47c-4834-aef8-2030ee570304"
 >
@@ -558,7 +558,7 @@
 <PreConditions>
 <PreCondition
  Guid="deffbc9b-7242-4693-960f-aef5e0d2a07c"
->ERTMSToEFSLevel ( LevelT =&gt; M_LEVELTR ) == Default.Level.LNTC</PreCondition></PreConditions>
+>ERTMSToEFSLevel ( LevelT =&gt; M_LEVELTR ) == Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5a5d8ed3-4dc4-4a07-8e01-dca8be3b0fed"
@@ -566,9 +566,9 @@
 Kernel.LevelTransition.LevelTransitionStruct
 {
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel =&gt; Default.LevelDataStruct {
+    TRLevel =&gt; LevelDataStruct {
        Value =&gt; ERTMSToEFSLevel ( LevelT =&gt; M_LEVELTR ),
-       NTC =&gt; Default.NID_NTC(NID_NTC)
+       NTC =&gt; NID_NTC(NID_NTC)
     }
 }
 IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
@@ -581,7 +581,7 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="5f3b6b13-fbbb-49f3-9e3c-593ace6052e8"
->ERTMSToEFSLevel ( LevelT =&gt; M_LEVELTR ) != Default.Level.LNTC</PreCondition></PreConditions>
+>ERTMSToEFSLevel ( LevelT =&gt; M_LEVELTR ) != Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3896ef04-bbce-4b8e-bc64-36982d960e64"
@@ -589,9 +589,9 @@ IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
 Kernel.LevelTransition.LevelTransitionStruct
 {
     AcknLength=&gt;MessageTypes.QScaleLength ( length =&gt; L_ACKLEVELTR, scale =&gt; Q_SCALE ),
-    TRLevel =&gt; Default.LevelDataStruct {
+    TRLevel =&gt; LevelDataStruct {
        Value =&gt; ERTMSToEFSLevel ( LevelT =&gt; M_LEVELTR ),
-       NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+       NTC =&gt; NID_NTC.NOT_APPLICABLE
     }
 }
 IN  LevelTransitionOrder.LevelAndLength</Action></Actions>
@@ -699,7 +699,7 @@ Packet.D_LEVELTR == 32767</PreCondition></PreConditions>
   [ 
       Kernel.LevelTransition.LevelTransitionStruct { 
           AcknLength =&gt; MessageTypes.QScaleLength( length=&gt;Packet.L_ACKLEVELTR,  scale=&gt;Packet.Q_SCALE ),
-          TRLevel =&gt; Default.LevelDataStruct {
+          TRLevel =&gt; LevelDataStruct {
              Value =&gt; ERTMSToEFSLevel ( Packet.M_LEVELTR ) ,
              NTC =&gt; Packet.NID_NTC
          }
@@ -838,11 +838,11 @@ Packet.Sequence1</Action></Actions>
 {
    CurrentLevel =&gt; Level.Value,
    PositionReportSent =&gt; False,
-   Location =&gt; Default.BaseTypes.Distance.Unknown,
+   Location =&gt; BaseTypes.Distance.Unknown,
    LevelAndLength =&gt; [ 
       Kernel.LevelTransition.LevelTransitionStruct { 
-         AcknLength =&gt; Default.BaseTypes.Length.NA, 
-         TRLevel =&gt; Default.LevelDataStruct {
+         AcknLength =&gt; BaseTypes.Length.NA, 
+         TRLevel =&gt; LevelDataStruct {
              Value =&gt; ERTMSToEFSLevel( LevelT =&gt;Packet.M_LEVELTR ),
              NTC =&gt; Packet.NID_NTC
          }
@@ -875,7 +875,7 @@ AddNewLTO
    M_LEVELTR =&gt; X.M_LEVELTR,
    NID_NTC =&gt; Packet.NID_NTC,
    Q_SCALE =&gt; Messages.Q_SCALE.Spare,
-   L_ACKLEVELTR =&gt; Default.MessageTypes.Length.NA
+   L_ACKLEVELTR =&gt; MessageTypes.Length.NA
 )
 ON 
 Packet.Sequence1</Action></Actions>
@@ -1010,11 +1010,11 @@ Packet.Sequence1</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="aea1dfa9-f22d-41e6-b71f-28c16a37d8ab"
->LevelTransitionToProcess.AcknLength == Default.BaseTypes.Length.NA</PreCondition><PreCondition
+>LevelTransitionToProcess.AcknLength == BaseTypes.Length.NA</PreCondition><PreCondition
  Guid="0905157e-7ec2-4c8f-b7ed-41eda4a774b2"
->LevelTransitionToProcess.TRLevel.Value == Default.Level.Unknown</PreCondition><PreCondition
+>LevelTransitionToProcess.TRLevel.Value == Level.Unknown</PreCondition><PreCondition
  Guid="51f56750-a2ca-4d8d-813b-c8da29fbd2e3"
->LevelTransitionToProcess.TRLevel.NTC == Default.NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
+>LevelTransitionToProcess.TRLevel.NTC == NID_NTC.NOT_APPLICABLE</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="13a35181-3fe7-41a0-ac21-38a64a3091f6"
@@ -1147,7 +1147,7 @@ Packet.Sequence1</Action></Actions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.LevelTransition.LevelTransitionOrderStruct"
+ Type="LevelTransitionOrderStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="20"
@@ -1180,7 +1180,7 @@ Packet.Sequence1</Action></Actions>
 >
 </ReqRef><Comment>Level transition order  received from the track side</Comment>
 </Variable><Variable
- Type="Kernel.LevelTransition.LevelTransitionStruct"
+ Type="LevelTransitionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="380"
@@ -1382,7 +1382,7 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
  Guid="5572fcd3-71a6-4fce-91e3-03f994294492"
 >AcknowledgementTime != BaseTypes.Time.NA</PreCondition><PreCondition
  Guid="08841d53-1313-454d-8f2d-2590fea1bf0a"
->AcknowledgementTime + MA.ModeProfile.Tack &lt; DateAndTime.CurrentTime</PreCondition><PreCondition
+>AcknowledgementTime + DMI.IN.Acknowledgements.Tack &lt; DateAndTime.CurrentTime</PreCondition><PreCondition
  Guid="557cf452-9e01-4ddf-82e2-d45344d238bd"
 >NOT TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
 <Actions>
@@ -1468,13 +1468,13 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
 <PreConditions>
 <PreCondition
  Guid="aa213c6b-c619-4e1c-87bc-a74f4d1b8bad"
->TrainPosition.RearEndPosition(Default.DistanceInterval.Min) &gt;= LevelTransitionOrder.Location</PreCondition><PreCondition
+>TrainPosition.RearEndPosition(DistanceInterval.Min) &gt;= LevelTransitionOrder.Location</PreCondition><PreCondition
  Guid="841d9164-6f90-4cca-a388-fef4340c3077"
->LevelTransitionOrder.CurrentLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
+>LevelTransitionOrder.CurrentLevel.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="f0dd9be7-1b5b-410c-ab51-e00ed28c2052"
 >NOT LevelTransitionOrder.PositionReportSent</PreCondition><PreCondition
  Guid="9d05460b-a991-459b-8c92-894b266afa9d"
->Mode not in [Default.Mode.NL]</PreCondition></PreConditions>
+>Mode not in [Mode.NL]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e52599ee-bda8-481c-8967-10f342082f2e"
@@ -1490,11 +1490,11 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
 <PreConditions>
 <PreCondition
  Guid="f2015811-7deb-49d2-b3a2-9a82336529e6"
->LevelTransitionOrder.CurrentLevel.Value in [Default.Level.LNTC]</PreCondition><PreCondition
+>LevelTransitionOrder.CurrentLevel.Value in [Level.LNTC]</PreCondition><PreCondition
  Guid="571a7181-1b87-401e-962a-92df42e17bc8"
->(FIRST Transition IN LevelTransitionOrder.LevelAndLength | AvailableForUse(Transition.TRLevel) ).TRLevel.Value in [Default.Level.L2, Default.Level.L3]</PreCondition><PreCondition
+>(FIRST Transition IN LevelTransitionOrder.LevelAndLength | AvailableForUse(Transition.TRLevel) ).TRLevel.Value in [Level.L2, Level.L3]</PreCondition><PreCondition
  Guid="5d86c07e-19a2-43cd-b727-6618f6a65fff"
->TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt;= LevelTransitionOrder.Location</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt;= LevelTransitionOrder.Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="80001d59-a4e1-4935-a8ca-2772d5ccab14"

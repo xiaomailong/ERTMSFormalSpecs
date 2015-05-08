@@ -2994,7 +2994,7 @@
 >
 </StructureElement><StructureElement
  TypeName="Default.Mode"
- Default="Default.Mode.FS"
+ Default="Mode.FS"
  Mode="Internal"
  Implemented="TRUE"
  Name="Mode"
@@ -4294,7 +4294,7 @@
 >INSERT Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
     Location =&gt; 0.0,
     Speed =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
-    Length =&gt; Default.BaseTypes.DistanceToLength(
+    Length =&gt; BaseTypes.DistanceToLength(
         REDUCE MRSP
         USING X IN BaseTypes.MinDistance(X.Location,RESULT)
         INITIAL_VALUE BaseTypes.Distance.Infinity)
@@ -5610,7 +5610,7 @@ TargetDistanceMandatory()</PreCondition></PreConditions>
 <Expression>Kernel.Mode in [Mode.FS]</Expression>
 </Case></Cases>
 </Function><Function
- Type="DMI.OUT.MonitoringType"
+ Type="MonitoringType"
  Cacheable="TRUE"
  Default=""
  X="770"
@@ -5653,7 +5653,7 @@ TargetDistanceMandatory()</PreCondition></PreConditions>
  Guid="ed3001e2-668d-4ae2-8381-1d7db8b7173e"
 >Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I( aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT(), Vmrsp =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) &gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition><PreCondition
  Guid="0390c7de-4a8c-40ee-b77b-e09a11a4ac1b"
->Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I( aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT(), Vmrsp =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) != Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>Kernel.SpeedAndDistanceMonitoring.PreIndicationLocation.d_I( aTarget =&gt; Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT(), Vmrsp =&gt; Kernel.MRSP.SpeedRestrictions(Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom))) != BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>MonitoringType.PIM</Expression>
 </Case><Case
  Name="TSM"

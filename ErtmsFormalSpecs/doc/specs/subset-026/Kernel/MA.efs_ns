@@ -576,7 +576,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 >
 </ReqRef><Comment>Represents the signalling related speed restriction.</Comment>
 <StructureElement
- TypeName="BaseTypes.Speed"
+ TypeName="Default.BaseTypes.Speed"
  Default="BaseTypes.Speed.MaxSpeed"
  Mode="Internal"
  Implemented="TRUE"
@@ -585,7 +585,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 >
 <Comment>The value of the signalling related speed restriction.</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Distance"
+ TypeName="Default.BaseTypes.Distance"
  Default="BaseTypes.Distance.Unknown"
  Mode="Internal"
  Implemented="TRUE"
@@ -596,7 +596,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.MA.SectionStruct"
+ TypeName="SectionStruct"
  MaxSize="6"
  Default="[]"
  X="480"
@@ -625,7 +625,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 >
 </ReqRef><Comment>Represents MA sections.</Comment>
 </Collection><Collection
- TypeName="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ TypeName="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default="[EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY, EMPTY]"
  X="170"
  Y="470"
@@ -640,7 +640,7 @@ Location stores the previous End of Movement Authority location.</Comment>
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="30"
  Y="10"
@@ -715,12 +715,12 @@ Location stores the previous End of Movement Authority location.</Comment>
 )
 INITIAL_VALUE CreateTarget (
     aSpeed =&gt; 0.0,
-    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
-    aLength =&gt; Default.BaseTypes.Length.Infinity
+    aLocation =&gt; BaseTypes.Distance.Infinity,
+    aLength =&gt; BaseTypes.Length.Infinity
  )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Default=""
  X="140"
  Y="10"
@@ -1013,7 +1013,7 @@ d &lt; SignallingRelatedSpeedRestriction.End</PreCondition></PreConditions>
  Name="Otherwise"
  Guid="b5339113-60a7-4cec-9e60-c156ca255ef5"
 >
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1267,7 +1267,7 @@ d &lt; SignallingRelatedSpeedRestriction.End</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates if a target is a supervision limit.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="67dba448-4631-4b0f-8f87-40417ba9fde8"
 >
@@ -1341,7 +1341,7 @@ d &lt; SignallingRelatedSpeedRestriction.End</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates if a target is an end of authority.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="4beac925-e434-459f-bfd5-6120b9bd9bdf"
 >
@@ -1363,7 +1363,7 @@ d &lt; SignallingRelatedSpeedRestriction.End</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="360"
  Y="190"
@@ -1395,8 +1395,8 @@ d &lt; SignallingRelatedSpeedRestriction.End</PreCondition></PreConditions>
 )
 INITIAL_VALUE CreateTarget (
     aSpeed =&gt; 0.0,
-    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
-    aLength =&gt; Default.BaseTypes.Length.Infinity
+    aLocation =&gt; BaseTypes.Distance.Infinity,
+    aLength =&gt; BaseTypes.Length.Infinity
  )</Expression>
 </Case><Case
  Name="No SvL"
@@ -1405,7 +1405,7 @@ INITIAL_VALUE CreateTarget (
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Default=""
  X="360"
  Y="10"
@@ -1427,7 +1427,7 @@ INITIAL_VALUE CreateTarget (
  - The infill location is situated on the section, in this case the section is cut at the infill location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Name="aSection"
  Guid="e46ae95a-41f4-40bf-80c2-08e5e7adde30"
 >
@@ -1487,7 +1487,7 @@ INITIAL_VALUE CreateTarget (
 </ReqRef><Comment>Provides the absolute distance (from the LRBG) to the beginning of the given section.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Name="aSection"
  Guid="77265b1e-4cf7-4df7-a1d7-5d3621b225c0"
 >
@@ -1501,7 +1501,7 @@ INITIAL_VALUE CreateTarget (
     MA.Sections |
         Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSection, Collection =&gt; MA.Sections)
 USING X IN
-    Default.BaseTypes.LengthToDistance ( X.Length )</Expression>
+    BaseTypes.LengthToDistance ( X.Length )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.PACKET.TRACK_TO_TRAIN.LEVEL_1_MOVEMENT_AUTHORITY.Message"
@@ -1607,7 +1607,7 @@ USING X IN
 >
 <Expression>FullTrackDescriptionAvailableForDistanceInterval
 (
-  Default.MessageTypes.QScaleLength
+  MessageTypes.QScaleLength
   (
     length =&gt; (SUM Packet.Sequence1 USING X IN X.L_SECTION) + Packet.L_ENDSECTION,
     scale =&gt; Packet.Q_SCALE
@@ -1670,7 +1670,7 @@ USING X IN
 <PreConditions>
 <PreCondition
  Guid="df6aa353-159b-4d1e-aab6-259ec49faed8"
->Mode == Default.Mode.TR</PreCondition></PreConditions>
+>Mode == Mode.TR</PreCondition></PreConditions>
 <Expression>Boolean.False</Expression>
 </Case><Case
  Name="Otherwise"
@@ -1687,7 +1687,7 @@ USING X IN
   )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="470"
  Y="10"
@@ -1729,7 +1729,7 @@ USING X IN
  }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="360"
  Y="250"
@@ -1743,12 +1743,12 @@ USING X IN
 <Comment>Returns the Target, EOA or SvL, with the closest Location</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target1"
  Guid="c87fc4ae-7099-42f6-ac05-c31337c8482e"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target2"
  Guid="ab06e05e-c9e5-482d-b89c-212bfea05d5b"
 >
@@ -1848,7 +1848,7 @@ USING X IN
 </ReqRef><Comment>Returns the start location of a section of the MA</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Name="aSection"
  Guid="c3fe6210-d819-4557-a8c0-2de313092a40"
 >
@@ -1893,7 +1893,7 @@ USING X IN
 <PreCondition
  Guid="fee6d219-56c8-47c9-b840-bc9541b651d5"
 >Available(MA.Sections)</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X IN X.Length) + MA.EndSection.Length )</Expression>
+<Expression>BaseTypes.LengthToDistance ( (SUM MA.Sections USING X IN X.Length) + MA.EndSection.Length )</Expression>
 </Case><Case
  Name="No sections"
  Guid="da7feeb3-3bc8-4b45-a006-7ffe4b49c1af"
@@ -1932,7 +1932,7 @@ USING X IN
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.MA.SectionsCol"
+ Type="SectionsCol"
  Default=""
  X="580"
  Y="190"
@@ -1974,7 +1974,7 @@ USING X IN
 <Comment>Check that the end of the section is further than the distance</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Name="aSection"
  Guid="e9c0973e-2bda-49a4-bd8d-8b25469d6b1d"
 >
@@ -1992,7 +1992,7 @@ USING X IN
 <Expression>SectionStartLocation(aSection) + BaseTypes.LengthToDistance(aSection.Length) &gt; Distance</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Default=""
  X="250"
  Y="250"
@@ -2007,7 +2007,7 @@ USING X IN
 This is used for when a new reference location is received and the MA is relocated to this nex reference location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.SectionStruct"
+ Type="SectionStruct"
  Name="aSection"
  Guid="95813a59-766c-4336-830b-b3c083326ab7"
 >
@@ -2082,7 +2082,7 @@ This is used for when a new reference location is received and the MA is relocat
   OR
 Kernel.TrackDescription.StaticSpeedProfile.SSPEnd ( Current =&gt; LAST X IN Kernel.TrackDescription.StaticSpeedProfile.SSP )
   &lt; 
-Default.BaseTypes.LengthToDistance( aDistanceInterval )</PreCondition></PreConditions>
+BaseTypes.LengthToDistance( aDistanceInterval )</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Gradient information does not cover required length"
@@ -2095,7 +2095,7 @@ Default.BaseTypes.LengthToDistance( aDistanceInterval )</PreCondition></PreCondi
   OR
 Kernel.TrackDescription.Gradient.GradientEnd(Current =&gt; LAST X IN Kernel.TrackDescription.Gradient.Gradients)
   &lt;
-Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreConditions>
+BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2350,7 +2350,7 @@ Default.BaseTypes.LengthToDistance ( aDistanceInterval )</PreCondition></PreCond
     SectionStartTimer =&gt; MATimers.CurrentBGTimeOfPassage
 )</Action><Action
  Guid="f8a42f47-6bf7-4155-9ad4-52eb896fbff6"
->SignallingRelatedSpeedRestriction.Value &lt;- Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
+>SignallingRelatedSpeedRestriction.Value &lt;- MessageTypes.SpeedResolution ( speed =&gt; Packet.V_MAIN, resolution =&gt; 5.0 )</Action><Action
  Guid="80edc04f-5273-4997-8bd5-e5b012a9c650"
 ><Comment>Current BG time of passage becomes section timer start</Comment>
 MATimers.LOATimerStart &lt;- MATimers.CurrentBGTimeOfPassage</Action><Action
@@ -2825,10 +2825,10 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 >(Packet.Q_ENDTIMER == Messages.Q_ENDTIMER.End_section_timer_information_to_follow)
   AND  
 ( 
-  Default.MessageTypes.QScaleDistance(
+  MessageTypes.QScaleDistance(
       distance=&gt;Packet.D_ENDTIMERSTARTLOC,
       scale=&gt;Packet.Q_SCALE
-  ) &lt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)
+  ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)
 )</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -2862,11 +2862,11 @@ In this case, the EOA should be moved to the train&apos;s current position with 
 >Packet.Q_OVERLAP == Messages.Q_OVERLAP.Overlap_information_to_follow
   AND
 ( 
-  Default.MessageTypes.QScaleDistance
+  MessageTypes.QScaleDistance
   (
       distance =&gt; Packet.D_STARTOL,
       scale =&gt; Packet.Q_SCALE
-  ) &lt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)
+  ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)
 )</PreCondition></PreConditions>
 <Actions>
 <Action
@@ -3581,7 +3581,7 @@ IN EOAs</Action></Actions>
 <Action
  Guid="7c64880f-bfc1-476f-a9b1-9983265c63c0"
 >INSERT CreateTarget(
-    aLength=&gt;Default.BaseTypes.Distance.Infinity,
+    aLength=&gt;BaseTypes.Distance.Infinity,
     aLocation=&gt;ClosestStopLocation( EmergencyStops ).StopLocation,
     aSpeed=&gt;0.0
 )
@@ -3700,7 +3700,7 @@ ON
 <Action
  Guid="5f20e14d-76f0-46f6-a32a-fe2c3ff671d7"
 >INSERT CreateTarget(
-    aLength=&gt;Default.BaseTypes.Length.Infinity,
+    aLength=&gt;BaseTypes.Length.Infinity,
     aLocation=&gt;MATimers.TimeOutSectionStart(),
     aSpeed=&gt;0.0
 )
@@ -3761,8 +3761,8 @@ MA.MATimers.EndSectionTimerStart != BaseTypes.Time.NA
 <Action
  Guid="87845b6e-e345-4f5d-b307-e656fca337bb"
 >INSERT CreateTarget(
-    aLength=&gt;Default.BaseTypes.Length.Infinity,
-    aLocation=&gt;TrainPosition.FrontEndPosition(PointOfInterest=&gt;Default.DistanceInterval.Nom),
+    aLength=&gt;BaseTypes.Length.Infinity,
+    aLocation=&gt;TrainPosition.FrontEndPosition(PointOfInterest=&gt;DistanceInterval.Nom),
     aSpeed=&gt;0.0
 )
 IN EOAs</Action><Action
@@ -3796,8 +3796,8 @@ IN EOAs</Action><Action
 >INSERT
 CreateTarget (
     aSpeed =&gt; MA.TargetSpeed,
-    aLocation =&gt; Default.BaseTypes.LengthToDistance ( (SUM MA.Sections USING X IN X.Length) + MA.EndSection.Length),
-    aLength =&gt; Default.BaseTypes.Length.Infinity
+    aLocation =&gt; BaseTypes.LengthToDistance ( (SUM MA.Sections USING X IN X.Length) + MA.EndSection.Length),
+    aLength =&gt; BaseTypes.Length.Infinity
 )
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
@@ -3826,8 +3826,8 @@ IN EOAs</Action></Actions>
  Guid="27ea72e8-4e70-4326-b736-bd2fb8e26a62"
 >INSERT CreateTarget (
     aSpeed =&gt; MA.TargetSpeed,
-    aLocation =&gt; Default.BaseTypes.LengthToDistance( MA.EndSection.Length),
-    aLength =&gt; Default.BaseTypes.Length.Infinity
+    aLocation =&gt; BaseTypes.LengthToDistance( MA.EndSection.Length),
+    aLength =&gt; BaseTypes.Length.Infinity
  )
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
@@ -3861,7 +3861,7 @@ IN EOAs</Action></Actions>
 (
     aSpeed =&gt; 0.0,
     aLocation =&gt; TrainPosition.FrontEndPosition(PointOfInterest =&gt; DistanceInterval.Nom),
-    aLength =&gt; Default.BaseTypes.Length.Infinity
+    aLength =&gt; BaseTypes.Length.Infinity
  )
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
@@ -3888,8 +3888,8 @@ IN EOAs</Action></Actions>
  Guid="777d7877-37bc-43a8-96a2-f67253857249"
 >INSERT CreateTarget (
     aSpeed =&gt; 0.0,
-    aLocation =&gt; Default.BaseTypes.Distance.Infinity,
-    aLength =&gt; Default.BaseTypes.Length.Infinity
+    aLocation =&gt; BaseTypes.Distance.Infinity,
+    aLength =&gt; BaseTypes.Length.Infinity
  )
 IN EOAs</Action></Actions>
 </RuleCondition></Conditions>
@@ -4100,7 +4100,7 @@ IN SvLs</Action></Actions>
 <Action
  Guid="10e9c9f8-f0a4-41d3-9b16-6ffd1920e288"
 >INSERT CreateTarget(
-    aLength=&gt;Default.BaseTypes.Length.Infinity,
+    aLength=&gt;BaseTypes.Length.Infinity,
     aLocation=&gt;MATimers.TimeOutSectionStart(),
     aSpeed=&gt;0.0
 )
@@ -4424,7 +4424,7 @@ SvL().Location &lt; ShorteningHandler.Location</PreCondition></PreConditions>
 </ReqRef><Comment>Merges the end section with the list of the other sections and removes the end section. Then the information beyond the location provided as parameter is removed. Used when the MA has to be &quot;cut&quot;.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="a7ec0330-6af2-49f4-bfed-ed0c514bfbbc"
 >
@@ -4525,7 +4525,7 @@ IN MA.Sections</Action><Action
 - finally, the last section of the collection is stored to the end section.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="981686cd-050e-493f-a6f1-794ced68eac1"
 >
@@ -4605,7 +4605,7 @@ IN MA.Sections</Action><Action
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.MA.MAStruct"
+ Type="MAStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="160"
@@ -4666,7 +4666,7 @@ IN MA.Sections</Action><Action
 >
 </ReqRef><Comment>Represents the signalling related speed restriction. Value = 0 corresponds to train trip.</Comment>
 </Variable><Variable
- Type="Kernel.MA.MaShorteningHandlerStruct"
+ Type="MaShorteningHandlerStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="20"

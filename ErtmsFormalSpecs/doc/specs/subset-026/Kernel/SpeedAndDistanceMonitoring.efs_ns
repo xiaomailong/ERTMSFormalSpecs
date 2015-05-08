@@ -2133,7 +2133,7 @@ SupervisedTargets</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="a9cf64fe-934f-41fc-b58b-190b853ccc0d"
->PreIndicationLocation.d_preindication() == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+>PreIndicationLocation.d_preindication() == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="pre-indication for max dist to run in SR"
@@ -2142,7 +2142,7 @@ SupervisedTargets</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="ec5c9338-6d2d-493a-8b62-04357f0dc7e1"
->TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition><PreCondition
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition><PreCondition
  Guid="f6562426-5200-4773-85de-7b6bebd8476a"
 >Mode == Mode.SR</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -2153,7 +2153,7 @@ SupervisedTargets</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="699a6b10-e831-4c8a-a3ed-591f85155457"
->TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; PreIndicationLocation.d_preindication()</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2199,7 +2199,7 @@ SupervisedTargets</PreCondition><PreCondition
  Guid="35a78385-5ce1-4613-91ce-27ae1fc32d9e"
 >ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
 AND
-ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Front end passed RSM start location"
@@ -2210,7 +2210,7 @@ ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed) == Default.
  Guid="5acecc19-8795-458f-bf25-d3d7788ef394"
 >ReleaseSpeedMonitoring.ReleaseSpeedSupervisionApplicable(TargetSpeedMonitoring.MRDT())
 AND
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed)</PreCondition></PreConditions>
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt;  ReleaseSpeedMonitoring.StartRSM(ReleaseSpeedMonitoring.ReleaseSpeed)</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2260,7 +2260,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
   ),
   Targets2=&gt;EMPTY,
   Targets3=&gt;EMPTY
-) | X.Location &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
+) | X.Location &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
   USING X IN X</Expression>
 </Case><Case
  Name="Otherwise"
@@ -2274,7 +2274,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt;  ReleaseSpeedM
                   ),
     Targets2=&gt;EMPTY,
     Targets3=&gt;EMPTY
-) | X.Location &gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)
+) | X.Location &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
   USING X IN X</Expression>
 </Case></Cases>
 </Function><Function

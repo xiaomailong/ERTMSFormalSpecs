@@ -96,18 +96,18 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
         OverReadingAmountOdo =&gt; 1.0
     },
     NID =&gt; 1986,
-    Orientation =&gt; Default.Orientation.Nominal
+    Orientation =&gt; Orientation.Nominal
 }</Action><Action
  Guid="278b2665-4f56-474f-a4b7-b6cbc08f01a6"
 >Kernel.TrainPosition.Position &lt;- Kernel.TrainPosition.TrainPositionStruct
 {
     DirectionalPositionInformation =&gt; Kernel.TrainPosition.DirectionalTrainPositionInformationStruct
     {
-        TrainFrontEndPosition =&gt; Default.Orientation.Nominal,
-        TrainOrientation =&gt; Default.Orientation.Nominal,
-        TrainRunningDirection =&gt; Default.Orientation.Nominal
+        TrainFrontEndPosition =&gt; Orientation.Nominal,
+        TrainOrientation =&gt; Orientation.Nominal,
+        TrainRunningDirection =&gt; Orientation.Nominal
     },
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action><Action
  Guid="b179176e-e37d-4e0e-9d73-12f61aeb9d8c"
 >Odometry.NominalDistance &lt;- TrainPosition</Action><Action
@@ -120,7 +120,7 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
     V_ura =&gt; 0.0
 }</Action><Action
  Guid="35f34f07-d5ae-493e-8f02-ef3b67c0d497"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action></Actions>
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -480,8 +480,8 @@ DMI2 will be the slave and will be connected to the first desk of the CabB.</Com
 <Action
  Guid="8fcea4c8-c27d-4f60-9427-0db970b3911b"
 >Kernel.SetLevel(LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
+        NTC =&gt; NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Level.L1
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -699,8 +699,8 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <Action
  Guid="446c01f7-8dd4-4df3-99a4-e2df71f6a00a"
 >Kernel.SetLevel(LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
+        NTC =&gt; NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Level.L1
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -796,7 +796,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <PreConditions>
 <PreCondition
  Guid="96cae18b-d8a6-4658-9bbb-4d7200549257"
->NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.LS AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Mode.ModeProfile.LS AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d4b4461f-f590-4be9-abca-0fe04cbc2a24"
@@ -804,8 +804,8 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
     Location =&gt; 0.0,
-    Mode =&gt; Default.Mode.ModeProfile.LS,
-    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Mode =&gt; Mode.ModeProfile.LS,
+    Speed =&gt; BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
     AcknLength =&gt; 0.0,
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
@@ -930,8 +930,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="da425322-69a6-4027-8ca8-31a3e9c3feaf"
 >Kernel.SetLevel(LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
+        NTC =&gt; NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Level.L1
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -1143,8 +1143,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="878f7216-f2de-4656-864d-450091487cfd"
 >Kernel.SetLevel(LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
+        NTC =&gt; NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Level.L1
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -1240,7 +1240,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <PreConditions>
 <PreCondition
  Guid="91df0e7e-4671-4d12-a652-78a421a92c46"
->NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.OS AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Mode.ModeProfile.OS AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="566f5349-a4a2-4967-bd62-56451428e117"
@@ -1248,8 +1248,8 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
     Location =&gt; 0.0,
-    Mode =&gt; Default.Mode.ModeProfile.OS,
-    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Mode =&gt; Mode.ModeProfile.OS,
+    Speed =&gt; BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
     AcknLength =&gt; 0.0,
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
@@ -1374,8 +1374,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="43230c0f-05d2-4aaf-9515-863807313f64"
 >Kernel.SetLevel(LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
+        NTC =&gt; NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Level.L1
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -1471,7 +1471,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <PreConditions>
 <PreCondition
  Guid="91d89649-6d39-47dc-bce5-2baf049e6630"
->NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.SH AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Mode.ModeProfile.SH AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5460d2df-2aba-44d4-be04-514bbcd16bca"
@@ -1479,8 +1479,8 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
     Location =&gt; 0.0,
-    Mode =&gt; Default.Mode.ModeProfile.SH,
-    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Mode =&gt; Mode.ModeProfile.SH,
+    Speed =&gt; BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
     AcknLength =&gt; 0.0,
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
@@ -1605,8 +1605,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="769b79ad-da69-49bd-8eb7-41deb2ac1ead"
 >Kernel.SetLevel(LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L0
+        NTC =&gt; NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Level.L0
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -1750,8 +1750,8 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Action
  Guid="94685606-5d4a-4db4-8b38-3d5e64bd1781"
 >Kernel.SetLevel(LevelDataStruct{
-        NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-        Value =&gt; Default.Level.L1
+        NTC =&gt; NID_NTC.NOT_APPLICABLE,
+        Value =&gt; Level.L1
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -1847,7 +1847,7 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 <PreConditions>
 <PreCondition
  Guid="79630179-277a-4503-91bc-e82516a10081"
->NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Default.Mode.ModeProfile.SH AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
+>NOT THERE_IS modeProfile IN Kernel.MA.ModeProfile.Profile | modeProfile.Mode == Mode.ModeProfile.SH AND Kernel.MA.ModeProfile.DistanceIsWithinAModeProfile(modeProfile)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="892675a1-53dc-490e-a920-247ba98ed066"
@@ -1855,8 +1855,8 @@ Kernel.TrackDescription.StaticSpeedProfile.SSP == []</PreCondition></PreConditio
 [
 Kernel.MA.ModeProfile.ModeProfileStruct{
     Location =&gt; 0.0,
-    Mode =&gt; Default.Mode.ModeProfile.SH,
-    Speed =&gt; Default.BaseTypes.Speed.UseNV,
+    Mode =&gt; Mode.ModeProfile.SH,
+    Speed =&gt; BaseTypes.Speed.UseNV,
     Length =&gt; 4500.0,
     AcknLength =&gt; 0.0,
     SupervisionQualifier =&gt; Messages.Q_MAMODE.as_the_EOA__keeping_the_SvL_given_by_the_MA
@@ -2076,7 +2076,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="e5a6f115-262c-493b-84c3-e72f2f98c850"
->Kernel.Mode &lt;- Default.Mode.SB</Action></Actions>
+>Kernel.Mode &lt;- Mode.SB</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2561,7 +2561,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
  Guid="ceee01fd-03ce-46ee-8d88-9cfe43ee6cc1"
 >Kernel.SetLevel(LevelDataStruct{
         NTC =&gt; 1,
-        Value =&gt; Default.Level.LNTC
+        Value =&gt; Level.LNTC
     }
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -2755,7 +2755,7 @@ Kernel.MA.ModeProfile.ModeProfileStruct{
 <Actions>
 <Action
  Guid="796568d9-37bb-419b-bde8-5367fe92cc4d"
->Kernel.Mode &lt;- Default.Mode.NL</Action></Actions>
+>Kernel.Mode &lt;- Mode.NL</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

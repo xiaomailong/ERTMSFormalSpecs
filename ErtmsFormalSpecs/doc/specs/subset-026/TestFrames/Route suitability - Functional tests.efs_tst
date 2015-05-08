@@ -76,7 +76,7 @@
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 255,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 2.0,
@@ -196,7 +196,7 @@
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 256,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 2.0,
@@ -588,7 +588,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5285880e-7ea4-4f87-8aad-182dd1f1c14d"
->Kernel.MA.ClosestEOA().Location != Default.BaseTypes.Distance.Infinity</Expectation><Expectation
+>Kernel.MA.ClosestEOA().Location != BaseTypes.Distance.Infinity</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="409876eb-d3bd-4264-b343-ef498fdd5ea4"
@@ -673,7 +673,7 @@
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 255,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 2.0,
@@ -805,7 +805,7 @@
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 256,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 2.0,
@@ -941,7 +941,7 @@
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct
 {
     NID =&gt; 256,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Position =&gt; BTM.Position
     {
         OverReadingAmountOdo =&gt; 2.0,
@@ -959,7 +959,7 @@
 <Actions>
 <Action
  Guid="7d20c1d7-70a0-4e59-9dc6-0e6a66d18c06"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Give the train some data"
  Guid="811864bb-cbae-464b-8121-49f1f6002fd9"
@@ -1191,7 +1191,7 @@
         OverReadingAmountOdo =&gt; 2.0
     },
     NID =&gt; 255,
-    Orientation =&gt; Default.Orientation.Nominal
+    Orientation =&gt; Orientation.Nominal
 }</Action><Action
  Guid="174be167-0da3-4c8a-ad9a-b44ec1e3e0a3"
 >BTM.PreviousBaliseGroups &lt;- []</Action><Action
@@ -1223,7 +1223,7 @@
  Guid="905ffffc-20cc-4180-abdb-4dca8e908575"
 >Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
  Guid="9270577f-542b-430d-9189-443a2ec3e31e"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step 4 - Set mode and level"
  Guid="b3d6363e-834c-4d09-8782-02ffda5ee5a8"
@@ -1479,7 +1479,7 @@
         OverReadingAmountOdo =&gt; 2.0
     },
     NID =&gt; 255,
-    Orientation =&gt; Default.Orientation.Nominal
+    Orientation =&gt; Orientation.Nominal
 }</Action><Action
  Guid="0f4eb182-db69-42e8-a6d3-4816e7a41410"
 >BTM.PreviousBaliseGroups &lt;- []</Action><Action
@@ -1492,7 +1492,7 @@
 <Actions>
 <Action
  Guid="333fe891-907f-4205-8f6a-78d645510e00"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="c45d08de-9d7b-41e5-b642-9829181a5acc"
 >Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
  Guid="90eb17dd-eff2-436b-9c08-bdcd36921f26"
@@ -1727,7 +1727,7 @@
         OverReadingAmountOdo =&gt; 2.0
     },
     NID =&gt; 255,
-    Orientation =&gt; Default.Orientation.Nominal
+    Orientation =&gt; Orientation.Nominal
 }</Action><Action
  Guid="2713bb78-2132-4e5b-9b35-3a869ad82086"
 >BTM.PreviousBaliseGroups &lt;- []</Action><Action
@@ -1740,7 +1740,7 @@
 <Actions>
 <Action
  Guid="686215c7-c52b-4166-9885-ca719ff93889"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="57273a80-8d3d-4754-a3e8-8ad9167e4f9e"
 >Kernel.TrainData.TrainData.Value.AxleLoadCategory &lt;- Messages.M_AXLELOADCAT.C3</Action><Action
  Guid="47f2f561-a43f-4c02-ac57-a67e12dd83bc"
@@ -1766,7 +1766,7 @@
   Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
   {
     Location =&gt; 0.0,
-    BasicSpeed =&gt; Default.BaseTypes.Speed.MaxSpeed,
+    BasicSpeed =&gt; BaseTypes.Speed.MaxSpeed,
     TrainLengthDelay =&gt; Messages.Q_FRONT.No_train_length_delay_on_validity_end_point_of_profile_element,
     Categories =&gt; []
   }

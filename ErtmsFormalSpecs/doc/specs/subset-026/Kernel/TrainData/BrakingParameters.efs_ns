@@ -1081,7 +1081,7 @@
 <Comment>Represents a couple (Acceleration, Speed) used for braking models.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default="Default.BaseTypes.Speed.Infinity"
+ Default="BaseTypes.Speed.Infinity"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1125,7 +1125,7 @@
 </ReqRef><Comment>Represents the two sets of three models of A_brake_normal_service with two pivot values used to select the appropriate A_brake_normal_service model.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Acceleration"
- Default="Default.BaseTypes.Acceleration.NA"
+ Default="BaseTypes.Acceleration.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="A_SB01"
@@ -1139,7 +1139,7 @@
 </ReqRef><Comment>A pivot value used for determination of the particular A_brake_normal_service model from a particular model set.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Acceleration"
- Default="Default.BaseTypes.Acceleration.NA"
+ Default="BaseTypes.Acceleration.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="A_SB12"
@@ -1203,7 +1203,7 @@
 </ReqRef><Comment>Gives the deceleration due to braking according to a given breaking model depending on the current speed value.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  Name="BrakingModel"
  Guid="50e9d832-5ea5-4206-9d70-74f5560af934"
 >
@@ -1291,7 +1291,7 @@
 <Expression>BrakingModel.Val6.Acceleration</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  Cacheable="TRUE"
  Default=""
  X="120"
@@ -1320,7 +1320,7 @@
 </ReqRef><Comment>Selects the appropriate brake normal service model, according to the values of A_SB12 and A_SB01 and to the value of A_brk_service for zero speed and depending on a particular combination of special brakes depending on the track condition received as a parameter..</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
  Name="aTrackCondition"
  Guid="a821cf12-2c57-46b8-9e3d-fdec649d2f44"
 >
@@ -1357,7 +1357,7 @@
 <Expression>SelectBNSModelSet().BNS_2</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.BNSModel"
+ Type="BNSModel"
  Cacheable="TRUE"
  Default=""
  X="340"
@@ -1757,7 +1757,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 </ReqRef><Comment>Selects the appropriate value of T_brake_build_up according to the current combination of use of regenerative brake, eddy current brake, magnetic shoe brake and electro-pneumatic brake.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.BrakingParameters.T_brake_build_upSet"
+ Type="T_brake_build_upSet"
  Name="aT_brake_build_upSet"
  Guid="67d68f67-995c-4ad6-9229-a12561374970"
 >
@@ -2068,15 +2068,15 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 <PreCondition
  Guid="824adb2b-e2ef-4e5f-be90-7f73efad4943"
 >NoA_est</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;0.0, Gradient=&gt;TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
+<Expression>BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;0.0, Gradient=&gt;TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
 </Case><Case
  Name="Estimated acceleration is considered"
  Guid="7a0aa919-0a81-41f0-9817-1990ef82106d"
 >
-<Expression>Default.BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;Odometry.TrainAcceleration(), Gradient=&gt;TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
+<Expression>BaseTypes.Time ( TrainData.Value.TractionModel.Coefficient * A_traction ( EstimatedTrainAcceleration=&gt;Odometry.TrainAcceleration(), Gradient=&gt;TrackDescription.Gradient.A_gradient ( Odometry.NominalDistance ) ) + TrainData.Value.TractionModel.Constant )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.CorrectionFactor"
+ Type="CorrectionFactor"
  Default=""
  X="450"
  Y="70"
@@ -2382,7 +2382,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.CorrectFactorValue"
+ Type="CorrectFactorValue"
  Default=""
  X="560"
  Y="10"
@@ -2400,7 +2400,7 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 </ReqRef><Comment>Selects the appropriate Kdry_rst values according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.BrakingParameters.Kwet_rstValuesSet"
+ Type="Kwet_rstValuesSet"
  Name="aKwetSet"
  Guid="896bac23-3d03-4b32-abd1-d3652345732a"
 >
@@ -2561,8 +2561,8 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
 <PreConditions>
 <PreCondition
  Guid="9e40dae1-8a37-4f66-a5f0-710676b361e2"
->EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition></PreConditions>
-<Expression>EstimatedTrainAcceleration + Default.BaseTypes.Acceleration(Gradient)</Expression>
+>EstimatedTrainAcceleration + BaseTypes.Acceleration(Gradient) &gt;= 0.0</PreCondition></PreConditions>
+<Expression>EstimatedTrainAcceleration + BaseTypes.Acceleration(Gradient)</Expression>
 </Case><Case
  Name="Negative"
  Guid="69fa7ebc-d584-4ac2-9651-518935c91346"
@@ -2686,16 +2686,16 @@ TrainData.Value.EpBrakeInterface in [BrakeInterfaceStatus.EB, BrakeInterfaceStat
  Name="Value"
  Guid="ec731645-3013-41e3-800f-3120f5d82c07"
 >
-<Expression>Default.BaseTypes.MaxAcceleration
+<Expression>BaseTypes.MaxAcceleration
 (
-    X1=&gt;Default.BaseTypes.MaxAcceleration
+    X1=&gt;BaseTypes.MaxAcceleration
     (
-        Default.BaseTypes.MaxAcceleration( X1 =&gt; ConversionModel.A_brake_emergency.Val0.Acceleration, X2 =&gt; ConversionModel.A_brake_emergency.Val1.Acceleration ),
-        Default.BaseTypes.MaxAcceleration( X1 =&gt; ConversionModel.A_brake_emergency.Val2.Acceleration, X2 =&gt; ConversionModel.A_brake_emergency.Val3.Acceleration )
+        BaseTypes.MaxAcceleration( X1 =&gt; ConversionModel.A_brake_emergency.Val0.Acceleration, X2 =&gt; ConversionModel.A_brake_emergency.Val1.Acceleration ),
+        BaseTypes.MaxAcceleration( X1 =&gt; ConversionModel.A_brake_emergency.Val2.Acceleration, X2 =&gt; ConversionModel.A_brake_emergency.Val3.Acceleration )
     ),
-    X2=&gt;Default.BaseTypes.MaxAcceleration
+    X2=&gt;BaseTypes.MaxAcceleration
     (
-        Default.BaseTypes.MaxAcceleration( X1 =&gt; ConversionModel.A_brake_emergency.Val4.Acceleration, X2 =&gt; ConversionModel.A_brake_emergency.Val5.Acceleration ),
+        BaseTypes.MaxAcceleration( X1 =&gt; ConversionModel.A_brake_emergency.Val4.Acceleration, X2 =&gt; ConversionModel.A_brake_emergency.Val5.Acceleration ),
         ConversionModel.A_brake_emergency.Val6.Acceleration
     )
 )</Expression>
@@ -2763,7 +2763,7 @@ TIU.AdditionalBrakesActive
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  Default=""
  X="10"
  Y="10"
@@ -2786,7 +2786,7 @@ TIU.AdditionalBrakesActive
 </ReqRef><Comment>Selects the appropriate braking model according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.BrakingParameters.BrakingModelSet"
+ Type="BrakingModelSet"
  Name="aModelSet"
  Guid="c4bc740c-ebe9-42d6-9062-3bf69f949174"
 >
@@ -2905,7 +2905,7 @@ TIU.AdditionalBrakesActive
 <Expression>aModelSet.NoBrake</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.CorrectionFactor"
+ Type="CorrectionFactor"
  Default=""
  X="230"
  Y="70"
@@ -2943,12 +2943,12 @@ TIU.AdditionalBrakesActive
 </ReqRef><Comment>Selects the appropriate Kdry_rst (or Kwet_rst) value according to the given speed value. To select this value, the function uses the speed steps of the parameter BrakingModel (A_brake_emergency(V)).</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.BrakingParameters.CorrectFactorValue"
+ Type="CorrectFactorValue"
  Name="CorrectionFactorValues"
  Guid="73a6de49-2053-493f-8dd2-5ecfa4588fe5"
 >
 </Parameter><Parameter
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  Name="BrakingModel"
  Guid="17eb71f3-51a7-4776-940b-4883423f9ffe"
 >
@@ -3196,7 +3196,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Expression>BaseTypes.Acceleration ( NationalValues.Kv_int ( V ) * NationalValues.Kr_int ( TrainData.Value.TrainLength ) ) * ConversionModel.A_brake_emergency ( V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.Kdry_rstValues"
+ Type="Kdry_rstValues"
  Default=""
  X="450"
  Y="10"
@@ -3214,7 +3214,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><Comment>Selects the appropriate Kdry_rst values according to the current combination of use of regenerative brake, eddy current brake and magnetic shoe brake.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.BrakingParameters.Kdry_rstValuesSet"
+ Type="Kdry_rstValuesSet"
  Name="aKdrySet"
  Guid="c5ff31d7-bee8-45ed-8e77-352be2809f49"
 >
@@ -3406,7 +3406,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 (d, V)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.CorrectionFactor"
+ Type="CorrectionFactor"
  Cacheable="TRUE"
  Default=""
  X="560"
@@ -3488,7 +3488,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><Comment>Provides the value of A_brake_emergency by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
  Name="aTrackCondition"
  Guid="71064732-d8db-4258-9cef-9f04186da955"
 >
@@ -3852,7 +3852,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><Comment>Provides the value of A_brake__normal_service by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
  Name="aTrackCondition"
  Guid="90b42be3-ee84-45b6-8f6d-f00c4ec5e6a0"
 >
@@ -4085,7 +4085,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <PreCondition
  Guid="fd71e586-e4cb-4208-8ec0-3812d1e73284"
 >ConversionModel.ConversionModelIsUsed()</PreCondition></PreConditions>
-<Expression>ConversionModel.T_brake_emergency () * Default.BaseTypes.Time ( NationalValues.IntegratedCorrectionFactorForBrakeBuildUpTime() )</Expression>
+<Expression>ConversionModel.T_brake_emergency () * BaseTypes.Time ( NationalValues.IntegratedCorrectionFactorForBrakeBuildUpTime() )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
@@ -4261,7 +4261,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><Comment>Provides the value of A_brake_service for zero speed by taking into account one particular Track Condition. Used to select the appropriate A_brake_normal_service. The condition on the distance of the track condition is verified earlier (by A_brk_normal_service(V)).</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
  Name="aTrackCondition"
  Guid="b5e630ee-0b31-4f61-9176-ffe8c0bfacf0"
 >
@@ -4355,7 +4355,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 <Expression>A_brake_normal_service ( d =&gt; d, V =&gt; V ) + TrackDescription.Gradient.A_gradient ( d ) - TrackDescription.Gradient.GradientProfile_NonCompensated ( d =&gt; d, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  Cacheable="TRUE"
  Default=""
  X="230"
@@ -4438,7 +4438,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
 </ReqRef><Comment>Provides the value of A_brake_service by taking into account one particular Track Condition.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
+ Type="TrackDescription.TrackConditions.General.TrackConditionInformationStruct"
  Name="aTrackCondition"
  Guid="f4e3343a-3f6a-432e-b765-c7e81d25812a"
 >
@@ -4563,7 +4563,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="2d565349-283a-4e2e-b7e9-c50f18a7aad1"
 >Kernel.TrainData.TrainData.Value.EBModels.ModelSet.EddyCurrent_Magnetic_Regenerative.Val1 &lt;- Kernel.TrainData.BrakingParameters.BrakingModelValue
 {
-    SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+    SpeedStep =&gt; BaseTypes.Speed.Infinity,
     Acceleration =&gt; 1.0
 }</Action><Action
  Guid="b0bb769c-c10e-4a0b-ad3c-9e8a34a7d447"
@@ -4575,7 +4575,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="9e946eb1-fbf9-4aa4-bb20-42fcfff2795f"
 >Kernel.TrainData.TrainData.Value.EBModels.ModelSet.Magnetic_Regenerative.Val1 &lt;- Kernel.TrainData.BrakingParameters.BrakingModelValue
 {
-    SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+    SpeedStep =&gt; BaseTypes.Speed.Infinity,
     Acceleration =&gt; 0.8
 }</Action><Action
  Guid="323aa94c-71aa-4d07-819a-53f5d193f23f"
@@ -4593,7 +4593,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="8e938a00-c711-4be7-b232-e19d6665747e"
 >Kernel.TrainData.TrainData.Value.SBModels.ModelSet.EddyCurrent_Regenerative.Val1 &lt;- Kernel.TrainData.BrakingParameters.BrakingModelValue
 {
-    SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+    SpeedStep =&gt; BaseTypes.Speed.Infinity,
     Acceleration =&gt; 1.0
 }</Action><Action
  Guid="af7e9fe1-d498-413e-8e3b-3d58cf9352a4"
@@ -4605,7 +4605,7 @@ A_brake_emergency ( d =&gt; d, V =&gt; V )</Expression>
  Guid="12a57242-17c4-4102-927d-f5d27dc743a2"
 >Kernel.TrainData.TrainData.Value.SBModels.ModelSet.Regenerative.Val1 &lt;- Kernel.TrainData.BrakingParameters.BrakingModelValue
 {
-    SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+    SpeedStep =&gt; BaseTypes.Speed.Infinity,
     Acceleration =&gt; 1.0
 }</Action><Action
  Guid="94b46c6a-e4a9-4d83-abe8-ca9962f9a1f6"

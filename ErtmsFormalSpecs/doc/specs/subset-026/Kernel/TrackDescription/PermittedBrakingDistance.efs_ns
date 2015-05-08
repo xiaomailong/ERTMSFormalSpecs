@@ -165,7 +165,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
+ TypeName="SRPBDStruct"
  MaxSize="20"
  Default="[]"
  X="230"
@@ -185,7 +185,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
+ Type="SRPBDStruct"
  Default=""
  X="10"
  Y="310"
@@ -942,7 +942,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
 <Comment>Provides the speed restriction for a certain request to calculate a speed restriction which ensures that the train stops within a given permitted braking distance.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
+ Type="SRPBDStruct"
  Name="aSRPB"
  Guid="ada73484-df4f-465a-9111-63fb7a01cdf8"
 >
@@ -999,7 +999,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction ) (Distance)</Expression>
  Name="Value"
  Guid="918992e5-ffd6-4a75-9604-fef457732318"
 >
-<Expression>Default.BaseTypes.Acceleration.g * Gradient.CompensateGradientWithRotatingMass(Gradient)</Expression>
+<Expression>BaseTypes.Acceleration.g * Gradient.CompensateGradientWithRotatingMass(Gradient)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -1257,7 +1257,7 @@ STOP_CONDITION
  Name="Value"
  Guid="29f39ba9-5eb5-4694-9943-ea36ad4f34ec"
 >
-<Expression>BTM.ActiveAntennaPosition + Default.BaseTypes.SpeedToMS( V ) * T41</Expression>
+<Expression>BTM.ActiveAntennaPosition + BaseTypes.SpeedToMS( V ) * T41</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -1530,7 +1530,7 @@ STOP_CONDITION
  Guid="02142f39-90ff-4971-90b9-8dfad21c0a4f"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="34388508-5ae0-4e57-856d-299d4b9c76ec"
 >
@@ -1585,7 +1585,7 @@ STOP_CONDITION
  Guid="a5bd25f5-7aba-40a6-b71f-93db1e5aa804"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="be31749f-27b0-46a0-b1a0-93f41514a29d"
 >
@@ -1644,7 +1644,7 @@ STOP_CONDITION
  Guid="3917eae1-23e9-479d-93d2-2a9f523468f9"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Name="Target"
  Guid="a668678f-6b7d-47f1-b52f-50578a38f84d"
 >
@@ -1732,7 +1732,7 @@ STOP_CONDITION
  Guid="0f51ade6-1ab1-4d5e-a2e6-5ba1d3e16c12"
 >SpeedRestrictionsProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
  Guid="e9a968df-9178-43cc-b51e-4bee6b4e4d6f"
->SpeedRestrictionsProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE)</Action></Actions>
+>SpeedRestrictionsProfile.EmptyProfileDistance &lt;- MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1768,7 +1768,7 @@ STOP_CONDITION
 <Actions>
 <Action
  Guid="a2eaa572-8996-4e14-bb01-e726ed4ecfb1"
->REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBDSR, scale =&gt; Packet.Q_SCALE ) IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
+>REMOVE ALL X.Location &gt;= MessageTypes.QScaleDistance ( distance =&gt; Packet.D_PBDSR, scale =&gt; Packet.Q_SCALE ) IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1954,7 +1954,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </ReqRef><Comment>If any of the inputs for the calculation of the speed restrictions change, recalculate the speed restrictions due to permitted braking distances</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDStruct"
+ Type="SRPBDStruct"
  Name="aSRPB"
  Guid="3dcc62ba-b312-4a75-8474-65219553e4e0"
 >
@@ -2015,7 +2015,7 @@ IN SpeedRestrictionsProfile.SpeedRestrictions</Action></Actions>
 </ReqRef><Comment>Deletes the PBD profile information beyond the provided location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="4fae866a-ade5-47ab-b348-0f6a648243cf"
 >
@@ -2096,7 +2096,7 @@ SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition></PreConditions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDProfileStruct"
+ Type="SRPBDProfileStruct"
  DefaultValue="Kernel.TrackDescription.PermittedBrakingDistance.SRPBDProfileStruct
 {
     InitialState =&gt; Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow, 
@@ -2129,7 +2129,7 @@ SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Contains the speed restrictions due to permitted braking distance.</Comment>
 </Variable><Variable
- Type="Kernel.TrainData.BrakingParameters.EBModelSet"
+ Type="TrainData.BrakingParameters.EBModelSet"
  DefaultValue=""
  VariableMode="Internal"
  X="340"
@@ -2147,7 +2147,7 @@ SpeedRestrictionsProfile.SpeedRestrictions != []</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Contains the previous value of emergency braking models.</Comment>
 </Variable><Variable
- Type="Kernel.TrainData.BrakingParameters.SBModelSet"
+ Type="TrainData.BrakingParameters.SBModelSet"
  DefaultValue=""
  VariableMode="Internal"
  X="450"

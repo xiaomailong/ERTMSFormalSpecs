@@ -2273,7 +2273,7 @@ IN JRUMessages</Action></Actions>
 </ReqRef><Comment>Function which will determine if a NEW JRU Message has to be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="307e6f9a-ff0e-4cb8-a2dc-7b2db6e82560"
 >
@@ -2374,7 +2374,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
 </ReqRef><Comment>Function to determine if the ERTMS Level has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="dede4b41-b990-42a8-9715-bbf29e7e4738"
 >
@@ -2415,7 +2415,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if it is necessary to send a GENERAL JRU Message because the elapsed time is bigger or erqual to the requirement to send a periodical message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="2d446e40-b2bf-4e62-aeee-36172bdb2531"
 >
@@ -2456,7 +2456,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
 </ReqRef><Comment>Function used to determine if the ERTMS mode has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="3b151fc9-e9f9-45e6-98a8-998d03553361"
 >
@@ -2497,7 +2497,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if the System Version Changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="f1822896-8721-4b82-ba40-a7581f280652"
 >
@@ -2538,7 +2538,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
 </ReqRef><Comment>Function used to determine if the ERTMS Level has changed to NTC Level</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="68986f7f-2b6f-4a67-9b00-60b0d926ced5"
 >
@@ -2551,7 +2551,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
 <PreConditions>
 <PreCondition
  Guid="ad4690a4-8546-41d1-9df7-10d96bf53ab3"
->( LevelChanged(jru) ) AND ( Kernel.Level.Value.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+>( LevelChanged(jru) ) AND ( Kernel.Level.Value.Value == Level.LNTC )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="LevelNotChangedToNtc"
@@ -2593,7 +2593,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
 </ReqRef><Comment>Function which will determine if a new GENERAL_MESSAGE has to be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="a40e8cf7-f7e5-4d01-9517-815de8ba6103"
 >
@@ -2608,7 +2608,7 @@ SendDMISystemStatusMessage()</PreCondition><PreCondition
  Guid="aad0f2da-a04c-4c7c-b81e-a8289c3eaf50"
 >( LevelChanged(jru)  )
 OR
-( ModeChanged(jru) AND (Kernel.Mode != Default.Mode.NP) )
+( ModeChanged(jru) AND (Kernel.Mode != Mode.NP) )
 OR
 ( SystemVersionChanged(jru) )
 OR
@@ -2699,7 +2699,7 @@ M_AIRTIGHT =&gt; TypeConvertors.ToJRUMAirTight(Kernel.TrainData.TrainData.Value.
 </ReqRef><Comment>Function used to determine if the EB Status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="81bbba4c-bf2d-4a39-985a-7898f03d2993"
 >
@@ -2776,7 +2776,7 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
 </ReqRef><Comment>Function which determines if the train data have changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="796d6185-28cf-4d6e-a71b-3d8ada5dd733"
 >
@@ -2825,7 +2825,7 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUEBCommanded()
 </ReqRef><Comment>Function which will determine if it is necessary to send a new TRAIN_DATA JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="b98284df-8f57-4c6e-9d7f-974ba1764b75"
 >
@@ -2902,7 +2902,7 @@ M_BRAKE_COMMAND_STATE=&gt;TypeConvertors.ToJRUSBCommanded()
 </ReqRef><Comment>Function which will determine if the SB Status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="093a10c6-0bfc-4bb9-93a3-3d6c32f0eb78"
 >
@@ -3301,7 +3301,7 @@ M_CAB_A_STATUS =&gt;TypeConvertors.ToJRUCabAStatus(),
 </ReqRef><Comment>Function used to determine whether the CabA status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="88892461-e472-40ed-9185-055adfdb32bb"
 >
@@ -3347,7 +3347,7 @@ OR
 </ReqRef><Comment>Function used to determine whether the CabB status has changed</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="35675ffb-cf30-4666-8e3f-8bd2d642523a"
 >
@@ -3512,7 +3512,7 @@ M_DIRECTION_CONTROLLER =&gt; TypeConvertors.ToJRUDirectionController(
 </ReqRef><Comment>Function which will determine if it is necessary to send a new TRAIN_DIRECTION_CONTROLLER JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="aea383b1-58e4-4a93-bcec-bcf7b5ce7998"
 >
@@ -3576,7 +3576,7 @@ OR
 </ReqRef><Comment>Function which will determine when is necessary to send a CAB_STATUS JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="9641fded-06b8-487d-a27b-b1f28cf9339a"
 >
@@ -3663,7 +3663,7 @@ M_TRACTION_STATUS=&gt;TypeConvertors.ToJRUTractionStatus()
 </ReqRef><Comment>Function used to determine when the TRACTION_STATUS JRU Message should be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="a737843b-0d61-44c3-b477-9399cddfab35"
 >
@@ -3712,7 +3712,7 @@ M_TRACTION_STATUS=&gt;TypeConvertors.ToJRUTractionStatus()
 </ReqRef><Comment>Function which will translate the incoming TIU value into an understandable JRU value</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="a4e2f9e5-8443-40d0-b673-8a63a4815f6a"
 >
@@ -3790,7 +3790,7 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
 </ReqRef><Comment>Function used to determine if it is necessary to send a TRAIN_DATA_ENTRY_TYPE JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="5c56c02f-415b-4969-81ec-65f673515189"
 >
@@ -3887,7 +3887,7 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
 </ReqRef><Comment>Function used to determine when a NTC_SIOLATION JRU Message should be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="7b7c07af-a5c6-4321-aaa8-a7396633f80a"
 >
@@ -3900,7 +3900,7 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
 <PreConditions>
 <PreCondition
  Guid="f6cc93d5-391e-49ec-996b-60113667e0b0"
->(IsStartUp(jru) == True ) AND ( Kernel.Level.Value.Value == Default.Level.LNTC )</PreCondition></PreConditions>
+>(IsStartUp(jru) == True ) AND ( Kernel.Level.Value.Value == Level.LNTC )</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="NationalSystemIsolationHasChanged"
@@ -3974,7 +3974,7 @@ M_TRAIN_DATA_ENTRY=&gt;TypeConvertors.ToJRUTrainDataEntry()
 </ReqRef><Comment>This function will determine when should be sent the TractionCutOffMessage</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="fe6848fe-7ee5-43a1-9bb6-73e8f15aaaec"
 >
@@ -4051,7 +4051,7 @@ M_SLEEPING =&gt; TypeConvertors.ToJRUSleepingInput()
 </ReqRef><Comment>Will determine if the conditions to send the JRU SLEEPING_INPUT are satisfied</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="8ea71117-f1f7-49f7-adcd-26da0c1f762d"
 >
@@ -4100,7 +4100,7 @@ M_SLEEPING =&gt; TypeConvertors.ToJRUSleepingInput()
 </ReqRef><Comment>Will determine if it is necessary to send a new JRU PASSIVE_SHUNTING_INPUT message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="29d986f9-a87c-4fe2-8fd9-6bebdd8ccbf0"
 >
@@ -4186,7 +4186,7 @@ M_PASSIVE_SHUNTTING =&gt; TypeConvertors.ToJRUPassiveShunting()
 </ReqRef><Comment>This function will determine if it is necessary to send a new JRU NON_LEADING_INPUT Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="7bcf85a0-a2f1-4614-8ae9-f24b31f3fc1c"
 >
@@ -4309,7 +4309,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 </ReqRef><Comment>Will determine if it is necessary to create and send a JRU RegenerativeBrakeStatus message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="a336806b-9881-4233-bd3f-bf630e0fe220"
 >
@@ -4353,7 +4353,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 <Comment>This function will be used to determine if the necessary conditions to be in StartUp are satisfied</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="0ea23f28-0079-4295-b4cc-f00355590e66"
 >
@@ -4366,7 +4366,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 <PreConditions>
 <PreCondition
  Guid="0bdc2d52-5e10-4271-967e-864f8d695a1c"
->((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Default.Mode.NP))</PreCondition></PreConditions>
+>((Kernel.Mode != jru.PreviousKernelMode) AND (jru.PreviousKernelMode == Mode.NP))</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="Otherwise"
@@ -4393,7 +4393,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 </ReqRef><Comment>Will determine when will necessary to send the MagneticShoeBrakeStatus JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="44f18844-c814-4678-a92b-d382f351c90c"
 >
@@ -4479,7 +4479,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 </ReqRef><Comment>Will determine if it is necessary to send the EddyCurrentBrakeStatus JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="e30dc1e8-6161-4207-b17a-80cf4e9d35b9"
 >
@@ -4601,7 +4601,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 </ReqRef><Comment>Will determine if it is necessary to send the ElectroPneumaticBrakeStatus JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="4193557d-8f35-4373-a4b8-accf58d83014"
 >
@@ -4687,7 +4687,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 </ReqRef><Comment>Will determine if it is necessary to send the ADDITIONAL_BRKAE_STATUS JRU Message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="99dad91f-518c-4b95-9584-744628267ffa"
 >
@@ -4754,11 +4754,11 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
     HEADER =&gt; CreateHeader(20),
     M_SDMTYPE =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringType(),
     M_SDMSUPSTAT =&gt; TypeConvertors.ToJRUSpeedAndDistanceMonitoringsupervisionStatus(),
-    V_PERM =&gt; Default.MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed, 5.0),
+    V_PERM =&gt; MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_PermittedSpeed.Speed, 5.0),
     V_FLOI =&gt; TypeConvertors.ToJRUVFloi(),
     V_TARGET =&gt; TypeConvertors.ToJRUVTarget(),
     D_TARGET =&gt; TypeConvertors.ToJRUTargetDistance(),
-    V_RELEASE =&gt; Default.MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed, 5.0)
+    V_RELEASE =&gt; MessageTypes.UnResolveSpeed(DMI.MasterDMI().Out_ReleaseSpeed.Speed, 5.0)
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -4779,7 +4779,7 @@ M_NON_LEADING =&gt; TypeConvertors.ToJRUNonLeadingPermited()
 </ReqRef><Comment>This will determine if the necessary conditions to send the SpeedAndDistanceMonitoringInformation JRU message have to be sent</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="ba64764e-ad31-46cb-baa7-b50ca6f8a956"
 >
@@ -5049,7 +5049,7 @@ jru.PreviousTargetDistance != Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonit
 </ReqRef><Comment>Indicates if the driver has acted on the DMI.</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="aJRU"
  Guid="c436d7fe-11f8-4126-b36d-a43e9355416f"
 >
@@ -5169,7 +5169,7 @@ aJRU.PreviousRequestToDisplayTheGeographicalInformation != DMI.MasterDMI().Out_G
 </ReqRef><Comment>Will fill the necessary fields to generate the DRIVERS_ACTIONS message</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="aJRU"
  Guid="5cb7bd58-b91a-4647-9308-d2dee83e62ae"
 >
@@ -5340,7 +5340,7 @@ aJRU.PreviousRequestToDisplayTheGeographicalInformation != DMI.MasterDMI().Out_G
 </ReqRef><Comment>Indicates if a new DMI Symbol Message has to be sent (if any of the DMI symbols has appeared or disappeared).</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="aJRU"
  Guid="82b93ed5-4516-4755-9da6-c318f6a0e7c7"
 >
@@ -5432,7 +5432,7 @@ aJRU.PreviousRequestToDisplayTheGeographicalInformation != DMI.MasterDMI().Out_G
 </ReqRef><Comment>Indicates if the additional data JRU message has to be sent.</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="aJRU"
  Guid="960be61d-fab5-46aa-bf8d-237b13a25de8"
 >
@@ -5644,7 +5644,7 @@ aJRU.PreviousAdditionalDataMessage.NID_RBC != CreateAdditionalDataMessage().NID_
 </ReqRef><Comment>Determines if it is necessary to send a VIRTUAL BALISE COVER SET BY DRIVER message.</Comment>
 <Parameters>
 <Parameter
- Type="JRU.JRU"
+ Type="JRU"
  Name="jru"
  Guid="b4cd5ea2-7aa9-4d55-b3b2-d5735c7a58fb"
 >
@@ -5714,7 +5714,7 @@ aJRU.PreviousAdditionalDataMessage.NID_RBC != CreateAdditionalDataMessage().NID_
 </Function></Functions>
 <Variables>
 <Variable
- Type="JRU.JRU"
+ Type="JRU"
  DefaultValue=""
  VariableMode="InOut"
  X="30"

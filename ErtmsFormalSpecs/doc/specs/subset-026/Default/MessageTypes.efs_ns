@@ -142,7 +142,7 @@
 </Range></Ranges>
 <Functions>
 <Function
- Type="Default.BaseTypes.Length"
+ Type="BaseTypes.Length"
  Default=""
  X="220"
  Y="120"
@@ -170,7 +170,7 @@
 <Expression>BaseTypes.Length ( length )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Gradient"
+ Type="BaseTypes.Gradient"
  Default=""
  X="220"
  Y="60"
@@ -196,7 +196,7 @@
 <Expression>BaseTypes.Gradient ( BaseTypes.Gradient ( gradient ) / 1000.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Acceleration"
+ Type="BaseTypes.Acceleration"
  Default=""
  Y="120"
  Width="100"
@@ -226,7 +226,7 @@
 <Expression>- BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.MessageTypes.Speed"
+ Type="Speed"
  Default=""
  X="440"
  Y="120"
@@ -266,7 +266,7 @@
 <Expression>MessageTypes.Speed ( speed / resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.MessageTypes.Length"
+ Type="Length"
  Default=""
  X="330"
  Y="120"
@@ -328,7 +328,7 @@
 <Expression>MessageTypes.Length ( length / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Speed"
+ Type="BaseTypes.Speed"
  Default=""
  X="440"
  Y="60"
@@ -359,7 +359,7 @@
 <Expression>BaseTypes.Speed ( BaseTypes.Speed ( speed ) * resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Length"
+ Type="BaseTypes.Length"
  Default=""
  X="330"
  Y="60"
@@ -390,8 +390,8 @@
 <PreConditions>
 <PreCondition
  Guid="8758b0ca-d421-41c9-a7a6-68c62585e426"
->length == Default.MessageTypes.Length.NA OR scale == Messages.Q_SCALE.Spare</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Length.NA</Expression>
+>length == MessageTypes.Length.NA OR scale == Messages.Q_SCALE.Spare</PreCondition></PreConditions>
+<Expression>BaseTypes.Length.NA</Expression>
 </Case><Case
  Name="10 cm"
  Guid="944c480d-2d8d-4f20-89cf-bd7ee1bf8ffd"
@@ -421,7 +421,7 @@
 <Expression>BaseTypes.Length ( BaseTypes.Length ( length ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.MessageTypes.Distance"
+ Type="Distance"
  Default=""
  X="110"
  Y="120"
@@ -483,7 +483,7 @@
 <Expression>MessageTypes.Distance ( distance / 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Distance"
+ Type="BaseTypes.Distance"
  Default=""
  X="110"
  Y="60"
@@ -538,7 +538,7 @@
 <Expression>BaseTypes.Distance ( BaseTypes.Distance ( distance ) * 10.0 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Acceleration"
+ Type="BaseTypes.Acceleration"
  Default=""
  Y="60"
  Width="100"
@@ -568,7 +568,7 @@
 <Expression>BaseTypes.Acceleration ( BaseTypes.Acceleration ( acceleration ) * resolution )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.MessageTypes.Time"
+ Type="Time"
  Default=""
  X="550"
  Y="120"
@@ -603,7 +603,7 @@
 <Expression>MessageTypes.Time(time*100.0)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Time"
+ Type="BaseTypes.Time"
  Default=""
  X="550"
  Y="60"
@@ -629,7 +629,7 @@
 <Expression>BaseTypes.Time(BaseTypes.Time(time)/100.0)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Default.BaseTypes.Length"
+ Type="BaseTypes.Length"
  Default=""
  Y="180"
  Width="100"

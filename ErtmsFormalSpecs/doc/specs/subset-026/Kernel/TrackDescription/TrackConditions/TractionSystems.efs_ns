@@ -120,7 +120,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct"
+ TypeName="TractionSystemInformationStruct"
  MaxSize="20"
  Default="[]"
  Y="90"
@@ -139,7 +139,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct"
+ Type="TractionSystemStruct"
  Default=""
  Y="180"
  Width="100"
@@ -165,7 +165,7 @@
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemStruct"
+ Type="TractionSystemStruct"
  Default=""
  X="110"
  Y="180"
@@ -248,13 +248,13 @@
 >
 <Comment>Returns the element in TCTractionSystems with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCTractionSystems | (X.Location &lt;= Distance)
-    USING X IN Default.BaseTypes.MaxDistance(
+    USING X IN BaseTypes.MaxDistance(
         X1=&gt;X.Location,
         X2=&gt;RESULT)
-  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+  INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCTypeEnum"
+ Type="General.TCDisplay.TCTypeEnum"
  Default=""
  X="330"
  Y="180"
@@ -329,7 +329,7 @@
 <Expression>General.TCDisplay.TCTypeEnum.TractionSystem__DC600_750V</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.General.TCDisplay.TCStructWithSoundHorn"
+ Type="General.TCDisplay.TCStructWithSoundHorn"
  Default=""
  X="440"
  Y="180"
@@ -343,7 +343,7 @@
 <Comment>Takes a change of traction system information and provides it as DMI information</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct"
+ Type="TractionSystemInformationStruct"
  Name="TractionSystem"
  Guid="0c0a19c4-86c3-4674-b1d0-68c1838d55fd"
 >
@@ -452,7 +452,7 @@
  Guid="999301d6-e625-436c-b54d-0a413831fb96"
 >INSERT Kernel.TrackDescription.TrackConditions.TractionSystems.TractionSystemInformationStruct
 {
-    Location =&gt; Default.MessageTypes.QScaleDistance
+    Location =&gt; MessageTypes.QScaleDistance
     (
         distance=&gt;Packet.D_TRACTION,
         scale=&gt;Packet.Q_SCALE
@@ -526,15 +526,15 @@ IN
     TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
     Distance=&gt; General.TCDisplay.AnnouncementLocation(
         TrackCondition =&gt; Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{},
-        Distance=&gt;Default.MessageTypes.QScaleDistance(
+        Distance=&gt;MessageTypes.QScaleDistance(
             distance=&gt;Packet.D_TRACTION,
             scale=&gt;Packet.Q_SCALE)
         ),
-    Length=&gt; Default.BaseTypes.DistanceToLength(
-                 Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE) -
+    Length=&gt; BaseTypes.DistanceToLength(
+                 MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE) -
                  General.TCDisplay.AnnouncementLocation(
                      TrackCondition =&gt; Kernel.TrackDescription.TrackConditions.General.TrackConditionStruct{},
-                     Distance=&gt;Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE)
+                     Distance=&gt;MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACTION, scale=&gt;Packet.Q_SCALE)
                  )
         ),
      Announcement =&gt; True
@@ -562,11 +562,11 @@ IN General.TCDisplay.Announcements</Action></Actions>
  Guid="83db5426-16ea-4334-b486-8690bf014ba2"
 >INSERT General.TCDisplay.NewAnnouncement(
     TCType=&gt; PacketToAnnouncement(Packet.M_VOLTAGE),
-    Distance=&gt; Default.MessageTypes.QScaleDistance(
+    Distance=&gt; MessageTypes.QScaleDistance(
             distance=&gt;Packet.D_TRACTION,
             scale=&gt;Packet.Q_SCALE
         ),
-    Length=&gt; Default.BaseTypes.Length.NA,
+    Length=&gt; BaseTypes.Length.NA,
     Announcement =&gt; False
 )
 IN General.TCDisplay.Announcements</Action></Actions>
@@ -606,7 +606,7 @@ IN General.TCDisplay.Announcements</Action></Actions>
 </ReqRef><Comment>Deletes the track conditions traction systems beyond the provided location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="f4e16be9-6a88-48dd-9d10-dff5de3fc4b1"
 >

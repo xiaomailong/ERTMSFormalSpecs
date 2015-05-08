@@ -36,7 +36,7 @@
 </ReqRef><Comment>Computes the value of the release speed, by iterating the function VreleaseFunction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="8809f63d-2e33-47d3-b643-a3629f325926"
 >
@@ -207,7 +207,7 @@ BaseTypes.MaxDistance(
  Guid="1805aa0c-0d02-4572-98ea-abed7e76dbd5"
 >
 </Parameter><Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="31c4457c-faad-4bcb-be68-c2dbf699fceb"
 >
@@ -254,7 +254,7 @@ BaseTypes.MaxDistance(
 </ReqRef><Comment>Indicates if the release speed is applicable (a valid MA with a release speed has been received).</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="TargetSpeedMonitoring.Target"
  Name="aTarget"
  Guid="ec3ee1ea-fda2-4335-a503-5b58f2354cee"
 >
@@ -457,7 +457,7 @@ INITIAL_VALUE
 USING X IN
     BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X ), X2 =&gt; RESULT )
 INITIAL_VALUE
-    Default.BaseTypes.Speed.Infinity</Expression>
+    BaseTypes.Speed.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Double"
@@ -484,7 +484,7 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="6987e771-1b6a-40d7-86d1-6ee0972c1e4a"
->Level.Value.Value == Default.Level.L1</PreCondition></PreConditions>
+>Level.Value.Value == Level.L1</PreCondition></PreConditions>
 <Expression>1.0</Expression>
 </Case><Case
  Name="Level 2 or 3"
@@ -493,7 +493,7 @@ INITIAL_VALUE
 <PreConditions>
 <PreCondition
  Guid="c2818a11-3cd6-4d37-9f07-66a869d1737c"
->Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case></Cases>
 </Function><Function
@@ -542,7 +542,7 @@ INITIAL_VALUE
                     ),
           X2 =&gt; RESULT
         )
-  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+  INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -593,7 +593,7 @@ INITIAL_VALUE
  Guid="8d371a70-ef2e-4e1b-8637-313df835dbd9"
 >ReleaseSpeedMonitoring.ReleaseSpeed &lt;- 
 ReleaseSpeedMonitoring.ReleaseSpeedValue(
-    Vrel=&gt;Default.BaseTypes.Speed.UseNV
+    Vrel=&gt;BaseTypes.Speed.UseNV
 )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"

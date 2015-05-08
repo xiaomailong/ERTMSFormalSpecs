@@ -1,0 +1,160 @@
+<NameSpace
+ Name="Acknowledgements"
+ Guid="9213a9a0-d971-4c92-8506-b4f75896a6b2"
+>
+<NameSpaces>
+</NameSpaces>
+<Enumerations>
+<Enum
+ Default="Undefined"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AckTypeEnum"
+ Guid="a82af46f-3bd0-4503-b623-eb6c6015e815"
+>
+<Comment>Possible acknowledgement types.</Comment>
+<Values>
+<EnumValue
+ Value=""
+ Name="LSMode"
+ Guid="0dda033a-b5b4-45ff-9560-1bda1a232864"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="OSMode"
+ Guid="faf7983f-88d7-4b66-a61c-bed4fe61353f"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SHMode"
+ Guid="a99dfc48-8ddd-4da3-a16a-475d5df7bb8b"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="RVMode"
+ Guid="2e2eccbe-837e-47ef-860f-4d07d8724edf"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SNMode"
+ Guid="a4a60779-8c57-45de-a3b0-9360e8bca4b2"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SRMode"
+ Guid="10cd6011-ddeb-426c-9387-d5ccf2c0db6a"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="UNMode"
+ Guid="b31f15cf-ee2c-4a24-89be-46e18d99650d"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TrainTrip"
+ Guid="063c9ae1-c286-4440-ba83-b2e5ba636b95"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="LevelTransition"
+ Guid="997ee0a1-a08a-4284-8ad5-c2be04a9b3cf"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="PostTripDistanceExceeded"
+ Guid="d26da1ea-e8f8-484a-9926-b4b37bf62ba3"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="ReverseMovementProtection"
+ Guid="432ebff6-dbc4-4078-9c41-b5b851be6da5"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="ReversingDistanceExceeded"
+ Guid="01832eb4-f393-4329-a37c-e088be46e231"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="RollAwayProtection"
+ Guid="5dd45fe7-e0c0-45b0-8f8c-521161380acc"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="StandstillSupervision"
+ Guid="b2eb300f-428b-420f-8ec1-b298ffcfc87c"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="PlainTextInformation"
+ Guid="4c313c1d-e67b-4c92-b1c0-a645ebcb0dd4"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="FixedTextInformation"
+ Guid="9312477e-1e27-4e7b-a87c-068d2eda6b70"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="TrainDataChangeFromOtherSource"
+ Guid="8ce440b5-0a30-45b6-b6fd-15d5f200a152"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="Undefined"
+ Guid="48124aaa-bafc-4ee3-8865-eeae70c4753f"
+>
+</EnumValue></Values>
+</Enum></Enumerations>
+<Variables>
+<Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="5.0"
+ VariableMode="Internal"
+ X="50"
+ Y="410"
+ Width="100"
+ Height="50"
+ Pinned="TRUE"
+ Implemented="TRUE"
+ Name="Tack"
+ Guid="43415c9b-e244-4abb-aaaa-f0d95525304d"
+>
+<ReqRef
+ Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="bbd8432f-8d4f-4582-983c-aac72dc81350"
+>
+</ReqRef><ReqRef
+ Id="19ba3404-792f-4f75-a058-7b89395bce5c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="efe26c5b-b4e8-4fb4-839e-e3779f0c9df3"
+>
+</ReqRef><ReqRef
+ Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="69e9b17b-6823-4770-b77d-bea6526c3301"
+>
+</ReqRef><ReqRef
+ Id="81394bed-5665-4b0a-a527-9c845c6db537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="5e92c17e-cc65-4d0d-8ec0-e40f8dad941e"
+>
+</ReqRef><ReqRef
+ Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="660e9c71-4538-4e4f-ae21-4068386c9000"
+>
+</ReqRef><ReqRef
+ Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="65edfe30-804f-43ae-adbf-6b0bf6282260"
+>
+</ReqRef><ReqRef
+ Id="8c5b881c-69d8-482a-9ec2-98778e9fddc2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="670b530f-bfe9-4e27-af2a-b2e920b60561"
+>
+</ReqRef><Comment>Driver acknowledgement time.</Comment>
+</Variable></Variables>
+</NameSpace>

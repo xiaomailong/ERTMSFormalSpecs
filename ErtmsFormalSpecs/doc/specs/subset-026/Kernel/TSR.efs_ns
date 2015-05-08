@@ -116,7 +116,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TSR.TemporarySpeedRestriction"
+ TypeName="TemporarySpeedRestriction"
  MaxSize="30"
  Default="[]"
  X="180"
@@ -154,7 +154,7 @@
 <Comment>Provides the speed profile due to a temporary speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TSR.TemporarySpeedRestriction"
+ Type="TemporarySpeedRestriction"
  Name="aTSR"
  Guid="10f45ceb-0964-4057-b4b4-db722921f7c6"
 >
@@ -174,7 +174,7 @@
  Guid="b7a253b5-8d72-419d-b004-0e91ee5b211b"
 >aTSR.Location &lt;= Distance</PreCondition><PreCondition
  Guid="7945a00b-4cbe-4c32-a198-307485b22c6d"
->Distance &lt; aTSR.Location + Default.BaseTypes.LengthToDistance ( Length =&gt; aTSR.Length )</PreCondition></PreConditions>
+>Distance &lt; aTSR.Location + BaseTypes.LengthToDistance ( Length =&gt; aTSR.Length )</PreCondition></PreConditions>
 <Expression>aTSR.Speed</Expression>
 </Case><Case
  Name="Outside TSR"
@@ -416,13 +416,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >REPLACE X.Id == Packet.NID_TSR IN TSRs BY TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
-    Length =&gt; Default.MessageTypes.SpeedRestrictionLength
+    Length =&gt; MessageTypes.SpeedRestrictionLength
     (
-        Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
+        Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
         TrainLengthDelay =&gt; Packet.Q_FRONT
     ),
-    Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
-    Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 )
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
+    Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 )
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -448,13 +448,13 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >INSERT TemporarySpeedRestriction
 {
     Id =&gt; Packet.NID_TSR,
-    Length =&gt; Default.MessageTypes.SpeedRestrictionLength
+    Length =&gt; MessageTypes.SpeedRestrictionLength
     (
-        Length =&gt; Default.MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
+        Length =&gt; MessageTypes.QScaleLength ( length =&gt; Packet.L_TSR, scale =&gt; Packet.Q_SCALE ),
         TrainLengthDelay =&gt; Packet.Q_FRONT
     ),
-    Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
-    Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 )
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TSR, scale =&gt; Packet.Q_SCALE ),
+    Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; Packet.V_TSR, resolution =&gt; 5.0 )
 }
 IN TSRs</Action></Actions>
 </RuleCondition></Conditions>

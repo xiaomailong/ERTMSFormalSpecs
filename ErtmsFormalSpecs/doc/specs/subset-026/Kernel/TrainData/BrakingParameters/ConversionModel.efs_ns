@@ -47,7 +47,7 @@
   AND
 Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;= 200.0</PreCondition><PreCondition
  Guid="44dea8f6-d254-4297-b71b-73fbc4ac8c22"
->TrainData.Value.BrakePercentage != Default.Percentage.NA
+>TrainData.Value.BrakePercentage != Percentage.NA
   AND
 30.0 &lt;= TrainData.Value.BrakePercentage
   AND
@@ -220,7 +220,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
  Name="Otherwise"
  Guid="bf224277-2e29-4332-ba7f-9e724b7aa453"
 >
-<Expression>Default.BaseTypes.Speed.Infinity</Expression>
+<Expression>BaseTypes.Speed.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
@@ -275,7 +275,7 @@ Kernel.TrainData.TrainData.Value.TrainLength &lt;= Lmax()</PreCondition></PreCon
                                           ( L_sb() / 100.0 ) )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.BrakingParameters.CorrectionFactor"
+ Type="CorrectionFactor"
  Default=""
  X="440"
  Y="120"
@@ -1176,7 +1176,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 </ReqRef><Comment>Computes A_safe from conversion model using the algorithm described in 3.A.3.7.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  Name="aBrakingModel"
  Guid="c0d8df87-fa28-4ff9-8edd-04d8887bdabc"
 >
@@ -1412,7 +1412,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  Guid="fbd445d5-2b36-45ba-a0f4-fc686f733951"
 >T_brake_service_cm0 &lt;- T_brake_basic_sb ()</Action><Action
  Guid="a6134211-0b7f-479d-9e3d-e9cf23eb2a98"
->T_brake_service_cmt &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+>T_brake_service_cmt &lt;- BaseTypes.Time.NA</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Target speed different from 0"
@@ -1425,7 +1425,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  Guid="b020aefd-2749-41e1-923b-19e70ba556f7"
 >T_brake_service_cmt &lt;- T_brake_basic_sb () * BaseTypes.Time ( kto () )</Action><Action
  Guid="965303f2-9bb5-4e2f-97d1-eeb72e2ff1c9"
->T_brake_service_cm0 &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+>T_brake_service_cm0 &lt;- BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1487,7 +1487,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  Guid="953d96e5-3544-4b56-acce-b18217e6b143"
 >T_brake_emergency_cm0 &lt;- T_brake_basic_eb ()</Action><Action
  Guid="3bbe69a7-0fee-444c-aa28-06d58311bff1"
->T_brake_emergency_cmt &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+>T_brake_emergency_cmt &lt;- BaseTypes.Time.NA</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Target speed different from 0"
@@ -1500,7 +1500,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
  Guid="d1a40433-37c2-4742-91d0-ae70dc5b681f"
 >T_brake_emergency_cmt &lt;- T_brake_basic_eb () * BaseTypes.Time ( kto () )</Action><Action
  Guid="878c9e3d-1621-4d42-bec3-b3615b6b1927"
->T_brake_emergency_cm0 &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+>T_brake_emergency_cm0 &lt;- BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1544,7 +1544,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 <Variables>
 <Variable
  Type="Default.BaseTypes.Time"
- DefaultValue="Default.BaseTypes.Time.NA"
+ DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  Width="100"
  Height="50"
@@ -1580,7 +1580,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 </ReqRef><Comment>The value of the equivalent emergency brake build up time to be used when the target speed (V_target) is equal to zero.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
- DefaultValue="Default.BaseTypes.Time.NA"
+ DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="110"
  Width="100"
@@ -1617,7 +1617,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 </ReqRef><Comment>The value of the equivalent emergency brake build up time to be used when the target speed (V_target) is different zero.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
- DefaultValue="Default.BaseTypes.Time.NA"
+ DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="220"
  Width="100"
@@ -1654,7 +1654,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 </ReqRef><Comment>The value of the equivalent service brake build up time to be used when the target speed (V_target) is equal to zero.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
- DefaultValue="Default.BaseTypes.Time.NA"
+ DefaultValue="BaseTypes.Time.NA"
  VariableMode="Internal"
  X="330"
  Width="100"
@@ -1690,7 +1690,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 >
 </ReqRef><Comment>The value of the equivalent service brake build up time to be used when the target speed (V_target) is different from zero.</Comment>
 </Variable><Variable
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="440"
@@ -1717,7 +1717,7 @@ TrainData.Value.BrakePosition == BrakePositions.FreightTrainInP</PreCondition></
 >
 </ReqRef><Comment>The speed dependent deceleration model for the emergency brake, derived from the brake percentage using the conversion model (if no speed dependent deceleration model for emergency brake was acquired as part of Train Data).</Comment>
 </Variable><Variable
- Type="Kernel.TrainData.BrakingParameters.BrakingModel"
+ Type="BrakingModel"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="550"

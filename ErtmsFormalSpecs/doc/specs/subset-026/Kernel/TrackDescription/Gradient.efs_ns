@@ -110,7 +110,7 @@
 >
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default="Default.BaseTypes.Speed.Infinity"
+ Default="BaseTypes.Speed.Infinity"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -181,7 +181,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.Gradient.GradientStruct"
+ TypeName="GradientStruct"
  MaxSize="50"
  Default="[]"
  Y="120"
@@ -266,7 +266,7 @@
 2. Gradient value is different from 255 =&gt; the gradient end will be infinite</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientStruct"
+ Type="GradientStruct"
  Name="Current"
  Guid="4dd83776-79ca-421c-802b-3e29e7a80c14"
 >
@@ -290,7 +290,7 @@
 <PreCondition
  Guid="04a0d169-1137-49ef-8f92-efde68fdeca0"
 >NOT THERE_IS X IN Gradients | X.Location &gt; Current.Location</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+<Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="57b006b4-2aa4-4cf0-bdb7-fadb3a1a0a54"
@@ -298,9 +298,9 @@
 <Expression>REDUCE
     Gradients | X.Location &gt; Current.Location
 USING X IN
-    Default.BaseTypes.MinDistance ( X.Location, RESULT )
+    BaseTypes.MinDistance ( X.Location, RESULT )
 INITIAL_VALUE
-    Default.BaseTypes.Distance.Infinity</Expression>
+    BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Gradient"
@@ -327,7 +327,7 @@ INITIAL_VALUE
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite The gradient value is not compensated by the nominal rotating mass (used for computation of A_normal_service(V, d)).</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientStruct"
+ Type="GradientStruct"
  Name="GradientInfo"
  Guid="8b5413f1-a3af-4611-afaa-ee7ff5415f08"
 >
@@ -479,7 +479,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
     Gradients |
         Before(ExpectedFirst =&gt; X, ExpectedSecond =&gt; Gradient, Collection =&gt; Gradients) OR ( X == Gradient )
 USING X IN
-    Default.MessageTypes.QScaleDistance (X.D_GRADIENT, Scale)</Expression>
+    MessageTypes.QScaleDistance (X.D_GRADIENT, Scale)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Gradient"
@@ -534,7 +534,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 <PreConditions>
 <PreCondition
  Guid="c251abd5-ae0b-4546-9370-af15eefc6a37"
->TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition><PreCondition
+>TrainData.TrainData.Value.M_rotating_nom == Percentage.NA</PreCondition><PreCondition
  Guid="846fd481-cff0-4851-a79a-3806b43dc156"
 >Gradient &gt;= 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * M_rotating_max )</Expression>
@@ -545,7 +545,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 <PreConditions>
 <PreCondition
  Guid="0c4fb344-37be-4402-877a-6091ddd07b6a"
->TrainData.TrainData.Value.M_rotating_nom == Default.Percentage.NA</PreCondition><PreCondition
+>TrainData.TrainData.Value.M_rotating_nom == Percentage.NA</PreCondition><PreCondition
  Guid="840b9fe7-a3cb-4516-8985-3ad058907ce2"
 >Gradient &lt; 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * M_rotating_min )</Expression>
@@ -556,7 +556,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 <PreConditions>
 <PreCondition
  Guid="21a4ccda-967e-4cc1-b49f-3d34f6d5ba6f"
->TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition><PreCondition
+>TrainData.TrainData.Value.M_rotating_nom != Percentage.NA</PreCondition><PreCondition
  Guid="783c230a-2105-4754-b542-f92714c1641c"
 >Gradient &gt;= 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * TrainData.TrainData.Value.M_rotating_nom )</Expression>
@@ -567,7 +567,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 <PreConditions>
 <PreCondition
  Guid="9da3d253-e3ad-45a0-b304-aa2afdc7dba3"
->TrainData.TrainData.Value.M_rotating_nom != Default.Percentage.NA</PreCondition><PreCondition
+>TrainData.TrainData.Value.M_rotating_nom != Percentage.NA</PreCondition><PreCondition
  Guid="53f7dda7-3bf5-47a2-8563-d694f266b4dc"
 >Gradient &lt; 0.0</PreCondition></PreConditions>
 <Expression>Gradient / ( 1000.0 + 10.0 * TrainData.TrainData.Value.M_rotating_nom )</Expression>
@@ -625,7 +625,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
  Name="Always"
  Guid="d239d564-57e7-49e1-92c2-8228c5e08254"
 >
-<Expression>Default.BaseTypes.Acceleration.g * GradientProfile( Distance )</Expression>
+<Expression>BaseTypes.Acceleration.g * GradientProfile( Distance )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Gradient"
@@ -749,7 +749,7 @@ The formulae are easier than in subset 26 since the values of grad and M_rotatin
 Outside the distances provided by the gradient, the gradient value is defined as Indefinite</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientStruct"
+ Type="GradientStruct"
  Name="GradientInfo"
  Guid="e306ed33-b31a-405c-bcf7-b88ed5725021"
 >
@@ -906,7 +906,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>KnMin ( V ) * GradientInfoProfileSummary_NonCompensated ( d )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.Gradient.CorrectionFactor"
+ Type="CorrectionFactor"
  Default=""
  X="220"
  Y="420"
@@ -929,7 +929,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 </ReqRef><Comment>Gives the deceleration due to braking depending on the current speed value.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.CorFact"
+ Type="CorFact"
  Name="aCorrectionFactor"
  Guid="7ae9bf94-515d-47c6-9389-a878a49003f0"
 >
@@ -995,7 +995,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>aCorrectionFactor.Val4.Factor</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.Gradient.CorrectionFactor"
+ Type="CorrectionFactor"
  Default=""
  X="330"
  Y="420"
@@ -1026,7 +1026,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnPlus, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.Gradient.CorrectionFactor"
+ Type="CorrectionFactor"
  Default=""
  X="440"
  Y="420"
@@ -1057,7 +1057,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Expression>CorrectionFactorFunction ( aCorrectionFactor =&gt; KnMin, V =&gt; V )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.Gradient.GradientStruct"
+ Type="GradientStruct"
  Default=""
  X="550"
  Y="300"
@@ -1068,7 +1068,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 >
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientStruct"
+ Type="GradientStruct"
  Name="aGradient"
  Guid="31c5c86b-208b-4776-8d65-cfb429e2f3af"
 >
@@ -1188,7 +1188,7 @@ Outside the distances provided by the gradient, the gradient value is defined as
 <Actions>
 <Action
  Guid="879d940c-79ed-4325-8e15-cfe834f37953"
->REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
+>REMOVE ALL X.Location &gt;= MessageTypes.QScaleDistance ( distance =&gt; Packet.D_GRADIENT, scale =&gt; Packet.Q_SCALE) IN Gradients</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1267,7 +1267,7 @@ ON Packet.Sequence1</Action></Actions>
 >
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.Gradient.GradientStruct"
+ Type="GradientStruct"
  Name="Info"
  Guid="392cab3e-0003-43de-be28-1b310b5b924f"
 >
@@ -1554,7 +1554,7 @@ IN
 >
 </ReqRef><Comment>Minimum possible rotating mass as a percentage of the total weight of the train: 2 %</Comment>
 </Variable><Variable
- Type="Kernel.TrackDescription.Gradient.DefaultGradientForTSR"
+ Type="DefaultGradientForTSR"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="110"
@@ -1573,7 +1573,7 @@ IN
 >
 </ReqRef><Comment>Represents the default gradient for TSR supervision.</Comment>
 </Variable><Variable
- Type="Kernel.TrackDescription.Gradient.CorFact"
+ Type="CorFact"
  DefaultValue=""
  VariableMode="Internal"
  X="220"
@@ -1596,7 +1596,7 @@ IN
 >
 </ReqRef><Comment>Represents the speed dependent correction factor for positive gradient on the normal service brake.</Comment>
 </Variable><Variable
- Type="Kernel.TrackDescription.Gradient.CorFact"
+ Type="CorFact"
  DefaultValue=""
  VariableMode="Internal"
  X="330"

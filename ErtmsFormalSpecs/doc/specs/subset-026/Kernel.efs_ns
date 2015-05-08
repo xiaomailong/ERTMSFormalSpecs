@@ -289,9 +289,9 @@
 </ReqRef><Comment>Represents the ERTMS/ETCS level of the train.</Comment>
 <StructureElement
  TypeName="Default.LevelDataStruct"
- Default="Default.LevelDataStruct
+ Default="LevelDataStruct
 {
-    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
+    NTC =&gt; NID_NTC.NOT_APPLICABLE,
     Value =&gt; Level.L0
 }"
  Mode="Internal"
@@ -643,7 +643,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Used for elements caracterized by a location.</Comment>
 <StructureElement
- TypeName="BaseTypes.Distance"
+ TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
@@ -666,7 +666,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Used for elements characterized by a location and a length.</Comment>
 <StructureElement
- TypeName="BaseTypes.Length"
+ TypeName="Default.BaseTypes.Length"
  Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
@@ -676,7 +676,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 <Comment>Represents the length of the element.</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Distance"
+ TypeName="Default.BaseTypes.Distance"
  Default="0.0"
  Mode="Internal"
  Implemented="TRUE"
@@ -694,7 +694,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.EmergencyStopStruct"
+ TypeName="EmergencyStopStruct"
  Default="[]"
  X="200"
  Y="180"
@@ -722,7 +722,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
 >
 </ReqRef><Comment>Collection holding structures of type Kernel.EmergencyStop</Comment>
 </Collection><Collection
- TypeName="Kernel.BaliseGroup"
+ TypeName="BaliseGroup"
  MaxSize="20"
  Default="[]"
  X="650"
@@ -740,7 +740,7 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="2d4a2ec1-4f05-498c-b32f-0fdb39c34093"
 >
 </ReqRef></Collection><Collection
- TypeName="Kernel.SafetyCriticalFaultStruct"
+ TypeName="SafetyCriticalFaultStruct"
  Default="[]"
  X="480"
  Y="420"
@@ -940,13 +940,13 @@ The bcd notation as required by 7.5.92 is not possible in the model. Hence we st
  Guid="487837a4-4fec-433e-96ef-be1f39c069a1"
 >Odometry.TrainIsAtStandstill()</PreCondition><PreCondition
  Guid="b392428c-2e67-4b0d-8638-557b1554b2d4"
->DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+>DMI.MasterDMI().In_ShuntingRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
  Guid="4147a8a3-fef5-4d1f-a85a-f00a875464a8"
 >NOT DMI.MasterDMI().In_ShuntingRequest.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="f87bb6ae-17c7-4285-8e28-fcbeaeb36771"
->Kernel.Level.DataState == Default.DataState.Valid</PreCondition><PreCondition
+>Kernel.Level.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="662c3df4-c42d-42b4-969f-26374908d16a"
->Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition><PreCondition
+>Kernel.DriverId.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="1a50685a-e6cf-47fb-ade5-c83eda9ddb1e"
 >Kernel.Mode in [Mode.FS, Mode.LS, Mode.OS, Mode.SR, Mode.SN, Mode.UN]</PreCondition></PreConditions>
 <Actions>
@@ -1545,7 +1545,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="499e6f7b-740e-4c50-a2c0-019a1e76634e"
->Kernel.TrainRunningNumber.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>Kernel.TrainRunningNumber.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="affe3d9b-7a1e-4f62-bd0a-f1ff3cb5effd"
@@ -1574,7 +1574,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="80ee118d-5ba9-4d4d-9192-fc1272b787fa"
->Kernel.TrainRunningNumber.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+>Kernel.TrainRunningNumber.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="9a44c4a6-0ae2-44c8-862e-44ed64c312ec"
@@ -1671,7 +1671,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="777e8ebd-bb8e-4e5e-8b5e-5b28d51a9121"
->Kernel.DriverId.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>Kernel.DriverId.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0ff251f6-8beb-499b-9cdc-55577d26e81a"
@@ -1700,7 +1700,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="144f89cc-2a42-4da4-a61c-9940b285fd3c"
->Kernel.DriverId.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+>Kernel.DriverId.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b89bff0b-b2af-4d9c-96fc-22bbcf2647e0"
@@ -1809,15 +1809,15 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="60f30bae-564a-4fdd-aafb-e3573d0cbdf8"
->Kernel.DriverId.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Kernel.DriverId.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="5e31eb20-f81b-480a-b45d-8ffcdb87aa64"
 >THIS &lt;- D2</Action><Action
  Guid="a3bab10c-9ff5-4f28-b348-9e7157d0acae"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus&lt;- Default.Request.Disabled</Action><Action
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus&lt;- Request.Disabled</Action><Action
  Guid="6042798b-1723-45ee-b3c5-d3c31a38a1cf"
->DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCover.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -2183,7 +2183,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="8f083773-5b95-4f4c-9ae7-4b797ae0481c"
->Kernel.Level.DataState in [Default.DataState.Invalid, Default.DataState.Unknown]</PreCondition></PreConditions>
+>Kernel.Level.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2d42d2f5-4319-4560-8681-755772d37629"
@@ -2278,7 +2278,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="cf8193d4-30b6-4bc3-bbd4-45a591192f5f"
->Kernel.Level.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>Kernel.Level.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="24019dfa-3cfc-4da4-a643-b1fc2e787e44"
@@ -2313,16 +2313,16 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="ca461923-7027-48ea-a301-66f336d29791"
->Kernel.Level.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+>Kernel.Level.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e3a60529-bb36-4ba8-9e25-407becd12d5c"
 >DMI.MasterDMI().In_ErtmsEtcsLevel.InitiateRequest
 (
-  Level =&gt; Default.LevelDataStruct
+  Level =&gt; LevelDataStruct
   {
-    NTC =&gt; Default.NID_NTC.NOT_APPLICABLE,
-    Value =&gt; Default.Level.Unknown
+    NTC =&gt; NID_NTC.NOT_APPLICABLE,
+    Value =&gt; Level.Unknown
   },
   Enter =&gt; True, 
   ReValidate =&gt; False,
@@ -2412,11 +2412,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="bdfd2aaf-0240-446d-9eee-f9de37124239"
->EURORADIO.AvailableNetworks.RequestState == Default.Request.Response</PreCondition></PreConditions>
+>EURORADIO.AvailableNetworks.RequestState == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="235c73db-6ad5-49f0-8c6f-d0e4f1cd4116"
->EURORADIO.AvailableNetworks.RequestState &lt;- Default.Request.Disabled</Action></Actions>
+>EURORADIO.AvailableNetworks.RequestState &lt;- Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -2557,7 +2557,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <Actions>
 <Action
  Guid="198cb14a-02da-4a00-8f9c-b5ddffc80be8"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Unknown</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Unknown</Action><Action
  Guid="525893e1-c192-4679-9788-b1b77c5b89c3"
 >EURORADIO.RegisterMobileTerminals ( DMI.MasterDMI().In_RBCContactInformation.SelectedNetwork )</Action></Actions>
 </RuleCondition></Conditions>
@@ -2700,7 +2700,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <Actions>
 <Action
  Guid="7b7d924d-761b-47f8-be56-b474e1f1ca84"
->EURORADIO.AvailableNetworks.RequestState &lt;- Default.Request.Request</Action><Action
+>EURORADIO.AvailableNetworks.RequestState &lt;- Request.Request</Action><Action
  Guid="77eb59b8-5cb4-49e8-a2cc-2b2e2f7fa9a4"
 >THIS &lt;- HandleModeChangeSM.StartOfMission.S3.ReceiveNetworkIDs</Action></Actions>
 </RuleCondition><RuleCondition
@@ -2806,7 +2806,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 >EURORADIO.CurrentRBCConnection().ContactData &lt;- EURORADIO.RBCContactStruct{
     Id =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.Id,
     PhoneNumber =&gt; DMI.MasterDMI().In_RBCContactInformation.SelectedRBCContactInformation.PhoneNumber,
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
@@ -3079,11 +3079,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="4a508c30-f61e-4642-9bfb-c5b8e95e99cd"
->TrainPosition.Position.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b1b30221-d9e3-4334-ab87-404ba1068590"
->TrainPosition.Position.DataState &lt;- Default.DataState.Unknown</Action></Actions>
+>TrainPosition.Position.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -3112,7 +3112,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="267dcd69-cf04-4818-90af-fbe4cb809ecc"
->Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -3134,7 +3134,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="87f7a9ed-ebd1-4cd5-a6ce-ce894391339c"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
  Guid="3959ee3f-73e9-4dbe-b9a8-638b8e1f497f"
 >NOT DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
@@ -3154,7 +3154,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <Actions>
 <Action
  Guid="b95bdeb8-4524-4f82-b3a4-c151eefa7456"
->DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Default.Request.Disabled</Action></Actions>
+>DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Disabled</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -3174,7 +3174,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="c4df8dcf-f178-42b9-9807-fb70c26e333d"
->Level.Value.Value == Default.Level.L0</PreCondition></PreConditions>
+>Level.Value.Value == Level.L0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f0015543-7d59-4953-84d7-173971398225"
@@ -3188,7 +3188,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="39318056-06b5-454e-84e2-951f64c30df1"
->Level.Value.Value == Default.Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ae24502b-c0ff-497a-89bd-769ee164563d"
@@ -3202,7 +3202,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="7cdd4b04-cfc8-4daa-9ec8-4b5561935578"
->Level.Value.Value in [ Default.Level.L1, Default.Level.L2, Default.Level.L3 ]</PreCondition></PreConditions>
+>Level.Value.Value in [ Level.L1, Level.L2, Level.L3 ]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f119d8e6-ecd4-47a5-8eba-966ecc41f707"
@@ -3474,7 +3474,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="741213d4-90d4-4130-ab98-79e4b25028c1"
->Kernel.TrainRunningNumber.DataState in [Default.DataState.Invalid, Default.DataState.Unknown]</PreCondition></PreConditions>
+>Kernel.TrainRunningNumber.DataState in [DataState.Invalid, DataState.Unknown]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d893db47-bd02-44d1-8892-0223a092758d"
@@ -3545,7 +3545,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="da2163c2-8559-4741-9074-7b6f0cf21115"
->Kernel.TrainRunningNumber.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>Kernel.TrainRunningNumber.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0ac8622f-25d6-4e3a-acd0-dc80b595016a"
@@ -3575,7 +3575,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="733e9a07-b1f0-4b8b-8e39-601bc1e14072"
->Kernel.TrainRunningNumber.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+>Kernel.TrainRunningNumber.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="27775e3f-6a9f-41e7-bba5-77290d1190ec"
@@ -3596,11 +3596,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="c8bdc772-3686-480b-8186-02a614b4aa15"
->Kernel.TrainRunningNumber.DataState != Default.DataState.Valid</PreCondition><PreCondition
+>Kernel.TrainRunningNumber.DataState != DataState.Valid</PreCondition><PreCondition
  Guid="5cca0c9d-d3cb-4563-88da-4902c33524e8"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
  Guid="e87adf10-ace6-4b7c-ae31-27bff02ec62c"
->DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ab922002-922f-478a-b549-891214039c25"
@@ -3629,7 +3629,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="deb5e04d-f765-458b-959e-179614f9869d"
->Kernel.TrainRunningNumber.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainRunningNumber.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="445c53d3-c0ee-4c2d-b180-eae97d2f0316"
@@ -4240,7 +4240,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="b4ad20ab-c373-46bb-ab33-5b7101bde35c"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition></PreConditions>
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7af6368a-0121-4c32-ba51-1820f2d758c5"
@@ -4317,7 +4317,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="8cb5c652-2d65-4628-9f4d-d2c03912f63c"
->MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="df66622a-f945-4112-acc7-25b9c04f84cc"
@@ -4356,7 +4356,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="e203a0df-4eb5-465d-9f1d-580d56f0213a"
->MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="47394cdf-5bcc-499d-92dd-259bbdb4488b"
@@ -4395,7 +4395,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <PreConditions>
 <PreCondition
  Guid="8989b7fd-3a2f-471a-98b7-f1cf9e908f1c"
->MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Mode.ModeProfile.SH</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dcf74279-c0cd-49ac-a698-2ac766fc4fc1"
@@ -4509,11 +4509,11 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 </ReqRef><PreConditions>
 <PreCondition
  Guid="4a93d4f4-e1b8-4684-8245-d340230f47f0"
->Level.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Level.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8b62f242-f507-45b5-ab5c-40ce6d2a09a7"
->Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+>Level.DataState &lt;- DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -5305,7 +5305,7 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )<
 <PreConditions>
 <PreCondition
  Guid="ce1ab44e-d0f7-48a7-ae25-c80ffd65e042"
->DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+>DMI.MasterDMI().In_TrainData.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
  Guid="ab790024-9e0a-42c2-be46-c6e98482506c"
 >TrainData.TrainData.DataState != DataState.Valid</PreCondition></PreConditions>
 <Actions>
@@ -6028,7 +6028,7 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )<
 <PreConditions>
 <PreCondition
  Guid="e4ffa691-161b-4bd9-8313-60f34d519d63"
->Mode != Default.Mode.SB</PreCondition></PreConditions>
+>Mode != Mode.SB</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a543721a-2e37-4dfe-b555-ddfcb90b379e"
@@ -6467,11 +6467,11 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )<
 <PreConditions>
 <PreCondition
  Guid="3a4dbcb3-3293-404d-8e83-459ce1685e89"
->Level.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Level.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c5962eb5-d1d6-4cc7-9baa-8d1ca3f31595"
->Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+>Level.DataState &lt;- DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -6496,11 +6496,11 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )<
 <PreConditions>
 <PreCondition
  Guid="5ff6cb13-22d1-46ea-950a-2b03de192d9f"
->EURORADIO.CurrentRBCConnection().ContactData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="57a12587-e7e5-458c-bdd6-5d19303cadef"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Invalid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition><RuleCondition
@@ -6734,7 +6734,7 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )<
 <Actions>
 <Action
  Guid="ec985507-e5ec-43b6-a95c-ab795b2aa69e"
->Mode &lt;- Default.Mode.TR</Action><Action
+>Mode &lt;- Mode.TR</Action><Action
  Guid="4fc228d8-8749-4fc8-8c4b-14e6c0267fc8"
 >THIS &lt;- TrainTrip.D020</Action></Actions>
 </RuleCondition></Conditions>
@@ -7155,7 +7155,7 @@ If the Level is level 0 or NTC, go to D085.</Comment>
 <PreConditions>
 <PreCondition
  Guid="381346b4-42d5-4491-a5ee-33979319c657"
->Level.Value.Value in [Default.Level.L1, Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L1, Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="42aef285-00ea-4612-9353-fe273c39f732"
@@ -7179,7 +7179,7 @@ If the Level is level 0 or NTC, go to D085.</Comment>
 <PreConditions>
 <PreCondition
  Guid="c304e2bd-7f2c-40b5-87de-07ac74c29513"
->Level.Value.Value in [Default.Level.L0, Default.Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cf9c0c8e-5d6f-458e-9576-fd09a3dc7b9e"
@@ -7299,7 +7299,7 @@ If the Level is level 2 or 3, go to A115.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7ca85845-8383-49a3-b1ec-5c52d0b7fb35"
->Level.Value.Value == Default.Level.L1</PreCondition></PreConditions>
+>Level.Value.Value == Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8b629f15-44a4-4733-a3f6-6316b6dd92d7"
@@ -7318,7 +7318,7 @@ If the Level is level 2 or 3, go to A115.</Comment>
 <PreConditions>
 <PreCondition
  Guid="9043dfd8-e25e-4e73-a46b-6aefb6c438f9"
->Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="880dd603-8c02-48bd-a1fc-aeea0c049095"
@@ -7749,7 +7749,7 @@ If the Driver selects Entry in SH, initiate &quot;Shunting initiated by Driver&q
  Guid="8748e903-765c-482a-b060-e24a8c012a8e"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition><PreCondition
  Guid="16f83256-478c-4f7c-9056-b8097c00fbda"
->Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="943a1f2f-1239-439f-a012-d060ccc05728"
@@ -7772,7 +7772,7 @@ If the Driver selects Entry in SH, initiate &quot;Shunting initiated by Driver&q
 <PreConditions>
 <PreCondition
  Guid="22c8f914-81c5-45ec-98e4-85fec0186b89"
->Level.Value.Value == Default.Level.L1</PreCondition><PreCondition
+>Level.Value.Value == Level.L1</PreCondition><PreCondition
  Guid="bcbf278e-7248-4a02-9580-06002d14112f"
 >DMI.MasterDMI().In_Start.InputInformation.DriverAnswered</PreCondition></PreConditions>
 <Actions>
@@ -8212,7 +8212,7 @@ If the RBC sends a MA without a Mode Profile, the Mode will change to FS and the
 <PreConditions>
 <PreCondition
  Guid="c551b067-d254-4c56-baac-37c31b9f6cb2"
->MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="20fa23e1-ae46-4bb5-9b1d-e2b07d2a131e"
@@ -8249,7 +8249,7 @@ If the RBC sends a MA without a Mode Profile, the Mode will change to FS and the
 <PreConditions>
 <PreCondition
  Guid="97ee615f-e5eb-4e58-98a7-d93b1ee16dbc"
->MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ea87de01-786e-488a-9595-cfc2398832cd"
@@ -8286,7 +8286,7 @@ If the RBC sends a MA without a Mode Profile, the Mode will change to FS and the
 <PreConditions>
 <PreCondition
  Guid="64197a7e-5607-4126-b26e-96462181d60c"
->MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Mode.ModeProfile.SH</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a6c8e672-2266-4133-90e9-57ecccd75c06"
@@ -8383,7 +8383,7 @@ If Level is level 0 or NTC, go to S050.</Comment>
 <PreConditions>
 <PreCondition
  Guid="838ed804-4420-4d1a-a78c-d57a5807850b"
->Level.Value.Value == Default.Level.L1</PreCondition></PreConditions>
+>Level.Value.Value == Level.L1</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="09c7dc8d-656d-4abc-b9f6-bcc86aaa7317"
@@ -8402,7 +8402,7 @@ If Level is level 0 or NTC, go to S050.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e9082bb3-1606-490a-8aac-5442ef5a2374"
->Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7021103e-5033-4c1f-b30f-d38d80b995e0"
@@ -8421,7 +8421,7 @@ If Level is level 0 or NTC, go to S050.</Comment>
 <PreConditions>
 <PreCondition
  Guid="cbf4243a-6975-42f8-bad9-07e9c8245eba"
->Level.Value.Value in [Default.Level.L0, Default.Level.LNTC]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L0, Level.LNTC]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="85b52695-7760-43b1-b283-fb62fe9e270a"
@@ -8491,7 +8491,7 @@ If the on-board does not have valid Train Data stored, go to A140.</Comment>
 <PreConditions>
 <PreCondition
  Guid="009375ee-d07e-4c39-9d8c-5d10e25e1063"
->Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d1abc592-c25b-46e3-bedc-b40ab4be542f"
@@ -8515,7 +8515,7 @@ If the on-board does not have valid Train Data stored, go to A140.</Comment>
 <PreConditions>
 <PreCondition
  Guid="7c9fb8b6-860d-4f53-a90c-4267b9f1482e"
->Kernel.TrainData.TrainData.DataState != Default.DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainData.TrainData.DataState != DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="08e32f3e-7e99-4a6b-8345-c01f48191fbe"
@@ -8580,7 +8580,7 @@ If the Level is Level NTC, go to A150.</Comment>
 <PreConditions>
 <PreCondition
  Guid="e310a442-e50c-450e-b592-b583920672ac"
->Level.Value.Value == Default.Level.L0</PreCondition></PreConditions>
+>Level.Value.Value == Level.L0</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dd60d7fc-8555-4d2d-8699-72ff8b2617a4"
@@ -8604,7 +8604,7 @@ If the Level is Level NTC, go to A150.</Comment>
 <PreConditions>
 <PreCondition
  Guid="91457cfd-d5e2-4eab-937d-a0c20b543156"
->Level.Value.Value == Default.Level.LNTC</PreCondition></PreConditions>
+>Level.Value.Value == Level.LNTC</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="cc7d4ceb-1e1a-4a4e-869e-7e75a2f8c68e"
@@ -8739,7 +8739,7 @@ The report is handled in the EURORADIO namespace</Comment>
  Guid="a20f6e13-1dca-41c0-9034-0684b14f90db"
 >NOT EURORADIO.HasActiveSession()</PreCondition><PreCondition
  Guid="fe2f1b03-ffc7-44cd-ab00-daa877c92ff5"
->Mode == Default.Mode.PT</PreCondition></PreConditions>
+>Mode == Mode.PT</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="88f1d610-071e-42a9-a7c7-fcf95319b179"
@@ -10018,7 +10018,7 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 <PreConditions>
 <PreCondition
  Guid="38a39d16-ba12-45c0-999f-5e1bccff6184"
->Mode != Default.Mode.SR</PreCondition><PreCondition
+>Mode != Mode.SR</PreCondition><PreCondition
  Guid="4372dba9-4e42-4273-bfed-1fd6179da849"
 >OverrideSupervision.FormerSRDistance != BaseTypes.Distance.Infinity</PreCondition></PreConditions>
 <Actions>
@@ -10563,7 +10563,7 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
 </StateMachine></StateMachines>
 <Functions>
 <Function
- Type="Kernel.EmergencyStopStruct"
+ Type="EmergencyStopStruct"
  Default=""
  X="230"
  Y="530"
@@ -10611,7 +10611,7 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
  }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.EmergencyStopStruct"
+ Type="EmergencyStopStruct"
  Default=""
  X="450"
  Y="530"
@@ -10644,11 +10644,11 @@ OverrideSupervision.FormerSRDistance &lt; TrainPosition.FrontEndPosition(Distanc
     USING X IN MinEmergencyStopDistance( EmergencyStop1 =&gt; X, EmergencyStop2 =&gt; RESULT )
 INITIAL_VALUE Kernel.EmergencyStopStruct
                             {
-                                StopLocation =&gt; Default.BaseTypes.Distance.Infinity
+                                StopLocation =&gt; BaseTypes.Distance.Infinity
                             }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.EmergencyStopStruct"
+ Type="EmergencyStopStruct"
  Default=""
  X="340"
  Y="530"
@@ -10663,12 +10663,12 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 <Comment>Returns the EmergencyStop item with the closest StopLocation, chosen amongst the conditional emergency stops received from the RBC</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.EmergencyStopStruct"
+ Type="EmergencyStopStruct"
  Name="EmergencyStop1"
  Guid="9e4b6b95-8fc6-4c63-82ae-6cb3353e472b"
 >
 </Parameter><Parameter
- Type="Kernel.EmergencyStopStruct"
+ Type="EmergencyStopStruct"
  Name="EmergencyStop2"
  Guid="96fac747-08ca-4dbf-b46c-6a0b449f934c"
 >
@@ -10736,7 +10736,7 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 <PreConditions>
 <PreCondition
  Guid="fa43be27-2045-49de-b7c9-5ae4e49cb81e"
->Mode in [Default.Mode.SL]</PreCondition></PreConditions>
+>Mode in [Mode.SL]</PreCondition></PreConditions>
 <Expression>False</Expression>
 </Case><Case
  Name="Otherwise"
@@ -10745,7 +10745,7 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 <Expression>True</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.OverrideStruct"
+ Type="OverrideStruct"
  Default=""
  X="10"
  Y="530"
@@ -10794,13 +10794,13 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 <PreConditions>
 <PreCondition
  Guid="9e1640cc-d2b5-4b0b-b3e4-54d34380580b"
->Mode in [Default.Mode.SN, Default.Mode.UN]</PreCondition></PreConditions>
+>Mode in [Mode.SN, Mode.UN]</PreCondition></PreConditions>
 <Expression>Kernel.OverrideStruct{
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
     FormerEOA =&gt; Odometry.NominalDistance,
     FormerEOAPassed =&gt; False,
-    FormerSRDistance =&gt; Default.BaseTypes.Distance.Infinity
+    FormerSRDistance =&gt; BaseTypes.Distance.Infinity
 }</Expression>
 </Case><Case
  Name="SR Mode, MA available"
@@ -10809,7 +10809,7 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 <PreConditions>
 <PreCondition
  Guid="3435614c-b411-4a76-ab2d-738f68231ca4"
->Mode == Default.Mode.SR</PreCondition><PreCondition
+>Mode == Mode.SR</PreCondition><PreCondition
  Guid="dc8684f7-9a39-4b23-b7ed-cf85f596f3c4"
 >Available (MA.MA)</PreCondition></PreConditions>
 <Expression>Kernel.OverrideStruct{
@@ -10826,11 +10826,11 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 <PreConditions>
 <PreCondition
  Guid="99482117-cbba-4c06-b413-a3cf0011a3fa"
->Mode == Default.Mode.SR</PreCondition></PreConditions>
+>Mode == Mode.SR</PreCondition></PreConditions>
 <Expression>Kernel.OverrideStruct{
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
-    FormerEOA =&gt; Default.BaseTypes.Distance.Infinity,
+    FormerEOA =&gt; BaseTypes.Distance.Infinity,
     FormerEOAPassed =&gt; False,
     FormerSRDistance =&gt; TrainPosition.SRStartDistance + StaffResponsible.DistanceToRun()
 }</Expression>
@@ -10847,7 +10847,7 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
     FormerEOA =&gt; MA.ClosestEOA().Location,
     FormerEOAPassed =&gt; False,
-    FormerSRDistance =&gt; Default.BaseTypes.Distance.Infinity
+    FormerSRDistance =&gt; BaseTypes.Distance.Infinity
 }</Expression>
 </Case><Case
  Name="No MA"
@@ -10856,9 +10856,9 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 <Expression>Kernel.OverrideStruct{
     Time =&gt; DateAndTime.CurrentTime + NationalValues.ApplicableNationalValues.Value.MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered,
     Location =&gt; Odometry.NominalDistance + NationalValues.ApplicableNationalValues.Value.DistForTrainTripSuppressionWhenOverrideIsTriggered,
-    FormerEOA =&gt; Default.BaseTypes.Distance.Infinity,
+    FormerEOA =&gt; BaseTypes.Distance.Infinity,
     FormerEOAPassed =&gt; False,
-    FormerSRDistance =&gt; Default.BaseTypes.Distance.Infinity
+    FormerSRDistance =&gt; BaseTypes.Distance.Infinity
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -10878,7 +10878,7 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
  Guid="9b053e48-7d17-4dc9-8668-fba83515bc52"
 >
 </Parameter><Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="anAdditionalDistance"
  Guid="89778873-c3aa-422e-91e6-cc64e4937f87"
 >
@@ -10902,12 +10902,12 @@ INITIAL_VALUE Kernel.EmergencyStopStruct
 >
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="8673483e-16de-43eb-a5cc-8c8cab50a60c"
 >
 </Parameter><Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="anAdditionalDistance"
  Guid="c788ee6c-0003-47e9-bc04-de9421ec50ea"
 >
@@ -11435,7 +11435,7 @@ ActiveFunctions.SuperviseTrainSpeed_MRSP()</PreCondition></PreConditions>
 CreateEmergencyStop (
     aIsConditional =&gt; Boolean.True,
     aId =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
-    aStopLocation =&gt; Default.MessageTypes.QScaleDistance (
+    aStopLocation =&gt; MessageTypes.QScaleDistance (
         distance =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
         scale =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.Q_SCALE
      )
@@ -12106,7 +12106,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="eec272d9-b226-4a12-91d4-3df042472468"
->Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="ec69f817-fdf5-47d0-a001-f3819c2549a7"
@@ -12234,15 +12234,15 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="233d466f-c13c-48ce-b531-3f6d6409cf04"
->TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition><PreCondition
+>TrainData.TrainData.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="3f8076a9-083b-45f2-8b1e-a94cdecf7ee6"
 >HandleModeChange in [HandleModeChangeSM.StartOfMission.S10, HandleModeChangeSM.StartOfMission.S20]</PreCondition><PreCondition
  Guid="54366b06-846d-4f54-9579-7705393fafe6"
->TrainPosition.Position.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="e4a4be8d-1fcb-4ea1-945a-bbb90d84c8ad"
->TrainPosition.Position.DataState &lt;- Default.DataState.Unknown</Action></Actions>
+>TrainPosition.Position.DataState &lt;- DataState.Unknown</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -12324,7 +12324,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 </ReqRef><Parameters>
 <Parameter
- Type="LevelDataStruct"
+ Type="Default.LevelDataStruct"
  Name="aLevel"
  Guid="de7a8125-2f80-45ef-9ff1-b7e2a5595ddc"
 >
@@ -12352,7 +12352,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Guid="508ecb41-3187-4b72-8619-867d2e337566"
 >Level &lt;- LevelData{
     Value =&gt; aLevel,
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
@@ -12383,7 +12383,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.DriverId"
+ Type="DriverId"
  DefaultValue=""
  VariableMode="Internal"
  X="630"
@@ -12407,7 +12407,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 </ReqRef><Comment>The data state and the value of the driver id.</Comment>
 </Variable><Variable
- Type="Kernel.LevelData"
+ Type="LevelData"
  DefaultValue=""
  VariableMode="Internal"
  X="10"
@@ -12432,7 +12432,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates the state and the value of the current ERTMS/ETCS level of the train.</Comment>
 </Variable><Variable
  Type="Default.Mode"
- DefaultValue="Default.Mode.NP"
+ DefaultValue="Mode.NP"
  VariableMode="Internal"
  X="790"
  Y="120"
@@ -12468,7 +12468,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Indicates whether the EVC is On or Off.</Comment>
 </Variable><Variable
- Type="Kernel.TrainRunningNumber"
+ Type="TrainRunningNumber"
  DefaultValue=""
  VariableMode="Internal"
  X="630"
@@ -12555,7 +12555,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 </ReqRef><Comment>Represents the first target at zero speed.</Comment>
 </Variable><Variable
- Type="Kernel.NationalValues.NationalDefaultDataStruct"
+ Type="NationalValues.NationalDefaultDataStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="900"
@@ -12578,10 +12578,10 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Guid="e1871b26-ed36-4255-a022-ac8dbfbd3c3a"
 >
 </ReqRef></Variable><Variable
- Type="Kernel.OperatedSystemVersionStruct"
+ Type="OperatedSystemVersionStruct"
  DefaultValue="Kernel.OperatedSystemVersionStruct
 {
-    DataState =&gt; Default.DataState.Unknown, 
+    DataState =&gt; DataState.Unknown, 
     Value =&gt; Messages.M_VERSION.Version_1_0__introduced_in_SRS_1_2_0_and_re_used_in_SRSs_2_0_0__2_2_2__2_3_0
 }"
  VariableMode="InOut"
@@ -12801,7 +12801,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 >
 <Comment>The list of current events that trigger the service brake.</Comment>
 </Variable><Variable
- Type="Kernel.OverrideStruct"
+ Type="OverrideStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="630"
@@ -13017,11 +13017,11 @@ When the rear end of the train passes the start of the profiles, the message is 
  Guid="e0fc7a91-fd3d-43d4-9ac5-d88d4088cf00"
 >DMI.MasterDMI().Out_EntryInFsOs.OutputInformation.DisplayRequested</PreCondition><PreCondition
  Guid="e31a3f35-e0d0-4679-bdb6-287dc5bbf9ce"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Location</PreCondition><PreCondition
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.Gradient.Gradients).Location</PreCondition><PreCondition
  Guid="8ef695d6-6008-457a-b954-e699a5744db5"
->Mode in [Default.Mode.FS, Default.Mode.OS]</PreCondition><PreCondition
+>Mode in [Mode.FS, Mode.OS]</PreCondition><PreCondition
  Guid="f693983c-1ef2-466c-9f2a-1e388434b61c"
->TrainPosition.RearEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Location</PreCondition></PreConditions>
+>TrainPosition.RearEndPosition(PointOfInterest =&gt; DistanceInterval.Nom) &gt;= (FIRST X IN TrackDescription.StaticSpeedProfile.SSP).Location</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="1cb44512-e85f-49fd-b1d2-d6050b977813"
@@ -13053,7 +13053,7 @@ When the rear end of the train passes the start of the profiles, the message is 
 <PreConditions>
 <PreCondition
  Guid="db698431-04ed-49bb-b877-65c637a29172"
->Mode == Default.Mode.TR</PreCondition><PreCondition
+>Mode == Mode.TR</PreCondition><PreCondition
  Guid="9b89c340-ef51-4c14-bb62-8a7b2d72fba4"
 >EmergencyStops != []</PreCondition></PreConditions>
 <Actions>
@@ -13120,24 +13120,24 @@ train data is valid (or the mode is shunting)</Comment>
   OR  
 
 (
-  Level.Value.Value in [Default.Level.L2, Default.Level.L3]
+  Level.Value.Value in [Level.L2, Level.L3]
     AND  
-  Mode == Default.Mode.SB
+  Mode == Mode.SB
 )
 
   OR  
 
 (
-  Level.Value.Value == Default.Level.LNTC
+  Level.Value.Value == Level.LNTC
     AND  
-  Mode == Default.Mode.SN
+  Mode == Mode.SN
 )</PreCondition><PreCondition
  Guid="ae0dfdfe-20fd-4409-9b91-c08c8f9c6ce1"
->TrainData.TrainData.DataState == Default.DataState.Valid
+>TrainData.TrainData.DataState == DataState.Valid
 
   OR  
 
-Mode == Default.Mode.SH</PreCondition></PreConditions>
+Mode == Mode.SH</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="bab8de6a-7a28-4649-98e6-e6e684ccc6f2"

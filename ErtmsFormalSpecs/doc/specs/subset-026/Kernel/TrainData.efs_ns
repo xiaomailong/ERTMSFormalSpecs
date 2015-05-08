@@ -380,7 +380,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.Percentage"
- Default="Default.Percentage.NA"
+ Default="Percentage.NA"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -644,7 +644,7 @@
 </ReqRef><Comment>Represents the equivalent brake build up time (T_brake_build_up) for the service brake.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Percentage"
- Default="Default.Percentage.NA"
+ Default="Percentage.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="BrakePercentage"
@@ -922,19 +922,19 @@
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.Levels"
  Default="[
-  Default.LevelDataStruct {
+  LevelDataStruct {
      Value =&gt; Level.L1,
-     NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+     NTC =&gt; NID_NTC.NOT_APPLICABLE
   },
-  Default.LevelDataStruct {
+  LevelDataStruct {
      Value =&gt; Level.L2,
-     NTC =&gt; Default.NID_NTC.NOT_APPLICABLE
+     NTC =&gt; NID_NTC.NOT_APPLICABLE
   },
-  Default.LevelDataStruct {
+  LevelDataStruct {
      Value =&gt; Level.LNTC,
      NTC =&gt; 0
   },
-  Default.LevelDataStruct {
+  LevelDataStruct {
      Value =&gt; Level.LNTC,
      NTC =&gt; 1
   }
@@ -996,7 +996,7 @@
 >
 </ReqRef><StructureElement
  TypeName="Default.DataState"
- Default="Default.DataState.Unknown"
+ Default="DataState.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -1121,7 +1121,7 @@
 >
 </ReqRef><Comment>Represents a list of other specific train categories.</Comment>
 </Collection><Collection
- TypeName="Kernel.TrainData.TractionSystem"
+ TypeName="TractionSystem"
  MaxSize="20"
  Default="[]"
  X="530"
@@ -1190,7 +1190,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     },
@@ -1204,7 +1204,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     },
@@ -1218,7 +1218,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     },
@@ -1232,7 +1232,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     },
@@ -1246,7 +1246,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     },
@@ -1260,7 +1260,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     },
@@ -1274,7 +1274,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     },
@@ -1288,7 +1288,7 @@
             Acceleration =&gt; 0.8
         },
         Val2 =&gt; BrakingParameters.BrakingModelValue{
-            SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+            SpeedStep =&gt; BaseTypes.Speed.Infinity,
             Acceleration =&gt; 0.0
         }
     }
@@ -1297,7 +1297,7 @@
     Kwet_rstValuesSet =&gt; Kernel.TrainData.BrakingParameters.Kwet_rstValuesSet{}
 }</Action><Action
  Guid="fe0d9359-7fb8-4b61-ba53-4010e0266b0e"
->Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- Default.Percentage.NA</Action><Action
+>Kernel.TrainData.TrainData.Value.M_rotating_nom &lt;- Percentage.NA</Action><Action
  Guid="40725ae5-5b0f-4676-86bf-40f90ae2f801"
 >Kernel.TrainData.TrainData.Value.MaximumSpeed &lt;- 220.0</Action><Action
  Guid="bc8cdf38-ef71-442e-bfa7-1e6495f34e58"
@@ -1315,7 +1315,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         },
@@ -1329,7 +1329,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         },
@@ -1343,7 +1343,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         },
@@ -1357,7 +1357,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         },
@@ -1371,7 +1371,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         },
@@ -1385,7 +1385,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         },
@@ -1399,7 +1399,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         },
@@ -1413,7 +1413,7 @@
                 Acceleration =&gt; 0.69
             },
             Val2 =&gt; BrakingParameters.BrakingModelValue{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Acceleration =&gt; 0.0
             }
         }
@@ -1745,7 +1745,7 @@
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.TrainData.TrainDataStruct"
+ Type="TrainDataStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="850"

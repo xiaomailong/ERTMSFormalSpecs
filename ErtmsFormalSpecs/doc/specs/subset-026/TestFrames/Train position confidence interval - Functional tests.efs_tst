@@ -124,7 +124,7 @@
 [ 
   BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 14.0,
-    Orientation =&gt; Default.Orientation.Unknown,
+    Orientation =&gt; Orientation.Unknown,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 1000.0,
     BaliseGroupIdentifier =&gt; 0
@@ -158,7 +158,7 @@
  Guid="a3c51f2d-e1fa-4918-8c11-98fdb6ad23ce"
 >BTM.Linking.Linkings &lt;- []</Action><Action
  Guid="5879d1a1-3b62-44d2-93aa-46bf651dde01"
->Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -185,7 +185,7 @@
  Guid="d9ab9a6e-1293-490d-abde-ed895b1a9458"
 >BTM.Linking.Linkings &lt;- []</Action><Action
  Guid="0a3e1ee5-74c5-4774-8d57-cdf6f9b9990f"
->Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -323,7 +323,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="04f6ec29-4144-4a30-8e66-471f7bd9a6b4"
->Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER) == 10.0</Expectation><Expectation
+>Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTOVER) == 10.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2cfa2d2b-4730-42d7-b1c3-119a750f903f"
 >BTM.BGLocationAccuracy() == 3.0</Expectation><Expectation
@@ -350,7 +350,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="14894af4-cb92-49f2-bb91-93dbc4be1021"
->Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER) == 11.0</Expectation><Expectation
+>Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTUNDER) == 11.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="40a3aafd-40bf-41be-82f1-ad71daa49dc7"
 >Kernel.ConfidenceInterval.UnderReadingAmount() == 8.0</Expectation><Expectation
@@ -443,7 +443,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="36e490a0-132b-4056-8037-5f8cf20354b3"
->Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) == Odometry.NominalDistance - BTM.LRBG.Position.Position</Expectation></Expectations>
+>Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom) == Odometry.NominalDistance - BTM.LRBG.Position.Position</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -464,10 +464,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="f2b07138-ab94-475c-8fa0-ca113eaaa511"
->Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) == 1771.0</Expectation><Expectation
+>Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Max) == 1771.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5ff1dd2c-f06c-4e27-bcde-d113e6f77da1"
->Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER)) == 11.0</Expectation></Expectations>
+>BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTUNDER)) == 11.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -488,10 +488,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="2f6bcdac-5400-4a70-90fb-b4008debfe80"
->Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Min) == 1750.0</Expectation><Expectation
+>Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Min) == 1750.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="83a75474-76ae-4355-9e87-505de8d87dc8"
->Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER)) == 10.0</Expectation></Expectations>
+>BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTOVER)) == 10.0</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -607,7 +607,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="18ed3482-5f08-4190-bd42-e55e00f2f277"
->Kernel.ConfidenceInterval.AdditionalConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER) == Kernel.ConfidenceInterval.AdditionalOverReadingAmount() + BTM.BGLocationAccuracy()</Expectation></Expectations>
+>Kernel.ConfidenceInterval.AdditionalConfidenceInterval(ConfidenceInterval.L_DOUBTOVER) == Kernel.ConfidenceInterval.AdditionalOverReadingAmount() + BTM.BGLocationAccuracy()</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -628,7 +628,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="40fb8d72-c6b0-4529-8194-c4ff8d55eff4"
->Kernel.ConfidenceInterval.AdditionalConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER) == Kernel.ConfidenceInterval.AdditionalUnderReadingAmount() + BTM.BGLocationAccuracy()</Expectation></Expectations>
+>Kernel.ConfidenceInterval.AdditionalConfidenceInterval(ConfidenceInterval.L_DOUBTUNDER) == Kernel.ConfidenceInterval.AdditionalUnderReadingAmount() + BTM.BGLocationAccuracy()</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

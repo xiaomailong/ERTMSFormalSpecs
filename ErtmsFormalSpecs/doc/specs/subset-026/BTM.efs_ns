@@ -52,7 +52,7 @@
 <Comment>The identity number of the LRBG.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
- Default="Default.Orientation.Unknown"
+ Default="Orientation.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  Name="Orientation"
@@ -238,7 +238,7 @@ b) is just a placeholder for a missed balise.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="BTM.PreviousBaliseGroupStruct"
+ TypeName="PreviousBaliseGroupStruct"
  MaxSize="8"
  Default="[]"
  X="690"
@@ -253,7 +253,7 @@ b) is just a placeholder for a missed balise.</Comment>
 >
 <Comment>Represents the list of last received LRBGs.</Comment>
 </Collection><Collection
- TypeName="BTM.StoredBaliseStruct"
+ TypeName="StoredBaliseStruct"
  MaxSize="8"
  Default="[]"
  X="820"
@@ -318,16 +318,16 @@ b) is just a placeholder for a missed balise.</Comment>
 <PreConditions>
 <PreCondition
  Guid="5af1a0fa-d27c-46f0-86b9-6d9afbcbb7a5"
->Kernel.NationalValues.ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Length(Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup)</Expression>
+>Kernel.NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
+<Expression>BaseTypes.Length(Kernel.NationalValues.ApplicableNationalValues.Value.DefaultLocationAccuracyOfABaliseGroup)</Expression>
 </Case><Case
  Name="DefaultValue"
  Guid="639ec4cf-d197-42c9-a803-47a931faf986"
 >
-<Expression>Default.BaseTypes.Length(Kernel.NationalValues.DefaultValues.DefaultLocationAccuracyOfABaliseGroup)</Expression>
+<Expression>BaseTypes.Length(Kernel.NationalValues.DefaultValues.DefaultLocationAccuracyOfABaliseGroup)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.PreviousBaliseGroupStruct"
+ Type="PreviousBaliseGroupStruct"
  Default=""
  X="40"
  Y="140"
@@ -354,7 +354,7 @@ b) is just a placeholder for a missed balise.</Comment>
   INITIAL_VALUE EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.PreviousBaliseGroupStruct"
+ Type="PreviousBaliseGroupStruct"
  Default=""
  X="40"
  Y="80"
@@ -369,12 +369,12 @@ b) is just a placeholder for a missed balise.</Comment>
 <Comment>Selects the balise group which is the nearer between the two balise groups provided</Comment>
 <Parameters>
 <Parameter
- Type="BTM.PreviousBaliseGroupStruct"
+ Type="PreviousBaliseGroupStruct"
  Name="bg1"
  Guid="8b6a601b-8730-44f5-846d-56bba22cc276"
 >
 </Parameter><Parameter
- Type="BTM.PreviousBaliseGroupStruct"
+ Type="PreviousBaliseGroupStruct"
  Name="bg2"
  Guid="3160361b-f9a7-4adb-bbcb-5ea66685108e"
 >
@@ -417,7 +417,7 @@ b) is just a placeholder for a missed balise.</Comment>
 <Expression>bg2</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.PreviousBaliseGroupStruct"
+ Type="PreviousBaliseGroupStruct"
  Default=""
  X="150"
  Y="80"
@@ -432,12 +432,12 @@ b) is just a placeholder for a missed balise.</Comment>
 <Comment>Selects the balise group which is the nearer between the two balise groups provided</Comment>
 <Parameters>
 <Parameter
- Type="BTM.PreviousBaliseGroupStruct"
+ Type="PreviousBaliseGroupStruct"
  Name="bg1"
  Guid="8ec1dd11-507e-4aef-b6e9-8c437c20b3c3"
 >
 </Parameter><Parameter
- Type="BTM.PreviousBaliseGroupStruct"
+ Type="PreviousBaliseGroupStruct"
  Name="bg2"
  Guid="81075d74-f8d2-46ee-9424-ee00d6302b4a"
 >
@@ -480,7 +480,7 @@ b) is just a placeholder for a missed balise.</Comment>
 <Expression>bg2</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.BaliseGroupStruct"
+ Type="BaliseGroupStruct"
  Default=""
  X="260"
  Y="140"
@@ -507,7 +507,7 @@ b) is just a placeholder for a missed balise.</Comment>
   INITIAL_VALUE EMPTY).BaliseGroup</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Position"
+ Type="Position"
  Default=""
  X="150"
  Y="20"
@@ -600,7 +600,7 @@ b) is just a placeholder for a missed balise.</Comment>
 <PreCondition
  Guid="42e647d7-f4ec-404e-822d-0af260c9426c"
 >IsSingleBaliseGroup(CurrentBaliseGroup)</PreCondition></PreConditions>
-<Expression>Default.Orientation.Unknown</Expression>
+<Expression>Orientation.Unknown</Expression>
 </Case><Case
  Name="First balise is last in the group"
  Guid="1b917fc8-846c-477a-b9f8-6b1bbf9a1a07"
@@ -609,7 +609,7 @@ b) is just a placeholder for a missed balise.</Comment>
 <PreCondition
  Guid="99800f60-19c6-48c4-895b-d7aa823ecd0c"
 >(FIRST X IN CurrentBaliseGroup).Telegram.N_PIG == (FIRST X IN CurrentBaliseGroup).Telegram.N_TOTAL</PreCondition></PreConditions>
-<Expression>Default.Orientation.Reverse</Expression>
+<Expression>Orientation.Reverse</Expression>
 </Case><Case
  Name="First balise is first in the group"
  Guid="9ce6a19a-a14f-4efa-8a9d-6f7a4101f7ec"
@@ -618,7 +618,7 @@ b) is just a placeholder for a missed balise.</Comment>
 <PreCondition
  Guid="a3515d8d-741c-40a4-8a64-acafbdeb205e"
 >(FIRST X IN CurrentBaliseGroup).Telegram.N_PIG == 0</PreCondition></PreConditions>
-<Expression>Default.Orientation.Nominal</Expression>
+<Expression>Orientation.Nominal</Expression>
 </Case><Case
  Name="Two balises stored, N_PIG_1 lower than N_PIG_2"
  Guid="ae25aa1f-71a4-4d87-9b56-5ec6680f6877"
@@ -632,7 +632,7 @@ b) is just a placeholder for a missed balise.</Comment>
   AND  
 
 (FIRST Balise IN CurrentBaliseGroup).Telegram.N_PIG &lt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_PIG</PreCondition></PreConditions>
-<Expression>Default.Orientation.Nominal</Expression>
+<Expression>Orientation.Nominal</Expression>
 </Case><Case
  Name="Two balises stored, N_PIG_1 higher than N_PIG_2"
  Guid="7c70fdb1-9f62-4151-b0ad-78ecf220a67e"
@@ -645,13 +645,13 @@ b) is just a placeholder for a missed balise.</Comment>
   AND  
 
 (FIRST Balise IN CurrentBaliseGroup).Telegram.N_PIG &gt; (LAST Balise IN CurrentBaliseGroup).Telegram.N_PIG</PreCondition></PreConditions>
-<Expression>Default.Orientation.Reverse</Expression>
+<Expression>Orientation.Reverse</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="e8c38925-da03-4f17-a72e-f1d5e4ff496b"
 >
 <Comment>Default case.</Comment>
-<Expression>Default.Orientation.Unknown</Expression>
+<Expression>Orientation.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -732,7 +732,7 @@ b) is just a placeholder for a missed balise.</Comment>
 </ReqRef><Comment>This function indicates whether a single balise needs to be processed. Only the second of a pair of duplicate balises is handled.</Comment>
 <Parameters>
 <Parameter
- Type="BTM.StoredBaliseStruct"
+ Type="StoredBaliseStruct"
  Name="Message"
  Guid="97fc975a-3d6b-44b1-b594-1bcd610e2aac"
 >
@@ -894,7 +894,7 @@ If the train direction is unknown, this function returns true only if the packet
  Name="Value"
  Guid="8ecc0b19-4add-4c5e-82e5-c56868836734"
 >
-<Expression>PacketOrientation == Default.EFSOrientationConverter ( BaliseGroupOrientation() )
+<Expression>PacketOrientation == EFSOrientationConverter ( BaliseGroupOrientation() )
   OR
 PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
 </Case></Cases>
@@ -1340,7 +1340,7 @@ PacketOrientation == Messages.Q_DIR.Both_directions</Expression>
  Name="Otherwise"
  Guid="bbb4368c-06da-4efc-9230-417c0d87f09f"
 >
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1703,7 +1703,7 @@ NOT
 <Expression>THERE_IS Message IN CurrentBaliseGroup | Message.Telegram.M_MCOUNT != CurrentBGM_MCOUNT() AND Message.Telegram.M_MCOUNT != Messages.M_MCOUNT.The_telegram_fits_with_all_telegrams_of_the_same_balise_group</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.StoredBaliseStruct"
+ Type="StoredBaliseStruct"
  Default=""
  X="260"
  Y="460"
@@ -1717,7 +1717,7 @@ NOT
 <Comment>The previous balise in the BG&apos;s nominal direction (N_PIG - 1)</Comment>
 <Parameters>
 <Parameter
- Type="BTM.StoredBaliseStruct"
+ Type="StoredBaliseStruct"
  Name="Balise"
  Guid="2df68c8a-3538-4009-a290-020a05ba0e21"
 >
@@ -1739,7 +1739,7 @@ NOT
 <Expression>FIRST X IN CurrentBaliseGroup | X.Telegram.N_PIG == Balise.Telegram.N_PIG - 1</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.StoredBaliseStruct"
+ Type="StoredBaliseStruct"
  Default=""
  X="40"
  Y="460"
@@ -1778,7 +1778,7 @@ StoredBaliseStruct{
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.StoredBaliseStruct"
+ Type="StoredBaliseStruct"
  Default=""
  X="150"
  Y="460"
@@ -1792,7 +1792,7 @@ StoredBaliseStruct{
 <Comment>The next balise in the BG&apos;s nominal direction (N_PIG + 1)</Comment>
 <Parameters>
 <Parameter
- Type="BTM.StoredBaliseStruct"
+ Type="StoredBaliseStruct"
  Name="Balise"
  Guid="1ce2bf6f-4cee-4870-ab21-09cfdff13924"
 >
@@ -1834,7 +1834,7 @@ StoredBaliseStruct{
 <PreConditions>
 <PreCondition
  Guid="e527dd06-8d8f-4ac9-aef1-75fbcae88607"
->BaliseGroupOrientation() == Default.Orientation.Nominal</PreCondition></PreConditions>
+>BaliseGroupOrientation() == Orientation.Nominal</PreCondition></PreConditions>
 <Expression>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG + 1</Expression>
 </Case><Case
  Name="Reverse"
@@ -1843,7 +1843,7 @@ StoredBaliseStruct{
 <PreConditions>
 <PreCondition
  Guid="dccafee7-8c97-4e55-92e7-b52211cda954"
->BaliseGroupOrientation() == Default.Orientation.Reverse</PreCondition></PreConditions>
+>BaliseGroupOrientation() == Orientation.Reverse</PreCondition></PreConditions>
 <Expression>(LAST X IN CurrentBaliseGroup).Telegram.N_PIG + 1</Expression>
 </Case></Cases>
 </Function><Function
@@ -1876,7 +1876,7 @@ StoredBaliseStruct{
 <PreConditions>
 <PreCondition
  Guid="e9da31c6-973c-49aa-9e61-b5d14d2b5ebc"
->BaliseGroupOrientation() == Default.Orientation.Nominal
+>BaliseGroupOrientation() == Orientation.Nominal
   AND  
 (LAST X IN CurrentBaliseGroup).Telegram.N_PIG == (LAST X IN CurrentBaliseGroup).Telegram.N_TOTAL</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -1887,7 +1887,7 @@ StoredBaliseStruct{
 <PreConditions>
 <PreCondition
  Guid="c215fd2a-7ce8-464f-9671-48c87c63b97f"
->BaliseGroupOrientation() == Default.Orientation.Reverse
+>BaliseGroupOrientation() == Orientation.Reverse
   AND  
 (LAST X IN CurrentBaliseGroup).Telegram.N_PIG == 0</PreCondition></PreConditions>
 <Expression>True</Expression>
@@ -1948,7 +1948,7 @@ StoredBaliseStruct{
   AND  
 THERE_IS X IN Balise.Sequence1 | (Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Nominal  OR  Messages.PACKET.TRACK_TO_TRAIN.GetQ_DIR(X.TRACK_TO_TRAIN) == Messages.Q_DIR.Reverse)
   AND  
-BaliseGroupOrientation() != Default.Orientation.Unknown</PreCondition></PreConditions>
+BaliseGroupOrientation() != Orientation.Unknown</PreCondition></PreConditions>
 <Expression>True</Expression>
 </Case><Case
  Name="All information valid for both directions"
@@ -2013,7 +2013,7 @@ FORALL X IN Balise.Sequence1 |
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.StoredBaliseStruct"
+ Type="StoredBaliseStruct"
  Default=""
  X="370"
  Y="320"
@@ -3734,7 +3734,7 @@ The list is updated in case two LRBGs provide the same MRSP, this should count a
 <Actions>
 <Action
  Guid="1a79f6be-8cd7-40c6-9975-e855cdded2c5"
->Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - Default.BaseTypes.DistanceToLength( BGLocationReference.Position.Position - LRBG.Position.Position )</Action></Actions>
+>Kernel.MA.MA.EndSection.Length &lt;- Kernel.MA.MA.EndSection.Length - BaseTypes.DistanceToLength( BGLocationReference.Position.Position - LRBG.Position.Position )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="There are sections - train is in the end section"
@@ -4161,7 +4161,7 @@ Message.N_PIG != (LAST X IN CurrentBaliseGroup).Telegram.N_PIG - 1</PreCondition
 <PreConditions>
 <PreCondition
  Guid="f22d33c1-0c14-40e5-a78c-246730168bb4"
->BaliseGroupOrientation() != Default.Orientation.Unknown</PreCondition></PreConditions>
+>BaliseGroupOrientation() != Orientation.Unknown</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="30f9dad9-8438-4379-8738-fbb67c753a09"
@@ -4568,13 +4568,13 @@ The parameter DistanceFromLRBG is needed for the case when the handled BG will b
 <PreConditions>
 <PreCondition
  Guid="f59f7d3d-8d42-4bdd-bbd8-4c554420d5a0"
->LRBG.NID != Default.BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
+>LRBG.NID != BG_To_LRBG(Message.NID_BG)</PreCondition><PreCondition
  Guid="9a0cc237-370c-4dcb-b53c-9bf804dd2a0d"
 >LRBGCandidate( )</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="3c939d6a-99af-451a-b12d-368fece30c2a"
->HandleNewLRBG(Default.BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG =&gt; DistanceFromLRBG)</Action><Action
+>HandleNewLRBG(BG_To_LRBG(Nid_BG =&gt; Message.NID_BG), DistanceFromLRBG =&gt; DistanceFromLRBG)</Action><Action
  Guid="eec330f2-bae4-4027-998f-3bed4d222121"
 >INSERT
   BTM.PreviousBaliseGroupStruct
@@ -5440,7 +5440,7 @@ IN CurrentBaliseGroup</Action></Actions>
 >
 </ReqRef><Comment>This variable holds the balise message to be processed.</Comment>
 </Variable><Variable
- Type="BTM.BaliseGroupStruct"
+ Type="BaliseGroupStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="690"
@@ -5459,7 +5459,7 @@ IN CurrentBaliseGroup</Action></Actions>
 >
 </ReqRef><Comment>This variable holds information about the LRBG</Comment>
 </Variable><Variable
- Type="BTM.Position"
+ Type="Position"
  DefaultValue=""
  VariableMode="Internal"
  X="560"
@@ -5518,7 +5518,7 @@ IN CurrentBaliseGroup</Action></Actions>
 >
 <Comment>This variable holds the messages from the current balise group until the complete balise group has been encountered</Comment>
 </Variable><Variable
- Type="BTM.LocationReferenceStruct"
+ Type="LocationReferenceStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="440"

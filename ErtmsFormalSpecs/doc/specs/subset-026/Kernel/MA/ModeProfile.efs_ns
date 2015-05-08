@@ -51,7 +51,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.Mode.ModeProfile"
- Default="Default.Mode.ModeProfile.LS"
+ Default="Mode.ModeProfile.LS"
  Mode="Internal"
  Implemented="TRUE"
  Name="Mode"
@@ -123,7 +123,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.MA.ModeProfile.ModeProfileStruct"
+ TypeName="ModeProfileStruct"
  MaxSize="20"
  Default="[]"
  X="220"
@@ -193,7 +193,7 @@
 </ReqRef><Comment>This function indicates whether a mode profile as requested by the trackside is applicable according to the train position and mode</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.ModeProfile.ModeProfileStruct"
+ Type="ModeProfileStruct"
  Name="aModeProfile"
  Guid="5f79a1a2-7e43-4b47-93b8-5f4067577550"
 >
@@ -313,7 +313,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 </ReqRef><Comment>Indicates if the current mode profile has to be removed.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.ModeProfile.ModeProfileStruct"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="30f1c5a6-0d93-409e-aef7-b8968e2caab2"
 >
@@ -326,7 +326,9 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 <PreConditions>
 <PreCondition
  Guid="287768f9-ea4e-48fe-a272-30d38aff9d61"
->aProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
+>aProfile.Mode == Mode.ModeProfile.OS</PreCondition><PreCondition
+ Guid="70798afb-7bbc-4cd6-8124-731283daf2a4"
+>aProfile.Mode == Mode.ModeProfile.LS</PreCondition></PreConditions>
 <Expression>TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &gt;= aProfile.Location + BaseTypes.LengthToDistance ( aProfile.Length )</Expression>
 </Case><Case
  Name="SH"
@@ -335,7 +337,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 <Expression>False</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.MA.ModeProfile.ModeProfileStruct"
+ Type="ModeProfileStruct"
  Default=""
  X="40"
  Y="200"
@@ -357,7 +359,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 3. If the given location is inside the mode profile element, the latter is shortened until the given location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.ModeProfile.ModeProfileStruct"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="5edee4a2-0bce-4cdb-b56b-560b902fb90a"
 >
@@ -480,7 +482,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 </ReqRef><Comment>Indicates if the acknowledgement area is reached for a given mode profile.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.MA.ModeProfile.ModeProfileStruct"
+ Type="ModeProfileStruct"
  Name="aProfile"
  Guid="3da9327d-dc53-4a47-89c8-678a6b8d12ed"
 >
@@ -493,7 +495,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 <Expression>aProfile.Location - BaseTypes.LengthToDistance ( aProfile.AcknLength ) &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Nom )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="260"
  Y="80"
@@ -546,7 +548,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="260"
  Y="140"
@@ -601,7 +603,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.MA.ModeProfile.ModeProfileStruct"
+ Type="ModeProfileStruct"
  Default=""
  X="40"
  Y="140"
@@ -660,7 +662,7 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 <PreCondition
  Guid="a04008ce-5107-483b-87cc-1c1834d883a1"
 >V_MAMODE == 127</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Speed.UseNV</Expression>
+<Expression>BaseTypes.Speed.UseNV</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="28661417-d59f-4103-a432-5018b5349e6a"
@@ -670,98 +672,6 @@ TrainPosition.FrontEndPosition ( DistanceInterval.Min ) &lt; aModeProfile.Locati
 </Function></Functions>
 <Procedures>
 <Procedure
- X="570"
- Y="20"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="InitiateDriverAck"
- Guid="12cfa8ea-ce28-4fce-8003-8fca365a9729"
->
-<Comment>Initiates driver&apos;s acknowledgement for the mode profile.</Comment>
-<Rules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Initiate driver ack"
- Guid="481bfdba-8e13-4e61-a5a9-19b642ba0dbe"
->
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Initiate driver ack for OS"
- Guid="9b2cd539-96a8-4236-870e-f88a2e5fbd1f"
->
-<ReqRef
- Id="1650d44a-fe6b-42d3-b8a8-77f7a93f90b8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="54645201-e2f1-49e3-800f-c798832237e2"
->
-</ReqRef><Comment>Initiates driver&apos;s acknowledgement for the OS mode.</Comment>
-<PreConditions>
-<PreCondition
- Guid="3238789f-c620-4519-8190-ff6b8b5d76e4"
->CurrentMode() == Mode.ModeProfile.OS</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="98823607-91dd-484b-b5b1-f3e4c5782128"
->DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action><Action
- Guid="57a5d091-0427-485b-8afa-b802aca3eebd"
->DriverAckTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Initiate driver ack for LS"
- Guid="bb46e7ba-7f27-4bd1-92e3-a91824ffcbdb"
->
-<ReqRef
- Id="bf8f8704-ab96-4ceb-a58e-dca57715e14f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ca29006b-7bb2-438b-af61-a1b041457993"
->
-</ReqRef><Comment>Initiates driver&apos;s acknowledgement for the LS mode.</Comment>
-<PreConditions>
-<PreCondition
- Guid="18ce89cf-f196-45fa-91c2-76e40674c52e"
->CurrentMode() == Mode.ModeProfile.LS</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="f3d3707f-1bcd-43de-a194-2b9fbdab9e8c"
->DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action><Action
- Guid="04e8a3f6-bc05-4614-a844-ce7bbc5b31b4"
->DriverAckTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Initiate driver ack for SH"
- Guid="95976a40-a9e0-409d-a6b0-1ca233975f12"
->
-<ReqRef
- Id="9802040a-5388-4af0-8605-01cd7d0816f3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="fb0ebfe4-5f45-4f88-ac8a-12db3e64a8b3"
->
-</ReqRef><ReqRef
- Id="39ae88ad-20ca-43d1-8c3f-5f7172777b6e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2b9f2baf-16a1-4d3d-a9ef-c3ced9da9341"
->
-</ReqRef><Comment>Initiates driver&apos;s acknowledgement for the SH mode.</Comment>
-<PreConditions>
-<PreCondition
- Guid="f4862025-752e-4ca1-9057-6601634bf231"
->CurrentMode() == Mode.ModeProfile.SH</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="33b83755-998c-44ea-b9ca-94db0c606363"
->DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action><Action
- Guid="3967bc73-aa86-4222-8f4c-96d110b07eae"
->DriverAckTimer &lt;- DateAndTime.CurrentTime</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></Rules>
-</Procedure><Procedure
  X="570"
  Y="80"
  Width="100"
@@ -1171,7 +1081,7 @@ IN
 </ReqRef><Comment>Removes the mode profile elements situated beyond the given location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="4ba7841a-3c00-4427-99b9-5d572de530c9"
 >
@@ -1202,6 +1112,58 @@ IN
   aProfile =&gt; X,
   aLocation =&gt; aLocation
 )</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="ClearProfile"
+ Guid="cc09f98d-b844-43b3-acce-4956ab9c92ce"
+>
+<ReqRef
+ Id="03b6c53e-3c15-4db3-8d90-3353c60fd14d"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="170c454f-b40a-4783-8209-d01d1eb6fff1"
+>
+</ReqRef><ReqRef
+ Id="eaa70a17-109a-45b5-8747-ecc49e581ccd"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="e950a3ab-3286-40af-8a21-512f66444e47"
+>
+</ReqRef><Rules>
+<Rule
+ Priority="Processing"
+ Name="Hide acknowledgements of the elements that will be removed"
+ Guid="35c577e8-2979-4dfd-a336-91a13af0047c"
+>
+<ReqRef
+ Id="3e329bf5-959c-4332-a482-b1816ce364d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="378c6fbc-302f-4f7a-867a-2ff3f3a6baab"
+>
+</ReqRef><ReqRef
+ Id="69d11b6a-6ae6-4d77-8ddf-bdb543c96261"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="acc721cb-1024-4ffa-ad02-efc2f57e3b17"
+>
+</ReqRef><SubRules></SubRules>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove the elements"
+ Guid="d893ed86-8908-430e-9ce9-b2f6b33eda50"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Remove the elements"
+ Guid="199cbcbd-1308-4cfd-8112-42b6b3e4205c"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="44cd0c9c-d1f7-40d7-bb32-20482a318560"
+>REMOVE ALL RemoveModeProfile ( X ) IN  Profile</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1245,104 +1207,6 @@ IN
  Guid="89c231c0-cc82-4a47-9f1f-c44317f85ca2"
 >
 </ReqRef><Comment>Represents the mode profile of the train.</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Time"
- DefaultValue="Default.BaseTypes.Time.NA"
- VariableMode="Internal"
- X="160"
- Y="410"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="DriverAckTimer"
- Guid="89b56ad3-12ae-4fb5-a2eb-7d680f2b3e26"
->
-<ReqRef
- Id="19ba3404-792f-4f75-a058-7b89395bce5c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="85557f15-7bb0-48c1-9efd-c2ed964e5107"
->
-</ReqRef><ReqRef
- Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="560c9437-7d80-4e79-9e48-d42e212a6959"
->
-</ReqRef><ReqRef
- Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="517f04fa-eae5-4a6c-b990-b0ad7024b77f"
->
-</ReqRef><ReqRef
- Id="81394bed-5665-4b0a-a527-9c845c6db537"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="dad6daa3-9a50-4d73-8a0a-8ef931957af3"
->
-</ReqRef><ReqRef
- Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="58ef66a5-6ced-45f1-b53b-7685ec0e9a8b"
->
-</ReqRef><ReqRef
- Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="33dfd7e2-32d0-402c-b907-8a05dfa118a8"
->
-</ReqRef><ReqRef
- Id="34700a82-fd46-452e-82c7-77f81db8c569"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="87dfc2d5-a4c7-441c-a0c1-efccd7621714"
->
-</ReqRef><Comment>Represents the time when the driver ack was requested.</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Time"
- DefaultValue="5.0"
- VariableMode="Internal"
- X="50"
- Y="410"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- Name="Tack"
- Guid="43415c9b-e244-4abb-aaaa-f0d95525304d"
->
-<ReqRef
- Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="bbd8432f-8d4f-4582-983c-aac72dc81350"
->
-</ReqRef><ReqRef
- Id="19ba3404-792f-4f75-a058-7b89395bce5c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="efe26c5b-b4e8-4fb4-839e-e3779f0c9df3"
->
-</ReqRef><ReqRef
- Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="69e9b17b-6823-4770-b77d-bea6526c3301"
->
-</ReqRef><ReqRef
- Id="81394bed-5665-4b0a-a527-9c845c6db537"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="5e92c17e-cc65-4d0d-8ec0-e40f8dad941e"
->
-</ReqRef><ReqRef
- Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="660e9c71-4538-4e4f-ae21-4068386c9000"
->
-</ReqRef><ReqRef
- Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="65edfe30-804f-43ae-adbf-6b0bf6282260"
->
-</ReqRef><ReqRef
- Id="8c5b881c-69d8-482a-9ec2-98778e9fddc2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="670b530f-bfe9-4e27-af2a-b2e920b60561"
->
-</ReqRef><Comment>Driver acknowledgement time.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -1379,46 +1243,7 @@ IN
 <Actions>
 <Action
  Guid="bef1dd94-9db8-4d2d-86e9-aa0a15bb0913"
->REMOVE ALL RemoveModeProfile ( X ) IN  Profile</Action></Actions>
-<SubRules>
-<Rule
- Priority="Processing"
- Implemented="TRUE"
- Name="Handle empty mode profile"
- Guid="1669f661-c10a-4748-9ec0-66040b928a77"
->
-<ReqRef
- Id="69d11b6a-6ae6-4d77-8ddf-bdb543c96261"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="585744cb-0a32-4042-851d-abe0b2829880"
->
-</ReqRef><ReqRef
- Id="3e329bf5-959c-4332-a482-b1816ce364d2"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="4896f376-ceba-4690-b4bf-6363380bd4e4"
->
-</ReqRef><Comment>If the mode profile was deleted while the acknowledgement was displayed, the display is disabled</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Handle empty mode profile"
- Guid="6726e1c2-af63-4d29-bbb8-4106e2518ea5"
->
-<PreConditions>
-<PreCondition
- Guid="6f1387c7-891c-49ac-bed0-c4d6ff0b5630"
->Profile == []</PreCondition><PreCondition
- Guid="5810b961-7635-4460-affe-9b88971ee93b"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5056e99b-35a2-4c79-8490-c8e3cfaedfc8"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
- Guid="928751e5-f9bd-4621-96da-1d140c49a57c"
->DriverAckTimer &lt;- Default.BaseTypes.Time.NA</Action></Actions>
-</RuleCondition></Conditions>
-</Rule></SubRules>
+>ClearProfile()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -1501,7 +1326,7 @@ IN
 <Actions>
 <Action
  Guid="82ba23e0-1820-477a-9003-f622746b0571"
->InitiateDriverAck()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Display driver ack for LS"
@@ -1563,7 +1388,7 @@ IN
 <Actions>
 <Action
  Guid="b5e35da4-c967-4a59-85c6-a08ce49af47a"
->InitiateDriverAck()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Display driver ack for SH"
@@ -1610,125 +1435,7 @@ IN
 <Actions>
 <Action
  Guid="c13e2743-8c40-487f-84d9-9f5b18f67495"
->InitiateDriverAck()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- X="570"
- Y="260"
- Width="100"
- Height="50"
- Pinned="TRUE"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Driver ack timeout"
- Guid="5e7a02ed-8746-46f9-8f8a-9786dd7cc397"
->
-<Comment>If the driver hasn&apos;t acknowledge during the allowed time, the service brake is applied.</Comment>
-<SubRules></SubRules>
-<Conditions>
-<RuleCondition
- Implemented="TRUE"
- Name="Driver ack timeout for OS"
- Guid="b66c20d6-bceb-46e2-b973-cf6de1b87b29"
->
-<ReqRef
- Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="285247a8-b606-4ada-b5aa-792519598737"
->
-</ReqRef><ReqRef
- Id="19ba3404-792f-4f75-a058-7b89395bce5c"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="07afc52e-d4fc-4025-9e79-61d69bf44e1c"
->
-</ReqRef><Comment>Applies the service brake if the driver hasn&apos;t acknowledge the OS mode.</Comment>
-<PreConditions>
-<PreCondition
- Guid="1af308aa-11fd-4159-a0ff-6063b49cf8c5"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</PreCondition><PreCondition
- Guid="70cd1e0f-c048-41cd-8dd3-f02be417fabf"
->DriverAckTimer + Tack &gt;= DateAndTime.CurrentTime</PreCondition><PreCondition
- Guid="605c2a3c-b14b-4de0-b95c-62732be2bb6b"
->NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
- Guid="c5d7fb66-2f3c-4333-8660-4272cdb19e13"
->Kernel.Mode == Mode.OS</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="3b3023f7-80d9-48c3-a8e0-f3fd51dea270"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
- Guid="12515599-816f-45c3-a4ed-2718041a2384"
->AddSBCommand(BrakeReason.DriverAckTimeOut)</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Driver ack timeout for LS"
- Guid="a7d4c798-54f9-46e1-9b00-fb3ec677aa1b"
->
-<ReqRef
- Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="3b8a70dc-73fb-4938-9d74-2d051ec6c048"
->
-</ReqRef><ReqRef
- Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ba7523a6-c845-4941-aeb2-8bea4fd53730"
->
-</ReqRef><Comment>Applies the service brake if the driver hasn&apos;t acknowledge the LS mode.</Comment>
-<PreConditions>
-<PreCondition
- Guid="67e8c925-5ed6-49dd-9683-286503836380"
->Kernel.Mode == Mode.LS</PreCondition><PreCondition
- Guid="fee35770-78b9-48c3-86f3-98a4fc5953d7"
->NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
- Guid="f28f60de-be90-44e4-8046-3653258d54cd"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus  == Request.Request</PreCondition><PreCondition
- Guid="63385cea-a2a5-4761-b295-a54164bb3745"
->DriverAckTimer + Tack &gt;= DateAndTime.CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="2c54df9e-310b-4ba6-a35c-bbd10d789e58"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
- Guid="b68a8f26-94eb-42b9-91ea-4aed2aba5dc9"
->AddSBCommand(BrakeReason.DriverAckTimeOut)</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Driver ack timeout for SH"
- Guid="ae95ad2a-0cda-434d-b1d5-fbdb48fefad1"
->
-<ReqRef
- Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="cb41a279-8668-4aa1-a9df-8db947f3a3fb"
->
-</ReqRef><ReqRef
- Id="81394bed-5665-4b0a-a527-9c845c6db537"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="a5320b9f-25f7-46c7-9bc5-bea6b9a5a4a8"
->
-</ReqRef><Comment>Applies the service brake if the driver hasn&apos;t acknowledge the SH mode.</Comment>
-<PreConditions>
-<PreCondition
- Guid="41b79268-f740-4fa2-9e70-08d78771856a"
->Kernel.Mode == Mode.SH</PreCondition><PreCondition
- Guid="563dae96-f4da-4c28-ac8e-b7fecd752f0c"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request</PreCondition><PreCondition
- Guid="a7ac6784-ad88-44b3-aba1-5c17e74862a9"
->NOT TIU.EmergencyBrakeCommanded</PreCondition><PreCondition
- Guid="b4be8fa9-acea-4bd9-85a6-49c0a4e62385"
->DriverAckTimer + Tack &gt;= DateAndTime.CurrentTime</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7cb462a7-f1fe-4184-970f-311588f9441d"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
- Guid="a87d2dab-f863-4b76-9696-75d17c940d96"
->AddSBCommand(BrakeReason.DriverAckTimeOut)</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

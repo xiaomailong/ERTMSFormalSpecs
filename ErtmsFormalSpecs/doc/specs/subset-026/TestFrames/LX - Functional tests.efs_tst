@@ -99,7 +99,7 @@
   BTM.Linking.LinkingDataStruct
   {
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 100.0,
     BaliseGroupIdentifier =&gt; 2124
@@ -107,7 +107,7 @@
   BTM.Linking.LinkingDataStruct
   {
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 1450.0,
     BaliseGroupIdentifier =&gt; 2125
@@ -432,7 +432,7 @@
   BTM.Linking.LinkingDataStruct
   {
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 100.0,
     BaliseGroupIdentifier =&gt; 2124
@@ -636,7 +636,7 @@
     +
   (FIRST X IN Kernel.LX.MRSPLevelCrossings).Length
     +
-  Default.BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER))</Action></Actions>
+  BaseTypes.LengthToDistance(Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTOVER))</Action></Actions>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="9384cf54-94c8-4ae9-aad9-2d662d8c1d3e"
@@ -980,7 +980,7 @@
   BTM.Linking.LinkingDataStruct
   {
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 100.0,
     BaliseGroupIdentifier =&gt; 2124
@@ -988,7 +988,7 @@
   BTM.Linking.LinkingDataStruct
   {
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 0.0,
     BaliseGroupIdentifier =&gt; 2125
@@ -1538,7 +1538,7 @@
     }
 }</Action><Action
  Guid="7bf08c5e-6af7-4039-aa45-6282f1e4ad0f"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action><Action
  Guid="2dde0040-c05c-493c-817a-36c258baa143"
 >Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {
@@ -1798,7 +1798,7 @@
  Guid="466819ce-7db8-4b36-a863-9f12d86a5822"
 >Odometry.NominalDistance &lt;- 2700.0</Action><Action
  Guid="aa060f23-1ede-4f7c-b598-2d27f6d0bca3"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action><Action
  Guid="81291146-ffd0-49c4-a550-7e55b6d6f836"
 >Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {
@@ -2077,7 +2077,7 @@
  Guid="a97693f2-19f3-48f8-82a7-37b9b8a7a6bd"
 >Odometry.NominalDistance &lt;- 3100.0</Action><Action
  Guid="8f38ebb4-a9f4-4d8c-b30d-9a85ea7b7378"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action><Action
  Guid="a4d7f0d0-adf1-4551-b619-8a62f464c5fd"
 >Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {
@@ -2299,7 +2299,7 @@
  Guid="94df64b6-d357-4641-a52c-f65d38758dba"
 >Odometry.NominalDistance &lt;- 3500.0</Action><Action
  Guid="3e6e8e74-30af-4549-b1e4-dd613d2c8fa5"
->Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Default.Orientation.Nominal</Action><Action
+>Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation &lt;- Orientation.Nominal</Action><Action
  Guid="0b959333-20b5-40d1-b689-a2e1aafd03e6"
 >Odometry.Accuracy &lt;- Odometry.OdometerAccuracy 
 {

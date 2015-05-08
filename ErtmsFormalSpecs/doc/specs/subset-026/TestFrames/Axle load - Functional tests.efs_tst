@@ -65,7 +65,7 @@
  Guid="914f3dc5-6db7-4309-84ec-796ffe8172ba"
 >INSERT BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 100.0,
     BaliseGroupIdentifier =&gt; 2100
@@ -329,25 +329,25 @@ IN BTM.Linking.Linkings</Action><Action
  Guid="62663a29-c9f4-4fc5-acd8-d75ede92e5b1"
 >BTM.Linking.Linkings &lt;- [BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 150.0,
     BaliseGroupIdentifier =&gt; 2100
 },BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 100.0,
     BaliseGroupIdentifier =&gt; 2120
 },BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 150.0,
     BaliseGroupIdentifier =&gt; 2142
 },BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 5.0,
-    Orientation =&gt; Default.Orientation.Nominal,
+    Orientation =&gt; Orientation.Nominal,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 500.0,
     BaliseGroupIdentifier =&gt; 2180
@@ -393,19 +393,19 @@ IN BTM.Linking.Linkings</Action><Action
 <Expectation
  Kind="Instantaneous"
  Guid="a6527954-1a76-492f-877a-8b1a649fc923"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions(200.0) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions(200.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a99f26b8-4a16-48a2-ba3b-e735b8b00b50"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions(500.0) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions(500.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="de6ca738-acab-4812-9a02-c7812a584e7f"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions(1500.0) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions(1500.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e2f57471-aae2-4f4f-acbb-e8070b97fe25"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions(2000.0) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions(2000.0) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e8dc06f0-46af-472d-ad2e-aad62ac1c9a8"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions(1000.0) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions(1000.0) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -621,7 +621,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.ASP.InitialState == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Expectation><Expectation
  Kind="Instantaneous"
  Guid="df03f6f2-7039-405c-b77a-161d67fd89df"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 699.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 699.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="edfc5a1e-7dd1-47be-996f-dace3df99bdd"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 700.0 ) == 60.0</Expectation><Expectation
@@ -633,7 +633,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 859.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="51e547c5-85f5-4a89-b6c0-4e46fb9f9d54"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="53fabe0f-112e-4c2a-88dc-210e61ab3493"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1100.0 ) == 70.0</Expectation><Expectation
@@ -642,7 +642,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1239.0 ) == 70.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="16353074-2076-4287-8ec5-1028afa2e3b6"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1240.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1240.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b52e0be7-3571-4bda-ba7a-6a540f193e65"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1700.0 ) == 80.0</Expectation><Expectation
@@ -651,7 +651,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1739.0 ) == 80.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="aa664a72-1f05-4cc3-8d44-eae17b41465c"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1740.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1740.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -804,7 +804,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.ASP.InitialState == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1bd678f4-1aeb-4a94-b873-40b426b39657"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 599.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 599.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="035d18ee-5628-4314-be2d-4400ee038ad4"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 700.0 ) == 60.0</Expectation><Expectation
@@ -816,7 +816,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 759.0 ) == 60.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8713232e-e9d3-48d2-806d-bbc83b9f2513"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="09bf8302-51d2-49a8-b7a9-07ccc51e1c73"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1000.0 ) == 80.0</Expectation><Expectation
@@ -825,7 +825,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1179.0 ) == 80.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="14b30793-4c90-43ae-80cb-5f163b7818c5"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1180.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1180.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="772b12cc-85cd-48bc-9684-240c8e08b774"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 800.0 ) == 40.0</Expectation><Expectation
@@ -936,7 +936,7 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 650.0 ) == 40.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ec89777e-212c-4716-9a7d-584bf28b1c57"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 610.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 610.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="cd0d192b-6d39-40df-8bb5-76688aaad20d"
 >Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1000.0 ) == 80.0</Expectation></Expectations>
@@ -980,13 +980,13 @@ IN BTM.Linking.Linkings</Action><Action
 <Expectation
  Kind="Instantaneous"
  Guid="dbec41fd-e171-4e9c-8a08-6887d83ee0d1"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 450.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 450.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="50edf28a-1fd7-4513-91d4-2fdee126938f"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 460.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 460.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c978d1b9-78e9-4c65-9b31-7501f2e067a1"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 400.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 400.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -1173,37 +1173,37 @@ IN BTM.Linking.Linkings</Action><Action
 >Kernel.TrackDescription.AxleLoad.ASP.InitialState == Messages.Q_TRACKINIT.No_initial_states_to_be_resumed__profile_to_follow</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3d0a0005-898e-4a9f-a5a6-27daa0a87af5"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 350.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 350.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="31f982c1-9acd-43ec-8eb9-3bc61e9c3ecb"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 700.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 700.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2c848747-1a18-42c0-b3bb-bbff26e5440d"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 740.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 740.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b36253a2-be6e-4b36-b850-08f338d440af"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 859.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 859.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2e2f3d21-0b61-4999-b3b6-ee2827af37d4"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 860.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="08f7442d-a3c0-48d8-8b0b-543d2975badc"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1100.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1100.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f6031dbd-bca8-41ad-b00d-b1303f7c60fa"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1239.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1239.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="9a79f6b6-516a-4808-955f-09c5547302ec"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1240.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1240.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="86f8502a-eaaf-4dc8-9378-563a1faaff8b"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1700.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1700.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ee4037d8-9bf1-48bf-99cd-606d42855557"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1739.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation><Expectation
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1739.0 ) == BaseTypes.Speed.MaxSpeed</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d19cef83-432d-4f39-963d-278bfdbd0212"
->Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1740.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.TrackDescription.AxleLoad.SpeedRestrictions ( 1740.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

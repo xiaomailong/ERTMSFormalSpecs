@@ -65,7 +65,7 @@
  Guid="3a78741a-8457-41dd-8856-fc4f64ee2151"
 >Kernel.TrainPosition.Position.DataState &lt;- DataState.Valid</Action><Action
  Guid="bfb2858f-1892-446f-ab75-08dd612598c1"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="31fbaf4f-9d27-4e50-b1ed-a109e920b652"
 >EURORADIO.CurrentRBCConnection().ConnectionState &lt;- EURORADIO.RBCStruct.ConnectionStateSM.Connected</Action><Action
  Guid="e9871358-4844-4298-b4de-55163af19aa7"
@@ -438,7 +438,7 @@ BTM.BaliseGroupStruct {
 <Actions>
 <Action
  Guid="655d067a-c038-4afc-b01c-df00f5f73742"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action><Action
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action><Action
  Guid="7ddd14e3-892f-4a2d-877d-46ed82b1aba3"
 >Odometry.Accuracy.D_ura &lt;- 15.0</Action><Action
  Guid="7409ff14-b988-450d-85f9-80b1db12a5f0"
@@ -1305,7 +1305,7 @@ BTM.BaliseGroupStruct {
 >Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="429043da-34de-4979-9b9a-b721480301e1"
->EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_LEVEL == Default.EFSLevelConverter(Level.L2)</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_LEVEL == EFSLevelConverter(Level.L2)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a32aeb75-1330-49fe-bdf4-1cc29103b640"
 >NOT Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation></Expectations>
@@ -1355,7 +1355,7 @@ BTM.BaliseGroupStruct {
 <Expectation
  Kind="Instantaneous"
  Guid="e9c2e396-49f0-4efb-811a-5bcc2566c51e"
->EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.M_LEVEL == Default.EFSLevelConverter(Level.L2)</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.M_LEVEL == EFSLevelConverter(Level.L2)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5ecd775e-02c7-4718-a210-0bee005391d1"
 >Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation
@@ -1548,7 +1548,7 @@ BTM.BaliseGroupStruct {
 >Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d743f60b-0c4c-408d-a479-34ae2d93f22e"
->EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == Default.EFSModeConverter(Default.Mode.TR)</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT.M_MODE == EFSModeConverter(Mode.TR)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="847444fe-b0bd-4f6d-8ef7-f03a2f89a9dd"
 >NOT Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation></Expectations>
@@ -1598,7 +1598,7 @@ BTM.BaliseGroupStruct {
 <Expectation
  Kind="Instantaneous"
  Guid="6d450216-623f-4d98-b9c3-308de8125de4"
->EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.M_MODE == Default.EFSModeConverter(Default.Mode.TR)</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS.M_MODE == EFSModeConverter(Mode.TR)</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f452f2ac-182f-493d-a05c-7bcf8d727997"
 >Available(EURORADIO.CurrentRBCConnection().MessageOut.TRAIN_POSITION_REPORT.POSITION_REPORT.POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS)</Expectation><Expectation

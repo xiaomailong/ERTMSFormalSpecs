@@ -85,7 +85,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="f9bd6585-dd77-4fc9-bbe5-fcbbce2b37e8"
->Kernel.Mode == Default.Mode.TR</Expectation><Expectation
+>Kernel.Mode == Mode.TR</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a73f5ae0-34bf-4ef6-a915-f999bd841d56"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D020</Expectation></Expectations>
@@ -334,7 +334,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="5610dc69-42f5-4bec-b3e9-bdde2cfbe7f9"
->Kernel.Mode == Default.Mode.PT</Expectation><Expectation
+>Kernel.Mode == Mode.PT</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b3bc082e-c7c6-44d4-9e33-6202c388dfa0"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D110</Expectation><Expectation
@@ -532,7 +532,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="15bbf8af-1d8e-487b-ad10-8ef672bb7c79"
->Kernel.Mode == Default.Mode.SH</Expectation><Expectation
+>Kernel.Mode == Mode.SH</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3c380d50-404a-43ab-abe9-8c7cc37d0b98"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
@@ -622,7 +622,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="e1bfb06b-8950-4040-af21-0fa855a3cd3f"
->Kernel.Mode == Default.Mode.UN</Expectation><Expectation
+>Kernel.Mode == Mode.UN</Expectation><Expectation
  Kind="Instantaneous"
  Guid="30868e16-aac4-48c6-8901-5799a09f7d6d"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
@@ -712,7 +712,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="21a41996-31b5-46dd-922e-c8711c490901"
->Kernel.Mode == Default.Mode.SN</Expectation><Expectation
+>Kernel.Mode == Mode.SN</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2900953d-bee3-46c5-ba52-e5f1101077b9"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
@@ -891,9 +891,9 @@
 <Actions>
 <Action
  Guid="f7c0d3e7-db21-4dc8-8729-a26d1ac67b39"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="3da29d97-cbb0-4470-b879-06f9ce6b2b30"
->Kernel.Level.Value.Value &lt;- Default.Level.L0</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L0</Action><Action
  Guid="89257905-0b5d-4022-afc4-e0d06a641454"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.TrainTrip.D020</Action></Actions>
 <Expectations>
@@ -922,9 +922,9 @@
  Guid="2d21db7a-08f1-4d4a-afd1-d694ea8cd280"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action><Action
  Guid="12c84364-99ec-4ea2-86e5-c910edeb2471"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="8c4430f5-9a84-4e28-91a2-15a19b884ac6"
->Kernel.Level.Value.Value &lt;- Default.Level.LNTC</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.LNTC</Action><Action
  Guid="c6d4b722-9d46-43ba-a078-616751372337"
 >Kernel.Level.Value.NTC &lt;- 254</Action></Actions>
 <Expectations>
@@ -964,9 +964,9 @@
  Guid="fa2c1f97-95d8-4b80-808f-b75bbc1e388e"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.TrainTrip.D020</Action><Action
  Guid="7c50d936-fdab-497b-988c-6c808ab04236"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="8b541fd3-c8a1-40ef-bb7a-bebc2f1def3b"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L1</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1006,9 +1006,9 @@
 <Actions>
 <Action
  Guid="5210ecc4-b1ce-46b3-ab4a-1f4518f00f91"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="c381e7a8-4db8-40bb-a412-fced8d311eda"
->Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
  Guid="f04c91c5-f220-4ccd-9b6a-76f2f33e5c85"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action></Actions>
 <Expectations>
@@ -1035,9 +1035,9 @@
 <Actions>
 <Action
  Guid="67736737-6899-4c58-9398-0b502bbc2079"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="f5d14b02-a577-46d2-b67f-f9e4d51c1707"
->Kernel.Level.Value.Value &lt;- Default.Level.L3</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L3</Action><Action
  Guid="bbf8c6d0-22e1-4cb9-8a7d-2ef42ddcba3e"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D020</Action></Actions>
 <Expectations>
@@ -1126,9 +1126,9 @@
 <Actions>
 <Action
  Guid="1c37ca59-2ea0-4695-89d9-2e777819560c"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="e8753c39-231e-4c29-96a3-951eab70644c"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="916d65e7-a7db-42c9-9e61-3ca9532bd27c"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
@@ -1155,9 +1155,9 @@
 <Actions>
 <Action
  Guid="13d2da4e-2852-49ca-8b72-6078cd86fe89"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="07db0f46-0212-4cae-8851-872d47a889ed"
->Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
  Guid="063d97d3-1758-4aa8-bb25-1cc6cf91fc0b"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
@@ -1184,9 +1184,9 @@
 <Actions>
 <Action
  Guid="7bfc3b68-a7d6-45c1-85b6-49c21ca36fbb"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="af712a40-19e2-4c49-8a8a-f5617841787a"
->Kernel.Level.Value.Value &lt;- Default.Level.L3</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L3</Action><Action
  Guid="5c92b105-c17d-442c-94ab-99c893de3375"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
@@ -1228,9 +1228,9 @@
 <Actions>
 <Action
  Guid="0f275eb3-06fe-472e-968b-0ae46838a0bb"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="d480df21-66a9-4289-afb2-1e891e6e291c"
->Kernel.Level.Value.Value &lt;- Default.Level.L0</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L0</Action><Action
  Guid="8bb7c739-b7fb-4973-9200-d944537d7b7a"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action></Actions>
 <Expectations>
@@ -1259,9 +1259,9 @@
  Guid="143ba79b-4e15-4048-b7a9-46be06a71ffc"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D080</Action><Action
  Guid="4931d0d7-6aa9-46dd-9f24-4baad5c862af"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="0e3106e2-f296-4f8d-98ae-45954014a811"
->Kernel.Level.Value.Value &lt;- Default.Level.LNTC</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.LNTC</Action><Action
  Guid="f80e0216-9f5e-43ff-8f4b-821cf89712ae"
 >Kernel.Level.Value.NTC &lt;- 254</Action></Actions>
 <Expectations>
@@ -1352,7 +1352,7 @@
  Guid="a6f6c359-137c-499a-9fa3-736bc4b4afbf"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action><Action
  Guid="7d3bd394-56a3-4ab6-9e01-bf3bc49afb23"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1377,7 +1377,7 @@
 <Actions>
 <Action
  Guid="f0058f35-3529-435e-ba9a-790a65a77542"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Unknown</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Unknown</Action><Action
  Guid="6b6a48a9-e58e-4833-a70c-02dd2118edab"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action></Actions>
 <Expectations>
@@ -1419,7 +1419,7 @@
 <Actions>
 <Action
  Guid="30341b2a-c13b-41da-aae9-c569595d625b"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="5886b50f-9a4d-49ff-9015-73db3bf3ca82"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D085</Action></Actions>
 <Expectations>
@@ -1508,9 +1508,9 @@
 <Actions>
 <Action
  Guid="3f884b01-9ade-4e69-ba5a-179545ed7a2f"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="ab9ac049-4cdb-4a82-9478-224da137ddbf"
->Kernel.Level.Value.Value &lt;- Default.Level.L0</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L0</Action><Action
  Guid="f16f4a4e-09e8-40e2-805c-992ed3e03c08"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action></Actions>
 <Expectations>
@@ -1554,9 +1554,9 @@
  Guid="27a48ddd-f9c9-4c40-a0e2-8ddd2681e406"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D090</Action><Action
  Guid="0c4463e5-269e-424d-ae55-8aa9a5c13fd4"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="06979523-5a8e-46b6-934d-122e4703138c"
->Kernel.Level.Value.Value &lt;- Default.Level.LNTC</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.LNTC</Action><Action
  Guid="46a03528-b774-44aa-8d05-2b5acde0af35"
 >Kernel.Level.Value.NTC &lt;- 254</Action></Actions>
 <Expectations>
@@ -1645,9 +1645,9 @@
 <Actions>
 <Action
  Guid="e3ac4a86-3541-492f-ae48-8419f38630f9"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="c05e72e7-68f2-4184-a87c-ec6f90a5052b"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="e05d9a0d-dd44-4c31-94b3-0a25ddefe6db"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action></Actions>
 <Expectations>
@@ -1691,9 +1691,9 @@
  Guid="58e184a2-ffba-400a-8923-1e9c4c28f7ac"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action><Action
  Guid="540b506a-bd83-4942-b75b-68144fdfc27f"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="8bbdb358-044b-4704-820a-727b4c834653"
->Kernel.Level.Value.Value &lt;- Default.Level.L2</Action></Actions>
+>Kernel.Level.Value.Value &lt;- Level.L2</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -1718,9 +1718,9 @@
 <Actions>
 <Action
  Guid="82b4e9fb-0a6a-4783-af89-c0d5202b499e"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="b6704020-e2b3-4e39-895b-51ce8f0f2b5e"
->Kernel.Level.Value.Value &lt;- Default.Level.L3</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L3</Action><Action
  Guid="d4fa28a2-4e8b-4e28-9f33-127be62df5b2"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.D110</Action></Actions>
 <Expectations>
@@ -2096,7 +2096,7 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S060.DriverAckRequested</Expectation><Expectation
  Kind="Instantaneous"
  Guid="dba186a9-a3e2-453d-9197-1f8da7bdb6fd"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Default.Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2131,7 +2131,7 @@
 <Actions>
 <Action
  Guid="4b2d5e3c-5908-41c1-86e8-a44316ad2b2f"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="5a2ef89c-d77a-4235-835a-e94b4bdf84c2"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S060.DriverAckRequested</Action></Actions>
 <Expectations>
@@ -2141,7 +2141,7 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.D080</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8cd51fbe-ef31-4123-8a03-7ed782e94a10"
->DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Default.Request.Disabled</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfTrainTrip.InputInformation.RequestStatus == Request.Disabled</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2515,9 +2515,9 @@
  Guid="4b2bbdcc-8f50-4413-9ed4-e4e11dcc6431"
 >DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="0fb950e2-cdc3-41a1-9918-1cb7aafffa14"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="6411f9b6-7cfe-4933-b06c-01d263bbf11f"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>Kernel.Level.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -2560,9 +2560,9 @@
 <Actions>
 <Action
  Guid="cf00974d-6bfa-4a0a-b921-0e48b9cafb6a"
->Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
  Guid="9f03d2cf-ae87-48b0-91af-cbd08d2fbace"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="7a5e18d1-e664-4349-bf17-ce001aa4fba3"
 >DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="234b8dd4-9ee5-462e-bff5-f785b94dcc5f"
@@ -2594,11 +2594,11 @@
 <Actions>
 <Action
  Guid="fb5d3004-ae98-4715-8677-d7e0d4249a5d"
->Kernel.Level.Value.Value &lt;- Default.Level.L3</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L3</Action><Action
  Guid="60dcd25b-1c90-40d1-96ce-b69406fdbefb"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S140.DriverSelectionRequested</Action><Action
  Guid="146bc07e-c095-4db5-b198-106cd0155553"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="6baad7e6-2b7b-48b3-99c6-7d20bfcc18aa"
 >DMI.MasterDMI().In_Start.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
@@ -2748,7 +2748,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="5a2849a0-250c-471c-9187-734b08739f3f"
->EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == Default.MessageTypes.UnResolveTime ( Kernel.DateAndTime.CurrentTime )</Expectation><Expectation
+>EURORADIO.CurrentRBCConnection().MessageOut.MA_REQUEST.T_TRAIN == MessageTypes.UnResolveTime ( Kernel.DateAndTime.CurrentTime )</Expectation><Expectation
  Kind="Instantaneous"
  DeadLine="1"
  Guid="2b56be16-3cb7-4946-a224-fac53d83a67a"
@@ -3035,7 +3035,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="9eaf2395-4158-48ec-9d0c-ad3b27b37745"
->Kernel.Mode == Default.Mode.FS</Expectation><Expectation
+>Kernel.Mode == Mode.FS</Expectation><Expectation
  Kind="Instantaneous"
  Guid="059697ab-fe66-4151-94bb-99a8865f00e6"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
@@ -3160,7 +3160,7 @@
 <Actions>
 <Action
  Guid="4e1d30a7-d734-4dec-8915-1f8fd1d29cde"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="f06223a2-11d1-4936-a124-3ada5b08b5d9"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S160</Action></Actions>
 <Expectations>
@@ -3170,10 +3170,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c043b7d1-0e78-425b-979d-69a77a76784b"
->DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2ee10e47-1594-4349-aac9-8627af38c7c3"
->Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -3417,7 +3417,7 @@
 <Actions>
 <Action
  Guid="0d6988b3-d110-485c-8e04-ad33105ec8aa"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="1eb8b613-4fdf-44a0-ad21-81275f6c9f7b"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action><Action
  Guid="6372aa2e-c918-4d00-bd12-e15b58dc6097"
@@ -3429,10 +3429,10 @@
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation><Expectation
  Kind="Instantaneous"
  Guid="520fe24b-54a1-4d28-b977-93564138abc8"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="92b1ccdb-6897-4d87-a41e-ffbedac65314"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3454,17 +3454,17 @@
  Guid="b8c4e189-ae2f-46c9-b6ce-5b4bf1b0565f"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action><Action
  Guid="b6fc34b7-9761-49b8-a5fd-84727a84592b"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="610fe633-9889-496d-aee7-488d975759bb"
 >Testing.SetPTMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="2ad13437-d946-4af0-8282-9b005eab9dc1"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="36dd95a7-fd4d-450e-9256-36d7e805e79d"
->Kernel.Mode == Default.Mode.LS</Expectation><Expectation
+>Kernel.Mode == Mode.LS</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4a42f6cb-f0af-45c1-8456-e0dbb1901d76"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>
@@ -3489,17 +3489,17 @@
  Guid="c9ce3fbf-43ab-4221-ae35-53957508ed25"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Action><Action
  Guid="1ac13bf1-2969-4f21-8e52-70ccda23e54c"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action><Action
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus &lt;- Request.Response</Action><Action
  Guid="eb070d75-9d56-4d2d-aeb4-91df7df7f5bb"
 >Testing.SetPTMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
  Guid="5c4bfe60-83eb-4d53-80c4-53efb259da88"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Default.Request.Disabled</Expectation><Expectation
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Disabled</Expectation><Expectation
  Kind="Instantaneous"
  Guid="08c8c742-d335-4d42-b108-aa1e6a885353"
->Kernel.Mode == Default.Mode.SH</Expectation><Expectation
+>Kernel.Mode == Mode.SH</Expectation><Expectation
  Kind="Instantaneous"
  Guid="9066175c-9640-4fed-a16c-c1a69cda3b5e"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.NoProcedure</Expectation></Expectations>

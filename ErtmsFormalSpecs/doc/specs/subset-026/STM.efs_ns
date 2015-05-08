@@ -52,7 +52,7 @@
 >
 <Comment>Indicates if the STM speed has to be supervised.</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Distance"
+ TypeName="Default.BaseTypes.Distance"
  Default="BaseTypes.Distance.Unknown"
  Mode="Internal"
  Implemented="TRUE"
@@ -110,7 +110,7 @@
  Name="DoNotSuperviseMaxSpeed"
  Guid="3c26e129-7c47-434b-be1b-d4b6949d6316"
 >
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -160,12 +160,12 @@
  Name="DoNotSuperviseSystemSpeed"
  Guid="3b4d3bb6-e32d-4a73-b260-c88d695510ba"
 >
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function></Functions>
 <Variables>
 <Variable
- Type="STM.SpeedSupervision"
+ Type="SpeedSupervision"
  DefaultValue=""
  VariableMode="Incoming"
  X="20"
@@ -183,7 +183,7 @@
 >
 </ReqRef><Comment>Allows the STM, for national reasons unknown to the ETCS On-board or ERTMS Trackside, to request a given train speed at the level transition border in order to have a smooth transition.</Comment>
 </Variable><Variable
- Type="STM.SpeedSupervision"
+ Type="SpeedSupervision"
  DefaultValue=""
  VariableMode="Incoming"
  X="140"

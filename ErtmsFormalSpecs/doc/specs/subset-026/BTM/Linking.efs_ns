@@ -124,7 +124,7 @@
 </ReqRef><Comment>Represents the linking data provided by the trackside.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Length"
- Default="Default.BaseTypes.Length.NA"
+ Default="BaseTypes.Length.NA"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -146,7 +146,7 @@
 Since this only stores what is inside Q_LOCACC (which can only be in the range of 0 to 63) it should be safe to use an ordinary length type here.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.Orientation"
- Default="Default.Orientation.Unknown"
+ Default="Orientation.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -186,7 +186,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </ReqRef><Comment>Reaction to be used in cas of data inconsistencies.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Distance"
- Default="Default.BaseTypes.Distance.Unknown"
+ Default="BaseTypes.Distance.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  Verified="TRUE"
@@ -251,7 +251,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="BTM.Linking.LinkingDataStruct"
+ TypeName="LinkingDataStruct"
  MaxSize="30"
  Default="[]"
  X="10"
@@ -273,7 +273,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 </Collection></Collections>
 <Functions>
 <Function
- Type="BTM.Linking.LinkingDataStruct"
+ Type="LinkingDataStruct"
  Default=""
  X="560"
  Y="320"
@@ -325,11 +325,11 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
  Guid="26c7601d-ea48-4264-a247-cbc27a17b8af"
 >
 <Expression>BTM.Linking.LinkingDataStruct {
-  Distance =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; D_LINK, scale =&gt; Q_SCALE ),
+  Distance =&gt; MessageTypes.QScaleDistance ( distance =&gt; D_LINK, scale =&gt; Q_SCALE ),
   BaliseGroupIdentifier =&gt; NID_BG,
-  Orientation =&gt; Default.LinkingOrientationConverter ( Q_LINKORIENTATION ),
+  Orientation =&gt; LinkingOrientationConverter ( Q_LINKORIENTATION ),
   Reaction =&gt; ConvertLinkingReaction ( Q_LINKREACTION ),
-  LocationAccuracy =&gt; Default.MessageTypes.QLocAccLength(Q_LOCACC)
+  LocationAccuracy =&gt; MessageTypes.QLocAccLength(Q_LOCACC)
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -390,7 +390,7 @@ Since this only stores what is inside Q_LOCACC (which can only be in the range o
 <Expression>BGinExpectationWindow( FIRST X IN Linkings )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingDataStruct"
+ Type="LinkingDataStruct"
  Default=""
  X="120"
  Y="200"
@@ -525,10 +525,10 @@ BaliseGroupOrientation() == CurrentLinking().Orientation</Expression>
  Name="No information available"
  Guid="d73efdcf-cfd4-445a-8b37-24b05899772b"
 >
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingReaction"
+ Type="LinkingReaction"
  Default=""
  X="670"
  Y="320"
@@ -754,7 +754,7 @@ FORALL_IN is defensive programming; if the Collection does not have the same val
 <Expression>THERE_IS X IN Message.Sequence1 | ConsiderPacket ( PacketOrientation =&gt; X.TRACK_TO_TRAIN.REPOSITIONING_INFORMATION.Q_DIR)</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingErrorEnum"
+ Type="LinkingErrorEnum"
  Default=""
  X="230"
  Y="260"
@@ -972,7 +972,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
   BGIsUnknownWithRepositioningPacketValidForDirection() )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingDataStruct"
+ Type="LinkingDataStruct"
  Default=""
  X="230"
  Y="200"
@@ -997,7 +997,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="BTM.Linking.LinkingDataStruct"
+ Type="LinkingDataStruct"
  Default=""
  X="450"
  Y="320"
@@ -1087,7 +1087,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
 </ReqRef><Comment>Checks whether the linked BG was found inside its expectation window</Comment>
 <Parameters>
 <Parameter
- Type="BTM.Linking.LinkingDataStruct"
+ Type="LinkingDataStruct"
  Name="LinkedBG"
  Guid="a5522054-89ca-44b5-b236-35449029ff8e"
 >
@@ -1142,7 +1142,7 @@ CurrentBGWithinFrame()</PreCondition></PreConditions>
  Name="Value"
  Guid="f0c0f7f7-c037-4ab3-a10b-87115cf305ae"
 >
-<Expression>AntennaPosition ( Default.DistanceInterval.Min ) &gt; CurrentLinking().Distance + CurrentLinking().LocationAccuracy</Expression>
+<Expression>AntennaPosition ( DistanceInterval.Min ) &gt; CurrentLinking().Distance + CurrentLinking().LocationAccuracy</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1777,7 +1777,7 @@ Activate the service brake if a second linked BG in a row is missed.</Comment>
 <PreConditions>
 <PreCondition
  Guid="d3e69c54-db46-4f85-9ff3-3159f3eeaff0"
->Kernel.Mode == Default.Mode.SH</PreCondition></PreConditions>
+>Kernel.Mode == Mode.SH</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="8d1a6745-9466-4063-a719-d54c187a08dc"
@@ -1845,7 +1845,7 @@ NOT Kernel.Shunting.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
 <PreConditions>
 <PreCondition
  Guid="b0d0f21d-b735-4fdb-bb84-9a28eba9d3d1"
->Kernel.Mode == Default.Mode.SR</PreCondition></PreConditions>
+>Kernel.Mode == Mode.SR</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6cb1c474-bc67-4f05-835f-4028f0ac9989"
@@ -2016,7 +2016,7 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
 <Action
  Guid="b5267b4f-321c-48a3-8cb1-b091b3a4496d"
 >CheckMessageConsistency(
-    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     LinkingUsed =&gt; False,
     LinkingReaction =&gt; LinkingReaction.CommandServiceBrake
 )</Action></Actions>
@@ -2036,7 +2036,7 @@ NOT Kernel.StaffResponsible.BGIsExpected(CurrentBaliseGroup)</Action></Actions>
 <Action
  Guid="bac12566-89d7-4f78-a052-2705f05be489"
 >CheckMessageConsistency(
-    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    DistanceFromLRBG =&gt; Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     LinkingUsed =&gt; False,
     LinkingReaction =&gt; LinkingReaction.CommandServiceBrake
 )</Action></Actions>
@@ -2533,7 +2533,7 @@ IN Kernel.EmergencyStops</Action></Actions>
 </ReqRef><Comment>Deletes the linking information beyond the provided location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="5ca1491d-789e-42f9-a622-728c9bb3eba4"
 >
@@ -2627,7 +2627,7 @@ IN Kernel.EmergencyStops</Action></Actions>
 >
 <Comment>Used to determine whether the current Balise message has been rejected due to linking or VBC.</Comment>
 </Variable><Variable
- Type="BTM.Linking.RAMSSupervisionStruct"
+ Type="RAMSSupervisionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="340"
@@ -2645,7 +2645,7 @@ IN Kernel.EmergencyStops</Action></Actions>
 >
 </ReqRef><Comment>The currently supervised BG for the RAMS (EMPTY unless the previous linked BG was not found before the end of its expectation window).</Comment>
 </Variable><Variable
- Type="BTM.Linking.RAMSSupervisionStruct"
+ Type="RAMSSupervisionStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="450"
@@ -2726,7 +2726,7 @@ IN Kernel.EmergencyStops</Action></Actions>
  Guid="31e13c42-91f0-4f0d-80c6-0ac0955b0353"
 >Available(RAMSRepositioningBG)
   AND  
-AntennaPosition( Default.DistanceInterval.Min ) &gt; RAMSRepositioningBG.EndOfWindow</PreCondition></PreConditions>
+AntennaPosition( DistanceInterval.Min ) &gt; RAMSRepositioningBG.EndOfWindow</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="05d233d1-f4fd-4e47-9d02-eec5223c9448"

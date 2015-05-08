@@ -72,7 +72,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformationStruct"
+ TypeName="CurrentConsumptionInformationStruct"
  Default="[]"
  Y="90"
  Width="100"
@@ -115,10 +115,10 @@
 >
 <Comment>Returns the element in TCCurrentConsumption with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCCurrentConsumption | (X.Location &lt;= Distance)
-    USING X IN Default.BaseTypes.MaxDistance(
+    USING X IN BaseTypes.MaxDistance(
         X1=&gt;X.Location,
         X2=&gt;RESULT)
-  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+  INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Messages.M_CURRENT"
@@ -240,7 +240,7 @@
  Guid="23fc9e26-c1cc-4080-9e64-18004abd3b5f"
 >INSERT Kernel.TrackDescription.TrackConditions.CurrentConsumption.CurrentConsumptionInformationStruct
 {
-    Location =&gt; Default.MessageTypes.QScaleDistance
+    Location =&gt; MessageTypes.QScaleDistance
     (
         distance =&gt; Packet.D_CURRENT,
         scale =&gt; Packet.Q_SCALE
@@ -283,7 +283,7 @@ IN
 </ReqRef><Comment>Deletes the track conditions current consumption beyond the provided location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="5c3fb894-ef96-4ba3-adbf-23c5ddf74bf7"
 >

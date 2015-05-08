@@ -42,11 +42,11 @@
  Guid="a795b238-b08a-466f-9212-549c49ace202"
 >
 <Expression>REDUCE SpeedAndDistanceMonitoring.TargetsList() | X.Location &lt;= MA.ClosestEOA().Location
- USING X IN Default.BaseTypes.MinSpeed(
+ USING X IN BaseTypes.MinSpeed(
     X1 =&gt; X.Speed,
     X2 =&gt; RESULT
     )
- INITIAL_VALUE Default.BaseTypes.Speed.MaxSpeed</Expression>
+ INITIAL_VALUE BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -254,7 +254,7 @@ LSSMA() &lt; TrainData.TrainData.Value.MaximumSpeed</Expression>
  Guid="e6cbc16f-e753-4b29-b052-f2401dfd0902"
 >LSSMATimer &lt;- AddToDate(
     StartDate=&gt;Timestamp,
-    Increment=&gt;Default.MessageTypes.TimeResolution(Packet.T_LSSMA)
+    Increment=&gt;MessageTypes.TimeResolution(Packet.T_LSSMA)
 )</Action><Action
  Guid="6e0544aa-f885-4470-baef-cd7ed7c95aa3"
 >DisplayLSSMA &lt;- True</Action></Actions>
@@ -379,7 +379,7 @@ LSSMA() &lt; TrainData.TrainData.Value.MaximumSpeed</Expression>
 <PreConditions>
 <PreCondition
  Guid="785dc39d-f576-4174-a72b-79329f059799"
->Mode == Default.Mode.LS</PreCondition><PreCondition
+>Mode == Mode.LS</PreCondition><PreCondition
  Guid="89715f06-cfc4-4f73-8971-ed53219333bb"
 >NOT GenericMarkerStored</PreCondition></PreConditions>
 <Actions>
@@ -393,7 +393,7 @@ LSSMA() &lt; TrainData.TrainData.Value.MaximumSpeed</Expression>
 <PreConditions>
 <PreCondition
  Guid="e9df8f11-12e4-41a7-973e-1176052b5b06"
->Mode == Default.Mode.LS</PreCondition><PreCondition
+>Mode == Mode.LS</PreCondition><PreCondition
  Guid="fc268b32-269a-4b5f-8bd5-8cc11d0af92f"
 >DisplayLSSMA</PreCondition><PreCondition
  Guid="51faf229-83b8-4750-ac65-bd38c3665763"

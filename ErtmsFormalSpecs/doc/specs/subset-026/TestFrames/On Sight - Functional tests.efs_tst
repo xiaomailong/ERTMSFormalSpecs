@@ -87,7 +87,7 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="cd65b88c-634a-4541-bd1d-8a400d235fb8"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -191,7 +191,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4f470aa2-ab31-4f2d-8715-b302fc05bcae"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -217,7 +217,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ad545ee8-9a79-4ebd-a0df-ea8d4e90171f"
->Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="62ef48cb-ea14-4003-ace3-e310383f209d"
@@ -397,9 +397,9 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
 <Actions>
 <Action
  Guid="e6a3e76d-a7c5-48b6-b749-3aca9e7138af"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="004582be-59ab-4517-bc66-927226eba055"
->Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
  Guid="0dabce00-6076-4ca8-90fb-9af44279f3e0"
 >Testing.SetOSMode()</Action></Actions>
 <Expectations>
@@ -407,7 +407,7 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="f5e031db-91e0-4fc1-bbd6-f1ee5340b037"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -513,7 +513,7 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="726544c5-642e-4a92-ace4-c8ac96f2ee7d"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -539,7 +539,7 @@ TIU.ServiceBrakeCommanded == True</Expectation></Expectations>
  Kind="Instantaneous"
  DeadLine="1"
  Guid="4597f244-8679-4f92-a323-6a38ab0689a4"
->Kernel.Mode == Default.Mode.SR</Expectation></Expectations>
+>Kernel.Mode == Mode.SR</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="cde6a7bc-ec4b-4ab9-94a3-4f05f051ba75"
@@ -831,7 +831,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ef7c7bdf-7a85-488e-890a-32ceaf8ac573"
->Kernel.Mode != Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode != Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -858,7 +858,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="95266856-2a95-4593-b9b2-300324af894f"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -885,7 +885,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="52563895-0873-4551-8061-1cb512d8abf6"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -906,7 +906,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="378a1c4a-7c27-44fe-9512-231247302e0d"
->Kernel.Level.Value.Value &lt;- Default.Level.L2</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L2</Action><Action
  Guid="09715f36-e298-4e4a-bac2-158e5f0dfad2"
 >Testing.SetFSMode()</Action></Actions>
 <Expectations>
@@ -914,7 +914,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="6069dd02-da91-41a0-abc6-0c8863fcd96f"
->Kernel.Mode != Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode != Mode.OS</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step2"
  Guid="3b2da529-d702-4e76-b1ed-ab16b003d9c9"
@@ -1000,7 +1000,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="ca56b6f1-0c18-450d-9a19-3794feb469f4"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step3"
  Guid="8b8426a1-b38b-426c-8a61-c979fd0769b0"
@@ -1008,7 +1008,7 @@ Messages.EUROBALISE.SubStructure1
 <Actions>
 <Action
  Guid="43e487f1-5b14-4440-a9d1-4216a124bce0"
->Kernel.Level.Value.Value &lt;- Default.Level.L3</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L3</Action><Action
  Guid="2157e663-9329-404f-ade6-324668a54a54"
 >Testing.SetSRMode()</Action></Actions>
 <Expectations>
@@ -1016,7 +1016,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="9d670bca-fef2-4834-bb42-9e29f56009ad"
->Kernel.Mode != Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode != Mode.OS</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step4"
  Guid="0bc3cacf-8620-4431-a94f-49bcaa324700"
@@ -1102,7 +1102,7 @@ Messages.EUROBALISE.SubStructure1
  Kind="Instantaneous"
  DeadLine="1"
  Guid="3729ef6c-0cd2-40e0-96e3-37afcd0bed26"
->Kernel.Mode == Default.Mode.OS</Expectation></Expectations>
+>Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

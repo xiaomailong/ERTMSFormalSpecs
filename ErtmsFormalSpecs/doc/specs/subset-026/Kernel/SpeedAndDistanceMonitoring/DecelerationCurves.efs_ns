@@ -155,7 +155,7 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="6a8616f4-c654-41eb-8c0b-dd85faaf713e"
 >
-<Expression>Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(NoA_est), X2 =&gt; Vtarget ) + Vdelta2(NoA_est)</Expression>
+<Expression>BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(NoA_est), X2 =&gt; Vtarget ) + Vdelta2(NoA_est)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -201,8 +201,8 @@ IsMaxDistToRunInSR(aTarget)</PreCondition></PreConditions>
  Name="Value"
  Guid="65053d1d-56ea-40c0-958e-a23368d66654"
 >
-<Expression>Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(NoA_est) / 2.0, X2 =&gt; Vtarget ) ) * T_traction(NoA_est) +
-Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(NoA_est), X2 =&gt; Vtarget ) + Vdelta2(NoA_est) / 2.0 )  * T_berem(NoA_est)</Expression>
+<Expression>BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(NoA_est) / 2.0, X2 =&gt; Vtarget ) ) * T_traction(NoA_est) +
+BaseTypes.SpeedToMS ( BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelta0() + Vdelta1(NoA_est), X2 =&gt; Vtarget ) + Vdelta2(NoA_est) / 2.0 )  * T_berem(NoA_est)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -227,7 +227,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
  Name="Value"
  Guid="17f1ca46-76c5-4135-a9e6-bf0e63dddd19"
 >
-<Expression>Default.BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; Default.BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.TrainAcceleration() ) )</Expression>
+<Expression>BaseTypes.MinAcceleration ( X1 =&gt; 0.4, X2 =&gt; BaseTypes.MaxAcceleration ( X1 =&gt; 0.0, X2 =&gt; Odometry.TrainAcceleration() ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Acceleration"
@@ -433,7 +433,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
 <PreCondition
  Guid="b5012344-b47b-4a0b-acf0-2a242533a19d"
 >Distance &lt; aTarget.Location</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="Speed = 0"
  Guid="492d0aa2-1798-4d43-9896-da4b5ef20929"
@@ -507,7 +507,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
 <PreCondition
  Guid="cf6f9fc7-ccd1-4d65-a066-2ba3eebe0aad"
 >Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off (NoA_est) - ( TargetSpeedMonitoring.T_warning + TargetSpeedMonitoring.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
+<Expression>BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off (NoA_est) - ( TargetSpeedMonitoring.T_warning + TargetSpeedMonitoring.T_bs2 ) ), X2 =&gt; 0.0 )</Expression>
 </Case><Case
  Name="Traction cut-off is not implemented"
  Guid="804ac0bb-4c17-41aa-97a4-accc7affd282"
@@ -555,7 +555,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
  Name="SB feedback interface not available"
  Guid="b91d6f8c-55b0-4316-b754-68a920fca082"
 >
-<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; 0.8 * TrainData.BrakingParameters.T_bs(), X2 =&gt; 5.0 )</Expression>
+<Expression>BaseTypes.MaxTime ( X1 =&gt; 0.8 * TrainData.BrakingParameters.T_bs(), X2 =&gt; 5.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Time"
@@ -591,7 +591,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
  Name="Value"
  Guid="aeee2a9d-0dc9-46c1-819a-97c42f1e0772"
 >
-<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_traction (NoA_est), X2 =&gt; 0.0 )</Expression>
+<Expression>BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_traction (NoA_est), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -655,7 +655,7 @@ Default.BaseTypes.SpeedToMS ( Default.BaseTypes.MaxSpeed ( X1 =&gt; Vest + Vdelt
 <PreConditions>
 <PreCondition
  Guid="47e945e0-0d82-416d-8a82-055c5554df35"
->Mode == Default.Mode.SR</PreCondition></PreConditions>
+>Mode == Mode.SR</PreCondition></PreConditions>
 <Expression>aTarget.Location == NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode
   AND  
 aTarget.Speed == 0.0</Expression>
@@ -808,7 +808,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
 <PreCondition
  Guid="3c2e4284-6ce3-4369-8f13-1b7ce48c3d1c"
 >NOT MA.EOADefined()</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Speed.NA</Expression>
+<Expression>BaseTypes.Speed.NA</Expression>
 </Case><Case
  Name="Value"
  Guid="a4d1ebea-f02f-494c-8412-5cdfb397ff66"
@@ -855,7 +855,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Default=""
  Width="100"
  Height="50"
@@ -867,7 +867,7 @@ BaseTypes.SpeedToMS( Vest + Vdelta0() + Vdelta1(NoA_est) + Vdelta2(NoA_est)/2.0
 <Comment>Returns the distance at which the GUI deceleration curve for a given target has the given speed.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Speed"
+ Type="Default.BaseTypes.Speed"
  Name="Vest"
  Guid="82adb4d9-0905-4248-baf0-f4f32fe28ffa"
 >

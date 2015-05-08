@@ -124,7 +124,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
+ TypeName="GeographicalPositionItemStruct"
  Default="[]"
  X="20"
  Y="20"
@@ -143,7 +143,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
+ Type="GeographicalPositionItemStruct"
  Default=""
  X="20"
  Y="250"
@@ -203,24 +203,24 @@
 >
 <Expression>Kernel.GeographicalPosition.GeographicalPositionItemStruct
 {
-    Offset =&gt; Default.MessageTypes.QScaleDistance
+    Offset =&gt; MessageTypes.QScaleDistance
     (
         distance =&gt; anOffset,
         scale =&gt; aScale
     ),
     ReferenceBG =&gt; aReferenceBG,
     Direction =&gt; aDirection,
-    Location =&gt; Default.MessageTypes.QScaleDistance
+    Location =&gt; MessageTypes.QScaleDistance
     (
         distance =&gt; aPosition,
         scale =&gt; aScale
     ),
-    NewCountry =&gt; Default.Q_NEWCOUNTRY_To_Bool(aNewCountry),
+    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool(aNewCountry),
     Country =&gt; aCountry
 }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
+ Type="GeographicalPositionItemStruct"
  Default=""
  X="240"
  Y="250"
@@ -300,7 +300,7 @@ BTM.TravelledDistanceFromBG( aBG =&gt; ApplicableItem.ReferenceBG ) - Applicable
  Name="Otherwise"
  Guid="2f4846d6-134d-4c5b-a4ea-c1f5f01f87ff"
 >
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -372,7 +372,7 @@ BTM.TravelledDistanceFromBG( aBG =&gt; ApplicableItem.ReferenceBG ) - Applicable
 </ReqRef><Comment>Indicates if the geographical position item given as parameter has become applicable, i.e. it has been passed by the train and the train has travelled  the offset distance from that balise group.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
+ Type="GeographicalPositionItemStruct"
  Name="anItem"
  Guid="f426927e-5a60-43d5-9495-c9b3376808a4"
 >
@@ -596,7 +596,7 @@ IN
 >
 </ReqRef><Comment>Regresents the geographical position information received from the trackside.</Comment>
 </Variable><Variable
- Type="Kernel.GeographicalPosition.GeographicalPositionItemStruct"
+ Type="GeographicalPositionItemStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="220"

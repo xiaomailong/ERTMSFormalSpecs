@@ -2591,7 +2591,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="80de780d-7c5c-4244-88a4-cf628d27f50a"
->Kernel.NationalValues.DefaultValues.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram == Default.BaseTypes.Time.Infinity</Expectation></Expectations>
+>Kernel.NationalValues.DefaultValues.MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram == BaseTypes.Time.Infinity</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2663,7 +2663,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="a59d1c28-fc98-4cbd-a0ff-5a0dbd545426"
->Kernel.NationalValues.DefaultValues.MaxPermDistToRunInStaffResponsibleMode == Default.BaseTypes.Distance.Infinity</Expectation></Expectations>
+>Kernel.NationalValues.DefaultValues.MaxPermDistToRunInStaffResponsibleMode == BaseTypes.Distance.Infinity</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -2872,16 +2872,16 @@
 >Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.Val0.SpeedStep == 0.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="11b08e31-1198-41cc-a42e-8925adb0d920"
->Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP23 == BaseTypes.Acceleration.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ed4ce745-cb92-4f5d-ba7c-e3fa23cc950a"
->Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.A_NVP12 == BaseTypes.Acceleration.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="7edc56dc-96ff-40cb-b35a-c235d261b19e"
->Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP12 == BaseTypes.Acceleration.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5c146781-bb65-412c-9046-3ad051a17815"
->Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 == Default.BaseTypes.Acceleration.NA</Expectation><Expectation
+>Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_FreightTrain.A_NVP23 == BaseTypes.Acceleration.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="7dec70d1-d504-4492-bc10-40129add24ea"
 >Kernel.NationalValues.DefaultValues.IntegratedCorrectionFactorKvInt_PassengerTrain.Val1.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
@@ -3095,9 +3095,9 @@
 <Actions>
 <Action
  Guid="448732bb-203d-4534-8846-289ae99d58a5"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="d241dfc8-c97f-4275-be39-b16499c0970d"
->Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>Kernel.NationalValues.ApplicableNationalValues.DataState &lt;- DataState.Valid</Action></Actions>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -3186,7 +3186,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="354500c6-bff9-431a-b073-0be10df429f0"
->Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3492,7 +3492,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="633fff35-df62-4451-bdd5-479650afc45f"
->Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.ModeRelatedSpeedLimits.SpeedRestrictions ( 0.0 ) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -5664,7 +5664,7 @@ Kernel.MA.ModeProfile.Profile</Action><Action
 <Expectation
  Kind="Instantaneous"
  Guid="e6bde19b-bd36-4a52-9c17-b15e9493e655"
->Kernel.NationalValues.OverrideRelatedSpeedRestrictions(0.0) == Default.BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
+>Kernel.NationalValues.OverrideRelatedSpeedRestrictions(0.0) == BaseTypes.Speed.MaxSpeed</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>

@@ -74,7 +74,7 @@
 }</Action><Action
  Guid="bd734bba-7180-4645-8a9f-65a04f59889f"
 >Kernel.NationalValues.ApplicableNationalValues &lt;- Kernel.NationalValues.NationalValuesStruct{
-    DataState =&gt; Default.DataState.Invalid,
+    DataState =&gt; DataState.Invalid,
     Value =&gt; Kernel.NationalValues.NationalDefaultDataStruct{
         ModificationOfAdhesionFactorByDriver =&gt; Messages.Q_NVDRIVER_ADHES.Not_allowed,
         PermToUseTheServiceBrakeFeedback =&gt; Messages.Q_NVSBFBPERM.No,
@@ -100,85 +100,85 @@
         MaxTimeForTrainTripSuppressionWhenOverrideIsTriggered =&gt; 60.0,
         ChangeOfDriverIDPermittedWhileRunning =&gt; Messages.M_NVDERUN.Yes,
         SystemReactionIfRadioChannelMonitoringTimeLimitExpires =&gt; Messages.M_NVCONTACT.No_Reaction,
-        MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram =&gt; Default.BaseTypes.Time.Infinity,
+        MaxTimeSinceCreationInTheRBCOfLastReceivedTelegram =&gt; BaseTypes.Time.Infinity,
         DistToBeAllowedForReversingInPostTripMode =&gt; 200.0,
-        MaxPermDistToRunInStaffResponsibleMode =&gt; Default.BaseTypes.Distance.Infinity,
+        MaxPermDistToRunInStaffResponsibleMode =&gt; BaseTypes.Distance.Infinity,
         WeightingFactorForAvailableWheelRailAdhesion =&gt; 0.0,
         ConfLevelForEmergBrakeSafeDecelerationOnDryRails =&gt; Messages.M_NVEBCL.Confidence_level___99_9999999,
         IntegratedCorrectionFactorKrInt =&gt; Kernel.NationalValues.KrIntValueSetStruct{
             Val0 =&gt; Kernel.NationalValues.KrIntValueStruct{
-                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                LengthStep =&gt; BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
             Val1 =&gt; Kernel.NationalValues.KrIntValueStruct{
-                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                LengthStep =&gt; BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
             Val2 =&gt; Kernel.NationalValues.KrIntValueStruct{
-                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                LengthStep =&gt; BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
             Val3 =&gt; Kernel.NationalValues.KrIntValueStruct{
-                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                LengthStep =&gt; BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             },
             Val4 =&gt; Kernel.NationalValues.KrIntValueStruct{
-                LengthStep =&gt; Default.BaseTypes.Length.Infinity,
+                LengthStep =&gt; BaseTypes.Length.Infinity,
                 Value =&gt; 0.9
             }
         },
         IntegratedCorrectionFactorKvInt_FreightTrain =&gt; Kernel.NationalValues.KvIntValueSet_FreightTrainStruct{
             Val0 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
             Val1 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
             Val2 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
             Val3 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
             Val4 =&gt; Kernel.NationalValues.KvIntValue_FreightTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 Value =&gt; 0.7
             },
-            A_NVP12 =&gt; Default.BaseTypes.Acceleration.NA,
-            A_NVP23 =&gt; Default.BaseTypes.Acceleration.NA
+            A_NVP12 =&gt; BaseTypes.Acceleration.NA,
+            A_NVP23 =&gt; BaseTypes.Acceleration.NA
         },
         IntegratedCorrectionFactorKvInt_PassengerTrain =&gt; Kernel.NationalValues.KvIntValueSet_PassengerTrainStruct{
             Val0 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
             Val1 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
             Val2 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
             Val3 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
             Val4 =&gt; Kernel.NationalValues.KvIntValue_PassengerTrainStruct{
-                SpeedStep =&gt; Default.BaseTypes.Speed.Infinity,
+                SpeedStep =&gt; BaseTypes.Speed.Infinity,
                 ValueA =&gt; 0.7,
                 ValueB =&gt; 0.7
             },
-            A_NVP12 =&gt; Default.BaseTypes.Acceleration.NA,
-            A_NVP23 =&gt; Default.BaseTypes.Acceleration.NA
+            A_NVP12 =&gt; BaseTypes.Acceleration.NA,
+            A_NVP23 =&gt; BaseTypes.Acceleration.NA
         }
     },
     ApplicableStartLocation =&gt; 0.0,
@@ -306,7 +306,7 @@
  Guid="d8f91d47-4d26-4353-ae76-a28f0aa275fc"
 >Odometry.NominalDistance &lt;- 4000.0</Action><Action
  Guid="5e98d65c-6602-4893-8257-2521b062bde8"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="9ab4a8b2-2bb8-448d-b024-896606a2dd65"
 >Kernel.TrainData.TrainData.Value.T_brake_emergency &lt;- Kernel.TrainData.BrakingParameters.T_brake_build_upSet
 {
@@ -1979,7 +1979,7 @@ Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2 (
 >INSERT 
 BTM.Linking.LinkingDataStruct{
     LocationAccuracy =&gt; 1.0,
-    Orientation =&gt; Default.Orientation.Unknown,
+    Orientation =&gt; Orientation.Unknown,
     Reaction =&gt; BTM.Linking.LinkingReaction.NoReaction,
     Distance =&gt; 2200.0,
     BaliseGroupIdentifier =&gt; 0

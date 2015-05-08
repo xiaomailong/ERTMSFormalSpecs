@@ -411,7 +411,7 @@
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="EURORADIO.PositionReport.PositionLocation"
+ TypeName="PositionLocation"
  MaxSize="32"
  Default="[]"
  X="370"
@@ -582,7 +582,7 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  Name="Value"
  Guid="aaa72c64-bb2e-466c-93eb-5bf924372ffc"
 >
-<Expression>Kernel.DateAndTime.CurrentTime &gt;= PositionReport.LastPositionReport.Time + PositionReport.PositionReportParameters.Values.TimeInterval AND PositionReport.PositionReportParameters.DataState == Default.DataState.Valid AND PositionReport.PositionReportParameters.Values.TimeInterval != 0.0</Expression>
+<Expression>Kernel.DateAndTime.CurrentTime &gt;= PositionReport.LastPositionReport.Time + PositionReport.PositionReportParameters.Values.TimeInterval AND PositionReport.PositionReportParameters.DataState == DataState.Valid AND PositionReport.PositionReportParameters.Values.TimeInterval != 0.0</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -606,7 +606,7 @@ TIU.TrainIntegrity.Status == Messages.Q_LENGTH.Train_integrity_lost</Expression>
  Name="Value"
  Guid="3bcde522-0efd-4e95-9c56-00ee9dbe3059"
 >
-<Expression>(Odometry.NominalDistance &gt;= (PositionReport.LastPositionReport.Position + PositionReport.PositionReportParameters.Values.DistanceInterval)) AND (PositionReport.PositionReportParameters.DataState == Default.DataState.Valid) AND (PositionReport.PositionReportParameters.Values.DistanceInterval != Default.BaseTypes.Distance.Infinity)</Expression>
+<Expression>(Odometry.NominalDistance &gt;= (PositionReport.LastPositionReport.Position + PositionReport.PositionReportParameters.Values.DistanceInterval)) AND (PositionReport.PositionReportParameters.DataState == DataState.Valid) AND (PositionReport.PositionReportParameters.Values.DistanceInterval != BaseTypes.Distance.Infinity)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -738,7 +738,7 @@ TIU.TrainIntegrity.Status in [
 >
 <Expression>PositionReport.PositionReportEventsTracker.LRBG != BTM.LRBG
   AND
-PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Expression>
+PositionReport.PositionReportParameters.DataState != DataState.Valid</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -911,7 +911,7 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
  Guid="95b790d2-b1f1-40e6-808f-05b60c4e9d13"
 >
 <Expression>(
-    BTM.LRBG.Orientation != Default.Orientation.Unknown
+    BTM.LRBG.Orientation != Orientation.Unknown
         OR
     BTM.PreviousLRBG() != EMPTY
 )
@@ -933,7 +933,7 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="PositionReport.PositionReportSpecialLocation"
+ Type="PositionReportSpecialLocation"
  Default=""
  X="340"
  Y="420"
@@ -1130,7 +1130,7 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 <PreConditions>
 <PreCondition
  Guid="f21e89a9-9a6b-412d-97ad-c87d8656875f"
->BTM.LRBG.Orientation != Default.Orientation.Unknown</PreCondition></PreConditions>
+>BTM.LRBG.Orientation != Orientation.Unknown</PreCondition></PreConditions>
 <Expression>Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORTS.Message
 {
     POSITION_REPORT=&gt; Messages.PACKET.TRAIN_TO_TRACK.POSITION_REPORT.Message
@@ -1138,16 +1138,16 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
         Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
         NID_LRBG =&gt; BTM.LRBG.NID,
         D_LRBG =&gt; PositionReport.FillDistance(),
-        Q_DIRLRBG =&gt; Default.Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
-        Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
-        L_DOUBTOVER =&gt; Default.MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Messages.Q_SCALE._1_m_scaleC ),
-        L_DOUBTUNDER =&gt; Default.MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
+        Q_DIRLRBG =&gt; Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
+        Q_DLRBG =&gt; Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
+        L_DOUBTOVER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTOVER), Messages.Q_SCALE._1_m_scaleC ),
+        L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
         Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
-        L_TRAININT =&gt; Default.MessageTypes.UnScaleLength ( PositionReport.FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
-        V_TRAIN =&gt; Default.MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
-        Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
-        M_MODE =&gt; Default.EFSModeConverter(Kernel.Mode),
-        M_LEVEL =&gt; Default.EFSLevelConverter(Kernel.Level.Value.Value)
+        L_TRAININT =&gt; MessageTypes.UnScaleLength ( PositionReport.FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
+        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
+        Q_DIRTRAIN =&gt; Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
+        M_MODE =&gt; EFSModeConverter(Kernel.Mode),
+        M_LEVEL =&gt; EFSLevelConverter(Kernel.Level.Value.Value)
     },
     POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS =&gt; EMPTY
 }</Expression>
@@ -1167,16 +1167,16 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
         NID_LRBG =&gt; BTM.LRBG.NID,
         NID_PRVLRBG =&gt; Messages.NID_PRVBG ( BTM.PreviousLRBG().NID ),
         D_LRBG =&gt; PositionReport.FillDistance(),
-        Q_DIRLRBG =&gt; Default.Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
-        Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
-        L_DOUBTOVER =&gt; Default.MessageTypes.UnScaleLength ( length =&gt; Kernel.ConfidenceInterval.ConfidenceInterval ( Default.ConfidenceInterval.L_DOUBTOVER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
-        L_DOUBTUNDER =&gt; Default.MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval ( Default.ConfidenceInterval.L_DOUBTUNDER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
+        Q_DIRLRBG =&gt; Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
+        Q_DLRBG =&gt; Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
+        L_DOUBTOVER =&gt; MessageTypes.UnScaleLength ( length =&gt; Kernel.ConfidenceInterval.ConfidenceInterval ( ConfidenceInterval.L_DOUBTOVER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
+        L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval ( ConfidenceInterval.L_DOUBTUNDER ), scale =&gt; Messages.Q_SCALE._1_m_scaleC ),
         Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
-        L_TRAININT =&gt; Default.MessageTypes.UnScaleLength ( PositionReport.FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
-        V_TRAIN =&gt; Default.MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
-        Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
-        M_MODE =&gt; Default.EFSModeConverter(Kernel.Mode),
-        M_LEVEL =&gt; Default.EFSLevelConverter(Kernel.Level.Value.Value)
+        L_TRAININT =&gt; MessageTypes.UnScaleLength ( PositionReport.FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
+        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
+        Q_DIRTRAIN =&gt; Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
+        M_MODE =&gt; EFSModeConverter(Kernel.Mode),
+        M_LEVEL =&gt; EFSLevelConverter(Kernel.Level.Value.Value)
     }
 }</Expression>
 </Case><Case
@@ -1190,16 +1190,16 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
         Q_SCALE =&gt; Messages.Q_SCALE._1_m_scaleC,
         NID_LRBG =&gt; BTM.LRBG.NID,
         D_LRBG =&gt; PositionReport.FillDistance(),
-        Q_DIRLRBG =&gt; Default.Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
-        Q_DLRBG =&gt; Default.Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
-        L_DOUBTOVER =&gt; Default.MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTOVER), Messages.Q_SCALE._1_m_scaleC ),
-        L_DOUBTUNDER =&gt; Default.MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(Default.ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
+        Q_DIRLRBG =&gt; Q_DIRLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainOrientation ),
+        Q_DLRBG =&gt; Q_DLRBG ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainFrontEndPosition ),
+        L_DOUBTOVER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTOVER), Messages.Q_SCALE._1_m_scaleC ),
+        L_DOUBTUNDER =&gt; MessageTypes.UnScaleLength ( Kernel.ConfidenceInterval.ConfidenceInterval(ConfidenceInterval.L_DOUBTUNDER), Messages.Q_SCALE._1_m_scaleC ),
         Q_LENGTH =&gt; TIU.TrainIntegrity.Status,
-        L_TRAININT =&gt; Default.MessageTypes.UnScaleLength ( PositionReport.FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
-        V_TRAIN =&gt; Default.MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
-        Q_DIRTRAIN =&gt; Default.Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
-        M_MODE =&gt; Default.EFSModeConverter(Kernel.Mode),
-        M_LEVEL =&gt; Default.EFSLevelConverter(Kernel.Level.Value.Value)
+        L_TRAININT =&gt; MessageTypes.UnScaleLength ( PositionReport.FillTrainIntegrityInformation(), Messages.Q_SCALE._1_m_scaleC),
+        V_TRAIN =&gt; MessageTypes.UnResolveSpeed ( Odometry.TrainSpeed(), 5.0 ),
+        Q_DIRTRAIN =&gt; Q_DIRTRAIN ( Kernel.TrainPosition.Position.DirectionalPositionInformation.TrainRunningDirection ),
+        M_MODE =&gt; EFSModeConverter(Kernel.Mode),
+        M_LEVEL =&gt; EFSLevelConverter(Kernel.Level.Value.Value)
     },
     POSITION_REPORT_BASED_ON_TWO_BALISE_GROUPS =&gt; EMPTY
 }</Expression>
@@ -1234,7 +1234,7 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 <PreConditions>
 <PreCondition
  Guid="6d57e308-168e-4650-ab9e-85fca0dc39b8"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>Kernel.TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Valid</Expression>
 </Case><Case
  Name="Invalid"
@@ -1243,7 +1243,7 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 <PreConditions>
 <PreCondition
  Guid="d494d339-f451-4df2-9360-f9b682c99f11"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>Kernel.TrainPosition.Position.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Invalid</Expression>
 </Case><Case
  Name="Unknown"
@@ -1252,7 +1252,7 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 <PreConditions>
 <PreCondition
  Guid="62c8fb34-1fe4-4b03-889f-f2f00ff6042b"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Expression>Messages.Q_STATUS.Unknown</Expression>
 </Case></Cases>
 </Function><Function
@@ -1285,13 +1285,13 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 <PreConditions>
 <PreCondition
  Guid="aaa7bc6b-badb-4e38-9d86-88f46f615afe"
->Kernel.TrainPosition.Position.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
-<Expression>Default.MessageTypes.Distance.Unknown</Expression>
+>Kernel.TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditions>
+<Expression>MessageTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Distance known"
  Guid="11ec8272-ab63-4022-aa13-66802b914a9b"
 >
-<Expression>Default.MessageTypes.UnScaleDistance ( Kernel.TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom), Messages.Q_SCALE._1_m_scaleC )</Expression>
+<Expression>MessageTypes.UnScaleDistance ( Kernel.TrainPosition.FrontEndPosition(DistanceInterval.Nom), Messages.Q_SCALE._1_m_scaleC )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1368,11 +1368,11 @@ PositionReport.PositionReportParameters.DataState != Default.DataState.Valid</Ex
 <Actions>
 <Action
  Guid="bb7d9795-fec8-42f3-a619-fb767260a89d"
->PositionReport.PositionReportParameters.DataState &lt;- Default.DataState.Valid</Action><Action
+>PositionReport.PositionReportParameters.DataState &lt;- DataState.Valid</Action><Action
  Guid="f3e0c810-5538-4ebf-b190-2e4fa7161c79"
->PositionReport.PositionReportParameters.Values.TimeInterval &lt;- Default.BaseTypes.Time ( Packet.T_CYCLOC )</Action><Action
+>PositionReport.PositionReportParameters.Values.TimeInterval &lt;- BaseTypes.Time ( Packet.T_CYCLOC )</Action><Action
  Guid="bbed578f-bec0-45d5-a457-6c3e192bcb6b"
->PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- Default.MessageTypes.QScaleDistance ( Packet.D_CYCLOC, Packet.Q_SCALE)</Action><Action
+>PositionReport.PositionReportParameters.Values.DistanceInterval &lt;- MessageTypes.QScaleDistance ( Packet.D_CYCLOC, Packet.Q_SCALE)</Action><Action
  Guid="89290f52-e348-42cd-abb6-f2b2841c62fb"
 >PositionReport.PositionReportParameters.Values.SpecialLocation &lt;- PositionReport.ERTMSSpecialLocationConverter(Packet.M_LOC)</Action></Actions>
 </RuleCondition></Conditions>
@@ -1705,7 +1705,7 @@ ON
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="EURORADIO.PositionReport.PositionReportParameters"
+ Type="PositionReportParameters"
  DefaultValue=""
  VariableMode="Incoming"
  X="10"
@@ -1728,7 +1728,7 @@ ON
 >
 </ReqRef><Comment>This variable contains the position report parameters given by the RBC.</Comment>
 </Variable><Variable
- Type="EURORADIO.PositionReport.PositionReportEventsTrackerStruct"
+ Type="PositionReportEventsTrackerStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="540"
@@ -1766,7 +1766,7 @@ ON
 >
 </ReqRef><Comment>This variable is used to detect changes of kernel variables (mode, level etc) that can require a position report to RBC.</Comment>
 </Variable><Variable
- Type="EURORADIO.PositionReport.LastPositionReportInformation"
+ Type="LastPositionReportInformation"
  DefaultValue=""
  VariableMode="Internal"
  X="710"
@@ -1813,7 +1813,7 @@ ON
 </ReqRef><Comment>Indicates the number of sent position report repetitions.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Distance"
- DefaultValue="Default.BaseTypes.Distance.Unknown"
+ DefaultValue="BaseTypes.Distance.Unknown"
  VariableMode="Internal"
  X="870"
  Y="180"
@@ -1976,9 +1976,9 @@ ON
  Guid="8759fa6c-ccb2-4799-901c-da387590d178"
 >PositionReport.NumberOfReportsSentToHandingOverRBC == 0
   AND
-Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Max ) &gt;= PositionReport.RBCTransitionLocation</PreCondition><PreCondition
+Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= PositionReport.RBCTransitionLocation</PreCondition><PreCondition
  Guid="8ddbf2b5-1a20-4b70-abcd-734965454ea6"
->PositionReport.RBCTransitionLocation != Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+>PositionReport.RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="9180eede-7378-46a7-8bf8-a4dc3cd4677c"
 >Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>
@@ -2083,11 +2083,11 @@ Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; Default.DistanceIn
 <PreConditions>
 <PreCondition
  Guid="2e4c2276-a2dd-4f4c-8fcb-9857d72cb4c8"
->PositionReport.RBCTransitionLocation != Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+>PositionReport.RBCTransitionLocation != BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="9e01e492-5354-4383-a8cf-c25c076c9526"
 >PositionReport.NumberOfReportsSentToHandingOverRBC == 1
   AND
-Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Min ) &gt;= PositionReport.RBCTransitionLocation</PreCondition><PreCondition
+Kernel.TrainPosition.RearEndPosition ( PointOfInterest =&gt; DistanceInterval.Min ) &gt;= PositionReport.RBCTransitionLocation</PreCondition><PreCondition
  Guid="3c744592-d68e-46b8-bcab-764b7e40c095"
 >Kernel.ActiveFunctions.ManageRBC_RBCHandover()</PreCondition></PreConditions>
 <Actions>

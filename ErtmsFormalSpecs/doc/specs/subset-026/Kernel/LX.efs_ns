@@ -140,7 +140,7 @@
 </ReqRef><Comment>Level crossing protection status.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default="Default.BaseTypes.Speed.NA"
+ Default="BaseTypes.Speed.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="Speed"
@@ -204,7 +204,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.LX.LevelCrossingStruct"
+ TypeName="LevelCrossingStruct"
  MaxSize="20"
  Default="[]"
  X="220"
@@ -318,7 +318,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the speed profile due to a level crossing.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="aLX"
  Guid="d7d85ea2-3ebc-4c2a-a4aa-8074be5f2f4e"
 >
@@ -338,16 +338,16 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Guid="aa68eaa3-e106-4898-a5a8-0da6cc9bab87"
 >aLX.Location &lt;= Distance</PreCondition><PreCondition
  Guid="fcd3813f-21a2-4424-a05a-e68ff8a575e9"
->Distance &lt; aLX.Location + Default.BaseTypes.LengthToDistance(aLX.Length)</PreCondition></PreConditions>
+>Distance &lt; aLX.Location + BaseTypes.LengthToDistance(aLX.Length)</PreCondition></PreConditions>
 <Expression>aLX.Speed</Expression>
 </Case><Case
  Name="Outside LX"
  Guid="f1b56221-be26-417f-969b-c42462ccb12f"
 >
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Default=""
  X="220"
  Y="60"
@@ -382,7 +382,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>When a new LX is received, one have to check if it has the same id than an other LX received previously. In that case we have to replace the previously received TSR with the same id by the new one. This function takes a previously received LX in parameters and if it has the same id as the new one, it returns a new LX; in the other case it returnes the same LX.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="aLevelCrossing"
  Guid="5c9e17d6-63b7-439f-8087-738f2b1c7f4a"
 >
@@ -427,7 +427,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Expression>aLevelCrossing</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Default=""
  Y="180"
  Width="100"
@@ -461,10 +461,10 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >
 <Expression>REDUCE LXCollection
   USING X IN ClosestLX(LX1=&gt;X, LX2=&gt;RESULT)
-  INITIAL_VALUE Kernel.LX.LevelCrossingStruct{Location =&gt; Default.BaseTypes.Distance.Infinity}</Expression>
+  INITIAL_VALUE Kernel.LX.LevelCrossingStruct{Location =&gt; BaseTypes.Distance.Infinity}</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Default=""
  X="110"
  Y="180"
@@ -478,12 +478,12 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 <Comment>Takes two LX structures and returns the one with the nearest Location.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="LX1"
  Guid="e98f59f4-6757-40e6-bdbc-335ea6fe69ac"
 >
 </Parameter><Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="LX2"
  Guid="eb6b6b78-008d-439f-b300-dc8b2a6afd71"
 >
@@ -601,7 +601,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Indicates if for the given non protected LX with stopping required, the condition to substitute its supervision as EOA and SvL by its inclusion in the MRSP is satisfied. It is satisfied if the train has stopped in the stopping area of that LX.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="aLX"
  Guid="99ad67a1-1be7-4adf-8726-36de0f4fb8b5"
 >
@@ -613,9 +613,9 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 >
 <Expression>aLX.StoppingRequired
   AND
-aLX.Location - aLX.StoppingAreaLength &lt;= TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom )
+aLX.Location - aLX.StoppingAreaLength &lt;= TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Nom )
   AND
-TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom ) &lt;= aLX.Location</Expression>
+TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Nom ) &lt;= aLX.Location</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -651,7 +651,7 @@ TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.N
 It is satisfied if the estimated or the max safe front end (depending whether the most restrictive SBI supervision limit at LX speed is the SBI1 or the SBI2) reaches the location of the Permitted speed supervision limit calculated for the LX speed.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="aLX"
  Guid="fc20cfd2-738f-43bb-8ae6-9339d16c5252"
 >
@@ -675,19 +675,19 @@ It is satisfied if the estimated or the max safe front end (depending whether th
  Guid="27fd513f-4347-436d-a985-58b252376701"
 >(
   SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
 ) == BaseTypes.Speed.NA
   OR
   SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
 ) &lt; aLX.Speed
 )
   AND
 SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 (
-  Distance =&gt; (TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)),
+  Distance =&gt; (TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
   aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
   {
     Speed =&gt; 0.0,
@@ -705,7 +705,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 >(
   SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target
   (
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
       Speed =&gt; 0.0,
@@ -715,7 +715,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
   OR
   SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target
   (
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
     {
       Speed =&gt; 0.0,
@@ -726,7 +726,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
   AND
 SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 (
-  Distance =&gt; (TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)),
+  Distance =&gt; (TrainPosition.FrontEndPosition(DistanceInterval.Max)),
   aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
   {
     Speed =&gt; 0.0,
@@ -750,18 +750,18 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 <PreCondition
  Guid="6defd243-0751-4c79-a330-29ec47356a78"
 >SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
 ) != BaseTypes.Speed.NA
   AND
 SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
 ) &gt;= aLX.Speed
   AND
 SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 (
-  Distance =&gt; (TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom)),
+  Distance =&gt; (TrainPosition.FrontEndPosition(DistanceInterval.Nom)),
   aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target
   {
     Speed =&gt; 0.0,
@@ -831,7 +831,7 @@ SpeedAndDistanceMonitoring.DecelerationCurves.EBD_Target
 </ReqRef><Comment>Indicates if the most restrictive SBI supervision limit at the speed of the given LX is the SBI1 or the SBI2, used to determine whether the max safe front end or the estimated front end has to be compared to the location of the Permitted speed supervision in order to determine if the supervision of the current LX as EOA and SvL has to be substitued by the inclusion of the LX in the MRSP.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="aLX"
  Guid="fb6f82cf-e87f-4453-b7a2-36dfe33844c6"
 >
@@ -888,7 +888,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
 </ReqRef><Comment>Selects the train front end (nominal or maximal) from which will be adjusted the starting point of the given LX, depending whether the most restrictive SBI supervision limit at LX speed is the SBI1 or the SBI2).</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.LX.LevelCrossingStruct"
+ Type="LevelCrossingStruct"
  Name="aLX"
  Guid="c5534220-5efd-4f76-b559-6acdc3b2b840"
 >
@@ -902,7 +902,7 @@ SpeedAndDistanceMonitoring.TargetSpeedMonitoring.d_SBI2
 <PreCondition
  Guid="85a39cd2-0e93-44b6-86bb-795272712381"
 >SpeedAndDistanceMonitoring.DecelerationCurves.SBD_Target(
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; SpeedAndDistanceMonitoring.TargetSpeedMonitoring.MRDT()
 ) != BaseTypes.Speed.NA
   AND
@@ -1282,7 +1282,7 @@ IN SupervisedLevelCrossings</Action></Actions>
   InsertSupervisedLXToMRSPLX
  (
     NID_LX =&gt; X.Id,
-    LocationUpdate =&gt; X.Location - TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom )
+    LocationUpdate =&gt; X.Location - TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Nom )
   )
 ON
   SupervisedLevelCrossings | StoppingConditionSatisfied ( aLX =&gt; X )</Action></Actions>

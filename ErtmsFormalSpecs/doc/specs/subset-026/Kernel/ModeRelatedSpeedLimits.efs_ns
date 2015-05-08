@@ -38,7 +38,7 @@
 </ReqRef><Comment>Represents the mode related speed restrictions that can be modified by driver or trackside.</Comment>
 <StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default="Default.BaseTypes.Speed.NA"
+ Default="BaseTypes.Speed.NA"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -52,7 +52,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default="Default.BaseTypes.Speed.NA"
+ Default="BaseTypes.Speed.NA"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -320,13 +320,13 @@
 <PreConditions>
 <PreCondition
  Guid="144d404c-f63e-4ce8-a8be-3dc962c0b300"
->TracksideModeRelatedSpeedRestrictions.RV  != Default.BaseTypes.Speed.NA</PreCondition></PreConditions>
+>TracksideModeRelatedSpeedRestrictions.RV  != BaseTypes.Speed.NA</PreCondition></PreConditions>
 <Expression>TracksideModeRelatedSpeedRestrictions.RV</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="c1d2a189-7e17-4d73-b553-1dfdc2ee840e"
 >
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -424,7 +424,7 @@
 <PreConditions>
 <PreCondition
  Guid="68da82cd-26fd-4256-bdaf-17972b445617"
->TracksideModeRelatedSpeedRestrictions.SR != Default.BaseTypes.Speed.NA</PreCondition></PreConditions>
+>TracksideModeRelatedSpeedRestrictions.SR != BaseTypes.Speed.NA</PreCondition></PreConditions>
 <Expression>TracksideModeRelatedSpeedRestrictions.SR</Expression>
 </Case><Case
  Name="NationalValue"
@@ -483,7 +483,7 @@
 </Function></Functions>
 <Variables>
 <Variable
- Type="Kernel.ModeRelatedSpeedLimits.TracksideModeRelatedSpeedRestrictionsStruct"
+ Type="TracksideModeRelatedSpeedRestrictionsStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="10"

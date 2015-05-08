@@ -225,7 +225,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.RouteSuitability.RouteSuitabilityItemStruct"
+ Type="RouteSuitabilityItemStruct"
  Default=""
  X="20"
  Y="180"
@@ -391,7 +391,7 @@ NOT THERE_IS X IN
 )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="240"
  Y="180"
@@ -462,7 +462,7 @@ THERE_IS X IN RouteSuitabilityProfile.Items | IsUnsuitable ( X )</PreCondition><
 <Expression>EMPTY</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
  Default=""
  X="350"
  Y="180"
@@ -637,7 +637,7 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 <PreCondition
  Guid="34b1fac3-1e95-4548-b881-9c08afa3737d"
 >NOT THERE_IS X IN RouteSuitabilityProfile.Items | X.Location &gt; Current.Location</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+<Expression>BaseTypes.Distance.Infinity</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="b6072910-e47e-458b-bf7e-e54b0183d6f5"
@@ -645,9 +645,9 @@ aLineGauge == Messages.M_LINEGAUGE.GC</PreCondition></PreConditions>
 <Expression>REDUCE
     RouteSuitabilityProfile.Items | X.Location &gt; Current.Location
 USING X IN
-    Default.BaseTypes.MinDistance ( X.Location, RESULT )
+    BaseTypes.MinDistance ( X.Location, RESULT )
 INITIAL_VALUE
-    Default.BaseTypes.Distance.Infinity</Expression>
+    BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -726,7 +726,7 @@ INITIAL_VALUE
  Guid="568dbbb3-66aa-4aaf-b3ae-569b14b7f9a8"
 >RouteSuitabilityProfile.InitialState &lt;- Packet.Q_TRACKINIT</Action><Action
  Guid="469b32be-fde5-4ba4-a8fe-823dc9ae9e97"
->RouteSuitabilityProfile.EmptyProfileDistance &lt;- Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
+>RouteSuitabilityProfile.EmptyProfileDistance &lt;- MessageTypes.QScaleDistance ( distance =&gt; Packet.D_TRACKINIT, scale =&gt; Packet.Q_SCALE )</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -943,7 +943,7 @@ THERE_IS X IN Packet.Sequence1 | X.Q_SUITABILITY == Messages.Q_SUITABILITY.Max_a
 <Action
  Guid="2ed4cfd1-9270-4adc-b1b9-1667a2e1e93f"
 >INSERT
-    CreateRouteSuitabilityItem ( aLocation =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SUITABILITY, scale =&gt; Packet.Q_SCALE ),
+    CreateRouteSuitabilityItem ( aLocation =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SUITABILITY, scale =&gt; Packet.Q_SCALE ),
                                                  aType =&gt; Packet.Q_SUITABILITY,
                                                  aLineGauge =&gt; Packet.M_LINEGAUGE,
                                                  aMaxAxleLoad =&gt; Packet.M_AXLELOADCAT,
@@ -1061,7 +1061,7 @@ ON
  Guid="9aa4fcd8-bf54-45ea-936d-dbd11c18ce5c"
 >INSERT
   CreateRouteSuitabilityItem (
-    aLocation =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; aRouteSuitability.D_SUITABILITY, scale =&gt; Scale ),
+    aLocation =&gt; MessageTypes.QScaleDistance ( distance =&gt; aRouteSuitability.D_SUITABILITY, scale =&gt; Scale ),
     aType =&gt; aRouteSuitability.Q_SUITABILITY,
     aLineGauge =&gt; aRouteSuitability.M_LINEGAUGE,
     aMaxAxleLoad =&gt; aRouteSuitability.M_AXLELOADCAT,
@@ -1103,7 +1103,7 @@ IN
 </ReqRef><Comment>Deletes the axle load profile information beyond the provided location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="5f00fd8a-97f2-49e0-9c12-ea21058bc160"
 >

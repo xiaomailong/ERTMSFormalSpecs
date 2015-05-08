@@ -139,7 +139,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct"
+ TypeName="StationPlatformInformationStruct"
  MaxSize="20"
  Default="[]"
  Y="90"
@@ -158,7 +158,7 @@
 </Collection></Collections>
 <Functions>
 <Function
- Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct"
+ Type="StationPlatformInformationStruct"
  Default=""
  Y="180"
  Width="100"
@@ -265,10 +265,10 @@
  Guid="c9961ef2-4d0e-47c0-8dcd-bec9bb9364c9"
 >
 <Comment>The end of the station platform track condition is reached when the min safe rear end of the train reaches (Distance+Length). The train length is adde dhere so that everything is measured relativ to the front end of the train (this is useful for the function SPAtDistance)</Comment>
-<Expression>Distance + Default.BaseTypes.LengthToDistance(Length) + Default.BaseTypes.LengthToDistance(Kernel.TrainData.TrainData.Value.TrainLength)</Expression>
+<Expression>Distance + BaseTypes.LengthToDistance(Length) + BaseTypes.LengthToDistance(Kernel.TrainData.TrainData.Value.TrainLength)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct"
+ Type="StationPlatformStruct"
  Default=""
  X="220"
  Y="180"
@@ -312,7 +312,7 @@
 <Expression>Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct { }</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformStruct"
+ Type="StationPlatformStruct"
  Default=""
  X="330"
  Y="180"
@@ -336,15 +336,15 @@
 <PreConditions>
 <PreCondition
  Guid="f27ed2d7-e341-4f81-8280-767a73fabb6e"
->SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)).Enabled
+>SPAtDistance(TrainPosition.FrontEndPosition(DistanceInterval.Max)).Enabled
   OR  
-SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabled</PreCondition></PreConditions>
-<Expression>SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Max))</Expression>
+SPAtDistance(TrainPosition.FrontEndPosition(DistanceInterval.Min)).Enabled</PreCondition></PreConditions>
+<Expression>SPAtDistance(TrainPosition.FrontEndPosition(DistanceInterval.Max))</Expression>
 </Case><Case
  Name="Not enabled"
  Guid="4d96d425-13d0-4aef-9741-b86bd3a02528"
 >
-<Expression>SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min))</Expression>
+<Expression>SPAtDistance(TrainPosition.FrontEndPosition(DistanceInterval.Min))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -373,10 +373,10 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 >
 <Comment>Returns the element in TCStationPlatform with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCStationPlatforms | (X.Location &lt;= Distance)
-    USING X IN Default.BaseTypes.MaxDistance(
+    USING X IN BaseTypes.MaxDistance(
         X1=&gt;X.Location,
         X2=&gt;RESULT)
-  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+  INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function></Functions>
 <Procedures>
@@ -442,7 +442,7 @@ SPAtDistance(TrainPosition.FrontEndPosition(Default.DistanceInterval.Min)).Enabl
 <Actions>
 <Action
  Guid="af7c9459-722c-4c14-8b2c-79e47721c1d1"
->REMOVE ALL X.Location &gt;= Default.MessageTypes.QScaleDistance(
+>REMOVE ALL X.Location &gt;= MessageTypes.QScaleDistance(
     distance=&gt;Packet.D_TRACKINIT,
     scale=&gt;Packet.Q_SCALE
     )
@@ -451,7 +451,7 @@ IN
  Guid="b803cea3-2661-496d-8f0e-61206f6bed58"
 >INSERT Kernel.TrackDescription.TrackConditions.StationPlatform.StationPlatformInformationStruct
 {
-    Location =&gt; Default.MessageTypes.QScaleDistance
+    Location =&gt; MessageTypes.QScaleDistance
     (
         distance =&gt; Packet.D_TRACKINIT,
         scale =&gt; Packet.Q_SCALE
@@ -547,12 +547,12 @@ IN
 <Action
  Guid="b8eee697-8bc2-43f6-826f-5af04be62daa"
 >AddSPToProfile(
-    Distance=&gt;Default.MessageTypes.QScaleDistance(
+    Distance=&gt;MessageTypes.QScaleDistance(
         distance=&gt;Packet.D_TRACKCOND,
         scale=&gt;Packet.Q_SCALE
     )
     ,
-    Length=&gt; Default.MessageTypes.QScaleLength(
+    Length=&gt; MessageTypes.QScaleLength(
         length=&gt;Packet.L_TRACKCOND,
         scale=&gt;Packet.Q_SCALE
     )
@@ -574,12 +574,12 @@ IN
  Guid="941b3372-3df3-4a5d-ab39-3f67acff9ba1"
 >APPLY
     AddSPToProfile(
-        Distance=&gt;Default.MessageTypes.QScaleDistance(
+        Distance=&gt;MessageTypes.QScaleDistance(
         distance=&gt;X.D_TRACKCOND,
         scale=&gt;Packet.Q_SCALE
     )
     ,
-        Length=&gt;Default.MessageTypes.QScaleLength(
+        Length=&gt;MessageTypes.QScaleLength(
         length=&gt;X.L_TRACKCOND,
         scale=&gt;Packet.Q_SCALE
     )
@@ -724,7 +724,7 @@ IN
 </ReqRef><Comment>Deletes the track conditions station platforms beyond the provided location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="c90cad0d-e52b-434d-9d6a-a1a23b4e41d7"
 >

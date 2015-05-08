@@ -401,7 +401,7 @@
         Id =&gt; 1212
     },
     PhoneNumber =&gt; &apos;987654321&apos;,
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action></Actions>
 <Expectations>
 <Expectation
@@ -4573,7 +4573,7 @@
  Guid="6c4eb403-de74-4da1-9ab5-45751f9500a2"
 >DMI.MasterDMI().In_ErtmsEtcsLevelEntryRequest.InputInformation.RequestStatus &lt;- Request.Disabled</Action><Action
  Guid="e590bf4a-fe0e-46cd-83ce-5eb0364b5b14"
->EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>EURORADIO.CurrentRBCConnection().ContactData.DataState &lt;- DataState.Valid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5826,7 +5826,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="6a5916ae-34e2-4c6d-9129-5f183a3f0255"
->DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -5958,7 +5958,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="5e7f6140-697b-4dd3-9a70-25e73e6869f4"
->DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+>DMI.MasterDMI().In_DriverIdEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6072,7 +6072,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="b1f1a06b-20eb-455d-832a-83e27ef8ad76"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S1</Action><Action
  Guid="e9343543-d8d8-43a4-a4aa-8fa2dd621a37"
->Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Unknown</Action><Action
+>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action><Action
  Guid="58e05f23-d313-4d79-89a5-5ba48e343e18"
 >Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
 </SubStep></SubSteps>
@@ -6094,7 +6094,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="49e11fa7-69f6-4d56-bd82-d5a5dd87df5a"
->DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6214,7 +6214,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="bb514312-3c34-4cbe-9d38-0f44bd0eb134"
->DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -6332,7 +6332,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="6c8503f2-ee26-42b0-8066-b1ba15abd2fe"
->DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+>DMI.MasterDMI().In_VirtualBaliseCoverEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7347,7 +7347,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="7793d158-ccee-43d1-8888-5dd312122803"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S13</Action><Action
  Guid="870c8336-710c-4c89-9842-0f37d733250c"
->Kernel.TrainRunningNumber.DataState &lt;- Default.DataState.Unknown</Action><Action
+>Kernel.TrainRunningNumber.DataState &lt;- DataState.Unknown</Action><Action
  Guid="dd70fc54-efaa-40a7-a80a-f348be7ba735"
 >Kernel.TrainRunningNumber.Value &lt;- &apos;1234&apos;</Action></Actions>
 <Expectations>
@@ -7374,7 +7374,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="f0f2616f-1507-4f79-a176-d2847694491a"
->DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+>DMI.MasterDMI().In_TrainRunningNumberEntryRequest.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7412,7 +7412,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="497b4e49-b1ca-4480-a30b-67455c43c865"
->DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
+>DMI.MasterDMI().In_TrainRunningNumber.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7639,7 +7639,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="c4842799-1a56-4ba3-8e9d-168e52f895f3"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S2</Action><Action
  Guid="223225c3-f94a-40ee-af63-d3e4592c687f"
->Kernel.Level.DataState &lt;- Default.DataState.Unknown</Action></Actions>
+>Kernel.Level.DataState &lt;- DataState.Unknown</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7689,9 +7689,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="2fad90b1-7106-4f9a-8706-0fcb7b7af91b"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S2</Action><Action
  Guid="715350f9-2077-4b42-b6ab-fa466db077af"
->Kernel.Level.Value.Value &lt;- Default.Level.L1</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.L1</Action><Action
  Guid="ad2ab152-5ada-4c72-a5cc-8726b9a011c0"
->Kernel.Level.DataState &lt;- Default.DataState.Invalid</Action></Actions>
+>Kernel.Level.DataState &lt;- DataState.Invalid</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
@@ -7739,7 +7739,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="dee65c60-d5f2-4583-a346-f577b5c7bbb1"
->Kernel.Level.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.Level.DataState &lt;- DataState.Valid</Action><Action
  Guid="66ab9e79-ac39-470b-93fb-a9fea739a689"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.OfferLevelSelection</Action><Action
  Guid="aabd8268-808e-4eaa-b9cc-2bbc5644bac4"
@@ -7940,7 +7940,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Actions>
 <Action
  Guid="8ee4e1f2-a6d9-4351-ab72-9aa72b4d5fb2"
->Kernel.Level.Value.Value &lt;- Default.Level.LNTC</Action><Action
+>Kernel.Level.Value.Value &lt;- Level.LNTC</Action><Action
  Guid="60309814-95ff-4ceb-8ea5-bb56a7546628"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S2.ExitState</Action><Action
  Guid="ed8264ab-1d89-4aaf-a3b4-5088b236bc6a"
@@ -10116,7 +10116,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 >DMI.MasterDMI().In_RBCContactInformation.ProposedActions == [ DMI.RBCContactActionEnum.ReenterNetworkId ]</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b6c8edc2-f012-49b9-b727-acfa06fd2d60"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Default.Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase

@@ -79,7 +79,7 @@
 </Structure></Structures>
 <Functions>
 <Function
- Type="Kernel.BaliseGroups"
+ Type="BaliseGroups"
  Default=""
  X="20"
  Y="150"
@@ -119,7 +119,7 @@
 <Expression>MAP ( FIRST X IN ( BaliseGroups ) ).LIST_OF_BALISES_IN_SR_AUTHORITY.Sequence1 USING X IN CreateBaliseGroup ( X )</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.BaliseGroup"
+ Type="BaliseGroup"
  Default=""
  X="20"
  Y="210"
@@ -145,7 +145,7 @@
 >
 <Expression>Kernel.BaliseGroup
 {
-    NewCountry =&gt; Default.Q_NEWCOUNTRY_To_Bool ( aBaliseGroup.Q_NEWCOUNTRY ),
+    NewCountry =&gt; Q_NEWCOUNTRY_To_Bool ( aBaliseGroup.Q_NEWCOUNTRY ),
     NID_C =&gt; aBaliseGroup.NID_C,
     NID_BG =&gt; aBaliseGroup.NID_BG
 }</Expression>
@@ -174,7 +174,7 @@
 >
 <Expression>Available ( SRAuthorisation )
   AND
-SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )</Expression>
+SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval.Max )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -276,7 +276,7 @@ SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 <PreConditions>
 <PreCondition
  Guid="acd62eb3-0fbf-4941-9c7a-849404515151"
->NationalValues.ApplicableNationalValues.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>NationalValues.ApplicableNationalValues.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>NationalValues.ApplicableNationalValues.Value.MaxPermDistToRunInStaffResponsibleMode</Expression>
 </Case><Case
  Name="Otherwise"
@@ -373,7 +373,7 @@ SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Guid="342b18cc-bb34-4c17-8157-1bebc9fb9941"
 >SRAuthorisation &lt;- Kernel.StaffResponsible.SRStruct
 {
-    Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_SR, scale =&gt; Packet.Q_SCALE ),
     BGs =&gt; CreateBaliseGroups ( BaliseGroups =&gt; Packet.Sequence1 ),
     BGListReceived =&gt; (Packet.Sequence1 == [])
 }</Action></Actions>
@@ -488,7 +488,7 @@ SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( Default.Distance
 </Procedure></Procedures>
 <Variables>
 <Variable
- Type="Kernel.StaffResponsible.SRStruct"
+ Type="SRStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="310"
@@ -660,7 +660,7 @@ SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( Default.Distance
  Guid="2730f0b8-455b-4be6-b2c0-7875882680c5"
 >NOT Odometry.TrainIsAtStandstill()</PreCondition><PreCondition
  Guid="0ebb6c20-ebff-423e-ae86-7373db4b82ef"
->DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Default.Request.Request</PreCondition></PreConditions>
+>DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="a219ec1d-9c30-4398-b539-a56a7ed3c800"

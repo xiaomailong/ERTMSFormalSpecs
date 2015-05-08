@@ -139,13 +139,13 @@ MA.MA.TargetSpeed == 0.0
   AND  
 
 (
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MA.SvL() )
 
     AND    
 
- TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_I(
+ TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MA.ClosestEOA() )
 )</PreCondition></PreConditions>
@@ -161,7 +161,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
 
     AND    
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
@@ -233,13 +233,13 @@ MA.MA.TargetSpeed == 0.0
  AND 
 
 (
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MA.SvL() )
 
     OR    
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MA.ClosestEOA() )
 )</PreCondition><PreCondition
@@ -414,7 +414,7 @@ MA.MA.TargetSpeed == 0.0
  Guid="1d09dc23-9222-472e-bfbf-0358c5f37231"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_warning( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="2f194928-7a05-4d7f-aea1-d31fda866459"
->TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &lt;= d_I(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; Target{
         Location =&gt; StaffResponsible.DistanceToRun(),
@@ -440,13 +440,13 @@ MA.MA.TargetSpeed == 0.0
  AND 
 
 (
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MA.SvL() )
 
   AND  
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MA.ClosestEOA() )
 )</PreCondition></PreConditions>
@@ -462,7 +462,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_I(
 
     AND    
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
@@ -549,21 +549,21 @@ MA.MA.TargetSpeed == 0.0
  AND 
 
 (
-( TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
+( TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MA.SvL() )
     OR  
-  TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I(
+  TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MA.ClosestEOA() ) )
 
   AND  
 
-( TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_W(
+( TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_W(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MA.SvL() )
    AND  
-  TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &lt;= d_W(
+  TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_W(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; MA.ClosestEOA() ) )
 )</PreCondition></PreConditions>
@@ -581,9 +581,9 @@ MA.MA.TargetSpeed == 0.0
 
 d_I(
     Vest =&gt; Odometry.TrainSpeed(),
-    aTarget =&gt; aTarget ) &lt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)
+    aTarget =&gt; aTarget ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)
   AND  
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_W(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_W(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
@@ -681,7 +681,7 @@ TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_W(
 
     AND    
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_W(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_W(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
@@ -731,7 +731,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_W(
  Guid="3a3debe1-625f-44fc-87cc-428207f46d6e"
 >Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_sbi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="14f1484e-5d51-4124-9e4b-e4a96ba5f0ec"
->TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &lt; d_I(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &lt; d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; Target{
         Location =&gt; StaffResponsible.DistanceToRun(),
@@ -779,7 +779,7 @@ TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_I(
 
     AND    
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
@@ -899,9 +899,9 @@ MA.MA.TargetSpeed == 0.0
 
  d_I(
     Vest =&gt; Odometry.TrainSpeed(),
-    aTarget =&gt; aTarget ) &lt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Max)
+    aTarget =&gt; aTarget ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Max)
   AND
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_SBI2(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_SBI2(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget,
     NoA_est =&gt; False ) )</Expression>
@@ -1001,7 +1001,7 @@ TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_SBI1(
 
     AND    
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_SBI2(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_SBI2(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget,
     NoA_est =&gt; False ) )</Expression>
@@ -1101,7 +1101,7 @@ Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_ebi ( MRSP
 
     AND    
 
-TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_I(
+TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= d_I(
     Vest =&gt; Odometry.TrainSpeed(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
@@ -1217,9 +1217,9 @@ Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_ebi ( MRSP
 
 d_I(
     Vest =&gt; Odometry.TrainSpeed(),
-    aTarget =&gt; aTarget) &lt; TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max )
+    aTarget =&gt; aTarget) &lt; TrainPosition.FrontEndPosition ( DistanceInterval.Max )
   AND  
-TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &lt;= d_EBI ( Vest =&gt; Odometry.TrainSpeed(), aTarget =&gt; aTarget ) )</Expression>
+TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &lt;= d_EBI ( Vest =&gt; Odometry.TrainSpeed(), aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1308,7 +1308,7 @@ Odometry.TrainSpeed() &lt;= MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_ebi ( MRSP
 
     AND    
 
-TrainPosition.FrontEndPosition ( Default.DistanceInterval.Max ) &gt; d_EBI ( Vest =&gt; Odometry.TrainSpeed(), aTarget =&gt; aTarget ))</Expression>
+TrainPosition.FrontEndPosition ( DistanceInterval.Max ) &gt; d_EBI ( Vest =&gt; Odometry.TrainSpeed(), aTarget =&gt; aTarget ))</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -1399,7 +1399,7 @@ TrainPosition.FrontEndPosition(DistanceInterval.Nom) &lt;= d_I(
 
   AND  
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &lt;= d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &lt;= d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>
@@ -1581,13 +1581,13 @@ MA.MA.TargetSpeed == 0.0
 
     OR    
 
-( TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I(
+( TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I(
      Vest =&gt; Odometry.TrainSpeed(),
      aTarget =&gt; MA.SvL() )
 
   OR  
 
-  TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I(
+  TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_I(
      Vest =&gt; Odometry.TrainSpeed(),
      aTarget =&gt; MA.ClosestEOA() ) )
 )</PreCondition></PreConditions>
@@ -1795,7 +1795,7 @@ MA.MA.TargetSpeed == 0.0
 </ReqRef><Comment>This function returns the Target Speed of the currently supervised target, unless it is the EOA or the SvL, in which case it returns the associated release speed.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="Target"
  Name="aTarget"
  Guid="a42fe859-9b76-438a-be40-dc0154cd6d13"
 >
@@ -1845,7 +1845,7 @@ MA.IsSvL(aTarget)</PreCondition><PreCondition
 </ReqRef><Comment>Returns the target speed + the difference to warning speed for a LOA or MRDT target, or the release speed for a EOA or SvL.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="Target"
  Name="aTarget"
  Guid="bcffc93e-fb88-409d-b230-a75428068c5e"
 >
@@ -1895,7 +1895,7 @@ MA.IsSvL(aTarget)</PreCondition></PreConditions>
 </ReqRef><Comment>Returns the target speed + the difference to sbi speed for a LOA or MRSP target, or the release speed for a EOA or SvL.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target"
+ Type="Target"
  Name="aTarget"
  Guid="868355bf-af60-4a8e-b83e-1f294c8c1df6"
 >
@@ -1965,7 +1965,7 @@ MA.IsSvL(aTarget)</PreCondition><PreCondition
  Guid="f80fe6b3-c394-49a0-9007-09c3436bb189"
 >Odometry.TrainSpeed() &gt; MRSP.V_MRSP() + CeilingSpeedMonitoring.dV_ebi( MRSP.V_MRSP() )</PreCondition><PreCondition
  Guid="24699bfb-8dd1-4e5c-9595-f1017a992208"
->TrainPosition.DistanceRunInSR(Default.DistanceInterval.Max) &gt; d_I(
+>TrainPosition.DistanceRunInSR(DistanceInterval.Max) &gt; d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; Target{
         Location =&gt; StaffResponsible.DistanceToRun(),
@@ -1989,13 +1989,13 @@ MA.MA.TargetSpeed == 0.0
  AND 
 
 (
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MA.SvL() )
 
   AND  
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Nom) &gt; d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; MA.ClosestEOA() )
 )</PreCondition></PreConditions>
@@ -2009,7 +2009,7 @@ TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom) &gt; d_I(
 
   AND  
 
-TrainPosition.FrontEndPosition(Default.DistanceInterval.Max) &gt; d_I(
+TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt; d_I(
     Vest =&gt; MRSP.V_MRSP(),
     aTarget =&gt; aTarget ) )</Expression>
 </Case></Cases>

@@ -56,7 +56,7 @@
 >
 </ReqRef></StructureElement><StructureElement
  TypeName="Default.BaseTypes.Speed"
- Default="Default.BaseTypes.Speed.MaxSpeed"
+ Default="BaseTypes.Speed.MaxSpeed"
  Mode="Internal"
  Implemented="TRUE"
  Name="BasicSpeed"
@@ -193,7 +193,7 @@
 </ReqRef></StructureElement></Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.StaticSpeedProfile.SSPCategory"
+ TypeName="SSPCategory"
  MaxSize="30"
  Default="[]"
  X="440"
@@ -207,7 +207,7 @@
 >
 <Comment>A collection of speed restrictions for train categories, received from the trackside.</Comment>
 </Collection><Collection
- TypeName="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ TypeName="StaticSpeedRestrictionStruct"
  MaxSize="50"
  Default="[]"
  X="220"
@@ -254,7 +254,7 @@
 </ReqRef><Comment>Provides the length of a static speed restriction together with the train&apos;s length, if needed.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="737d63a4-ba8a-431b-83b0-d1a93b352e6a"
 >
@@ -304,7 +304,7 @@
 </ReqRef><Comment>Provides the highest Cant Deficiency value below the value of the train&apos;s &quot;Cant Deficiency&quot; train category.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Name="aSSR"
  Guid="b801973a-5099-4ab2-b810-01ca1067e7fd"
 >
@@ -399,7 +399,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the speed restriction for Cant Deficiency train category. If no speed restriction for Cant Deficiency categories were provided by the trackside, the function returns the basic speed associated to the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Name="aSSR"
  Guid="342a3b79-f226-4427-906f-5e0144fc557b"
 >
@@ -421,7 +421,7 @@ INITIAL_VALUE
 <Expression>(FIRST X IN aSSR.Categories | X.Qualifier == Messages.Q_DIFF.Cant_Deficiency_specific_category AND X.CantDeficiency == SelectCantDeficiencyCategory(aSSR)).Speed</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Default=""
  X="440"
  Y="180"
@@ -485,7 +485,7 @@ INITIAL_VALUE
     Location =&gt; Location,
     BasicSpeed =&gt; BasicSpeed,
     TrainLengthDelay =&gt; TrainLengthDelay,
-    Categories =&gt; MAP Categories USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( X.V_DIFF, 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
+    Categories =&gt; MAP Categories USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;MessageTypes.SpeedResolution ( X.V_DIFF, 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
 }</Expression>
 </Case></Cases>
 </Function><Function
@@ -526,10 +526,10 @@ INITIAL_VALUE
     SSRs |
         Before ( ExpectedFirst =&gt; X, ExpectedSecond =&gt; aSSR, Collection =&gt; SSRs ) OR ( X == aSSR )
 USING X IN
-    Default.MessageTypes.QScaleDistance ( distance =&gt; X.D_STATIC, scale =&gt; Scale)</Expression>
+    MessageTypes.QScaleDistance ( distance =&gt; X.D_STATIC, scale =&gt; Scale)</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrackDescription.StaticSpeedProfile.SSPCategory"
+ Type="SSPCategory"
  Default=""
  X="660"
  Y="180"
@@ -645,7 +645,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the speed profile due to a static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="56feb81c-ddb2-42c4-a6fb-d5925061bfd2"
 >
@@ -683,7 +683,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
  Guid="15221f58-b9e6-4991-9f91-ce91e073c79b"
 >aSSP.Location &lt;= Distance</PreCondition><PreCondition
  Guid="a3494ca1-2ab4-45f5-9d76-b4fec8b96902"
->Distance &lt; Default.BaseTypes.AddDistance (X1 =&gt; aSSP.Location, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
+>Distance &lt; BaseTypes.AddDistance (X1 =&gt; aSSP.Location, X2 =&gt; SSPLength(aSSP))</PreCondition></PreConditions>
 <Expression>SSPSpeed ( aSSP )</Expression>
 </Case><Case
  Name="Outside SSP"
@@ -716,7 +716,7 @@ INITIAL_VALUE BaseTypes.MaxSpeedFunction) (Distance)</Expression>
 </ReqRef><Comment>Provides the end of the current static speed restriction.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Name="Current"
  Guid="1f758756-d147-4b5d-a37d-377031c83a6f"
 >
@@ -761,7 +761,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the speed value associated to the current static speed restrition, according to train categories values.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="9723b4d6-987f-461d-a853-76ef74a11e00"
 >
@@ -847,7 +847,7 @@ INITIAL_VALUE
 </ReqRef><Comment>Provides the most restrictive speed restrictions associated to Other Specific train categories provided by the trackside mathing the Other International categories of the train.</Comment>
 <Parameters>
 <Parameter
- Type="Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct"
+ Type="StaticSpeedRestrictionStruct"
  Name="aSSP"
  Guid="07940cee-c6c5-43dd-9cad-a38350866b44"
 >
@@ -865,7 +865,7 @@ INITIAL_VALUE
     BaseTypes.Speed.MaxSpeed</Expression>
 </Case></Cases>
 </Function><Function
- Type="Kernel.TrainData.TrainCategoryEnum"
+ Type="TrainData.TrainCategoryEnum"
  Default=""
  X="660"
  Y="240"
@@ -932,7 +932,7 @@ INITIAL_VALUE
 <PreCondition
  Guid="cb66de97-90ab-4a91-92d2-e3d00eaa5426"
 >SSP == []</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="ad59596b-0db0-4f50-b0fb-cfc610a8a2b4"
@@ -1016,7 +1016,7 @@ INITIAL_VALUE
 <Action
  Guid="cc434071-3c30-4ef5-ac05-dfbaaf5a9c9c"
 >REMOVE ALL
-    X.Location &gt;= Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE)
+    X.Location &gt;= MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE)
 IN
     SSP</Action></Actions>
 </RuleCondition></Conditions>
@@ -1062,7 +1062,7 @@ IN
 >INSERT
   CreateFirstSSP
   (
-    Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
+    Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
     BasicSpeed =&gt;BaseTypes.Speed.Infinity,
     TrainLengthDelay =&gt; Packet.Q_FRONT,
     Categories =&gt; Packet.Sequence1
@@ -1096,8 +1096,8 @@ IN
 <Action
  Guid="2ec09015-103d-44f3-b420-26001a56aa72"
 >INSERT
-    CreateFirstSSP ( Location =&gt; Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
-                               BasicSpeed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; Packet.V_STATIC, resolution =&gt; 5.0),
+    CreateFirstSSP ( Location =&gt; MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ),
+                               BasicSpeed =&gt; MessageTypes.SpeedResolution ( speed =&gt; Packet.V_STATIC, resolution =&gt; 5.0),
                                TrainLengthDelay =&gt; Packet.Q_FRONT,
                                Categories =&gt; Packet.Sequence1 )
 IN
@@ -1127,7 +1127,7 @@ IN
  Guid="1353f5e7-b5ab-4b5e-9b25-07b8c3448625"
 >APPLY
     AddSSP ( aSSP =&gt; X,
-                    Location =&gt; AbsoluteDistance ( SSRs =&gt; Packet.Sequence3, aSSR =&gt; X, Scale =&gt; Packet.Q_SCALE ) + Default.MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ) )
+                    Location =&gt; AbsoluteDistance ( SSRs =&gt; Packet.Sequence3, aSSR =&gt; X, Scale =&gt; Packet.Q_SCALE ) + MessageTypes.QScaleDistance ( distance =&gt; Packet.D_STATIC, scale =&gt; Packet.Q_SCALE ) )
 ON
     Packet.Sequence3</Action></Actions>
 </RuleCondition></Conditions>
@@ -1212,9 +1212,9 @@ ON
     Kernel.TrackDescription.StaticSpeedProfile.StaticSpeedRestrictionStruct
     {
         Location =&gt; Location,
-        BasicSpeed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; aSSP.V_STATIC, resolution =&gt; 5.0 ),
+        BasicSpeed =&gt; MessageTypes.SpeedResolution ( speed =&gt; aSSP.V_STATIC, resolution =&gt; 5.0 ),
         TrainLengthDelay =&gt; aSSP.Q_FRONT,
-        Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
+        Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt;MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
     }
 IN
     SSP</Action></Actions>
@@ -1239,7 +1239,7 @@ IN
         Location =&gt; Location,
         BasicSpeed =&gt; BaseTypes.Speed.Infinity,
         TrainLengthDelay =&gt; aSSP.Q_FRONT,
-        Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt; Default.MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
+        Categories =&gt; MAP aSSP.Sequence2 USING X IN CreateSSPCategory ( Qualifier =&gt; X.Q_DIFF, Speed =&gt; MessageTypes.SpeedResolution ( speed =&gt; X.V_DIFF, resolution =&gt; 5.0 ), CantDeficiency =&gt; X.NC_CDDIFF, OtherSpecific =&gt; ERTMSCategory_To_EFSCategory ( X.NC_DIFF ) )
     }
 IN
     SSP</Action></Actions>

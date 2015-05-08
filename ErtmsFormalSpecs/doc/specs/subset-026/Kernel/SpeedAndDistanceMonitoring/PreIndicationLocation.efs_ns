@@ -74,10 +74,10 @@
 <PreCondition
  Guid="65e4ee15-8de3-4280-ab44-b313f03991f9"
 >DecelerationCurves.EBD_Target(
-    Distance =&gt; TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom),
+    Distance =&gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom),
     aTarget =&gt; aTarget
-) &lt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+) &lt; MRSP.SpeedRestrictions(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="87bc3884-bbcf-40e7-891f-a35b2baa7c00"
@@ -129,8 +129,8 @@
 <PreConditions>
 <PreCondition
  Guid="84471b54-f275-455e-92d5-7c7965c4c2ac"
->PreIndicationLocation.d_EBI ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+>PreIndicationLocation.d_EBI ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="6f89c598-f655-4f78-82da-514e35c14b27"
@@ -191,8 +191,8 @@
 <PreConditions>
 <PreCondition
  Guid="d7997842-cff4-40cf-824c-d2e0c2f10f2e"
->PreIndicationLocation.d_P ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+>PreIndicationLocation.d_P ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="Value"
  Guid="24aaf0e5-5720-411a-ae32-9abd355f6ec5"
@@ -245,12 +245,12 @@
 <PreCondition
  Guid="76ff14fe-1069-48b8-a935-8bfa9f50e6fc"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>d_SBI1 ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver</Expression>
+<Expression>d_SBI1 ( Vmrsp ) - BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="e2ed0a38-959f-4ca1-af51-1fd4543d4a69"
 >
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; d_SBI1 ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DecelerationCurves.GUI_TargetForSpeed( Vest =&gt;Vmrsp, aTarget =&gt; TargetSpeedMonitoring.MovementEnd() ) )</Expression>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; d_SBI1 ( Vmrsp ) - BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DecelerationCurves.GUI_TargetForSpeed( Vest =&gt;Vmrsp, aTarget =&gt; TargetSpeedMonitoring.MovementEnd() ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -339,10 +339,10 @@ MRSPnTarget.Speed == 0.0</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="5a958cda-e0be-4be2-bd2b-8d2f74669d4e"
->PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationLocation.TargetSpeed(MRSPnTarget) ) == Default.BaseTypes.Distance.Unknown
+>PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationLocation.TargetSpeed(MRSPnTarget) ) == BaseTypes.Distance.Unknown
   OR  
 PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationLocation.TargetSpeed(MRSPnTarget) ) &lt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="EOA, first case"
  Guid="e4ed753d-ac09-403e-afd3-fb72a28b9706"
@@ -419,7 +419,7 @@ PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationL
  Name="Value"
  Guid="7c618fa6-806f-47d7-a5c8-bba444d4051f"
 >
-<Expression>d_P_EOA ( Vmrsp ) - Default.BaseTypes.SpeedToMS(Vmrsp) * DecelerationCurves.T_indication()</Expression>
+<Expression>d_P_EOA ( Vmrsp ) - BaseTypes.SpeedToMS(Vmrsp) * DecelerationCurves.T_indication()</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -459,10 +459,10 @@ PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationL
 <PreConditions>
 <PreCondition
  Guid="26547639-7eb2-4771-b3a4-98e999000a86"
->PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition><PreCondition
+>PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == BaseTypes.Distance.Unknown</PreCondition><PreCondition
  Guid="17c78d4b-e553-424a-91e2-d629a6193be3"
 >NOT NationalValues.ComputationOfGUIIsEnabled()</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="GUI is inhibited"
  Guid="f66f3c06-c206-4999-97d9-25170cc4e170"
@@ -480,15 +480,15 @@ PreIndicationLocation.d_I( aTarget =&gt; MRSPnTarget, Vmrsp =&gt; PreIndicationL
 <PreConditions>
 <PreCondition
  Guid="5a134c95-d52f-4f4c-b96c-6001a9bd4881"
->PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Default.BaseTypes.Distance.Unknown
+>PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == BaseTypes.Distance.Unknown
   OR  
-PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Default.BaseTypes.Distance.Unknown</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Distance.Unknown</Expression>
+PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == BaseTypes.Distance.Unknown</PreCondition></PreConditions>
+<Expression>BaseTypes.Distance.Unknown</Expression>
 </Case><Case
  Name="GUI is enabled"
  Guid="ed419bb1-5c35-46f3-8791-27aa4b53b189"
 >
-<Expression>Default.BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) - BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DecelerationCurves.GUI_TargetForSpeed( aTarget =&gt; aTarget, Vest =&gt; Vmrsp ) )</Expression>
+<Expression>BaseTypes.MinDistance ( X1 =&gt; PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) - BaseTypes.SpeedToMS(Vmrsp) * TargetSpeedMonitoring.T_driver, X2 =&gt; DecelerationCurves.GUI_TargetForSpeed( aTarget =&gt; aTarget, Vest =&gt; Vmrsp ) )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -543,7 +543,7 @@ PreIndicationLocation.d_SBI2 ( aTarget =&gt; aTarget, Vmrsp =&gt; Vmrsp ) == Def
  Name="Otherwise"
  Guid="2864273a-427e-4862-800f-f42bb985cd36"
 >
-<Expression>Default.BaseTypes.Distance.Infinity</Expression>
+<Expression>BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="TargetSpeedMonitoring.Target"
@@ -579,7 +579,7 @@ USING X IN MA.ClosestTarget(
     )
 
 INITIAL_VALUE TargetSpeedMonitoring.Target{
-    Location =&gt; Default.BaseTypes.Distance.Infinity,
+    Location =&gt; BaseTypes.Distance.Infinity,
     Speed =&gt; 0.0,
     Length =&gt; 0.0
     }</Expression>
@@ -661,7 +661,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
 <PreCondition
  Guid="45beedbc-f467-47d2-8bf3-c143f1c8be4b"
 >NOT PreIndicationLocation.LocationIsInSpeedRestriction(PreIndicationLocation.MRSPnEnd(Target))</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.Speed.MaxSpeed</Expression>
+<Expression>BaseTypes.Speed.MaxSpeed</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="35c09766-18ba-4b49-b7eb-7cf4f9834d95"
@@ -698,7 +698,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
 <PreConditions>
 <PreCondition
  Guid="75c33eaf-bfaf-4252-b19c-44d3c2ff41eb"
->MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.FrontEndPosition(Default.DistanceInterval.Nom))</PreCondition></PreConditions>
+>MRSPnTarget == PreIndicationLocation.FirstTargetFromLocation(TrainPosition.FrontEndPosition(DistanceInterval.Nom))</PreCondition></PreConditions>
 <Expression>0.0</Expression>
 </Case><Case
  Name="Otherwise"
@@ -761,7 +761,7 @@ INITIAL_VALUE Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Target{
  Guid="7728236a-d7fe-40c3-9417-ee0dd230e10c"
 >
 <Comment>Dist is measured from the LRBG</Comment>
-<Expression>THERE_IS X IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + Default.BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
+<Expression>THERE_IS X IN TargetsList() |  (X.Location &lt; Dist) AND (X.Location + BaseTypes.LengthToDistance(X.Length) &gt;= Dist)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Speed"
@@ -808,7 +808,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT()) )
   OR  
 MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <Expression>d_I_EOA( TargetSpeed(TargetSpeedMonitoring.MRDT()) ) - TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;Default.DistanceInterval.Nom
+    PointOfInterest=&gt;DistanceInterval.Nom
 )</Expression>
 </Case><Case
  Name="Another target, d_I behind the train"
@@ -825,7 +825,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 >
 <Expression>d_I( aTarget =&gt; TargetSpeedMonitoring.MRDT(), Vmrsp =&gt; TargetSpeed(TargetSpeedMonitoring.MRDT()) )
  - TrainPosition.FrontEndPosition(
-    PointOfInterest=&gt;Default.DistanceInterval.Nom
+    PointOfInterest=&gt;DistanceInterval.Nom
 )</Expression>
 </Case></Cases>
 </Function><Function
@@ -936,7 +936,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
 <PreCondition
  Guid="85b78555-4e3f-43d7-9c70-2d17711bc6e3"
 >Kernel.TrainData.TrainData.Value.TractionCutOffInterfaceIsImplemented</PreCondition></PreConditions>
-<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off (NoA_est =&gt; True) - ( TargetSpeedMonitoring.T_warning + T_bs2ind() ) ), X2 =&gt; 0.0 )</Expression>
+<Expression>BaseTypes.MaxTime ( X1 =&gt; ( TrainData.BrakingParameters.T_traction_cut_off (NoA_est =&gt; True) - ( TargetSpeedMonitoring.T_warning + T_bs2ind() ) ), X2 =&gt; 0.0 )</Expression>
 </Case><Case
  Name="Traction cut-off is not implemented"
  Guid="784c8261-6034-48b5-8d85-f5e1de8b6a24"
@@ -970,7 +970,7 @@ MA.IsSvL(TargetSpeedMonitoring.MRDT())</PreCondition></PreConditions>
  Name="Value"
  Guid="23041453-a6e4-44cb-9ecb-a6704be9950a"
 >
-<Expression>Default.BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_tractionind (), X2 =&gt; 0.0 )</Expression>
+<Expression>BaseTypes.MaxTime ( X1 =&gt; TrainData.BrakingParameters.T_be () - T_tractionind (), X2 =&gt; 0.0 )</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"

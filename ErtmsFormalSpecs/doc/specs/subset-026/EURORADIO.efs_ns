@@ -611,7 +611,7 @@ Available(MessageIn)
     NID_MESSAGE =&gt; 136,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     Sequence1 =&gt; [],
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
 }</Action></Actions>
 <SubRules>
 <Rule
@@ -668,7 +668,7 @@ Available(MessageIn)
  Guid="6fb82fcc-1dd5-40c1-a0a7-87279e71cf42"
 >Kernel.HandleModeChange not in Kernel.HandleModeChangeSM.EndOfMission</PreCondition><PreCondition
  Guid="5367589d-d8aa-4929-8097-c8ee899fbb19"
->Kernel.Level.Value.Value in [Default.Level.L2, Default.Level.L3]</PreCondition></PreConditions>
+>Kernel.Level.Value.Value in [Level.L2, Level.L3]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="d67963d3-60e6-4eed-8fac-e91efefafe50"
@@ -768,7 +768,7 @@ Available(MessageIn)
     Q_STATUS =&gt; PositionReport.FillQStatus(),
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     Sequence1 =&gt; EMPTY,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime)
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -906,7 +906,7 @@ Available(MessageIn)
 {
     NID_MESSAGE =&gt; 129,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport(),
     VALIDATED_TRAIN_DATA =&gt; TrainData.CreateTrainData()
@@ -987,7 +987,7 @@ Available(MessageIn)
 {
     NID_MESSAGE =&gt; 150,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
@@ -1067,7 +1067,7 @@ Available(MessageIn)
 {
     NID_MESSAGE =&gt; 130,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
@@ -1193,7 +1193,7 @@ Available(MessageIn)
 {
     NID_MESSAGE =&gt; 132,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     Q_MARQSTREASON =&gt; aReason,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
@@ -1362,7 +1362,7 @@ MessageOut.MA_REQUEST.Sequence1</Action></Actions>
  {
     NID_MESSAGE =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_MESSAGE,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     NID_EM =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.NID_EM,
     Q_EMERGENCYSTOP =&gt; Qualifier,
@@ -1444,7 +1444,7 @@ MessageOut.MA_REQUEST.Sequence1</Action></Actions>
 {
     NID_MESSAGE =&gt; 155,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1529,7 +1529,7 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 {
     NID_MESSAGE =&gt; 156,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1569,9 +1569,9 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
  Guid="f86651e7-1ebb-49de-8053-907c88f5741d"
 >NumberOfSentRequests &lt;- 0</Action><Action
  Guid="3d5afa42-b712-4474-af54-81ae258173b2"
->SessionManagementData.SystemVersion.DataState &lt;- Default.DataState.Unknown</Action><Action
+>SessionManagementData.SystemVersion.DataState &lt;- DataState.Unknown</Action><Action
  Guid="9687e639-b5c6-470d-813a-f17940cd2731"
->ConnectionLostTime &lt;- Default.BaseTypes.Time.Infinity</Action><Action
+>ConnectionLostTime &lt;- BaseTypes.Time.Infinity</Action><Action
  Guid="ff4c1c3d-36bb-4e52-ae97-a17eabff757a"
 >IsMainConnection &lt;- True</Action></Actions>
 </RuleCondition></Conditions>
@@ -1650,7 +1650,7 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 {
     NID_MESSAGE =&gt; 154,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine}</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1728,7 +1728,7 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 {
     NID_MESSAGE =&gt; 159,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     Sequence1 =&gt;
     [
@@ -1875,7 +1875,7 @@ ConnectionState in ConnectionStateSM.Terminating</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="463e0b98-b0fb-4545-a160-7e6de88c2d9d"
->Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Max ) &lt; PositionReport.RBCTransitionLocation</PreCondition><PreCondition
+>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &lt; PositionReport.RBCTransitionLocation</PreCondition><PreCondition
  Guid="91826cfb-7c30-4aa3-b40e-60bf92efdbca"
 >NOT IsMainConnection</PreCondition><PreCondition
  Guid="885cc8be-6c21-4bda-af80-c9e89caad95a"
@@ -2253,7 +2253,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 {
     NID_MESSAGE =&gt; 149,
     L_MESSAGE =&gt; 0,
-    T_TRAIN =&gt; Default.MessageTypes.UnResolveTime(Kernel.DateAndTime.CurrentTime),
+    T_TRAIN =&gt; MessageTypes.UnResolveTime(Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
 }</Action></Actions>
@@ -2314,7 +2314,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 {
     NID_MESSAGE =&gt; 137,
     L_MESSAGE =&gt; 0,
-    T_TRAIN_0 =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN_0 =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     T_TRAIN_1 =&gt; TimeStamp,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
@@ -2376,7 +2376,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 {
     NID_MESSAGE =&gt; 138,
     L_MESSAGE =&gt; 0,
-    T_TRAIN_0 =&gt; Default.MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
+    T_TRAIN_0 =&gt; MessageTypes.UnResolveTime( time =&gt; Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     T_TRAIN_1 =&gt; TimeStamp,
     POSITION_REPORT =&gt; PositionReport.CreatePositionReport()
@@ -2455,7 +2455,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 >MessageOut.ACKNOWLEDGEMENT &lt;- Messages.MESSAGE.TRAIN_TO_TRACK.ACKNOWLEDGEMENT.Message{
     NID_MESSAGE =&gt; 146,
     L_MESSAGE =&gt; 0,
-    T_TRAIN_0 =&gt; Default.MessageTypes.UnResolveTime(Kernel.DateAndTime.CurrentTime),
+    T_TRAIN_0 =&gt; MessageTypes.UnResolveTime(Kernel.DateAndTime.CurrentTime),
     NID_ENGINE =&gt; Kernel.NidEngine,
     T_TRAIN_1 =&gt; Messages.MESSAGE.TRACK_TO_TRAIN.GetT_TRAIN(MessageIn.Message)
 }</Action></Actions>
@@ -2572,7 +2572,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 - termination the communication session</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
- Default="Default.BaseTypes.Time.Infinity"
+ Default="BaseTypes.Time.Infinity"
  Mode="Internal"
  Implemented="TRUE"
  Name="ConnectionLostTime"
@@ -2608,8 +2608,8 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 >
 <Comment>In case of RBC/RBC handover with two simultaneous connections, this flag indicates which RBC is the main one. In the beginning of the handover the main RBC is the Handing Over RBC, but after the transfer of train supervision to the Accepting RBC, the latter becomes the main RBC.</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Time"
- Default="Default.BaseTypes.Time.NA"
+ TypeName="Default.BaseTypes.Time"
+ Default="BaseTypes.Time.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="OnboardReference_MessageTimer"
@@ -3080,7 +3080,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
  Guid="f77d82ba-eaff-4fd1-81c0-2026665608aa"
 >SessionManagementData.ConnectionRequestIsSent &lt;- True</Action><Action
  Guid="9e7c16f9-a8e2-4265-b301-cfb9022263c3"
->ConnectionLostTime &lt;- Default.BaseTypes.Time.Infinity</Action></Actions>
+>ConnectionLostTime &lt;- BaseTypes.Time.Infinity</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
  Name="Repeat the connection request"
@@ -3279,7 +3279,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="e83c3c3e-9cfa-4ec8-9613-96417be71c7d"
->Kernel.LevelTransition.LevelTransitionToProcess.TRLevel.Value in [Default.Level.L0, Default.Level.LNTC, Default.Level.L1]</PreCondition></PreConditions>
+>Kernel.LevelTransition.LevelTransitionToProcess.TRLevel.Value in [Level.L0, Level.LNTC, Level.L1]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b71b573b-1f53-4f37-97b5-3ea811c3a2c3"
@@ -3377,7 +3377,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="a315cce6-b406-417c-9709-d00d567e3b73"
->Kernel.TrainPosition.FrontEndPosition(PointOfInterest =&gt; Default.DistanceInterval.Max) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
+>Kernel.TrainPosition.FrontEndPosition(PointOfInterest =&gt; DistanceInterval.Max) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="7857191c-725b-4d50-9197-8c15c1d2f16a"
@@ -3451,7 +3451,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 <PreConditions>
 <PreCondition
  Guid="fc7f4583-9abe-4721-9172-3d91c2dbab42"
->SessionManagementData.SystemVersion.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>SessionManagementData.SystemVersion.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 </Actions>
 <SubRules>
@@ -3566,7 +3566,7 @@ NOT IncomingMessageIsConsistent(MessageIn)</PreCondition></PreConditions>
 </ReqRef><PreConditions>
 <PreCondition
  Guid="8473eb41-8b29-4bfc-850f-20dab16f4863"
->Kernel.Mode != Default.Mode.SL</PreCondition></PreConditions>
+>Kernel.Mode != Mode.SL</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="67b23c1f-f588-4c6d-82e0-4bd1b8feb62a"
@@ -3818,7 +3818,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
 <PreConditions>
 <PreCondition
  Guid="2b26b73e-2b41-4741-8f2b-9b3ebe6994aa"
->Kernel.TrainData.TrainData.DataState == Default.DataState.Valid</PreCondition><PreCondition
+>Kernel.TrainData.TrainData.DataState == DataState.Valid</PreCondition><PreCondition
  Guid="1885385a-2aa3-4151-8396-e579fca7bd78"
 >IsMainConnection</PreCondition></PreConditions>
 <Actions>
@@ -3841,7 +3841,7 @@ ContactRBCOrder.ActionToPerform == ContactActionEnum.Terminate</PreCondition></P
  Guid="07e657aa-3707-4bda-a4f4-a6d13481015f"
 >NOT IsMainConnection</PreCondition><PreCondition
  Guid="22d43fd5-302a-4983-ae19-6ff1aa829b83"
->Kernel.Mode not in [Default.Mode.SL, Default.Mode.NL]</PreCondition></PreConditions>
+>Kernel.Mode not in [Mode.SL, Mode.NL]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="f921aecf-212e-43c9-a4d7-622345fa1983"
@@ -4620,7 +4620,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 >
 </ReqRef><Comment>Indicates whether the order applies also to Sleeping units.</Comment>
 </StructureElement><StructureElement
- TypeName="BaseTypes.Distance"
+ TypeName="Default.BaseTypes.Distance"
  Default="BaseTypes.Distance.Unknown"
  Mode="Internal"
  Implemented="TRUE"
@@ -4899,7 +4899,7 @@ Aftter a defined number of repetitions, if no acknowledgement is received from t
 <Comment>Phone number of the RBC.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.DataState"
- Default="Default.DataState.Invalid"
+ Default="DataState.Invalid"
  Mode="Internal"
  Implemented="TRUE"
  Name="DataState"
@@ -5439,7 +5439,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 </ReqRef><Comment>Allows to request the list of available and allowed networkds, based on a request to the Mobile Terminal(s).</Comment>
 <StructureElement
  TypeName="Default.Request"
- Default="Default.Request.Disabled"
+ Default="Request.Disabled"
  Mode="Internal"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
@@ -5484,7 +5484,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 <Comment>The value of the system version.</Comment>
 </StructureElement><StructureElement
  TypeName="Default.DataState"
- Default="Default.DataState.Unknown"
+ Default="DataState.Unknown"
  Mode="Internal"
  Implemented="TRUE"
  Name="DataState"
@@ -5632,7 +5632,7 @@ After that, if an order to contact an Accepting RBC was received, it will be han
 Terminal2.RBCConnection.ConnectionState in EURORADIO.RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
- Type="EURORADIO.RBCStruct"
+ Type="RBCStruct"
  Default=""
  X="110"
  Y="540"
@@ -5822,7 +5822,7 @@ Terminal2 != EMPTY</Expression>
 Terminal2.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="EURORADIO.TerminalStruct"
+ Type="TerminalStruct"
  Default=""
  X="220"
  Y="600"
@@ -6023,7 +6023,7 @@ It can only return false if there is no open session or if the last known RBC ha
 <Comment>Indicates if the provided terminal is registered.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.TerminalStruct"
+ Type="TerminalStruct"
  Name="aTerminal"
  Guid="12711288-b128-4515-ac14-d0435e91c454"
 >
@@ -6038,7 +6038,7 @@ It can only return false if there is no open session or if the last known RBC ha
 aTerminal.RegistrationState in TerminalStruct.RegistrationStateSM.Registered</Expression>
 </Case></Cases>
 </Function><Function
- Type="EURORADIO.RBCStruct"
+ Type="RBCStruct"
  Default=""
  X="220"
  Y="660"
@@ -6126,7 +6126,7 @@ TerminalIsRegistered ( aTerminal=&gt; Terminal2 )</PreCondition></PreConditions>
 </ReqRef><Comment>Indicates if a communication session has to be established.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.RBCStruct"
+ Type="RBCStruct"
  Name="anRBC"
  Guid="6c09e0fd-ecb7-47eb-aaaf-39f94e0970ee"
 >
@@ -6206,7 +6206,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 </ReqRef><Comment>Indicates if an outgoing message can be sent. The only condition to be satisfied is to have an established session. A message can thus be sent during a loss of the safe radio connection if the connection state is still &quot;Connected&quot;. But no message can be sent after the message &quot;Termination of communication session&quot; since after having sent this message the system goes to &quot;Terminating&quot; state.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.RBCStruct"
+ Type="RBCStruct"
  Name="anRBC"
  Guid="b40133ab-d13d-4324-bde5-7de83839347c"
 >
@@ -6219,7 +6219,7 @@ anRBC.ContactRBCOrder.ActionToPerform == ContactActionEnum.Establish</PreConditi
 <Expression>anRBC.ConnectionState in EURORADIO.RBCStruct.ConnectionStateSM.Connected</Expression>
 </Case></Cases>
 </Function><Function
- Type="EURORADIO.RBCStruct"
+ Type="RBCStruct"
  Default=""
  Y="720"
  Width="100"
@@ -6339,7 +6339,7 @@ The only one case where the status to display is that of the secondary connectio
  Guid="514190b9-00d9-4441-8105-a81690a45408"
 >SecondaryRBCConnection().SafeRadioConnectionStatus != SafeRadioConnectionStatusEnum.NoConnection</PreCondition><PreCondition
  Guid="df0005db-e407-4bad-ac83-088c0c650916"
->Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; Default.DistanceInterval.Max ) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
+>Kernel.TrainPosition.FrontEndPosition ( PointOfInterest =&gt; DistanceInterval.Max ) &gt;= PositionReport.RBCTransitionLocation</PreCondition></PreConditions>
 <Expression>SecondaryRBCConnection().SafeRadioConnectionStatus</Expression>
 </Case><Case
  Name="Status of primary RBC connection"
@@ -6406,7 +6406,7 @@ The only one case where the status to display is that of the secondary connectio
 <PreConditions>
 <PreCondition
  Guid="cdc11219-5220-4b39-ae2d-a4dc45a10acf"
->CurrentRBCConnection().ContactData.DataState == Default.DataState.Invalid</PreCondition></PreConditions>
+>CurrentRBCConnection().ContactData.DataState == DataState.Invalid</PreCondition></PreConditions>
 <Expression>[DMI.RBCContactActionEnum.ReenterNetworkId, DMI.RBCContactActionEnum.UseLastStoredNumber, DMI.RBCContactActionEnum.UseEireneShortNumber, DMI.RBCContactActionEnum.RevalidateContactInfo, DMI.RBCContactActionEnum.EnterContactInfo]</Expression>
 </Case><Case
  Name="Unknown RBC-ID/phone number"
@@ -6415,7 +6415,7 @@ The only one case where the status to display is that of the secondary connectio
 <PreConditions>
 <PreCondition
  Guid="dd77bcad-0268-4dee-987b-3a77cbd9865c"
->CurrentRBCConnection().ContactData.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+>CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Expression>[DMI.RBCContactActionEnum.ReenterNetworkId,  DMI.RBCContactActionEnum.UseEireneShortNumber,  DMI.RBCContactActionEnum.EnterContactInfo]</Expression>
 </Case><Case
  Name="Valid RBC-ID/phone number"
@@ -6424,11 +6424,11 @@ The only one case where the status to display is that of the secondary connectio
 <PreConditions>
 <PreCondition
  Guid="c4dba95e-3474-4ec3-b537-7fb3e625877b"
->CurrentRBCConnection().ContactData.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>CurrentRBCConnection().ContactData.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>[DMI.RBCContactActionEnum.ReenterNetworkId,  DMI.RBCContactActionEnum.UseEireneShortNumber]</Expression>
 </Case></Cases>
 </Function><Function
- Type="EURORADIO.RBCContactStruct"
+ Type="RBCContactStruct"
  Default=""
  X="550"
  Y="600"
@@ -6450,7 +6450,7 @@ The only one case where the status to display is that of the secondary connectio
  Guid="b11115a5-266b-47cb-877c-f30a46722281"
 >TerminalIsRegistered(CurrentTerminal())
   AND  
-CurrentRBCConnection().ContactData.DataState == Default.DataState.Unknown</PreCondition></PreConditions>
+CurrentRBCConnection().ContactData.DataState == DataState.Unknown</PreCondition></PreConditions>
 <Expression>EMPTY</Expression>
 </Case><Case
  Name="Terminal registered"
@@ -6501,10 +6501,10 @@ CurrentRBCConnection().ContactData.DataState == Default.DataState.Unknown</PreCo
 >
 <Expression>Kernel.ActiveFunctions.ManageCommunicationSession()
   AND  
-Kernel.Mode not in [Default.Mode.SH, Default.Mode.PS]</Expression>
+Kernel.Mode not in [Mode.SH, Mode.PS]</Expression>
 </Case></Cases>
 </Function><Function
- Type="EURORADIO.TerminalStruct"
+ Type="TerminalStruct"
  Default=""
  X="330"
  Y="720"
@@ -6868,7 +6868,7 @@ Available(Message.Message.UNCONDITIONAL_EMERGENCY_STOP)</Expression>
 </ReqRef><Comment>Allows to establish/terminate the communication session with an RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.ContactOrderStruct"
+ Type="ContactOrderStruct"
  Name="anOrder"
  Guid="bd7c227e-3f2a-4591-b2f2-0261dead5db0"
 >
@@ -6902,7 +6902,7 @@ Available(Message.Message.UNCONDITIONAL_EMERGENCY_STOP)</Expression>
 {
     Id =&gt; anOrder.Id,
     PhoneNumber =&gt; anOrder.PhoneNumber,
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action><Action
  Guid="b327d97a-1053-46ca-a7eb-480617cdb643"
 >RBCContactOrderToRepeat &lt;- EMPTY</Action><Action
@@ -6911,7 +6911,7 @@ Available(Message.Message.UNCONDITIONAL_EMERGENCY_STOP)</Expression>
 {
     Id =&gt; anOrder.Id,
     PhoneNumber =&gt; anOrder.PhoneNumber,
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -6968,9 +6968,9 @@ Available(Message.Message.UNCONDITIONAL_EMERGENCY_STOP)</Expression>
 <PreConditions>
 <PreCondition
  Guid="5b896537-0cd3-4108-8766-68152d5eea7f"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Default.Request.Disabled</PreCondition><PreCondition
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Disabled</PreCondition><PreCondition
  Guid="6dc5d3cd-fdbd-4642-9f27-ec7398ba1982"
->Kernel.Mode != Default.Mode.TR</PreCondition></PreConditions>
+>Kernel.Mode != Mode.TR</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="43066826-6217-4a25-87ff-a9bce7e4c9b7"
@@ -6988,7 +6988,7 @@ Available(Message.Message.UNCONDITIONAL_EMERGENCY_STOP)</Expression>
 <PreConditions>
 <PreCondition
  Guid="f233f57b-bf25-46ae-9918-86536bc4985c"
->DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Default.Request.Response</PreCondition></PreConditions>
+>DMI.MasterDMI().In_RBCContactInformation.InputInformation.RequestStatus == Request.Response</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="44217646-714f-49c3-8352-2f030641cc52"
@@ -7064,7 +7064,7 @@ Available(Message.Message.UNCONDITIONAL_EMERGENCY_STOP)</Expression>
 </ReqRef><Comment>Allows to establish the communication session with an accepting RBC. If no mobile terminal is registered, the order is rejected.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.ContactOrderStruct"
+ Type="ContactOrderStruct"
  Name="Order"
  Guid="36d1affc-3e90-44a1-bafa-74605373535b"
 >
@@ -7246,7 +7246,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
  Guid="b800f70b-83f7-45b4-9432-c769f9dca3f6"
 >ContactOption == ContactOptionEnum.ContactLastKnownRBC</PreCondition><PreCondition
  Guid="c12c7ead-1138-41ac-bb3b-164fdeda2b0e"
->LastKnownRBC.DataState == Default.DataState.Valid</PreCondition></PreConditions>
+>LastKnownRBC.DataState == DataState.Valid</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="2078f218-6c1c-485a-9a00-f77a91524075"
@@ -7391,7 +7391,7 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 </ReqRef><Comment>Allows to establish/terminate the communication session with an RIU.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.ContactOrderStruct"
+ Type="ContactOrderStruct"
  Name="Order"
  Guid="b9ea4cb2-277a-4de4-863a-f74f28a202a2"
 >
@@ -8104,10 +8104,10 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 (
     Packet =&gt; aMessage.MOVEMENT_AUTHORITY.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; aMessage.MOVEMENT_AUTHORITY.NID_LRBG,
-    SectionStartTimer =&gt; Default.MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
 )</Action><Action
  Guid="03bcefd6-b932-4560-84fe-4d09a3f2be6f"
->Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
+>Kernel.MA.MATimers.LOATimerStart &lt;- MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -8317,13 +8317,13 @@ Terminal1.RBCConnection.SafeRadioConnectionStatus == SafeRadioConnectionStatusEn
 <Action
  Guid="d4fb8501-640d-4856-92c1-a168eeed555f"
 ><Comment>Saves the time stamp of the new MA for the LOA timer.</Comment>
-Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.REQUEST_TO_SHORTEN_MA.T_TRAIN )</Action><Action
+Kernel.MA.MATimers.LOATimerStart &lt;- MessageTypes.TimeResolution( time =&gt; aMessage.REQUEST_TO_SHORTEN_MA.T_TRAIN )</Action><Action
  Guid="6702a997-d01c-4601-b7d0-cf2f0f22ec85"
 >Kernel.MA.MALvl2or3Received
 (
     Packet =&gt; aMessage.REQUEST_TO_SHORTEN_MA.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; aMessage.MOVEMENT_AUTHORITY.NID_LRBG,
-    SectionStartTimer =&gt; Default.MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
 )</Action><Action
  Guid="02fcd07f-ac43-4f48-82e0-6a487cf9d95a"
 >Kernel.HandlingOfAcceptedAndStoredInformation.CooperativeMARevocationIsGranted &lt;- True</Action><Action
@@ -8408,8 +8408,8 @@ Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time
 <PreConditions>
 <PreCondition
  Guid="b45902ce-1ad5-4544-b07a-efd3ce8b7857"
->Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;Default.DistanceInterval.Min )  &lt; 
-Default.MessageTypes.QScaleDistance(
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Min )  &lt; 
+MessageTypes.QScaleDistance(
     distance =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
     scale =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP
 )</PreCondition></PreConditions>
@@ -8428,8 +8428,8 @@ Default.MessageTypes.QScaleDistance(
 <PreConditions>
 <PreCondition
  Guid="d576cf7f-55e9-49ee-8461-75648e378b60"
->Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;Default.DistanceInterval.Min )  &gt;= 
-Default.MessageTypes.QScaleDistance(
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest=&gt;DistanceInterval.Min )  &gt;= 
+MessageTypes.QScaleDistance(
     distance =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP,
     scale =&gt; aMessage.CONDITIONAL_EMERGENCY_STOP.D_EMERGENCYSTOP
 )</PreCondition></PreConditions>
@@ -8645,10 +8645,10 @@ Default.MessageTypes.QScaleDistance(
 (
     Packet =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.LEVEL_2_3_MOVEMENT_AUTHORITY,
     NID_BG =&gt; aMessage.MA_WITH_SHIFTED_LOCATION_REFERENCE.NID_LRBG,
-    SectionStartTimer =&gt; Default.MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
+    SectionStartTimer =&gt; MessageTypes.TimeResolution ( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )
 )</Action><Action
  Guid="50e62eff-bd12-4fa0-b4e8-45ee5c8367fa"
->Kernel.MA.MATimers.LOATimerStart &lt;- Default.MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
+>Kernel.MA.MATimers.LOATimerStart &lt;- MessageTypes.TimeResolution( time =&gt; aMessage.MOVEMENT_AUTHORITY.T_TRAIN )</Action></Actions>
 <SubRules>
 <Rule
  Priority="Processing"
@@ -8966,12 +8966,12 @@ Default.MessageTypes.QScaleDistance(
  Guid="fc94d5e3-5ec4-4589-82e9-ccd1a4cb832f"
 >BTM.LRBG &lt;- BTM.BaliseGroupStruct{
     Position =&gt; BTM.Position{
-        Position =&gt; Default.BaseTypes.Distance.Unknown,
+        Position =&gt; BaseTypes.Distance.Unknown,
         UnderReadingAmountOdo =&gt; 0.0,
         OverReadingAmountOdo =&gt; 0.0
     },
     NID =&gt; aMessage.TRAIN_ACCEPTED.NID_LRBG,
-    Orientation =&gt; Default.Orientation.Unknown,
+    Orientation =&gt; Orientation.Unknown,
     Timestamp =&gt; Kernel.DateAndTime.Now()
 }</Action></Actions>
 </RuleCondition></Conditions>
@@ -9091,7 +9091,7 @@ Default.MessageTypes.QScaleDistance(
  Guid="e17bef78-a2ff-421f-8ab3-bf8d2d0939ac"
 >CurrentRBCConnection().SessionManagementData.SystemVersion.Value &lt;- ConvertSystemVersion ( aVersion =&gt; aMessage.M_VERSION )</Action><Action
  Guid="8212c19a-2428-4a44-aa05-ed206845382b"
->CurrentRBCConnection().SessionManagementData.SystemVersion.DataState &lt;- Default.DataState.Valid</Action></Actions>
+>CurrentRBCConnection().SessionManagementData.SystemVersion.DataState &lt;- DataState.Valid</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -9214,7 +9214,7 @@ Default.MessageTypes.QScaleDistance(
 </ReqRef><Comment>The procedure starts the registering of the provided mobile terminal to the provided network, except if the terminal is already registered to the provided netword.</Comment>
 <Parameters>
 <Parameter
- Type="EURORADIO.TerminalStruct"
+ Type="TerminalStruct"
  Name="aTerminal"
  Guid="69f73909-1dca-46c6-a79f-e7d801022eb6"
 >
@@ -9461,7 +9461,7 @@ NOT
     }
 )</Action><Action
  Guid="d3c6cdf9-9747-4381-9c1e-6895964348f9"
->PositionReport.RBCTransitionLocation &lt;- Default.MessageTypes.QScaleDistance
+>PositionReport.RBCTransitionLocation &lt;- MessageTypes.QScaleDistance
 (
     distance =&gt; aPacket.D_RBCTR,
     scale =&gt; aPacket.Q_SCALE
@@ -9476,7 +9476,7 @@ NOT
         Id =&gt; aPacket.NID_RBC
     },
     PhoneNumber =&gt; aPacket.NID_RADIO,
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -9497,7 +9497,7 @@ NOT
 <PreConditions>
 <PreCondition
  Guid="3ef8acf1-bfab-4044-95fc-65e2507daa13"
->Kernel.Mode in [Default.Mode.SH, Default.Mode.PS]</PreCondition></PreConditions>
+>Kernel.Mode in [Mode.SH, Mode.PS]</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="c59b3f0b-833a-4b7f-aa43-c4ecf057eddb"
@@ -9508,7 +9508,7 @@ NOT
         Id =&gt; aPacket.NID_RBC
     },
     PhoneNumber =&gt; aPacket.NID_RADIO,
-    DataState =&gt; Default.DataState.Valid
+    DataState =&gt; DataState.Valid
 }</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -9684,9 +9684,9 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="320b109a-792e-416d-bbba-d48ea2c1833b"
 >Kernel.MA.MARequest.MARequestParameters &lt;- Kernel.MA.MARequest.MARequestParametersStruct
 {
-    PreindicationLocationTime =&gt; Default.MessageTypes.TimeResolution( time =&gt; Packet.T_MAR ),
-    SectionTimerTime =&gt; Default.MessageTypes.TimeResolution( time =&gt; Packet.T_TIMEOUTRQST ),
-    RepetitionTime =&gt; Default.MessageTypes.TimeResolution( time =&gt; Packet.T_CYCRQST )
+    PreindicationLocationTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_MAR ),
+    SectionTimerTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_TIMEOUTRQST ),
+    RepetitionTime =&gt; MessageTypes.TimeResolution( time =&gt; Packet.T_CYCRQST )
 }</Action></Actions>
 </RuleCondition><RuleCondition
  Implemented="TRUE"
@@ -9846,7 +9846,7 @@ But at the end of the cycle the conditions required for sending of position repo
  Guid="bda35355-3c76-4016-a9da-f08035e0829f"
 >
 </Parameter><Parameter
- Type="MessageTypes.Time"
+ Type="Default.MessageTypes.Time"
  Name="Time"
  Guid="3c06eb6f-b270-4cdc-ba27-ac3485ff984f"
 >
@@ -10242,7 +10242,7 @@ But at the end of the cycle the conditions required for sending of position repo
     Timestamp =&gt; AddToDate
     (
         StartDate =&gt; Kernel.DateAndTime.StartDate,
-        Increment =&gt; Default.MessageTypes.TimeResolution(Time)
+        Increment =&gt; MessageTypes.TimeResolution(Time)
     )
 )</Action></Actions>
 </RuleCondition></Conditions>
@@ -10288,7 +10288,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>Indicates the number of repetitions of radio messages (i.e. excluding the first sending).</Comment>
 </Variable><Variable
- Type="EURORADIO.RIUStruct"
+ Type="RIUStruct"
  DefaultValue=""
  VariableMode="InOut"
  X="10"
@@ -10306,7 +10306,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>RIU connection.</Comment>
 </Variable><Variable
- Type="EURORADIO.RBCContactStruct"
+ Type="RBCContactStruct"
  DefaultValue=""
  VariableMode="Internal"
  X="10"
@@ -10381,7 +10381,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>The last received Radio Network identity.</Comment>
 </Variable><Variable
- Type="EURORADIO.AvailableNetworksStruct"
+ Type="AvailableNetworksStruct"
  DefaultValue=""
  VariableMode="InOut"
  X="780"
@@ -10399,7 +10399,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>Allows to request the list of available and allowed networks.</Comment>
 </Variable><Variable
- Type="EURORADIO.TerminalStruct"
+ Type="TerminalStruct"
  DefaultValue=""
  VariableMode="InOut"
  X="200"
@@ -10417,7 +10417,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>First terminal struct.</Comment>
 </Variable><Variable
- Type="EURORADIO.TerminalStruct"
+ Type="TerminalStruct"
  DefaultValue=""
  VariableMode="InOut"
  X="340"
@@ -10573,7 +10573,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>Stores the messages sent by the Accepting RBC before it becomes the supervising RBC.</Comment>
 </Variable><Variable
- Type="EURORADIO.ContactOrderStruct"
+ Type="ContactOrderStruct"
  DefaultValue="EMPTY"
  VariableMode="Internal"
  X="140"
@@ -10632,7 +10632,7 @@ But at the end of the cycle the conditions required for sending of position repo
 >
 </ReqRef><Comment>Indicates that the train is curently in a radio hole. Used to determine when the train leaves a radio hole.</Comment>
 </Variable><Variable
- Type="BaseTypes.Time"
+ Type="Default.BaseTypes.Time"
  DefaultValue="60.0"
  VariableMode="Constant"
  X="850"
@@ -10822,7 +10822,7 @@ But at the end of the cycle the conditions required for sending of position repo
 <PreConditions>
 <PreCondition
  Guid="fbbf50ac-5249-404e-b0c9-37d0b6c10c28"
->Kernel.TrainPosition.FrontEndPosition( PointOfInterest =&gt; Default.DistanceInterval.Nom ) &gt;= SecondaryTerminal().AcceptingRBCContactOrder.EndOfValidityLocation</PreCondition><PreCondition
+>Kernel.TrainPosition.FrontEndPosition( PointOfInterest =&gt; DistanceInterval.Nom ) &gt;= SecondaryTerminal().AcceptingRBCContactOrder.EndOfValidityLocation</PreCondition><PreCondition
  Guid="8159a3b5-93ba-4abf-b8a6-c47c500d081c"
 >SecondaryTerminal().AcceptingRBCContactOrder != EMPTY</PreCondition></PreConditions>
 <Actions>

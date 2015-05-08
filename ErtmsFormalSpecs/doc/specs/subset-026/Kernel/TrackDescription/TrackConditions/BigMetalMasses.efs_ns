@@ -67,7 +67,7 @@
 </Structure></Structures>
 <Collections>
 <Collection
- TypeName="Kernel.TrackDescription.TrackConditions.BigMetalMasses.BigMetalMassesInformationStruct"
+ TypeName="BigMetalMassesInformationStruct"
  MaxSize="20"
  Default="[]"
  Y="90"
@@ -124,7 +124,7 @@
  Guid="ea72f321-a666-4fab-a59a-d3c3ba7af32f"
 >
 <Comment>Big Metal Masses track conditions start and end when the max and min safe antenna positions pass the section limits</Comment>
-<Expression>Distance + Default.BaseTypes.LengthToDistance(Length) - BTM.ActiveAntennaPosition</Expression>
+<Expression>Distance + BaseTypes.LengthToDistance(Length) - BTM.ActiveAntennaPosition</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -197,10 +197,10 @@
 >
 <Comment>Returns the element in TCBigMetalMasses with the largest distance that is less than or equal to the parameter</Comment>
 <Expression>REDUCE TCBigMetalMasses | (X.Location &lt;= Distance)
-    USING X IN Default.BaseTypes.MaxDistance(
+    USING X IN BaseTypes.MaxDistance(
         X1=&gt;X.Location,
         X2=&gt;RESULT)
-  INITIAL_VALUE Default.BaseTypes.Distance.Infinity</Expression>
+  INITIAL_VALUE BaseTypes.Distance.Infinity</Expression>
 </Case></Cases>
 </Function><Function
  Type="Default.BaseTypes.Distance"
@@ -238,11 +238,11 @@
 >
 <Comment>Returns the D_TRACKCOND in the Packet with the lowest value</Comment>
 <Expression>REDUCE Packet.Sequence1
-  USING X IN Default.BaseTypes.MinDistance(
-    X1=&gt; Default.MessageTypes.QScaleDistance(distance=&gt;X.D_TRACKCOND, scale=&gt;Packet.Q_SCALE),
+  USING X IN BaseTypes.MinDistance(
+    X1=&gt; MessageTypes.QScaleDistance(distance=&gt;X.D_TRACKCOND, scale=&gt;Packet.Q_SCALE),
     X2=&gt;RESULT
 )
-  INITIAL_VALUE Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND, scale=&gt;Packet.Q_SCALE)</Expression>
+  INITIAL_VALUE MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND, scale=&gt;Packet.Q_SCALE)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Boolean"
@@ -367,12 +367,12 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
 <Action
  Guid="4456f7d5-5ea0-4224-8e9a-6e99581f4040"
 >AddSectionToBMMs(
-    Location=&gt;Default.MessageTypes.QScaleDistance(
+    Location=&gt;MessageTypes.QScaleDistance(
         distance=&gt;Packet.D_TRACKCOND,
         scale=&gt;Packet.Q_SCALE
     )
     ,
-    Length=&gt; Default.MessageTypes.QScaleLength(
+    Length=&gt; MessageTypes.QScaleLength(
         length=&gt;Packet.L_TRACKCOND,
         scale=&gt;Packet.Q_SCALE
     )
@@ -391,8 +391,8 @@ BMMAtDistance(Distance=&gt; TrainPosition.FrontEndPosition(PointOfInterest=&gt;D
  Guid="87f1ee03-d658-40fb-95a6-40fe271fc15e"
 >APPLY
     AddSectionToBMMs(
-        Location=&gt;Default.MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND,scale=&gt;Packet.Q_SCALE) - BTM.ActiveAntennaPosition,
-        Length=&gt; Default.MessageTypes.QScaleLength(
+        Location=&gt;MessageTypes.QScaleDistance(distance=&gt;Packet.D_TRACKCOND,scale=&gt;Packet.Q_SCALE) - BTM.ActiveAntennaPosition,
+        Length=&gt; MessageTypes.QScaleLength(
             length=&gt;Packet.L_TRACKCOND,
             scale=&gt;Packet.Q_SCALE
         )
@@ -529,7 +529,7 @@ IN
 </ReqRef><Comment>Deletes the track conditions big metal masses beyond the provided location.</Comment>
 <Parameters>
 <Parameter
- Type="BaseTypes.Distance"
+ Type="Default.BaseTypes.Distance"
  Name="aLocation"
  Guid="a397566a-ad24-4035-b1b7-641615d3c18f"
 >

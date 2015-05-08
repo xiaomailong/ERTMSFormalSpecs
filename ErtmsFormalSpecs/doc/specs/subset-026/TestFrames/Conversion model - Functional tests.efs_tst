@@ -67,7 +67,7 @@
 <Actions>
 <Action
  Guid="52561034-e1e1-4316-84b9-87db74631733"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="f97a4bc5-9254-43a8-a63a-9cf07d6e7ea2"
 >Kernel.TrainData.TrainData.Value.TrainLength &lt;- 200.0</Action><Action
  Guid="d4b0ea0f-3bac-40f4-8330-bd1f3312377d"
@@ -209,7 +209,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.BasicDecelerationNextSpeedStep ( 150.0 ) == 180.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="88cb9196-a8b3-432c-8276-9e04ec23321b"
->Kernel.TrainData.BrakingParameters.ConversionModel.BasicDecelerationNextSpeedStep ( 180.0 ) == Default.BaseTypes.Speed.Infinity</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.BasicDecelerationNextSpeedStep ( 180.0 ) == BaseTypes.Speed.Infinity</Expectation><Expectation
  Kind="Instantaneous"
  Guid="b9a789e3-f38b-43ed-bb36-bb0bfc3ffb73"
 >Kernel.TrainData.BrakingParameters.ConversionModel.BasicDecelerationNextSpeedStep ( Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val1.SpeedStep ) == 150.0</Expectation><Expectation
@@ -311,16 +311,16 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val2.SpeedStep == 150.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2569fee7-380e-4f90-972b-af019a6fd270"
->Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val4.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val4.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e8d12d95-c62f-46c4-9349-0740a6177b92"
 >Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val3.SpeedStep == 180.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="491524f2-406e-4675-bc75-4b19c0a7c036"
->Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val5.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val5.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d15534fb-55be-4cd6-ab55-a2298ff02622"
->Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val6.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_emergency.Val6.SpeedStep == BaseTypes.Speed.Infinity</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase><TestCase
@@ -485,16 +485,16 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val2.SpeedStep == 150.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4ebaf5fe-9bb2-4632-a86f-da6a92c7bdf5"
->Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val4.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val4.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a0a74419-506b-4400-a7df-aeb93bd394a6"
 >Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val3.SpeedStep == 180.0</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c7b962de-2e84-42fc-a997-8b09ce8e2b09"
->Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val5.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val5.SpeedStep == BaseTypes.Speed.Infinity</Expectation><Expectation
  Kind="Instantaneous"
  Guid="60a8810e-41ab-492e-9b39-46574773f9ef"
->Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val6.SpeedStep == Default.BaseTypes.Speed.Infinity</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.A_brake_service.Val6.SpeedStep == BaseTypes.Speed.Infinity</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -1188,7 +1188,7 @@
  Guid="e94cf3f8-fed7-4bf6-a460-e0d8dc7e3b51"
 >Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 114.0</Action><Action
  Guid="5c679e7d-5903-43e8-b262-29fc0319f425"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="0b5bce8e-5e27-4a43-95e8-46a836422878"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct
 {
@@ -1274,10 +1274,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="d95b4a0a-6eef-49b1-93ee-a22ce9915cda"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2f044e34-a917-4f76-9b96-69b04943b888"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1316,7 +1316,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 5.02</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ce29715b-3a69-4376-bfb1-f553c284de9f"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e7c8da3d-dba5-46e0-9c1d-6df11a8dd31e"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 6.024</Expectation></Expectations>
@@ -1360,7 +1360,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 12.6428</Expectation><Expectation
  Kind="Instantaneous"
  Guid="eef2c754-61c5-4161-8cae-781c8d903585"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4d3f399e-45d8-45f1-91fe-c24895dd4935"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 15.17136</Expectation></Expectations>
@@ -1404,7 +1404,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 23.12</Expectation><Expectation
  Kind="Instantaneous"
  Guid="ceaac085-2307-4af9-b439-c509120eb6de"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="4b6462b2-6717-4230-969b-5fd82af0926a"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 27.744</Expectation></Expectations>
@@ -1448,7 +1448,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 13.8</Expectation><Expectation
  Kind="Instantaneous"
  Guid="26cf6dba-6c37-4503-b906-4292e3bc0f94"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="e4d7318e-0b21-434d-ae5f-6985b892cb85"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 16.008</Expectation></Expectations>
@@ -1492,7 +1492,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_eb () == 20.83</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8fdfc7b4-a228-4437-a499-f70cf60ede70"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="447cd4cf-8f63-48e3-9799-a74546149318"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == 24.1628</Expectation></Expectations>
@@ -1550,7 +1550,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="87d2c098-67a3-43f3-8ebe-d10c9c93c610"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2ea0aa51-4ba3-4e2c-a5e0-3717bfa2ca5f"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 5.02</Expectation><Expectation
@@ -1597,7 +1597,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 6.55</Expectation><Expectation
  Kind="Instantaneous"
  Guid="5f0a69b4-373e-42bf-bffd-385e8830cb6c"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1638,7 +1638,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 25.47</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8ca9d50e-514c-4fe9-9ed0-015e05441ce7"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1679,7 +1679,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 14.45</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3cd8256b-824f-49e5-91bd-90900b154557"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -1720,7 +1720,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cm0 == 18.6</Expectation><Expectation
  Kind="Instantaneous"
  Guid="468c52b5-0be6-49cb-ba94-5a542a71b629"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_emergency_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
@@ -2414,7 +2414,7 @@
  Guid="a7824f88-e069-4690-b025-a186a74fcd63"
 >Kernel.TrainData.TrainData.Value.BrakePercentage &lt;- 114.0</Action><Action
  Guid="62d0f1ce-f0b4-45ff-9644-ea0f2e3a2bd5"
->Kernel.TrainData.TrainData.DataState &lt;- Default.DataState.Valid</Action><Action
+>Kernel.TrainData.TrainData.DataState &lt;- DataState.Valid</Action><Action
  Guid="c098e50d-9f78-43f3-93a7-46417ba89646"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct
 {
@@ -2509,10 +2509,10 @@
 <Expectation
  Kind="Instantaneous"
  Guid="edb584d5-edb5-4dab-97af-5f14667dcba7"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="f1096934-6f8d-4cca-b934-39b2b6bb8926"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2555,7 +2555,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 17.13</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a94cd5e4-ed48-43e1-8efa-b00c620fd25d"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8a6cb1d0-e201-4d29-bf10-492b60fccda6"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 14.275</Expectation></Expectations>
@@ -2599,7 +2599,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 14.08</Expectation><Expectation
  Kind="Instantaneous"
  Guid="d70b53a9-6417-4ed4-97dc-cebc2c2d7158"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a61fead1-db6d-4576-b455-c7f7f6419aa3"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 16.896</Expectation></Expectations>
@@ -2643,7 +2643,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 35.8</Expectation><Expectation
  Kind="Instantaneous"
  Guid="3a3ea35c-fb59-4caf-8e14-0b61a7cf8109"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="fc5e56f0-563c-4e06-947a-676dfe631a54"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 42.96</Expectation></Expectations>
@@ -2684,7 +2684,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c1b57980-bb72-4c2a-9788-d4aa905df363"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="c04b7bc2-2331-4218-9aec-7c0f53f566e4"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 22.7592</Expectation><Expectation
@@ -2728,7 +2728,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.kto() == 1.16</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8842ece3-b864-40d1-ad88-f105b6234db8"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="399f56c8-5931-4453-a7b1-5fce13f5e77e"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == 46.7016</Expectation><Expectation
@@ -2791,7 +2791,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="a085eecc-5b63-491f-b5be-540715d2d601"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="411375f0-55a0-4d3e-92b4-1a71d123ea71"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 18.4</Expectation><Expectation
@@ -2832,7 +2832,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="3ae17813-4599-4dec-9315-d2fd2140f037"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="2ead4fc6-3b4f-45fa-b5f2-32feeba62d10"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 5.77</Expectation><Expectation
@@ -2873,7 +2873,7 @@
 <Expectation
  Kind="Instantaneous"
  Guid="3035e514-fd8a-463e-a758-57b744a7baf0"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation><Expectation
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == BaseTypes.Time.NA</Expectation><Expectation
  Kind="Instantaneous"
  Guid="1e4cb84d-03a0-4084-85c0-c8a0c5d7fd33"
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cm0 == 50.26</Expectation><Expectation
@@ -2920,7 +2920,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 14.08</Expectation><Expectation
  Kind="Instantaneous"
  Guid="8ae6c87e-9b1c-4e83-9520-45d51dd0b17a"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -2961,7 +2961,7 @@
 >Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_basic_sb () == 45.08</Expectation><Expectation
  Kind="Instantaneous"
  Guid="a1460231-c31d-438a-ab77-6d4dcc4396c9"
->Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == Default.BaseTypes.Time.NA</Expectation></Expectations>
+>Kernel.TrainData.BrakingParameters.ConversionModel.T_brake_service_cmt == BaseTypes.Time.NA</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step></Steps>
 </TestCase></TestCases>
