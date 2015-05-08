@@ -43,6 +43,15 @@ namespace DataDictionary.Interpreter
         public ListExpression(ModelElement root, ModelElement log, List<Expression> elements, int start, int end)
             : base(root, log, start, end)
         {
+            SetListElements(elements);
+        }
+
+        /// <summary>
+        /// Sets the list elements for the list expression
+        /// </summary>
+        /// <param name="elements"></param>
+        public void SetListElements(List<Expression> elements)
+        {
             ListElements = elements;
 
             foreach (Expression expr in ListElements)
