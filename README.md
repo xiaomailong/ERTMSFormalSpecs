@@ -5,7 +5,7 @@ To try EFS, please download the installer package on the website http://www.ertm
 
 To get help, following items are available:
 
-- [the user guide](https://github.com/openETCS/ERTMSFormalSpecs/blob/master/ErtmsFormalSpecs/doc/EFSW_User_Guide.p
+- [the user guide](https://github.com/openETCS/ERTMSFormalSpecs/blob/master/ErtmsFormalSpecs/doc/EFSW_User_Guide.pdf)
 
 - [the FAQ page](https://github.com/openETCS/ERTMSFormalSpecs/wiki/ERTMSFormalSpecs-FAQ)
 
