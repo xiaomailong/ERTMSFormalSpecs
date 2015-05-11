@@ -36,6 +36,8 @@ namespace DataDictionary.Interpreter.Refactor
 
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
+            List<Expression> enclosingNameSpaces = new List<Expression>();
+
             ModelElement backup = User;
             foreach (Expression expression in derefExpression.Arguments)
             {
@@ -45,12 +47,17 @@ namespace DataDictionary.Interpreter.Refactor
                     {
                         string replacementValue = Ref.ReferenceName(User);
 
+                        foreach (Expression enclosing in enclosingNameSpaces)
+                        {
+                            ReplaceText("", enclosing.Start, enclosing.End + 1);                            
+                        }
+                        enclosingNameSpaces.Clear();
                         ReplaceText(replacementValue, expression.Start, expression.End);
                         break;
                     }
-                    else if (expression.Ref is NameSpace && expression.Ref.Name == "Default")
+                    else if (expression.Ref is NameSpace)
                     {
-                        ReplaceText("", expression.Start, expression.End + 1);
+                        enclosingNameSpaces.Add(expression);
                     }
                     else
                     {

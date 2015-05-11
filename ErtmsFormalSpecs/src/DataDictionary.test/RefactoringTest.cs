@@ -27,8 +27,8 @@ namespace DataDictionary.test
 
             Refactor(s1, "NewS1");
             Assert.AreEqual("NewS1", el2.TypeName);
-            Assert.AreEqual("N1.NewS1 { E1 => True }", v.getDefaultValue());
-            Assert.AreEqual("V <- N1.NewS1 { E1 => False }", a.ExpressionText);
+            Assert.AreEqual("NewS1 { E1 => True }", v.getDefaultValue());
+            Assert.AreEqual("V <- NewS1 { E1 => False }", a.ExpressionText);
         }
 
         [Test]
@@ -188,12 +188,33 @@ namespace DataDictionary.test
  
             NameSpace n1 = CreateNameSpace (test, "N1");
             Variables.Variable var1 = CreateVariable(n1, "V1", "Default.E1");
-            Rules.RuleCondition ruleCondition = CreateRuleAndCondition(n1, "R");
+            RuleCondition ruleCondition = CreateRuleAndCondition(n1, "R");
             Action action = CreateAction(ruleCondition, "N1 <- Default.E1.X");
 
             MoveToNameSpace(e1, n1);
             Assert.AreEqual("N1 <- N1.E1.X", action.ExpressionText);
             Assert.AreEqual("E1", var1.TypeName);
         }
+
+        [Test]
+        public void TestMoveBugReport555()
+        {
+            Dictionary test = CreateDictionary("Test");
+            NameSpace MANamespace = CreateNameSpace(test, "MA");
+            NameSpace ModeProfileNamespace = CreateNameSpace(MANamespace, "ModeProfile");
+            Variables.Variable TackVariable = CreateVariable(ModeProfileNamespace, "Tack", "Boolean");
+
+            NameSpace KernelNameSpace = CreateNameSpace(test, "Kernel");
+            RuleCondition ruleCondition = CreateRuleAndCondition(KernelNameSpace, "R");
+            Action action = CreateAction(ruleCondition, "MA.ModeProfile.Tack <- False");
+
+            NameSpace DMINamespace = CreateNameSpace(test, "DMI");
+            NameSpace InNamespace = CreateNameSpace(DMINamespace, "IN");
+            NameSpace DisplayNamespace = CreateNameSpace(InNamespace, "Display");
+
+            MoveToNameSpace(TackVariable, DisplayNamespace);
+            Assert.AreEqual("DMI.IN.Display.Tack <- False", action.ExpressionText);
+        }
+    
     }
 }
