@@ -859,6 +859,14 @@ Messages.EUROBALISE.SubStructure1
  DeadLine="1"
  Guid="95266856-2a95-4593-b9b2-300324af894f"
 >Kernel.Mode == Mode.OS</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2"
+ Guid="6b8daff2-fe04-4cec-987d-aa798570a62f"
+>
+<Actions>
+<Action
+ Guid="c8312cb6-5c33-4222-a8e2-c0a12925bee2"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -900,7 +908,7 @@ Messages.EUROBALISE.SubStructure1
 <Comment>In Level 2 and 3, when receiving an OS MP, the OBU shall change to OS mode. The steps test that there is Level 2 and 3 and a mode different from OS. Then it tests that the MP changes the OBU to OS mode.</Comment>
 <SubSteps>
 <SubStep
- Name="SubStep1"
+ Name="Sub-step1"
  Guid="7443e24a-aa6b-49b2-a2ae-a5ec37fa288a"
 >
 <Actions>
@@ -1003,6 +1011,14 @@ Messages.EUROBALISE.SubStructure1
 >Kernel.Mode == Mode.OS</Expectation></Expectations>
 </SubStep><SubStep
  Name="Sub-step3"
+ Guid="796028ba-c710-4d92-bda1-ee88a4f2ab71"
+>
+<Actions>
+<Action
+ Guid="0e1df701-cb73-47d5-b402-bbec92740d6a"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Request.Response</Action></Actions>
+</SubStep><SubStep
+ Name="Sub-step4"
  Guid="8b8426a1-b38b-426c-8a61-c979fd0769b0"
 >
 <Actions>
@@ -1018,7 +1034,7 @@ Messages.EUROBALISE.SubStructure1
  Guid="9d670bca-fef2-4834-bb42-9e29f56009ad"
 >Kernel.Mode != Mode.OS</Expectation></Expectations>
 </SubStep><SubStep
- Name="Sub-step4"
+ Name="Sub-step5"
  Guid="0bc3cacf-8620-4431-a94f-49bcaa324700"
 >
 <Actions>

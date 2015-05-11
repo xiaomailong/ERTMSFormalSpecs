@@ -3270,10 +3270,12 @@
     }
 ]</Action><Action
  Guid="2a8310c4-398f-4c7a-89aa-c48786268dfc"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct
+{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSectionStruct{
+    EndSection =&gt; Kernel.MA.EndSectionStruct
+    {
         Length =&gt; 1000.0
     }
 }</Action></Actions>
@@ -3285,6 +3287,14 @@
  Kind="Instantaneous"
  Guid="b01503c2-0525-429c-85eb-339ed760a0ba"
 >DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - Acknowledge the acknowledgement"
+ Guid="3a1b2ede-366e-43dc-a75f-fc313c0daeb8"
+>
+<Actions>
+<Action
+ Guid="bdbbd370-3aeb-496b-8cad-6eaa128abad9"
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3319,21 +3329,34 @@
     }
 ]</Action><Action
  Guid="a15948be-7d44-486d-ac1e-e0a3e426cd73"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct
+{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSectionStruct{
+    EndSection =&gt; Kernel.MA.EndSectionStruct
+    {
         Length =&gt; 1000.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="57bf4eda-a6fc-4d69-9f35-277e5eb3284b"
+>Testing.SetPTMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="2"
  Guid="b8bc61b1-f8b3-478e-932c-16eaaa6a5b37"
 >DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"
  Guid="aadb1d5b-baf3-45d8-82bf-cfaccbc5ed67"
 >Kernel.HandleModeChange in Kernel.HandleModeChange.TrainTrip.S170.DriverAckRequested</Expectation></Expectations>
+</SubStep><SubStep
+ Name="Sub-step2 - Acknowledge the acknowledgement"
+ Guid="c9349c8d-9925-4a20-bf6f-0b129894e782"
+>
+<Actions>
+<Action
+ Guid="dbb8ee35-c2b2-4549-afab-99c12d2fc687"
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus &lt;- Default.Request.Response</Action></Actions>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -3368,16 +3391,21 @@
     }
 ]</Action><Action
  Guid="5c0e8a37-4561-46ab-a809-504cd78aa261"
->Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
+>Kernel.MA.MA &lt;- Kernel.MA.MAStruct
+{
     TargetSpeed =&gt; 0.0,
     Sections =&gt; [],
-    EndSection =&gt; Kernel.MA.EndSectionStruct{
+    EndSection =&gt; Kernel.MA.EndSectionStruct
+    {
         Length =&gt; 1000.0
     }
-}</Action></Actions>
+}</Action><Action
+ Guid="08e3eb0d-1078-4dac-af3b-68e229f66e96"
+>Testing.SetPTMode()</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ DeadLine="2"
  Guid="52583fcd-5abb-4321-ba6d-1df1d6d0e506"
 >DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request</Expectation><Expectation
  Kind="Instantaneous"

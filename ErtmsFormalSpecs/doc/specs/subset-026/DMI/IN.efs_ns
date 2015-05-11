@@ -1534,7 +1534,9 @@
 <Actions>
 <Action
  Guid="0608d022-2811-4d61-83cd-12c8978fc21b"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="9328ba46-ee1f-422a-b084-8527fc666d4d"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1606,7 +1608,7 @@
 <Actions>
 <Action
  Guid="bb5c5893-540c-4b3d-b315-61f43a5d6d43"
->THIS.InputInformation.InitiateRequest()</Action><Action
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.FixedTextInformation )</Action><Action
  Guid="6718e005-4ed7-4b15-8934-79007a156c56"
 >THIS.Text &lt;- text</Action></Actions>
 </RuleCondition></Conditions>
@@ -1680,7 +1682,9 @@
 <Actions>
 <Action
  Guid="4dfc4c81-b5da-4c77-bf59-977850e79762"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="64835c6d-c282-4078-825d-1d54c5a07cd0"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1752,7 +1756,7 @@
 <Actions>
 <Action
  Guid="6de79a40-cca1-482a-aebd-e688e8041f8e"
->THIS.InputInformation.InitiateRequest()</Action><Action
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LevelTransition )</Action><Action
  Guid="3220b412-5ce9-4c6d-8f85-308f2c041e4b"
 >THIS.Level &lt;- Level</Action></Actions>
 </RuleCondition></Conditions>
@@ -1826,7 +1830,9 @@
 <Actions>
 <Action
  Guid="5bfb2800-2c0e-4da8-9d7a-e40e593d6d55"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="05833a81-2af2-49f5-809b-cf4b48201006"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1898,7 +1904,7 @@
 <Actions>
 <Action
  Guid="4b2fad25-f978-4e27-8055-a2978840b2ba"
->THIS.InputInformation.InitiateRequest()</Action><Action
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PlainTextInformation )</Action><Action
  Guid="5bcec144-68e6-494b-9dcb-09c230ec1a48"
 >THIS.Text &lt;- text</Action></Actions>
 </RuleCondition></Conditions>
@@ -1972,7 +1978,9 @@
 <Actions>
 <Action
  Guid="16019496-7dbf-4a92-a6b2-2422e513d3f5"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="31f666b0-b4ab-41aa-b317-e4b413706169"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2038,7 +2046,7 @@
 <Actions>
 <Action
  Guid="08adb180-ade3-4730-a1c8-8c89c0424dc5"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainDataChangeFromOtherSource )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2882,7 +2890,9 @@
 <Actions>
 <Action
  Guid="e2a59ace-9b37-4f65-86b3-afa908151d1a"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="c3dd4389-3bff-4d88-9517-d9f487192430"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -2954,7 +2964,7 @@
 <Actions>
 <Action
  Guid="1043c711-7558-478c-b8cc-12f03c36b5a1"
->THIS.InputInformation.InitiateRequest()</Action><Action
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SNMode )</Action><Action
  Guid="5e82bf00-9e78-4d96-bd66-d003521ae460"
 >THIS.NationalSystemId &lt;- NationalSystemId</Action></Actions>
 </RuleCondition></Conditions>
@@ -3793,13 +3803,17 @@
 <PreConditions>
 <PreCondition
  Guid="2775ef0b-b3a6-48da-94f9-26d9cfeb65d1"
->StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+>StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition><PreCondition
+ Guid="3c52fb7e-1a18-4da7-a48f-a4d860adb51b"
+>StartTime != Default.BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="0032d2ab-08bf-4c4f-ab15-68154487a311"
 >Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
  Guid="c9a3e8eb-8f97-42ee-942d-bbeca7f1e24d"
->TIU.CommandServiceBrake( brakeSet =&gt; True )</Action></Actions>
+>TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
+ Guid="0739ad35-06a6-4fd8-9075-3366abb440ec"
+>Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.LSMode )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -3837,7 +3851,9 @@
  Guid="7f80394d-d86d-4e0e-9ee9-48ab5ba67ea8"
 >THIS.InputInformation.AcceptDriverResponse()</Action><Action
  Guid="f5739bd9-6bb9-4273-8c76-672925676b7b"
->StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action><Action
+ Guid="d3f5b719-8924-41b4-95a7-22f478fe06d6"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -3871,7 +3887,7 @@
 <Actions>
 <Action
  Guid="febfd992-c4f5-4d2a-a32c-9b0b21e4b009"
->THIS.InputInformation.InitiateRequest()</Action><Action
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LSMode )</Action><Action
  Guid="31618ddd-9074-4f74-a558-ed0775cbd809"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -3921,7 +3937,7 @@
 <Comment>The status of the request</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
- Default=""
+ Default="Default.BaseTypes.Time.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="StartTime"
@@ -3982,13 +3998,17 @@
 <PreConditions>
 <PreCondition
  Guid="f98185fc-8d18-4344-ae88-ea11e7b4c5fb"
->StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+>StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition><PreCondition
+ Guid="e85bb8cf-bf9c-4519-a5bc-eba509a85d92"
+>StartTime != Default.BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="456feea0-c81d-4514-89b4-32c53ca3f5d5"
 >Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
  Guid="10d1cee6-15fb-44c7-823d-3bb69ea5609b"
->TIU.CommandServiceBrake( brakeSet =&gt; True )</Action></Actions>
+>TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
+ Guid="8440163d-5afb-430f-96d6-30e1a8112cb4"
+>Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.OSMode )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -4026,7 +4046,9 @@
  Guid="719101c0-d5a3-40d8-a756-4698d9924399"
 >THIS.InputInformation.AcceptDriverResponse()</Action><Action
  Guid="09400527-1555-4055-9e37-f236e1de2bf6"
->StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action><Action
+ Guid="3d47d361-fdc1-4c8f-9c9d-a919f3f1dbbe"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4060,7 +4082,7 @@
 <Actions>
 <Action
  Guid="92bb23ee-a4c9-436f-acf0-acfe9eaa3059"
->THIS.InputInformation.InitiateRequest()</Action><Action
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.OSMode)</Action><Action
  Guid="5ac58b4f-4dd8-4f42-b19a-4fe5a43d85b8"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -4110,7 +4132,7 @@
 <Comment>The status of the request</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
- Default=""
+ Default="Default.BaseTypes.Time.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="StartTime"
@@ -4171,13 +4193,17 @@
 <PreConditions>
 <PreCondition
  Guid="88c0a656-36a1-4db8-bf13-a34783b84219"
->StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+>StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition><PreCondition
+ Guid="b127519d-7a0e-4395-9e35-21f2d50b42bc"
+>StartTime != Default.BaseTypes.Time.NA</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="b0b1c0a4-d1df-4954-a400-fe1668407d47"
 >Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
  Guid="4df171bc-cb95-4aa3-b13e-7af5765825ff"
->TIU.CommandServiceBrake( brakeSet =&gt; True )</Action></Actions>
+>TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
+ Guid="3a39a099-f477-46b3-842c-ee63faaf819c"
+>Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.SHMode )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -4215,7 +4241,9 @@
  Guid="24769eb4-f757-4ced-8cd3-4a57859a3edb"
 >THIS.InputInformation.AcceptDriverResponse()</Action><Action
  Guid="849c567f-569a-4156-aa21-b95e33a6f413"
->StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action><Action
+ Guid="16c2bfb8-4a51-4bc1-9876-08df1ccae17a"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4249,7 +4277,7 @@
 <Actions>
 <Action
  Guid="843da387-e6dc-4659-ae85-6b0981d04135"
->THIS.InputInformation.InitiateRequest()</Action><Action
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SHMode )</Action><Action
  Guid="0bc1dab8-7d59-4e81-a0d8-6e6f38a183ed"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -4299,7 +4327,7 @@
 <Comment>The status of the request</Comment>
 </StructureElement><StructureElement
  TypeName="Default.BaseTypes.Time"
- Default=""
+ Default="Default.BaseTypes.Time.NA"
  Mode="Internal"
  Implemented="TRUE"
  Name="StartTime"
@@ -4365,7 +4393,9 @@
 <Actions>
 <Action
  Guid="522267fc-268b-4215-b3c6-3ee21396db96"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="66d7e755-911d-4270-83fc-d242e2e411c5"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4430,7 +4460,7 @@
 <Actions>
 <Action
  Guid="c30ea484-06c6-4354-a964-0266da92d675"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SRMode )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4493,7 +4523,9 @@
 <Actions>
 <Action
  Guid="c6ae23b0-e926-44d7-9f0c-04a4eeee1ce1"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="c53fac22-f56a-4036-ae5c-fca91f78ccc2"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4558,7 +4590,7 @@
 <Actions>
 <Action
  Guid="dbda4c24-cc3e-417a-a756-a22a20725059"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.UNMode )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4621,7 +4653,9 @@
 <Actions>
 <Action
  Guid="950a0d64-88c9-4e7b-bb22-eb3cb0644b8a"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="a456a31c-b18f-4410-a1fd-497e1f26b2af"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4686,7 +4720,7 @@
 <Actions>
 <Action
  Guid="59df9524-e684-4144-bb6f-3fb1c664f74f"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RVMode )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4749,7 +4783,9 @@
 <Actions>
 <Action
  Guid="beebc794-9e66-41ac-bdd5-4af14e37de2f"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="47e302ff-5b29-4e11-84a0-e44e6907a1fa"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4814,7 +4850,7 @@
 <Actions>
 <Action
  Guid="d7d5dbd8-7b39-4b14-8643-47d1b0daccaf"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainTrip )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4877,7 +4913,9 @@
 <Actions>
 <Action
  Guid="448fbdbe-ce25-407b-85c4-cd5abdbb8a7e"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="98ce0cc1-cd9b-4947-b3eb-d699f541e406"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4942,7 +4980,7 @@
 <Actions>
 <Action
  Guid="c7f17aa8-f0a4-4981-9989-82b41533a8af"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RollAwayProtection )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5005,7 +5043,9 @@
 <Actions>
 <Action
  Guid="0d0bb983-0452-4009-a999-338ab284e15a"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="31127aa6-4585-443b-9f95-0b7bdd65d729"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5070,7 +5110,7 @@
 <Actions>
 <Action
  Guid="f537b56a-b215-4883-88ea-db7dc02fb73d"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReverseMovementProtection )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5133,7 +5173,9 @@
 <Actions>
 <Action
  Guid="3423bc91-1951-405d-8894-dbbeef15ee67"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="ca4701bf-3797-4398-a4b8-437e461e4cf5"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5167,7 +5209,7 @@
 <Actions>
 <Action
  Guid="a1df51a0-c291-494a-b630-527f73d952ba"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.StandstillSupervision )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5262,7 +5304,9 @@
 <Actions>
 <Action
  Guid="779ac761-1482-459c-8d66-c3944c74a0cb"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="f9ae8bd9-08fa-478c-8403-990329eb788b"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5296,7 +5340,7 @@
 <Actions>
 <Action
  Guid="cbacafdd-59cd-4d53-8938-258dfb3dd32d"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PostTripDistanceExceeded )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5391,7 +5435,9 @@
 <Actions>
 <Action
  Guid="cac3a113-83af-4401-b059-0d1fdb629bb8"
->THIS.InputInformation.AcceptDriverResponse()</Action></Actions>
+>THIS.InputInformation.AcceptDriverResponse()</Action><Action
+ Guid="1bca1ab7-8ec0-45ee-addd-6917f32f4190"
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5425,7 +5471,7 @@
 <Actions>
 <Action
  Guid="13de8929-3a32-4885-a045-21b308fa91b0"
->THIS.InputInformation.InitiateRequest()</Action></Actions>
+>Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReversingDistanceExceeded )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

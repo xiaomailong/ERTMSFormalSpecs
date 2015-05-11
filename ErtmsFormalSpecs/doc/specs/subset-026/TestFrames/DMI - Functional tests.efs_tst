@@ -4212,7 +4212,11 @@
 <Actions>
 <Action
  Guid="4d31b78b-71ee-428b-b4df-8aaaee251938"
->Testing.SetFSMode()</Action></Actions>
+>Testing.SetFSMode()</Action><Action
+ Guid="204051df-4761-471f-8a54-d28c161b7a8c"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action><Action
+ Guid="6aa19081-48fd-4c9b-9b0d-94eda2455ab1"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="257af298-2519-489e-8081-c83d8b806232"
@@ -4229,7 +4233,8 @@
  Kind="Instantaneous"
  DeadLine="1"
  Guid="c53d31a1-c5c4-47c8-afa8-f0de27dc8569"
->DMI.MasterDMI().In_AcknOfFixedTextInformation.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.InputInformation.RequestStatus == Request.Request<Condition></Condition>
+</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -4405,7 +4410,11 @@
 <Actions>
 <Action
  Guid="990b8bee-7397-49b2-845a-b5e1f872320b"
->Testing.SetNLMode()</Action></Actions>
+>Testing.SetNLMode()</Action><Action
+ Guid="5502952f-f42b-47be-848a-2416e552b726"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action><Action
+ Guid="13c4154d-8aa5-4156-9e23-4470254b9385"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="18df42fb-adc1-4c53-91d3-268bc09bbf24"
@@ -5004,7 +5013,11 @@
 <Actions>
 <Action
  Guid="a0a68b44-6806-44c0-b355-e75418b87f3d"
->Testing.SetFSMode()</Action></Actions>
+>Testing.SetFSMode()</Action><Action
+ Guid="a3fee59f-8443-445d-b963-9f60d9be4df8"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action><Action
+ Guid="3f39bf2d-679e-4d78-9d5d-01237d1898ef"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="9f526e7d-0b79-4c6e-8cdc-e70d8e62723d"
@@ -5258,7 +5271,11 @@
 <Actions>
 <Action
  Guid="a68e1fe4-ad31-42b6-8518-740666a36ab6"
->Testing.SetUNMode()</Action></Actions>
+>Testing.SetUNMode()</Action><Action
+ Guid="1a1807c8-eca6-4f31-822c-b99972205bdc"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action><Action
+ Guid="c88157f7-5437-4456-a99d-1abdbe0621b2"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="d5659b6f-bb83-4056-87aa-40518a61979d"
@@ -5495,7 +5512,11 @@
 <Actions>
 <Action
  Guid="6eb4b68c-b774-4fcf-87c4-8cded756a35f"
->Testing.SetSNMode()</Action></Actions>
+>Testing.SetSNMode()</Action><Action
+ Guid="a3aecfe9-39bd-4766-a314-7ea631121028"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action><Action
+ Guid="a01b3d15-c8a5-4bef-ba36-9441803650fe"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="cfb8d782-4fc8-43e3-9c0e-cb46d95dfe47"
@@ -7410,7 +7431,11 @@
 <Actions>
 <Action
  Guid="dd94edd9-8ff9-4341-b824-0ecf390ab2ba"
->Testing.SetFSMode()</Action></Actions>
+>Testing.SetFSMode()</Action><Action
+ Guid="def9858c-51b3-4e7e-b5a6-9315b9dfe4ae"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action><Action
+ Guid="33f166da-104f-4951-bb99-258fb2e65e04"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="4f5b1d92-f2e2-4afb-a0b3-782a636d999b"
@@ -7603,7 +7628,11 @@
 <Actions>
 <Action
  Guid="306b7b9f-76d7-4fae-8102-ff428688a147"
->Testing.SetNLMode()</Action></Actions>
+>Testing.SetNLMode()</Action><Action
+ Guid="af450aed-c445-4159-880d-b5b73f6d19ae"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action><Action
+ Guid="c4b422e5-ffad-42bf-b487-d4c9db2f74fc"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="0dae900e-e9f4-477b-bd23-6b72d661c98d"
@@ -11317,7 +11346,11 @@
 <Actions>
 <Action
  Guid="83fbff6a-3353-4247-9da8-81ed8a8287e7"
->Testing.SetFSMode()</Action></Actions>
+>Testing.SetFSMode()</Action><Action
+ Guid="a9e0243e-1ecc-43ab-a68a-835b7c927ec1"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action><Action
+ Guid="762050e8-8c80-4dcf-93e8-1778f3ead493"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="3143fc1c-d90a-4967-afa9-824ee6559cac"
@@ -11529,7 +11562,11 @@
 <Actions>
 <Action
  Guid="9206bd7b-3b87-4877-8264-55228fc9b1e0"
->Testing.SetUNMode()</Action></Actions>
+>Testing.SetUNMode()</Action><Action
+ Guid="f6581a8a-d4f5-4b64-ab77-2cfb0cc9181f"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action><Action
+ Guid="f9937463-d37f-4f86-80de-df83611a4dce"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="8fbf1a97-e365-47b6-94d9-c2097fe9dd5d"
@@ -11731,7 +11768,11 @@
 <Actions>
 <Action
  Guid="0a6aeba0-df8e-4fe0-843f-dd4af1b292ec"
->Testing.SetSNMode()</Action></Actions>
+>Testing.SetSNMode()</Action><Action
+ Guid="c2acb2ae-140d-466c-b8c6-ffaea985e381"
+>DMI.IN.Acknowledgements.DisplayAllowed &lt;- True</Action><Action
+ Guid="f361f78f-4d7e-4c6b-ba7d-5fbba91be4b0"
+>DMI.IN.Acknowledgements.Acknowledgements &lt;- []</Action></Actions>
 </SubStep><SubStep
  Name="NewSubStep"
  Guid="898b55c3-2a2e-4583-9af6-0066f5537338"

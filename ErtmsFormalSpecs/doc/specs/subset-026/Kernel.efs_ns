@@ -4187,6 +4187,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  Y="880"
  Width="100"
  Height="50"
+ Pinned="TRUE"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="S24"
@@ -4205,9 +4206,9 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 >
 <States>
 <State
- X="90"
- Y="50"
- Width="100"
+ X="40"
+ Y="110"
+ Width="110"
  Height="50"
  Implemented="TRUE"
  Name="RequestDriverAck"
@@ -4221,7 +4222,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Display driver ack request"
+ Name="Display driver acknowledgement"
  Guid="abb3d861-e7b2-4387-a1b1-f0db83c31716"
 >
 <ReqRef
@@ -4234,7 +4235,7 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Display driver ack request"
+ Name="Display driver acknowledgement"
  Guid="1df07749-4bd7-416c-b055-f7e3ac235edc"
 >
 <PreConditions>
@@ -4250,9 +4251,9 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
- X="90"
- Y="180"
- Width="100"
+ X="350"
+ Y="110"
+ Width="110"
  Height="50"
  Implemented="TRUE"
  Name="DriverAckRequested"
@@ -4279,34 +4280,34 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  Guid="a8f79f89-f8c9-4db1-9567-6c48d1ab672a"
 >
 </ReqRef><StateMachine
+ Default="RequestDriverAck"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="ecc0ca72-8751-4044-834c-bd1c4e3c804c"
+>
+<States>
+<State
+ X="40"
+ Y="110"
+ Width="110"
+ Height="50"
+ Implemented="TRUE"
+ Name="RequestDriverAck"
+ Guid="2ba494e2-8e81-476b-907f-462cd662eeb7"
+>
+<StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="f319564f-5e61-410b-aab8-81d42f1539a3"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display driver ack request for LS"
- Guid="1f434d73-3586-4904-a8a9-6e6e3d05f753"
+ Name="Display driver ack"
+ Guid="391cbeda-0dad-4fbf-9275-360b14ecead3"
 >
-<ReqRef
- Id="9987667c-60f8-4136-98e0-3bb720a91f76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="f4edaa0e-3a0d-4a95-894d-48f6da78943b"
->
-</ReqRef><ReqRef
- Id="aa3f1b72-e48c-4c84-af17-db6bfe3c11b1"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="34b254d1-00a2-4999-bc14-9db2a52f48d3"
->
-</ReqRef><ReqRef
- Id="8c7eb4ff-2716-4d9f-a6f2-bd52aacc416b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="ec16fc2b-fe38-43c6-a186-d8797f4ca1af"
->
-</ReqRef><SubRules></SubRules>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
@@ -4314,94 +4315,110 @@ TrainPosition.Position.DataState == DataState.Unknown</PreCondition></PreConditi
  Name="Display driver ack request for LS"
  Guid="0b8cf01d-f67b-41db-8c3f-16b2567269da"
 >
-<PreConditions>
+<ReqRef
+ Id="8c7eb4ff-2716-4d9f-a6f2-bd52aacc416b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="d45fde5c-645a-46b2-9a3b-22941df2653d"
+>
+</ReqRef><ReqRef
+ Id="aa3f1b72-e48c-4c84-af17-db6bfe3c11b1"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="510b6242-c3ba-455f-ab39-c046a20a2d44"
+>
+</ReqRef><ReqRef
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="c82af150-58e3-4f9c-a11e-95cee867d552"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="8cb5c652-2d65-4628-9f4d-d2c03912f63c"
->MA.ModeProfile.CurrentMode() == Mode.ModeProfile.LS</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.LS</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="df66622a-f945-4112-acc7-25b9c04f84cc"
->DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display driver ack request for OS"
- Guid="9b67fffb-60c2-4285-9cfd-21369a5b9248"
->
-<ReqRef
- Id="9987667c-60f8-4136-98e0-3bb720a91f76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="6240ff09-d9e7-478f-849b-a80b216a9118"
->
-</ReqRef><ReqRef
- Id="4ebd4845-9d08-4721-8788-6991ab66d3eb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="49899041-f0c5-4780-a35c-b5ef1c667b67"
->
-</ReqRef><ReqRef
- Id="c7906978-32c5-4b29-bb48-bb2bb5d7190b"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="c6e20368-a2b0-4fce-b998-6c41033dc1a2"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
+>DMI.MasterDMI().In_AcknOfLSMode.InitiateRequest()</Action><Action
+ Guid="2e556ad9-2cbd-4d21-a6fc-d14ffb56af21"
+>THIS &lt;- HandleModeChangeSM.StartOfMission.S25.DriverAckRequested</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Display driver ack request for OS"
  Guid="8f6dfcc2-b659-4eef-a652-7396606977ac"
 >
-<PreConditions>
+<ReqRef
+ Id="4ebd4845-9d08-4721-8788-6991ab66d3eb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2c4cf829-cef4-4200-83a9-f156ca682809"
+>
+</ReqRef><ReqRef
+ Id="c7906978-32c5-4b29-bb48-bb2bb5d7190b"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="72cbd584-9cfa-4892-8000-8c9dd3ff2636"
+>
+</ReqRef><ReqRef
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a3c594c-688a-4724-a7e1-612b45be39be"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="e203a0df-4eb5-465d-9f1d-580d56f0213a"
->MA.ModeProfile.CurrentMode() == Mode.ModeProfile.OS</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.OS</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="47394cdf-5bcc-499d-92dd-259bbdb4488b"
->DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action></Actions>
-</RuleCondition></Conditions>
-</Rule><Rule
- Priority="Processing"
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display driver ack request for SH"
- Guid="cf654fac-289a-4b5a-b49a-e8da0e761dc7"
->
-<ReqRef
- Id="9987667c-60f8-4136-98e0-3bb720a91f76"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="72b80c6d-fa15-40eb-adf7-3b486a751224"
->
-</ReqRef><ReqRef
- Id="91e483bb-c16e-4c94-8256-d3dcf2d0e0fb"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e6cc6b17-34de-4e37-9682-254668c5241f"
->
-</ReqRef><ReqRef
- Id="39ae88ad-20ca-43d1-8c3f-5f7172777b6e"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="2128a410-bc91-453b-9cdb-3e1e013625a0"
->
-</ReqRef><SubRules></SubRules>
-<Conditions>
-<RuleCondition
+>DMI.MasterDMI().In_AcknOfOSMode.InitiateRequest()</Action><Action
+ Guid="66ca8a50-e72c-4db9-9631-001f621bd893"
+>THIS &lt;- HandleModeChangeSM.StartOfMission.S25.DriverAckRequested</Action></Actions>
+</RuleCondition><RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="Display driver ack request for SH"
  Guid="f6dce942-b50f-48dd-bb21-bc970890c498"
 >
-<PreConditions>
+<ReqRef
+ Id="39ae88ad-20ca-43d1-8c3f-5f7172777b6e"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1dba35c8-6213-4043-835b-e10c4791d699"
+>
+</ReqRef><ReqRef
+ Id="91e483bb-c16e-4c94-8256-d3dcf2d0e0fb"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="abf479bd-b34d-4b83-8a99-168cc7614d8b"
+>
+</ReqRef><ReqRef
+ Id="9987667c-60f8-4136-98e0-3bb720a91f76"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="73a85e59-a4f4-461c-a078-6bfe7c6e2c77"
+>
+</ReqRef><PreConditions>
 <PreCondition
  Guid="8989b7fd-3a2f-471a-98b7-f1cf9e908f1c"
->MA.ModeProfile.CurrentMode() == Mode.ModeProfile.SH</PreCondition></PreConditions>
+>MA.ModeProfile.CurrentMode() == Default.Mode.ModeProfile.SH</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dcf74279-c0cd-49ac-a698-2ac766fc4fc1"
->DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSHMode.InitiateRequest()</Action><Action
+ Guid="20827fa0-5187-4524-8f10-7b37099c761e"
+>THIS &lt;- HandleModeChangeSM.StartOfMission.S25.DriverAckRequested</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State><State
+ X="350"
+ Y="110"
+ Width="110"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverAckRequested"
+ Guid="07a5d15e-f606-4405-a708-7f86c5401e70"
+>
+<StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="4a902acb-7a27-4b20-8fec-e4bff798db2d"
+>
+</StateMachine></State></States>
 </StateMachine></State><State
  X="480"
  Y="50"
@@ -5773,40 +5790,73 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )<
  Guid="d482fc29-37c5-4c90-b5ee-ae1c44a67da6"
 >
 </ReqRef><StateMachine
+ Default="RequestDriverAck"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="9a68f736-b3ad-4dab-bb17-e6966abc4408"
+>
+<States>
+<State
+ X="40"
+ Y="110"
+ Width="110"
+ Height="50"
+ Implemented="TRUE"
+ Name="RequestDriverAck"
+ Guid="7b3b57b6-9f97-4c8b-bdec-6522d58df8cf"
+>
+<ReqRef
+ Id="195e2b98-7877-4e7a-850f-134fe5fac373"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8361ed10-485a-42d5-a00c-a36025eb9b04"
+>
+</ReqRef><StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="29eeb7f1-48a8-4121-b426-01789ee89834"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Display driver ack request"
- Guid="d9052e7a-61f8-4cbd-b58c-48a9b940fbbf"
+ Name="Display driver acknowledgement"
+ Guid="19a528ef-380a-4b0e-80b0-5c4c8ea0188f"
 >
-<ReqRef
- Id="195e2b98-7877-4e7a-850f-134fe5fac373"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="e1d79ce9-bd2c-41b1-ae59-a55b18837037"
->
-</ReqRef><SubRules></SubRules>
+<Comment>Requests the acknowledgement of SN mode.</Comment>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display driver ack request"
- Guid="2bf8dc94-95b2-444d-9dbf-d695f6f5c385"
+ Name="Display driver acknowledgement"
+ Guid="0a3b0325-e0b0-443e-9f36-dd13edd3da1a"
 >
 <PreConditions>
 <PreCondition
- Guid="334eaebf-b0b8-4753-bd29-3506aa7d5bbb"
+ Guid="02995a7c-a237-4d3d-8877-d53d79a3f1bb"
 >DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="053b80eb-e5c1-42a5-953b-40dae4c23ec6"
->DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.Level.Value.NTC)</Action></Actions>
+>DMI.MasterDMI().In_AcknOfSNMode.InitiateRequest(Kernel.Level.Value.NTC)</Action><Action
+ Guid="a5bf9137-b2c2-482a-ab03-2f9aba77fae0"
+>THIS &lt;- HandleModeChangeSM.StartOfMission.S22.DriverAckRequested</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State><State
+ X="350"
+ Y="110"
+ Width="110"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverAckRequested"
+ Guid="88d59e73-4b80-4026-a1c0-d5a79de54bbb"
+>
+<StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="e47ec82c-34be-4b98-9199-6f9083fa8aeb"
+>
+</StateMachine></State></States>
 </StateMachine></State><State
  X="1370"
  Y="880"
@@ -5823,40 +5873,72 @@ Available ( EURORADIO.CurrentRBCConnection().MessageIn.Message.TRAIN_ACCEPTED )<
  Guid="7a627b87-87d3-4d54-9cd5-3a48f70b662a"
 >
 </ReqRef><StateMachine
+ Default="RequestDriverAck"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Guid="8bd7adf6-f975-4015-a290-77faffdb3cb4"
+>
+<States>
+<State
+ X="40"
+ Y="110"
+ Width="110"
+ Height="50"
+ Implemented="TRUE"
+ Name="RequestDriverAck"
+ Guid="2f86e648-6c9f-48f4-b50b-5a041426b1a9"
+>
+<ReqRef
+ Id="0bdf5b27-3f33-4831-9b62-9424f5bd350a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="9a4a58c5-9237-48ae-a1e2-ace60495541b"
+>
+</ReqRef><StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="d31fca1b-fa2d-45f5-aeda-7b684ce7bf07"
 >
 <Rules>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Display driver ack request"
- Guid="8958fde0-8c51-4f85-bdc1-6704dd944d37"
+ Name="Display driver acknowledgement"
+ Guid="fcb7b713-4368-4253-b51a-52569fdfe198"
 >
-<ReqRef
- Id="0bdf5b27-3f33-4831-9b62-9424f5bd350a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="388f150c-ca25-4221-852e-8242052be6bc"
->
-</ReqRef><SubRules></SubRules>
+<SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Display driver ack request"
- Guid="12574925-0361-4d1e-adc8-7bf4e328213b"
+ Name="Display driver acknowledgement"
+ Guid="e34c75df-f2dd-4975-b193-9e16f97e3538"
 >
 <PreConditions>
 <PreCondition
- Guid="9d69b9a9-183e-443e-b230-f5cf47fa8849"
+ Guid="d48076c7-64f3-4f21-a277-ddbd2ac9fc79"
 >DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Disabled</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="dc4095ae-fc09-487b-be90-b86d5bf50080"
->DMI.MasterDMI().In_AcknOfUNMode.InitiateRequest()</Action></Actions>
+>DMI.MasterDMI().In_AcknOfUNMode.InitiateRequest()</Action><Action
+ Guid="1f8fc53e-42e5-4023-aa87-f37ae2668231"
+>THIS &lt;- HandleModeChangeSM.StartOfMission.S23.DriverAckRequested</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
+</StateMachine></State><State
+ X="350"
+ Y="110"
+ Width="110"
+ Height="50"
+ Implemented="TRUE"
+ Name="DriverAckRequested"
+ Guid="755d72fd-eaf1-4a46-8898-59353f803363"
+>
+<StateMachine
+ Default=""
+ Implemented="TRUE"
+ Guid="818d7513-4553-497f-924f-05a7996bc203"
+>
+</StateMachine></State></States>
 </StateMachine></State><State
  X="1000"
  Y="50"

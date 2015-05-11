@@ -1,4 +1,8 @@
 <NameSpace
+ X="790"
+ Y="40"
+ Width="100"
+ Height="50"
  Name="Acknowledgements"
  Guid="9213a9a0-d971-4c92-8506-b4f75896a6b2"
 >
@@ -7,6 +11,10 @@
 <Enumerations>
 <Enum
  Default="Undefined"
+ X="130"
+ Y="170"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="AckTypeEnum"
@@ -106,13 +114,400 @@
 >
 </EnumValue></Values>
 </Enum></Enumerations>
+<Collections>
+<Collection
+ TypeName="AckTypeEnum"
+ Default="[]"
+ X="10"
+ Y="170"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknowledgementsCol"
+ Guid="d5db5bd6-49fe-4e3c-be03-c002216cad3f"
+>
+</Collection></Collections>
+<Procedures>
+<Procedure
+ X="10"
+ Y="260"
+ Width="100"
+ Height="50"
+ Name="DisplayAcknowledgement"
+ Guid="23cdc73d-a5d1-4e72-a028-ae71e6bae6ac"
+>
+<Comment>When an acknowledgement can be displayed (there is no other acknowledgement being displayed and 1 second interval has elapsed from the last acknowledgement), the first acknowledgement in the FIFO is displayed.</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Display acknowledgement"
+ Guid="c7e527c8-0596-4858-891b-2d659b647f26"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Display acknowledgement"
+ Guid="bc832c89-7983-450a-93bc-6e33a8a59cd5"
+>
+<PreConditions>
+<PreCondition
+ Guid="71ef5e84-9a54-4720-98af-7984189a661c"
+>Acknowledgements != []</PreCondition></PreConditions>
+<Actions>
+</Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Name="Display the first acknowledgement"
+ Guid="3355dd44-b750-4e07-8bea-cc4e9bb6664b"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Fixed text information"
+ Guid="8d0ac80b-db55-449c-a448-887699a94582"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for fixed text information, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="f452f880-ffda-4ee9-98cd-10b7a3ace314"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.FixedTextInformation</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3c596d04-19d3-41b2-8c7a-29a065d16403"
+>MasterDMI().In_AcknOfFixedTextInformation.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Level transition"
+ Guid="068775ae-e23e-478a-aeb1-452cd6d7ee96"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for level transition, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="82d9418b-2f11-4c43-ac8c-f14a9109e82e"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.LevelTransition</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="65420dd3-d5e3-40df-9056-0b1936c518f1"
+>MasterDMI().In_AcknOfLevelTransition.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="LS mode"
+ Guid="68146ad7-d097-4c65-ae4d-53046c702f57"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for LS mode, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="ca6cab1e-75ca-4966-b637-9f8b643589d4"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.LSMode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="ec9e4edf-1e0d-43a5-9d68-761eccac6e33"
+>MasterDMI().In_AcknOfLSMode.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="OS mode"
+ Guid="4de6b2b6-7ba5-424f-8b5b-202e955002a5"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for OS mode, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="61d0bd1b-42fd-4bf2-973c-345a6767dd0b"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.OSMode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="69d97040-2a3e-491d-bf13-96e29caf3307"
+>MasterDMI().In_AcknOfOSMode.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Plain text information"
+ Guid="a7cd7215-1d0b-4fe9-a26d-50bd4de05f67"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for plain text information, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="80d87f94-3fef-457f-9ea4-6cd52cbb0b8f"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.PlainTextInformation</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="df75140f-9793-4819-ba04-032a29625336"
+>MasterDMI().In_AcknOfPlainTextInformation.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Post trip distance exceeded"
+ Guid="ed14e2ce-b5b2-4d9b-b669-093732f6e816"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for post trip distance exceeded, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="cc58f401-af69-4fba-a4da-15bbb918f619"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.PostTripDistanceExceeded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="53cd6388-9f94-4b88-af88-4acede69ab4c"
+>MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Reverse movement protection"
+ Guid="e3f20b47-df84-4850-980b-cd82fec426a0"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for reverse movement protection, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="40b17046-058e-42b6-8b5b-e2ad5c73f8d1"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.ReverseMovementProtection</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="02b055c6-9fb3-4a32-aebe-11f1a992c81b"
+>MasterDMI().In_AcknForReverseMovementProtection.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Reversing distance exceeded"
+ Guid="38cba240-897b-4a7b-a61b-42b6503cbce5"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for reversing distance exceeded, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="ef8df0ae-27ea-44a7-9989-c2f560b8853e"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.ReversingDistanceExceeded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="92a66c7e-e64a-4252-b90d-57cb1b9eea87"
+>MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Roll away protection"
+ Guid="d3c922e2-011e-4c2c-9747-6e27f1afbc60"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for roll away protection, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d4290403-6337-45c7-b77f-079f46c3c26f"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.RollAwayProtection</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="21dce599-b03f-466a-9a12-3267cbfc5ea2"
+>MasterDMI().In_AcknForRollAwayProtection.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="RV mode"
+ Guid="e0253b5c-86b6-4e42-b2f3-001689c99c70"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for RV mode, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="49f6670f-1d56-45cd-ab64-9ca232e02aab"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.RVMode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="febebbca-0726-441c-beb8-4820fcae83da"
+>MasterDMI().In_AcknOfRVMode.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SH mode"
+ Guid="c51d9ad8-5ac1-41e1-8e77-94cb7ae6ae29"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for SH mode, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9495c5ae-6419-42c5-bdbf-f48dce1590dd"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.SHMode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="cd8c7bc4-9f90-4d8f-a642-3db752601b89"
+>MasterDMI().In_AcknOfSHMode.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SN mode"
+ Guid="2317c58e-2f05-4fd1-ac37-07459ecdbb43"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement SN mode, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="9d301cab-259c-4520-bc51-0bce82a1df89"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.SNMode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5c9b433c-21ee-407b-88bb-77c573a4a426"
+>MasterDMI().In_AcknOfSNMode.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="SR mode"
+ Guid="5946a7b5-bd0b-4123-b263-2693261f4da5"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for SR mode, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="c3f2aa59-2fb4-4651-864c-f7bb9620e635"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.SRMode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="543705a1-9e83-4d68-85b9-123e39b87b88"
+>MasterDMI().In_AcknOfSRMode.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Standstill supervision"
+ Guid="95092eac-3f54-4faf-a6da-be72165a13ec"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for standstill supervision, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="8744ec5e-b017-4faf-ad66-2ab76ec63ef2"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.StandstillSupervision</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="7b154e9f-39a8-4afb-ad42-b500f1ee4015"
+>MasterDMI().In_AcknForStandstillSupervision.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Train data change from other source"
+ Guid="e11cbe48-24c8-4563-a042-72285d753705"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for train data change from other source, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d276a79f-792a-43b6-85ac-686a0e2c0165"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.TrainDataChangeFromOtherSource</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="33871758-4d6c-46df-9f8a-c2a4b4e96c34"
+>MasterDMI().In_AcknOfTrainDataChangeFromOtherSource.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="Train trip"
+ Guid="7b663015-8e93-4dde-9960-dd6db3e379da"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for train trip, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="186164bc-e5f2-4e76-8f88-5f9afa681783"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.TrainTrip</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="07bf846b-9014-48d7-a7ed-4dbfe1a490c6"
+>MasterDMI().In_AcknOfTrainTrip.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition><RuleCondition
+ NeedsRequirement="FALSE"
+ Name="UN mode"
+ Guid="f456a93b-92a3-4fe2-8d09-868be0bb2069"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for UN mode, display it.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="b4198824-ba2e-4e90-af93-44a888ba10b4"
+>FIRST Ack IN Acknowledgements == AckTypeEnum.UNMode</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5424d1a8-28ff-4be4-b37c-cea5004d7e03"
+>MasterDMI().In_AcknOfUNMode.InputInformation.InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Remove the displayed acknowledgement"
+ Guid="c9db9b36-f698-4139-bef6-bb4eda9e3a54"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Remove the displayed acknowledgement"
+ Guid="35ead2e3-fbed-4917-b3c4-c57429eed002"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="14f81e7f-fff4-49bf-8116-70f09fecc3cd"
+>REMOVE FIRST IN Acknowledgements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ X="130"
+ Y="260"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="RemoveAcknowledgement"
+ Guid="d0b6b9a9-c075-4981-9aab-a4c61261fcf4"
+>
+<Comment>Removes the acknowledgement provided as parameters from the list of acknowledgements to display.</Comment>
+<Parameters>
+<Parameter
+ Type="AckTypeEnum"
+ Name="AcknowledgementType"
+ Guid="e40f8839-9431-438d-9872-e3c42bd37e28"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove the provided acknowledgement"
+ Guid="b46b1355-a1db-49b9-a643-d6f49461856a"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Remove the provided acknowledgement"
+ Guid="6aa33b35-7009-4b61-bbec-81a179892456"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="519ce4a2-3a2d-429c-a30e-a8f808e0cb1e"
+>REMOVE FIRST X == AcknowledgementType IN Acknowledgements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Name="AddAcknowledgement"
+ Guid="9aa818b9-4945-4c43-80c2-ed0ee886f3cc"
+>
+<Parameters>
+<Parameter
+ Type="AckTypeEnum"
+ Name="anAcknowledgement"
+ Guid="ef7639a4-46a2-4f5d-aa1f-c248ac0af0fd"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Name="Add acknowledgement"
+ Guid="99407627-48e6-48a3-8172-b118e64f8876"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Add acknowledgement"
+ Guid="337da90b-a5a7-4981-87f7-0f3f2889c9ba"
+>
+<PreConditions>
+<PreCondition
+ Guid="97516a52-9004-4c56-a36f-f6b38bd3c816"
+>NOT THERE_IS Ack IN Acknowledgements | Ack == anAcknowledgement</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="73715758-ee84-42f3-a7a8-3dc20c12ed28"
+>INSERT 
+  anAcknowledgement
+IN
+  Acknowledgements.Acknowledgements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure></Procedures>
 <Variables>
 <Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="5.0"
- VariableMode="Internal"
- X="50"
- Y="410"
+ VariableMode="Constant"
+ X="130"
+ Y="10"
  Width="100"
  Height="50"
  Pinned="TRUE"
@@ -156,5 +551,114 @@
  Guid="670b530f-bfe9-4e27-af2a-b2e920b60561"
 >
 </ReqRef><Comment>Driver acknowledgement time.</Comment>
+</Variable><Variable
+ Type="AcknowledgementsCol"
+ DefaultValue="[]"
+ VariableMode="Internal"
+ X="10"
+ Y="10"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="Acknowledgements"
+ Guid="f7e45cc0-d7d4-4ccd-99f9-50def786097b"
+>
+<Comment>Collection of acknowledgements, handled as a FIFO.</Comment>
+</Variable><Variable
+ Type="Boolean"
+ DefaultValue="True"
+ VariableMode="Internal"
+ X="490"
+ Y="10"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="DisplayAllowed"
+ Guid="171648d3-6816-43b4-a0ea-750351eb49e7"
+>
+<Comment>Indicates if a new acknowledgement can be displayed.</Comment>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="Default.BaseTypes.Time.NA"
+ VariableMode="Internal"
+ X="250"
+ Y="10"
+ Width="100"
+ Height="50"
+ Name="LastDriverAcknowledgementTime"
+ Guid="810a392e-876a-41de-9161-096bf6190014"
+>
+</Variable><Variable
+ Type="Default.BaseTypes.Time"
+ DefaultValue="1.0"
+ VariableMode="Constant"
+ X="370"
+ Y="10"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ Name="AcknowledgementInterval"
+ Guid="bd70a259-d8c2-4920-b0e5-2c32a32dd90b"
+>
 </Variable></Variables>
+<Rules>
+<Rule
+ Priority="UpdateOUT"
+ X="10"
+ Y="350"
+ Width="100"
+ Height="50"
+ Name="Display acknowledgement"
+ Guid="cbbc98b0-2dd9-4ed0-9745-024638b9e0f1"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Display acknowledgement"
+ Guid="48071a66-2787-466d-a663-a78e14c2606d"
+>
+<PreConditions>
+<PreCondition
+ Guid="ff7b5079-8cd8-40d2-8535-5410d87ab8f5"
+>Acknowledgements != []</PreCondition><PreCondition
+ Guid="e285aee6-28af-4b3d-b0f0-1b595e052b5b"
+>DisplayAllowed</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="5c54291b-5813-4d6f-8419-5befb1cba05e"
+>DisplayAcknowledgement()</Action><Action
+ Guid="be98d11f-a18d-491b-9892-ed233d96af66"
+>DisplayAllowed &lt;- False</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="CleanUp"
+ X="130"
+ Y="350"
+ Width="100"
+ Height="50"
+ Name="Update permission to display"
+ Guid="528e6078-c25e-461d-82f0-ec1251d5f8f0"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Update permission to display"
+ Guid="34e87d81-cad2-423f-ac04-5cd4dbd1d575"
+>
+<PreConditions>
+<PreCondition
+ Guid="3a65010c-6a46-4d91-abe1-07a6848dcd4c"
+>DisplayAllowed == False</PreCondition><PreCondition
+ Guid="56e29de6-6f87-4f2e-b74e-27fd7c6bc295"
+>LastDriverAcknowledgementTime != Default.BaseTypes.Time.NA</PreCondition><PreCondition
+ Guid="424e8fc8-9992-4ec9-bf32-2689f8f02756"
+>LastDriverAcknowledgementTime + AcknowledgementInterval &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="8e93fb8b-6fc9-419c-b817-ffa5046117a8"
+>LastDriverAcknowledgementTime &lt;- Default.BaseTypes.Time.NA</Action><Action
+ Guid="a1c0a642-3dd4-462f-9ea6-c5995e05d660"
+>DisplayAllowed &lt;- True</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 </NameSpace>

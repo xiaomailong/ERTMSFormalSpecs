@@ -9070,7 +9070,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="2"
  Guid="76360b46-59ac-4820-a3d3-90b589176bd8"
 >DMI.MasterDMI().In_AcknOfSNMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -9323,7 +9323,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="2"
  Guid="024c49b2-8779-4376-92b4-ec9e84428faf"
 >DMI.MasterDMI().In_AcknOfUNMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -9577,14 +9577,10 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Name="Sub-step2"
  Guid="7b395496-b03c-41b9-9bd8-e8454463a44d"
 >
-<Actions>
-<Action
- Guid="3c785d4e-8d9e-49bb-a8ad-b48fe21cb8d9"
->Kernel.HandleModeChange &lt;- Kernel.HandleModeChangeSM.StartOfMission.S24</Action></Actions>
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="2"
  Guid="3160fd28-3ab0-4a72-b8d9-cbcf4cb37fd5"
 >DMI.MasterDMI().In_AcknOfSRMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
@@ -9721,18 +9717,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="9154db33-844d-4b05-9f29-48d3281e7b57"
 >Kernel.HandleModeChange &lt;- Kernel.HandleModeChange.StartOfMission.S25</Action><Action
  Guid="0f490d9d-15fe-48f2-a866-5809da287d1e"
->Testing.SetSBMode()</Action></Actions>
-<Expectations>
-<Expectation
- Kind="Instantaneous"
- Guid="92f3f003-0416-4878-ae38-1498ccea42dc"
->Kernel.MissionIsOnGoing == False</Expectation></Expectations>
-</SubStep><SubStep
- Name="Sub-step2 - provide MA + mode profile"
- Guid="a6caef6c-b91c-4979-8497-7310744cf715"
->
-<Actions>
-<Action
+>Testing.SetSBMode()</Action><Action
  Guid="5c79f87f-5c35-4885-9925-7f3e06fcc7bd"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,
@@ -9749,7 +9734,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
         AcknLength =&gt; 0.0,
         Location =&gt; 120.0,
         Length =&gt; 1000.0,
-        Mode =&gt; Mode.ModeProfile.OS,
+        Mode =&gt; Default.Mode.ModeProfile.OS,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
@@ -9757,8 +9742,11 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Expectations>
 <Expectation
  Kind="Instantaneous"
+ Guid="92f3f003-0416-4878-ae38-1498ccea42dc"
+>Kernel.MissionIsOnGoing == False</Expectation><Expectation
+ Kind="Instantaneous"
  Guid="43a19f27-3050-4ef5-be3e-e0bbd2cebb06"
->DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfOSMode.InputInformation.RequestStatus == Default.Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9841,13 +9829,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="afc73856-6cfa-4d9b-976c-48f6d00b2bf8"
 >Testing.SetSBMode()</Action><Action
  Guid="325062a4-3131-4f43-b775-469282329817"
->Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="34596b09-8244-4417-98a9-fa2e1dc1d05e"
->
-<Actions>
-<Action
+>Kernel.MissionIsOnGoing &lt;- False</Action><Action
  Guid="49430ad3-aea1-4e0e-be15-8102ef464486"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,
@@ -9864,7 +9846,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
         AcknLength =&gt; 0.0,
         Location =&gt; 120.0,
         Length =&gt; 1000.0,
-        Mode =&gt; Mode.ModeProfile.LS,
+        Mode =&gt; Default.Mode.ModeProfile.LS,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
@@ -9872,9 +9854,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="2"
  Guid="cae070b1-5986-41c2-a997-b4a7e72c2815"
->DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfLSMode.InputInformation.RequestStatus == Default.Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
@@ -9957,13 +9939,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
  Guid="b28efcd1-e2d7-459f-b920-908c8edfe314"
 >Testing.SetSBMode()</Action><Action
  Guid="630d26b8-a808-4273-af4a-9a34e6397e15"
->Kernel.MissionIsOnGoing &lt;- False</Action></Actions>
-</SubStep><SubStep
- Name="Sub-step2"
- Guid="1517e3d9-a1f6-4ac4-8490-4b929df2315d"
->
-<Actions>
-<Action
+>Kernel.MissionIsOnGoing &lt;- False</Action><Action
  Guid="cf90c26f-ef57-4098-ba58-ca68bc45fb09"
 >Kernel.MA.MA &lt;- Kernel.MA.MAStruct{
     TargetSpeed =&gt; 0.0,
@@ -9980,7 +9956,7 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
         AcknLength =&gt; 0.0,
         Location =&gt; 0.0,
         Length =&gt; 1000.0,
-        Mode =&gt; Mode.ModeProfile.SH,
+        Mode =&gt; Default.Mode.ModeProfile.SH,
         Speed =&gt; 40.0,
         SupervisionQualifier =&gt; Messages.Q_MAMODE.as_both_the_EOA_and_SvL__instead_of_the_EOA_and_SvL_given_by_the_MA
     }
@@ -9988,9 +9964,9 @@ DMI.MasterDMI().In_ErtmsEtcsLevel.InputInformation.RequestStatus &lt;- Request.R
 <Expectations>
 <Expectation
  Kind="Instantaneous"
- DeadLine="1"
+ DeadLine="2"
  Guid="a2b3a91b-c4ca-47e0-9e7d-30f03191fa16"
->DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Request.Request</Expectation></Expectations>
+>DMI.MasterDMI().In_AcknOfSHMode.InputInformation.RequestStatus == Default.Request.Request</Expectation></Expectations>
 </SubStep></SubSteps>
 </Step><Step
  IO="NA"
