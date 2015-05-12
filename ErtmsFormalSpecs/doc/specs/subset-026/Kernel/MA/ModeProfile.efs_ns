@@ -1192,6 +1192,8 @@ ON
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="RemoveAcknowledgement"
  Guid="df85c746-8af8-43bd-a038-bf4c64fe1ae9"
@@ -1417,9 +1419,9 @@ ON
  Guid="6d1c7801-3e7d-452d-9a52-40bebe0ec5fd"
 >Mode not in [Mode.OS, Mode.SB, Mode.PT]</PreCondition><PreCondition
  Guid="42784a5a-1cae-4c0b-811f-443315954aca"
->( FIRST X IN Profile | X.Mode == Mode.ModeProfile.OS ) != EMPTY</PreCondition><PreCondition
- Guid="5047ee70-4096-4857-a378-73f6b22a865d"
->AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.ModeProfile.OS )</PreCondition><PreCondition
+>THERE_IS X IN Profile | X.Mode == Mode.ModeProfile.OS
+  AND
+AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.ModeProfile.OS )</PreCondition><PreCondition
  Guid="66b2c6ba-7c31-4c87-9718-93a1cb7db83d"
 >ModeRelatedSpeedLimits.OSModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="9c07352e-7368-4267-b097-8f8ae8201d4d"
@@ -1479,9 +1481,9 @@ ON
  Guid="5600aaf9-7d5c-4a4b-b01c-dcbf24977c52"
 >Mode not in [Mode.LS, Mode.SB, Mode.PT]</PreCondition><PreCondition
  Guid="eb47dd1f-303f-4d40-9087-cb226e89eea5"
->( FIRST X IN Profile | X.Mode == Mode.ModeProfile.LS ) != EMPTY</PreCondition><PreCondition
- Guid="04fb07e1-e2e4-434a-a085-60940cd1d683"
->AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.ModeProfile.LS )</PreCondition><PreCondition
+>THERE_IS X IN Profile | X.Mode == Mode.ModeProfile.LS
+ AND
+AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.ModeProfile.LS )</PreCondition><PreCondition
  Guid="961a9514-325f-4dd3-8288-f7f5c316bf3b"
 >ModeRelatedSpeedLimits.LSModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="3da0d65b-0e2b-4020-8afd-97fbbee5539f"
@@ -1526,9 +1528,9 @@ ON
  Guid="a6b8a37e-3e25-40ae-ba2c-da28116ece59"
 >Mode not in [Mode.SB, Mode.PT]</PreCondition><PreCondition
  Guid="55cf8108-eb50-4bee-ad58-f34d699f55d3"
->( FIRST X IN Profile | X.Mode == Mode.ModeProfile.SH ) != EMPTY</PreCondition><PreCondition
- Guid="3e3576fb-239d-486e-8039-2fb033696845"
->AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.ModeProfile.SH )</PreCondition><PreCondition
+>THERE_IS X IN Profile | X.Mode == Mode.ModeProfile.SH
+  AND
+AcknAreaReached ( FIRST X IN Profile | X.Mode == Mode.ModeProfile.SH )</PreCondition><PreCondition
  Guid="b7041bbe-293e-4a65-9f11-1f7ea8cd24b3"
 >ModeRelatedSpeedLimits.SHModeSpeedLimit() &gt; Odometry.TrainSpeed()</PreCondition><PreCondition
  Guid="778ffeec-9d0d-4cc8-9cdb-a9b312b12afe"
