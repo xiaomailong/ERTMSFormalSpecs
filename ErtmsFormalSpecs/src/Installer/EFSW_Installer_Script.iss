@@ -42,6 +42,7 @@ Source: ..\..\bin\ICSharpCode.SharpZipLib.dll; DestDir: {app}\bin; Flags: ignore
 Source: ..\..\bin\LibGit2Sharp.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\WeifenLuo.WinFormsUI.Docking.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\ObjectListView.dll; DestDir: {app}\bin; Flags: ignoreversion
+Source: ..\..\bin\GuiUtils.dll; DestDir: {app}\bin; Flags: ignoreversion
 Source: ..\..\bin\NativeBinaries\*; DestDir: {app}\bin\NativeBinaries; Flags: recursesubdirs
 Source: ..\etc\logconfig.xml; DestDir: {app}\bin; Flags: ignoreversion
 
