@@ -1099,9 +1099,7 @@ Packet.Sequence1</Action></Actions>
 <Actions>
 <Action
  Guid="6e7033cb-ec67-45ae-8141-1fb4371273ce"
->DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action><Action
- Guid="1cf506df-06cd-40e2-a5cb-f05ea42130a3"
->AcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1198,24 +1196,6 @@ Packet.Sequence1</Action></Actions>
  Guid="3d81a9fc-56e0-4b4b-87a3-1cd11c8bfa42"
 >
 </ReqRef><Comment>The (target-)level (and -distance) that the train should perform a transition to (i.e. the output of the computations)</Comment>
-</Variable><Variable
- Type="Default.BaseTypes.Time"
- DefaultValue="BaseTypes.Time.NA"
- VariableMode="Internal"
- X="510"
- Y="100"
- Width="100"
- Height="50"
- Implemented="TRUE"
- Name="AcknowledgementTime"
- Guid="e27806fd-a35b-4c88-94b2-9b342fb8a244"
->
-<ReqRef
- Id="b80b16f5-2420-4404-a28c-46554a19a163"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="65259564-6bd7-4de4-804b-de346b551c3f"
->
-</ReqRef><Comment>Indicates the time when the last level transition acknowledgement has been requested.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
@@ -1338,88 +1318,11 @@ AcknowledgementRequiredForLT( anLTO =&gt; LevelTransitionToProcess )</PreConditi
  Guid="70792393-b2da-4f9c-b343-ffd26b6ede9b"
 >Kernel.Mode not in [Mode.NL, Mode.SH, Mode.PS]</PreCondition><PreCondition
  Guid="0f38d48a-8431-4fc2-8a57-2fed7286c19c"
->TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) &gt; LevelTransitionOrder.Location - BaseTypes.LengthToDistance(LevelTransitionToProcess.AcknLength)</PreCondition><PreCondition
- Guid="d1c2a625-f343-46d3-aff8-a4ac69558533"
->AcknowledgementTime == BaseTypes.Time.NA</PreCondition></PreConditions>
+>TrainPosition.FrontEndPosition ( PointOfInterest=&gt;DistanceInterval.Max ) &gt; LevelTransitionOrder.Location - BaseTypes.LengthToDistance(LevelTransitionToProcess.AcknLength)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6cd45745-93fd-462e-a9a2-fba632fb6219"
->DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action><Action
- Guid="e61e0e97-b591-4494-bddf-fefa789965bc"
->AcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- NeedsRequirement="FALSE"
- Name="Acknowledgement requested, driver acknowledged"
- Guid="ce1f8945-c32c-46dd-b9cf-a7443d217a18"
->
-<Comment>If the acknowledgement was requested and the driver acknowledged =&gt; the acknowledgement timer is reset.</Comment>
-<PreConditions>
-<PreCondition
- Guid="0f07a27d-8f89-4c48-b063-81d257bb788f"
->NOT TIU.ServiceBrakeCommanded</PreCondition><PreCondition
- Guid="96e10611-73a9-4b54-a0f9-c2f7ff4abbe3"
->DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition><PreCondition
- Guid="1b9b34c4-45d8-4d6f-8626-ca3d83dd1512"
->AcknowledgementTime != BaseTypes.Time.NA</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="d6a676aa-d751-4c19-ada6-811369689182"
->AcknowledgementTime &lt;- BaseTypes.Time.NA</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Acknowledgement requested, driver didn&apos;t acknowledge"
- Guid="fbab0a5d-ece3-4b57-b8b0-82d13be1e7f2"
->
-<ReqRef
- Id="b80b16f5-2420-4404-a28c-46554a19a163"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="d1426a17-e857-4579-802b-e4a0515d654f"
->
-</ReqRef><Comment>If the acknowledgement has already been requested but the driver didn&apos;t ask within the driver acknowledgement time, the on-board applies the service brake.</Comment>
-<PreConditions>
-<PreCondition
- Guid="5572fcd3-71a6-4fce-91e3-03f994294492"
->AcknowledgementTime != BaseTypes.Time.NA</PreCondition><PreCondition
- Guid="08841d53-1313-454d-8f2d-2590fea1bf0a"
->AcknowledgementTime + DMI.IN.Acknowledgements.Tack &lt; DateAndTime.CurrentTime</PreCondition><PreCondition
- Guid="557cf452-9e01-4ddf-82e2-d45344d238bd"
->NOT TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="617b5f25-4fc9-4476-a25c-ce5ca0b97228"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
- Guid="62fd7a18-4152-4c77-84ab-a04f6e72c0f6"
->AddSBCommand(BrakeReason.DriverAckRequired)</Action></Actions>
-</RuleCondition><RuleCondition
- Implemented="TRUE"
- Name="Service brake applied, driver acknowledges"
- Guid="c36246cd-1da8-4647-81cb-040a9183829e"
->
-<ReqRef
- Id="25ff8d11-2313-4e9f-80cb-228750b3ad1a"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="8d7bc05c-d39a-410c-a136-3ae4e9a83130"
->
-</ReqRef><Comment>If the service brake was applied due to the level transition acknowledgement and the driver acknowledged, the service brake is released.</Comment>
-<PreConditions>
-<PreCondition
- Guid="188a9d02-c244-4384-914e-7b38ba3387a5"
->TIU.ServiceBrakeCommanded</PreCondition><PreCondition
- Guid="1be75203-d9a7-4da3-a6ea-ed3bcdbd5073"
->DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.DriverAnswered</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="bb75a97e-9347-4f16-9157-f1243bcaeff9"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;False
-)</Action><Action
- Guid="3b2c7e90-7a82-4030-b7be-38fdead76ad1"
->AcknowledgementTime &lt;- BaseTypes.Time.NA</Action><Action
- Guid="fb3a834b-5301-4613-b62c-7cb025633ba8"
->RemoveSBCommand(BrakeReason.DriverAckRequired)</Action></Actions>
+>DMI.MasterDMI().In_AcknOfLevelTransition.InitiateRequest( Level =&gt; LevelTransitionToProcess.TRLevel )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"

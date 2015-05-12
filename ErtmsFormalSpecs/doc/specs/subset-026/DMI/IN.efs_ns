@@ -1651,6 +1651,43 @@
  Guid="87f1713d-80d7-44ec-8ce5-2f5b7704203d"
 >
 </ReqRef><Comment>Allow to ask the driver to acknowledge a change of level</Comment>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="2e50d7e3-47d9-4d7d-b521-48612bf5884f"
+>
+<ReqRef
+ Id="b80b16f5-2420-4404-a28c-46554a19a163"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="7513dec0-00f4-49ce-bb46-807860952ef9"
+>
+</ReqRef><Comment>In case of timeout, the service brake is applied.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Handle acknowledgement timeout"
+ Guid="fbab0a5d-ece3-4b57-b8b0-82d13be1e7f2"
+>
+<Comment>If the acknowledgement has already been requested but the driver didn&apos;t ask within the driver acknowledgement time, the on-board applies the service brake.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="5572fcd3-71a6-4fce-91e3-03f994294492"
+>StartTime != Default.BaseTypes.Time.NA</PreCondition><PreCondition
+ Guid="08841d53-1313-454d-8f2d-2590fea1bf0a"
+>StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="617b5f25-4fc9-4476-a25c-ce5ca0b97228"
+>TIU.CommandServiceBrake(
+    brakeSet=&gt;True
+)</Action><Action
+ Guid="62fd7a18-4152-4c77-84ab-a04f6e72c0f6"
+>Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
 <Procedures>
 <Procedure
  Implemented="TRUE"
@@ -1686,7 +1723,43 @@
  Guid="4dfc4c81-b5da-4c77-bf59-977850e79762"
 >THIS.InputInformation.AcceptDriverResponse()</Action><Action
  Guid="64835c6d-c282-4078-825d-1d54c5a07cd0"
->Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+>Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action><Action
+ Guid="1fd1e63d-cc7c-4195-8c58-7ea3b49aec47"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove SB if applied"
+ Guid="a2822cb2-dde9-49ef-8fbd-bf7a43b95dd1"
+>
+<ReqRef
+ Id="25ff8d11-2313-4e9f-80cb-228750b3ad1a"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2f3ec8da-b7da-4c9b-97fe-f705622f75fb"
+>
+</ReqRef><Comment>If the service brake was already applied, then remove it.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Remove SB if applied"
+ Guid="41c149a6-943a-43b4-90f8-0a69b78c8e53"
+>
+<PreConditions>
+<PreCondition
+ Guid="188a9d02-c244-4384-914e-7b38ba3387a5"
+>TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="fb3a834b-5301-4613-b62c-7cb025633ba8"
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action><Action
+ Guid="bb75a97e-9347-4f16-9157-f1243bcaeff9"
+>TIU.CommandServiceBrake(
+    brakeSet=&gt;False
+)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -1764,7 +1837,9 @@
   aText =&gt; &apos;&apos;
 )</Action><Action
  Guid="3220b412-5ce9-4c6d-8f85-308f2c041e4b"
->THIS.Level &lt;- Level</Action></Actions>
+>THIS.Level &lt;- Level</Action><Action
+ Guid="86ae2a15-1539-4218-862d-01e0cd218666"
+>StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1787,6 +1862,20 @@
  Guid="ae7e46f1-c018-45e7-94c1-8a10237617fe"
 >
 <Comment>Contains the information about which is the level to perform the transition</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.BaseTypes.Time"
+ Default="Default.BaseTypes.Time.NA"
+ Mode="Internal"
+ Implemented="TRUE"
+ Name="StartTime"
+ Guid="a851520c-e94d-469f-928c-7f99cc1bdac0"
+>
+<ReqRef
+ Id="b80b16f5-2420-4404-a28c-46554a19a163"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="45791f9a-7e4d-43ae-bf66-8c86d658e398"
+>
+</ReqRef><Comment>Represents the time when the driver ack was requested.</Comment>
 </StructureElement></Structure><Structure
  Default=""
  X="230"
