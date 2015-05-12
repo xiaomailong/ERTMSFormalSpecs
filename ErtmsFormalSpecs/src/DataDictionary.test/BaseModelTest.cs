@@ -249,6 +249,22 @@ namespace DataDictionary.test
         }
 
         /// <summary>
+        ///     Creates a state machine in the structure provided
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected StateMachine CreateStateMachine(NameSpace enclosing, string name)
+        {
+            StateMachine retVal = (StateMachine)Factory.createStateMachine();
+
+            enclosing.appendStateMachines(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
         ///     Creates a state in the state machine provided
         /// </summary>
         /// <param name="enclosing"></param>

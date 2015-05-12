@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using DataDictionary.Generated;
 using DataDictionary.Values;
 using DataDictionary.Variables;
@@ -462,6 +463,16 @@ namespace DataDictionary.Constants
         public string ToExpressionWithDefault()
         {
             return FullName;
+        }
+
+
+        public void createStateUpdate(State Updatedstate)
+        {
+            setUpdates(Updatedstate.Guid);
+            foreach (State subState in StateMachine.States)
+            {
+                subState.createStateUpdate(Updatedstate.findSubState(subState.Name));
+            }
         }
     }
 }

@@ -741,6 +741,11 @@ namespace DataDictionary.Types
             StateMachine retVal = (StateMachine)Duplicate();
             retVal.setUpdates(Guid);
 
+            foreach (State state in retVal.States)
+            {
+                state.createStateUpdate(findState(state.Name));
+            }
+
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
             NameSpace nameSpace = dictionary.GetNameSpaceUpdate(names, Dictionary);
