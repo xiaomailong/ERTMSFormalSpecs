@@ -1608,9 +1608,11 @@
 <Actions>
 <Action
  Guid="bb5c5893-540c-4b3d-b315-61f43a5d6d43"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.FixedTextInformation )</Action><Action
- Guid="6718e005-4ed7-4b15-8934-79007a156c56"
->THIS.Text &lt;- text</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.FixedTextInformation,
+  aText =&gt; text
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -1756,7 +1758,11 @@
 <Actions>
 <Action
  Guid="6de79a40-cca1-482a-aebd-e688e8041f8e"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LevelTransition )</Action><Action
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LevelTransition,
+  aText =&gt; &apos;&apos;
+)</Action><Action
  Guid="3220b412-5ce9-4c6d-8f85-308f2c041e4b"
 >THIS.Level &lt;- Level</Action></Actions>
 </RuleCondition></Conditions>
@@ -1904,9 +1910,11 @@
 <Actions>
 <Action
  Guid="4b2fad25-f978-4e27-8055-a2978840b2ba"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PlainTextInformation )</Action><Action
- Guid="5bcec144-68e6-494b-9dcb-09c230ec1a48"
->THIS.Text &lt;- text</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PlainTextInformation,
+  aText =&gt; text
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2046,7 +2054,11 @@
 <Actions>
 <Action
  Guid="08adb180-ade3-4730-a1c8-8c89c0424dc5"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainDataChangeFromOtherSource )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainDataChangeFromOtherSource,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -2964,7 +2976,11 @@
 <Actions>
 <Action
  Guid="1043c711-7558-478c-b8cc-12f03c36b5a1"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SNMode )</Action><Action
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SNMode,
+  aText =&gt; &apos;&apos;
+)</Action><Action
  Guid="5e82bf00-9e78-4d96-bd66-d003521ae460"
 >THIS.NationalSystemId &lt;- NationalSystemId</Action></Actions>
 </RuleCondition></Conditions>
@@ -3887,7 +3903,11 @@
 <Actions>
 <Action
  Guid="febfd992-c4f5-4d2a-a32c-9b0b21e4b009"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LSMode )</Action><Action
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LSMode,
+  aText =&gt; &apos;&apos;
+)</Action><Action
  Guid="31618ddd-9074-4f74-a558-ed0775cbd809"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -4082,7 +4102,11 @@
 <Actions>
 <Action
  Guid="92bb23ee-a4c9-436f-acf0-acfe9eaa3059"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.OSMode)</Action><Action
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.OSMode,
+  aText =&gt; &apos;&apos;
+)</Action><Action
  Guid="5ac58b4f-4dd8-4f42-b19a-4fe5a43d85b8"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -4277,7 +4301,11 @@
 <Actions>
 <Action
  Guid="843da387-e6dc-4659-ae85-6b0981d04135"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SHMode )</Action><Action
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SHMode,
+  aText =&gt; &apos;&apos;
+)</Action><Action
  Guid="0bc1dab8-7d59-4e81-a0d8-6e6f38a183ed"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -4460,7 +4488,11 @@
 <Actions>
 <Action
  Guid="c30ea484-06c6-4354-a964-0266da92d675"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SRMode )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SRMode,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4590,7 +4622,11 @@
 <Actions>
 <Action
  Guid="dbda4c24-cc3e-417a-a756-a22a20725059"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.UNMode )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.UNMode,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4720,7 +4756,11 @@
 <Actions>
 <Action
  Guid="59df9524-e684-4144-bb6f-3fb1c664f74f"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RVMode )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RVMode,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4850,7 +4890,11 @@
 <Actions>
 <Action
  Guid="d7d5dbd8-7b39-4b14-8643-47d1b0daccaf"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainTrip )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainTrip,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -4980,7 +5024,11 @@
 <Actions>
 <Action
  Guid="c7f17aa8-f0a4-4981-9989-82b41533a8af"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RollAwayProtection )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RollAwayProtection,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5110,7 +5158,11 @@
 <Actions>
 <Action
  Guid="f537b56a-b215-4883-88ea-db7dc02fb73d"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReverseMovementProtection )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReverseMovementProtection,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
@@ -5209,7 +5261,11 @@
 <Actions>
 <Action
  Guid="a1df51a0-c291-494a-b630-527f73d952ba"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.StandstillSupervision )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.StandstillSupervision,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5340,7 +5396,11 @@
 <Actions>
 <Action
  Guid="cbacafdd-59cd-4d53-8938-258dfb3dd32d"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PostTripDistanceExceeded )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PostTripDistanceExceeded,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -5471,7 +5531,11 @@
 <Actions>
 <Action
  Guid="13de8929-3a32-4885-a045-21b308fa91b0"
->Acknowledgements.AddAcknowledgement( anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReversingDistanceExceeded )</Action></Actions>
+>Acknowledgements.AddAcknowledgement
+(
+  anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReversingDistanceExceeded,
+  aText =&gt; &apos;&apos;
+)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
