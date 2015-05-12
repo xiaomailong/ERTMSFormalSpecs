@@ -475,15 +475,16 @@
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Remove the provided acknowledgement"
+ Name="Remove the provided acknowledgement from the FIFO"
  Guid="b46b1355-a1db-49b9-a643-d6f49461856a"
 >
+<Comment>Remove the provided acknowledgement from the FIFO.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Remove the provided acknowledgement"
+ Name="Remove the provided acknowledgement from the FIFO"
  Guid="6aa33b35-7009-4b61-bbec-81a179892456"
 >
 <PreConditions>
@@ -492,6 +493,29 @@
 <Action
  Guid="519ce4a2-3a2d-429c-a30e-a8f808e0cb1e"
 >REMOVE FIRST X.Type == AcknowledgementType IN Acknowledgements</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="If the acknowledgement is already displayed, stop the display"
+ Guid="1f87b4a2-2780-4998-abb1-167c5183d254"
+>
+<Comment>If the acknowledgement is already displayed, stop the display.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="If the acknowledgement is already displayed, stop the display"
+ Guid="ea41fb60-dd14-4a07-9b93-e1b04e2ce3c3"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="5af13712-2075-4220-8604-764ff4d06a55"
+>FindDMIStructure( anAck =&gt; AcknowledgementType ).Disable()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
