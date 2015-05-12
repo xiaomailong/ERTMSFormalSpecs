@@ -167,6 +167,179 @@
 >
 </ReqRef><Comment>Collection of acknowledgements.</Comment>
 </Collection></Collections>
+<Functions>
+<Function
+ Type="DMI.InputInformation"
+ Default=""
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="FindDMIStructure"
+ Guid="ecea8373-15fd-4952-8da7-3d1613666651"
+>
+<Comment>Converts the acknowledgement type to the corresponding DMI structure.</Comment>
+<Parameters>
+<Parameter
+ Type="AckTypeEnum"
+ Name="anAck"
+ Guid="a0f76de7-744e-4021-81c5-bded3f857e2f"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Fixed text information"
+ Guid="c59913cc-8a34-41bd-b5ad-a1e5eb99414e"
+>
+<PreConditions>
+<PreCondition
+ Guid="6443a54c-8ca3-48ed-bb3e-0a2c7161189c"
+>anAck == AckTypeEnum.FixedTextInformation</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfFixedTextInformation.InputInformation</Expression>
+</Case><Case
+ Name="Level transition"
+ Guid="333f2897-0441-46fc-9c41-b5b7e6c806c0"
+>
+<PreConditions>
+<PreCondition
+ Guid="56a383e9-8c1a-4da2-aa1e-489ed51ab0e7"
+>anAck == AckTypeEnum.LevelTransition</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfLevelTransition.InputInformation</Expression>
+</Case><Case
+ Name="LS mode"
+ Guid="5b77d47d-dbc0-4749-8f4c-4f5b1a1dec13"
+>
+<PreConditions>
+<PreCondition
+ Guid="c2c935c8-c400-42f3-8f4a-f1117e4158af"
+>anAck == AckTypeEnum.LSMode</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfLSMode.InputInformation</Expression>
+</Case><Case
+ Name="OS mode"
+ Guid="59d3f49e-24b9-44f8-9d77-3d3824e123ff"
+>
+<PreConditions>
+<PreCondition
+ Guid="10d1d615-6ed6-41ab-861d-c8f77c774d59"
+>anAck == AckTypeEnum.OSMode</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfOSMode.InputInformation</Expression>
+</Case><Case
+ Name="Plain text information"
+ Guid="395d3df9-d472-4588-a803-f539aff8d2dd"
+>
+<PreConditions>
+<PreCondition
+ Guid="91e23ce8-75d7-4097-b442-b348fdf5c292"
+>anAck == AckTypeEnum.PlainTextInformation</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfPlainTextInformation.InputInformation</Expression>
+</Case><Case
+ Name="Post trip distance exceeded"
+ Guid="9ad55fe4-77f4-4638-a888-8a0a0d54ad64"
+>
+<PreConditions>
+<PreCondition
+ Guid="02141e7a-2ff9-45eb-849a-519f447281c0"
+>anAck == AckTypeEnum.PostTripDistanceExceeded</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation</Expression>
+</Case><Case
+ Name="Reverse movement protection"
+ Guid="309ce76a-3e7e-4511-a39a-6bf403297d93"
+>
+<PreConditions>
+<PreCondition
+ Guid="0229427c-e40b-4ce0-87b0-d03d0bf8d1aa"
+>anAck == AckTypeEnum.ReverseMovementProtection</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknForReverseMovementProtection.InputInformation</Expression>
+</Case><Case
+ Name="Reversing distance exceeded"
+ Guid="66be5d09-d2c1-4a99-8adc-1b0ee8a396e3"
+>
+<PreConditions>
+<PreCondition
+ Guid="696595c7-9ec9-4c28-99aa-13f69426617d"
+>anAck == AckTypeEnum.ReversingDistanceExceeded</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation</Expression>
+</Case><Case
+ Name="Roll away protection"
+ Guid="b45b1751-3548-425c-966a-d830df533749"
+>
+<PreConditions>
+<PreCondition
+ Guid="a28592e9-1ba4-4292-9e8d-7556c267038c"
+>anAck == AckTypeEnum.RollAwayProtection</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknForRollAwayProtection.InputInformation</Expression>
+</Case><Case
+ Name="RV mode"
+ Guid="d7348eb8-d608-4995-b6e2-c8356f03b228"
+>
+<PreConditions>
+<PreCondition
+ Guid="fd59e668-0887-41fe-aa11-e8612ebdad9c"
+>anAck == AckTypeEnum.RVMode</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfRVMode.InputInformation</Expression>
+</Case><Case
+ Name="SH mode"
+ Guid="5fb86942-bf42-49fa-93ee-768773e2f363"
+>
+<PreConditions>
+<PreCondition
+ Guid="23d928be-cfcc-493d-aa3d-7fe62d7b82d4"
+>anAck == AckTypeEnum.SHMode</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfSHMode.InputInformation</Expression>
+</Case><Case
+ Name="SN mode"
+ Guid="b8fac5c8-e09c-4187-bba4-158edb6d2a5e"
+>
+<PreConditions>
+<PreCondition
+ Guid="b0077805-c3ee-4123-9cf8-90f0628ba3fc"
+>anAck == AckTypeEnum.SNMode</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfSNMode.InputInformation</Expression>
+</Case><Case
+ Name="SR mode"
+ Guid="c45734f7-6997-4af6-9944-690b299d9751"
+>
+<PreConditions>
+<PreCondition
+ Guid="47b20794-d0ec-46fb-903e-d957ed2666a2"
+>anAck == AckTypeEnum.SRMode</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfSRMode.InputInformation</Expression>
+</Case><Case
+ Name="Standstill supervision"
+ Guid="6d56151d-efac-4a4c-b3db-99cb827b2314"
+>
+<PreConditions>
+<PreCondition
+ Guid="9707f684-f7ee-4157-aa79-1f90c0b653b5"
+>anAck == AckTypeEnum.StandstillSupervision</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknForStandstillSupervision.InputInformation</Expression>
+</Case><Case
+ Name="Train data change from other source"
+ Guid="09bfd43e-013f-46e8-b931-0f527488ec6a"
+>
+<PreConditions>
+<PreCondition
+ Guid="c0880109-f4c9-40c2-9beb-e598a85f88eb"
+>anAck == AckTypeEnum.TrainDataChangeFromOtherSource</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfTrainDataChangeFromOtherSource.InputInformation</Expression>
+</Case><Case
+ Name="Train trip"
+ Guid="d6aef83a-9457-4629-b64f-ca74b8f768f5"
+>
+<PreConditions>
+<PreCondition
+ Guid="86267c88-3628-4274-89ca-4b68f4c87719"
+>anAck == AckTypeEnum.TrainTrip</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfTrainTrip.InputInformation</Expression>
+</Case><Case
+ Name="UN mode"
+ Guid="4ea39ad5-3613-4580-b7da-6e54208efca7"
+>
+<PreConditions>
+<PreCondition
+ Guid="6c354d46-9789-4a54-ba36-5770a1259bf6"
+>anAck == AckTypeEnum.UNMode</PreCondition></PreConditions>
+<Expression>MasterDMI().In_AcknOfUNMode.InputInformation</Expression>
+</Case></Cases>
+</Function></Functions>
 <Procedures>
 <Procedure
  X="10"
@@ -204,9 +377,28 @@
 <Rule
  Priority="Processing"
  Name="Display the first acknowledgement"
- Guid="3355dd44-b750-4e07-8bea-cc4e9bb6664b"
+ Guid="aef22033-51de-4cf3-9624-35878fc053eb"
 >
 <Comment>Fids the type of the acknowledgement to display and calls the corresponding procedure.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Display the first acknowledgement"
+ Guid="352cd135-76df-4610-b4c9-95af3f1f9272"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="79227b68-79a6-49a8-a778-0c20d4e365a2"
+>FindDMIStructure( anAck =&gt; (FIRST X IN Acknowledgements).Type ).InitiateRequest()</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Handle text messages"
+ Guid="3355dd44-b750-4e07-8bea-cc4e9bb6664b"
+>
+<Comment>Handles the fields relative to the text messages, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -221,52 +413,8 @@
 >(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.FixedTextInformation</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="3c596d04-19d3-41b2-8c7a-29a065d16403"
->MasterDMI().In_AcknOfFixedTextInformation.InputInformation.InitiateRequest()</Action><Action
  Guid="2155274f-5ec7-4899-a5ce-2c15266e57b7"
 >MasterDMI().In_AcknOfFixedTextInformation.Text &lt;- (FIRST Ack IN Acknowledgements).Text</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Level transition"
- Guid="068775ae-e23e-478a-aeb1-452cd6d7ee96"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for level transition, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="82d9418b-2f11-4c43-ac8c-f14a9109e82e"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.LevelTransition</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="65420dd3-d5e3-40df-9056-0b1936c518f1"
->MasterDMI().In_AcknOfLevelTransition.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="LS mode"
- Guid="68146ad7-d097-4c65-ae4d-53046c702f57"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for LS mode, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="ca6cab1e-75ca-4966-b637-9f8b643589d4"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.LSMode</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="ec9e4edf-1e0d-43a5-9d68-761eccac6e33"
->MasterDMI().In_AcknOfLSMode.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="OS mode"
- Guid="4de6b2b6-7ba5-424f-8b5b-202e955002a5"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for OS mode, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="61d0bd1b-42fd-4bf2-973c-345a6767dd0b"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.OSMode</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="69d97040-2a3e-491d-bf13-96e29caf3307"
->MasterDMI().In_AcknOfOSMode.InputInformation.InitiateRequest()</Action></Actions>
 </RuleCondition><RuleCondition
  NeedsRequirement="FALSE"
  Name="Plain text information"
@@ -279,178 +427,8 @@
 >(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.PlainTextInformation</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="df75140f-9793-4819-ba04-032a29625336"
->MasterDMI().In_AcknOfPlainTextInformation.InputInformation.InitiateRequest()</Action><Action
  Guid="f7d3dd16-4133-4aad-9a4e-edd3b4993732"
 >MasterDMI().In_AcknOfPlainTextInformation.Text &lt;- (FIRST Ack IN Acknowledgements).Text</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Post trip distance exceeded"
- Guid="ed14e2ce-b5b2-4d9b-b669-093732f6e816"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for post trip distance exceeded, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="cc58f401-af69-4fba-a4da-15bbb918f619"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.PostTripDistanceExceeded</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="53cd6388-9f94-4b88-af88-4acede69ab4c"
->MasterDMI().In_AcknForPostTripDistanceExceeded.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Reverse movement protection"
- Guid="e3f20b47-df84-4850-980b-cd82fec426a0"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for reverse movement protection, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="40b17046-058e-42b6-8b5b-e2ad5c73f8d1"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.ReverseMovementProtection</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="02b055c6-9fb3-4a32-aebe-11f1a992c81b"
->MasterDMI().In_AcknForReverseMovementProtection.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Reversing distance exceeded"
- Guid="38cba240-897b-4a7b-a61b-42b6503cbce5"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for reversing distance exceeded, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="ef8df0ae-27ea-44a7-9989-c2f560b8853e"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.ReversingDistanceExceeded</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="92a66c7e-e64a-4252-b90d-57cb1b9eea87"
->MasterDMI().In_AcknForReversingDistanceExceeded.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Roll away protection"
- Guid="d3c922e2-011e-4c2c-9747-6e27f1afbc60"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for roll away protection, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="d4290403-6337-45c7-b77f-079f46c3c26f"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.RollAwayProtection</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="21dce599-b03f-466a-9a12-3267cbfc5ea2"
->MasterDMI().In_AcknForRollAwayProtection.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="RV mode"
- Guid="e0253b5c-86b6-4e42-b2f3-001689c99c70"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for RV mode, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="49f6670f-1d56-45cd-ab64-9ca232e02aab"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.RVMode</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="febebbca-0726-441c-beb8-4820fcae83da"
->MasterDMI().In_AcknOfRVMode.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="SH mode"
- Guid="c51d9ad8-5ac1-41e1-8e77-94cb7ae6ae29"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for SH mode, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="9495c5ae-6419-42c5-bdbf-f48dce1590dd"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.SHMode</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="cd8c7bc4-9f90-4d8f-a642-3db752601b89"
->MasterDMI().In_AcknOfSHMode.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="SN mode"
- Guid="2317c58e-2f05-4fd1-ac37-07459ecdbb43"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement SN mode, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="9d301cab-259c-4520-bc51-0bce82a1df89"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.SNMode</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5c9b433c-21ee-407b-88bb-77c573a4a426"
->MasterDMI().In_AcknOfSNMode.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="SR mode"
- Guid="5946a7b5-bd0b-4123-b263-2693261f4da5"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for SR mode, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="c3f2aa59-2fb4-4651-864c-f7bb9620e635"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.SRMode</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="543705a1-9e83-4d68-85b9-123e39b87b88"
->MasterDMI().In_AcknOfSRMode.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Standstill supervision"
- Guid="95092eac-3f54-4faf-a6da-be72165a13ec"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for standstill supervision, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="8744ec5e-b017-4faf-ad66-2ab76ec63ef2"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.StandstillSupervision</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="7b154e9f-39a8-4afb-ad42-b500f1ee4015"
->MasterDMI().In_AcknForStandstillSupervision.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Train data change from other source"
- Guid="e11cbe48-24c8-4563-a042-72285d753705"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for train data change from other source, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="d276a79f-792a-43b6-85ac-686a0e2c0165"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.TrainDataChangeFromOtherSource</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="33871758-4d6c-46df-9f8a-c2a4b4e96c34"
->MasterDMI().In_AcknOfTrainDataChangeFromOtherSource.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="Train trip"
- Guid="7b663015-8e93-4dde-9960-dd6db3e379da"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for train trip, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="186164bc-e5f2-4e76-8f88-5f9afa681783"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.TrainTrip</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="07bf846b-9014-48d7-a7ed-4dbfe1a490c6"
->MasterDMI().In_AcknOfTrainTrip.InputInformation.InitiateRequest()</Action></Actions>
-</RuleCondition><RuleCondition
- NeedsRequirement="FALSE"
- Name="UN mode"
- Guid="f456a93b-92a3-4fe2-8d09-868be0bb2069"
->
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for UN mode, display it.</Comment>
-<PreConditions>
-<PreCondition
- Guid="b4198824-ba2e-4e90-af93-44a888ba10b4"
->(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.UNMode</PreCondition></PreConditions>
-<Actions>
-<Action
- Guid="5424d1a8-28ff-4be4-b37c-cea5004d7e03"
->MasterDMI().In_AcknOfUNMode.InputInformation.InitiateRequest()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
