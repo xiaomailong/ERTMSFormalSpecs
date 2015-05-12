@@ -214,6 +214,70 @@
  Guid="c67ee406-fe3f-4425-b6a2-ca5bd60bb17a"
 >
 </RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.9"
+ type="TITLE"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NotImplementable"
+ version="3.0.0"
+ Name=""
+ Guid="11568762-c63c-48c3-a792-debcc68c93d5"
+>Acknowledgements<Sub>
+<Paragraph
+ id="A1.1.1.9.1"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+>The driver acknowledgements are handled according to Paragraph 5.4.1.9 of DMI specification v340: &quot;If there is more than one object  or text message  for  which a driver’s acknowledgement is required,  they  shall be managed according to a FIFO principle  with a delay of 1 sec between  their  display  i.e.  the  next  object  or  text  message  and  its  related  request  of Acknowledgement shall be displayed 1 second after  the current object or text message has been acknowledged.&quot;<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="37a23bb1-b170-4730-bf05-de801890da6b"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="3a212c47-bc8b-45e8-8b00-6ab06189a7e8"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.9.2"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ reviewed="TRUE"
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="69800a7a-752e-4dc5-b1a8-68ee2e692560"
+>We consider that the FIFO containing the acknowledgements to display cannot contain two acknowledgements of the same type, except for plain text messages.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="958dd3c0-d0f3-42f3-a420-f8f9b3812b4c"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="9ad08f3d-1acc-456c-81e8-1c001b3bee80"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph></Sub>
+<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="9c4d734b-e93c-46b3-aee8-42be27ad30a9"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="139bae31-0c5c-4a09-af26-bc802b9dae6d"
+>
+</RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
 <RequirementSets>
 <RequirementSetReference
