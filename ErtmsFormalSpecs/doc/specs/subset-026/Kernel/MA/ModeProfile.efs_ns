@@ -1133,9 +1133,11 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="e950a3ab-3286-40af-8a21-512f66444e47"
 >
-</ReqRef><Rules>
+</ReqRef><Comment>The the train exits an element of the mode profile, it has to be removed together with its acknowledgement.</Comment>
+<Rules>
 <Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Hide acknowledgements of the elements that will be removed"
  Guid="35c577e8-2979-4dfd-a336-91a13af0047c"
 >
@@ -1149,16 +1151,35 @@ IN
  SpecId="1725280b-f696-4860-94cc-d85f62c35214"
  Guid="acc721cb-1024-4ffa-ad02-efc2f57e3b17"
 >
-</ReqRef><SubRules></SubRules>
+</ReqRef><Comment>If some elements of the mode profile have to be deleted, their corressponding acknowledgements have to be removed.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Hide acknowledgements of the elements that will be removed"
+ Guid="8e006fca-73eb-41cd-abb7-8a3c1b57f88f"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="ed341883-9f2e-48c5-a823-86222c1ba68c"
+>APPLY
+  RemoveAcknowledgement ( aModeProfile =&gt; X )
+ON
+  Profile | RemoveModeProfile ( aProfile =&gt; X )</Action></Actions>
+</RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
  Implemented="TRUE"
  Name="Remove the elements"
  Guid="d893ed86-8908-430e-9ce9-b2f6b33eda50"
 >
+<Comment>Finally, the elements to remove are removed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Remove the elements"
  Guid="199cbcbd-1308-4cfd-8112-42b6b3e4205c"
 >
@@ -1168,6 +1189,82 @@ IN
 <Action
  Guid="44cd0c9c-d1f7-40d7-bb32-20482a318560"
 >REMOVE ALL RemoveModeProfile ( X ) IN  Profile</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></Rules>
+</Procedure><Procedure
+ Implemented="TRUE"
+ Name="RemoveAcknowledgement"
+ Guid="df85c746-8af8-43bd-a038-bf4c64fe1ae9"
+>
+<ReqRef
+ Id="3e329bf5-959c-4332-a482-b1816ce364d2"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a65583a5-07a7-42c9-99de-15e798b15778"
+>
+</ReqRef><ReqRef
+ Id="69d11b6a-6ae6-4d77-8ddf-bdb543c96261"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a3b00ac8-e813-428f-b854-86b48f8d0843"
+>
+</ReqRef><Comment>Removes the acknowledgement corresponding to the provided mode profile element.</Comment>
+<Parameters>
+<Parameter
+ Type="ModeProfileStruct"
+ Name="aModeProfile"
+ Guid="e7f530a9-825e-4e5f-92cc-817ccfe99cd5"
+>
+</Parameter></Parameters>
+<Rules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Remove acknowledgement"
+ Guid="ff965ebe-7d0d-4c5b-bc66-59bc906ef578"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="LS"
+ Guid="40b6e8dd-2884-4eef-aa11-906c23d30b25"
+>
+<Comment>The mode of the provided element is LS.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d88d578c-dc2f-4ca1-92e3-d11984d75759"
+>aModeProfile.Mode == Mode.ModeProfile.LS</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="caa07fc0-3bca-454c-98a6-6f17370c36eb"
+>DMI.IN.Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; DMI.IN.Acknowledgements.AckTypeEnum.LSMode )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="OS"
+ Guid="cf898b61-252c-49e5-880b-56759166c9d8"
+>
+<Comment>The mode of the provided element is OS.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="10d5da94-934f-47b5-aa89-1883d27c3012"
+>aModeProfile.Mode == Mode.ModeProfile.OS</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="c1f907d9-ce75-4e97-ae03-66b08d5e69b6"
+>DMI.IN.Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; DMI.IN.Acknowledgements.AckTypeEnum.OSMode )</Action></Actions>
+</RuleCondition><RuleCondition
+ Implemented="TRUE"
+ Name="SH"
+ Guid="ce0bb749-6bf9-431d-9e34-a5942225d82b"
+>
+<Comment>The mode of the provided element is SH.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="d6214b7c-5a3e-41da-900e-01479f36f5b6"
+>aModeProfile.Mode == Mode.ModeProfile.SH</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="93777c21-79d2-410e-9493-701ab3060a21"
+>DMI.IN.Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; DMI.IN.Acknowledgements.AckTypeEnum.SHMode )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure></Procedures>
