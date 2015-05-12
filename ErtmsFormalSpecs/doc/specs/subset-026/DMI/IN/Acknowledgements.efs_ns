@@ -11,8 +11,8 @@
 <Enumerations>
 <Enum
  Default="Undefined"
- X="490"
- Y="170"
+ X="250"
+ Y="200"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -117,52 +117,71 @@
 <Structures>
 <Structure
  Default=""
- X="260"
- Y="170"
+ X="10"
+ Y="200"
  Width="100"
  Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="AcknowledgementStruct"
  Guid="0777a085-5fc4-4ea7-9fe2-03ce6382e632"
 >
+<Comment>Represents an acknowledgement. Contains the acknowledgement type and, in case of text acknowledgements, the text to acknowledge.</Comment>
 <StructureElement
  TypeName="AckTypeEnum"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Type"
  Guid="d2a4f1b3-22e2-4318-bf7f-57ee5189c951"
 >
+<Comment>The type of the acknowledgement.</Comment>
 </StructureElement><StructureElement
  TypeName="String"
  Default=""
  Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Text"
  Guid="6cac4317-cbf7-4c35-a93a-2d6dd88cdbf5"
 >
+<Comment>If the current acknowledgement is a text acknowledgement, this field contains the text to acknowledge.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
  TypeName="AcknowledgementStruct"
  Default="[]"
  X="10"
- Y="170"
+ Y="120"
  Width="100"
  Height="50"
  Implemented="TRUE"
  Name="AcknowledgementsCol"
  Guid="d5db5bd6-49fe-4e3c-be03-c002216cad3f"
 >
-<Comment>Collection of acknowledgements.</Comment>
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2fd49f06-3ade-4a0b-9db2-5023cde63475"
+>
+</ReqRef><Comment>Collection of acknowledgements.</Comment>
 </Collection></Collections>
 <Procedures>
 <Procedure
  X="10"
- Y="260"
+ Y="290"
  Width="100"
  Height="50"
  Name="DisplayAcknowledgement"
  Guid="23cdc73d-a5d1-4e72-a028-ae71e6bae6ac"
 >
-<Comment>When an acknowledgement can be displayed (there is no other acknowledgement being displayed and 1 second interval has elapsed from the last acknowledgement), the first acknowledgement in the FIFO is displayed.</Comment>
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1fab6d33-3364-4682-b80d-03ab6c26722f"
+>
+</ReqRef><Comment>When an acknowledgement can be displayed (there is no other acknowledgement being displayed and 1 second interval has elapsed from the last acknowledgement), the first acknowledgement in the FIFO is displayed.</Comment>
 <Rules>
 <Rule
  Priority="Processing"
@@ -187,6 +206,7 @@
  Name="Display the first acknowledgement"
  Guid="3355dd44-b750-4e07-8bea-cc4e9bb6664b"
 >
+<Comment>Fids the type of the acknowledgement to display and calls the corresponding procedure.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -437,6 +457,7 @@
  Name="Remove the displayed acknowledgement"
  Guid="c9db9b36-f698-4139-bef6-bb4eda9e3a54"
 >
+<Comment>The displayed acknowledgement is removed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -455,10 +476,11 @@
 </Rule></Rules>
 </Procedure><Procedure
  X="130"
- Y="260"
+ Y="290"
  Width="100"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="RemoveAcknowledgement"
  Guid="d0b6b9a9-c075-4981-9aab-a4c61261fcf4"
 >
@@ -495,13 +517,19 @@
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
- X="260"
- Y="260"
+ X="250"
+ Y="290"
  Width="100"
  Height="50"
  Name="AddAcknowledgement"
  Guid="9aa818b9-4945-4c43-80c2-ed0ee886f3cc"
 >
+<ReqRef
+ Id="69800a7a-752e-4dc5-b1a8-68ee2e692560"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="20fa99ff-fd53-4075-95ff-9a4c4f7b4972"
+>
+</ReqRef><Comment>Adds a new acknowledgement in the FIFO of acknowledgements. The acknowledgements of the same type are not added, except in case of text acknowledgements.</Comment>
 <Parameters>
 <Parameter
  Type="AckTypeEnum"
@@ -610,7 +638,12 @@ IN
  Name="Acknowledgements"
  Guid="f7e45cc0-d7d4-4ccd-99f9-50def786097b"
 >
-<Comment>Collection of acknowledgements, handled as a FIFO.</Comment>
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="32b6175f-3a75-4568-ab7b-4676789da324"
+>
+</ReqRef><Comment>Collection of acknowledgements, handled as a FIFO.</Comment>
 </Variable><Variable
  Type="Boolean"
  DefaultValue="True"
@@ -623,7 +656,12 @@ IN
  Name="DisplayAllowed"
  Guid="171648d3-6816-43b4-a0ea-750351eb49e7"
 >
-<Comment>Indicates if a new acknowledgement can be displayed.</Comment>
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f58aa596-a129-4379-aaf0-4728153f9ee5"
+>
+</ReqRef><Comment>Indicates if a new acknowledgement can be displayed. Set to true if there is no other acknowledgement displayed and if at least 1 second has elapsed from the last driver acknowledgement.</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="Default.BaseTypes.Time.NA"
@@ -635,6 +673,12 @@ IN
  Name="LastDriverAcknowledgementTime"
  Guid="810a392e-876a-41de-9161-096bf6190014"
 >
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aaabdd1c-02a1-408c-81e2-9648b60e31d0"
+>
+</ReqRef><Comment>The time of the last driver acknowledgement. Used to check if the next acknowledgement can be displayed (=&gt; 1 second has elapsed from the last acknowledgement).</Comment>
 </Variable><Variable
  Type="Default.BaseTypes.Time"
  DefaultValue="1.0"
@@ -647,17 +691,29 @@ IN
  Name="AcknowledgementInterval"
  Guid="bd70a259-d8c2-4920-b0e5-2c32a32dd90b"
 >
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="329a5b16-928b-4584-b455-65f5c9895019"
+>
+</ReqRef><Comment>The interval that has to be elapsed from the last acknowledgement in order to display the next acknowledgement.</Comment>
 </Variable></Variables>
 <Rules>
 <Rule
  Priority="UpdateOUT"
  X="10"
- Y="350"
+ Y="380"
  Width="100"
  Height="50"
  Name="Display acknowledgement"
  Guid="cbbc98b0-2dd9-4ed0-9745-024638b9e0f1"
 >
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a6fdfd7a-1470-4d38-b0c6-c2325fdb787f"
+>
+</ReqRef><Comment>If a new acknowledgement can be displayed and if there are acknowledgements to display, then the first acknowledgement is displayed.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -680,12 +736,18 @@ IN
 </Rule><Rule
  Priority="CleanUp"
  X="130"
- Y="350"
+ Y="380"
  Width="100"
  Height="50"
  Name="Update permission to display"
  Guid="528e6078-c25e-461d-82f0-ec1251d5f8f0"
 >
+<ReqRef
+ Id="ccc55fee-cf12-4cb6-a94e-b1ac9643bd74"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fbb54166-86b8-4e5e-8b23-c805ee18fc85"
+>
+</ReqRef><Comment>A new acknowledgement can be displayed if no other acknowledgement is being displayed and if 1 second has elapsed from the response of the driver.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
