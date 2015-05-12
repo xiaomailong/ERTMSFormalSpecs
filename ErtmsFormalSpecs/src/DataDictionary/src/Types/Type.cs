@@ -506,7 +506,8 @@ namespace DataDictionary.Types
                 current = this;
                 while (!retVal && current != null)
                 {
-                    
+                    retVal = current == otherType;
+                    current = current.Updates;
                 }
             }
 
