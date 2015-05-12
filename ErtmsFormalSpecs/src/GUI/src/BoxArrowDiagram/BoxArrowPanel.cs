@@ -16,25 +16,22 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
+using System.Reflection;
 using System.Windows.Forms;
-using DataDictionary.Constants;
-using DataDictionary.Types;
 using DataDictionary;
 using System.IO;
 using System.Globalization;
 using ErtmsSolutions.Utils.RunProcessExec;
-using LibGit2Sharp;
 
 namespace GUI.BoxArrowDiagram
 {
     public abstract partial class BoxArrowPanel<BoxModel, ArrowModel> : Panel
-        where BoxModel : class, DataDictionary.IGraphicalDisplay
-        where ArrowModel : class, DataDictionary.IGraphicalArrow<BoxModel>
+        where BoxModel : class, IGraphicalDisplay
+        where ArrowModel : class, IGraphicalArrow<BoxModel>
     {
-        private System.Windows.Forms.ToolStripMenuItem refreshMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reDisplayMenuItem;
+        private ToolStripMenuItem refreshMenuItem;
+        private ToolStripMenuItem reDisplayMenuItem;
 
         /// <summary>
         ///     Initializes the context menu items
@@ -44,26 +41,43 @@ namespace GUI.BoxArrowDiagram
             // 
             // Refresh
             // 
-            refreshMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            refreshMenuItem = new ToolStripMenuItem();
             refreshMenuItem.Name = "refreshMenuItem";
-            refreshMenuItem.Size = new System.Drawing.Size(161, 22);
+            refreshMenuItem.Size = new Size(161, 22);
             refreshMenuItem.Text = "Refresh";
-            refreshMenuItem.Click += new System.EventHandler(refreshMenuItem_Click);
+            refreshMenuItem.Click += refreshMenuItem_Click;
             // 
             // Redisplay
             // 
-            reDisplayMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            reDisplayMenuItem = new ToolStripMenuItem();
             reDisplayMenuItem.Name = "reDisplayMenuItem";
-            reDisplayMenuItem.Size = new System.Drawing.Size(250, 22);
+            reDisplayMenuItem.Size = new Size(250, 22);
             reDisplayMenuItem.Text = "Redisplay items";
-            reDisplayMenuItem.Click += new System.EventHandler(ReDisplayMenuItem_Click);
+            reDisplayMenuItem.Click += ReDisplayMenuItem_Click;
 
             contextMenu.Items.Clear();
-            contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[]
+            contextMenu.Items.AddRange(new ToolStripItem[]
             {
                 reDisplayMenuItem,
                 refreshMenuItem
             });
+            contextMenu.Opening += contextMenu_Opening;
+        }
+
+        void contextMenu_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Point location = PointToClient(Cursor.Position);
+
+            object target = BoxForLocation(location);
+            if (target == null)
+            {
+                target = ArrowForLocation(location);
+            }
+
+            if (target != null)
+            {
+                Selected = target;
+            }
         }
 
         /// <summary>
@@ -86,17 +100,17 @@ namespace GUI.BoxArrowDiagram
         /// <summary>
         ///     The model
         /// </summary>
-        private object __model = null;
+        private object _model = null;
 
         /// <summary>
         ///     The model element for which this panel is built
         /// </summary>
         public object Model
         {
-            get { return __model; }
+            get { return _model; }
             set
             {
-                __model = value;
+                _model = value;
                 InitPositionHandling();
             }
         }
@@ -109,26 +123,26 @@ namespace GUI.BoxArrowDiagram
             InitializeComponent();
             InitializeStartMenu();
 
-            MouseDown += new MouseEventHandler(BoxArrowPanel_MouseDown);
-            MouseMove += new MouseEventHandler(BoxArrowPanel_MouseMove);
-            MouseUp += new MouseEventHandler(BoxArrowPanel_MouseUp);
-            Click += new EventHandler(BoxArrowPanel_Click);
+            MouseDown += BoxArrowPanel_MouseDown;
+            MouseMove += BoxArrowPanel_MouseMove;
+            MouseUp += BoxArrowPanel_MouseUp;
+            Click += BoxArrowPanel_Click;
 
-            DragEnter += new DragEventHandler(DragEnterHandler);
-            DragDrop += new DragEventHandler(DragDropHandler);
+            DragEnter += DragEnterHandler;
+            DragDrop += DragDropHandler;
             AllowDrop = true;
             DoubleBuffered = true;
 
             Images = new ImageList();
-            Images.Images.Add(GUI.Properties.Resources.pin);
-            Images.Images.Add(GUI.Properties.Resources.unpin);
+            Images.Images.Add(Properties.Resources.pin);
+            Images.Images.Add(Properties.Resources.unpin);
 
-            Paint += new PaintEventHandler(BoxArrowPanel_Paint);
+            Paint += BoxArrowPanel_Paint;
         }
 
         private void BoxArrowPanel_Click(object sender, EventArgs e)
         {
-            MouseEventArgs mouseEvent = e as MouseEventArgs;
+            MouseEventArgs mouseEvent = (MouseEventArgs) e;
 
             if (mouseEvent.Button == MouseButtons.Right)
             {
@@ -361,19 +375,6 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
-        ///     Constructor
-        /// </summary>
-        /// <param name="container"></param>
-        public BoxArrowPanel(IContainer container)
-        {
-            container.Add(this);
-
-            InitializeComponent();
-            MouseDown += new MouseEventHandler(BoxArrowPanel_MouseDown);
-            MouseMove += new MouseEventHandler(BoxArrowPanel_MouseMove);
-        }
-
-        /// <summary>
         ///     The selected object
         /// </summary>
         public object Selected { get; set; }
@@ -435,6 +436,50 @@ namespace GUI.BoxArrowDiagram
         }
 
         /// <summary>
+        /// Provides the box at a given location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        protected BoxControl<BoxModel, ArrowModel> BoxForLocation(Point location)
+        {
+            BoxControl<BoxModel, ArrowModel> retVal = null;
+ 
+            foreach (BoxControl<BoxModel, ArrowModel> box in boxes.Values)
+            {
+                if ((location.X > box.Location.X && location.X < box.Location.X + box.Width) &&
+                    (location.Y > box.Location.Y && location.Y < box.Location.Y + box.Height))
+                {
+                    retVal = box;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
+        /// Provides the arrow at a given location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
+        protected ArrowControl<BoxModel, ArrowModel> ArrowForLocation(Point location)
+        {
+            ArrowControl<BoxModel, ArrowModel> retVal = null;
+
+            foreach (ArrowControl<BoxModel, ArrowModel> arrow in arrows.Values)
+            {
+                if ((location.X > arrow.Location.X && location.X < arrow.Location.X + arrow.Width) &&
+                    (location.Y > arrow.Location.Y && location.Y < arrow.Location.Y + arrow.Height))
+                {
+                    retVal = arrow;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        /// <summary>
         ///     Handles the move event, which, in case of an arrow is selected to be modified,
         /// </summary>
         /// <param name="sender"></param>
@@ -443,30 +488,26 @@ namespace GUI.BoxArrowDiagram
         {
             if (changingArrow != null && chaningArrowAction != ChangeAction.None)
             {
-                foreach (BoxControl<BoxModel, ArrowModel> box in boxes.Values)
+                BoxControl<BoxModel, ArrowModel> box = BoxForLocation(e.Location);
+                if (box != null)
                 {
-                    if ((e.X > box.Location.X && e.X < box.Location.X + box.Width) &&
-                        (e.Y > box.Location.Y && e.Y < box.Location.Y + box.Height))
+                    switch (chaningArrowAction)
                     {
-                        switch (chaningArrowAction)
-                        {
-                            case ChangeAction.InitialBox:
-                                if (changingArrow.Model.Source != box.Model)
+                        case ChangeAction.InitialBox:
+                            if (changingArrow.Model.Source != box.Model)
+                            {
+                                changingArrow.SetInitialBox(box.Model);
+                            }
+                            break;
+                        case ChangeAction.TargetBox:
+                            if (changingArrow.Model.Target != box.Model)
+                            {
+                                if (changingArrow.Model.Source != null)
                                 {
-                                    changingArrow.SetInitialBox(box.Model);
+                                    changingArrow.SetTargetBox(box.Model);
                                 }
-                                break;
-                            case ChangeAction.TargetBox:
-                                if (changingArrow.Model.Target != box.Model)
-                                {
-                                    if (changingArrow.Model.Source != null)
-                                    {
-                                        changingArrow.SetTargetBox(box.Model);
-                                    }
-                                }
-                                break;
-                        }
-                        break;
+                            }
+                            break;
                     }
                 }
             }

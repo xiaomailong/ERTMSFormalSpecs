@@ -288,15 +288,18 @@ namespace GUI.RequirementSetDiagram
         {
             IModelElement model = null;
 
-            if (Selected is BoxControl<RequirementSet, RequirementSetDependancy>)
+            BoxControl<RequirementSet, RequirementSetDependancy> box =
+                Selected as BoxControl<RequirementSet, RequirementSetDependancy>;
+            ArrowControl<RequirementSet, RequirementSetDependancy> arrow =
+                Selected as ArrowControl<RequirementSet, RequirementSetDependancy>;
+
+            if (box != null)
             {
-                model = (Selected as BoxControl<RequirementSet, RequirementSetDependancy>).Model;
+                model = box.Model;
             }
-            else if (Selected is ArrowControl<RequirementSet, RequirementSetDependancy>)
+            else if (arrow != null)
             {
-                ArrowControl<RequirementSet, RequirementSetDependancy> control =
-                    Selected as ArrowControl<RequirementSet, RequirementSetDependancy>;
-                model = control.Model;
+                model = arrow.Model;
             }
             model.Delete();
 
