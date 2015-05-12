@@ -488,14 +488,29 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public virtual bool Match(Type otherType)
         {
+            bool retVal = false;
+
             if (otherType is AnyType)
             {
-                return true;
+                retVal = true;
             }
             else
             {
-                return this == otherType;
+                ModelElement current = otherType;
+                while (!retVal && current != null)
+                {
+                    retVal = this == current;
+                    current = current.Updates;
+                }
+
+                current = this;
+                while (!retVal && current != null)
+                {
+                    
+                }
             }
+
+            return retVal;
         }
 
         /// <summary>

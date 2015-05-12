@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataDictionary.Functions;
-using DataDictionary.Generated;
-using DataDictionary.Interpreter;
-using DataDictionary.Types;
+﻿using DataDictionary.Interpreter;
+using DataDictionary.Tests.Runner;
 using DataDictionary.Values;
 using NUnit.Framework;
 using NameSpace = DataDictionary.Types.NameSpace;
@@ -32,7 +25,7 @@ namespace DataDictionary.test.updateModel
             State state2 = CreateState(stateMachine, "S2");
             stateMachine.Default = "S1";
 
-            Variable var = CreateVariable(nameSpace, "TheVariable", "TestSM");
+            Variables.Variable var = CreateVariable(nameSpace, "TheVariable", "TestSM");
             var.setDefaultValue("TestSM.S1");
 
             Dictionary dictionary2 = CreateDictionary("TestUpdate");
@@ -43,7 +36,6 @@ namespace DataDictionary.test.updateModel
             State updState = updStateMachine.findState("S1");
             State subState = CreateState(updState.StateMachine, "bis");
             updState.StateMachine.setDefault("bis");
-
 
             Compiler.Compile_Synchronous(true);
 
