@@ -1733,7 +1733,7 @@
 <Rule
  Priority="Processing"
  Implemented="TRUE"
- Name="Remove SB if applied"
+ Name="Release SB if applied"
  Guid="a2822cb2-dde9-49ef-8fbd-bf7a43b95dd1"
 >
 <ReqRef
@@ -1746,7 +1746,7 @@
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
- Name="Remove SB if applied"
+ Name="Release SB if applied"
  Guid="41c149a6-943a-43b4-90f8-0a69b78c8e53"
 >
 <PreConditions>
@@ -1756,11 +1756,7 @@
 <Actions>
 <Action
  Guid="fb3a834b-5301-4613-b62c-7cb025633ba8"
->Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action><Action
- Guid="bb75a97e-9347-4f16-9157-f1243bcaeff9"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;False
-)</Action></Actions>
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -3932,8 +3928,6 @@
 >Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
  Guid="c9a3e8eb-8f97-42ee-942d-bbeca7f1e24d"
 >TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
- Guid="0739ad35-06a6-4fd8-9075-3366abb440ec"
->Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.LSMode )</Action><Action
  Guid="6f491ad8-ba42-4a4e-8984-12fd94d47199"
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
@@ -3976,6 +3970,41 @@
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action><Action
  Guid="d3f5b719-8924-41b4-95a7-22f478fe06d6"
 >Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Release SB if applied"
+ Guid="1642b220-b649-43da-9662-f4fdad633bdb"
+>
+<ReqRef
+ Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="cb6c4459-b203-49a2-a1a7-465007ff9783"
+>
+</ReqRef><ReqRef
+ Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="a66a31b1-be45-4773-b442-c1cfaebc9d21"
+>
+</ReqRef><Comment>If the service brake was already applied, then remove it.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Release SB if applied"
+ Guid="fd49181d-4b53-4ba5-9c4b-2fdca4742077"
+>
+<PreConditions>
+<PreCondition
+ Guid="8aabeab3-afc1-42ca-9b2c-cad529ebca08"
+>TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="3a2cc182-7529-49e3-9916-9532d3bce44a"
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4188,6 +4217,41 @@
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action><Action
  Guid="3d47d361-fdc1-4c8f-9c9d-a919f3f1dbbe"
 >Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Release SB if applied"
+ Guid="350fc11a-b929-474a-9472-5c69d3370c5f"
+>
+<ReqRef
+ Id="c3352be2-25f7-499e-b638-51b4b8e180ed"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="1a9a2308-a552-4731-8bac-2bea785da13e"
+>
+</ReqRef><ReqRef
+ Id="19ba3404-792f-4f75-a058-7b89395bce5c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="8662becc-bd34-498f-b131-1b1bf29edaa7"
+>
+</ReqRef><Comment>If the service brake was already applied, then remove it.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Release SB if applied"
+ Guid="445f0712-277c-4e07-a9fd-936f53b60ef5"
+>
+<PreConditions>
+<PreCondition
+ Guid="178e3c68-b137-4aa5-9766-4cbc0bccf9e1"
+>TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="a7ee2c5a-218a-4499-86a3-bbacb67e5cf3"
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -4400,6 +4464,41 @@
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action><Action
  Guid="16c2bfb8-4a51-4bc1-9876-08df1ccae17a"
 >Acknowledgements.LastDriverAcknowledgementTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
+<SubRules>
+<Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Release SB if applied"
+ Guid="0aa65faa-992e-4346-ac90-1cc96bc5770c"
+>
+<ReqRef
+ Id="81394bed-5665-4b0a-a527-9c845c6db537"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="aa77e713-892e-4fa6-b289-4d5722909a9d"
+>
+</ReqRef><ReqRef
+ Id="f1fefc2b-0ed9-4f11-9b47-0930e4ba5821"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="07d1ea68-a614-4e14-9884-82c4ebc23bd1"
+>
+</ReqRef><Comment>If the service brake was already applied, then remove it.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Release SB if applied"
+ Guid="9f2660a8-483b-4035-8005-9a24d772f5a8"
+>
+<PreConditions>
+<PreCondition
+ Guid="2625d89b-c74d-4ddd-81e7-ae1b5c3a666f"
+>TIU.ServiceBrakeCommanded</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="37ca531d-d501-4938-a1e6-523aa489e1f0"
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+</RuleCondition></Conditions>
+</Rule></SubRules>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

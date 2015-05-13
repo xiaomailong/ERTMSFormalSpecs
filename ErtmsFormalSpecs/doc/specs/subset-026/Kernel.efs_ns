@@ -12242,7 +12242,17 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Name="RemoveSBCommand"
  Guid="09f7fe8a-1a47-4e68-97e6-b24cb889655e"
 >
-<Comment>Removes the specified SB command.</Comment>
+<ReqRef
+ Id="c4b29bf1-b564-4981-9967-9bc22c91b8f9"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fc1a78db-902f-419e-a94e-55bff1098421"
+>
+</ReqRef><ReqRef
+ Id="33d6b46d-2f8a-4411-8e48-aa43acd4cce3"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="757762f4-7296-4aba-9fa3-ec0c47c4c755"
+>
+</ReqRef><Comment>Removes the specified SB command.</Comment>
 <Parameters>
 <Parameter
  Type="BrakeReason"
@@ -12255,7 +12265,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Priority="Processing"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Delete from Service brake commands"
+ Name="Delete from SB commands"
  Guid="caee3add-47e5-4262-aee0-5b811736ed66"
 >
 <SubRules></SubRules>
@@ -12263,7 +12273,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <RuleCondition
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="Delete from Service brake commands"
+ Name="Delete from SB commands"
  Guid="12f7528c-7738-41cf-abd0-ffafacc69e5c"
 >
 <PreConditions>
@@ -12272,6 +12282,26 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Action
  Guid="38d53262-df6c-44d6-b1c6-41d228de97e8"
 >REMOVE FIRST X == Command IN ServiceBrakeCommands</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Name="Release SB if all the commands are deleted"
+ Guid="2f6d4e79-cb45-4b0a-84d3-550de253d9a4"
+>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Name="Release SB if all the commands are deleted"
+ Guid="b1de203a-3e96-4524-ac84-49432e8b3bc9"
+>
+<PreConditions>
+<PreCondition
+ Guid="700ff52c-030d-40fb-96f6-2f1b8b7660e4"
+>ServiceBrakeCommands == []</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="99971623-f14d-4e7b-943d-cc5eb194599b"
+>TIU.CommandServiceBrake( brakeSet =&gt; False )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
