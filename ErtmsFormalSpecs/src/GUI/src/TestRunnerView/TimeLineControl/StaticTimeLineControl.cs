@@ -411,7 +411,7 @@ namespace GUI.TestRunnerView.TimeLineControl
             public AddStepMenuItem(StaticTimeLineControl timeLineControl, ModelEvent modelEvent)
                 : base(timeLineControl, modelEvent, "Add step")
             {
-                Enabled = TimeLineControl.TestCase != null;
+                Enabled = GetTestCase() != null;
             }
 
             /// <summary>
@@ -427,19 +427,49 @@ namespace GUI.TestRunnerView.TimeLineControl
                 subStep.Name = "Substep 1";
                 newStep.appendSubSteps(subStep);
 
+                TestCase testCase = GetTestCase();
                 if (Step != null)
                 {
                     newStep.Name = "NewStep";
                     int index = TimeLineControl.Steps.IndexOf(Step);
-                    TimeLineControl.TestCase.Steps.Insert(index + 1, newStep);
+                    testCase.Steps.Insert(index + 1, newStep);
+                    newStep.setFather(testCase);
                 }
                 else
                 {
                     newStep.Name = "Step " + (TimeLineControl.Steps.Count + 1);
-                    TimeLineControl.TestCase.Steps.Add(newStep);
+                    testCase.Steps.Add(newStep);
+                    newStep.setFather(testCase);
                 }
 
                 base.OnClick(e);
+            }
+
+            /// <summary>
+            /// Gets the test case in which steps should be created
+            /// </summary>
+            private TestCase GetTestCase()
+            {
+                TestCase retVal = TimeLineControl.TestCase;
+
+                if (retVal == null)
+                {
+                    if (TimeLineControl.SubSequence != null)
+                    {
+                        if (TimeLineControl.SubSequence.TestCases.Count == 0)
+                        {
+                            retVal = (TestCase) acceptor.getFactory().createTestCase();
+                            TimeLineControl.SubSequence.appendTestCases(retVal);
+                        }
+                        else
+                        {
+                            retVal = (TestCase) TimeLineControl.SubSequence.TestCases[
+                                        TimeLineControl.SubSequence.TestCases.Count - 1];
+                        }
+                    }
+                }
+
+                return retVal;
             }
         }
 
