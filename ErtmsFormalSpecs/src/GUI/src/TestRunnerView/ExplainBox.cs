@@ -17,6 +17,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using DataDictionary.Functions;
 using DataDictionary.Interpreter;
 using DataDictionary.Rules;
 using DataDictionary.Variables;
@@ -344,11 +345,13 @@ namespace GUI.TestRunnerView
         private void ExpandAndShowVariable(VariableSelector variableSelector)
         {
             // Build the complete tree
+            explainTreeView.SuspendLayout();
             explainTreeView.CollapseAll();
 
             List<ExplanationPart> path = new List<ExplanationPart>();
             InnerExpandAndShowVariable(Explanation, variableSelector, path);
 
+            explainTreeView.ResumeLayout();
             explainTreeView.Focus();
         }
 
@@ -356,15 +359,18 @@ namespace GUI.TestRunnerView
         {
             ExplainTreeNode node = e.Node as ExplainTreeNode;
 
-            foreach (ExplainTreeNode subNode in node.Nodes)
+            if (node != null)
             {
-                subNode.Nodes.Clear();
-                innerSetExplanation(subNode.Explanation, subNode, 1);
-            }
+                foreach (ExplainTreeNode subNode in node.Nodes)
+                {
+                    subNode.Nodes.Clear();
+                    innerSetExplanation(subNode.Explanation, subNode, 1);
+                }
 
-            foreach (ExplainTreeNode subNode in node.Nodes)
-            {
-                subNode.UpdateText();
+                foreach (ExplainTreeNode subNode in node.Nodes)
+                {
+                    subNode.UpdateText();
+                }
             }
         }
 
