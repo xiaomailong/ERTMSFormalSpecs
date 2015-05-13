@@ -1614,16 +1614,12 @@ Activate the service brake if a second linked BG in a row is missed.</Comment>
 >LinkingError == LinkingErrorEnum.ExpectationWindowEnd</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f5f18eac-bbda-4379-96e5-dfb47e13e27a"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
  Guid="12fbd64d-db68-4145-9895-cb630522e463"
 >RAMSSupervisedBG &lt;- EMPTY</Action><Action
  Guid="646bc014-8b5c-47e1-9466-bd062ff89279"
 >Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action><Action
  Guid="a4b0baca-b8ed-4220-8590-842a578e8b8f"
->Kernel.AddSBCommand(Kernel.BrakeReason.RAMSSupervisionTriggered)</Action></Actions>
+>Kernel.ApplySBCommand(Kernel.BrakeReason.RAMSSupervisionTriggered)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -2224,14 +2220,10 @@ If the BG was passed in the right direction, handle the message. If not, the tra
 >(FIRST X IN CurrentBaliseGroup | NOT X.Missed).Telegram.Q_LINK == Messages.Q_LINK.Linked</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="f898bb73-e730-4511-924e-65a22a77ddd7"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
  Guid="f7aea1c2-1e1f-4d47-8f36-412e4107ba4b"
 >Kernel.HandlingOfAcceptedAndStoredInformation.RAMSSupervisionFunctionLedToServiceBrake &lt;- True</Action><Action
  Guid="294b1490-c94d-4bac-b054-feaef3d222b4"
->Kernel.AddSBCommand(Kernel.BrakeReason.RAMSSupervisionTriggered)</Action></Actions>
+>Kernel.ApplySBCommand(Kernel.BrakeReason.RAMSSupervisionTriggered)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure

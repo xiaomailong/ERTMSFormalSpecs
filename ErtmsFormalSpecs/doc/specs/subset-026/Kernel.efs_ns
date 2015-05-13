@@ -155,7 +155,7 @@
 >
 </EnumValue></Values>
 </Enum><Enum
- Default="BrakeReason.DriverAckTimeOut"
+ Default="BrakeReason.SupervisingStandstill"
  X="410"
  Y="10"
  Width="100"
@@ -174,11 +174,6 @@
 <Values>
 <EnumValue
  Value=""
- Name="DriverAckTimeOut"
- Guid="82c4ddf6-af7f-4de2-af79-fd959a35618c"
->
-</EnumValue><EnumValue
- Value=""
  Name="OrderFromRBC"
  Guid="0b225f61-844c-4a87-8946-d28a505473e4"
 >
@@ -186,11 +181,6 @@
  Value=""
  Name="BaliseGroupMessageConsistencyProblem"
  Guid="e008b5cc-8185-4108-9ae7-3d5a8e532bcf"
->
-</EnumValue><EnumValue
- Value=""
- Name="DriverAckRequired"
- Guid="c5b4fad0-6e35-4866-8dea-0423cc992f84"
 >
 </EnumValue><EnumValue
  Value=""
@@ -221,6 +211,26 @@
  Value=""
  Name="NoRadioMessageInDueTime"
  Guid="25562908-959f-403c-8c52-1eaa49012735"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="LSAckTimeOut"
+ Guid="d35436c1-e751-4fd2-84c1-b0bb6419f2fa"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="OSAckTimeOut"
+ Guid="338ef8a2-6bf9-4cad-98c2-0181cc205fca"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="SHAckTimeOut"
+ Guid="5e8d54a2-8912-4abc-aa1a-8af63befba3a"
+>
+</EnumValue><EnumValue
+ Value=""
+ Name="LevelTransitionTimeOut"
+ Guid="5ed77a1e-e3bc-41dd-bc6f-01148d2c74f0"
 >
 </EnumValue></Values>
 </Enum></Enumerations>
@@ -12198,9 +12208,10 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
- Name="AddSBCommand"
+ Name="ApplySBCommand"
  Guid="5a495d62-a2ef-479c-a3b7-11df30c8c67c"
 >
+<Comment>Adds a new SB command to the list of SB commands and applies the SB brake.</Comment>
 <Parameters>
 <Parameter
  Type="BrakeReason"
@@ -12212,13 +12223,16 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Add if not present"
  Guid="ec11b3ba-2c81-42d4-9855-519dca1f21cd"
 >
+<Comment>Add the specified SB command into the list of SB commands (only if the specified command is not present in that list).</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Add if not present"
  Guid="5884d6e5-3bb9-42f2-8e7c-fd5b7d5f55be"
 >
@@ -12230,6 +12244,29 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Action
  Guid="64ab9c81-b890-4cad-a60e-97c4f903ec11"
 >INSERT Command IN ServiceBrakeCommands</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Apply service brake"
+ Guid="15e7d76d-06e8-4b8e-ba23-45581c13f259"
+>
+<Comment>Apply the SB.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Apply service brake"
+ Guid="76e82511-e7bb-4f0b-aefb-906009db8b37"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="d1b15984-7f88-4de5-b646-340cf09b706b"
+>TIU.CommandServiceBrake( brakeSet =&gt; True )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </Procedure><Procedure
@@ -12268,6 +12305,7 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Name="Delete from SB commands"
  Guid="caee3add-47e5-4262-aee0-5b811736ed66"
 >
+<Comment>Remove the specified SB command from the list of SB commands.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -12285,12 +12323,15 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
+ Implemented="TRUE"
  Name="Release SB if all the commands are deleted"
  Guid="2f6d4e79-cb45-4b0a-84d3-550de253d9a4"
 >
+<Comment>If all the SB commands were removed, release the SB brake.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
+ Implemented="TRUE"
  Name="Release SB if all the commands are deleted"
  Guid="b1de203a-3e96-4524-ac84-49432e8b3bc9"
 >
@@ -12415,20 +12456,12 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Width="100"
  Height="50"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="SetLevel"
  Guid="dbac2605-aa9d-42dd-b61e-19e58d0287ad"
 >
-<ReqRef
- Id="42342bff-4561-490e-beae-73b88476afe8"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="b63c25c1-1154-4f2d-a4fd-9706b0d1959b"
->
-</ReqRef><ReqRef
- Id="60e39a2f-4380-44e7-bf85-7142748b200f"
- SpecId="1725280b-f696-4860-94cc-d85f62c35214"
- Guid="215e7df6-6218-4933-9f84-37dc8e75d2a2"
->
-</ReqRef><Parameters>
+<Comment>Handles the level changes.</Comment>
+<Parameters>
 <Parameter
  Type="Default.LevelDataStruct"
  Name="aLevel"
@@ -12439,13 +12472,16 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 <Rule
  Priority="Processing"
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Set level"
  Guid="98ff2195-8db0-4998-9699-9d135760690d"
 >
+<Comment>Sets the new level value.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
  Implemented="TRUE"
+ NeedsRequirement="FALSE"
  Name="Set level"
  Guid="0b3d3afe-a8d9-422f-9db8-718f8c1048cb"
 >
@@ -12453,8 +12489,6 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
 </PreConditions>
 <Actions>
 <Action
- Guid="e438255e-3eeb-464f-959f-703a2a268a8f"
->Level.Value &lt;- aLevel</Action><Action
  Guid="508ecb41-3187-4b72-8619-867d2e337566"
 >Level &lt;- LevelData{
     Value =&gt; aLevel,
@@ -12467,6 +12501,17 @@ JRU.SendNewMessage(JRU.JRU1)</PreCondition></PreConditions>
  Name="Keep time for RBC"
  Guid="cd823a0a-8066-4898-8c6a-d57b4509d03c"
 >
+<ReqRef
+ Id="60e39a2f-4380-44e7-bf85-7142748b200f"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ecee325f-2054-42d6-b6b0-76d3081f5be4"
+>
+</ReqRef><ReqRef
+ Id="42342bff-4561-490e-beae-73b88476afe8"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="fcea59ea-0c98-4073-9628-c0e626bf7873"
+>
+</ReqRef><Comment>When entering L2 or L3, if there is no radio connection, keep the current time as reference for data consistency checks.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition

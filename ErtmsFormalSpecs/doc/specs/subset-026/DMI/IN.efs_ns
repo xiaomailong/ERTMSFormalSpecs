@@ -1681,12 +1681,8 @@
 >StartTime + IN.Acknowledgements.Tack &lt;= Kernel.DateAndTime.CurrentTime</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="617b5f25-4fc9-4476-a25c-ce5ca0b97228"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
  Guid="62fd7a18-4152-4c77-84ab-a04f6e72c0f6"
->Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action><Action
+>Kernel.ApplySBCommand(Kernel.BrakeReason.LevelTransitionTimeOut)</Action><Action
  Guid="6c4365a6-3ad1-45f9-9345-7c142dece26e"
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
@@ -1756,7 +1752,7 @@
 <Actions>
 <Action
  Guid="fb3a834b-5301-4613-b62c-7cb025633ba8"
->Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.LevelTransitionTimeOut)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -3925,9 +3921,7 @@
 <Actions>
 <Action
  Guid="0032d2ab-08bf-4c4f-ab15-68154487a311"
->Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
- Guid="c9a3e8eb-8f97-42ee-942d-bbeca7f1e24d"
->TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
+>Kernel.ApplySBCommand(Kernel.BrakeReason.LSAckTimeOut)</Action><Action
  Guid="6f491ad8-ba42-4a4e-8984-12fd94d47199"
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
@@ -4002,7 +3996,7 @@
 <Actions>
 <Action
  Guid="3a2cc182-7529-49e3-9916-9532d3bce44a"
->Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.LSAckTimeOut)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4170,11 +4164,7 @@
 <Actions>
 <Action
  Guid="456feea0-c81d-4514-89b4-32c53ca3f5d5"
->Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
- Guid="10d1cee6-15fb-44c7-823d-3bb69ea5609b"
->TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
- Guid="8440163d-5afb-430f-96d6-30e1a8112cb4"
->Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.OSMode )</Action><Action
+>Kernel.ApplySBCommand(Kernel.BrakeReason.OSAckTimeOut)</Action><Action
  Guid="b1365a31-e3c0-48a6-8023-123f8107e243"
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
@@ -4249,7 +4239,7 @@
 <Actions>
 <Action
  Guid="a7ee2c5a-218a-4499-86a3-bbacb67e5cf3"
->Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.OSAckTimeOut)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>
@@ -4417,11 +4407,7 @@
 <Actions>
 <Action
  Guid="b0b1c0a4-d1df-4954-a400-fe1668407d47"
->Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckTimeOut)</Action><Action
- Guid="4df171bc-cb95-4aa3-b13e-7af5765825ff"
->TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
- Guid="3a39a099-f477-46b3-842c-ee63faaf819c"
->Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.SHMode )</Action><Action
+>Kernel.ApplySBCommand(Kernel.BrakeReason.SHAckTimeOut)</Action><Action
  Guid="8844602a-4164-40d4-9b74-80b6eecc801c"
 >StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
@@ -4496,7 +4482,7 @@
 <Actions>
 <Action
  Guid="37ca531d-d501-4938-a1e6-523aa489e1f0"
->Kernel.RemoveSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+>Kernel.RemoveSBCommand(Kernel.BrakeReason.SHAckTimeOut)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></SubRules>
 </RuleCondition></Conditions>

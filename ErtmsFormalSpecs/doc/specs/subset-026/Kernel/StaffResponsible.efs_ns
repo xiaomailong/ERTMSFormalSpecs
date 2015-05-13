@@ -663,16 +663,12 @@ SRAuthorisation.Location &lt;= TrainPosition.FrontEndPosition ( DistanceInterval
 >DMI.MasterDMI().In_SRModeSpeedLimitAndDistance.InputInformation.RequestStatus == Request.Request</PreCondition></PreConditions>
 <Actions>
 <Action
- Guid="a219ec1d-9c30-4398-b539-a56a7ed3c800"
->TIU.CommandServiceBrake(
-    brakeSet=&gt;True
-)</Action><Action
  Guid="eec5ece7-4498-4b79-8af7-6b2f2683b723"
 >TIU.CommandEmergencyBrake(
     brakeSet=&gt;True
 )</Action><Action
  Guid="2b2f0cf0-8ffd-4ac5-b69b-67424acc856f"
->AddSBCommand(BrakeReason.SupervisingStandstill)</Action></Actions>
+>ApplySBCommand(BrakeReason.SupervisingStandstill)</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
