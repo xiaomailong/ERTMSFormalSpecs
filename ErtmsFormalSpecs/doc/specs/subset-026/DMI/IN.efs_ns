@@ -1612,7 +1612,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.FixedTextInformation,
   aText =&gt; text,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1830,7 +1830,17 @@
 <PreConditions>
 <PreCondition
  Guid="fb79d104-6c9d-4f91-9752-c208d1827a89"
->LevelTransitionAvailable()</PreCondition></PreConditions>
+>LevelTransitionAvailable()</PreCondition><PreCondition
+ Guid="7c7a309b-c264-4a24-98ac-4517b4faf0a6"
+>NOT Acknowledgements.AcknowledgementAlreadyRequested
+(
+  anAck =&gt; Acknowledgements.AcknowledgementStruct
+  {
+    Type =&gt; Acknowledgements.AckTypeEnum.LevelTransition,
+    Text =&gt; &apos;&apos;,
+    Level =&gt; Level
+  }
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="6de79a40-cca1-482a-aebd-e688e8041f8e"
@@ -2005,7 +2015,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PlainTextInformation,
   aText =&gt; text,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2150,7 +2160,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainDataChangeFromOtherSource,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3073,7 +3083,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SNMode,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action><Action
  Guid="5e82bf00-9e78-4d96-bd66-d003521ae460"
 >THIS.NationalSystemId &lt;- NationalSystemId</Action></Actions>
@@ -3995,7 +4005,17 @@
 <PreConditions>
 <PreCondition
  Guid="fccd3e1b-375d-4471-b74f-39c268c5e8fd"
->AcknOfLSModeAvailable()</PreCondition></PreConditions>
+>AcknOfLSModeAvailable()</PreCondition><PreCondition
+ Guid="b9edaad6-d8f0-4f01-938a-664f2faec1f9"
+>NOT Acknowledgements.AcknowledgementAlreadyRequested
+(
+  anAck =&gt; Acknowledgements.AcknowledgementStruct
+  {
+    Type =&gt; Acknowledgements.AckTypeEnum.LSMode,
+    Text =&gt; &apos;&apos;,
+    Level =&gt; EMPTY
+  }
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="febfd992-c4f5-4d2a-a32c-9b0b21e4b009"
@@ -4003,7 +4023,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LSMode,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action><Action
  Guid="31618ddd-9074-4f74-a558-ed0775cbd809"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
@@ -4197,7 +4217,17 @@
 <PreConditions>
 <PreCondition
  Guid="cd38edef-b614-44b0-be36-db898574f2d1"
->AcknOfOSModeAvailable()</PreCondition></PreConditions>
+>AcknOfOSModeAvailable()</PreCondition><PreCondition
+ Guid="d17f905e-6504-4f89-bb00-740d5d54e871"
+>NOT Acknowledgements.AcknowledgementAlreadyRequested
+(
+  anAck =&gt; Acknowledgements.AcknowledgementStruct
+  {
+    Type =&gt; Acknowledgements.AckTypeEnum.OSMode,
+    Text =&gt; &apos;&apos;,
+    Level =&gt; EMPTY
+  }
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="92bb23ee-a4c9-436f-acf0-acfe9eaa3059"
@@ -4205,7 +4235,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.OSMode,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action><Action
  Guid="5ac58b4f-4dd8-4f42-b19a-4fe5a43d85b8"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
@@ -4399,7 +4429,17 @@
 <PreConditions>
 <PreCondition
  Guid="10c89f8f-e005-4ff8-bc59-907fff15ea7d"
->AcknOfSHModeAvailable()</PreCondition></PreConditions>
+>AcknOfSHModeAvailable()</PreCondition><PreCondition
+ Guid="683e6490-0f56-45f1-b8aa-c8bc4319ce0c"
+>NOT Acknowledgements.AcknowledgementAlreadyRequested
+(
+  anAck =&gt; Acknowledgements.AcknowledgementStruct
+  {
+    Type =&gt; Acknowledgements.AckTypeEnum.SHMode,
+    Text =&gt; &apos;&apos;,
+    Level =&gt; EMPTY
+  }
+)</PreCondition></PreConditions>
 <Actions>
 <Action
  Guid="843da387-e6dc-4659-ae85-6b0981d04135"
@@ -4407,7 +4447,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SHMode,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action><Action
  Guid="0bc1dab8-7d59-4e81-a0d8-6e6f38a183ed"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
@@ -4595,7 +4635,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SRMode,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4730,7 +4770,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.UNMode,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4865,7 +4905,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RVMode,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5000,7 +5040,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainTrip,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5135,7 +5175,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RollAwayProtection,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5270,7 +5310,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReverseMovementProtection,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5374,7 +5414,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.StandstillSupervision,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5510,7 +5550,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PostTripDistanceExceeded,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5646,7 +5686,7 @@
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReversingDistanceExceeded,
   aText =&gt; &apos;&apos;,
-  aLevel =&gt; Default.LevelDataStruct{}
+  aLevel =&gt; EMPTY
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
