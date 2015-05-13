@@ -147,6 +147,16 @@
  Guid="6cac4317-cbf7-4c35-a93a-2d6dd88cdbf5"
 >
 <Comment>If the current acknowledgement is a text acknowledgement, this field contains the text to acknowledge.</Comment>
+</StructureElement><StructureElement
+ TypeName="Default.LevelDataStruct"
+ Default=""
+ Mode="Internal"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="Level"
+ Guid="1a40a251-aaa8-4822-bcc8-738962e71249"
+>
+<Comment>If the current acknowledgement is a level transition acknowledgement, this field contains the level to acknowledge.</Comment>
 </StructureElement></Structure></Structures>
 <Collections>
 <Collection
@@ -171,6 +181,10 @@
 <Function
  Type="DMI.InputInformation"
  Default=""
+ X="10"
+ Y="290"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  NeedsRequirement="FALSE"
  Name="FindDMIStructure"
@@ -339,11 +353,90 @@
 >anAck == AckTypeEnum.UNMode</PreCondition></PreConditions>
 <Expression>MasterDMI().In_AcknOfUNMode.InputInformation</Expression>
 </Case></Cases>
+</Function><Function
+ Type="Boolean"
+ Default=""
+ X="130"
+ Y="290"
+ Width="100"
+ Height="50"
+ Implemented="TRUE"
+ NeedsRequirement="FALSE"
+ Name="AcknowledgementAlreadyRequested"
+ Guid="79948f76-f143-4ea3-a100-b5b8fe155115"
+>
+<Comment>Indicates if the acknowledgement provided as parameter is already requested.</Comment>
+<Parameters>
+<Parameter
+ Type="AcknowledgementStruct"
+ Name="anAck"
+ Guid="e93a7744-8103-402f-bb56-f65680d386cf"
+>
+</Parameter></Parameters>
+<Cases>
+<Case
+ Name="Acknowledgement is in FIFO"
+ Guid="a3aad52b-b492-4091-8442-8d4eafcd97cc"
+>
+<PreConditions>
+<PreCondition
+ Guid="a8c776d2-d76d-45f4-8372-7d5f144b8a6b"
+>THERE_IS Ack IN Acknowledgements |
+  Ack.Type == anAck.Type
+    AND
+  Ack.Text == anAck.Text
+    AND
+  Ack.Level == anAck.Level</PreCondition></PreConditions>
+<Expression>True</Expression>
+</Case><Case
+ Name="Acknowledgement is displayed, fixed text information"
+ Guid="952b2e25-a7be-4606-adb3-946ad7dbf264"
+>
+<PreConditions>
+<PreCondition
+ Guid="e99f2a0f-e29a-48ef-9495-d81af331b46a"
+>anAck.Type == AckTypeEnum.FixedTextInformation</PreCondition><PreCondition
+ Guid="8e2cc8a3-63fd-46f8-8ee3-2459c57e50a4"
+>DMI.MasterDMI().In_AcknOfFixedTextInformation.Text == anAck.Text</PreCondition></PreConditions>
+<Expression>DMI.MasterDMI().In_AcknOfFixedTextInformation.InputInformation.RequestStatus == Request.Request</Expression>
+</Case><Case
+ Name="Acknowledgement is displayed, plain text information"
+ Guid="1698f55f-64c8-4c81-bbac-68e6ada495d7"
+>
+<PreConditions>
+<PreCondition
+ Guid="19821586-e405-461d-98a7-2baa176aca70"
+>anAck.Type == AckTypeEnum.PlainTextInformation</PreCondition><PreCondition
+ Guid="65b5dafe-5c33-4134-8649-2d851d567819"
+>DMI.MasterDMI().In_AcknOfPlainTextInformation.Text == anAck.Text</PreCondition></PreConditions>
+<Expression>DMI.MasterDMI().In_AcknOfPlainTextInformation.InputInformation.RequestStatus == Request.Request</Expression>
+</Case><Case
+ Name="Acknowledgement is displayed, level transition"
+ Guid="8dfbc3f9-4dc6-4634-82bf-018ffa3f9ee4"
+>
+<PreConditions>
+<PreCondition
+ Guid="5f76ca96-363f-40f5-91ce-ef57d1b14531"
+>anAck.Type == AckTypeEnum.LevelTransition</PreCondition><PreCondition
+ Guid="e17252a9-92c2-4b6a-bd9c-0e77dadfe11f"
+>DMI.MasterDMI().In_AcknOfLevelTransition.Level == anAck.Level</PreCondition></PreConditions>
+<Expression>DMI.MasterDMI().In_AcknOfLevelTransition.InputInformation.RequestStatus == Request.Request</Expression>
+</Case><Case
+ Name="Acknowledgement is displayed, other types"
+ Guid="b28c90c5-eb44-4915-b871-670d00e36a91"
+>
+<Expression>FindDMIStructure( anAck =&gt; anAck.Type ).RequestStatus == Request.Request</Expression>
+</Case><Case
+ Name="Otherwise"
+ Guid="f11e3a28-087b-45f6-93e8-2689213ac28f"
+>
+<Expression>False</Expression>
+</Case></Cases>
 </Function></Functions>
 <Procedures>
 <Procedure
  X="10"
- Y="290"
+ Y="380"
  Width="100"
  Height="50"
  Name="DisplayAcknowledgement"
@@ -379,7 +472,7 @@
  Name="Display the first acknowledgement"
  Guid="aef22033-51de-4cf3-9624-35878fc053eb"
 >
-<Comment>Fids the type of the acknowledgement to display and calls the corresponding procedure.</Comment>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for a fixed text information, display the corresponding text.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -395,10 +488,10 @@
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
- Name="Handle text messages"
+ Name="Handle special cases"
  Guid="3355dd44-b750-4e07-8bea-cc4e9bb6664b"
 >
-<Comment>Handles the fields relative to the text messages, if any.</Comment>
+<Comment>Handles the fields relative to the text messages or level transitions, if any.</Comment>
 <SubRules></SubRules>
 <Conditions>
 <RuleCondition
@@ -420,7 +513,7 @@
  Name="Plain text information"
  Guid="a7cd7215-1d0b-4fe9-a26d-50bd4de05f67"
 >
-<Comment>If the first acknowledgement in the FIFO is acknowledgement for plain text information, display it.</Comment>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for a plain text information, display the corresponding text.</Comment>
 <PreConditions>
 <PreCondition
  Guid="80d87f94-3fef-457f-9ea4-6cd52cbb0b8f"
@@ -429,6 +522,19 @@
 <Action
  Guid="f7d3dd16-4133-4aad-9a4e-edd3b4993732"
 >MasterDMI().In_AcknOfPlainTextInformation.Text &lt;- (FIRST Ack IN Acknowledgements).Text</Action></Actions>
+</RuleCondition><RuleCondition
+ Name="Level transition"
+ Guid="c38297d8-4b10-41a3-b5e0-67a7efb59a5d"
+>
+<Comment>If the first acknowledgement in the FIFO is acknowledgement for a level transition, display the corresponding level.</Comment>
+<PreConditions>
+<PreCondition
+ Guid="82f781ca-6535-406a-ab48-9cefe9ce47b3"
+>(FIRST Ack IN Acknowledgements).Type == AckTypeEnum.LevelTransition</PreCondition></PreConditions>
+<Actions>
+<Action
+ Guid="2ab0dc5d-097c-431e-9e7d-e33a1781913f"
+>MasterDMI().In_AcknOfLevelTransition.Level &lt;- (FIRST Ack IN Acknowledgements).Level</Action></Actions>
 </RuleCondition></Conditions>
 </Rule><Rule
  Priority="Processing"
@@ -454,7 +560,7 @@
 </Rule></Rules>
 </Procedure><Procedure
  X="130"
- Y="290"
+ Y="380"
  Width="100"
  Height="50"
  Implemented="TRUE"
@@ -520,7 +626,7 @@
 </Rule></Rules>
 </Procedure><Procedure
  X="250"
- Y="290"
+ Y="380"
  Width="100"
  Height="50"
  Name="AddAcknowledgement"
@@ -542,6 +648,11 @@
  Type="String"
  Name="aText"
  Guid="88b018bb-d301-41bb-b096-251c0c80b29e"
+>
+</Parameter><Parameter
+ Type="Default.LevelDataStruct"
+ Name="aLevel"
+ Guid="1739fe24-c542-40c9-9280-7648fe17568c"
 >
 </Parameter></Parameters>
 <Rules>
@@ -571,7 +682,8 @@ anAcknowledgement == AckTypeEnum.PlainTextInformation</PreCondition></PreConditi
   AcknowledgementStruct
   {
     Type =&gt; anAcknowledgement,
-    Text =&gt; aText
+    Text =&gt; aText,
+    Level =&gt; aLevel
   }
 IN
   Acknowledgements.Acknowledgements</Action></Actions>
@@ -704,7 +816,7 @@ IN
 <Rule
  Priority="UpdateOUT"
  X="10"
- Y="380"
+ Y="470"
  Width="100"
  Height="50"
  Name="Display acknowledgement"
@@ -738,7 +850,7 @@ IN
 </Rule><Rule
  Priority="CleanUp"
  X="130"
- Y="380"
+ Y="470"
  Width="100"
  Height="50"
  Name="Update permission to display"

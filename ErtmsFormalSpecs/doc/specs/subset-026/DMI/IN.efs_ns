@@ -1611,7 +1611,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.FixedTextInformation,
-  aText =&gt; text
+  aText =&gt; text,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -1685,7 +1686,9 @@
     brakeSet=&gt;True
 )</Action><Action
  Guid="62fd7a18-4152-4c77-84ab-a04f6e72c0f6"
->Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action></Actions>
+>Kernel.AddSBCommand(Kernel.BrakeReason.DriverAckRequired)</Action><Action
+ Guid="6c4365a6-3ad1-45f9-9345-7c142dece26e"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -1834,10 +1837,9 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LevelTransition,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Level
 )</Action><Action
- Guid="3220b412-5ce9-4c6d-8f85-308f2c041e4b"
->THIS.Level &lt;- Level</Action><Action
  Guid="86ae2a15-1539-4218-862d-01e0cd218666"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
 </RuleCondition></Conditions>
@@ -2002,7 +2004,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PlainTextInformation,
-  aText =&gt; text
+  aText =&gt; text,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -2146,7 +2149,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainDataChangeFromOtherSource,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -3068,7 +3072,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SNMode,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action><Action
  Guid="5e82bf00-9e78-4d96-bd66-d003521ae460"
 >THIS.NationalSystemId &lt;- NationalSystemId</Action></Actions>
@@ -3918,7 +3923,9 @@
  Guid="c9a3e8eb-8f97-42ee-942d-bbeca7f1e24d"
 >TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
  Guid="0739ad35-06a6-4fd8-9075-3366abb440ec"
->Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.LSMode )</Action></Actions>
+>Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.LSMode )</Action><Action
+ Guid="6f491ad8-ba42-4a4e-8984-12fd94d47199"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -3995,7 +4002,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.LSMode,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action><Action
  Guid="31618ddd-9074-4f74-a558-ed0775cbd809"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
@@ -4117,7 +4125,9 @@
  Guid="10d1cee6-15fb-44c7-823d-3bb69ea5609b"
 >TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
  Guid="8440163d-5afb-430f-96d6-30e1a8112cb4"
->Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.OSMode )</Action></Actions>
+>Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.OSMode )</Action><Action
+ Guid="b1365a31-e3c0-48a6-8023-123f8107e243"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -4194,7 +4204,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.OSMode,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action><Action
  Guid="5ac58b4f-4dd8-4f42-b19a-4fe5a43d85b8"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
@@ -4316,7 +4327,9 @@
  Guid="4df171bc-cb95-4aa3-b13e-7af5765825ff"
 >TIU.CommandServiceBrake( brakeSet =&gt; True )</Action><Action
  Guid="3a39a099-f477-46b3-842c-ee63faaf819c"
->Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.SHMode )</Action></Actions>
+>Acknowledgements.RemoveAcknowledgement( AcknowledgementType =&gt; Acknowledgements.AckTypeEnum.SHMode )</Action><Action
+ Guid="8844602a-4164-40d4-9b74-80b6eecc801c"
+>StartTime &lt;- Default.BaseTypes.Time.NA</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 <Procedures>
@@ -4393,7 +4406,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SHMode,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action><Action
  Guid="0bc1dab8-7d59-4e81-a0d8-6e6f38a183ed"
 >StartTime &lt;- Kernel.DateAndTime.CurrentTime</Action></Actions>
@@ -4580,7 +4594,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.SRMode,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4714,7 +4729,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.UNMode,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4848,7 +4864,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RVMode,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -4982,7 +4999,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.TrainTrip,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5116,7 +5134,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.RollAwayProtection,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5250,7 +5269,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReverseMovementProtection,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5353,7 +5373,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.StandstillSupervision,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5488,7 +5509,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.PostTripDistanceExceeded,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
@@ -5623,7 +5645,8 @@
 >Acknowledgements.AddAcknowledgement
 (
   anAcknowledgement =&gt; Acknowledgements.AckTypeEnum.ReversingDistanceExceeded,
-  aText =&gt; &apos;&apos;
+  aText =&gt; &apos;&apos;,
+  aLevel =&gt; Default.LevelDataStruct{}
 )</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
