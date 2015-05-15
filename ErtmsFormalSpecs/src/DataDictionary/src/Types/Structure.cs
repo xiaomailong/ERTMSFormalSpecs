@@ -207,6 +207,36 @@ namespace DataDictionary.Types
             return (StructureElement) INamableUtils.findByName(name, Elements);
         }
 
+        /// <summary>
+        ///     Provides the procedure which corresponds to the name provided
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Procedure FindProcedure(string name)
+        {
+            return (Procedure)INamableUtils.findByName(name, Elements);
+        }
+
+        /// <summary>
+        ///     Provides the rule which corresponds to the name provided
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Rule FindRule(string name)
+        {
+            return (Rule)INamableUtils.findByName(name, Elements);
+        }
+
+        /// <summary>
+        ///     Provides the state machine which corresponds to the name provided
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public StateMachine FindStateMachine(string name)
+        {
+            return (StateMachine)INamableUtils.findByName(name, Elements);
+        }
+
         public override ArrayList EnclosingCollection
         {
             get { return NameSpace.Structures; }
@@ -538,6 +568,30 @@ namespace DataDictionary.Types
             Structure retVal = (Structure)Duplicate();
             retVal.setUpdates(Guid);
 
+            foreach (StructureElement element in retVal.Elements)
+            {
+                StructureElement baseElement = FindStructureElement(element.Name);
+                element.setUpdates(baseElement.Guid);
+            }
+
+            foreach (Procedure procedure in retVal.Procedures)
+            {
+                Procedure baseProcedure = FindProcedure(procedure.Name);
+                procedure.setUpdates(baseProcedure.Guid);
+            }
+
+            foreach (Rule rule in retVal.Rules)
+            {
+                Rule baseRule = FindRule(rule.Name);
+                rule.setUpdates(baseRule.Guid);
+            }
+
+            foreach (StateMachine stateMachine in retVal.StateMachines)
+            {
+                StateMachine baseStateMachine = FindStateMachine(stateMachine.Name);
+                stateMachine.setUpdates(baseStateMachine.Guid);
+            }
+            
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
             NameSpace nameSpace = dictionary.GetNameSpaceUpdate(names, Dictionary);
