@@ -357,7 +357,7 @@ namespace DataDictionary.Interpreter
                                     {
                                         retVal = EFSSystem.BoolType;
                                     }
-                                    else if (collection.Type == leftType)
+                                    else if (collection.Type.Match(leftType))
                                     {
                                         retVal = EFSSystem.BoolType;
                                     }
