@@ -847,14 +847,17 @@ namespace GUI.TestRunnerView.TimeLineControl
                 if (subStepActivation != null)
                 {
                     pe.Graphics.FillRectangle(new SolidBrush(attributes.FillColor), bounds);
-                    int index = subStepActivation.SubStep.EnclosingCollection.IndexOf(subStepActivation.SubStep) + 1;
-                    if (index == 1)
+                    if (subStepActivation.SubStep.EnclosingCollection != null)
                     {
-                        pe.Graphics.DrawString("Substep", BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color),
-                            new Point(bounds.Left + 2, bounds.Top + 2));
+                        int index = subStepActivation.SubStep.EnclosingCollection.IndexOf(subStepActivation.SubStep) + 1;
+                        if (index == 1)
+                        {
+                            pe.Graphics.DrawString("Substep", BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color),
+                                new Point(bounds.Left + 2, bounds.Top + 2));
+                        }
+                        pe.Graphics.DrawString("" + index, BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color),
+                            new Point(bounds.Left + bounds.Width/2, bounds.Bottom - 2 - BOTTOM_FONT.Height));
                     }
-                    pe.Graphics.DrawString("" + index, BOTTOM_FONT, new SolidBrush(attributes.DrawPen.Color),
-                        new Point(bounds.Left + bounds.Width/2, bounds.Bottom - 2 - BOTTOM_FONT.Height));
                 }
                 else
                 {
