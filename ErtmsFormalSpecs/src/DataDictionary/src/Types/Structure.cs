@@ -214,7 +214,7 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public Procedure FindProcedure(string name)
         {
-            return (Procedure)INamableUtils.findByName(name, Elements);
+            return (Procedure)INamableUtils.findByName(name, Procedures);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public Rule FindRule(string name)
         {
-            return (Rule)INamableUtils.findByName(name, Elements);
+            return (Rule)INamableUtils.findByName(name, Rules);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace DataDictionary.Types
         /// <returns></returns>
         public StateMachine FindStateMachine(string name)
         {
-            return (StateMachine)INamableUtils.findByName(name, Elements);
+            return (StateMachine)INamableUtils.findByName(name, StateMachines);
         }
 
         public override ArrayList EnclosingCollection
