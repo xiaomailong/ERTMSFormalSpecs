@@ -257,7 +257,7 @@
  version="3.0.0"
  Name=""
  Guid="69800a7a-752e-4dc5-b1a8-68ee2e692560"
->We consider that the FIFO containing the acknowledgements to display cannot contain two acknowledgements of the same type, except for plain text messages.<RequirementSets>
+>We consider that the FIFO containing the acknowledgements to display cannot contain two acknowledgements of the same type, except for plain text messages and level transitions.<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="958dd3c0-d0f3-42f3-a420-f8f9b3812b4c"
@@ -265,6 +265,26 @@
 </RequirementSetReference><RequirementSetReference
  RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
  Guid="9ad08f3d-1acc-456c-81e8-1c001b3bee80"
+>
+</RequirementSetReference></RequirementSets>
+</Paragraph><Paragraph
+ id="A1.1.1.9.3"
+ type="REQUIREMENT"
+ scope="FLAGS"
+ bl=""
+ name=""
+ status="NA"
+ version="3.0.0"
+ Name=""
+ Guid="e68ea056-2e1b-4d25-8652-9911feef6a01"
+>The acknowledgement timer for the mode profile and level transitions starts from the moment the mode/level transition takes place.<RequirementSets>
+<RequirementSetReference
+ RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
+ Guid="7c7701b9-6af3-464b-acca-0decd47ec190"
+>
+</RequirementSetReference><RequirementSetReference
+ RefId="478e8dc6-a574-4bd9-85e7-ed844cbb2e2e"
+ Guid="b626242c-9811-45d0-ae66-103aa64ddb94"
 >
 </RequirementSetReference></RequirementSets>
 </Paragraph></Sub>
