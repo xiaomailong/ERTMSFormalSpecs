@@ -141,5 +141,42 @@ namespace DataDictionary.test
             IValue value = expression.GetValue(new InterpretationContext(), null);
             Assert.AreEqual(System.BoolType.False, value);
         }
+
+        [Test]
+        public void TestParameterTypeInDefaultNameSpace()
+        {
+            Dictionary dictionary = CreateDictionary("Test");
+            NameSpace defaultNameSpace = CreateNameSpace(dictionary, "Default");
+            NameSpace nameSpace = CreateNameSpace(dictionary, "N1");
+
+            Types.Enum enumeration = CreateEnum(defaultNameSpace, "Enum");
+            EnumValue value1 = CreateEnumValue(enumeration, "First");
+            EnumValue value2 = CreateEnumValue(enumeration, "Second");
+
+            Function function = CreateFunction(nameSpace, "F1", "Bool");
+
+            Parameter param = new Parameter();
+            param.setTypeName("N1.Enum");
+            param.setName("Value");
+            function.appendParameters(param);
+
+            Case cas1 = CreateCase(function, "Case 1", "True", "Value == Enum.First");
+            Case cas2 = CreateCase(function, "Case 2", "False");
+
+            Dictionary dictionary2 = CreateDictionary("TestUpdate");
+            dictionary2.setUpdates(dictionary.Guid);
+
+            Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
+            Case cas3 = (Case)updatedFunction.Cases[0];
+            cas3.PreConditions[0] = "Value == Enum.Second";
+
+
+            Compiler.Compile_Synchronous(true);
+
+
+            Expression expression = Parser.Expression(dictionary, "N1.F1(Enum.Second)");
+            IValue value = expression.GetValue(new InterpretationContext(), null);
+            Assert.AreEqual(System.BoolType.True, value);
+        }
     }
 }
