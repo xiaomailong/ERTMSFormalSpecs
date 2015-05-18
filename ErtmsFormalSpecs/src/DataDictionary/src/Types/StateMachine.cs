@@ -431,61 +431,68 @@ namespace DataDictionary.Types
 
                 foreach (Action action in ruleCondition.Actions)
                 {
-                    foreach (VariableUpdateStatement update in action.UpdateStatements)
+                    try
                     {
-                        Type targetType = update.TargetType;
-                        if (targetType is StateMachine)
+                        foreach (VariableUpdateStatement update in action.UpdateStatements)
                         {
-                            Expression expressionTree = update.Expression;
-                            if (expressionTree != null)
+                            Type targetType = update.TargetType;
+                            if (targetType is StateMachine)
                             {
-                                // HaCK: This is a bit rough, but should be sufficient for now...
-                                foreach (State stt1 in GetStates(expressionTree))
+                                Expression expressionTree = update.Expression;
+                                if (expressionTree != null)
                                 {
-                                    // TargetState is the target state either in this state machine or in a sub state machine
-                                    State targetState = StateMachine.StateInThisStateMachine(stt1);
-
-                                    int transitionCount = Transitions.Count;
-                                    bool filteredOut = false;
-
-                                    // Finds the enclosing state of this action to determine the source state of this transition
-                                    State enclosingState = EnclosingFinder<State>.find(action);
-                                    if (enclosingState != null)
+                                    // HaCK: This is a bit rough, but should be sufficient for now...
+                                    foreach (State stt1 in GetStates(expressionTree))
                                     {
-                                        filteredOut = filteredOut || AddTransition(update, stt1, null, enclosingState);
-                                    }
+                                        // TargetState is the target state either in this state machine or in a sub state machine
+                                        State targetState = StateMachine.StateInThisStateMachine(stt1);
 
-                                    if (!filteredOut)
-                                    {
-                                        foreach (PreCondition preCondition in ruleCondition.AllPreConditions)
+                                        int transitionCount = Transitions.Count;
+                                        bool filteredOut = false;
+
+                                        // Finds the enclosing state of this action to determine the source state of this transition
+                                        State enclosingState = EnclosingFinder<State>.find(action);
+                                        if (enclosingState != null)
                                         {
-                                            // A transition from one state to another has been found
-                                            foreach (State stt2 in GetStates(preCondition.Expression))
+                                            filteredOut = filteredOut ||
+                                                          AddTransition(update, stt1, null, enclosingState);
+                                        }
+
+                                        if (!filteredOut)
+                                        {
+                                            foreach (PreCondition preCondition in ruleCondition.AllPreConditions)
                                             {
-                                                filteredOut = filteredOut ||
-                                                              AddTransition(update, stt1, preCondition, stt2);
+                                                // A transition from one state to another has been found
+                                                foreach (State stt2 in GetStates(preCondition.Expression))
+                                                {
+                                                    filteredOut = filteredOut ||
+                                                                  AddTransition(update, stt1, preCondition, stt2);
+                                                }
                                             }
                                         }
-                                    }
 
-                                    if (Transitions.Count == transitionCount)
-                                    {
-                                        if (targetState == stt1 && targetState.EnclosingStateMachine == StateMachine)
+                                        if (Transitions.Count == transitionCount)
                                         {
-                                            if (!filteredOut)
+                                            if (targetState == stt1 && targetState.EnclosingStateMachine == StateMachine)
                                             {
-                                                // No precondition could be found => one can reach this state at anytime
-                                                Transitions.Add(new Transition(null, null, update, targetState));
+                                                if (!filteredOut)
+                                                {
+                                                    // No precondition could be found => one can reach this state at anytime
+                                                    Transitions.Add(new Transition(null, null, update, targetState));
+                                                }
                                             }
                                         }
                                     }
                                 }
-                            }
-                            else
-                            {
-                                action.AddError("Cannot parse expression");
+                                else
+                                {
+                                    action.AddError("Cannot parse expression");
+                                }
                             }
                         }
+                    }
+                    catch (Exception e)
+                    {                        
                     }
                 }
 
