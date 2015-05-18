@@ -1,0 +1,221 @@
+<Frame
+ CycleDuration="0.1"
+ Name="Speed monitoring"
+ Guid="52fae9bc-7e9f-4b45-a049-996e7191a199"
+>
+<SubSequences>
+<SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Sequence1"
+ Guid="832c373a-2ccb-489c-a326-8e3baf2d196b"
+>
+<TestCases>
+<TestCase
+ Name="Test case1"
+ Guid="d9aeb52e-5600-4290-8912-9e9a6ae57d63"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1"
+ Guid="1d674d54-98d9-4dd8-9ba4-47434863d3dd"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="ffe084ba-dec0-4668-a964-570ec085d7e0"
+>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence><SubSequence
+ D_LRBG=""
+ Level=""
+ Mode=""
+ NID_LRBG=""
+ Q_DIRLRBG=""
+ Q_DIRTRAIN=""
+ Q_DLRBG=""
+ RBC_ID=""
+ RBCPhone=""
+ Name="Target speed monitoring"
+ Guid="ac27cc34-d030-4206-865a-4f0df22315b4"
+>
+<TestCases>
+<TestCase
+ Name="Normal to indication"
+ Guid="1a2e8569-7458-494c-8b74-8cea10621abc"
+>
+<Steps>
+<Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step1"
+ Guid="f5fffcfe-efae-4a19-9e84-84dcf8e2eb25"
+>
+<SubSteps>
+<SubStep
+ Name="Sub-step1"
+ Guid="17255ffb-e167-4cad-b7eb-d4bed0db1631"
+>
+<Actions>
+<Action
+ Guid="67fdaca3-58e5-4cba-8764-7469fb945f1d"
+>Testing.InitializeTestEnvironment(
+    TrainPosition=&gt;0.0
+)</Action></Actions>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="e6e857c3-f896-43f2-b3e2-7620949b0f8c"
+>
+<Actions>
+<Action
+ Guid="ac724ed8-f92a-4d1b-8299-4fe94571f4b8"
+>Testing.SetSBMode()</Action></Actions>
+</SubStep><SubStep
+ Name="NewSubStep"
+ Guid="6c20906a-84df-4a01-8a38-f648f0a3acb2"
+>
+<Actions>
+<Action
+ Guid="83368f88-b759-4c97-a97f-fd5289e7854a"
+>Testing.SetFSMode()</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="NewStep"
+ Guid="ee9d43f6-9601-4309-9f0b-38180cc799b6"
+>
+<SubSteps>
+<SubStep
+ Name="Substep 1"
+ Guid="ec6abe40-fe67-476e-9341-b2e854ca3413"
+>
+<Actions>
+<Action
+ Guid="32f48d37-5d62-4f1a-92ce-28580c78b14b"
+>Odometry.Message &lt;- Odometry.OdometerMulticastMessage
+{
+    NID_PACKET =&gt; 0,
+    L_PACKET =&gt; 0,
+    Q_SAFEDIR =&gt; Odometry.Q_SAFEDIR.NotAmbiguous,
+    V_MAX =&gt; 60.0,
+    V_NOM =&gt; 60.0,
+    V_MIN =&gt; 60.0,
+    D_MAX_ACCUM =&gt; 0.0,
+    D_MAX =&gt; 4000.0,
+    D_NOM =&gt; 4000.0,
+    D_MIN =&gt; 4000.0,
+    D_MIN_ACCUM =&gt; 0.0,
+    T_ODO =&gt; 0.0,
+    D_RES =&gt; 0.0,
+    Q_NOM_ODO =&gt; Odometry.Q_NOM_ODO.Nominal,
+    M_K_ETCS =&gt; Odometry.M_K_ETCS.ReservedForNonStaticalModel,
+    M_MAXSUMVAR =&gt; 0,
+    M_MINSUMVAR =&gt; 0
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="Step 2"
+ Guid="4ce95231-91e2-4b08-9fe5-65804964d739"
+>
+<SubSteps>
+<SubStep
+ Name="Substep 1"
+ Guid="8728725b-b9eb-4ab5-8efa-ef9155b914bc"
+>
+<Actions>
+<Action
+ Guid="04e9006b-f5ff-4d61-8173-cdb5538271c2"
+>Odometry.Message &lt;- Odometry.OdometerMulticastMessage
+{
+    NID_PACKET =&gt; 0,
+    L_PACKET =&gt; 0,
+    Q_SAFEDIR =&gt; Odometry.Q_SAFEDIR.NotAmbiguous,
+    V_MAX =&gt; 71.0,
+    V_NOM =&gt; 71.0,
+    V_MIN =&gt; 71.0,
+    D_MAX_ACCUM =&gt; 0.0,
+    D_MAX =&gt; 4100.0,
+    D_NOM =&gt; 4100.0,
+    D_MIN =&gt; 4100.0,
+    D_MIN_ACCUM =&gt; 0.0,
+    T_ODO =&gt; 0.0,
+    D_RES =&gt; 0.0,
+    Q_NOM_ODO =&gt; Odometry.Q_NOM_ODO.Nominal,
+    M_K_ETCS =&gt; Odometry.M_K_ETCS.ReservedForNonStaticalModel,
+    M_MAXSUMVAR =&gt; 0,
+    M_MINSUMVAR =&gt; 0
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step><Step
+ IO="NA"
+ LevelIN="NA"
+ LevelOUT="NA"
+ ModeIN="NA"
+ ModeOUT="NA"
+ TranslationRequired="FALSE"
+ Name="NewStep"
+ Guid="3aeb5d1a-b786-4242-b1cf-7457c1ceed18"
+>
+<SubSteps>
+<SubStep
+ Name="Substep 1"
+ Guid="6d46f051-1cc8-4fa7-a08f-f0805ca31b69"
+>
+<Actions>
+<Action
+ Guid="070b957a-54d8-42e7-8a3b-6ad2f4270658"
+>Odometry.Message &lt;- Odometry.OdometerMulticastMessage
+{
+    NID_PACKET =&gt; 0,
+    L_PACKET =&gt; 0,
+    Q_SAFEDIR =&gt; Odometry.Q_SAFEDIR.NotAmbiguous,
+    V_MAX =&gt; 60.0,
+    V_NOM =&gt; 60.0,
+    V_MIN =&gt; 60.0,
+    D_MAX_ACCUM =&gt; 0.0,
+    D_MAX =&gt; 4200.0,
+    D_NOM =&gt; 4200.0,
+    D_MIN =&gt; 4200.0,
+    D_MIN_ACCUM =&gt; 0.0,
+    T_ODO =&gt; 0.0,
+    D_RES =&gt; 0.0,
+    Q_NOM_ODO =&gt; Odometry.Q_NOM_ODO.Nominal,
+    M_K_ETCS =&gt; Odometry.M_K_ETCS.ReservedForNonStaticalModel,
+    M_MAXSUMVAR =&gt; 0,
+    M_MINSUMVAR =&gt; 0
+}</Action></Actions>
+</SubStep></SubSteps>
+</Step></Steps>
+</TestCase></TestCases>
+</SubSequence></SubSequences>
+</Frame>
