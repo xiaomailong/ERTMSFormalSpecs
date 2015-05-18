@@ -477,8 +477,16 @@ namespace DataDictionary.Types
                                             {
                                                 if (!filteredOut)
                                                 {
-                                                    // No precondition could be found => one can reach this state at anytime
-                                                    Transitions.Add(new Transition(null, null, update, targetState));
+                                                    Action enclosingAction = update.Root as Action;
+
+                                                    if (enclosingAction != null)
+                                                    {
+                                                        // No precondition could be found => one can reach this state at anytime
+                                                        if (!findMatchingTransition(enclosingAction.RuleCondition, null, targetState))
+                                                        {
+                                                            Transitions.Add(new Transition(null, null, update, targetState));
+                                                        }
+                                                    }
                                                 }
                                             }
                                         }
