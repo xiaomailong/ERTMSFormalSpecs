@@ -187,7 +187,7 @@ namespace DataDictionary.test
             param.setName("Value");
             function.appendParameters(param);
 
-            Case cas1 = CreateCase(function, "Case 1", "True", "Value == Enum.First");
+            Case cas1 = CreateCase(function, "Case 1", "True", "Value == N2.Enum.First");
             Case cas2 = CreateCase(function, "Case 2", "False");
 
             Dictionary dictionary2 = CreateDictionary("TestUpdate");
@@ -196,7 +196,7 @@ namespace DataDictionary.test
             Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
             Case cas3 = (Case)updatedFunction.Cases[0];
             PreCondition preCondition = (PreCondition) cas3.PreConditions[0];
-            preCondition.ExpressionText = "Value == Enum.Second";
+            preCondition.ExpressionText = "Value == N2.Enum.Second";
 
             Compiler.Compile_Synchronous(true);
 
