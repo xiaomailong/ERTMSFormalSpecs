@@ -1223,6 +1223,49 @@ namespace DataDictionary
         {
             Types.Range range = (Types.Range) obj;
 
+            if (range.getPrecision() == acceptor.PrecisionEnum.aIntegerPrecision)
+            {
+                if (range.getMinValue().IndexOf(".") >= 0)
+                {
+                    range.AddError("Invalid min value for integer range : must be an integer");
+                }
+
+                if (range.getMaxValue().IndexOf(".") >= 0)
+                {
+                    range.AddError("Invalid max value for integer range : must be an integer");
+                }
+            }
+            else
+            {
+                if (range.getMinValue().IndexOf(".") < 0)
+                {
+                    range.AddError("Invalid min value for float range : must have a decimal part");
+                }
+
+                if (range.getMaxValue().IndexOf(".") < 0)
+                {
+                    range.AddError("Invalid max value for float range : must have a decimal part");
+                }
+
+            }
+            try
+            {
+                Decimal min = range.MinValueAsLong;
+            }
+            catch (FormatException)
+            {
+                range.AddError("Cannot parse min value for range");
+            }
+
+            try
+            {
+                Decimal max = range.MaxValueAsLong;
+            }
+            catch (FormatException)
+            {
+                range.AddError("Cannot parse max value for range");
+            }
+
             List<Constants.EnumValue> valuesFound = new List<Constants.EnumValue>();
             foreach (Constants.EnumValue enumValue in range.SpecialValues)
             {

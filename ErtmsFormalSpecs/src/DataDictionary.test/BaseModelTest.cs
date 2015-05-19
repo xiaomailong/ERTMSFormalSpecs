@@ -17,6 +17,7 @@ using Structure = DataDictionary.Types.Structure;
 using StructureElement = DataDictionary.Types.StructureElement;
 using StructureRef = DataDictionary.Types.StructureRef;
 using Variable = DataDictionary.Variables.Variable;
+using Range = DataDictionary.Types.Range;
 
 namespace DataDictionary.test
 {
@@ -162,6 +163,28 @@ namespace DataDictionary.test
 
             enclosing.appendEnumerations(retVal);
             retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates an range in the namespace provided
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <param name="precision"></param>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
+        /// <returns></returns>
+        protected Range CreateRange(NameSpace enclosing, string name, acceptor.PrecisionEnum precision, string minValue, string maxValue)
+        {
+            Range retVal = (Range)Factory.createRange();
+
+            enclosing.appendRanges(retVal);
+            retVal.Name = name;
+            retVal.setPrecision(precision);
+            retVal.MinValue = minValue;
+            retVal.MaxValue = maxValue;
 
             return retVal;
         }
@@ -371,24 +394,25 @@ namespace DataDictionary.test
         /// <param name="function"></param>
         /// <param name="name"></param>
         /// <param name="expression"></param>
+        /// <param name="preConditionExpression"></param>
         /// <returns></returns>
-        protected Case CreateCase(Function function, string name, string expression, string precondition = "")
+        protected Case CreateCase(Function function, string name, string expression, string preConditionExpression = "")
         {
-            Case retVal = (Case)Factory.createCase();
+            Case retVal = (Case) Factory.createCase();
             function.appendCases(retVal);
             retVal.Name = name;
             retVal.ExpressionText = expression;
 
-            if (precondition != "")
+            if (preConditionExpression != "")
             {
-                PreCondition preCondition = new PreCondition();
-                preCondition.ExpressionText = precondition;
+                PreCondition preCondition = (PreCondition) acceptor.getFactory().createPreCondition();
+                preCondition.ExpressionText = preConditionExpression;
                 retVal.appendPreConditions(preCondition);
             }
 
             return retVal;
         }
-       
+
         /// <summary>
         ///     Creates an action in the enclosing rule condition
         /// </summary>

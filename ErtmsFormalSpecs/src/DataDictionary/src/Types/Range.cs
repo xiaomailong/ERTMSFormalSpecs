@@ -50,14 +50,23 @@ namespace DataDictionary.Types
         private Decimal minValueAsLong;
         private double minValueAsDouble;
 
+        /// <summary>
+        /// Sets the minimum value (both decimal and double)
+        /// </summary>
+        private void SetMinValue()
+        {
+            minValueAsLong = Decimal.Parse(MinValue, CultureInfo.InvariantCulture);
+            minValueAsDouble = getDouble(MinValue);
+            minValueSet = true;
+        }
+
         public Decimal MinValueAsLong
         {
             get
             {
                 if (!minValueSet)
                 {
-                    minValueAsLong = Decimal.Parse(MinValue);
-                    minValueSet = true;
+                    SetMinValue();
                 }
                 return minValueAsLong;
             }
@@ -69,8 +78,7 @@ namespace DataDictionary.Types
             {
                 if (!minValueSet)
                 {
-                    minValueAsDouble = getDouble(MinValue);
-                    minValueSet = true;
+                    SetMinValue();
                 }
                 return minValueAsDouble;
             }
@@ -82,7 +90,11 @@ namespace DataDictionary.Types
         public string MaxValue
         {
             get { return getMaxValue(); }
-            set { setMaxValue(value); }
+            set
+            {
+                setMaxValue(value);
+                maxValueSet = false;
+            }
         }
 
         /// <summary>
@@ -93,14 +105,23 @@ namespace DataDictionary.Types
         private Decimal maxValueAsLong;
         private double maxValueAsDouble;
 
+        /// <summary>
+        /// Sets the maximum value (both decimal and double)
+        /// </summary>
+        private void SetMaxValue()
+        {
+            maxValueAsLong = Decimal.Parse(MaxValue, CultureInfo.InvariantCulture);
+            maxValueAsDouble = getDouble(MaxValue);
+            maxValueSet = true;
+        }
+
         public Decimal MaxValueAsLong
         {
             get
             {
                 if (!maxValueSet)
                 {
-                    maxValueAsLong = Decimal.Parse(MaxValue);
-                    maxValueSet = true;
+                    SetMaxValue();
                 }
                 return maxValueAsLong;
             }
@@ -112,8 +133,7 @@ namespace DataDictionary.Types
             {
                 if (!maxValueSet)
                 {
-                    maxValueAsDouble = getDouble(MaxValue);
-                    maxValueSet = true;
+                    SetMaxValue();
                 }
                 return maxValueAsDouble;
             }
