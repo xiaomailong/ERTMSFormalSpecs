@@ -1881,5 +1881,24 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
  Guid="14341fa2-80ec-4bd9-817d-e92c7609c003"
 >
 </ReqRef><Comment>Time between Warning supervision limit and FLOI.</Comment>
+</Variable><Variable
+ Type="Target"
+ DefaultValue="EMPTY"
+ VariableMode="Internal"
+ Implemented="TRUE"
+ Name="PreviousDisplayedTarget"
+ Guid="45d8592f-820f-4b5e-b55c-5336e678b7ab"
+>
+<ReqRef
+ Id="8f56c788-64ae-457b-b163-9023aca9643c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="ea49f212-2398-461e-8319-22d8f049a2f2"
+>
+</ReqRef><ReqRef
+ Id="9e577947-88cc-41b1-857e-6a7b33567ea5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="b0ed04b8-f360-4a53-9eab-47b5e513bc11"
+>
+</ReqRef><Comment>Keeps track of the previous displayed target for the revokation condition r2 in Target speed monitoring, Indication status.</Comment>
 </Variable></Variables>
 </NameSpace>

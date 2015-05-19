@@ -981,7 +981,11 @@ SupervisedTargets</PreCondition></PreConditions>
  Guid="fa08245a-da47-4f3f-8b9e-f0e1296ad148"
 >TargetSpeedMonitoring.SupervisionStatus.r1()
   OR  
-TargetSpeedMonitoring.SupervisionStatus.r2()</PreCondition><PreCondition
+(
+ TargetSpeedMonitoring.PreviousDisplayedTarget != TargetSpeedMonitoring.MRDT()
+  AND 
+ TargetSpeedMonitoring.SupervisionStatus.r2()
+)</PreCondition><PreCondition
  Guid="90275fec-f9d4-4f42-ba0b-584bc9ccd819"
 >TargetsList()
 ==
@@ -1141,6 +1145,37 @@ SupervisedTargets</PreCondition></PreConditions>
 <Action
  Guid="d28762fe-3632-4bd2-9e7d-fe9f372261f4"
 >THIS &lt;- Target.Overspeed</Action></Actions>
+</RuleCondition></Conditions>
+</Rule><Rule
+ Priority="Processing"
+ Implemented="TRUE"
+ Name="Track displayed target"
+ Guid="d1cd73c9-fc3d-41ce-86cf-cfcb87ddf61a"
+>
+<ReqRef
+ Id="9e577947-88cc-41b1-857e-6a7b33567ea5"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="2b943ddf-f560-45d4-b7de-2b68adf3a161"
+>
+</ReqRef><ReqRef
+ Id="8f56c788-64ae-457b-b163-9023aca9643c"
+ SpecId="1725280b-f696-4860-94cc-d85f62c35214"
+ Guid="f368a1c9-3050-4a67-b416-2ab1c087693f"
+>
+</ReqRef><Comment>Stores the current displayed target for comparison in the following cycle.</Comment>
+<SubRules></SubRules>
+<Conditions>
+<RuleCondition
+ Implemented="TRUE"
+ Name="Store MRDT"
+ Guid="f79af93c-e589-4add-92e5-821d7c83b382"
+>
+<PreConditions>
+</PreConditions>
+<Actions>
+<Action
+ Guid="68847c15-f7a3-4552-a77e-b4823cafce0b"
+>TargetSpeedMonitoring.PreviousDisplayedTarget &lt;- TargetSpeedMonitoring.MRDT()</Action></Actions>
 </RuleCondition></Conditions>
 </Rule></Rules>
 </StateMachine></State><State
