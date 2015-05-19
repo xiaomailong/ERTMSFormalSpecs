@@ -501,7 +501,7 @@ namespace DataDictionary
                 retVal = tmp.ToString();
 
                 // This is used to ensure that the right style is used for the text
-                retVal = "{\\cf11}\\cf1" + retVal;
+                retVal = "{\\cf11}\\cf1 " + retVal;
 
                 // Common prefix to handle the colors
                 retVal =
