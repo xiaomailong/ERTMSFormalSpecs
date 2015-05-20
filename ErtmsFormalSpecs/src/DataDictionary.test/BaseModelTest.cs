@@ -3,12 +3,13 @@ using DataDictionary.Interpreter;
 using NUnit.Framework;
 using Utils;
 using Action = DataDictionary.Rules.Action;
-using Function = DataDictionary.Functions.Function;
 using Case = DataDictionary.Functions.Case;
 using Enum = DataDictionary.Types.Enum;
 using EnumValue = DataDictionary.Constants.EnumValue;
+using Function = DataDictionary.Functions.Function;
 using NameSpace = DataDictionary.Types.NameSpace;
 using PreCondition = DataDictionary.Rules.PreCondition;
+using Range = DataDictionary.Types.Range;
 using Rule = DataDictionary.Rules.Rule;
 using RuleCondition = DataDictionary.Rules.RuleCondition;
 using State = DataDictionary.Constants.State;
@@ -17,7 +18,7 @@ using Structure = DataDictionary.Types.Structure;
 using StructureElement = DataDictionary.Types.StructureElement;
 using StructureRef = DataDictionary.Types.StructureRef;
 using Variable = DataDictionary.Variables.Variable;
-using Range = DataDictionary.Types.Range;
+using Visitor = DataDictionary.Generated.Visitor;
 
 namespace DataDictionary.test
 {
@@ -40,6 +41,72 @@ namespace DataDictionary.test
         {
             System.Dictionaries.Clear();
         }
+
+        #region Rule checking
+
+        /// <summary>
+        ///     Checks of there is an error message in the object hierarchy
+        /// </summary>
+        private class ErrorMessageVisitor : Visitor
+        {
+            /// <summary>
+            ///     One error log message found in the model
+            /// </summary>
+            public ElementLog ErrorMessageFound { get; private set; }
+
+            public override void visit(BaseModelElement obj, bool visitSubNodes)
+            {
+                foreach (ElementLog log in obj.Messages)
+                {
+                    if (log.Level == ElementLog.LevelEnum.Error)
+                    {
+                        ErrorMessageFound = log;
+                        break;
+                    }
+                }
+
+                if (ErrorMessageFound == null)
+                {
+                    base.visit(obj, visitSubNodes);
+                }
+            }
+        }
+
+        /// <summary>
+        ///     Provides an error message found in the model, or one of its sub elements, if any
+        /// </summary>
+        /// <param name="model"></param>
+        protected ElementLog ErrorMessage(ModelElement model)
+        {
+            ErrorMessageVisitor visitor = new ErrorMessageVisitor();
+            visitor.visit(model, true);
+            return visitor.ErrorMessageFound;
+        }
+
+        /// <summary>
+        ///     Checks that a specific message is present in the model element
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="message"></param>
+        protected bool HasMessage(ModelElement model, string message)
+        {
+            bool retVal = false;
+
+            foreach (ElementLog log in model.Messages)
+            {
+                if (log.Log == message)
+                {
+                    retVal = true;
+                    break;
+                }
+            }
+
+            return retVal;
+        }
+
+        #endregion
+
+        #region Compiler
 
         /// <summary>
         ///     The EFS System to test
@@ -73,6 +140,10 @@ namespace DataDictionary.test
             get { return acceptor.getFactory(); }
         }
 
+        #endregion
+
+        #region Refactoring
+
         /// <summary>
         ///     Performs a refactor
         /// </summary>
@@ -98,7 +169,7 @@ namespace DataDictionary.test
         ///     Performs a refactor
         /// </summary>
         /// <param name="element"></param>
-        /// <param name="target"></param> 
+        /// <param name="target"></param>
         protected void MoveToNameSpace(ModelElement element, NameSpace target)
         {
             Compiler.Compile_Synchronous(true);
@@ -106,6 +177,10 @@ namespace DataDictionary.test
             target.AddModelElement(element);
             Compiler.RefactorAndRelocate(element);
         }
+
+        #endregion
+
+        #region Object creation
 
         /// <summary>
         ///     Creates a dictionary in the system
@@ -176,9 +251,10 @@ namespace DataDictionary.test
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
         /// <returns></returns>
-        protected Range CreateRange(NameSpace enclosing, string name, acceptor.PrecisionEnum precision, string minValue, string maxValue)
+        protected Range CreateRange(NameSpace enclosing, string name, acceptor.PrecisionEnum precision, string minValue,
+            string maxValue)
         {
-            Range retVal = (Range)Factory.createRange();
+            Range retVal = (Range) Factory.createRange();
 
             enclosing.appendRanges(retVal);
             retVal.Name = name;
@@ -279,7 +355,7 @@ namespace DataDictionary.test
         /// <returns></returns>
         protected StateMachine CreateStateMachine(NameSpace enclosing, string name)
         {
-            StateMachine retVal = (StateMachine)Factory.createStateMachine();
+            StateMachine retVal = (StateMachine) Factory.createStateMachine();
 
             enclosing.appendStateMachines(retVal);
             retVal.Name = name;
@@ -378,9 +454,9 @@ namespace DataDictionary.test
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        protected Parameter CreateFunctionParameter(Function function , string name, string type)
+        protected Parameter CreateFunctionParameter(Function function, string name, string type)
         {
-            Parameter retVal = (Parameter)Factory.createParameter();
+            Parameter retVal = (Parameter) Factory.createParameter();
             function.appendParameters(retVal);
             retVal.Name = name;
             retVal.TypeName = type;
@@ -451,11 +527,13 @@ namespace DataDictionary.test
         /// <returns></returns>
         protected PreCondition CreatePreCondition(Case enclosing, string name)
         {
-            PreCondition retVal = (PreCondition)Factory.createPreCondition();
+            PreCondition retVal = (PreCondition) Factory.createPreCondition();
             enclosing.appendPreConditions(retVal);
             retVal.ExpressionText = name;
 
             return retVal;
         }
+
+        #endregion
     }
 }

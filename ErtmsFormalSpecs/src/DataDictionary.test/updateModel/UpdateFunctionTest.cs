@@ -12,7 +12,7 @@ namespace DataDictionary.test
     public class UpdateFunctionTest : BaseModelTest
     {
         /// <summary>
-        /// Tests that a call to an updated function is evaluated correctly
+        ///     Tests that a call to an updated function is evaluated correctly
         /// </summary>
         [Test]
         public void TestUpdateFunction()
@@ -54,16 +54,16 @@ namespace DataDictionary.test
 
             Dictionary dictionary2 = CreateDictionary("TestUpdate");
             dictionary2.setUpdates(dictionary.Guid);
-            
+
             Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
-            Case cas3 = (Case)updatedFunction.Cases[0];
+            Case cas3 = (Case) updatedFunction.Cases[0];
             cas3.ExpressionText = "NOT q(param => 3)";
-            
+
             Function updatedFunction2 = function2.CreateFunctionUpdate(dictionary2);
             Parameter intParameter = CreateFunctionParameter(updatedFunction2, "param", "Integer");
             Case cas4 = (Case) updatedFunction2.Cases[0];
             cas4.ExpressionText = "False";
-            
+
             Compiler.Compile_Synchronous(true);
 
             Expression expression = Parser.Expression(dictionary, "N1.f()");
@@ -89,7 +89,7 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             Function updatedFunction = function2.CreateFunctionUpdate(dictionary2);
-            Case cas3 = (Case)updatedFunction.Cases[0];
+            Case cas3 = (Case) updatedFunction.Cases[0];
             cas3.ExpressionText = "False";
 
             Compiler.Compile_Synchronous(true);
@@ -102,15 +102,14 @@ namespace DataDictionary.test
         [Test]
         public void TestParameterTypeReference()
         {
-
             Dictionary dictionary = CreateDictionary("Test");
             NameSpace nameSpace = CreateNameSpace(dictionary, "N1");
 
-            DataDictionary.Types.Enum enumeration = CreateEnum(nameSpace, "Enum");
-            DataDictionary.Constants.EnumValue value1 = CreateEnumValue(enumeration, "First");
+            Enum enumeration = CreateEnum(nameSpace, "Enum");
+            EnumValue value1 = CreateEnumValue(enumeration, "First");
 
             Function function = CreateFunction(nameSpace, "f", "Bool");
-            
+
             Parameter param = new Parameter();
             param.setTypeName("N1.Enum");
             param.setName("Value");
@@ -123,7 +122,7 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
-            Case cas3 = (Case)updatedFunction.Cases[0];
+            Case cas3 = (Case) updatedFunction.Cases[0];
             cas3.ExpressionText = "False";
 
             Compiler.Compile_Synchronous(true);
@@ -144,10 +143,10 @@ namespace DataDictionary.test
             EnumValue value1 = CreateEnumValue(enumeration, "First");
             EnumValue value2 = CreateEnumValue(enumeration, "Second");
 
-            Function function = CreateFunction(nameSpace, "F1", "Bool");
+            Function function = CreateFunction(nameSpace, "F1", "Boolean");
 
             Parameter param = new Parameter();
-            param.setTypeName("N1.Enum");
+            param.setTypeName("Enum");
             param.setName("Value");
             function.appendParameters(param);
 
@@ -158,11 +157,15 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
-            Case cas3 = (Case)updatedFunction.Cases[0];
+            Case cas3 = (Case) updatedFunction.Cases[0];
             PreCondition preCondition = (PreCondition) cas3.PreConditions[0];
             preCondition.ExpressionText = "Value == Enum.Second";
 
             Compiler.Compile_Synchronous(true);
+
+            RuleCheckerVisitor ruleChecker = new RuleCheckerVisitor(dictionary2);
+            ruleChecker.visit(updatedFunction);
+            Assert.IsNull(ErrorMessage(updatedFunction));
 
             Expression expression = Parser.Expression(dictionary, "N1.F1(Enum.Second)");
             IValue value = expression.GetValue(new InterpretationContext(), null);
@@ -180,7 +183,7 @@ namespace DataDictionary.test
             EnumValue value1 = CreateEnumValue(enumeration, "First");
             EnumValue value2 = CreateEnumValue(enumeration, "Second");
 
-            Function function = CreateFunction(nameSpace, "F1", "Bool");
+            Function function = CreateFunction(nameSpace, "F1", "Boolean");
 
             Parameter param = new Parameter();
             param.setTypeName("N2.Enum");
@@ -194,11 +197,15 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
-            Case cas3 = (Case)updatedFunction.Cases[0];
+            Case cas3 = (Case) updatedFunction.Cases[0];
             PreCondition preCondition = (PreCondition) cas3.PreConditions[0];
             preCondition.ExpressionText = "Value == N2.Enum.Second";
 
             Compiler.Compile_Synchronous(true);
+
+            RuleCheckerVisitor ruleChecker = new RuleCheckerVisitor(dictionary2);
+            ruleChecker.visit(updatedFunction);
+            Assert.IsNull(ErrorMessage(updatedFunction));
 
             Expression expression = Parser.Expression(dictionary, "N1.F1(N1.N2.Enum.Second)");
             IValue value = expression.GetValue(new InterpretationContext(), null);

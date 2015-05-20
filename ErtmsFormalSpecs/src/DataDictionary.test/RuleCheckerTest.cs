@@ -1,43 +1,15 @@
 ﻿using DataDictionary.Generated;
-using DataDictionary.Interpreter;
-using DataDictionary.Values;
 using NUnit.Framework;
-using Utils;
 using NameSpace = DataDictionary.Types.NameSpace;
 using Range = DataDictionary.Types.Range;
-using Structure = DataDictionary.Types.Structure;
-using Variable = DataDictionary.Variables.Variable;
-using StructureElement = DataDictionary.Types.StructureElement;
-
 
 namespace DataDictionary.test
 {
     [TestFixture]
-    class RuleCheckerTest : BaseModelTest
+    public class RuleCheckerTest : BaseModelTest
     {
         /// <summary>
-        /// Checks that a specific message is present in the model element
-        /// </summary>
-        /// <param name="model"></param>
-        /// <param name="message"></param>
-        private bool HasMessage(ModelElement model, string message)
-        {
-            bool retVal = false;
-
-            foreach ( ElementLog log in model.Messages)
-            {
-                if (log.Log == message)
-                {
-                    retVal = true;
-                    break;
-                }
-            }
-
-            return retVal;
-        }
-
-        /// <summary>
-        /// Tests that the Max and Min values for ranges have the right precision
+        ///     Tests that the Max and Min values for ranges have the right precision
         /// </summary>
         [Test]
         public void TestMaxMinValuesInRange()

@@ -1,32 +1,31 @@
-﻿using DataDictionary.Interpreter;
+﻿using DataDictionary.Constants;
+using DataDictionary.Interpreter;
 using DataDictionary.Rules;
-using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
 using DataDictionary.Values;
+using DataDictionary.Variables;
 using NUnit.Framework;
-using NameSpace = DataDictionary.Types.NameSpace;
-using State = DataDictionary.Constants.State;
-using StateMachine = DataDictionary.Types.StateMachine;
 
 namespace DataDictionary.test.updateModel
 {
     [TestFixture]
-    class UpdateStateMachineTest: BaseModelTest
+    internal class UpdateStateMachineTest : BaseModelTest
     {
         /// <summary>
-        /// Tests that a variable of type State Machine is correctly updated
+        ///     Tests that a variable of type State Machine is correctly updated
         /// </summary>
         [Test]
         public void TestUpdateStateMachine()
         {
             Dictionary dictionary = CreateDictionary("Test");
             NameSpace nameSpace = CreateNameSpace(dictionary, "N1");
-            
+
             StateMachine stateMachine = CreateStateMachine(nameSpace, "TestSM");
             State state1 = CreateState(stateMachine, "S1");
             State state2 = CreateState(stateMachine, "S2");
             stateMachine.Default = "S1";
 
-            Variables.Variable var = CreateVariable(nameSpace, "TheVariable", "TestSM");
+            Variable var = CreateVariable(nameSpace, "TheVariable", "TestSM");
             var.setDefaultValue("TestSM.S1");
 
             Dictionary dictionary2 = CreateDictionary("TestUpdate");
@@ -46,7 +45,7 @@ namespace DataDictionary.test.updateModel
         }
 
         /// <summary>
-        /// Tests that the type of a State Machine variable is correctly updated
+        ///     Tests that the type of a State Machine variable is correctly updated
         /// </summary>
         [Test]
         public void TestUpdateStateMachineType()
@@ -59,7 +58,7 @@ namespace DataDictionary.test.updateModel
             State state2 = CreateState(stateMachine, "S2");
             stateMachine.Default = "S1";
 
-            Variables.Variable var = CreateVariable(nameSpace, "TheVariable", "TestSM");
+            Variable var = CreateVariable(nameSpace, "TheVariable", "TestSM");
             var.setDefaultValue("TestSM.S1");
 
             RuleCondition condition = CreateRuleAndCondition(nameSpace, "Test");

@@ -1,6 +1,8 @@
 ﻿using DataDictionary.Generated;
 using NUnit.Framework;
 using Action = DataDictionary.Rules.Action;
+using Enum = DataDictionary.Types.Enum;
+using EnumValue = DataDictionary.Constants.EnumValue;
 using NameSpace = DataDictionary.Types.NameSpace;
 using RuleCondition = DataDictionary.Rules.RuleCondition;
 using Structure = DataDictionary.Types.Structure;
@@ -183,10 +185,10 @@ namespace DataDictionary.test
         {
             Dictionary test = CreateDictionary("Test");
             NameSpace defaultNameSpace = CreateNameSpace(test, "Default");
-            Types.Enum e1 = CreateEnum(defaultNameSpace, "E1");
-            Constants.EnumValue v1 = CreateEnumValue(e1, "X");
- 
-            NameSpace n1 = CreateNameSpace (test, "N1");
+            Enum e1 = CreateEnum(defaultNameSpace, "E1");
+            EnumValue v1 = CreateEnumValue(e1, "X");
+
+            NameSpace n1 = CreateNameSpace(test, "N1");
             Variables.Variable var1 = CreateVariable(n1, "V1", "Default.E1");
             RuleCondition ruleCondition = CreateRuleAndCondition(n1, "R");
             Action action = CreateAction(ruleCondition, "N1 <- Default.E1.X");
@@ -215,6 +217,5 @@ namespace DataDictionary.test
             MoveToNameSpace(TackVariable, DisplayNamespace);
             Assert.AreEqual("DMI.IN.Display.Tack <- False", action.ExpressionText);
         }
-    
     }
 }

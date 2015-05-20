@@ -48,16 +48,16 @@ namespace DataDictionary.test
 
             Dictionary dictionary2 = CreateDictionary("TestUpdate");
             dictionary2.setUpdates(dictionary.Guid);
-            
+
             Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
-            Case cas3 = (Case)updatedFunction.Cases[0];
+            Case cas3 = (Case) updatedFunction.Cases[0];
             cas3.ExpressionText = "NOT q(param => 3)";
-            
+
             Function updatedFunction2 = function2.CreateFunctionUpdate(dictionary2);
             Parameter intParameter = CreateFunctionParameter(updatedFunction2, "param", "Integer");
             Case cas4 = (Case) updatedFunction2.Cases[0];
             cas4.ExpressionText = "False";
-            
+
 
             Compiler.Compile_Synchronous(true);
 
@@ -85,7 +85,7 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             Function updatedFunction = function2.CreateFunctionUpdate(dictionary2);
-            Case cas3 = (Case)updatedFunction.Cases[0];
+            Case cas3 = (Case) updatedFunction.Cases[0];
             cas3.ExpressionText = "False";
 
 
@@ -115,7 +115,7 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             Function updatedFunction = function.CreateFunctionUpdate(dictionary2);
-            Case cas2 = (Case)updatedFunction.Cases[0];
+            Case cas2 = (Case) updatedFunction.Cases[0];
             cas2.ExpressionText = "False";
 
 
@@ -153,7 +153,7 @@ namespace DataDictionary.test
             Case newCase = CreateCase(updateFunction1, "Case 2", "1");
 
             Function updateFunction2 = function2.CreateFunctionUpdate(dictionary2);
-            ((Case)updateFunction2.Cases[0]).ExpressionText = "False";
+            ((Case) updateFunction2.Cases[0]).ExpressionText = "False";
 
 
             Compiler.Compile_Synchronous(true);
@@ -184,7 +184,7 @@ namespace DataDictionary.test
             dictionary2.setUpdates(dictionary.Guid);
 
             Function updateFunction2 = function2.CreateFunctionUpdate(dictionary2);
-            ((Case)updateFunction2.Cases[0]).ExpressionText = "False";
+            ((Case) updateFunction2.Cases[0]).ExpressionText = "False";
 
 
             Compiler.Compile_Synchronous(true);
@@ -194,6 +194,5 @@ namespace DataDictionary.test
             IValue value = expression.GetValue(new InterpretationContext(), null);
             Assert.AreEqual(System.BoolType.False, value);
         }
-
     }
 }

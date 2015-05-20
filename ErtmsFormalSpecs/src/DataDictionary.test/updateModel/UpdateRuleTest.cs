@@ -1,20 +1,16 @@
-﻿using DataDictionary.Functions;
-using DataDictionary.Generated;
-using DataDictionary.Interpreter;
-using DataDictionary.Tests;
+﻿using DataDictionary.Interpreter;
+using DataDictionary.Rules;
 using DataDictionary.Tests.Runner;
+using DataDictionary.Types;
 using DataDictionary.Values;
+using DataDictionary.Variables;
 using NUnit.Framework;
-using NameSpace = DataDictionary.Types.NameSpace;
-using Variable = DataDictionary.Variables.Variable;
-using Rule = DataDictionary.Rules.Rule;
-using RuleCondition = DataDictionary.Rules.RuleCondition;
-using SubSequence = DataDictionary.Tests.SubSequence;
+using Action = DataDictionary.Generated.Action;
 
 namespace DataDictionary.test.updateModel
 {
     [TestFixture]
-    class UpdateRuleTest : BaseModelTest
+    internal class UpdateRuleTest : BaseModelTest
     {
         [Test]
         public void TestUpdateRule()
