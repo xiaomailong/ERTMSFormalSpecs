@@ -251,21 +251,24 @@ namespace GUI
             {
                 GUIUtils.MDIWindow.HandlingSelection = true;
                 Selected = e.Node as BaseTreeNode;
-                if (ModifierKeys == Keys.Control && !ExpandingAll && !Selecting)
+                if (Selected != null)
                 {
-                    try
+                    if (ModifierKeys == Keys.Control && !ExpandingAll && !Selecting)
                     {
-                        ExpandingAll = true;
-                        Selected.ExpandAll();
+                        try
+                        {
+                            ExpandingAll = true;
+                            Selected.ExpandAll();
+                        }
+                        finally
+                        {
+                            ExpandingAll = false;
+                        }
                     }
-                    finally
+                    else
                     {
-                        ExpandingAll = false;
+                        Selected.HandleExpand();
                     }
-                }
-                else
-                {
-                    Selected.HandleExpand();
                 }
             }
             finally
