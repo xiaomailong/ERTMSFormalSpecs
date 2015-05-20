@@ -16,6 +16,7 @@
 
 using System.Collections;
 using DataDictionary.Generated;
+using DataDictionary.Interpreter;
 using DataDictionary.Types;
 using DataDictionary.Variables;
 using Utils;
@@ -60,7 +61,13 @@ namespace DataDictionary
             {
                 if (type == null)
                 {
-                    type = EFSSystem.findType(NameSpace, TypeName);
+                    Expression typeExpression = EFSSystem.Parser.Expression(this, getTypeName(),
+                        Interpreter.Filter.IsType.INSTANCE, true, null, true);
+
+                    if (typeExpression != null)
+                    {
+                        type = typeExpression.Ref as Type;
+                    }
                 }
                 return type;
             }

@@ -18,6 +18,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Types;
@@ -76,7 +77,13 @@ namespace DataDictionary.Functions
             {
                 if (returnType == null)
                 {
-                    returnType = EFSSystem.findType(NameSpace, getTypeName());
+                    Expression returnTypeExpression = EFSSystem.Parser.Expression(this, getTypeName(),
+                        Interpreter.Filter.IsType.INSTANCE, true, null, true);
+
+                    if (returnTypeExpression != null)
+                    {
+                        returnType = returnTypeExpression.Ref as Type;
+                    }
                 }
                 return returnType;
             }
@@ -224,9 +231,13 @@ namespace DataDictionary.Functions
                         retVal = ReturnType.ValidBinaryOperation(operation, otherFunction.ReturnType);
                     }
                 }
-                else
+                else if ( ReturnType != this )
                 {
                     retVal = ReturnType.ValidBinaryOperation(operation, otherType);
+                }
+                else
+                {
+                    retVal = true;
                 }
             }
 
