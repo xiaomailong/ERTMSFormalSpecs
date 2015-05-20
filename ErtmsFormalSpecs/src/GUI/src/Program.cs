@@ -92,10 +92,14 @@ namespace ERTMSFormalSpecs
                     // TRICKY SECTION
                     // This thread is mandatory otherwise WCF does not create a new thread to handle the service requests. 
                     // Since the call to Cycle is blocking, creating such threads is mandatory
-                    Thread thread = ThreadUtil.CreateThread("EFS Service", (ThreadStart) HostEFSService);
+                    Thread thread = ThreadUtil.CreateThread("EFS Service", HostEFSService);
                     thread.Start();
                 }
 
+                foreach (string file in args)
+                {
+                    window.OpenFile(file);
+                }
                 Application.Run(window);
                 CloseEFSService();
             }

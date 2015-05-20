@@ -686,123 +686,132 @@ namespace GUI
             openFileDialog.Filter = "EFS Files (*.efs)|*.efs|All Files (*.*)|*.*";
             if (openFileDialog.ShowDialog(this) == DialogResult.OK)
             {
-                try
-                {
-                    HandlingSelection = true;
-                    bool allowErrors = false;
-                    bool shouldPlace = EFSSystem.Dictionaries.Count == 0;
-
-                    OpenFileOperation openFileOperation = new OpenFileOperation(openFileDialog.FileName, EFSSystem,
-                        allowErrors, true);
-                    openFileOperation.ExecuteUsingProgressDialog("Opening file", true);
-
-                    // Open the windows
-                    if (openFileOperation.Dictionary != null)
-                    {
-                        Dictionary dictionary = openFileOperation.Dictionary;
-                        ControllersManager.DesactivateAllNotifications();
-
-                        // Display the document views
-                        // Only open the model view window if model elements are available in the opened file
-                        DataDictionaryView.Window modelWindow = null;
-                        if (dictionary.NameSpaces.Count > 0)
-                        {
-                            modelWindow = new DataDictionaryView.Window(dictionary);
-                            AddChildWindow(modelWindow, DockAreas.Document);
-                        }
-                        GenericWindowHandling<TestRunnerView.Window>.AddOrShow(this, TestWindow, DockAreas.Document);
-
-                        TranslationRules.Window translationWindow = null;
-                        if (dictionary.TranslationDictionary != null &&
-                            dictionary.TranslationDictionary.TranslationsCount > 0)
-                        {
-                            translationWindow = new TranslationRules.Window(dictionary.TranslationDictionary);
-                            AddChildWindow(translationWindow, DockAreas.Document);
-                        }
-
-                        // Display the views in the left pane
-                        GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow,
-                            DockAreas.DockLeft);
-
-                        // Display the views in the bottom pane
-                        GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow,
-                            DockAreas.DockBottom);
-                        GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
-
-                        GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
-                        if (shouldPlace)
-                        {
-                            MoreInfoWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.66);
-                        }
-
-                        GenericWindowHandling<CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
-                        if (shouldPlace)
-                        {
-                            CommentEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
-                        }
-                        GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow,
-                            DockAreas.DockBottom);
-                        if ( shouldPlace )
-                        {
-                            WatchWindow.Show(CommentEditorWindow.Pane, CommentEditorWindow);
-                        }
-                        CommentEditorWindow.Show();
-
-                        // Display the views in the right pane
-                        GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
-                        GenericWindowHandling<ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow,
-                            DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            ExpressionEditorWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
-                        }
-                        GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            HistoryWindow.Show(ExpressionEditorWindow.Pane, ExpressionEditorWindow);
-                        }
-
-                        GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            ShortcutsWindow.Show(ExpressionEditorWindow.Pane, ExpressionEditorWindow);
-                        } 
-                        
-                        GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow,
-                            DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
-                        }
-                        ExpressionEditorWindow.Show();
-
-                        GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
-                        if (shouldPlace)
-                        {
-                            MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.3);
-                        }
-
-                        if (modelWindow != null)
-                        {
-                            modelWindow.Focus();
-                        }
-
-                        SetCoverageStatus(EFSSystem);
-                    }
-                    else if (!openFileOperation.Dialog.Canceled)
-                    {
-                        MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information",
-                            "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                finally
-                {
-                    HandlingSelection = false;
-                    ControllersManager.ActivateAllNotifications();
-                }
-
-                RefreshModel();
+                OpenFile(openFileDialog.FileName);
             }
+        }
+
+        /// <summary>
+        /// Opens a specific file
+        /// </summary>
+        /// <param name="fileName"></param>
+        public void OpenFile(string fileName)
+        {
+            OpenFileDialog openFileDialog;
+            try
+            {
+                HandlingSelection = true;
+                bool allowErrors = false;
+                bool shouldPlace = EFSSystem.Dictionaries.Count == 0;
+
+                OpenFileOperation openFileOperation = new OpenFileOperation(fileName, EFSSystem, allowErrors, true);
+                openFileOperation.ExecuteUsingProgressDialog("Opening file", true);
+
+                // Open the windows
+                if (openFileOperation.Dictionary != null)
+                {
+                    Dictionary dictionary = openFileOperation.Dictionary;
+                    ControllersManager.DesactivateAllNotifications();
+
+                    // Display the document views
+                    // Only open the model view window if model elements are available in the opened file
+                    DataDictionaryView.Window modelWindow = null;
+                    if (dictionary.NameSpaces.Count > 0)
+                    {
+                        modelWindow = new DataDictionaryView.Window(dictionary);
+                        AddChildWindow(modelWindow, DockAreas.Document);
+                    }
+                    GenericWindowHandling<TestRunnerView.Window>.AddOrShow(this, TestWindow, DockAreas.Document);
+
+                    TranslationRules.Window translationWindow = null;
+                    if (dictionary.TranslationDictionary != null &&
+                        dictionary.TranslationDictionary.TranslationsCount > 0)
+                    {
+                        translationWindow = new TranslationRules.Window(dictionary.TranslationDictionary);
+                        AddChildWindow(translationWindow, DockAreas.Document);
+                    }
+
+                    // Display the views in the left pane
+                    GenericWindowHandling<SpecificationView.Window>.AddOrShow(this, SpecificationWindow,
+                        DockAreas.DockLeft);
+
+                    // Display the views in the bottom pane
+                    GenericWindowHandling<RequirementsView.Window>.AddOrShow(this, RequirementsWindow,
+                        DockAreas.DockBottom);
+                    GenericWindowHandling<UsageView.Window>.AddOrShow(this, UsageWindow, DockAreas.DockBottom);
+
+                    GenericWindowHandling<MoreInfoView.Window>.AddOrShow(this, MoreInfoWindow, DockAreas.DockBottom);
+                    if (shouldPlace)
+                    {
+                        MoreInfoWindow.Show(RequirementsWindow.Pane, DockAlignment.Right, 0.66);
+                    }
+
+                    GenericWindowHandling<CommentWindow>.AddOrShow(this, CommentEditorWindow, DockAreas.DockBottom);
+                    if (shouldPlace)
+                    {
+                        CommentEditorWindow.Show(MoreInfoWindow.Pane, DockAlignment.Right, 0.5);
+                    }
+                    GenericWindowHandling<TestRunnerView.Watch.Window>.AddOrShow(this, WatchWindow,
+                        DockAreas.DockBottom);
+                    if (shouldPlace)
+                    {
+                        WatchWindow.Show(CommentEditorWindow.Pane, CommentEditorWindow);
+                    }
+                    CommentEditorWindow.Show();
+
+                    // Display the views in the right pane
+                    GenericWindowHandling<PropertyView.Window>.AddOrShow(this, PropertyWindow, DockAreas.DockRight);
+                    GenericWindowHandling<ExpressionWindow>.AddOrShow(this, ExpressionEditorWindow,
+                        DockAreas.DockRight);
+                    if (shouldPlace)
+                    {
+                        ExpressionEditorWindow.Show(PropertyWindow.Pane, DockAlignment.Bottom, 0.6);
+                    }
+                    GenericWindowHandling<HistoryView.Window>.AddOrShow(this, HistoryWindow, DockAreas.DockRight);
+                    if (shouldPlace)
+                    {
+                        HistoryWindow.Show(ExpressionEditorWindow.Pane, ExpressionEditorWindow);
+                    }
+
+                    GenericWindowHandling<Shortcuts.Window>.AddOrShow(this, ShortcutsWindow, DockAreas.DockRight);
+                    if (shouldPlace)
+                    {
+                        ShortcutsWindow.Show(ExpressionEditorWindow.Pane, ExpressionEditorWindow);
+                    }
+
+                    GenericWindowHandling<SelectionHistory.Window>.AddOrShow(this, SelectionHistoryWindow,
+                        DockAreas.DockRight);
+                    if (shouldPlace)
+                    {
+                        SelectionHistoryWindow.Show(ShortcutsWindow.Pane, ShortcutsWindow);
+                    }
+                    ExpressionEditorWindow.Show();
+
+                    GenericWindowHandling<MessagesView.Window>.AddOrShow(this, MessagesWindow, DockAreas.DockRight);
+                    if (shouldPlace)
+                    {
+                        MessagesWindow.Show(HistoryWindow.Pane, DockAlignment.Bottom, 0.3);
+                    }
+
+                    if (modelWindow != null)
+                    {
+                        modelWindow.Focus();
+                    }
+
+                    SetCoverageStatus(EFSSystem);
+                }
+                else if (!openFileOperation.Dialog.Canceled)
+                {
+                    MessageBox.Show("Cannot open file, please see log file (GUI.Log) for more information",
+                        "Cannot open file", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            finally
+            {
+                HandlingSelection = false;
+                ControllersManager.ActivateAllNotifications();
+            }
+
+            RefreshModel();
         }
 
         #endregion
