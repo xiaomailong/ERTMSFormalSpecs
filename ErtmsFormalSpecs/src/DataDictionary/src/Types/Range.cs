@@ -189,6 +189,11 @@ namespace DataDictionary.Types
 
             if (Char.IsLetter(image[0]) || image[0] == '_')
             {
+                if (image.StartsWith(Name + "."))
+                {
+                    image = image.Substring(Name.Length + 1);
+                }
+
                 retVal = findEnumValue(image);
                 if (retVal == null)
                 {

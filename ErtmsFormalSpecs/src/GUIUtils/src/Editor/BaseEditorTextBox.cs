@@ -1193,6 +1193,7 @@ namespace GUI
                 IValue value = null;
                 if (string.IsNullOrEmpty(element.Default))
                 {
+                    // No default value for element, get the one of the type
                     if (element.Type != null && element.Type.DefaultValue != null)
                     {
                         value = element.Type.DefaultValue;
@@ -1208,7 +1209,7 @@ namespace GUI
 
                 if (value != null)
                 {
-                    text.Append(value.FullName);
+                    text.Append(StripUseless(value.FullName, WritingContext()));
                 }
             }
         }
@@ -1246,20 +1247,32 @@ namespace GUI
 
             if (model != null)
             {
-                char[] tmp = fullName.ToArray();
-                char[] modelName = model.FullName.ToArray();
+                string[] words = fullName.Split('.');
+                string[] context = model.FullName.Split('.');
 
                 int i = 0;
-                while (i < tmp.Length && i < modelName.Length)
+                while (i < words.Length && i < context.Length)
                 {
-                    if (tmp[i] != modelName[i])
+                    if (words[i] != context[i])
                     {
                         break;
                     }
-                    i += 1;
+
+                    i++;
                 }
 
-                retVal = retVal.Substring(i);
+                // i is the first different word.
+                retVal = "";
+                while (i < words.Length)
+                {
+                    if (!String.IsNullOrEmpty(retVal))
+                    {
+                        retVal += ".";
+                    }
+                    retVal = retVal + words[i];
+                    i++;
+                }
+
                 if (Utils.Utils.isEmpty(retVal))
                 {
                     retVal = model.Name;
