@@ -50,14 +50,18 @@ namespace GUI.StructureValueEditor
         /// </summary>
         /// <param name="obj"></param>
         /// <returns></returns>
-        private static object DerefVariable(object obj)
+        private static IValue DerefVariable(object obj)
         {
-            object retVal = obj;
+            IValue retVal;
 
-            Variable variable = retVal as Variable;
+            Variable variable = obj as Variable;
             if (variable != null)
             {
                 retVal = variable.Value;
+            }
+            else
+            {
+                retVal = obj as IValue;
             }
 
             return retVal;
@@ -125,11 +129,10 @@ namespace GUI.StructureValueEditor
             string retVal;
 
             IVariable variable = obj as IVariable;
-            obj = DerefVariable(obj);
+            IValue value = DerefVariable(obj);
 
-            IValue value = obj as IValue;
-            StructureValue structureValue = obj as StructureValue;
-            ListValue listValue = obj as ListValue;
+            StructureValue structureValue = value as StructureValue;
+            ListValue listValue = value as ListValue;
             if (structureValue != null)
             {
                 retVal = "";
@@ -203,7 +206,7 @@ namespace GUI.StructureValueEditor
         {
             if (e.Column.Index == 1)
             {
-                Value value = DerefVariable(e.Model) as Value;
+                IValue value = DerefVariable(e.Model);
                 if (value != null)
                 {
                     if (value is DefaultValue)
@@ -222,9 +225,9 @@ namespace GUI.StructureValueEditor
         {
             bool retVal = false;
 
-            obj = DerefVariable(obj);
+            IValue value = DerefVariable(obj);
 
-            StructureValue structureValue = obj as StructureValue;
+            StructureValue structureValue = value as StructureValue;
             if (structureValue != null)
             {
                 foreach (Variable subVariable in structureValue.Val.Values)
@@ -248,7 +251,7 @@ namespace GUI.StructureValueEditor
                 }
             }
 
-            ListValue listValue = obj as ListValue;
+            ListValue listValue = value as ListValue;
             if (listValue != null)
             {
                 retVal = listValue.ElementCount > 0;
@@ -266,9 +269,9 @@ namespace GUI.StructureValueEditor
         {
             IEnumerable retVal = null;
 
-            obj = DerefVariable(obj);
+            IValue value = DerefVariable(obj);
 
-            StructureValue structureValue = obj as StructureValue;
+            StructureValue structureValue = value as StructureValue;
             if (structureValue != null)
             {
                 ArrayList list = new ArrayList();
@@ -296,7 +299,7 @@ namespace GUI.StructureValueEditor
                 retVal = list;
             }
 
-            ListValue listValue = obj as ListValue;
+            ListValue listValue = value as ListValue;
             if (listValue != null)
             {
                 ArrayList list = new ArrayList();
@@ -312,7 +315,6 @@ namespace GUI.StructureValueEditor
 
             return retVal;
         }
-
         #endregion
 
         #region Contextual menu
@@ -371,6 +373,22 @@ namespace GUI.StructureValueEditor
                 }
 
                 base.OnClick(e);
+            }
+
+            /// <summary>
+            /// Provides the parent model 
+            /// </summary>
+            public object ParentModel
+            {
+                get
+                {
+                    object retVal = null;
+
+                    TreeListView treeListView = (TreeListView) Args.ListView;
+                    retVal = treeListView.GetParent(Args.Model);
+
+                    return retVal;
+                }
             }
         }
 
@@ -474,7 +492,9 @@ namespace GUI.StructureValueEditor
                         Value.Val[i] = EFSSystem.INSTANCE.EmptyValue;
                     }
                 }
-                Args.ListView.RefreshObject(Value.Enclosing);
+                Args.ListView.RefreshObject(ParentModel);
+
+                // Not needed because the element has been removed
                 // base.OnClick(e);
             }
         }
@@ -553,7 +573,7 @@ namespace GUI.StructureValueEditor
             {
                 Variable.Value = EFSSystem.INSTANCE.EmptyValue;
 
-                Args.ListView.RefreshObject(Variable.Enclosing);
+                Args.ListView.RefreshObject(ParentModel);
             }
         }
 
@@ -563,9 +583,9 @@ namespace GUI.StructureValueEditor
             List<BaseToolStripButton> items = new List<BaseToolStripButton>();
 
             Variable enclosingVariable = args.Model as Variable;
-            obj = DerefVariable(args.Model);
+            IValue value = DerefVariable(args.Model);
 
-            StructureValue structureValue = obj as StructureValue;
+            StructureValue structureValue = value as StructureValue;
             if (structureValue != null)
             {
                 Structure structureType = (Structure) structureValue.Type;
@@ -598,14 +618,16 @@ namespace GUI.StructureValueEditor
                     }
                 }
 
-                ListValue enclosingListValue = structureValue.Enclosing as ListValue;
+                TreeListView treeListView = (TreeListView) obj;
+                object parent = treeListView.GetParent(args.Model);
+                ListValue enclosingListValue = DerefVariable(parent) as ListValue;
                 if (enclosingListValue != null)
                 {
                     items.Add(new ToolStripRemoveListEntry(args, enclosingListValue, structureValue));
                 }
             }
 
-            ListValue listValue = obj as ListValue;
+            ListValue listValue = value as ListValue;
             if (listValue != null)
             {
                 if (enclosingVariable != null)
@@ -626,7 +648,6 @@ namespace GUI.StructureValueEditor
 
             args.MenuStrip = menuStrip;
         }
-
         #endregion
 
         #region Edition

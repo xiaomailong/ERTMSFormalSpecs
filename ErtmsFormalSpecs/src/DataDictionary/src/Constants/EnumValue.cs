@@ -166,7 +166,7 @@ namespace DataDictionary.Constants
         /// </summary>
         public string Default
         {
-            get { return this.FullName; }
+            get { return FullName; }
             set { }
         }
 

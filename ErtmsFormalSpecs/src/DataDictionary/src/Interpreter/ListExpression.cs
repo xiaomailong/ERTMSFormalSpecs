@@ -146,13 +146,14 @@ namespace DataDictionary.Interpreter
         /// <returns></returns>
         public override IValue GetValue(InterpretationContext context, ExplanationPart explain)
         {
-            List<IValue> elements = new List<IValue>();
+            ListValue retVal = new ListValue(ExpressionType, new List<IValue>());
+
             foreach (Expression expr in ListElements)
             {
                 IValue val = expr.GetValue(context, explain);
                 if (val != null)
                 {
-                    elements.Add(val);
+                    retVal.Val.Add(val);
                 }
                 else
                 {
@@ -160,7 +161,6 @@ namespace DataDictionary.Interpreter
                 }
             }
 
-            IValue retVal = new ListValue(ExpressionType, elements);
             return retVal;
         }
 
