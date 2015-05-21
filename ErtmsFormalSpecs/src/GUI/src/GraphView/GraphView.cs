@@ -147,8 +147,11 @@ namespace GUI.GraphView
 
             if (OriginalBitmap != null)
             {
-                SizedBitmap = new Bitmap(OriginalBitmap, pictureBox.Size);
-                pictureBox.Image = SizedBitmap;
+                if (pictureBox.Size.Height > 0 && pictureBox.Size.Width > 0)
+                {
+                    SizedBitmap = new Bitmap(OriginalBitmap, pictureBox.Size);
+                    pictureBox.Image = SizedBitmap;
+                }
             }
         }
 
@@ -172,8 +175,11 @@ namespace GUI.GraphView
             OriginalBitmap = Display();
             if (OriginalBitmap != null)
             {
-                SizedBitmap = new Bitmap(OriginalBitmap, pictureBox.Size);
-                pictureBox.Image = SizedBitmap;
+                if (pictureBox.Size.Height > 0 && pictureBox.Size.Width > 0)
+                {
+                    SizedBitmap = new Bitmap(OriginalBitmap, pictureBox.Size);
+                    pictureBox.Image = SizedBitmap;
+                }
             }
             else
             {
