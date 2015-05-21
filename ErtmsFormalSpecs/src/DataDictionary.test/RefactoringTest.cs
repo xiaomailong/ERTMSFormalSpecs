@@ -1,8 +1,13 @@
-﻿using DataDictionary.Generated;
+﻿using DataDictionary.Functions;
+using DataDictionary.Rules;
+using DataDictionary.Tests;
+using DataDictionary.Types;
+using DataDictionary.Variables;
 using NUnit.Framework;
 using Action = DataDictionary.Rules.Action;
 using Enum = DataDictionary.Types.Enum;
 using EnumValue = DataDictionary.Constants.EnumValue;
+using Frame = DataDictionary.Tests.Frame;
 using NameSpace = DataDictionary.Types.NameSpace;
 using RuleCondition = DataDictionary.Rules.RuleCondition;
 using Structure = DataDictionary.Types.Structure;
@@ -217,5 +222,26 @@ namespace DataDictionary.test
             MoveToNameSpace(TackVariable, DisplayNamespace);
             Assert.AreEqual("DMI.IN.Display.Tack <- False", action.ExpressionText);
         }
+
+        [Test]
+        public void TestMoveBugReport568()
+        {
+            Dictionary test = CreateDictionary("Test");
+            NameSpace namespace1 = CreateNameSpace(test, "Kernel");
+            NameSpace nameSpace2 = CreateNameSpace(namespace1, "MA");
+            Function function = CreateFunction(nameSpace2, "SpeedRestriction", "Boolean");
+
+            Frame frame = CreateTestFrame(test, "frame");
+            SubSequence subSequence = CreateSubSequence(frame, "subsequence");
+            TestCase testCase = CreateTestCase(subSequence, "TestCase");
+            Step step = CreateStep(testCase, "Step");
+            SubStep subStep = CreateSubStep(step, "SubStep");
+            Expectation expectation = CreateExpectation(subStep, "Kernel.MA.SpeedRestriction");
+
+            Refactor(function, "SpeedRestriction");
+
+            Assert.AreEqual("Kernel.MA.SpeedRestriction", expectation.ExpressionText);
+        }
+
     }
 }

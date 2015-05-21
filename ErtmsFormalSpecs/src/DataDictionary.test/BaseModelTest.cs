@@ -1,5 +1,5 @@
-﻿using DataDictionary.Generated;
-using DataDictionary.Interpreter;
+﻿using DataDictionary.Interpreter;
+using DataDictionary.Tests;
 using NUnit.Framework;
 using Utils;
 using Action = DataDictionary.Rules.Action;
@@ -30,7 +30,7 @@ namespace DataDictionary.test
         [TestFixtureSetUp]
         public void Initialise()
         {
-            acceptor.setFactory(new ObjectFactory());
+            Generated.acceptor.setFactory(new ObjectFactory());
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace DataDictionary.test
             /// </summary>
             public ElementLog ErrorMessageFound { get; private set; }
 
-            public override void visit(BaseModelElement obj, bool visitSubNodes)
+            public override void visit(Generated.BaseModelElement obj, bool visitSubNodes)
             {
                 foreach (ElementLog log in obj.Messages)
                 {
@@ -135,9 +135,9 @@ namespace DataDictionary.test
         /// <summary>
         ///     The factory used to create elements
         /// </summary>
-        protected Factory Factory
+        protected Generated.Factory Factory
         {
-            get { return acceptor.getFactory(); }
+            get { return Generated.acceptor.getFactory(); }
         }
 
         #endregion
@@ -251,7 +251,7 @@ namespace DataDictionary.test
         /// <param name="minValue"></param>
         /// <param name="maxValue"></param>
         /// <returns></returns>
-        protected Range CreateRange(NameSpace enclosing, string name, acceptor.PrecisionEnum precision, string minValue,
+        protected Range CreateRange(NameSpace enclosing, string name, Generated.acceptor.PrecisionEnum precision, string minValue,
             string maxValue)
         {
             Range retVal = (Range) Factory.createRange();
@@ -481,7 +481,7 @@ namespace DataDictionary.test
 
             if (preConditionExpression != "")
             {
-                PreCondition preCondition = (PreCondition) acceptor.getFactory().createPreCondition();
+                PreCondition preCondition = (PreCondition) Factory.createPreCondition();
                 preCondition.ExpressionText = preConditionExpression;
                 retVal.appendPreConditions(preCondition);
             }
@@ -530,6 +530,96 @@ namespace DataDictionary.test
             PreCondition retVal = (PreCondition) Factory.createPreCondition();
             enclosing.appendPreConditions(retVal);
             retVal.ExpressionText = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a test frame in the enclosing dictionary
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected Frame CreateTestFrame(Dictionary enclosing, string name)
+        {
+            Frame retVal = (Frame)Factory.createFrame();
+            enclosing.appendTests(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a test sub sequence in the enclosing test frame
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected SubSequence CreateSubSequence(Frame enclosing, string name)
+        {
+            SubSequence retVal = (SubSequence)Factory.createSubSequence();
+            enclosing.appendSubSequences(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a test case in the enclosing test sub sequence 
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected TestCase CreateTestCase(SubSequence enclosing, string name)
+        {
+            TestCase retVal = (TestCase)Factory.createTestCase();
+            enclosing.appendTestCases(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a step in a test case 
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected Step CreateStep(TestCase enclosing, string name)
+        {
+            Step retVal = (Step)Factory.createStep();
+            enclosing.appendSteps(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a step in a test case 
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected SubStep CreateSubStep(Step enclosing, string name)
+        {
+            SubStep retVal = (SubStep)Factory.createSubStep();
+            enclosing.appendSubSteps(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates an expectation in a sub step
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected Expectation CreateExpectation(SubStep enclosing, string name)
+        {
+            Expectation retVal = (Expectation)Factory.createExpectation();
+            enclosing.appendExpectations(retVal);
+            retVal.Name = name;
 
             return retVal;
         }
