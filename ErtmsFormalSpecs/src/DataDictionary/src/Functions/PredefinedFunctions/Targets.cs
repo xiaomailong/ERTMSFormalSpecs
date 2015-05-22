@@ -35,19 +35,9 @@ namespace DataDictionary.Functions.PredefinedFunctions
     public class Targets : PredefinedFunction
     {
         /// <summary>
-        ///     The MRSP function
+        ///     The function providing the speed restrictions
         /// </summary>
-        public Parameter Targets1 { get; private set; }
-
-        /// <summary>
-        ///     The MA function
-        /// </summary>
-        public Parameter Targets2 { get; private set; }
-
-        /// <summary>
-        ///     The SR function
-        /// </summary>
-        public Parameter Targets3 { get; private set; }
+        public Parameter SpeedRestrictions { get; private set; }
 
         /// <summary>
         ///     The return type of the function
@@ -71,23 +61,11 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public Targets(EFSSystem efsSystem)
             : base(efsSystem, "TARGETS")
         {
-            Targets1 = (Parameter) acceptor.getFactory().createParameter();
-            Targets1.Name = "Targets1";
-            Targets1.Type = EFSSystem.AnyType;
-            Targets1.setFather(this);
-            FormalParameters.Add(Targets1);
-
-            Targets2 = (Parameter) acceptor.getFactory().createParameter();
-            Targets2.Name = "Targets2";
-            Targets2.Type = EFSSystem.AnyType;
-            Targets2.setFather(this);
-            FormalParameters.Add(Targets2);
-
-            Targets3 = (Parameter) acceptor.getFactory().createParameter();
-            Targets3.Name = "Targets3";
-            Targets3.Type = EFSSystem.AnyType;
-            Targets3.setFather(this);
-            FormalParameters.Add(Targets3);
+            SpeedRestrictions = (Parameter) acceptor.getFactory().createParameter();
+            SpeedRestrictions.Name = "SpeedRestrictions";
+            SpeedRestrictions.Type = EFSSystem.AnyType;
+            SpeedRestrictions.setFather(this);
+            FormalParameters.Add(SpeedRestrictions);
         }
 
         /// <summary>
@@ -99,21 +77,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
         public override void additionalChecks(ModelElement root, InterpretationContext context,
             Dictionary<string, Expression> actualParameters)
         {
-            CheckFunctionalParameter(root, context, actualParameters[Targets1.Name], 1);
-            CheckFunctionalParameter(root, context, actualParameters[Targets2.Name], 1);
-            CheckFunctionalParameter(root, context, actualParameters[Targets3.Name], 1);
-
-            Function function1 = actualParameters[Targets1.Name].GetExpressionType() as Function;
-            Function function2 = actualParameters[Targets2.Name].GetExpressionType() as Function;
-            Function function3 = actualParameters[Targets3.Name].GetExpressionType() as Function;
-
-            if (function1 != null && function2 != null && function3 != null)
-            {
-                if (function1.ReturnType != function2.ReturnType || function2.ReturnType != function3.ReturnType)
-                {
-                    root.AddError("The types of functions provided are not the same");
-                }
-            }
+            CheckFunctionalParameter(root, context, actualParameters[SpeedRestrictions.Name], 1);
         }
 
         /// <summary>
@@ -136,31 +100,15 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     EFSSystem.findType(
                         OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0],
                             "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"),
-                        "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
+                        "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SpeedRestrictions");
             ListValue collection = new ListValue(collectionType, new List<IValue>());
 
             // compute targets from the MRSP
-            Function function1 = context.findOnStack(Targets1).Value as Function;
+            Function function1 = context.findOnStack(SpeedRestrictions).Value as Function;
             if (function1 != null && !function1.Name.Equals("EMPTY"))
             {
                 Graph graph1 = createGraphForValue(context, function1, explain);
                 ComputeTargets(graph1.Function, collection);
-            }
-
-            // compute targets from the MA
-            Function function2 = context.findOnStack(Targets2).Value as Function;
-            if (function2 != null && !function2.Name.Equals("EMPTY"))
-            {
-                Graph graph2 = createGraphForValue(context, function2, explain);
-                ComputeTargets(graph2.Function, collection);
-            }
-
-            // compute targets from the SR
-            Function function3 = context.findOnStack(Targets3).Value as Function;
-            if (function3 != null && !function3.Name.Equals("EMPTY"))
-            {
-                Graph graph3 = createGraphForValue(context, function3, explain);
-                ComputeTargets(graph3.Function, collection);
             }
 
             context.LocalScope.PopContext(token);

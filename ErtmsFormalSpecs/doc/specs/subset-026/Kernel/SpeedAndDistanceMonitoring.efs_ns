@@ -2286,30 +2286,19 @@ TrainPosition.FrontEndPosition(DistanceInterval.Max) &gt;  ReleaseSpeedMonitorin
 <PreCondition
  Guid="70b90267-1f97-420a-98f2-50458a60d168"
 >ActiveFunctions.SuperviseTrainSpeed_MRSP_DistInSRMode()</PreCondition></PreConditions>
-<Expression>MAP TARGETS
-(
-  Targets1=&gt;MIN
-  (
+<Expression>MAP TARGETS(MIN(
     First =&gt; MRSP.SpeedRestrictions,
     Second =&gt; NationalValues.MaxDistInSRSpeedRestriction
-  ),
-  Targets2=&gt;EMPTY,
-  Targets3=&gt;EMPTY
-) | X.Location &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
+)) | X.Location &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
   USING X IN X</Expression>
 </Case><Case
  Name="Otherwise"
  Guid="5bfa34f7-80f1-4c7a-8338-d7b0662d057c"
 >
-<Expression>MAP TARGETS(
-    Targets1=&gt;MIN(First=&gt;  MIN(First=&gt; MRSP.SpeedRestrictions,
-                               Second=&gt; MA.SpeedRestrictions
-                               ),
-                  Second=&gt; NationalValues.MaxDistInSRSpeedRestriction
-                  ),
-    Targets2=&gt;EMPTY,
-    Targets3=&gt;EMPTY
-) | X.Location &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
+<Expression>MAP TARGETS(MIN(
+    First=&gt; MRSP.SpeedRestrictions,
+    Second=&gt; MA.SpeedRestrictions
+)) | X.Location &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
   USING X IN X</Expression>
 </Case></Cases>
 </Function><Function

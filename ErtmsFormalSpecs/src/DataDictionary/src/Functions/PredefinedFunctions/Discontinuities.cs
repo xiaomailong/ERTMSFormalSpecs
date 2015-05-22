@@ -57,7 +57,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
             : base(efsSystem, "Discontinuities")
         {
             Targets = (Parameter) acceptor.getFactory().createParameter();
-            Targets.Name = "Targets";
+            Targets.Name = "SpeedRestrictions";
             Targets.Type = EFSSystem.AnyType;
             Targets.setFather(this);
             FormalParameters.Add(Targets);
@@ -95,7 +95,7 @@ namespace DataDictionary.Functions.PredefinedFunctions
                     EFSSystem.findType(
                         OverallNameSpaceFinder.INSTANCE.findByName(EFSSystem.Dictionaries[0],
                             "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring"),
-                        "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.Targets");
+                        "Kernel.SpeedAndDistanceMonitoring.TargetSpeedMonitoring.SpeedRestrictions");
             ListValue collection = new ListValue(collectionType, new List<IValue>());
 
             Function function = context.findOnStack(Targets).Value as Function;

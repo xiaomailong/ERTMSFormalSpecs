@@ -569,11 +569,7 @@
  Guid="3cba845a-5194-47da-81ff-78d368523184"
 >TrainPosition.Position.DataState == DataState.Valid</PreCondition></PreConditions>
 <Expression>REDUCE
-  TARGETS(
-    Targets1 =&gt; SpeedRestrictions,
-    Targets2 =&gt; EMPTY,
-    Targets3 =&gt; EMPTY
-) | TrainPosition.FrontEndPosition(DistanceInterval.Min) &lt; X.Location  AND  X.Location &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max)
+  TARGETS(SpeedRestrictions) | TrainPosition.FrontEndPosition(DistanceInterval.Min) &lt; X.Location  AND  X.Location &lt;= TrainPosition.FrontEndPosition(DistanceInterval.Max)
 USING X IN
   BaseTypes.MinSpeed(
     X1 =&gt; X.Speed,

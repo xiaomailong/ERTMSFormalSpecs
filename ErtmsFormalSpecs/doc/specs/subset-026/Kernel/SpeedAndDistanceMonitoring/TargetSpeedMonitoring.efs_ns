@@ -1186,12 +1186,9 @@ ActiveFunctions.SuperviseTrainSpeed_All_Information()</PreCondition></PreConditi
  Name="Value"
  Guid="432773f1-009d-4b37-a703-f1ec3389f415"
 >
-<Expression>MAP TARGETS(
-    Targets1=&gt;MIN(First=&gt;  MRSP.SpeedRestrictions,
-                  Second=&gt; NationalValues.MaxDistInSRSpeedRestriction
-                  ),
-    Targets2=&gt;EMPTY,
-    Targets3=&gt;EMPTY
+<Expression>MAP TARGETS(MIN(
+    First=&gt;  MRSP.SpeedRestrictions,
+    Second=&gt; NationalValues.MaxDistInSRSpeedRestriction)
 ) | X.Location &gt; TrainPosition.FrontEndPosition(DistanceInterval.Nom)
   USING X IN X</Expression>
 </Case></Cases>
@@ -1885,6 +1882,8 @@ This protection is used in the case where V_SBI_DMI is calculated but the train 
  Type="Target"
  DefaultValue="EMPTY"
  VariableMode="Internal"
+ Width="100"
+ Height="50"
  Implemented="TRUE"
  Name="PreviousDisplayedTarget"
  Guid="45d8592f-820f-4b5e-b55c-5336e678b7ab"
