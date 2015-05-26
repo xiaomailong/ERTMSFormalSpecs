@@ -149,7 +149,7 @@ namespace DataDictionary
                 while (enclosing != null && !(enclosing is Dictionary) && enclosing != modelElement)
                 {
                     StateMachine enclosingStateMachine = enclosing as StateMachine;
-                    ;
+
                     if (enclosingStateMachine != null && enclosingStateMachine.EnclosingStateMachine != null)
                     {
                         // Ignore state machines because they have the same name as their enclosing state
