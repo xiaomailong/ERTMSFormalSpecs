@@ -194,12 +194,12 @@ namespace DataDictionary.test
             EnumValue v1 = CreateEnumValue(e1, "X");
 
             NameSpace n1 = CreateNameSpace(test, "N1");
-            Variables.Variable var1 = CreateVariable(n1, "V1", "Default.E1");
+            Variable var1 = CreateVariable(n1, "V1", "Default.E1");
             RuleCondition ruleCondition = CreateRuleAndCondition(n1, "R");
-            Action action = CreateAction(ruleCondition, "N1 <- Default.E1.X");
+            Action action = CreateAction(ruleCondition, "V1 <- Default.E1.X");
 
             MoveToNameSpace(e1, n1);
-            Assert.AreEqual("N1 <- N1.E1.X", action.ExpressionText);
+            Assert.AreEqual("V1 <- E1.X", action.ExpressionText);
             Assert.AreEqual("E1", var1.TypeName);
         }
 
