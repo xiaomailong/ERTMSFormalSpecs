@@ -396,7 +396,7 @@ X2 =&gt; ComputeStartRSM_otherTargets(Vrelease)
  Guid="285f2e84-9cb5-4250-a4ba-f84e839b607e"
 >Vrel == BaseTypes.Speed.ComputeReleaseSpeedOnBoard</PreCondition></PreConditions>
 <Expression>REDUCE
-    TARGETS ( Targets1 =&gt; MRSP.SpeedRestrictions, Targets2 =&gt; EMPTY, Targets3 =&gt; EMPTY ) |
+    TARGETS (MRSP.SpeedRestrictions) |
         StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location AND X.Location &lt;= d_tripEOA() OR
         StartRSM ( ComputeReleaseSpeed () ) &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length ) AND X.Location + BaseTypes.LengthToDistance ( X.Length ) &lt;= ReleaseSpeedMonitoring.d_tripEOA() OR
         X.Location &lt;= StartRSM ( ComputeReleaseSpeed () ) AND d_tripEOA() &lt;= X.Location + BaseTypes.LengthToDistance ( X.Length )
@@ -527,12 +527,9 @@ INITIAL_VALUE
  Guid="c5e16647-8fa2-4097-95d2-bf283c6febd5"
 >
 <Comment>We use TARGETS here instead of the function TargetsList() because this calculation only applies to MRSP targets, not the EOA or the SvL.</Comment>
-<Expression>REDUCE TARGETS(
-    Targets1=&gt;MIN(
+<Expression>REDUCE TARGETS(MIN(
         First=&gt;MRSP.SpeedRestrictions,
-        Second=&gt;NationalValues.MaxDistInSRSpeedRestriction),
-    Targets2=&gt;EMPTY,
-    Targets3=&gt;EMPTY
+        Second=&gt;NationalValues.MaxDistInSRSpeedRestriction)
 ) | (X.Location &gt;= d_tripEOA() AND X.Location &lt;= MA.SvL().Location AND X.Speed &lt;= Vrelease)
   USING X IN BaseTypes.MinDistance(
           X1 =&gt; TargetSpeedMonitoring.d_SBI2(
