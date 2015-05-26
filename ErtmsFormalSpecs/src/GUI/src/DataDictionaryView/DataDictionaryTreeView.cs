@@ -24,7 +24,6 @@ namespace GUI.DataDictionaryView
         {
             Nodes.Clear();
             Nodes.Add(new NameSpacesTreeNode(Root, true));
-            Nodes.Add(new RuleDisablingsTreeNode(Root, true));
         }
     }
 }
