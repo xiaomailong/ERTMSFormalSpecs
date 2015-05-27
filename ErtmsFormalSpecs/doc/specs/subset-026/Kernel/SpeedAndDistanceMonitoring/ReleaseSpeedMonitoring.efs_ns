@@ -55,7 +55,7 @@ aTarget.Speed &lt;= DecelerationCurves.EBD_Target(
     aTarget=&gt;aTarget
 ) - Vdelta0rsob(aTarget.Speed) + 1.0</PreCondition></PreConditions>
 <Expression>STABILIZE
-    VreleaseFunction ( Vrelease_prev =&gt; (PREVIOUS + CURRENT)/2.0, aTarget =&gt; aTarget )
+    VreleaseFunction ( Vrelease_prev =&gt; PREVIOUS, aTarget =&gt; aTarget )
 INITIAL_VALUE
     aTarget.Speed
 STOP_CONDITION
@@ -457,7 +457,9 @@ INITIAL_VALUE
 USING X IN
     BaseTypes.MinSpeed ( X1 =&gt; ComputeReleaseSpeedForTarget ( X ), X2 =&gt; RESULT )
 INITIAL_VALUE
-    BaseTypes.Speed.Infinity</Expression>
+    ComputeReleaseSpeedForTarget(
+    aTarget=&gt;MA.SvL()
+)</Expression>
 </Case></Cases>
 </Function><Function
  Type="Double"
