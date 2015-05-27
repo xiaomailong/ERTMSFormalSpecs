@@ -325,15 +325,23 @@ namespace DataDictionary
         /// </summary>
         public void save()
         {
-            Updater updater = new Updater(BasePath, true);
-            updater.visit(this);
+            try
+            {
+                ControllersManager.DesactivateAllNotifications();
+                Updater updater = new Updater(BasePath, true);
+                updater.visit(this);
 
-            VersionedWriter writer = new VersionedWriter(FilePath);
-            unParse(writer, false);
-            writer.Close();
+                VersionedWriter writer = new VersionedWriter(FilePath);
+                unParse(writer, false);
+                writer.Close();
 
-            updater = new Updater(BasePath, false);
-            updater.visit(this);
+                updater = new Updater(BasePath, false);
+                updater.visit(this);
+            }
+            finally
+            {
+                ControllersManager.ActivateAllNotifications();
+            }
         }
 
         /// <summary>
