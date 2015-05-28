@@ -28738,7 +28738,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="366c7bc8-9a83-43fb-b4e8-f41812946c97"
->t5; V MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); -; Overspeed Status(Pre-indication display area)<RequirementSets>
+>t5; V MRSP &lt; Vest &lt;= V_MRSP + dVwarning(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); -; Overspeed Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="56143e92-5587-47f9-8a85-87d610a03625"
@@ -28755,7 +28755,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="ac2002ec-cc04-4e25-8344-d90765ce4d29"
->t6; V_MRSP &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_W(Vest); -; Overspeed Status<RequirementSets>
+>t6; V_MRSP &lt; Vest &lt;= V_MRSP + dVwarning(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_W(Vest); -; Overspeed Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="8e437c99-3913-43d7-af42-12016ce6183d"
@@ -28772,7 +28772,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="d394cede-dff2-4764-b72a-288ee8d5617c"
->t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MSRP + dVwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest); TCO; Warning Status<RequirementSets>
+>t7; Vtarget + d_Vwarning(Vtarget) &lt; Vest &lt;= V_MRSP + dVwarning(V_MRSP); d_maxsafefront &gt; d_W(Vest); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="d0077084-971f-4f88-805e-83f20b508e31"
@@ -28789,7 +28789,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="d916181f-d7a1-4043-9617-e814b97ae7b4"
->t8; V_MSRP + d_Vwarning(V MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); dmaxsafefront &lt;= d_I(V_MRSP); TCO; Warning Status(Pre-indication display area)<RequirementSets>
+>t8; V_MRSP + d_Vwarning(V MRSP) &lt; Vest &lt;= V_MRSP + dVsbi(V_MRSP); dmaxsafefront &lt;= d_I(V_MRSP); TCO; Warning Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1671b1b8-a74d-49e3-8fb4-ec3bdaefc730"
@@ -28806,7 +28806,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="0342251f-d656-4d41-8ece-bde758fbfadf"
->t9; V_MSRP + dVwarning(V_MSRP) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_SBI2(Vest); TCO; Warning Status<RequirementSets>
+>t9; V_MRSP + dVwarning(V_MRSP) &lt; Vest &lt;= V_MRSP + dVsbi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_SBI2(Vest); TCO; Warning Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="1577ba30-14b6-466b-a037-a946c64e4826"
@@ -28823,7 +28823,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="49cb1ac1-74b3-4afe-865d-d6b4401719da"
->t10; Vtarget + dVsbi(Vtarget) &lt; Vest &lt;= V_MSRP + dVsbi(V_MRSP); d_maxsafefront &gt; d_SBI2(Vest); SB; Intervention Status<RequirementSets>
+>t10; Vtarget + dVsbi(Vtarget) &lt; Vest &lt;= V_MRSP + dVsbi(V_MRSP); d_maxsafefront &gt; d_SBI2(Vest); SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="7547d5fa-3f9e-481f-bd7c-2a736846287a"
@@ -28840,7 +28840,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="b3b7e30c-6bb4-4cd9-8e6d-dfb514676cbd"
->t11; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); SB; Intervention Status(Pre-indication display area)<RequirementSets>
+>t11; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + dVebi(V_MRSP); d_maxsafefront &lt;= d_I(V_MRSP); SB; Intervention Status(Pre-indication display area)<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="81db3823-c9bd-4d93-9918-e9b56ae30ca2"
@@ -28857,7 +28857,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="e354be4a-8c30-493a-8607-87b51d1ac30c"
->t12; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_EBI(Vest); SB; Intervention Status<RequirementSets>
+>t12; V_MRSP + dVsbi(V_MRSP) &lt; Vest &lt;= V_MRSP + dVebi(V_MRSP); d_I(V_MRSP) &lt; d_maxsafefront &lt;= d_EBI(Vest); SB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="fd2b3904-9bce-460f-9f07-cfced7933436"
@@ -28874,7 +28874,7 @@ Triggering condition #; Estimated speed; Train front end position (max safe); TI
  version="3.0.0"
  Name=""
  Guid="6d9d71c4-5508-47ef-ab3d-c32522306769"
->t13; Vtarget + dVebi(Vtarget) &lt; Vest &lt;= V_MSRP + dVebi(V_MRSP); d_maxsafefront &gt; d_EBI(Vest); EB; Intervention Status<RequirementSets>
+>t13; Vtarget + dVebi(Vtarget) &lt; Vest &lt;= V_MRSP + dVebi(V_MRSP); d_maxsafefront &gt; d_EBI(Vest); EB; Intervention Status<RequirementSets>
 <RequirementSetReference
  RefId="b2515c38-1e5c-4be6-9107-9fb08c2038ed"
  Guid="0c9b09c9-c01e-4c35-8380-88efc12d6eaa"
