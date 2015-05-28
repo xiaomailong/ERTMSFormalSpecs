@@ -75,6 +75,7 @@ namespace DataDictionary.Interpreter.Refactor
             if (expressionable != null)
             {
                 Text = expressionable.ExpressionText;
+                Delta = 0;
 
                 bool previous = ModelElement.BeSilent;
                 try

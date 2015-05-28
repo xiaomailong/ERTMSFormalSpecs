@@ -229,18 +229,22 @@ namespace DataDictionary.test
             Dictionary test = CreateDictionary("Test");
             NameSpace namespace1 = CreateNameSpace(test, "Kernel");
             NameSpace nameSpace2 = CreateNameSpace(namespace1, "MA");
-            Function function = CreateFunction(nameSpace2, "SpeedRestriction", "Boolean");
+            Function function1 = CreateFunction(nameSpace2, "SpeedRestriction", "Boolean");
+            NameSpace nameSpace3 = CreateNameSpace(namespace1, "MRSP");
+            Function function2 = CreateFunction(nameSpace3, "SpeedRestriction", "Boolean");
 
             Frame frame = CreateTestFrame(test, "frame");
             SubSequence subSequence = CreateSubSequence(frame, "subsequence");
             TestCase testCase = CreateTestCase(subSequence, "TestCase");
             Step step = CreateStep(testCase, "Step");
             SubStep subStep = CreateSubStep(step, "SubStep");
-            Expectation expectation = CreateExpectation(subStep, "Kernel.MA.SpeedRestriction");
+            Expectation expectation = CreateExpectation(subStep, "Kernel.MA.SpeedRestriction()");
+            Expectation expectation2 = CreateExpectation(subStep, "MIN(Kernel.MA.SpeedRestriction, Kernel.MRSP.SpeedRestriction)");
 
-            Refactor(function, "SpeedRestriction");
+            Refactor(function1, "SpeedRestriction");
 
-            Assert.AreEqual("Kernel.MA.SpeedRestriction", expectation.ExpressionText);
+            Assert.AreEqual("Kernel.MA.SpeedRestriction()", expectation.ExpressionText);
+            Assert.AreEqual("MIN(Kernel.MA.SpeedRestriction, Kernel.MRSP.SpeedRestriction)", expectation2.ExpressionText);
         }
 
     }

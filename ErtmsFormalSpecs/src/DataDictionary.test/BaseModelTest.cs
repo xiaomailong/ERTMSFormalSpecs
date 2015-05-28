@@ -619,7 +619,7 @@ namespace DataDictionary.test
         {
             Expectation retVal = (Expectation)Factory.createExpectation();
             enclosing.appendExpectations(retVal);
-            retVal.Name = name;
+            retVal.ExpressionText = name;
 
             return retVal;
         }

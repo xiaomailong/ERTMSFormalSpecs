@@ -36,9 +36,8 @@ namespace DataDictionary.Interpreter.Refactor
 
         protected override void VisitDerefExpression(DerefExpression derefExpression)
         {
-            List<Expression> enclosingNameSpaces = new List<Expression>();
+            ModelElement context = User;
 
-            ModelElement backup = User;
             foreach (Expression expression in derefExpression.Arguments)
             {
                 if (expression != null)
@@ -47,48 +46,34 @@ namespace DataDictionary.Interpreter.Refactor
                     {
                         string replacementValue = Ref.ReferenceName(User);
 
-                        foreach (Expression enclosing in enclosingNameSpaces)
-                        {
-                            ReplaceText("", enclosing.Start, enclosing.End + 1);                            
-                        }
-                        enclosingNameSpaces.Clear();
                         ReplaceText(replacementValue, expression.Start, expression.End);
                         break;
                     }
                     else if (expression.Ref is NameSpace)
                     {
-                        enclosingNameSpaces.Add(expression);
+                        // Remove all namespace prefixes, they will be taken into account in ReferenceName function
+                        ReplaceText("", expression.Start, expression.End+1);
                     }
                     else
                     {
-                        User = backup;
                         VisitExpression(expression);
                         User = expression.GetExpressionType();
                     }
-
-                    if (expression.Ref != null)
-                    {
-                        ITypedElement typedElement = expression.Ref as ITypedElement;
-                        if (typedElement != null && typedElement.Type != null)
-                        {
-                            User = typedElement.Type;
-                        }
-                        else
-                        {
-                            User = expression.Ref as ModelElement;
-                        }
-                    }
                 }
             }
-            User = backup;
+            User = context;
         }
 
         protected override void VisitDesignator(Designator designator)
         {
-            if (designator.Ref == Ref && !designator.IsPredefined())
+            if (!designator.IsPredefined())
             {
-                string replacementValue = Ref.ReferenceName(User);
-                ReplaceText(replacementValue, designator.Start, designator.End);
+                ModelElement referencedElement = designator.Ref as ModelElement;
+                if ( referencedElement != null )
+                {
+                    string replacementValue = referencedElement.ReferenceName(User);
+                    ReplaceText(replacementValue, designator.Start, designator.End);
+                }
             }
         }
 
