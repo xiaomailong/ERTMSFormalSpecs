@@ -208,16 +208,23 @@ namespace DataDictionary.Interpreter
                         Type type = expression.GetExpressionType();
                         if (type != null)
                         {
-                            foreach (INamable namable in targets)
+                            if (type.IsAbstract)
                             {
-                                ITypedElement element = namable as ITypedElement;
-                                if (element != null && element.Type != null)
+                                AddError("Instantiation of abstract types is forbidden");
+                            }
+                            else
+                            {
+                                foreach (INamable namable in targets)
                                 {
-                                    if (!element.Type.Match(type))
+                                    ITypedElement element = namable as ITypedElement;
+                                    if (element != null && element.Type != null)
                                     {
-                                        AddError("Expression " + expression.ToString() + " type (" + type.FullName +
-                                                 ") does not match the target element " + element.Name + " type (" +
-                                                 element.Type.FullName + ")");
+                                        if (!element.Type.Match(type))
+                                        {
+                                            AddError("Expression " + expression.ToString() + " type (" + type.FullName +
+                                                     ") does not match the target element " + element.Name + " type (" +
+                                                     element.Type.FullName + ")");
+                                        }
                                     }
                                 }
                             }
@@ -225,10 +232,6 @@ namespace DataDictionary.Interpreter
                         else
                         {
                             AddError("Expression " + expression.ToString() + " type cannot be found");
-                        }
-                        if (type.IsAbstract)
-                        {
-                            AddError("Instantiation of abstract types is forbidden");
                         }
                     }
                     else
