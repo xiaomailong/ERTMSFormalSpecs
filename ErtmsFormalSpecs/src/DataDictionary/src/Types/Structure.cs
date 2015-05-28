@@ -566,38 +566,47 @@ namespace DataDictionary.Types
         public Structure CreateStructureUpdate(Dictionary dictionary)
         {
             Structure retVal = (Structure)Duplicate();
-            retVal.setUpdates(Guid);
+            retVal.SetUpdateInformation(this);
 
-            foreach (StructureElement element in retVal.Elements)
-            {
-                StructureElement baseElement = FindStructureElement(element.Name);
-                element.setUpdates(baseElement.Guid);
-            }
-
-            foreach (Procedure procedure in retVal.Procedures)
-            {
-                Procedure baseProcedure = FindProcedure(procedure.Name);
-                procedure.setUpdates(baseProcedure.Guid);
-            }
-
-            foreach (Rule rule in retVal.Rules)
-            {
-                Rule baseRule = FindRule(rule.Name);
-                rule.setUpdates(baseRule.Guid);
-            }
-
-            foreach (StateMachine stateMachine in retVal.StateMachines)
-            {
-                StateMachine baseStateMachine = FindStateMachine(stateMachine.Name);
-                stateMachine.setUpdates(baseStateMachine.Guid);
-            }
-            
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
             NameSpace nameSpace = dictionary.GetNameSpaceUpdate(names, Dictionary);
             nameSpace.appendStructures(retVal);
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Sets the update information for this structure
+        /// </summary>
+        /// <param name="source">The source structure for which this structure has been created (as an update)</param>
+        private void SetUpdateInformation(Structure source)
+        {
+            setUpdates(source.Guid);
+
+            foreach (StructureElement element in Elements)
+            {
+                StructureElement baseElement = source.FindStructureElement(element.Name);
+                element.SetUpdateInformation(baseElement);
+            }
+
+            foreach (Procedure procedure in Procedures)
+            {
+                Procedure baseProcedure = source.FindProcedure(procedure.Name);
+                procedure.SetUpdateInformation(baseProcedure);
+            }
+
+            foreach (Rule rule in Rules)
+            {
+                Rule baseRule = source.FindRule(rule.Name);
+                rule.SetUpdateInformation(baseRule);
+            }
+
+            foreach (StateMachine stateMachine in StateMachines)
+            {
+                StateMachine baseStateMachine = source.FindStateMachine(stateMachine.Name);
+                stateMachine.SetUpdateInformation(baseStateMachine);
+            }
         }
     }
 }

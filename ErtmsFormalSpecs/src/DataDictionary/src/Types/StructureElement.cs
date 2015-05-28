@@ -16,6 +16,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using DataDictionary.Generated;
 using DataDictionary.Interpreter;
 using DataDictionary.Values;
@@ -108,37 +109,31 @@ namespace DataDictionary.Types
         private Type __type;
 
         /// <summary>
+        /// Indicates that the type is being computed (no reentrance)
+        /// </summary>
+        private bool ComputingType { get; set; }
+
+        /// <summary>
         ///     The type associated to this structure element
         /// </summary>
         public Type Type
         {
             get
             {
-                Type retVal = __type;
-
-                if (retVal == null)
+                if (__type == null && !ComputingType)
                 {
-                    // Find the corresponding state machine in the structure's state machines
-                    Structure structure = (Structure) Enclosing;
-                    List<INamable> tmp = new List<INamable>();
-                    structure.Find(getTypeName(), tmp);
-                    foreach (INamable namable in tmp)
+                    ComputingType = true;
+
+                    Expression typeExpression = EFSSystem.Parser.Expression(this, getTypeName(), Interpreter.Filter.IsType.INSTANCE, true, null, true);
+                    if (typeExpression != null)
                     {
-                        StateMachine stateMachine = namable as StateMachine;
-                        if (stateMachine != null)
-                        {
-                            retVal = stateMachine;
-                            break;
-                        }
+                        __type = typeExpression.Ref as Type;
                     }
 
-                    if (retVal == null)
-                    {
-                        retVal = EFSSystem.findType(NameSpace, getTypeName());
-                    }
+                    ComputingType = false;
                 }
 
-                return retVal;
+                return __type;
             }
             set
             {
@@ -343,6 +338,15 @@ namespace DataDictionary.Types
             string retVal = getExplain(0);
 
             return TextualExplainUtilities.Encapsule(retVal);
+        }
+
+        /// <summary>
+        /// Sets the update information for this structure element (this structure element updates source)
+        /// </summary>
+        /// <param name="source"></param>
+        public void SetUpdateInformation(StructureElement source)
+        {
+            setUpdates(source.Guid);
         }
     }
 }

@@ -754,12 +754,7 @@ namespace DataDictionary.Types
         public StateMachine CreateStateMachineUpdate(Dictionary dictionary)
         {
             StateMachine retVal = (StateMachine)Duplicate();
-            retVal.setUpdates(Guid);
-
-            foreach (State state in retVal.States)
-            {
-                state.createStateUpdate(findState(state.Name));
-            }
+            retVal.SetUpdateInformation(this);
 
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
@@ -767,6 +762,20 @@ namespace DataDictionary.Types
             nameSpace.appendStateMachines(retVal);
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Sets the update information for this state machine (this state machine updates source)
+        /// </summary>
+        /// <param name="source"></param>
+        public void SetUpdateInformation(StateMachine source)
+        {
+            setUpdates(source.Guid);
+
+            foreach (State state in States)
+            {
+                state.SetUpdateInformation(source.findState(state.Name));
+            }
         }
     }
 }

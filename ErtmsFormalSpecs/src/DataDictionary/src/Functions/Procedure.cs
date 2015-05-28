@@ -344,14 +344,8 @@ namespace DataDictionary.Functions
         public Procedure CreateProcedureUpdate(Dictionary dictionary)
         {
             Procedure retVal = (Procedure)Duplicate();
-            retVal.setUpdates(Guid);
 
-            // In addition to indicating the function's update information, we need to create links for each parameter
-            foreach (Parameter parameter in retVal.FormalParameters)
-            {
-                Parameter matchingParameter = getFormalParameter(parameter.Name);
-                parameter.setUpdates(matchingParameter.Guid);
-            }
+            retVal.SetUpdateInformation(this);
 
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
@@ -359,6 +353,22 @@ namespace DataDictionary.Functions
             nameSpace.appendProcedures(retVal);
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Sets the update information for this procedure
+        /// </summary>
+        /// <param name="source">The source procedure this procedure updates</param>
+        public void SetUpdateInformation(Procedure source)
+        {
+            setUpdates(source.Guid);
+
+            // In addition to indicating the function's update information, we need to create links for each parameter
+            foreach (Parameter parameter in FormalParameters)
+            {
+                Parameter matchingParameter = source.getFormalParameter(parameter.Name);
+                parameter.setUpdates(matchingParameter.Guid);
+            }
         }
     }
 }

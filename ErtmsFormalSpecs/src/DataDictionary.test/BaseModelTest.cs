@@ -1,4 +1,5 @@
-﻿using DataDictionary.Interpreter;
+﻿using DataDictionary.Functions;
+using DataDictionary.Interpreter;
 using DataDictionary.Tests;
 using NUnit.Framework;
 using Utils;
@@ -398,35 +399,75 @@ namespace DataDictionary.test
         }
 
         /// <summary>
-        ///     Creates a rule and a rule condition in the model element provided
+        ///     Creates a rule and a rule condition in the namespace 
         /// </summary>
         /// <param name="enclosing"></param>
         /// <param name="name"></param>
         /// <returns></returns>
-        protected RuleCondition CreateRuleAndCondition(ModelElement enclosing, string name)
+        protected RuleCondition CreateRuleAndCondition(NameSpace enclosing, string name)
         {
             Rule rule = (Rule) Factory.createRule();
-
-            Structure structure = enclosing as Structure;
-            NameSpace nameSpace = enclosing as NameSpace;
-            if (structure != null)
-            {
-                structure.appendRules(rule);
-            }
-            else if (nameSpace != null)
-            {
-                nameSpace.appendRules(rule);
-            }
-            else
-            {
-                Assert.Fail();
-            }
+            enclosing.appendRules(rule);
             rule.Name = name;
 
+            return CreateRuleCondition(rule, name);
+        }
+
+        /// <summary>
+        ///     Creates a rule and a rule condition in the state machine 
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected RuleCondition CreateRuleAndCondition(StateMachine enclosing, string name)
+        {
+            Rule rule = (Rule)Factory.createRule();
+            enclosing.appendRules(rule);
+            rule.Name = name;
+
+            return CreateRuleCondition(rule, name);
+        }
+
+        /// <summary>
+        ///     Creates a rule and a rule condition in the structure
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected RuleCondition CreateRuleAndCondition(Structure enclosing, string name)
+        {
+            Rule rule = (Rule)Factory.createRule();
+            enclosing.appendRules(rule);
+            rule.Name = name;
+
+            return CreateRuleCondition(rule, name);
+        }
+
+        /// <summary>
+        ///     Creates a rule and a rule condition in the procedure
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected RuleCondition CreateRuleAndCondition(Procedure enclosing, string name)
+        {
+            Rule rule = (Rule)Factory.createRule();
+            enclosing.appendRules(rule);
+            rule.Name = name;
+
+            return CreateRuleCondition(rule, name);
+        }
+        /// <summary>
+        /// Creates a rule condition in a rule
+        /// </summary>
+        /// <param name="rule"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        private RuleCondition CreateRuleCondition(Rule rule, string name)
+        {
             RuleCondition retVal = (RuleCondition) Factory.createRuleCondition();
             rule.appendConditions(retVal);
             retVal.Name = name;
-
             return retVal;
         }
 
@@ -454,10 +495,57 @@ namespace DataDictionary.test
         /// <param name="name"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        protected Parameter CreateFunctionParameter(Function function, string name, string type)
+        protected Parameter CreateParameter(Function function, string name, string type)
         {
             Parameter retVal = (Parameter) Factory.createParameter();
             function.appendParameters(retVal);
+            retVal.Name = name;
+            retVal.TypeName = type;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a function in the enclosing namespace
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected Procedure CreateProcedure(NameSpace enclosing, string name)
+        {
+            Procedure retVal = (Procedure)Factory.createProcedure();
+            enclosing.appendProcedures(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a function in the enclosing structure
+        /// </summary>
+        /// <param name="enclosing"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        protected Procedure CreateProcedure(Structure enclosing, string name)
+        {
+            Procedure retVal = (Procedure)Factory.createProcedure();
+            enclosing.appendProcedures(retVal);
+            retVal.Name = name;
+
+            return retVal;
+        }
+
+        /// <summary>
+        ///     Creates a parameter in the enclosing procedure
+        /// </summary>
+        /// <param name="procedure"></param>
+        /// <param name="name"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        protected Parameter CreateParameter(Procedure procedure, string name, string type)
+        {
+            Parameter retVal = (Parameter)Factory.createParameter();
+            procedure.appendParameters(retVal);
             retVal.Name = name;
             retVal.TypeName = type;
 

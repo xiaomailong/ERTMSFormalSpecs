@@ -532,7 +532,7 @@ namespace DataDictionary.Rules
         public Rule CreateRuleUpdate(Dictionary dictionary)
         {
             Rule retVal = (Rule)Duplicate();
-            retVal.setUpdates(Guid);
+            retVal.SetUpdateInformation(this);
 
             String[] names = FullName.Split('.');
             names = names.Take(names.Count() - 1).ToArray();
@@ -540,6 +540,15 @@ namespace DataDictionary.Rules
             nameSpace.appendRules(retVal);
 
             return retVal;
+        }
+
+        /// <summary>
+        /// Sets the update information for this rule (this rule updates source)
+        /// </summary>
+        /// <param name="source"></param>
+        public void SetUpdateInformation(Rule source)
+        {
+            setUpdates(source.Guid);
         }
 
         /// <summary>

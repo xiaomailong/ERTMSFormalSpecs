@@ -6,7 +6,7 @@ using DataDictionary.Types;
 using DataDictionary.Values;
 using NUnit.Framework;
 
-namespace DataDictionary.test
+namespace DataDictionary.test.updateModel
 {
     [TestFixture]
     public class UpdateFunctionTest : BaseModelTest
@@ -60,7 +60,7 @@ namespace DataDictionary.test
             cas3.ExpressionText = "NOT q(param => 3)";
 
             Function updatedFunction2 = function2.CreateFunctionUpdate(dictionary2);
-            Parameter intParameter = CreateFunctionParameter(updatedFunction2, "param", "Integer");
+            Parameter intParameter = CreateParameter(updatedFunction2, "param", "Integer");
             Case cas4 = (Case) updatedFunction2.Cases[0];
             cas4.ExpressionText = "False";
 

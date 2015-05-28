@@ -465,13 +465,17 @@ namespace DataDictionary.Constants
             return FullName;
         }
 
-
-        public void createStateUpdate(State Updatedstate)
+        /// <summary>
+        /// Sets the update information for this state (this state updates source)
+        /// </summary>
+        /// <param name="source"></param>
+        public void SetUpdateInformation(State source)
         {
-            setUpdates(Updatedstate.Guid);
-            foreach (State subState in StateMachine.States)
+            setUpdates(source.Guid);
+
+            if (getStateMachine() != null)
             {
-                subState.createStateUpdate(Updatedstate.findSubState(subState.Name));
+                StateMachine.SetUpdateInformation(source.StateMachine);                
             }
         }
     }

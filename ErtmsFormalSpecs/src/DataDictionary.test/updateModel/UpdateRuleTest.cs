@@ -5,7 +5,6 @@ using DataDictionary.Types;
 using DataDictionary.Values;
 using DataDictionary.Variables;
 using NUnit.Framework;
-using Action = DataDictionary.Generated.Action;
 
 namespace DataDictionary.test.updateModel
 {
