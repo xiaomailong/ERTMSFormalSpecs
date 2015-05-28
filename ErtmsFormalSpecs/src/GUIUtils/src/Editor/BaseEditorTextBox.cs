@@ -404,19 +404,17 @@ namespace GUI
         /// <param name="element">The element in which the possibilities should be found</param>
         /// <param name="searchOptions"></param>
         /// <returns></returns>
-        private HashSet<ObjectReference> GetPossibilities(IModelElement element, SearchOptions searchOptions)
+        private HashSet<ObjectReference> GetPossibilities(ModelElement element, SearchOptions searchOptions)
         {
             HashSet<ObjectReference> retVal = new HashSet<ObjectReference>();
 
             while (element != null)
             {
-                bool type = false;
-
-                type = ConsiderElement(element, searchOptions, retVal, type);
-
+                ConsiderElement(element, searchOptions, retVal);
+                
                 if (searchOptions.ConsiderEnclosing)
                 {
-                    element = element.Enclosing as IModelElement;
+                    element = element.Enclosing as ModelElement;
                 }
                 else
                 {
@@ -429,15 +427,14 @@ namespace GUI
             {
                 foreach (Dictionary dictionary in EFSSystem.Dictionaries)
                 {
-                    ConsiderElement(dictionary, searchOptions, retVal, false);
+                    ConsiderElement(dictionary, searchOptions, retVal);
                 }
             }
 
             return retVal;
         }
 
-        private bool ConsiderElement(IModelElement element, SearchOptions searchOptions, HashSet<ObjectReference> retVal,
-            bool type)
+        private void ConsiderElement(ModelElement element, SearchOptions searchOptions, HashSet<ObjectReference> matches)
         {
             ISubDeclarator subDeclarator = element as ISubDeclarator;
             if (subDeclarator == null)
@@ -445,7 +442,6 @@ namespace GUI
                 ITypedElement typedElement = element as ITypedElement;
                 if (typedElement != null)
                 {
-                    type = true;
                     subDeclarator = typedElement.Type as ISubDeclarator;
                 }
             }
@@ -453,7 +449,6 @@ namespace GUI
             IVariable variable = subDeclarator as IVariable;
             if (variable != null)
             {
-                type = true;
                 subDeclarator = variable.Type as ISubDeclarator;
             }
 
@@ -469,7 +464,7 @@ namespace GUI
                         {
                             foreach (INamable namable in subDeclarator.DeclaredElements[subElem])
                             {
-                                if (namable.FullName.EndsWith(searchOptions.EnclosingName + "." + subElem) || type ||
+                                if (namable.FullName.EndsWith(searchOptions.EnclosingName + "." + subElem) ||
                                     subDeclarator is StructureElement)
                                 {
                                     if (ConsiderOnlyTypes)
@@ -478,13 +473,13 @@ namespace GUI
                                         {
                                             if (!(namable is Function))
                                             {
-                                                retVal.Add(new ObjectReference(pair.Key, pair.Value));
+                                                matches.Add(new ObjectReference(pair.Key, pair.Value));
                                             }
                                         }
                                     }
                                     else
                                     {
-                                        retVal.Add(new ObjectReference(pair.Key, pair.Value));
+                                        matches.Add(new ObjectReference(pair.Key, pair.Value));
                                     }
                                     break;
                                 }
@@ -492,13 +487,16 @@ namespace GUI
                         }
                         else
                         {
-                            retVal.Add(new ObjectReference(pair.Key, pair.Value));
+                            matches.Add(new ObjectReference(pair.Key, pair.Value));
                         }
                     }
                 }
             }
 
-            return type;
+            if (element.Updates != null)
+            {
+                ConsiderElement(element.Updates, searchOptions, matches);
+            }
         }
 
         /// <summary>
@@ -678,7 +676,7 @@ namespace GUI
                 // Handles references to model elements
                 foreach (INamable namable in searchOptions.Instances)
                 {
-                    retVal.AddRange(GetPossibilities((IModelElement) namable, searchOptions));
+                    retVal.AddRange(GetPossibilities((ModelElement) namable, searchOptions));
                 }
 
                 // Handles code templates
